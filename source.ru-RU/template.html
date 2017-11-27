@@ -14,12 +14,7 @@
 <%resheader%>
 <h1>Ресурс <%title%> - Назначение</h1>
 
-
-<table class="<%fmm-style%>">
- <tr><td><%wg%></td><td><%fmm%></td><td><%complinks%></td></tr>
-</table>
-
-
+<table class="<%fmm-style%>"><tr><td><a href="<%wg%>"><%wgt%></a> Work Group</td><td><%fmm%></td><td><%sstatus%></td><td><%complinks%></td></tr></table>
 
 <p> 
 <%definition%> 
@@ -103,6 +98,7 @@
 <p><b>Changes since DSTU2</b></p>
  <div id="diff-inner">
   <%diff-analysis%>
+  <%r2r3transforms%>
  </div>
 </div>
 
@@ -154,6 +150,7 @@
 <p><b>Changes since DSTU2</b></p>
  <div id="diff-inner2">
   <%diff-analysis%>
+  <%r2r3transforms%>
  </div>
 </div>
   
@@ -163,7 +160,7 @@
 <p>&nbsp;</p>  
 <p>Альтернативные определения: 
 Основное определение<!-- Master Definition --> (<a href="<%name%>.profile.xml.html">XML</a>, <a href="<%name%>.profile.json.html">JSON</a>),
-<a href="xml.html">XML</a> <a href="<%name%>.xsd">Schema</a>/<a href="<%name%>.sch">Schematron</a> (для ) + <a href="json.html">JSON</a> <a href="<%cname%>.schema.json">Schema</a>, <a href="<%name%>.shex.html">ShEx</a> (для <a href="rdf.html">Turtle</a>), <a href="<%title%>.jsonld">JSON-LD</a> (for <a href="rdf.html#json-ld">RDF as JSON-LD</a>), </p>
+<a href="xml.html">XML</a> <a href="<%name%>.xsd">Schema</a>/<a href="<%name%>.sch">Schematron</a> (for ) + <a href="json.html">JSON</a> <a href="<%cname%>.schema.json">Schema</a>, <a href="<%name%>.shex.html">ShEx</a> (for <a href="rdf.html">Turtle</a>)</p>
 
 <a name="tx"> </a>
 <%tx%>

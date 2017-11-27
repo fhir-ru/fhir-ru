@@ -3,13 +3,7 @@
 <div>
 <a name="scope"> </a>
 <h2>Область применения и использование</h2>
-<p><b>Примечание для участвующих в голосовании: имя данного ресурса используется в регулирующих органах в некоторых странах, поэтому для избежания путаницы или проблем, возможно, будет уместно переименовать его, к примеру, в ClaimSummary. Пожалуйста, обратитесь к Рабочей группе по управлению финансами, если это именно тот случай для вашей страны и предложите свою рекомендацию по наименованию этого ресурса.<!-- Notice to ballotors: The name of this resource is referred to in regulations in some jurisdictions and therefor to reduce confusion
- or issues it may be appropriate to rename this resource, for example to ClaimSummary. Please advise the Financial Managemet Work Group
- if this is the case for your jurisdaiction and provide a new name recommendation. --></b></p>
-<p>
-Ресурс ExplanationOfBenefit сочетает в себе ключевую информацию из Claim, ClaimResponse и, необязательно, Account для информирования пациента о товарах и услугах, оказанных поставщиком, и погашении, выполненном в соответствии со страховым покрытием пациента относительного этого Claim.
-<!-- The ExplanationOfBenefit resource combines key information from a Claim, a ClaimResponse and optional Account information to inform 
-a patient of the goods and services rendered by a provider and the settlement made under the patients coverage in respect of that Claim. -->
+<p>Ресурс ExplanationOfBenefit сочетает в себе ключевую информацию из Claim, ClaimResponse и, необязательно, Account для информирования пациента о товарах и услугах, оказанных поставщиком, и погашении, выполненном в соответствии со страховым покрытием пациента относительного этого Claim.
 </p>
 <p>
 Это логическая комбинация Claim, ClaimResponse и некоторой бухгалтерской информации о Coverage относительно отдельного плательщика, подготовленная для использования подписчиком и/или пациентом. Это не просто серия указателей на упомянутые модели содержимого, это физическое подмножество, ограниченное вынесенным судебным решением по отдельному плательщику, в котором подробно описаны оказанные услуги, суммы для выплаты и кому они предназначены, и, возможно, использованное и/или действующее страховое покрытие.
@@ -20,7 +14,6 @@ a patient of the goods and services rendered by a provider and the settlement ma
  to whom, and optionally the coverage used and/or remaining. -->
 </p>
 <p>
-Todo
 <!-- Describes some of the situations/use cases intended to be managed with the resource. May include a child div for "Storyboards" and "Related Specifications". The purpose of this section is to help implementers understand why the resource is needed and how it might be used. -->
 </p>
 </div>

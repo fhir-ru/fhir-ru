@@ -4,8 +4,8 @@
 <a name="scope"> </a>
 <h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p>
-Ресурс Practitioner охватывает всех лиц, которые участвуют в процессе здравоохранения и оказании медицинских услуг в рамках своих официальных обязанностей, и этот ресурс используется для приписывания деятельности и обязанностей этим лицам.
-В ресурсы Practitioner включаются (но не ограничиваются ими): 
+Ресурс Practitioner предназначен для описания лиц, которые участвуют в здравоохранении и оказании медицинских услуг в рамках своих официальных обязанностей, и используется для возложения ответственности за их деятельность.
+Ресурс Practitioner подходит (но не ограничивается) для: 
 <!-- Practitioner covers all individuals who are engaged in the healthcare process and healthcare-related services as part of their formal 
 responsibilities and this Resource is used for attribution of activities and responsibilities to these individuals.
 
@@ -13,13 +13,13 @@ Practitioners include (but are not limited to): -->
 </p>
 <ul>
 <li>врачи, стоматологи, фармацевты<!-- physicians, dentists, pharmacists --></li>
-<li>фельдшеры, медсестры, помощники (scribes)<!-- physician assistants, nurses, scribes --></li>
+<li>фельдшеры, медсестры, медицинские секретари<!-- physician assistants, nurses, scribes --></li>
 <li>акушерки, диетологи, терапевты, окулисты, парамедики<!-- midwives, dietitians, therapists, optometrists, paramedics --></li>
 <li>медицинские техники, научные работники лабораторий, техники-протезисты, рентгенологи<!-- medical technicians, laboratory scientists, prosthetic technicians, radiographers --></li>
 <li>социальные работники, профессиональные домашние сиделки, официальные добровольцы<!-- social workers, professional home carers, official volunteers --></li>
 <li>администраторы, занимающиеся регистрацией пациентов<!-- receptionists handling patient registration --></li>
-<li>IT-персонал, выполняющий объединение или разделение записей пациентов<!-- IT personnel merging or unmerging patient records --></li>
-<li>Служебные животные (например приставленная к больничной палате собака, натренированная обнаруживать рак у пациентов)<!-- Service animal (e.g., ward assigned dog capable of detecting cancer in patients) --></li>
+<li>IT-персонал, выполняющий слияние или разделение записей пациентов<!-- IT personnel merging or unmerging patient records --></li>
+<li>служебные животные (например приставленная к больничной палате собака, натренированная обнаруживать рак у пациентов)<!-- Service animal (e.g., ward assigned dog capable of detecting cancer in patients) --></li>
 </ul>
 </div>
 
@@ -27,7 +27,7 @@ Practitioners include (but are not limited to): -->
 <a name="bnr"> </a>
 <h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <p>
-Ресурс НЕ СЛЕДУЕТ использовать для лиц, вовлеченных без официальной ответственности, например людей, ухаживающих за друзьями, родственниками или соседями. Их следует регистрировать как контакты пациента (Patient's Contact). Если они  выполняют какое-то действие или нужно их упоминание в другом ресурсе, используйте ресурс <a href="relatedperson.html">RelatedPerson</a>.
+Ресурс НЕ СЛЕДУЕТ использовать для людей, вовлечённых в здравоохранение без официальной ответственности, например лиц, ухаживающих за друзьями, родственниками или соседями. Их следует регистрировать как контакты пациента (элемент Patient.contact). Если они  выполняют какое-то действие или нужно их упоминание в другом ресурсе, используйте ресурс <a href="relatedperson.html">RelatedPerson</a>.
 <!-- The Resource SHALL NOT be used for persons involved without a formal responsibility like individuals taking care for friends, 
 relatives or neighbors. These can be registered as a Patient's Contact.  If performing some action or being referenced by another
 resource, use <a href="relatedperson.html">RelatedPerson</a> resource. -->
@@ -38,17 +38,28 @@ resource, use <a href="relatedperson.html">RelatedPerson</a> resource. -->
 </p>
 <ul>
 <li>
-Человек взаимодействует от имени оказывающей медицинские услуги организации со множеством пациентов (Practitioner).
+Practitioner - человек/животное от имени оказывающей медицинские услуги организации взаимодействует со множеством пациентов.
 <!-- 	The person/animal operates on behalf of the care delivery organization over multiple patients (Practitioner) or, -->
 </li>
 <li>
-Там, где человек/животное не связаны с организацией, а есть задачи конкретно для родственника пациента (RelatedPerson).
+RelatedPerson - человек/животное не связан с медицинской организацией, а выполняет какие-то конкретные задачи для пациента, указанного в ресурсе RelatedPerson.
 <!-- 	Where the person/animal is not associated with the organization, and instead is
 	allocated tasks specifically for the RelatedPerson's Patient (RelatedPerson). -->
 </li>
 </ul>
-<p>Стандартное расширение  <a href="extension-practitioner-animalspecies.html">animalSpecies</a> можно использовать для указания породы обслуживаемого животного.
+<p>Стандартное расширение <a href="extension-practitioner-animalspecies.html">animalSpecies</a> используют для указания породы служебного животного.
 <!-- 	A standard extension <a href="extension-practitioner-animalspecies.html">animalSpecies</a> can be used to indicate the species of a service animal. -->
+</p>
+<p>
+В ресурсе <a href="practitionerrole.html">PractitionerRole</a> подробно описывают роли, которые медицинский специалист уполномочен выполнять и для каких организаций (и в каком месте, и, опционально, какие услуги он может оказывать).
+<!--   The <a href="practitionerrole.html">PractitionerRole</a> resource provides the details of roles that the practitioner 
+  is approved to perform for which organizations (an at which locations, and optionally what services too). -->
+</p>
+<p>
+Ресурсы Practitioner часто группируют в ресурсе <a href="careteam.html">CareTeams</a> независимо от их ролей, где и указывают, какую конкретную роль они выполняют в команде; и могут иметь или не иметь связанных ресурсов PractitionerRole (и, в контексте CareTeam, организации, где работает медицинский специалист).
+<!--   Practitioners are also often grouped into <a href="careteam.html">CareTeams</a> independently of roles, where the CareTeam
+  defines what specific role that they are fulfilling within the team, and may or may not have actual practitioner role resources
+  created for the practitioner (and in the care team context, the organization the practitioner is representing) -->
 </p>
 </div>
 
@@ -56,8 +67,8 @@ resource, use <a href="relatedperson.html">RelatedPerson</a> resource. -->
 <a name="bnc"> </a>
 <h2>Предпосылки и контекст<!-- Background and Context --></h2>
 <p>
-Врач играет различные роли в пределах одной или даже различных организаций. В зависимости от юрисдикции и обычаев может потребоваться поддержка особого ресурса Practitioner для каждой такой роли или отдельного ресурса Practitioner с несколькими ролями. 
-Роль может быть ограничена определенным периодом, после которого предоставление полномочий для этой роли заканчивается. Обратите внимание, что представляемая им организация не обязательно должна быть (непосредственным) работодателем Practitioner.
+Медицинский специалист выполняет различные роли в пределах одной или нескольких организаций. В зависимости от страны и обычаев создают отдельные ресурсы Practitioner для каждой такой роли или один ресурс Practitioner с несколькими ролями. 
+Роль может быть ограничена определённым периодом времени, после которого предоставление полномочий для этой роли заканчивается. Обратите внимание, что представляемая врачом организация в ресурсе Practitioner не обязательно должна быть его непосредственным работодателем.
 <!-- Practitioner performs different roles within the same or even different organizations. Depending on jurisdiction and custom, 
 it may be necessary to maintain a specific Practitioner Resource for each such role or have a single Practitioner with multiple roles.
 The role can be limited to a specific period, after which authorization for this role ends. Note that the represented organization

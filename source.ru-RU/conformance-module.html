@@ -13,8 +13,8 @@ in order to support consistent definitions for schema and UML derived code.
 <body>
 [%file newnavbar%]
 
-<div class="col-9">
-<table class="cols"><tr><td id="wg">Work Group <a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> </td><td id="ballot"><a href="help.html#status">Ballot Status</a>: <a href="history.html#pubs">n/a</a></td></tr></table>
+<div class="col-12">
+<table class="cols"><tr><td id="wg">Work Group <a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> </td><td id="ballot"><a href="versions.html#levels">Ballot Status</a>: <a href="versions.html#std-process">Informative</a></td></tr></table>
 
 <a name="root"> </a>
 <h2>Модуль обеспечения соответствия<!-- Conformance Module --></h2>
@@ -25,9 +25,8 @@ in order to support consistent definitions for schema and UML derived code.
  <tr>
  <td width="33%">
 <ul>
-  <li><a href="capabilitystatement.html">Capability statement</a></li>
+  <li><a href="capabilitystatement.html">CapabilityStatement</a></li>
   <li><a href="structuredefinition.html">StructureDefinition</a></li>
-  <li><a href="messagedefinition.html">MessageDefinition</a></li>
   <li><a href="operationdefinition.html">OperationDefinition</a></li>
   <li><a href="searchparameter.html">SearchParameter</a></li>
   </ul>
@@ -122,7 +121,7 @@ in order to support consistent definitions for schema and UML derived code.
 	    <p>Conformance resources may be used independently, not just within the context of an ImplementationGuide resource or capability statement. See the section <a href="#uses">Common use cases</a> for examples of such uses.</p>
 
     <p>The conformance resources and their relationships are shown below:</p>
-    <p><img src="conformance-module-resources.png" alt="Image showing the conformance resources" width="800px"/></p>
+    <p><img src="conformance-module-resources.png" alt="Image showing the conformance resources" width="800px" style="float: none"/></p>
 	<p>Resources shown with a dotted box are described in other sections of the specification:
 		<code>ValueSet</code>, <code>ConceptMap</code> and <code>StructureMap</code> are from the <a href="terminology-module.html">section on terminology</a>,
 		 <code>TestScript</code> is part of the section on <a href="implsupport-module.html">Implementer Support</a>.</p>
@@ -153,23 +152,23 @@ running the risk of being misconfigured.</li>
 
     <ul>
         <li>An instance of a resource may reference one or more <code>StructureDefinitions</code> to
-            claim conformance to the rules layed out in those StructureDefinitions</li>
+            claim conformance to the rules laid out in those StructureDefinitions</li>
         <li>A server may serve <code>CapabilityStatement</code> resources, effectively functioning
             as a discovery endpoint for services within an organization</li>
         <li>A server may hold a set of DataElement resources to become a Data Dictionary of
-            reuseable datamodels as per ISO 11179.</li>
+            reusable datamodels as per ISO 11179.</li>
         <li>A code-generation tool may use <code>StructureDefinitions</code> and
                 <code>OperationDefinitions</code> to generate code that represents the structures as
             classes and operations as remotely callable functions to provide an easier programming
             model to a software developer. </li>
         <li>A server may act as a repository of <code>NameSpace</code> resources, so vendors and
-            implementers can quickly look up the urls or oids for a given terminology or identifier
+            implementers can quickly look up the URLs or oids for a given terminology or identifier
             system.</li>
     </ul>
 
 <a name="roadmap"> </a>
 <h3>Дорожная карта разработки<!-- Developmental Roadmap --></h3>
-    <p>A subset of the conformance resources have been tested and used in production tooling and as
+    <p>A subset of the conformance resources has been tested and used in production tooling and as
         such have reached a maturity level where changes become less likely. These are
             <code>CapabilityStatement</code>, <code>StructureDefinition</code>,
             <code>ValueSet</code>, <code>OperationDefinition</code> and <code>SearchParameter</code>.</p>
@@ -183,7 +182,7 @@ running the risk of being misconfigured.</li>
     </ul>
     <p>Over the past two years, these resources have been mainly used in the tools used to build the FHIR
         publication, early-adopter implementation guides and the FHIR Foundation conformance
-        resource registry. In the 2016-2018 timeframe we expect to see more widespread use of these
+        resource registry. In the 2016-2018 timeframe, we expect to see more widespread use of these
         resources in validation tooling, code-generators and more extensive model-based guide
         authoring tools.</p>
 

@@ -23,7 +23,7 @@ The OperationDefinition serves two principle purposes: -->
 <h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <p>
 Operation Definitions публикуются для определения операций, которые может осуществлять сервер обычным образом. 
-Спецификация FHIR описывает некоторое количество (см. ниже) и другие организации, включая IHE, государственные программы, юрисдикции и поставщиков, которые могут публиковать дополнительные определения операций.
+Спецификация FHIR описывает некоторое количество (см. ниже) и другие организации, включая IHE, государственные программы, юрисдикции и поставщиков, которые могут публиковать дополнительные ресурсы OperationDefinitions.
 <!-- Operation Definitions are published to define operations that servers can implemnet in a common fashion. 
 The FHIR specification itself describes a number (see below), and other organizations, including 
 IHE, national programs, jurisdictions and vendors are able to publish additional operation definitions. -->

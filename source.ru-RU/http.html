@@ -12,8 +12,15 @@
 <div class="col-12">
 
 <h2>RESTful API</h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">STU 3</a></td></tr></table>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="versions.html#maturity">Уровень зрелости</a>: 5</td><td id="ballot"><a href="versions.html#levels">Статус голосования</a>: <a href="versions.html#std-process">Пробное использование</a></td></tr></table>
 
+<p>
+FHIR is described as a 'RESTful' specification based on common industry level use of the term REST. In practice, FHIR only supports Level 2 of the
+<a href="https://martinfowler.com/articles/richardsonMaturityModel.html">REST Maturity model</a> as part of the core specification, though full Level 3
+conformance is possible through the use of <a href="extensibility.html">extensions</a>. Because FHIR is a standard, it relies on the standardization of
+resource structures and interfaces.  This may be considered a violation of REST principles but is key to ensuring consistent interoperability across
+diverse systems.
+</p>
 <p>
 В FHIR описан определенный набор взаимодействий, с использованием которого можно  достаточно тонко 
 управлять разными типами ресурсов.
@@ -225,7 +232,7 @@ and some operations may depend on appropriate consent being granted. -->
 <!-- See the <a href="security.html#AccessDenied">HTTP Security</a> guidance on how to handle access denial response. -->
 </p>
 <p>
-Примечание: для поддержки браузерных клиентских приложений сервер ДОЛЖЕН реализовывать <a href="http://enable-cors.org/">Кросс-доменный доступ к ресурсам</a>.
+Примечание: для поддержки браузерных клиентских приложений сервер ДОЛЖЕН реализовывать <a href="http://enable-cors.org/">Кросс-доменный доступ к ресурсам</a> для прведенных здесь операций. Практика показывает, что в этой области следует постоянно ожидать проблем по мере того, как обнаруживаются и закрываются дырки в системе безопасности.
 <!-- Note: to support browser-based client applications, recommend that servers SHOULD implement <a href="http://enable-cors.org/">cross-origin resource sharing</a> for the interactions documented here.
 Experience shows that this is an area where ongoing issues may be expected as security holes are found and closed in an ongoing basis. -->
 </p>
@@ -327,7 +334,7 @@ The correct mime type SHALL be used by clients and servers: -->
 of the HTTP specification.  -->
 </p>
 <p>
-Note: between FHIR DSTU2 and STU3, the correct mime type was changed from application/xml+fhir and application/json+fhir to application/fhir+xml and application/fhir+json.
+Note: between FHIR DSTU2 and STU3, the correct mime type was changed from <code>application/xml+fhir</code> and <code>application/json+fhir</code> to <code>application/fhir+xml</code> and <code>application/fhir+json</code>.
 Servers MAY also support the older mime types, and are encouraged to do so to smooth the transtion process.
 </p>
 <p>
@@ -390,9 +397,9 @@ in their <a href="capabilitystatement-definitions.html#CapabilityStatement.rest.
 Where they can indicate one of three levels for versioning support:
 </p>
 <ul>
- <li><b>no-version</b>: Versioning and meta.version is not supported (server) or used (client)</li>
- <li><b>versioned</b>: Versioning and meta.version is supported (server) or used (client)</li>
- <li><b>versioned-update</b>:	Versioning and meta.version is supported, and version aware updates are used - Version ID must be correct for updates (server) or will be specified (If-match header) for updates (client)</li>
+ <li><b>no-version</b>: Versioning and <code>meta.version</code> is not supported (server) or used (client)</li>
+ <li><b>versioned</b>: Versioning and <code>meta.version</code> is supported (server) or used (client)</li>
+ <li><b>versioned-update</b>:	Versioning and <code>meta.version</code> is supported, and version aware updates are used - Version ID must be correct for updates (server) or will be specified (If-match header) for updates (client)</li>
 </ul>
  
 <p>
@@ -415,7 +422,7 @@ is performed by an HTTP <code>GET</code> command as shown: -->
 </pre>
 <p>
 В ответ сервер присылает содержимое соответствующего типа. Этот адрес может быть доступен из браузера. Возможные значения для логического идентификатора (<a href="resource.html#id">Logical Id</a>; id) описаны в секции <a href="datatypes.html#id">идентификационный тип</a>.
-Возвращаемый ресурс ДОЛЖЕН иметь элемент <code>id</code> со значением [id].
+Возвращаемый ресурс ДОЛЖЕН иметь элемент <code>id</code> со значением <code>[id]</code>.
 Серверам СЛЕДУЕТ возвращать заголовок <code>ETag</code> с versionId и заголовок <code>Content-Location</code> с ответом, представляющим собой полный URL, включающий версию (смотри "vread" ниже) и заголовок <code>Last-Modified</code> с датой последней модификации.
 <!-- This returns a single instance with the content specified for the resource type.
 This url may be accessed by a browser. The possible values for the
@@ -444,16 +451,7 @@ contention management when a resource is brought back to life.  -->
 что только подмножество содержимого ресурса будет возвращено,
 как указано в параметре <code>_summary</code>, который может иметь значения 
 <a href="search.html#summary"><code>true</code>, <code>false</code>, <code>text</code> &amp; <code>data</code></a>.
-Отметьте, что ресурс, который содержит только подмножество данных, не подходит для использования в качестве основы для обновления ресурса и может не подходить для других целей. То же применимо и к параметру <a href="search.html#elements">_elements</a> - и то, что его следует поддерживать и то вытекающие из этого выводы. Серверам СЛЕДУЕТ использовать <a href="security-labels.html">метку уровня безопасности</a> <a href="v3/ObservationValue/cs.html#v3-ObservationValue-SUBSETTED">SUBSETTED</a>, чтобы явным образом помечать такие ресурсы.
-<!-- This requests that only a subset of the resource content be returned,
-as specified in the <code>_summary</code> parameter, which can have the values 
-<a href="search.html#summary"><code>true</code>, <code>false</code>, <code>text</code> &amp; <code>data</code></a>.
-Note that a resource that only contains a subset of the data is 
-not suitable for use as a base to update the resource, and may not 
-be suitable for other uses. The same applies to the <a href="search.html#elements">_elements</a> parameter - both 
-that it should be supported, and the subset implications. Servers SHOULD use
-the <a href="v3/ObservationValue/cs.html#v3-ObservationValue-SUBSETTED">SUBSETTED</a> <a href="security-labels.html">Security Label</a>
-to explicitly mark such resources. -->
+Отметьте, что ресурс, который содержит только подмножество данных, не подходит для использования в качестве основы для обновления ресурса, и может не подходить для других целей. То же применимо и к параметру <a href="search.html#elements">_elements</a> - и то, что его следует поддерживать, и все вытекающие из этого выводы. Серверам СЛЕДУЕТ использовать <a href="resource.html#simple-tags">Simple Tag</a> <a href="v3/ObservationValue/cs.html#v3-ObservationValue-SUBSETTED">SUBSETTED</a>, чтобы явным образом помечать такие ресурсы.
 </p>
 
 <a name="vread"> </a>
@@ -505,21 +503,11 @@ The <code>update</code> interaction is performed by an HTTP <code>PUT</code> com
   PUT [base]/[type]/[id] {?_format=[mime-type]}
 </pre>
 <p>
-Тело запроса ДОЛЖНО быть <a href="resource.html">ресурсом</a> с элементом id, имеющим идентичное значение, что и [id] в URL. 
+Телом запроса должен быть <a href="resource.html">ресурс</a> с элементом <code>id</code>, имеющим идентичное значение, что и <code>[id]</code> в URL. Если элемент <code>id</code> не указан, либо значение неправильное, сервер должен вернуть HTTP-код ошибки <code>400</code> и ресурс <a href="operationoutcome.html">OperationOutcome</a> с описанием ошибки.
 Если тело запроса содержит <a href="resource.html#meta">meta</a>, сервер ДОЛЖЕН 
 игнорировать предложенные значения <code>versionId</code> и <code>lastUpdated</code>. 
 Если сервер поддерживает версионирование, он ДОЛЖЕН заполнить <code>meta.versionId</code> и <code>meta.lastUpdated</code> новыми корректными значениями. Серверам разрешается проверять и изменять другие значения метаданных, но СЛЕДУЕТ воздерживаться от этого (см. более подробную информацию на странице <a href="resource.html#meta">описания метаданных</a>). Отметьте, что нет поддержки обновления предыдущих версий - см. примечания к операции <a href="#history">history</a>.
-<!-- The request body SHALL be a <a href="resource.html">Resource</a> with an id element 
-that has an identical value to the <code>[id]</code> in the URL. If no <code>id</code> element is provided, or 
-the value is wrong, the server SHALL respond with a HTTP <code>400</code> error code, and SHOULD
-provide an operation outcome identifying the issue.
-If the request body includes a <a href="resource.html#meta"><code>meta</code></a>, the server SHALL
-ignore the provided <code>versionId</code> and <code>lastUpdated</code> values.
 
-If the server supports versions, it SHALL populate the <code>meta.versionId</code> and <code>meta.lastUpdated</code>
-with the new correct values. Servers are allowed to review and alter the other metadata values, but SHOULD refrain
-from doing so (see <a href="resource.html#meta">metadata description</a>  for further information). Note that 
-there is no support for updating past versions - see notes on the <a href="#history">history</a> interaction. -->
 </p>
 <p>
 Сервер ДОЛЖЕН принимать ресурс в том виде, в каком он был отправлен на сервер, когда допускает обновление, и возвращать то же самое содержимое, когда он впоследствии читается. Однако системы могут не иметь возможности делать это; см. примечание к обсуждению в разделе <a href="#transactional-integrity">Транзакционная целостность</a>.
@@ -578,7 +566,7 @@ where clashes do not arise. -->
 <!-- Common HTTP Status codes returned on FHIR-related errors (in addition to normal HTTP errors related to security, header and content type negotiation issues): -->
 </p>
 <ul>
- <li><b><code>400</code> Bad Request</b> - невозможно выполнить синтаксический разбор ресурса, либо ресурс не соответствует основным правилам валидации FHIR (или запрос применим к нескольким ресурсам)</li>
+ <li><b><code>400</code> Bad Request</b> - невозможно выполнить синтаксический разбор ресурса, либо ресурс не соответствует основным правилам валидации FHIR (или критериям запроса соответствует несколько ресурсов)</li>
  <li><b><code>401</code> Not Authorized</b> - требуется авторизация</li>
  <li><b><code>404</code> Not Found</b> - тип ресурса не поддерживается, либо это не точка взаимодействия FHIR</li>
  <li><b><code>405</code> Method Not allowed</b> - ресурс не существует на момент обновления, и сервер не разрешает определенные клиентом идентификаторы</li>
@@ -632,7 +620,7 @@ For example, a client updating the status of a lab result from "preliminary" to 
 might submit the finalized result using <code>PUT path/Observation?identifier=http://my-lab-system|123</code> -->
 </p>
 <p>
-Отметьте, что транзакции и условные операции create/update/delete являются комплексными взаимодействиями, и не предполагается, что каждый сервер будет их реализовывать. Серверы, которые не поддерживают условное обновление, должны возвращать HTTP-код ошибки <code>400</code> и результат операции.
+Отметьте, что транзакции и условные операции create/update/delete являются комплексными взаимодействиями, и не предполагается, что каждый сервер будет их реализовывать. Серверы, которые не поддерживают условное обновление, должны возвращать HTTP-код ошибки <code>400</code> и результат операции <a href="operationoutcome.html">OperationOutcome</a>.
 <!-- Note that transactions and conditional create/update/delete are complex interactions and it is 
 not expected that every server will implement them. Servers that don't support the conditional 
 update should return an HTTP <code>400</code> error and an operation outcome. -->
@@ -664,15 +652,9 @@ ETag: W/"23"
 Content-Type: application/fhir+json
 </pre>
 <p>
-Если указано, значение ETag ДОЛЖНО совпадать со значением version id ресурса. 
+Если указано, значение <code>ETag</code> ДОЛЖНО совпадать со значением version id ресурса. 
 Серверам разрешается генерировать version id каким угодно образом при условии, что они являются допустимыми в соответствии с типом данных <a href="datatypes.html#id">id</a> и уникальными в пределах адресного пространства всех версий одного ресурса. 
-Когда ресурсы возвращаются в рамках комплекта, ETag отсутствует, и используется непосредственно versionId ресурса.
-<!-- If provided, the value of the ETag SHALL match the value of the version id for the resource. Servers
-are allowed to generate the version id in whatever fashion that they wish, so long
-as they are valid according to the <a href="datatypes.html#id">id</a> data type,
-and are unique within the address space of all versions of the same resource.
-When resources are returned as part of a bundle, there is no ETag, and the
-versionId of the resource is used directly. -->
+Когда ресурсы возвращаются в рамках комплекта, <code>ETag</code> отсутствует, и используется непосредственно versionId ресурса.
 </p>
 <p>
 Если клиент хочет запросить версионное обновление, он отправляет запрос с заголовком <code>If-Match</code>, который цитирует ETag с сервера:
@@ -711,12 +693,13 @@ The body of a PATCH operation SHALL be either:
 <ul>
  <li>a <a href="http://jsonpatch.com/">JSON Patch</a> document with a content type of <code>application/json-patch+json</code></li>
  <li>an <a href="http://tools.ietf.org/html/rfc5261">XML Patch</a> document with a content type of <code>application/xml-patch+xml</code></li>
+ <li>a <a href="fhirpatch.html">FHIRPath Patch</a> parameters resource with <a href="#mime-type">FHIR Content Type</a></li>
 </ul>
 <p>
-In either case, the server SHALL process it's own copy of the resource in the format indicated, applying 
+In either case, the server SHALL process its own copy of the resource in the format indicated, applying
 the operations specified in the document, following the relevant PATCH specification. When the operations 
 have all been processed, the server processes the resulting document as an <a href="#update"><code>Update</code></a> 
-operation; all the version and error handling etc applies as specified, as does the <a href="#prefer">Prefer Header</a>.
+operation; all the version and error handling etc. applies as specified, as does the <a href="#prefer">Prefer Header</a>.
 </p>
 <p>
 Processing PATCH operations may be very version sensitive. For this reason, servers SHALL support 
@@ -733,7 +716,7 @@ Exactly how this is defined and can be achieved depends on the context, and how 
  <li>If the existing narrative has a status != <code>generated</code>, the server could reject the PATCH operation</li>
  <li>The server could regenerate the narrative once the operation has been applied to the data</li>
  <li>In some limited circumstances, an XML PATCH operation could update the narrative</li>
- <li>The server could delete the narrative, in the basis that some later process will be able to populate it correctly</li>
+ <li>The server could delete the narrative, on the basis that some later process will be able to populate it correctly</li>
 </ul>
 <p>
 Processing XML Patch documents is tricky because of namespace handling. Servers SHALL handle
@@ -744,8 +727,7 @@ for FHIR (<code>http://hl7.org/fhir</code>) and XHTML (<code>http://www.w3.org/1
 For PATCH Examples, see (link todo).
 </p>
 <p>
-Note: There is, as yet, no support for preforming patch operations as part of Batch or Transaction
-Operations. This may be addressed in a future version of the specification.
+Patch operations may be performed as part of Batch or Transaction Operations using the FHIRPath Patch format.
 </p>
 
 <a name="delete"> </a>
@@ -767,9 +749,7 @@ interactions. Upon successful deletion, or if the resource does not exist at all
 resource containing hints and warnings about the deletion; if one is sent it SHALL NOT include any errors. -->
 </p>
 <p>
-Поддерживать ли операцию delete вообще или для определённого типа ресурсов или конкретного экземпляра - свободный выбор сервера на основе бизнес-правил, применяемых в данном контексте.
-Если сервер отказывается удалять ресурсы такого типа в соответствии с общей политикой безопасности, тогда он должен возвращать статус-код 405 Method not allowed. Если сервер отказывается удалять ресурс по причинам, специфичным для конкретного ресурса, например из-за вопросов целостности ссылок, он должен возвращать статус-код 409 Conflict. 
-Выполнение этого взаимодействия с ресурсом, который уже удален, не имеет эффекта, и сервер должен возвращать either a
+Whether to support delete at all, or for a particular resource type or a particular instance is at the
 <code>200 OK</code> if the response contains a payload, or a <code>204 No Content</code> with no response payload.
 Resources that have been deleted may be "brought back to life" by a subsequent <a href="#href"><code>update</code></a>
 interaction using an HTTP <code>PUT</code>.
@@ -799,8 +779,8 @@ no content and is marked as deleted. Note that
 there is no support for deleting past versions - see notes on the <a href="#history">history</a> interaction. -->
 </p>
 <p>
-Поскольку удалённые ресурсы могут быть восстановлены, серверы МОГУТ включать ETag в ответ на операцию удаления, чтобы избежать конфликтов версий, когда ресурс будет восстановлен.
-<!-- Since deleted resources may be brought back to life, servers MAY include an ETag on the delete response
+Поскольку удалённые ресурсы могут быть восстановлены, серверы МОГУТ включать <code>ETag</code> в ответ на операцию удаления, чтобы избежать конфликтов версий, когда ресурс будет восстановлен.
+<!-- Since deleted resources may be brought back to life, servers MAY include an <code>ETag</code> on the delete response
 to allow version contention management when a resource is brought back to life.  -->
 </p>
 
@@ -835,7 +815,7 @@ a resource on a  server, without having to remember the logical ids that the ser
 For example, a client deleting a lab atomic result might delete the resource using <code>DELETE /Observation?identifier=http://my-lab-system|123</code>. -->
 </p>
 <p>
-Отметьте, что транзакции и условные операции create/update/delete являются комплексными взаимодействиями, и не предполагается, что каждый сервер будет их реализовывать. Серверы, которые не поддерживают условное обновление, должны возвращать HTTP-код ошибки <code>400</code> и результат операции.
+Отметьте, что транзакции и условные операции create/update/delete являются комплексными взаимодействиями, и не предполагается, что каждый сервер будет их реализовывать. Серверы, которые не поддерживают условное обновление, должны возвращать HTTP-код ошибки <code>400</code> и результат операции <a href="operationoutcome.html">OperationOutcome</a>.
 <!-- Note that transactions and conditional create/update/delete are complex interactions and it is 
 not expected that every server will implement them. Servers that don't support the conditional 
 delete should return an HTTP <code>400</code> error and an operation outcome. -->
@@ -853,7 +833,7 @@ interaction instead. The <code>create</code> interaction is performed by an HTTP
   POST [base]/[type] {?_format=[mime-type]}
 </pre>
 <p>
-Телом запроса ДОЛЖЕН быть FHIR-ресурс. Этому ресурсу не обязательно иметь элемент <code>id</code> (это один из немногих случаев, когда ресурс существует без элемента id). Если элемент <code>id</code> всё же указан, то сервер ДОЛЖЕН его игнорировать. Если тело запроса содержит <a href="resource.html#meta">meta</a>, сервер ДОЛЖЕН 
+Телом запроса ДОЛЖЕН быть FHIR-ресурс. Этому ресурсу не обязательно иметь элемент <code>id</code> (это один из немногих случаев, когда ресурс существует без элемента <code>id</code>). Если элемент <code>id</code> всё же указан, то сервер ДОЛЖЕН его игнорировать. Если тело запроса содержит <a href="resource.html#meta">meta</a>, сервер ДОЛЖЕН 
 игнорировать существующие значения <code>versionId</code> и <code>lastUpdated</code>. 
 Сервер ДОЛЖЕН заполнить элементы <code>id</code>, <code>meta.versionId</code> и <code>meta.lastUpdated</code> новыми корректными значениями. 
 Серверам разрешается проверять и изменять другие значения метаданных, но СЛЕДУЕТ воздерживаться от этого (см. более подробную информацию на странице <a href="resource.html#meta">описания метаданных</a>).
@@ -883,7 +863,7 @@ the created resource version: -->
 <p>
 где [id] и [vid] - это только что созданные id и version id версии ресурса.
 
-Серверы ДОЛЖНЫ возвращать заголовок <code>ETag</code> с versionId и заголовком <code>Content-Location</code> с ответом, который представляет собой полный версионный url (см. vread ниже) и заголовок <code>Last-Modified</code>.
+Серверы ДОЛЖНЫ возвращать заголовок <code>ETag</code> с <code>versionId</code> и заголовком <code>Content-Location</code> с ответом, который представляет собой полный версионный url (см. vread ниже) и заголовок <code>Last-Modified</code>.
 <!-- where <code>[id]</code> and <code>[vid]</code> are the newly created id and version id for the resource version.
 
 Servers SHOULD return an <code>ETag</code> header with the versionId (if versioning is supported) and a <code>Last-Modified</code> header. -->
@@ -953,7 +933,7 @@ creating duplicate resources for the same record. For example, a client posting 
 <code>If-None-Exist: identifier=http://my-lab-system|123</code> to ensure it is does not create a duplicate record. -->
 </p>
 <p>
-Отметьте, что транзакции и условные операции create/update/delete являются комплексными взаимодействиями, и не ожидается, что они будут реализованы всеми серверами. Серверы, которые не поддерживают условное обновление, должны возвращать HTTP-код ошибки <code>400</code> и результат операции.
+Отметьте, что транзакции и условные операции create/update/delete являются комплексными взаимодействиями, и не ожидается, что они будут реализованы всеми серверами. Серверы, которые не поддерживают условное обновление, должны возвращать HTTP-код ошибки <code>400</code> и результат операции <a href="operationoutcome.html">OperationOutcome</a>.
 <!-- Note that transactions and conditional create/update/delete are complex interactions and it is 
 not expected that every server will implement them. Servers that don't support the conditional 
 create should return an HTTP <code>412</code> error and an operation outcome. -->
@@ -1002,19 +982,29 @@ this is not the main usage.  -->
 <!-- Searches are processed as specified for the <a href="search.html">Search handling mechanism</a>. -->
 </p>
 <p>
-Если поиск не удается выполнить, возвращается код состояния вида 4xx или 5xx наряду с ресурсом <a href="operationoutcome.html">OperationOutcome</a>. 
-Если поиск выполняется успешно, возвращается <a href="bundle.html">комплект (Bundle)</a> с <a href="bundle-definitions.html#Bundle.type">типом</a> = <code>searchset</code>, содержащий результаты поиска в виде перечня ресурсов в определенном порядке. Результирующий список может быть длинным, поэтому серверы могут использовать разбиение на страницы. Если он делают это, они ДОЛЖНЫ использовать метод, <a href="#paging">описанный ниже</a>, адаптированный из <a href="https://tools.ietf.org/html/rfc5005">RFC 5005 (Feed Paging and Archiving</a>), для разбиения списка на страницы, когда это необходимо. Сервер МОЖЕТ также возвращать ресурс OperationOutcome с дополнительной информацией о поиске; в этом случае он НЕ ДОЛЖЕН содержать никаких ошибок и должен быть помечен <a href="valueset-search-entry-mode.html">entry
-mode</a> = <code>include</code>.
-<!-- If the search fails (cannot be executed, not that there is no matches), the return value is 
-a status code 4xx or 5xx with an <a href="operationoutcome.html">OperationOutcome</a>.
-If the search succeeds, the return content is a <a href="bundle.html">Bundle</a> with
-<a href="bundle-definitions.html#Bundle.type">type</a> = <code>searchset</code> containing the results of the search as a list of resources
-in a defined order. The result list can be long, so servers may use paging. If they do, they SHALL use the method <a href="#paging">described below</a>
-(adapted from <a href="https://tools.ietf.org/html/rfc5005">RFC 5005 (Feed Paging and Archiving</a>) for breaking the
-list into pages if appropriate. The server MAY also return an OperationOutcome resource with additional information about the search;
-if one is sent it SHALL NOT include any errors, and it shall be marked with an <a href="valueset-search-entry-mode.html">entry
-mode</a> of <code>include</code>. -->
+If the search succeeds, the server SHALL return a 200 OK HTTP status code and the return content SHALL be a <a href="bundle.html">Bundle</a>
+with <a href="bundle-definitions.html#Bundle.type">type</a> = <code>searchset</code> containing the results of the search as a collection of
+zero or more resources in a defined order. The result collection can be long, so servers may use paging. If they do, they SHALL use the method
+<a href="#paging">described below</a> (adapted from <a href="https://tools.ietf.org/html/rfc5005">RFC 5005 (Feed Paging and Archiving</a>)
+for breaking the collection into pages if appropriate. The server MAY also return an <a href="operationoutcome.html">OperationOutcome</a> resource
+within the <code>searchset</code> Bundle entries that contains additional information about the search; if one is sent it SHALL NOT include any
+issues with a <code>fatal</code> or <code>error</code> <a href="valueset-issue-severity.html">severity</a>, and it SHALL be marked with a
+<a href="valueset-search-entry-mode.html">Bundle.entry.search.mode</a> of <code>outcome</code>.
 </p>
+<p>
+Если поиск не удается выполнить, возвращается код состояния вида 4xx или 5xx наряду с ресурсом <a href="operationoutcome.html">OperationOutcome</a>. 
+<!-- If the search fails (cannot be executed, not that there is no matches), the return value is 
+a status code 4xx or 5xx with an <a href="operationoutcome.html">OperationOutcome</a>. -->
+</p>
+<p>
+Common HTTP Status codes returned on FHIR-related errors (in addition to normal HTTP errors related to security, header and content type negotiation issues):
+</p>
+<ul>
+ <li><b><code>400</code> Bad Request</b> - search could not be processed or failed basic FHIR validation rules</li>
+ <li><b><code>401</code> Not Authorized</b> - authorization is required for the interaction that was attempted</li>
+ <li><b><code>404</code> Not Found</b> - resource type not supported, or not a FHIR end-point</li>
+</ul>
+
 <a name="vsearch"> </a>
 <h4>Variant Searches</h4>
 <p>
@@ -1109,7 +1099,7 @@ All servers are required to support the <code>capabilities</code> interaction, b
 just like any other end-point.
 </p>
 
-<blockquote class="dstu-note">
+<blockquote class="design-note">
 <a name="cap-st-note"> </a>
 <p>
 <b>Implementation Note:</b> In DSTU 2 and earlier, the resource that this interaction returned was named "Conformance".
@@ -1188,8 +1178,8 @@ in the same order as that specified below for transactions, though the order of 
 should not matter given the previous rule. -->
 </p>
 <p>
-Static references within a Bundle.entry.resource another to Bundle.entry.resource that is being 
-created within the Batch are be non-conformant.
+Static references within a <code>Bundle.entry.resource</code> to another <code>Bundle.entry.resource</code> that is being
+created within the batch are considered to be non-conformant.
 </p>
 
 <h4>Правила обработки транзакций<!-- Transaction Processing Rules --></h4>
@@ -1222,7 +1212,7 @@ together and the order of the entries doesn't matter, there is a particular orde
 <!-- If any resource identities (including resolved identities from conditional update/delete) overlap in steps 1-3, 
 then the transaction SHALL fail.  -->
 </p>
-<blockquote class="dstu-note">
+<blockquote class="stu-note">
 <a name="dstu-2"> </a>
 <p>
 <b>Примечание к STU:</b> клиенты могут запрашивать выполнение операций в рамках транзакции. Некоторые транзакции могут вызывать побочные эффекты, например создание новых ресурсов или другие действия, которые может быть трудно вписать в фреймворк транзакции. Мы ожидаем входных данных касательно этой проблемы во время периода STU.
@@ -1232,12 +1222,12 @@ actions that may be difficult to fit into a transaction framework. Input regardi
 issue is sought during the STU period. -->
 </p>
 <p>
-Страничка для размещения ваших <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">отзывов</a>.
+Страничка для размещения ваших <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(STU_3)">отзывов</a>.
 </p>
 </blockquote>
  
 <p>
-Транзакция может содержать ссылки из одного ресурса на другой в бандле, включая циклические ссылки, где ресурсы ссылаются друг на друга. Если сервер назначает новый идентификатор какому-то ресурсу в комплекте в рамках правил обработки, описанных выше, он ДОЛЖЕН также обновить все ссылки на этот ресурс в этом же бандле, когда они будут обрабатываться. Ссылки на ресурсы, не являющиеся частью этого комплекта, остаются нетронутыми. Ссылки на конкретные версии должны остаться ссылками на конкретные версии после обновления ссылок. Серверы ДОЛЖНЫ заменить все соответствующие ссылки в бандле, включая идентификаторы ресурсов, ссылки на ресурсы, URL-элементы и атрибуты тегов &lt;a href="" &amp; &lt;img src="" в описательной части.
+Транзакция может содержать ссылки из одного ресурса на другой в бандле, включая циклические ссылки, где ресурсы ссылаются друг на друга. Если сервер назначает новый идентификатор какому-то ресурсу в комплекте в рамках правил обработки, описанных выше, он ДОЛЖЕН также обновить все ссылки на этот ресурс в этом же бандле, когда они будут обрабатываться. Ссылки на ресурсы, не являющиеся частью этого комплекта, остаются нетронутыми. Ссылки на конкретные версии должны остаться ссылками на конкретные версии после обновления ссылок. Серверы ДОЛЖНЫ заменить все соответствующие ссылки в бандле, включая идентификаторы ресурсов, ссылки на ресурсы, URL-элементы и атрибуты тегов <code>&lt;a href=""</code> &amp; <code>&lt;img src=""</code> в описательной части.
 <!-- A transaction may include references from one resource to another in the bundle, including
 circular references where resources refer to each other. If the server assigns
 a new id to any resource in the bundle as part of the processing rules above,
@@ -1266,11 +1256,14 @@ since this is only <a href="#upsert">safe in controlled circumstances</a>, serve
 may choose to assign new ids to all submitted resources, irrespective of any claimed
 logical <code>id</code> in the resource, or <code>fullUrl</code> on entries in the batch/transaction. -->
 </p>
-<blockquote class="dstu-note">
+<blockquote class="stu-note">
 <a name="dstu-3"> </a>
 <p>
 <b>Примечание:</b> эта модель поведения подлежит проверке на основе опыта реализации и может меняться.
 <!-- <b>Note:</b> this behavior is subject to verification based on implementation experience and may change. -->
+</p>
+<p>
+Provide feedback <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(STU_3)">here</a>.
 </p>
 </blockquote>
 
@@ -1413,7 +1406,7 @@ history, as do updates to the resources that result from interactions outside th
 RESTful interface. -->
 </p>
 <p>
-Операция create представляется в истории операций следующим образом:
+Операция <code>create</code> представляется в истории операций следующим образом:
 <!-- A create interaction is represented in a history interaction in the following way: -->
 </p>
 <pre class="xml">
@@ -1462,8 +1455,8 @@ not required to support a precision finer than by second. -->
 below</a> for breaking the list into pages if appropriate, and maintain the specified _count across pages. -->
 </p>
 <p>
-Взаимодействие history может использоваться для установки подписки одной системы на другую в целях синхронизации ресурсов между ними. Другие средства синхронизации систем можно посмотреть в статье <a href="subscription.html">Subscription resource</a>.
-<!-- The history interaction can be used to set up a subscription from one system
+Взаимодействие <code>history</code> может использоваться для установки подписки одной системы на другую в целях синхронизации ресурсов между ними. Другие средства синхронизации систем можно посмотреть в статье <a href="subscription.html">Subscription resource</a>.
+<!-- The <code>history</code> interaction can be used to set up a subscription from one system
 to another, so that resources are synchronized between them. Refer to the <a href="subscription.html">Subscription resource</a>
 for an alternate means of system synchronization. -->
 </p>
@@ -1475,7 +1468,7 @@ for an alternate means of system synchronization. -->
  <li>history - это история версий записей на поресурсной основе. Она не предназначена для поддержки параллельных (совпадающих, concurrent) версий или разветвлённой истории версий</li>
  <li>Таким образом нет способа обновить или удалить предыдущие версии записи за исключением того, что <a href="resource-operations.html">можно изменить метаданные</a> (в основном в целях контроля доступа)</li>
  <li>Все предыдущие версии ресурса считаются заменёнными (замещёнными новой версией) и больше не являются активными, однако сохраняются в целях аудита/обеспечения целостности</li>
- <li>В случае, когда предыдущая версия ресурса должна быть явно задокументирована как введённая по ошибке (<a href="lifecycle.html#error">'entered-in-error'</a>), используйте ресурс Provenance, указывающий на эту предыдущую версию ресурса</li>
+ <li>В случае, когда предыдущая версия ресурса должна быть явно задокументирована как введённая по ошибке (<a href="lifecycle.html#error">'entered-in-error'</a>), используйте ресурс <a href="provenance.html">Provenance</a>, указывающий на эту предыдущую версию ресурса</li>
  <li>При отслеживании истории конкретного ресурса, приложениям следует извлекать все ресурсы Provenance, связанные с этим ресурсом или его предыдущими версиями</li>
 <!--  <li>The history is a record version history on a per-resource basis. It is not intended to support concurrent versions, or multi-branch version history</li>
  <li>Accordingly, there is no way to update or delete past versions of the record, except that the <a href="resource-operations.html">metadata can be modified</a> (mainly for access control purposes)</li>
@@ -1505,7 +1498,7 @@ several reasons: -->
 </ul>
 <p>
 Обратите внимание, что нет метода общего назначения сделать слияние с существующим содержимым или изменение содержимого в соответствии с бизнес-правилами безопасным или предсказуемым, а те, что доступны, надежны и/или необходимы - в значительной степени зависят от контекста. Такого рода поведение может
-быть вызвано соображениями безопасности. Что касается неполной поддержки, клиенты могут обратиться к ссылкам на профили в базовом заявлении о возможностях сервера, чтобы определить, какие свойства или значения сервер не поддерживает.
+быть вызвано соображениями безопасности. Что касается неполной поддержки, клиенты могут обратиться к ссылкам на <a href="capabilitystatement-definitions.html#CapabilityStatement.profile">профили</a> в базовом CapabilityStatement  сервера, чтобы определить, какие свойства или значения сервер не поддерживает.
 <!-- Note that there is no general purpose method to make merging with existing content or
 altering the content by business rules safe or predictable - what is possible,
 safe and/or required is highly context dependent. These kinds of behaviors may
@@ -1587,7 +1580,7 @@ wishes to delete the information. -->
 <!-- Both client and server systems SHOULD clearly document how transaction
 integrity is handled. -->
 </p>
-<blockquote class="dstu-note">
+<blockquote class="stu-note">
 <a name="dstu-4"> </a>
 <p>
 <b>Примечание к STU<!-- STU Note -->:</b>  На данный момент единственный способ документировать, каким образом обеспечивается целостность транзакций - это текст в описательной части ресурса <a href="capabilitystatement.html">CapabilityStatement</a>. Будем благодарны за ваши отзывы во время периода пробного использования по вопросу, какие из этих данных должны быть вычисляемыми (если вообще должны).
@@ -1597,7 +1590,7 @@ resource. Feedback during the Trial use period on what - if any - of this inform
 should be computable is welcome. -->
 </p>
 <p>
-Страничка для размещения ваших <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">отзывов</a>.
+Страничка для размещения ваших <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(STU_3)">отзывов</a>.
 </p>
 </blockquote>
 
@@ -1626,7 +1619,7 @@ Paging and Archiving)</a> for sending continuation links to the client when retu
 <pre class="xml">
 &lt;Bundle xmlns="http://hl7.org/fhir"&gt;
   &lt;!-- snip metadata --&gt;
-  &lt;!-- This Search. url starts with base search, and adds the effective
+  &lt;!-- This Search url starts with base search, and adds the effective
     parameters, and additional parameters for search state. All searches
     SHALL return this value.
 
@@ -1681,7 +1674,7 @@ The client must use the server supplied links in order to traverse the pages.
 <!-- A server MAY inform the client of the total number of resources returned by the interaction for which the results are paged
 using  the <a href="bundle-definitions.html#Bundle.total">Bundle.total</a>. -->
 </p>
-<p>Обратите внимание, что при поиске, где можно использовать _include для 
+<p>Обратите внимание, что при поиске, где можно использовать <code>_include</code> для 
 возвращения дополнительных связанных ресурсов, общее число ресурсов 
 в фиде может превышать число, указанное в totalResults.
 <!-- Note that for search, where _include can be used to return additional related resources, the total number

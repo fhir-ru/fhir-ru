@@ -24,9 +24,9 @@ to provide a record of what data was received or seen by a clinician at a partic
 On the 
 other hand, lists are almost always curated.  They will include only those records deemed by the author of
 the list to be both current and accurate.  This can be both an advantage and a disadvantage.  Lists are
-less likely to include irrelevant content, but there's the risk that they won't be completely up-to-date
-(new content may have been added that's more recent than when a given list was last updated.  It's also possible
-that the list author's notion of "current" or "relevant" may differ the perspective of the user performing
+less likely to include irrelevant content, but there's a risk that they won't be completely up-to-date
+(new content may have been added that's more recent than when a given list was last updated).  It's also possible
+that the list author's notion of "current" or "relevant" may differ from the perspective of the user performing
 the query.  Also, there's the challenge that multiple lists may exist, with different author and different perspectives
 </p>
 <p>
@@ -39,8 +39,8 @@ exclude information that is of interest to the querying system.
 There's no right and wrong way to retrieve allergy, medication and other such information.  Sometimes retrieving
 the "current" medication list will provide the best results, sometimes querying the raw records will provide
 better results.  Sometimes providing the contents of the list plus a filtered view of the raw records may give
-the most useful information.  What approach is most appropriate will depend on the needs of the user as well
-as the types of data sources for information in the server and patterns of list maintenance.  Client systems may
+the most useful information.  Determining the most appropriate approach will depend on the needs of the user as well
+as the types of data sources for information held on the server and patterns of list maintenance.  Client systems may
 well need to adapt their behavior in different environments if they can't count on consistent server behavior.
 </p>
 
@@ -62,11 +62,7 @@ the stated order, or just an unsorted list of patients to be visited
 in any order. -->
 </p>
 <p>
-В ресурсе List есть свойство <code>orderedBy</code>, которое, если присутствует, определяет значение порядка следования пунктов. Отметьте, однако, что смысл порядка следования может вытекать неявно и без указания в элементе <code>orderedBy</code>.
-<!-- The list resource has a property <code>orderedBy</code> that, if
-present, specifies the meaning of the item order. Note, though,
-that the meaning of the order may be known implicitly rather 
-than specified in the <code>orderedBy</code> element. -->
+В ресурсе List есть элемент <code>orderedBy</code>, который, если присутствует, определяет значение порядка следования пунктов. Отметьте, однако, что смысл порядка следования может вытекать неявно и без указания в элементе <code>orderedBy</code>.
 </p>
 <p>
 Приложениям НЕ СЛЕДУЕТ менять порядок элементов в списке, если только они не понимают влияние этого на смысл списка.
@@ -110,11 +106,7 @@ However applications should ensure that the implication of adding or deleting it
 from the list is consistent with the logical status of the resource and its contents. -->
 </p>
 <p>
-Корректное использование списка в режиме List.mode = "changes" с удаленным ресурсом - это список медикаментов в discharge summary. См. пример med-list". Использование было бы неправильным, если бы список был действующим списком медикаментов пациента в клинической системе отслеживания, и флаги пунктов списка использовались бы для осуществления отслеживания истории версий внутри ресурса.
-<!-- A proper use of List.mode = "changes" with a deleted resource is in a medications list 
-for a discharge summary. See Example "med-list". An improper use would be if the list 
-was a working list of patient medications in a clinical tracking system, and list item
-flags were used to implement version tracking history within the resource. -->
+Корректное использование списка в режиме List.mode = "changes" с удаленным ресурсом - это раздел "список медикаментов" в discharge summary. См. пример med-list". Использование было бы неправильным, если бы список был действующим списком медикаментов пациента в клинической системе отслеживания, и флаги пунктов списка использовались бы для осуществления отслеживания истории версий внутри ресурса.
 </p>
 
 <a name="narrative"> </a>
@@ -196,13 +188,7 @@ possible approaches to work around this issue: -->
 <!-- The information to populate the list wasn't gathered - i.e. "Not asked" --></li>
 </ul>
 <p>
-Учитывая эти возможности и общий и важный первый случай, исходные системы ДОЛЖНЫ предоставлять причину, если список пустой, для многих видов списков. Из-за важности этого случая необходимо использовать особое значение <a href="valueset-list-empty-reason.html">"nil-known"</a>, когда нет (существенных) записей в этом контексте медицинской помощи. Обратите внимание, что это понятие иногда описывается по-разному, например "пациент отрицает прием медикаментов" или "пациент не был в состоянии указать какую-либо значимую историю болезни".
-<!-- Given these possibilities, and the common and significant first case, source systems SHOULD 
-provide an empty reason if the list is empty for many kinds of lists. Because of the importance of this case, the 
-<a href="valueset-list-empty-reason.html">special value "nil-known"</a> should be used when 
-there are no (significant) entries in this context of care. Note that this concept is 
-sometimes described differently, such as "patient denies taking medications", or 
-"patient was unable to identify any relevant medical history". -->
+Учитывая эти возможности - особенно распространенный и важный первый случай - для многих видов списков, исходные системы ДОЛЖНЫ предоставлять причину, если список пустой. Из-за важности этого случая необходимо использовать особое значение <a href="valueset-list-empty-reason.html">"nil-known"</a>, когда нет (существенных) записей в этом контексте медицинской помощи. Обратите внимание, что это понятие иногда описывается по-разному, например "пациент отрицает прием медикаментов" или "пациент не был в состоянии указать какую-либо значимую историю болезни".
 </p>
 <p>
 При получении списка системы не должны делать предположение, что этот список является полным (некоторые записи могут не быть получены по разным причинам), если только не имеют место конкретные договоренности между торговыми партнерами или, если список пустой, что нет известных (nil known), если только не присутствует код "nil-known".
@@ -216,7 +202,7 @@ unless the "nil-known" code is present. -->
 <!-- If the list is empty, the narrative should contain text equivalent to the empty reason. -->
 </p>
 <p>
-Note that ther are many kinds of lists that can be just empty with no need for any
+Note that there are also many kinds of lists that can be empty with no need for an 
 empty reason (<a href="list-example-simple-empty.html">example</a>)
 </p>
 

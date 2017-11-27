@@ -14,7 +14,7 @@
 
 
 <h2>Валидация ресурсов<!-- Validating Resources --></h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень зрелости</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">STU 3</a></td></tr></table>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="versions.html#maturity">Уровень зрелости</a>: N/A</td><td id="ballot"><a href="versions.html#levels">Статус голосования</a>: <a href="versions.html#std-process">Информативный</a></td></tr></table>
 
 <p>
 На этой странице приведён краткий обзор того, как спецификация FHIR поддерживает валидацию ресурсов.
@@ -23,18 +23,19 @@ validation of resources.  -->
 </p>
 
 <p>
-Validating a resource means, checking that the the following aspects of the resource are valid:
+Validating a resource means, checking that the following aspects of the resource are valid:
 </p>
 <ul>
 <li><b>Structure</b>: Check that all the content in the resource is described by the specification, and nothing extra is present</li>
 <li><b>Cardinality</b>: Check that the cardinality of all properties is correct (min &amp; max)</li>
 <li><b>Value Domains</b>: Check that the values of all properties conform to the rules for the specified types (including checking that enumerated codes are valid)</li>
 <li><b>Coding/CodeableConcept bindings</b>: Check that codes/displays provided in the <a href="datatypes.html#Coding">Coding</a>/<a href="datatypes.html#CodeableConcept">CodeableConcept</a> types are valid</li>
-<li><b>Invariants</b>: Check that the <a href="conformance-rules.html#constraints">invariants</a> (co-occurance rules, etc) have been followed correctly</li>
+<li><b>Invariants</b>: Check that the <a href="conformance-rules.html#constraints">invariants</a> (co-occurrence rules, etc.) have been followed correctly</li>
 <li><b>Profiles</b>: Check that any rules in <a href="profiling.html">profiles have been followed</a> (including those listed in the 
   <a href="resource.html#Meta">Resource.meta.profile</a>, or in <a href="profiling.html#profile-uses">CapabilityStatement</a>, or 
   in an <a href="implementationguide.html">ImplementationGuide</a>, or otherwise required by context)</li>
-<li><b>Questionnaires</b>: Check that a <a href="questionnaireresponse.html">QuestionnaireResponse</a> is valid against it's matching <a href="questionnaire.html">Questionnaire</a></li>
+<li><b>Questionnaires</b>: Check that a <a href="questionnaireresponse.html">QuestionnaireResponse</a> is valid against its matching <a href="questionnaire.html">Questionnaire</a></li>
+<li><b>Business Rules</b>: Business rules are made outside the specification, such as checking for duplicates, checking that references resolve, checking that a user is authorized to do what they want to do, etc.</li>
 </ul>
 
 <p>
@@ -55,6 +56,7 @@ described in this specification, and which of the aspects above they can validat
   <td><b>Invariants</b></td>
   <td><b>Profiles</b></td>
   <td><b>Questionnaires</b></td>
+  <td><b>Business Rules</b></td>
  </tr>
 
  <tr>
@@ -69,6 +71,7 @@ described in this specification, and which of the aspects above they can validat
   <td></td> <!-- Invariants -->
   <td></td> <!-- Profiles -->
   <td></td> <!-- Questionnaires -->
+  <td></td> <!-- Business Rules -->
  </tr>
 
  <tr>
@@ -83,6 +86,7 @@ described in this specification, and which of the aspects above they can validat
   <td><img src="assets/images/tick.png"/></td> <!-- Invariants -->
   <td><img src="assets/images/tick.png"/><sup><b>1</b></sup></td> <!-- Profiles -->
   <td></td> <!-- Questionnaires -->
+  <td></td> <!-- Business Rules -->
  </tr>
  
  <tr>
@@ -97,6 +101,7 @@ described in this specification, and which of the aspects above they can validat
   <td></td> <!-- Invariants -->
   <td><img src="assets/images/tick.png"/><sup><b>2</b></sup></td> <!-- Profiles -->
   <td></td> <!-- Questionnaires -->
+  <td></td> <!-- Business Rules -->
  </tr>
 
  <tr>
@@ -111,6 +116,7 @@ described in this specification, and which of the aspects above they can validat
   <td></td> <!-- Invariants -->
   <td></td> <!-- Profiles -->
   <td></td> <!-- Questionnaires -->
+  <td></td> <!-- Business Rules -->
  </tr>
  <tr>
   <td><a href="#jar">Validator</a></td>
@@ -124,6 +130,7 @@ described in this specification, and which of the aspects above they can validat
   <td><img src="assets/images/tick.png"/></td> <!-- Invariants -->
   <td><img src="assets/images/tick.png"/></td> <!-- Profiles -->
   <td><img src="assets/images/tick.png"/></td> <!-- Questionnaires -->
+  <td></td> <!-- Business Rules -->
  </tr>
  <tr>
   <td><a href="#op">Validation Operation</a><sup><b>4</b></sup></td>
@@ -137,6 +144,7 @@ described in this specification, and which of the aspects above they can validat
   <td><img src="assets/images/tick.png"/></td> <!-- Invariants -->
   <td><img src="assets/images/tick.png"/></td> <!-- Profiles -->
   <td><img src="assets/images/tick.png"/></td> <!-- Questionnaires -->
+  <td></td> <!-- Business Rules -->
  </tr>
 </table>
 <p>
@@ -227,7 +235,7 @@ execute the FHIR validator, follow the following steps: -->
 </p>
 <ul>
  <li><a href="downloads.html">Скачайте</a> FHIR Validator<!-- <a href="downloads.html">Download</a> the FHIR Validator --></li>
- <li><a href="downloads.html">Скачайте</a> одно из определений FHIR (с или без текста)<!-- <a href="downloads.html">Download</a> One of the FHIR definitions (with or without text) --></li>
+ <li>(необязательно) <a href="downloads.html">Скачайте</a> одно из определений FHIR (с или без текста)<!-- <a href="downloads.html">Download</a> One of the FHIR definitions (with or without text) --></li>
  <li>Запустите валидатор, указав ему путь к определениям и ссылку на ресурс, который нужно провалидировать<!-- Execute the validator, providing the path to the definitions, and a reference to the resource to validate --></li>
 </ul>
 <p>
@@ -238,18 +246,34 @@ execute the FHIR validator, follow the following steps: -->
  @ECHO OFF
 
  ECHO get the validator and unzip it 
- wget http://build.fhir.org/fhir/validator.zip
+ wget <%baseURLn%>validator.zip
  7z.exe x validator.zip
 
  ECHO Get the validation source file (dictionary)
- wget http://hl7.org/fhir/igpack.zip
+ wget <%baseURLn%>definitions.xml.zip
 
- ECHO get an example to validate
- wget http://hl7.org/fhir/patient-example.xml -O pat-ex.xml
+ ECHO 1. First example shows how to validate against the base spec:
+ ECHO   a. get an example to validate
+ wget <%baseURLn%>patient-example.xml -O pat-ex.xml
 
- ECHO validate it. The DAF profile will be loaded out of the definitions in validation-min.zip
- java -jar org.hl7.fhir.validator.jar pat-ex.xml -defn igpack.zip -profile http://hl7.org/fhir/StructureDefinition/daf-patient
+ ECHO   b. validate it
+ java -jar org.hl7.fhir.validator.jar pat-ex.xml -defn definitions.xml.zip 
 
+ ECHO 2. Second example shows how to validate against a profile in the spec:
+ ECHO   a. get an example to validate
+ wget <%baseURLn%>observation-example-heart-rate.xml -O obs-ex.xml
+
+ ECHO   b. validate it
+ java -jar org.hl7.fhir.validator.jar obs-ex.xml -defn definitions.xml.zip -profile http://hl7.org/fhir/StructureDefinition/heartrate
+
+ ECHO 3. Third example shows how to validate against a profile in an implementation guide:
+ ECHO   a. get an example to validate
+ wget <%baseURLn%>observation-example-heart-rate.xml -O obs-ex.xml
+
+ ECHO   b. validate it. note that you have to tell the validator where to get the implementation guide information
+ java -jar org.hl7.fhir.validator.jar obs-ex.xml -defn definitions.xml.zip -ig http://hl7.org/fhir/us/core -profile http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
+
+ ECHO Press Any Key to Close
  pause
 </pre>
 <p>
@@ -257,12 +281,10 @@ execute the FHIR validator, follow the following steps: -->
 <!-- Note that it is not necessary to download the resource first; the http address can be supplied directly: -->
 </p>
 <pre>
- java -jar org.hl7.fhir.validator.jar http://hl7.org/fhir/patient-example.html -defn validation-min.xml.zip -profile http://hl7.org/fhir/StructureDefinition/daf-patient
+ java -jar org.hl7.fhir.validator.jar <%baseURLn%>/patient-example.html -defn validation-min.xml.zip -profile http://hl7.org/fhir/StructureDefinition/Patient
 </pre>
 <p>
-Валидатору требуется лежащий в основе терминологический сервер. TODO: задокументировать эту часть. На текущий момент жёстко установлено в http://fhir-dev.healthintersections.com.au.
-<!-- The validator requires an underlying terminology server.
-TODO: document this part. for now, hard coded to http://fhir-dev.healthintersections.com.au. -->
+Валидатору требуется лежащий в основе терминологический сервер.  По умолчанию это http://fhir3.healthintersections.com.au. Используйте параметр -tx для указания другого сервера. For a full list of parameters and options, just run the validator.jar without any parameters.
 </p>
 
 <a name="op"> </a>
@@ -275,10 +297,10 @@ be used to check whether a resource conforms to a profile. The simplest way to e
 to post the resource to a server: -->
 </p>
 <pre>
- POST [base]/Patient/$validate?profile=http://hl7.org/fhir/StructureDefinition/daf-patient
+ POST [base]/Observation/$validate?profile=http://hl7.org/fhir/StructureDefinition/heartrate
  [other HTTP headers]
  
- &lt;Patient&gt;... resource to check as the body
+ &lt;Observation&gt;... resource to check as the body
 </pre>
 <p>
 Сервер вернёт ресурс <a href="operationoutcome.html">OperationOutcome</a> со списком всех ошибок, обнаруженных в ресурсе.

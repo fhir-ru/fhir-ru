@@ -27,10 +27,6 @@ that might additionally apply in the reverse direction.  -->
 <p>
 Язык отображения и его реальный синтаксис детально описаны в разделе <a href="mapping-language.html">the
 FHIR Mappping Language</a>. Ресурс StructureMap представляет собой абстрактный синтаксис, а реальным синтаксисом является нарративное представление StructureMap. См. также <a href="mapping-tutorial.html">Обучение</a>.
-<!-- The mapping language, along with a concrete syntax, is defined in detail in <a href="mapping-language.html">the
-FHIR Mappping Language</a>, which defines a concrete syntax for the language. The StructureMap resource 
-represents the abstract syntax, and the concrete syntax is the recommended narrative representation for 
-a StructureMap. See also the <a href="mapping-tutorial.html">Tutorial</a>. -->
 </p>
 
 </div>

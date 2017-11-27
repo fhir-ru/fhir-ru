@@ -15,16 +15,16 @@
 [%cmpheader HL7 v2%]
 
 <h2>HL7 версии 2<!-- HL7 Version 2 --></h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">STU 3</a></td></tr></table>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="versions.html#maturity">Уровень зрелости</a>: N/A</td><td id="ballot"><a href="versions.html#levels">Статус голосования</a>: <a href="versions.html#std-process">Информативный</a></td></tr></table>
 <a name="HL7 v2"> </a>
 <p>
 <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a> был первым стандартом обмена информацией, разработанным HL7, и является одним из наиболее широко применяемых, известный в стационарном обслуживании по всему миру, хотя также применяется и в большом разнообразии других контекстов. HL7 v2 использует сообщения, составленные из пригодных к повторному употреблению сегментов для передачи информации, относящейся к здравоохранению, между отправляющей и получающей системами, а также вызов определенного поведения (перевод пациентов, лабораторные ордера и т. д.). Он также поддерживает одностороннюю передачу с помощью уведомлений, обеспечивает поддержку запросов и другие рабочие процессы.
 <!-- <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a> was HL7's first information exchange standard and is one of its most 
 widely adopted, being prominent in in-patient settings throughout the world, though also 
-used in a variety of other contexts as well. HL7 v2 uses messages composed of re-useable 
+used in a variety of other contexts as well. HL7 v2 uses messages composed of re-usable 
 segments to communicate healthcare-related information between a sending and receiving
 system as well as to invoke particular behavior (patient transfers, lab orders, etc.) 
-It also supports one-way communication through notifications, provides support for queries and other workflow. -->
+It also supports one-way communication through notifications, provides support for queries and other workflows. -->
 </p>
 <h3>Сходство и различия с HL7 v2<!-- HL7 v2 Similarities and Differences --></h3>
 <p>
@@ -35,7 +35,7 @@ documents, REST and other service models). Refer to the <a href="messageheader.h
 </p>
 <p>
 <b>Гранулярность (неравномерность):</b> Структура HL7 v2, состоящая из "сегментов", предлагает повторно используемые порции данных, которые примерно соответствуют идее <a href="resource.html">ресурсов</a> FHIR. Тем не менее, сегменты HL7 v2 нельзя обрабатывать независимо друг от друга. Кроме того, не у всех сегментов есть характеристики независимой сущности, что присуще ресурсам FHIR. Из-за различий в области действия и подходе к расширяемости, сегменты и типы данных HL7 v2 часто загромождены элементами данных, которые не используются (и даже не распознаются) большинством реализаций.
-<!-- <b>Granularity:</b> HL7 v2's "Segment" structure provides re-useable chunks of data that 
+<!-- <b>Granularity:</b> HL7 v2's "Segment" structure provides re-usable chunks of data that 
 roughly correspond to FHIR's idea of <a href="resource.html">resources</a>. However, HL7 v2 
 segments can't be independently manipulated. Additionally, not all segments have the characteristics 
 of independent identity held by FHIR resources. Due to differences in scope and approach to 

@@ -39,83 +39,40 @@ distill separate resources from it and capturing the data in a <b>Questionnaire<
 
 <p>
 Тем не менее данные, полученные с помощью <b>Questionnaires</b>, может быть трудно обрабатывать запросами постфактум. Запросы к другим ресурсам не вернут данные, полученные только с помощью <b>Questionnaires</b>, а запросы непосредственно к <b>Questionnaires</b> могут не найти все необходимые данные в зависимости от того, как вопросы будут формулироваться, кодироваться с течением времени или разными клиницистами.
-Кроме того, совместимость таких <b>Questionnaires</b> ограничена, так как интерпретация их содержимого известна только ограниченному кругу лиц, которые участвовали в их определении: кодирование данных из таких <b>Questionnaires</b> с помощью других, более специфичных ресурсов увеличивает способность и постоянство, с которым эти данные можно будет понимать и обрабатывать запросами.
-<!-- However, data captured only in <b>Questionnaires</b> can be difficult to query after-the-fact. Queries against other Resources will not return data captured only in <b>Questionnaires</b>, 
-and querying against <b>Questionnaires</b> directly may not find all desired data, depending on how the questions may have been phrased or encoded over time or by different clinicians. 
-Moreover, interoperability of such <b>Questionnaires</b> is limited as interpretation of its contents is only known to the circle of parties that were involved in its definition: encoding data from 
-such <b>Questionnaires</b> using other, more specific, Resources increases the ability and consistency with which it can be understood and queried. -->
+Кроме того, совместимость таких <b>Questionnaires</b> ограничена, так как интерпретация их содержимого известна только ограниченному кругу лиц, которые участвовали в их определении: кодирование данных из таких <b>Questionnaires</b> с помощью более специфичных ресурсов увеличивает доступность содержащейся в них информации.
 </p> 
 
 <p>Вполне возможна такая ситуация, что данные будут существовать одновременно в QuestionnaireResponse и в других ресурсах. Например данные могут быть зафиксированы в <a href="questionnaireresponse.html">QuestionnaireResponse</a> в рамках входящего вопросника. Затем эти данные могут быть переданы в ресурсы <a href="patient.html">Patient</a> (демографические данные), <a href="familymemberhistory.html">FamilyMemberHistory</a>, <a href="allergyintolerance.html">AllergyIntolerance</a>, 
-<a href="medicationstatement.html">MedicationStatement</a> и <a href="observation.html">Observation</a>, чтобы к ним можно было в дальнейшем обращаться и анализировать. Исходный экземпляр <a href="questionnaireresponse.html">QuestionnaireResponse</a> может быть сохранён в целях контроля. Например, если пункт вопросника спрашивает "какой у вас вес", это может вылиться в создание ресурса <a href="observation.html">Observation</a> с соответствующим кодом в элементе <code>Observation.code</code> и сообщённым ответом, записанным в элемент <code>Observation.valueQuantity</code>.
-<!-- It is entirely possible for data to exist in both QuestionnaireResponse and in other resources.  For example, data may be captured in 
-<a href="questionnaireresponse.html">QuestionnaireResponse</a> as part of an intake questionnaire.  That data may then be propagated into the 
-<a href="patient.html">Patient</a> resource (demographics), <a href="familymemberhistory.html">FamilyMemberHistory</a>, <a href="allergyintolerance.html">AllergyIntolerance</a>, 
-<a href="medicationstatement.html">MedicationStatement</a> and <a href="observation.html">Observation</a> resources to allow the data to be queried and analyzed.  The original 
-<a href="questionnaireresponse.html">QuestionnaireResponse</a> instance can be retained for traceability purposes.  For example, if a questionnaire question asks "what is your weight", 
-that can then result in the creation of an <a href="observation.html">Observation</a> with the appropriate <code>Observation.code</code> and the specified answer as the 
-<code>Observation.valueQuantity</code>. -->
+<a href="medicationstatement.html">MedicationStatement</a> и <a href="observation.html">Observation</a>, чтобы к ним можно было в дальнейшем обращаться и анализировать. Исходный экземпляр <a href="questionnaireresponse.html">QuestionnaireResponse</a> может быть сохранён в целях контроля. Если нужно, можно использовать ресурс <a href="provenance.html">Provenance</a> для идентификации Questionnaire в качетве источника данных для других ресурсов. Например, если пункт вопросника спрашивает "какой у вас вес", может быть создан ресурс <a href="observation.html">Observation</a> с соответствующим кодом в элементе <code>Observation.code</code> и сообщённым ответом, записанным в элемент <code>Observation.valueQuantity</code>.
 </p>
 
-<h3>Структура вопросника<!-- Structure of the Questionnaire --></h3>
+<h3>Структура вопросника</h3>
 <p>
-Вопросник строится из трёх компонентов:
-<!-- A Questionnaire is built out of three components: --></p>
+Вопросник строится из двух компонентов, Questionnaire и item:</p>
 <ul>
-  <li>Основным компонентом является Questionnaire, который содержит такую информацию <em>о</em> вопроснике, как идентификатор, издатель, дата создания и т. п. Questionnaire содержит одну "корневую" группу Group, которая содержит весь контент вопросника. 
-  Эта "корневая" группа содержит элементы, которые применяются ко всему вопроснику в целом - заголовок <code>title</code> вопросника, <code>concept</code>, который обозначает значение всего вопросника (например код для "family history"), <code>text</code> для отображения в верхней части вопросника и т. п. (В большинстве случаев в корневой группе элемент <code>required</code> будет иметь значение 'true', а <code>repeats</code> будет иметь значение 'false'.) 
-  <!-- The main component is Questionnaire, which holds information <em>about</em> the Questionnaire, 
-  like the identifier, publisher, date authored, etc. The Questionnaire contains one "root" Group, which contains all the content of the questionnaire.
-  This "root" group contains elements that apply to the entire questionnaire - the <code>title</code> for the questionnaire, the <code>concept</code> that represents the meaning
-  of the overall questionnaire (e.g. a code for "family history"), the <code>text</code> to display at the top of the questionnaire, etc.  (In most cases, <code>required</code> 
-  would be 'true' and <code>repeats</code> would be false for the root group --></li>
-  <li>Эта группа может содержать <em>либо</em> вложенные группы (для представления разделов и подразделов на форме вопросника), либо вопросы.
-   Таким образом может быть представлена любая форма, содержащая разделы и подразделы, вплоть до самих вопросов.
-<!-- This Group can contain <em>either</em> nested Groups (to represent sections and subsections on a questionnaire form) or Questions.
-  This way, any form containing sections or subsections can be represented, down to the actual questions. --></li>
-  <li>
-  Сами вопросы могут представлять собой просто текст вопроса и один ожидаемый ответ, а могут содержать вложенные группы, каждая из которых содержит набор вложенных вопросов. Таким образом можно моделировать "панели" вопросов, которые будут значимыми только (и поэтому будут отображаться только) в зависимости от ответов на родительский вопрос. Например вопрос "Получал ли пациент лечение в течение последних шести месяцев?" будет содержать вложенную группу вопросов для получения более подробной информации об этом лечении. См. <a href="questionnaire-example-bluebook.xml.html">примеры</a> из <a href="http://www.health.nsw.gov.au/Kids/Publications/my-personal-health-record.pdf">Australian New South Wales blue book</a> (синяя книга является официальным докладом правительства или реестром статистики - прим. пер.)
-  <!-- The Questions themselves may be simple questions with a prompt text and one expected answer, but they may also contain nested groups, 
-each containing sets of nested questions. This way, one can model "panels" of questions which would only be relevant (and thus would only be displayed)
-depending on the answers of a parent question; e.g. a question "Did the patient receive treatment in the past six months?" would contain a nested
-group of questions asking for further details about the treatment. See an <a href="questionnaire-example-bluebook.xml.html">example</a> from 
-the <a href="http://www.health.nsw.gov.au/Kids/Publications/my-personal-health-record.pdf">Australian New South Wales blue book</a> --></li>
-<li>Конкретные элементы управления динамического отображения групп, вопросов и т. п. на основе ответов на другие вопросы выходят за рамки базового ресурса и, как ожидается, будут введены в качестве расширений.
-<!-- Specific controls on dynamic display of groups, questions, etc. based on the answers to other questions is outside the scope of the base resource and
-are expected to be introduced as extensions. --></li>
+  <li>Основным компонентом является Questionnaire, который содержит такую информацию <em>о</em> вопроснике, как идентификатор, издатель, дата создания, название и т. п. Questionnaire содержит ноль или несколько элементов item, которые задают содержимое вопросника (отсутствие элементов item позволяет создавать вопросники с одной только описательной частью, хотя они передают мало вычисляемой информации).</li>
+  <li>Элементы item могут быть одного из трех подтипов, задаваемых в элементе <code>type</code>:
+    <ul>
+      <li><b>display</b> элементы item с типом display передают текст для отображения на форме, не предназначенный для ввода данных и не содержащий вложенных элементов item. Используются для информации об авторских правах и авторстве, инструкций и другой вспомогательной информации.</li> 
+     <li><b>group</b> элементы item с типом group огранизауют соедржимое вопросника в разделы, подразделы и т.д. У групп нет ассоциированных с ними напрямую ответов, но они обычно содержат вложенные элементы item с типом 'question', у которых такие ответы есть.</li>
+     <li><b>question</b> элементы item с типом question содержат определенный вопрос, на который можно дать ответ. Нет единого типа для элементов-вопросов. Вместо этого элемент type передает тип данных ответа на вопрос. Если элемент item имеет тип не 'display' и не 'group', тогда это вопрос, который позволяет собирать ответ определенного типа. Также вопросы могут иметь вложенное содержимое - группы и/или другие вопросы. Таким образом можно моделировать "панели" вопросов, которые будут иметь смысл (и отображаться) только в зависимости от ответа на родительский вопрос; например вопрос "Получал ли пациент лечение в течение последних шести месяцев?" будет содержать вложенную группу вопросов для получения более подробной информации об этом лечении. См. <a href="questionnaire-example-bluebook.xml.html">пример</a> из <a href="http://www.health.nsw.gov.au/Kids/Publications/my-personal-health-record.pdf">Australian New South Wales blue book</a> ("синяя книга" является официальным докладом правительства или реестром статистики - прим. пер.)</li>
+    </ul>
+  </li>
 </ul>
+<p>
+Конкретные элементы управления динамического отображения групп, вопросов и т. п. на основе ответов на другие вопросы выходят за рамки базового ресурса и, как ожидается, будут введены в качестве расширений.</p>
 
-<h3>Определения вопросов<!-- Question Definitions --></h3>
-<p>В ресурсе Questionnaire есть три различных идентифицирующих элемента: <code>identifier</code>, <code>id</code> и <code>linkId</code>. Каждый из них имеет своё назначение:
-<!-- There are three different "identifying" elements within Questionnaire: <code>identifier</code>, <code>id</code> and <code>linkId</code>.  Each serves very distinct
-purposes: --></p>
+<h3>Идентификаторы внутри Questionnaire</h3>
+<p>В ресурсе Questionnaire есть три различных идентифицирующих элемента: <code>identifier</code>, <code>id</code> и <code>linkId</code>. Каждый из них имеет своё назначение:</p>
 <ul>
   <li><b>identifier</b> используется, чтобы ссылаться на весь вопросник в целом в условиях деловой деятельности. Это номер, напечатанный наверху формы или рядом с ней, когда делается выбор между альтернативными формами.</li>
   <li>Атрибут <b>id</b>, поддерживаемый для каждого элемента, используется для ссылок в пределах ресурса, например для связывания описательной части с соответствующим дискретным элементом. Ids are not generally displayed to end users</li>
   <li>Элемент <b>linkId</b> в вопросах и группах устанавливает связь между элементами в <a href="questionnaireresponse.html">QuestionnaireResponse</a> и их определениями в Questionnaire. Это <i>единственный</i> способ связи между группами и вопросами в Questionnaire и QuestionnaireResponse. These are also not displayed to end users</li>
-<!--   <li><b>identifier</b> is used to reference the overall questionnaire in business terms.  It is the number printed across the top of the form or listed beside the form
-  when making a choice between alternate forms.</li>
-  <li>The <b>id</b> attribute supported on each element is used for references within a resource, for example linking narrative to discrete elements.  Ids are not generally displayed to end users</li>
-  <li>The <b>linkId</b> element on questions and groups establishes a link between elements in a <a href="questionnaireresponse.html">QuestionnaireResponse</a> and their
-  definition inside a Questionnaire.  This is the <i>only</i> way to link between the groups and questions in a Questionnaire and QuestionnaireResponse.  These are also not displayed to end users</li> -->
 </ul>
 
 <h3>Определения вопросов<!-- Question Definitions --></h3>
 <p>
-Вопросники можно наполнить любыми вопросами, которые задумает автор, сформулированными в любой подходящей или удобной форме. Однако стандартизация вопросов и введение ограничений, действующих на прилагаемые ответы, увеличивает возможность сравнения данных, собранных через вопросники. Есть два механизма, определённые в спецификации, для связывания вопроса (или группы) со стандартным определением:
-<!-- Questionnaires can be crafted using any questions the author can conceive phrased in whatever manner is appropriate or convenient.  However, standardization of
-questions and the constraints enforced on the accompanying answers increases the ability to compare data gathered across questionnaires.  There are two
-mechanisms defined in the specification for linking a Question (or Group) to a standardized definition:
-</p>
-<ul>
-  <li>Элемент <code>concept</code> как в Group, так и в Question позволяет связывать отдельный вопрос, группу вопросов или даже целый вопросник с заранее определенным справочником вопросов и групп вопросов, таким как LOINC.</li>
-  <li>Расширение <a href="questionnaire-extensions.html#deReference">deReference</a> позволяет связывать вопрос или группу с ресурсом <a href="dataelement.html">DataElement</a> (DE), который формально задает этот элемент данных.</li>
-<li>The <code>concept</code> element on both Group and Question allows an individual question, a group of questions or even the questionnaire as a whole to be associated
-  with a pre-defined terminology of questions and question groups such as LOINC</li>
-  <li>The <a href="questionnaire-extensions.html#deReference">deReference</a> extension allows a question or group to be associated with the
-  <a href="dataelement.html">DataElement</a> (DE) resource that formally defines the data element.</li>
-</ul>
- -->
+Вопросники можно наполнить любыми вопросами, которые задумает автор, и могут быть сформулированы в любой подходящей или удобной форме. Однако стандартизация вопросов и введение ограничений, действующих на прилагаемые ответы, увеличивает возможность сравнения данных, собранных через вопросники. Есть два механизма, определённые в спецификации, для связывания вопроса (или группы) со стандартным определением:
 Items can be directly linked to an <a href="elementdefinition.html">ElementDefinition</a> using <code>Questionnaire.item.definition</code>
 which provides details for the item. If a definition is provided, then the following element values can be derived from the definition: 
 </p>
@@ -129,9 +86,14 @@ which provides details for the item. If a definition is provided, then the follo
 </ul>
 <p>
 Any information provided in these elements overrides the information from the definition.
-The ElementDefinition must be in a <a href="structuredefinition.html">StructureDefinition</a> or a <a href="dataelement.html">DataElement</a>, 
-and must have a fragment identifier that identifies the specific data element by it's id (<a href="element.html">Element</a>.id). 
-E.g. http://hl7.org/fhir/StructureDefinition/Observation#Observation.value[x]
+The url refers to a an ElementDefinition in either a <a href="structuredefinition.html">StructureDefinition</a> or 
+a <a href="dataelement.html">DataElement</a>, and always starts with the canonical URL for the target resource. 
+When referring to a StructureDefinition, a fragment identifier is used to specify the element definition by its 
+id (Element.id). E.g. http://hl7.org/fhir/StructureDefinition/Observation#Observation.value[x]. In the absence 
+of a fragment identifier, the first/root element definition in the target is the matching element definition. 
+</p>
+<p>
+Note that <a href="loinc.html#dataelements">LOINC codes</a> implicitly define DataElement resources.
 </p>
 <p>
 The definitions may also be used to automatically pre-populate answers, or extract data from a corresponding <a href="questionnaireresponse.html">QuestionnaireResponse</a> resource.
@@ -166,19 +128,19 @@ Where the names are the same (ignoring case), the "answer" must use the specifie
     </tr>
     <tr>
       <td>text</td>
-      <td>string</td>
+      <td><a href="datatypes.html#string">string</a></td>
     </tr>
     <tr>
       <td>url</td>
-      <td>uri</td>
+      <td><a href="datatypes.html#uri">uri</a></td>
     </tr>
     <tr>
       <td>choice</td>
-      <td>Coding</td>
+      <td><a href="datatypes.html#Coding">Coding</a></td>
     </tr>
     <tr>
       <td>open-choice</td>
-      <td>Coding</td>
+      <td><a href="datatypes.html#Coding">Coding</a> (if choosing from one of the listed choices) or <a href="datatypes.html#string">string</a> (if a different value is provided)</td>
     </tr>
   </tbody>
 </table>
@@ -191,38 +153,22 @@ Where the names are the same (ignoring case), the "answer" must use the specifie
 <code>item.option</code> element. -->
 </p>
 <p>
-Механизм "choice" очень прост: все опции перечисляются внутри вопроса. Поддержка набора разрешённых ответов на вопросы входит в поддержку самого вопросника.
-<!-- The "choice" mechanism is simplest - all options are listed in-line with the question.  Maintenance of the set of permitted question answers involves maintenance of
-the questionnaire itself. -->
+Механизм "option" очень прост: все опции перечисляются прямо внутри вопроса с помощью элемента <code>item.option</code>. Поддержка набора разрешённых ответов на вопросы входит в поддержку самого вопросника.
 </p>
 <p>
-Механизм "choices" более сложный. Вместо прямого перечисления вариантов выбора, в элементе choices указывается ресурс <a href="valueset.html">ValueSet</a>. Такой подход усложняет вопросники с простыми списками строк в качестве вариантов выбора ответов на вопрос, однако предоставляет некоторые преимущества:
-<!-- The "choices" mechanism is more sophisticated.  Rather than listing the choices directly, the choices element points to a <a href="valueset.html">ValueSet</a> resource.  This approach adds complexity for
-questionnaires having a simple list of strings as choices for a question, but provides several benefits: -->
+Механизм "options" более сложный. Вместо прямого перечисления вариантов выбора, в элементе <code>item.options</code> указывается ресурс <a href="valueset.html">ValueSet</a>. Такой подход усложняет вопросники с простыми списками строк в качестве вариантов выбора ответов на вопрос, однако предоставляет некоторые преимущества, включая:
 </p>
 <ul>
   <li>Вопросники, которым необходимо использовать коды из внешних кодовых систем, получают такую возможность.</li>
   <li>Наборы ответов можно использовать совместно между несколькими вопросами (и есть много вопросников, где эта возможность очень полезна).</li>
-  <li>Все возможности наборов значений могут быть приведены в действие, включая возможность использовать ConceptMap для связывания и перевода из специфичных для вопросника кодов в другие коды, использование множественных имён для отображения (например для различных языков), возможность применять кодированные порядковые числа, возможность допускать выбор из больших наборов значений (например "все SNOMED CT-коды процедур"). </li>
-    <li>Др.</li> 
-<!--   <li>Questionnaires that reference codes from externally defined code systems have a means of doing so</li>
-  <li>Answer sets can be shared across questions (and there are many questionnaires where this capability is useful)</li>
-  <li>The full capability of value sets can be brought into play, including the ability to use ConceptMap to link and translate from questionnaire-specific codes to
-  other codes, the use of multiple display names (e.g. different languages), the ability to use coded ordinals, the ability to allow choices from larger value sets
-  (e.g. "all SNOMED CT procedure codes")</li>
-  <li>etc.</li> -->
+  <li>Все возможности наборов значений могут быть приведены в действие, включая возможность использовать ConceptMap для связывания и перевода из специфичных для вопросника кодов в другие коды, использование множественных имён для отображения (например для различных языков), возможность применять кодированные порядковые числа, и возможность допускать выбор из больших наборов значений (например "все SNOMED CT-коды процедур"). </li>
 </ul>
 <p>
-В большинстве случаев набор кодов на выбор будет специфичным для данного вопросника и должен поддерживаться в рамках этого вопросника. В этом случае ValueSet, на который ссылается вопросник, может быть <a href="references.html#contained">вложенным</a> ресурсом. Все вложенные наборы значений собираются в список, и затем отдельные вопросы ссылаются на них по необходимости.
-<!-- In many cases, the set of code choices will be specific to a given questionnaire and should be maintained as part of the questionnaire.  In this case, the referenced
-ValueSet can be included as a <a href="references.html#contained">contained</a> resource.  All contained ValueSets are listed together and then are referenced by the
-individual questions as necessary. -->
+В большинстве случаев набор кодов на выбор будет специфичным для данного вопросника и должен поддерживаться в рамках этого вопросника. В этом случае ValueSet, на который ссылается вопросник, может быть <a href="references.html#contained">вложенным</a> ресурсом. Все вложенные ресурсы ValueSets собираются в список, на который затем отдельные вопросы ссылаются по необходимости. Альтернативно этому, элемент <code>item.options</code> может ссылаться на набор значений с указанием версии. Это гарантирует, что Questionnaire не начнет использовать новую версию референсного набора значений без перепроверки, что ресурс Questionnaire ссылается на эту новую версию - что дает управление за любыми изменениями в руки автора этого Questionnaire.
 </p>
 
 <h3>Полезные наборы значений<!-- Useful Value Sets --></h3>
-<p>Для многих вопросов имеются наборы возможных кодов ответов. Эти наборы значений могут быть полезны, и если на них даётся полная URL-ссылка, то их можно не предоставлять в рамках вопросника:
-<!-- Many questions have a set of possible codes for their answer. These value sets may be useful to help,
-and when referenced by full URL, do not need to be provided as part of the questionnaire: -->
+<p>Для многих вопросов имеются распространенные наборы возможных кодов ответов. Эти наборы значений могут быть полезны, и если на них даётся полная URL-ссылка, то их можно не предоставлять в рамках вопросника:
 </p>
 <ul>
  <li><a href="valueset-example-yesnodontknow.html">Да | Нет | Не знаю</a>: http://hl7.org/fhir/ValueSet/yesnodontknow</li>
@@ -240,20 +186,9 @@ guidance is provided by the parent question or group. -->
 
 <h3>Вопросники и математические вычисления<!-- Questionnaires with Math --></h3>
 <p>
-Хотя они ещё не определены на международном уровне, можно создать расширения, чтобы производить математические вычисления над ответами на вопросники. Например сведение в таблицу очков. Одно из расширений, которое уже определено и может быть полезно для такой обработки вопросников, это расширение Ordinal (Порядковое числительное). Оно позволяет связывать числовое значение с закодированным элементом данных. Имеются два расширения - одно для определения числового веса кода, определённого в наборе значений - <a href="extension-valueset-ordinalvalue.html">valueset-ordinalValue</a>, другое - это код, который может появиться внутри самого Кодинга - <a href="extension-iso21090-co-value.html">iso21090-CO-value</a>.
-<!-- While not defined (yet) at the international level, extensions may be defined to perform mathematical functions on questionnaire responses.  For example,
-tabulating scores.  One extension that is defined that may be useful in this process is the Ordinal extension.  This allows a numeric value to be associated with a
-coded data element.  There are two extensions defined - one for defining the numeric weighting of a code defined in a value set - 
-<a href="extension-valueset-ordinalvalue.html">valueset-ordinalValue</a> and the other is a code that can appear within a Coding itself - 
-<a href="extension-iso21090-co-value.html">iso21090-CO-value</a>. -->
+У многих вопросников есть подсчет ответов, например подсчет очков. Для ассоциирования числовых значений с кодами ответов созданы два расширения - одно для задания числового веса кода из набора значений - <a href="extension-valueset-ordinalvalue.html">valueset-ordinalValue</a> и другое для задания кода, который может использоваться внутри самого Coding - <a href="extension-iso21090-co-value.html">iso21090-CO-value</a>.
 </p>
-<h3>Расширения для предоставления дополнительных возможностей<!-- Extensions for Additional capabilities --></h3>
-<p>
-Основных элементов, определенных для ресурса questionnaire, достаточно для создания простых вопросников. Для более сложных вопросников создано несколько общих расширений в профилях <a href="questionnaire-extensions.html">Questionnaire Core extensions</a> и <a href="element-extensions.html">Element extensions</a>. Например строгий контроль допустимого количества условий, условное отображение содержимого вопросов и т. д. Расширение условного отображения [enable-when] можно использовать для вложенных в вопрос групп, где требуется более сложное поведение, когда после выбора некоторого ответа появляются новые вопросы.
-<!-- The core elements defined in the questionnaire resource are sufficient for simple questionnaires.  For more sophisticated capabilities, a number of "common" extensions
-are defined in the <a href="questionnaire-extensions.html">Questionnaire Core extensions</a> and the <a href="element-extensions.html">Element extensions</a> profiles.  
-For example, strict control over allowed number of conditions, conditional display of questionnaire content, etc. The conditional display extension [enable-when] can
-be used to enable groups nested beneath a question based on the selection of a specific answer, giving the behavior of "questions under answers" where this sort of
-more sophisticated behavior is needed. -->
-</p>
+
+<p>In addition, there are extensions for defining the dynamic value of an element usings expressions. For more information, see the <a href="cqif/cqif-topics-using-expressions.html">Using Expressions</a> and <a href="cqif/cqif-knowledge-artifact-representation.html#documentation-template">Documentation Template</a> topics in the Clinical Reasoning module.</p>
+
 </div>

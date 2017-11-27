@@ -12,7 +12,7 @@
 
 <a name="base"> </a>
 <h2>Расширенные операции RESTful API</h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">STU 3</a></td></tr></table>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="versions.html#maturity">Уровень зрелости</a>: 5</td><td id="ballot"><a href="versions.html#levels">Статус голосования</a>: <a href="versions.html#std-process">Пробное использование</a></td></tr></table>
 
 <p>
 <a href="http.html">RESTful API</a> задает набор простых взаимодействий (read, update, search и др.), совершаемых над репозиторием типизированных ресурсов. Эти взаимодействия следуют парадигме RESTful об управлении состоянием с помощью действий <b>C</b>reate/<b>R</b>ead/<b>U</b>pdate/<b>D</b>elete над набором идентифицированных ресурсов. Хотя этот подход покрывает большинство случаев использования, имеется некоторая специфичная функциональность, которую можно ююю более эффективно с помощью RPC-подобной парадигмы, где именованные операции выполняются над входными и выходными данными (<b>E</b>xecute). Операции используются там, (a) где серверу требуется играть активную роль в формулировании контента ответа, а не просто возвращать существующую информацию, или (b) где требуется вызвать такие побочные явления, как модификация существующих ресурсов или создание новых ресурсов. Данная спецификация описывает простую структуру операций, которая легко расширяет RESTful API.
@@ -178,6 +178,13 @@ Servers SHALL support this method of invocation. E.g. -->
 GET [base]/ValueSet/$expand?url=http://hl7.org/fhir/ValueSet/body-sit&amp;filter=abdo
 </pre>
 <p>
+When using the HTTP GET operation, if there is a repeating parameter for the extended operation the values for that parameter
+are repeated by repeating the named parameter. E.g. Observation $stats statistic parameter
+</p>
+<pre>
+GET [base]/Observation/$stats?subject=Patient/123&amp;code=55284-4&amp;system=http://loinc.org&amp;duration=1&amp;statistic=average&amp;statistic=min&amp;statistic=max&amp;statistic=count
+</pre>
+<p>
 If the only parameter to a specific invocation of the operation is a resource, then the operation
 can also be executed by a POST with that resource as the body of the request.
 </p>
@@ -233,7 +240,7 @@ not used, and the response is simply the resource itself. -->
 
 <h3>Асинхронное выполнение операций<!-- Executing an Operation Asynchronously --></h3>
 
-<blockquote class="dstu-note">
+<blockquote class="stu-note">
 <a name="dstu"> </a>
 <p>
 <b>STU Note:</b> there is presently no mechanism to execute

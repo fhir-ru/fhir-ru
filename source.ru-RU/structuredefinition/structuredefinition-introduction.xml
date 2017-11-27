@@ -30,13 +30,9 @@ set of structure definitions</a> for all resources and data types is published. 
 <ul>
  <li>StructureDefinitions используются экземплярами <a href="capabilitystatement.html">CapabilityStatement</a> для определения способа использования ресурсов<!-- 
 StructureDefinitions are used by <a href="capabilitystatement.html">CapabilityStatement</a> instances for specifying how resources are used --></li>
- <li>StructureDefinitions используют наборы значений <a href="valueset.html">Value Sets</a> для определения содержимого кодированных элементов<!-- StructureDefinitions use <a href="valueset.html">Value Sets</a> to specify the content of coded elements --></li>
- <li>StructureDefinitions задают конкретные элементы и структуры для использования исключительно с FHIR, которые имеют определенные форматы представления (XML, JSON и т. п.). Это отличается от <a href="dataelement.html">DataElement</a>, который задает абстрактные элементы, которые могут появиться где угодно - в FHIR, questionnaire questions, <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a>, <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a>, X12, OpenEHR, проприетарной базе данных и т. д. DataElements могут мапиться на FHIR-ресурсы, типы данных и/или расширения, но сами по себе не имеют никакого заданного формата представления данных.
-<!-- 
-StructureDefinitions define concrete elements and structures for use with FHIR alone and that have defined wire representations (XML, JSON, etc.).
- This is distinct from <a href="dataelement.html">DataElement</a> which defines abstract elements that might appear anywhere - FHIR,
- questionnaire questions, <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a>, <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a>, X12, OpenEHR, a proprietary database, etc.  Data elements may map to FHIR resources, data types and/or extensions
- but do not have any defined wire format of their own. --></li>
+ <li>StructureDefinitions используют наборы значений <a href="valueset.html">Value Sets</a> для определения содержимого кодированных элементов</li>
+ <li>StructureDefinitions задают конкретные элементы и структуры для использования исключительно с FHIR, которые имеют определенные форматы представления (XML, JSON и т. п.). Это отличается от <a href="dataelement.html">DataElement</a>, который задает абстрактные элементы, которые могут появиться где угодно - в FHIR, questionnaire questions, <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a>, <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a>, X12, OpenEHR, проприетарной базе данных и т. д. 
+DataElements могут мапиться на FHIR-ресурсы, типы данных и/или расширения, но сами по себе не имеют никакого заданного формата сериализации представления данных.</li>
 </ul>
 
 </div> 
@@ -80,9 +76,9 @@ The identifier that is used to identify this version of the structure when it is
  <tr><td>experimental</td><td>Эта структура была создана для тестирования (или обучения/оценки/маркетинга), и не предназначена для реального использования <!-- This structure was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage --></td></tr>
  <tr><td>date</td><td>Дата публикации этой версии структуры<!-- The date this version of the structure was published --></td></tr>
  <tr><td>fhirVersion</td><td>Версия спецификации FHIR, на которой основывается эта структура. Не обязательно указывать эту версию, так как большинство профилей сохраняют пригодность на протяжении различных версий, а соответствие структуры конкретной версии FHIR можно легко проверить с помощью инструментов.<!-- The version of the FHIR specification on which this structure is based. It is not necessary to specify the version, as most profiles are valid across multiple versions, and the validity of a structure against a particular version of FHIR can easily be checked by tooling. --></td></tr>
- <tr><td>type</td><td>todo</td></tr>
- <tr><td>contextType</td><td>todo</td></tr>
- <tr><td>context</td><td>todo</td></tr>
+ <tr><td>type</td><td>The type the structure describes.</td></tr>
+ <tr><td>contextType</td><td>For extensions, the types of contexts in which the extension can be used (resources, datatypes, or extensions).</td></tr>
+ <tr><td>context</td><td>For extensions, the specific types of resources or data types on which the extension can be used.</td></tr>
 </table>
 
 <p>Примечания:<!-- Notes: --></p>

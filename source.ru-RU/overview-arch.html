@@ -10,47 +10,54 @@
 <body>
 [%file newnavbar%]
 
-<div class="col-9">
+<div class="col-12">
 
 
-<h2>FHIR Overview - Architects</h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="versions.html#levels">Ballot Status</a>: <a href="versions.html#std-process">Informative</a></td></tr></table>
+<h2>Обзор FHIR для архитекторов ПО</h2>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="versions.html#maturity">Уровень зрелости</a>: N/A</td><td id="ballot"><a href="versions.html#levels">Статус голосования</a>: <a href="versions.html#std-process">Информативный</a></td></tr></table>
 
 
 <p>
-At its core, FHIR contains two primary components:
+По сути, FHIR состоит из двух компонентов:
+<!-- At its core, FHIR contains two primary components: -->
 </p>
 <ol>
- <li>Resources - a collection of information models that define the data elements, constraints and relationships for the “business objects” most relevant to healthcare. From a model-driven architecture perspective, FHIR resources are notionally equivalent to a physical model implemented in XML or JSON. See <a href="resource.html">the formal definition</a>.</li>
- <li>APIs – a collection of well-defined interfaces for interoperating between two applications. Although not required, the FHIR specification targets RESTful interfaces for API implementation. See <a href="http.html">details on FHIR RESTful interfaces</a>.</li>
+ <li>Ресурсы - набор информационных моделей, определяющих элементы данных, ограничительные условия и взаимосвязи бизнес-объектов, относящихся к здравоохранению. С точки зрения архитектуры, управляемой моделью, FHIR-ресурсы теоретически равнозначны физической модели, реализуемой на XML или JSON. См. <a href="resource.html">the formal definition</a>.
+ <!-- Resources - a collection of information models that define the data elements, constraints and relationships for the “business objects” most relevant to healthcare. From a model-driven architecture perspective, FHIR resources are notionally equivalent to a physical model implemented in XML or JSON. See <a href="resource.html">the formal definition</a>. --></li>
+ <li>Программные интерфейсы приложений - набор чётко определённых операций для взаимодействия приложений. FHIR-спецификация нацелена на RESTful интерфейсы при реализации API, хотя это и не обязательно. См. <a href="http.html">details on FHIR RESTful interfaces</a>. 
+ <!-- APIs – a collection of well-defined interfaces for interoperating between two applications. Although not required, the FHIR specification targets RESTful interfaces for API implementation. See <a href="http.html">details on FHIR RESTful interfaces</a>. --></li>
 </ol>
-<p>
-In the healthcare domain, the set of “business objects” is not universally defined, but there is a notional and ongoing evolutionary,
+<p>В области здравоохранения нет универсального набора бизнес-объектов, а есть теоретический и эволюционно продолжающийся развиваться на основе компромиссов процесс стандартизации основного набора общих бизнес-объектов, включающего такие понятия, как "пациент", "процедура", "наблюдение", "заказ" (см. <a href="resourcelist.html">список имеющихся ресурсов</a>). FHIR-спецификация предлагает каркас для описания этих бизнес-объектов здравоохранения - ресурсов, чтобы связать их между собой в виде композиции, чтобы реализовать их в выслительной форме, и для совместного использования их в хорошо описанных интерфейсах. Этот каркас имеет поддающийся проверке и тестированию синтаксис, набор правил и ограничительных условий, методы и сигнатуры интерфейсов для API, работающих с FHIR, и спецификации для реализации серверов, способных запрашивать и доставлять бизнес-объекты FHIR.   
+<!-- In the healthcare domain, the set of “business objects” is not universally defined, but there is a notional and ongoing evolutionary,
 consensus-based process for standardizing on a core set of common business objects including things like “a patient”, “a procedure”,
 “an observation”, “an order”, etc. (see <a href="resourcelist.html">a list of defined resources</a>). The FHIR specification provides
 a framework for defining these healthcare business objects (“resources”), for relating them together in a compositional manner, for
 implementing them in a computable form, and for sharing them across well-defined interfaces. The framework contains a verifiable and
 testable syntax, a set of rules and constraints, methods and interface signatures for “FHIR-aware” APIs, and specifications for the
-implementation of a server capable of requesting and delivering FHIR business objects.
+implementation of a server capable of requesting and delivering FHIR business objects. -->
 </p>
 <p>
-From an operational perspective, HL7’s internal standards development and governance processes determine what constitutes a
+С оперативной точки зрения, внутренние процессы разработки и управления стандартами HL7 определяют содержание и набор существующих ресурсов. Кроме того, FHIR-спецификация также обеспечивает механизм увязывания ресурсов со специализированными требованиями в определённых пределах (см. <a href="profiling.html">Профилирование ресурсов</a>).
+<!-- From an operational perspective, HL7’s internal standards development and governance processes determine what constitutes a
 resource and which resources exist. In addition, the FHIR specification also provides a mechanism for contextualizing resources for
-specific needs within specific bounds (see <a href="profiling.html">Profiling Resources</a>).
+specific needs within specific bounds (see <a href="profiling.html">Profiling Resources</a>). -->
 </p>
 <h3>
-Architecture Frameworks and FHIR Alignment
+Архитектурные фреймворки и положение FHIR среди них
+<!-- Architecture Frameworks and FHIR Alignment -->
 </h3>
 <p>
-FHIR resources fit firmly within the information architecture domain and the FHIR APIs for data exchange
-address aspects of application architecture.
+FHIR-ресурсы хорошо вписываются в область информационной архитектуры, а API-интерфейсы FHIR отвечают аспектам обмена данными в архитектуре приложений.
+<!-- FHIR resources fit firmly within the information architecture domain and the FHIR APIs for data exchange
+address aspects of application architecture. -->
 </p>
 <table class="none">
 <tr>
 <td>
 <p>
-From a <a href="http://www.opengroup.org/subjectareas/enterprise/togaf">TOGAF perspective</a>, FHIR address aspects architecture
-views related information model definition and data exchange in the Information Systems Architectures portion of the TOGAF Architecture Development Method.
+С точки зрения <a href="http://www.opengroup.org/subjectareas/enterprise/togaf">TOGAF</a>, FHIR address аспекты видов архитектуры, связанных с определением информационной модели ии обменом данными в архитектурах информационных систем метода архитектурной разработки TOGAF.
+<!-- From a <a href="http://www.opengroup.org/subjectareas/enterprise/togaf">TOGAF perspective</a>, FHIR address aspects architecture
+views related information model definition and data exchange in the Information Systems Architectures portion of the TOGAF Architecture Development Method. -->
 </p>
 </td>
 <td>
@@ -62,8 +69,9 @@ views related information model definition and data exchange in the Information 
 <tr>
 <td>
 <p>
-With regards to the <a href="https://www.zachman.com">Zachman Framework</a>, FHIR fits
-within the What and the How dimensions of the Architect, Engineer and Technician Perspectives
+Относительно <a href="https://www.zachman.com">Zachman Framework</a>, FHIR вписывается в измерения "Что" и "Как" проекций Архитектор, Инженер и Техник.
+<!-- With regards to the <a href="https://www.zachman.com">Zachman Framework</a>, FHIR fits
+within the What and the How dimensions of the Architect, Engineer and Technician Perspectives -->
 </p>
 </td>
 <td>
@@ -75,6 +83,7 @@ within the What and the How dimensions of the Architect, Engineer and Technician
 <tr>
 <td>
 <p>
+
 When considering the <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=3">HL7 Services Aware Interoperability Framework (SAIF)</a>,
 FHIR resources and RESTful APIs represent the “Physical Models” and “Interface Implementations” within the Platform Specific Specifications layer of the
 Information Models and the Behavioral Models Viewpoints, respectively.

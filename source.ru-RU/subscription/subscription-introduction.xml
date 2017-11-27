@@ -28,7 +28,7 @@ The server is able to send notifications without any information about the match
 <!-- Several different types of channels are supported: -->
 </p>
 <ul>
- <li><b>rest-hook</b>: Команда post выполняется на определенный URL-адрес. Если в подписке есть требование включать ресурс целиком, то этот URL интерпретируется как базовый адрес сервиса</li>
+ <li><b>rest-hook</b>: Команда post выполняется на определенный URL-адрес identified in the Subscription resource. Если в подписке есть требование включать ресурс целиком, то этот URL интерпретируется как базовый адрес сервиса</li>
  <li><b>websocket</b>: сообщение PING отправляется на указанный URI</li>
  <li><b>email/sms</b>: уведомление отправляется на указанный адрес электронной почты или SMS-номер</li>
  <li><b>message</b>: ресурс посылается приложению, определенному в URI как <a href="messaging.html">message</a></li>

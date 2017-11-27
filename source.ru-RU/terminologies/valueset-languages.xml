@@ -1,21 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <ValueSet xmlns="http://hl7.org/fhir">
   <id value="languages"/>
   <meta>
     <lastUpdated value="2016-08-22T09:53:05.364+00:00"/>
-    <profile value="http://hl7.org/fhir/StructureDefinition/valueset-shareable-definition"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
   </meta>
-
   <url value="http://hl7.org/fhir/ValueSet/languages"/>
-  <identifier>
-    <system value="urn:ietf:rfc:3986"/>
-    <value value="urn:oid:2.16.840.1.113883.4.642.2.languages"/>
-  </identifier>
-  <version value="1.8.0"/>
+    <version value="3.0.0"/>
   <name value="Common Languages"/>
   <status value="draft"/>
   <experimental value="true"/>
+    <date value="2016-08-22T09:53:05+00:00"/>
   <publisher value="HL7 International - FHIR-Infrastructure"/>
   <contact>
     <telecom>
@@ -23,12 +18,27 @@
       <value value="http://hl7.org/fhir"/>
     </telecom>
   </contact>
-  <date value="2016-08-22T09:53:05+00:00"/>
   <description value="This value set includes common codes from BCP-47 (http://tools.ietf.org/html/bcp47)"/>
   <compose>
     <include>
       <system value="urn:ietf:bcp:47"/>
       <concept>
+                <code value="ar"/>
+                <display value="Arabic"/>
+                <designation>
+                    <language value="da"/>
+                    <value value="Arabisk"/>
+                </designation>
+                <designation>
+                    <language value="en"/>
+                    <value value="Arabic"/>
+                </designation>
+                <designation>
+                    <language value="nl"/>
+                    <value value="Arabisch"/>
+                </designation>
+            </concept>
+            <concept>
         <code value="bn"/>
         <display value="Bengali"/>
         <designation>
@@ -769,6 +779,22 @@
         </designation>
       </concept>
       <concept>
+                <code value="hi"/>
+                <display value="Hindi"/>
+                <designation>
+                    <language value="da"/>
+                    <value value="Hindi"/>
+                </designation>
+                <designation>
+                    <language value="en"/>
+                    <value value="Hindi"/>
+                </designation>
+                <designation>
+                    <language value="nl"/>
+                    <value value="Hindi"/>
+                </designation>
+            </concept>
+            <concept>
         <code value="hr"/>
         <display value="Croatian"/>
         <designation>
@@ -1073,6 +1099,22 @@
         </designation>
       </concept>
       <concept>
+                <code value="pa"/>
+                <display value="Punjabi"/>
+                <designation>
+                    <language value="da"/>
+                    <value value="Punjabi"/>
+                </designation>
+                <designation>
+                    <language value="en"/>
+                    <value value="Punjabi"/>
+                </designation>
+                <designation>
+                    <language value="nl"/>
+                    <value value="Punjabi"/>
+                </designation>
+            </concept>
+            <concept>
         <code value="pt"/>
         <display value="Portuguese"/>
         <designation>
@@ -1319,8 +1361,6 @@
           <language value="de"/>
           <value value="Telugu"/>
         </designation>
-    
-    
         <designation>
           <language value="da"/>
           <value value="Telugu"/>

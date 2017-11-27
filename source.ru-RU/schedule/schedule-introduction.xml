@@ -14,8 +14,7 @@
 			to determine if an appointment might be available. -->
     </p>
 		<p>
-		Примечание: ресурс Schedule не используется для выдачи лекарственных средств, для этого есть тип данных <a href="datatypes.html#Timing">Timing</a>.
-      <!-- Note: A schedule is not used for the delivery of medication, that is the <a href="datatypes.html#Timing">Timing</a> data type. -->
+		Примечание: ресурс Schedule не используется для выдачи лекарственных средств, для этого должен использоваться тип данных <a href="datatypes.html#Timing">Timing</a>.
 		</p>
 
 		<h3>
@@ -59,11 +58,15 @@
 
 		<h3>Действующее лицо - к кому относится расписание<!-- Actor - What the schedule applies to --></h3>
 		<p>
-		Расписание принадлежит отдельному владельцу, действующему лицу. Обычно это HealthcareService, Practitioner, Location
-			или Device. При бронировании условленной встречи может потребоваться проверка нескольких расписаний в зависимости от конфигурации системы.
-			<!-- The schedule belongs to a single owner, the actor. This is normally a HealthcareService, Practitioner, Location
-			or Device. When booking an appointment, multiple schedules may need to be checked depending on the configuration
-			of the system. -->
+			The schedule belongs to a single instance of a service or resource. This is normally a HealthcareService, 
+			Practitioner, Location or Device.  In the case where a single resource can provide 
+			different services, potentially at different location, then the schedulable resource is considered the composite 
+			of the actors.  <br/>
+			For example, if a practitioner can provide services at multiple locations, they might have one schedule per location,
+			where each schedule includes both the practitioner and location actors.  
+			
+			When booking an appointment with multiple schedulable resources, multiple schedules may need to be checked 
+			depending on the configuration of the system.
 		</p>
 	<p>
 	Если у условленной встречи есть 2 участника, определенное медицинское изделие и помещение, тогда может иметься расписание для каждого из этих ресурсов, с которыми придется потребоваться свериться, чтобы гарантировать отсутствие коллизий.
@@ -76,29 +79,16 @@
 
 		<h3>Проверка доступности и поиск<!-- Checking availability - Searching --></h3>
 		<p>
-		Выполняя проверку доступности, создатель условленной встречи должен проверить, какие расписания являются подходящими, и затем проверить доступность слотов в этих расписаниях.
-			<!-- When checking availability for an appointment, the creator of the appointment should check
-			that the see what schedules are applicable, then check for available slots within these schedules. -->
+		Выполняя проверку доступности, создатель условленной встречи должен определить, какие расписания являются подходящими, и затем проверить доступность слотов в этих расписаниях.
 		</p>
 		<p>
-		Поиск может выполняться по свойствам упомянутых действующих лиц, таких как ServiceCategory в HealthcareService или Address в Location.
-			<!-- The searching could be done via the properties of the referenced actors, such as the ServiceCategory
-			on the HealthcareService, or the Address on a Location. -->
+		Определение того, какие расписания можно рассматривать, может включать в себя поиск по свойствам упомянутых действующих лиц, таких как ServiceCategory в HealthcareService или Address в Location.
 		</p>
 		<p>
-		Свойство type может использоваться для фильтрации по типам условленных встреч, которые можно забронировать.
-		К ним можно применять дополнительную фильтрацию, указывая также и типы слотов.
-			<!-- The type property can be used to filter the types of appointments that can be booked within the appointment.
-			These can be filtered down further by specifying types on the slots too. --><br/>
-			Справочник, привязанный к этому свойству, также используется в ресурсах appointment и slot.
-			<!-- The terminology bound to this property will be the same as that used on appointment and slot too. -->
+		Параметр type может использоваться для фильтрации по типам услуг, которые можно забронировать в ассоциированных слотах.<br/>
 		</p>
 		<p>
-		Если все слоты заняты, посетитель может найти некоторых слоты, которые достаточно по их мнению близки, и сделать запрос на условленную встречу на эти слоты
-			<!-- If all slots are busy, the caller could find some slots that they believe are close enough, and request
-			for the appointment in these slot(s) --><br/>
-			(условленной встрече может быть назначен более высокий приоритет и присвоен статус "overbooked", если бизнес-правила это позволяют)
-			<!-- (the appointment may be given a higher precedence and allocated in an overbooked status if business rules permit) -->
+		Если все слоты заняты, посетитель может попытаться заказать условленную встречу в уже занятый слот, но бизнес-правила сервера будут диктовать, разрешен ли перезаказ или можно ли назначить более высокий приоритет условленной встрече и разместить перезаказанный слот.
 		</p>
 	</div>
 </div>

@@ -26,7 +26,7 @@
 		</p>
 		<p>
 		В некоторых случаях у услуги может быть специальный набор слотов, зарезервированных для особых случаев, таких как пришедшие без предварительной договорённости или если у некоторой организации есть постоянная бронь на утро каждого четверга.
-		Это может указываться с помощью поля "type" с установленным и согласованным значением.
+		Это может указываться с помощью поля "appointmentType" с установленным и согласованным значением.
 			<!-- In some situations a service may have a specific set of slots reserved for specific uses, such 
 			as "walk-ins" or a specific organization has a "standing booking" for Thursday mornings.
 			These should be represented using the type field with a specified and agreed value. --><br/>
@@ -36,19 +36,26 @@
 		</p>
 	<p>
 	Если для услуги создается недельное расписание, позволяющее размещение 8 почасовых appointments каждый день рабочей недели (с понедельника по пятницу), оно может быть представлено одним ресурсом Schedule с заданными датами начала и окончания недели, и 40 (5х8) ресурсов Slot, ассоциированных с ним.
-      <!-- If a service had a weekly schedule created that permitted eight 1 hour appointments each
-      day of a working week (Monday - Friday), this would be constructed by a single Schedule
-      resource with the dates for the start and end of the week set, and then 40 (5x8) Slot 
-      resources associated with it. --><br/>
+      <br/>
 	  По мере наполнения расписания условленными встречами эти слоты будут по отдельности помечаться как занятые.
       <!-- As appointments fill up the schedule, these slots would individually be marked as busy
       as the appointments are filled into the slots. --><br/>
 	  Слоты в расписание не обязательно должны быть одинакового размера, и могут отличаться в разные дни недели.
       <!-- The slots in a schedule do not need to be the same size, and can be different for different
       days of the week. --><br/>
+	<p>
 	  Экземпляры Slot не содержат никакой информации о периодичности. Если необходимо указать периодичность, это будет делаться вне этих ресурсов или включаться в них в виде расширений.
       <!-- Slot instances do not have any recurrence information included. If recurring information is
       desired, this will be managed outside these resources, or included as extensions. -->
-	</p>
-	</div>
+	  </p>
+	  <p>
+      Note that booking an appointment does not necessarily require that slot resources be identified.
+	  When attempting to book an appointment, if the requestor knows ahead of time which schedulable  
+	  resources are required, then identifying individual slots from the resources' schedules prior to creating
+	  the appointment is appropriate.
+	  However, in some medical scheduling scenarios, determining which resources are required for an appointment
+	  is very complex, and options other than using schedule+slot may be a better solution.  	  
+	  </p>
+    </p>
+  </div>
 </div>

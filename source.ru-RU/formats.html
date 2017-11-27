@@ -16,7 +16,7 @@
 
 <a name="root"> </a>
 <h1>Форматы представления ресурсов</h1>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: 3</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">STU 3</a></td></tr></table>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="versions.html#maturity">Уровень зрелости</a>: 5</td><td id="ballot"><a href="versions.html#levels">Статус голосования</a>: <a href="versions.html#std-process">Пробное использование</a></td></tr></table>
 <p>
 
 На этой странице задокументировано, каким образом описываются ресурсы. В реальности ресурсы могут быть представлены в следующих форматах: <a href="xml.html">XML</a>, <a href="json.html">JSON</a> и <a href="rdf.html">Turtle</a>. Другие форматы представления также допустимы, но не описаны в рамках данной спецификации.
@@ -47,11 +47,11 @@ Other representations are allowed, but are not described by this specification. 
 <p>
 Логическое представление показывает ресурсы в виде дерева со следующими столбцами:
 </p>
-<table class="lines">
+<table class="grid">
  <tr> <td><b>Столбец</b></td> <td><b>Содержимое</b></td> </tr>
  <tr> <td>Имя</td> <td>Имя элемента в ресурсе (декларируется как имя XML-элемента либо имя JSON-свойства). Некоторые имена заканчиваются на <code>[x]</code> - значение этого обсуждается ниже. Дополнительно этот столбец содержит иконку, которая указывает на лежащий в основе тип содержимого. Описание иконок приводится ниже</td> </tr>
  <tr> <td>Флаги</td> <td>Набор информации об элементе, которая влияет на его обработку. Описание флагов приводится ниже</td> </tr>
- <tr> <td>Кард. число</td> <td>Нижняя и верхняя границы того, сколько раз элемент может появиться в ресурсе</td> </tr>
+ <tr> <td>Кард. число</td> <td>кардинальное число: нижняя и верхняя границы того, сколько раз элемент может появиться в ресурсе</td> </tr>
  <tr> <td>Тип</td> <td>Тип элемента (связан гиперссылкой с определением этого типа). Отметьте, что тип элемента имеет одно из двух значений в зависимости от того, есть ли у этого элемента потомки. Если у элемента есть потомки, тогда это элемент анонимного типа, специализирующий данный тип. Если элемент не имеет потомков, тогда у этого элемента есть свойства и потомки, как указано в названном типе</td> </tr>
  <tr> <td>Описание и ограничения</td> <td>Описание элемента и информация о применяемых к нему ограничениях. В частности, для кодированных элементов - информация о том, какие коды можно использовать</td> </tr>
 </table>
@@ -132,6 +132,8 @@ Other representations are allowed, but are not described by this specification. 
  <li><img title="Extension" style="background-color: white;" alt="." class="hierarchy" src="icon_extension.png"/>: Расширение (см. <a href="extensibility.html">Extensibility</a>)</li>
  <li><img title="Complex Extension" style="background-color: white;" alt="." class="hierarchy" src="icon_extension_complex.png"/>: Составное расширение - с вложенными расширениями (см. <a href="extensibility.html#complex">Extensibility</a>)</li>
  <li><img title="Simple Extension" style="background-color: white;" alt="." class="hierarchy" src="icon_extension_simple.png"/>: Расширение, имеющее элемент value и не содержащее вложенных расширений (см. <a href="extensibility.html">Extensibility</a>)</li>
+<li><img title="Complex Modifier Extension" style="background-color: white;" alt="." class="hierarchy" src="icon_modifier_extension_complex.png"/>: A complex modifier extension - one with nested extensions (see <a href="extensibility.html#complex">Extensibility</a>)</li>
+ <li><img title="Simple Modifier Extension" style="background-color: white;" alt="." class="hierarchy" src="icon_modifier_extension_simple.png"/>: A modifier extension that has a value and no nested extensions (see <a href="extensibility.html">Extensibility</a>)</li>
  <li><img title="Profile" style="background-color: white;" alt="." class="hierarchy" src="icon_profile.png"/>: Корневой элемент логического профиля</li>
 <!-- dont think this is used <li><img title="Text" style="background-color: white;" alt="." class="hierarchy" src="icon_text.png"/>: Простой текст</li> -->
  <li><code>?!</code>: Это элемент-модификатор - см. <a href="conformance-rules.html#isModifier">Modifier Elements</a></li>
@@ -149,7 +151,7 @@ Other representations are allowed, but are not described by this specification. 
  <li>Любые элементы <a href="datatypes.html#primitive">примитивного типа</a> будут иметь атрибут/свойство <code>value</code>, содержащий фактическое значение элемента</li>
  <li>Атрибут/свойство <code>value</code>" никогда не может быть пустым. Либо он отсутствует, либо присутствует и содержит по крайней мере один непробельный символ</li>
  <li>У элементов есть кардинальное число, указывающее, сколько раз этот элемент может или должен появиться.</li>
- <li>Если только у элементов нет непосредственно заданных потомков (как у nameC выше), им назначается один или несколько типов. Все типы приведены в <a href="datatypes.html">типах данных</a>. Имена всех типов сделаны гиперссылками и ведут на свои определения</li>
+ <li>Если только у элементов нет непосредственно заданных потомков (как у nameC выше), им назначается один или несколько типов (см. раздел <a href="datatypes.html">Типы данных</a>). Имена всех типов сделаны гиперссылками и ведут на свои определения</li>
  <li>Повторное использование элементов: некоторые типы данных, имеющие потомков, содержат такой же набор потомков, как и некоторый другой элемент, определенный в этом ресурсе. В этом случае тип этого элемента содержит указание "см. [name]", где [name] - это имя элемента, у которого определены элементы-потомки.</li>
  <li>Каждое имя элемента также сделано гиперссылкой и ведет на подробное описание этого элемента в словаре данных, лежащем в основе форматов обмена.</li>
  <li><!-- Any of the elements may have an <code>id</code> attribute to serve as <a href="references.html#id">the target of an internal reference</a>. The <code>id</code> attribute is not shown in this format. Extensions are not always shown, but may appear except where the flag <code>NE</code> appears -->Любые элементы могут иметь атрибут <code>id</code>, используемый в качестве <a href="references.html#id">цели внутренней ссылки</a>. В этом формате атрибут <code>id</code> не показывается. Расширения показываются не всегда, но могут быть везде, где нет флага <code>NE</code></li>
@@ -167,7 +169,7 @@ takes the form <code>nnn[x]</code>. The "nnn" part of the name is constant, and 
 name of the type that is actually used. The table view shows each of these names explicitly. -->
 </p>
 <p>
-Элементы с типом данных на выбор не могут повторяться. Т. е. они должны иметь максимальное кардинальное число равным 1.
+Элементы с типом данных на выбор не могут повторяться, они должны иметь максимальное кардинальное число равным 1.
 При создании экземпляра элемента с выбором типа, система разработки должна создать один элемент с тем типом данных, который был выбран из списка разрешенных типов данных.
 <!-- Elements that have a choice of data type cannot repeat.  I.e. They must have a maximum cardinality of 1. 
 When constructing an instance of an element with a choice of types, the authoring system must create a single
@@ -262,7 +264,7 @@ set name, and a symbol that denotes the strength of the binding:
 </ul>
 
 <a name="wire"> </a>
-<h3>Форматы представления<!-- Wire Format Representations --></h3>
+<h3>Форматы представления для сериализации</h3>
 
 <p>
 В спецификации определены следующие типы представления ресурсов для их обмена:
@@ -270,7 +272,7 @@ set name, and a symbol that denotes the strength of the binding:
 <ul>
  <li><a href="xml.html">XML</a></li>
  <li><a href="json.html">JSON</a></li>
-<li><a href="rdf.html">RDF</a> <i>(в процессе разработки)</i></li>
+ <li><a href="rdf.html">RDF (Turtle)</a></li>
 </ul>
 
 <p>

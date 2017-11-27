@@ -17,7 +17,7 @@ It can also be used to capture "risk of" and "fear of" in addition to physical c
 <!-- When the Condition.code specifies additional properties of the condition, the other properties are not given 
 a value - instead, the value must be understood from the Condition.code.  -->
 </p>
-<h3>Применение элемента Condition.evidence<!-- Use of Condition.evidence --></h3>
+
 <h3>"No Known Problems" and Negated Conditions</h3>
 
   <p>
@@ -35,19 +35,27 @@ a value - instead, the value must be understood from the Condition.code.  -->
   <p>Also note that care should be used when adding new Condition resources to a list to ensure that any negation statements that are voided by the addition of a new record are removed from the list.  E.g. If the list contains a "no known problems" record and you add a "diabetes" condition record, then be sure that you remove the "no known problems" record.
   </p>
 
-<blockquote class="dstu-note">
+<blockquote class="stu-note">
 <a name="dstu-1"> </a>
 <p>
 <b>STU Note:</b>There are two primary ways of reporting "no known problems" in the current specification: using the CodeableConcept,
 as described above, or using the <a href="list.html">List</a> resource with emptyReason. During the STU period, <a href="http://gforge.hl7.org/gf/project/fhir/tracker/">feedback</a> is sought regarding the preferred approach.
 </p>
+<p>
+Provide feedback <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(STU_3)">here</a>.
+</p>
 </blockquote>
 
+  <p>
+    <b>Patient Denies Condition</b>
+  </p>
+  <p>When the patient denies a condition, that can be annotated in the Condition.note element.</p>
+  
 <h3>Assertions of Condition Absence</h3>
 <p>
 Generally, electronic records do not contain assertions of conditions that a patient does not have.  There are however two exceptions:
 <ul>
-<li>It is appropriate to capture a "refuted" Condition record if the patient or anyone else had reason to believe that a patient did have a condition for a period of time and subsequent evidence has demonstrated that belief was mistaken.  In this case, a concrete statement acknowledging the belief as well as the refution of it is useful.</li>
+<li>It is appropriate to capture a "refuted" Condition record if the patient or anyone else had reason to believe that a patient did have a condition for a period of time and subsequent evidence has demonstrated that belief was mistaken.  In this case, a concrete statement acknowledging the belief as well as the refutation of it is useful.</li>
 <li>It is common as part of checklists prior to admission, surgery, enrollment in trials, etc. to ask questions such as "are you pregnant", "do you have a history of hypertension", etc.  This information should NOT be captured using the Condition resource but should instead be captured using QuestionnaireResponse or Observation.  In this case, the combination of the question and answer would convey that a particular condition was not present.</li>
 </ul>
 </p>
@@ -79,6 +87,11 @@ For example,  it is possible that a nurse records the condition on behalf of a p
 <p>
 Элементы Condition.stage и Condition.clinicalStatus могут быть взаимно зависимыми. Например некоторые "стадии" рака и т. п. будут различаться для ремиссии и для первоначального появления.
 <!-- The Condition.stage and Condition.clinicalStatus may have interdependencies. For example, some "stages" of cancer, etc. will be different for a remission than for the initial occurrence. -->
+</p>
+
+<h3>Known Issue</h3>
+
+<p> A known issue exists with circular references between Condition and ClinicalImpression, which is due to the low maturity level of ClinicalImpression. The Patient Care work group intends to address this issue when ClinicalImpression is considered substantially complete and ready for implementation.
 </p>
 
 </div>

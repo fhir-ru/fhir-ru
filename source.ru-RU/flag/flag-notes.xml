@@ -1,7 +1,9 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
+<h2>Notes</h2>
+
 <p>
-Ресурс Flag иногда называют "patient notes" (записями пациента) и МОГУТ использовать для предупреждения о таких проблемах, как:
+Ресурс Flag иногда используют  вкачестве "patient notes" (примечаний к пациенту) и МОГУТ использовать для предупреждения о таких проблемах, как:
 <!-- The Flag resource is sometimes known as "patient notes" and MAY be used to warn of issues such as: -->
 </p>
 <ul>

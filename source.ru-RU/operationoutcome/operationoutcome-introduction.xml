@@ -32,7 +32,7 @@ these would be handled using <a href="detectedissue.html">DetectedIssue</a> or o
 is not designed to be persisted or referenced from other parts of the workflow.  -->
 </p>
 <p>
-Можно использовать одновременно оба ресурса <code>OperationOutcome</code> и <a href="detectedissue.html">DetectedIssue</a>, где OperationOutcome может указывать, что запрошенное действие было отклонено из-за клинической проблемы, а DetectedIssue - содержать детали этой проблемы.
+Можно использовать одновременно оба ресурса OperationOutcome и <a href="detectedissue.html">DetectedIssue</a>, где OperationOutcome может указывать, что запрошенное действие было отклонено из-за клинической проблемы, а DetectedIssue - содержать детали этой проблемы.
 <!-- It is possible to have both <code>OperationOutcome</code> and <a href="detectedissue.html">DetectedIssue</a> together, where the OperationOutcome might 
 indicate that a requested action was rejected due to a clinical issue and the DetectedIssue provides the details of the issue. -->
 </p>

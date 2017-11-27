@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
+<!-- template-cs.html -->
 
-      
 [%settitle Набор значений {vsurl}%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -10,14 +10,17 @@
 <body>
 [%file newnavbar%]
 
-<div class="col-9">
+<div class="col-12">
 
 <%txheader0 vs%>
 
 <a name="vs"> </a>
 <h1>Кодовая система<!-- Code System --> <%vsurl%></h1>
+<table class="<%fmm-style%>">
+ <tr><td><a href="<%wg%>"><%wgt%></a> Work Group</td><td><%fmm%></td><td><%sstatus%></td><td><%profile-context%></td></tr>
+</table>
 <p>
-Это набор значений, определённый в<!-- This is a value set defined --> <%vssource%><%vsxref%>
+Это кодовая система, определённая в<!-- This is a value set defined --> <%vssource%><%vsxref%>
 </p>
 
 <p><b>Сводка<!-- Summary --></b></p>

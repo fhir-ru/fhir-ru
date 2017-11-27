@@ -21,7 +21,7 @@ code { counter-increment: listing; }
 
 
 <h2>Введение в FHIR для медицинских работников</h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">STU 3</a></td></tr></table>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="versions.html#maturity">Уровень зрелости</a>: N/A</td><td id="ballot"><a href="versions.html#levels">Статус голосования</a>: <a href="versions.html#std-process">Информативный</a></td></tr></table>
 
 <p>
 FHIR (<i>Fast Health Interoperability Resources</i>) предназначен для обмена информацией, связанной со здравоохранением. К ней относятся клинические данные, а также относящиеся к здравоохранению административно-хозяйственные данные, данные общественного здравоохранения и исследований. Стандарт охватывает как человеческую, так и ветеринарную медицину, и предназначен для повсеместного использования в самых разнообразных контекстах, включая стационар, долгосрочную медицинскую помощь, амбулаторную реабилитацию инвалидов, вспомогательную немедицинскую помощь и т. д.
@@ -40,7 +40,7 @@ define good or best clinical practices, nor does it provide guidance on user int
 in these areas may be useful, but it is outside of FHIR's scope. -->
 </p>
 <p>
-Из-за ориентации FHIR на реализацию, многие аспекты спецификации имеют дело с техническими основами обмена клинической информацией между электронными системами. Данный раздел содержит базовую информации о FHIR и затрагивает те части спецификации, которые могут представлять наибольший интерес для практикующих врачей, пропуская некоторые технические детали обеспечения взаимодействия. Тем не менее, мы приглашает читателей-клиницистов исследовать и некоторые более технические разделы, если они представляют интерес.
+Из-за ориентации FHIR на реализацию, многие аспекты спецификации имеют дело с техническими основами обмена клинической информацией между электронными системами. Данный раздел содержит базовую информации о FHIR и затрагивает те части спецификации, которые могут представлять наибольший интерес для практикующих врачей, пропуская некоторые технические детали обеспечения взаимодействия. Тем не менее, мы приглашаем читателей-клиницистов исследовать и некоторые более технические разделы, если они представляют интерес.
 <!-- Because of FHIR's focus on implementation, many aspects of the specification deal with the technical underpinnings of the
 exchange of clinical information between electronic systems.  This section provides an introduction to 
 what FHIR provides and tries to highlight those portions of the specification
@@ -51,8 +51,8 @@ technical areas if they find them of interest. -->
 
 <h3>Ресурсы<!-- Resources --></h3>
 <p>
-С клинической точки зрения наиболее важной для понимания частью спецификации FHIR являются ресурсы. Думайте о ресурсах как о бумажных «бланках», отражающих различные виды клинической и административной информации, которую можно зафиксировать и совместно использовать.
-Спецификация FHIR определяет общий "шаблон формы" для каждого типа клинической информации: один для аллергии, один для предписаний, один для направлений и т. д.
+С клинической точки зрения наиболее важной для понимания частью спецификации FHIR являются ресурсы. Проще всего представить себе ресурсы как бумажные «формы», отражающие различные виды клинической и административной информации, которую можно зафиксировать и совместно использовать.
+Спецификация FHIR определяет общий шаблон "формы" для каждого типа клинической информации: один для аллергии, один для предписаний, один для направлений и т. д.
 <!-- From a clinical perspective, the most important parts of the FHIR specification to understand are the Resources.
 Think of Resources as paper "forms" reflecting different types of clinical and administrative information that can
 be captured and shared.
@@ -60,7 +60,7 @@ The FHIR specification defines a generic "form template" for each type of clinic
 allergies, one for prescriptions, one for referrals, etc. -->
 </p>
 <p>
-Данные FHIR состоят из репозиториев, содержащих заполненные "бланки" (экземпляры ресурсов). Экземпляры ресурсов содержат такую информацию о пациенте, как демографические данные, клиническое состояние здоровья и процедуры, а также такую административную информацию, как специалисты, организации и местоположения. Некоторые ресурсы являются компонентами инфраструктуры, используемыми для осуществления технического обмена информацией,  и описывают, что системы могут делать, определяют дозволенные наборы кодов и т. д. Репозиториями FHIR могут выступать системы электронных медицинских записей (EHR), аптечные системы, медицинские информационные системы (МИСы) и т. д. Некоторые системы, например средства поддержки клинических решений, могут использовать интерфейсы FHIR, даже если они сами на самом деле не хранят никакой административной информации или данных пациента.
+Данные FHIR состоят из репозиториев, содержащих заполненные "бланки" (экземпляры ресурсов). Экземпляры ресурсов содержат информацию о пациенте, такую, как демографические данные, клиническое состояние здоровья и процедуры; а также административную информацию, то есть информацию о специалистах, организации и её местоположении. Некоторые ресурсы являются компонентами инфраструктуры, используемыми для осуществления технического обмена информацией,  и описывают, что системы могут делать, определяют дозволенные наборы кодов и т. д. Репозиториями FHIR могут выступать системы электронных медицинских записей (EHR), аптечные системы, медицинские информационные системы (МИСы) и т. д. Некоторые системы, например средства поддержки клинических решений, могут использовать интерфейсы FHIR, даже если они сами на самом деле не хранят никакой административной информации или данных пациента.
 <!-- FHIR data consists of repositories containing completed "forms" (resource instances).  The resource instances describe patient-related information (such as
 demographics, health conditions and procedures) as well as administrative information (such as practitioners, organizations and locations).  Some resources are infrastructure components used to 
 support the technical exchange of information by describing what systems are able to do, defining allowed sets
@@ -68,21 +68,22 @@ of codes, etc.  FHIR repositories might be elecronic health record (EHR) systems
 hospital information systems (HISs), etc.  Some systems, such as clinical decision support engines, may
 expose FHIR interfaces even though they don't actually store any patient or administrative information themselves. -->
 </p>
+Каждый ресурс определяет небольшое количество узкоспециализированных данных. Одиночный ресурс мало о чем говорит, а вот набор вместе взятых ресурсов представляет собой клиническую запись, имеющую практическкую ценность. Инфрмационные системы связывают действия пользователя (поиск карты пациента, внесение записи в его историю и т.д.) с операциями над соответствующими ресурсами.
 <p>
-Each Resource defines a small amount of highly-focused data. A single resource doesn't say very much, but a collection of Resources 
+<!--Each Resource defines a small amount of highly-focused data. A single resource doesn't say very much, but a collection of Resources 
 taken together creates a useful clinical record. Information systems map the actions that a user takes (look up patient records, make a
-note in their history, etc.) to operations on the relevant resources.
+note in their history, etc.) to operations on the relevant resources.-->
 </p>
 
 <h3>Расширяемость и профилирование<!-- Extensibility and Profiling --></h3>
 <p>
-Бумажные формы (ресурсы) в FHIR являются общими. Они должны подходить для различных стран, для разных типов врачей в разных контекстах (помощь человеку, ветеринарная помощь, общественное здравоохранение, научные исследования и т. д.). Понимая, что единый подход ко всем не приемлем в области здравоохранения, FHIR предоставляет возможность настраивать формы (ресурсы) таким образом, чтобы удовлетворить потребности различных пространств реализации определением "расширений", а также за счет применения ограничений.
+Бумажные формы (ресурсы) в FHIR являются общими; они должны подходить для различных стран, для разных типов врачей в разных контекстах (помощь человеку, ветеринарная помощь, общественное здравоохранение, научные исследования и т. д.). Понимая, что единый подход ко всем не приемлем в области здравоохранения, FHIR предоставляет возможность настраивать формы (ресурсы) таким образом, чтобы удовлетворить потребности различных пространств реализации определением "расширений", а также за счет применения ограничений.
 <!-- The paper forms (Resources) in FHIR are somewhat generic.  They have to be useable in different countries and by different types of clinicians
 in different contexts (human care, veterinary care, public health, research, etc.).  Recognizing that
 a <i>one size fits all</i> approach is not appropriate in the healthcare space, FHIR provides the ability to adjust the
 forms (Resources) to be able to handle the needs of different implementation spaces by defining"extensions"
 as well as enforcing constraints. -->
-Например форма "prescription" может иметь элементы расширения, добавленные для отслеживания ограниченных в обороте лекарств, при этом также ограничивая коды, которые могут быть использованы для соотнесения видов лекарств с определенным государственным стандартом. Формы разработаны таким образом, что эти изменения могут быть сделаны без изменения того, как системы передают формы между собой, позволяя любой системе использовать заполненные формы, даже если в них есть дополнительные элементы, используются эти дополнительные элементы принимающей системой или нет.
+Например форма "prescription" может иметь элементы расширения, добавленные для отслеживания ограниченных в обороте лекарств, при этом также ограничивая коды, которые могут быть использованы для соотнесения видов лекарств с определенным государственным стандартом. Формы разработаны таким образом, что добавление к ним расширений не влияют на передачу форм между системами. Такая организация форм позволяет любой системе использовать заполненные формы, даже если в них есть дополнительные элементы, причем независимо от того, будет ли принимающая система использовать эти расширения или нет.
 <!-- For example, a "prescription" form might have extension elements
 added to support tracking of restricted medications while also constraining the codes that can be used
 to communicate types of drugs to a particular national standard.  Forms are designed in such
@@ -174,12 +175,13 @@ file folder.  To see the history of a resource, you simply have to flip through 
 REST - это простейший механизм обмена. Продолжая метафору "формы", RESTful-сервер можно рассматривать как комнату, заполненную шкафами для хранения документов. В комнате есть шкаф для каждого "типа" формы (или "ресурса"), которую он поддерживает. В шкафу находятся папки, каждая папка имеет уникальный номер и соответствует одной конкретной сущности реального мира: одному пациенту, одному визиту, одному лекарственному средству и т. д. Каждая папка (представляющая собой отдельный <i>экземпляр</i> ресурса) содержит несколько листов бумаги, где каждый лист бумаги представляет собой определенную "версию" этого экземпляра. Каждый раз, когда кто-то обновляет запись, новый лист бумаги добавляется сверху в папку-регистратор. Чтобы увидеть историю ресурса, вам нужно всего лишь пролистать страницы в папке.
 </p>
 <p>
-Note that a typical medical record is generally a big "folder-of-folders" with many different
+Нужно отметить, что медицинская карта обычно представляет собой папку со множеством вложенных папок, в которых хранится большой объем собранных вместе различных "форм" или "отчетов". Это удобно, если вы хотите просмотреть всю запись, но неудобно, если вы хотите внести изменения лишь в некоторые её части. Всегда присутствует конкуренция за доступ к записи, чтобы внести изменения в нужную часть. В компьютерных приложениях в целях оптимизации управления запись будет разбита на мельчайшие компоненты, и компьютер должен верно собрать нужные компоненты, следуя по заданным ссылкам от одного компонента к другому.
+<!--Note that a typical medical record is generally a big "folder-of-folders" with many different
 types of 'forms' or 'reports' gathered together. This is convenient for someone who wants to review
 the whole record, but inconvenient for someone updating bits of it.  There's always contention for access
 to it to update the right part. In the computer application, the record will be decomposed to its smallest components
 for management purposes, and a computer will (or should), assemble the correct bits as required, by 
-following references that exist from one piece of information and the next. 
+following references that exist from one piece of information and the next. -->
 </p>
 <p>
 Теперь представьте клерка возле входной двери в эту комнату. Вы можете передать клерку заявку, чтобы он что-то сделал с информацией в этих картотечных шкафах. "Клерк" и набор бланков заявок на его столе составляют FHIR RESTful API. С этим API вы можете делать следующее:

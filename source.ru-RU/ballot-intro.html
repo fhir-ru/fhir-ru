@@ -8,112 +8,84 @@
 <body>
 [%file newnavbar%]
 
-<div class="col-9">
+<div class="col-12">
 
 <h2>STU 3 Ballot Welcome</h2>
 
 <p>
-Hello and welcome to the third FHIR STU ballot!
+Привет и добро пожаловать на третье голосование по пробному использованию стандарта FHIR!
 </p>
 <p>
-This specification represents a series of significant changes and enhancements from the second FHIR Draft Standard for Trial Use
-specification HL7 published in October, 2015.  It also includes changes resulting from committee meetings, connectathons, 1000's of  
-change proposals, and collaborations with other standards organizations.  A <a href="history.html#v1.6.0">summary of changes</a>  
-and a <a href="diff.html">complete list of changes to resources and data types</a> are available, along with 
-<a href="r2maps.html">transforms</a> between R2 and R3 for many resources.
+В спецификации представлен ряд существенных изменений и улучшених второй версии FHIR - проекта стандарта для пробного использования, которую HL7 опубликовала в октябре 2015 года. Также в нее вошли изменения, сделанные в результате заседаний комитетов, проведения коннектатонов, тысячей предложений по изменению, и совместной работе с другими организациями по стандартизации. <a href="history.html#v1.6.0">Сводка изменений</a>  
+и <a href="diff.html">полный список изменений ресурсов и типов данных</a> доступны наряду с 
+<a href="r2maps.html">изменениями</a> между версиями R2 и R3 для многих ресурсов.
 </p>
 <p>
-FHIR is presently a "Specification for Trial Use" (STU) ballot. FHIR is no longer a "Draft" specification.
-Indeed, there are many implementations in production all across the world, or in preparation for production 
-adoption. There are still some parts of the specification in an early stage of development, while other parts 
-are quite mature and stable. In fact, as of this version, most DSTU 2 patient resources are still valid STU 3 
-Patient resources, though this is not a requirement - yet. We anticipate that some content will become 
-normative on the next ballot after this one. For full details concerning the maturity process in the FHIR 
-specification, see the <a href="versions.html#maturity">FHIR maturity Model</a>.
+В настоящее время FHIR является "Спецификацией для пробного использования" (STU) и проходит голосование. FHIR больше не является "проектом" стандарта. В действительности есть уже много реализаций в реальном использовании или на стадии подготовки к использованию по всему миру. Некоторые части спецификации всё еще на стадии разработки,в то время как другие части уже достаточно зрелые и стабильные. В действительности в этой версии большинство ресурсов Patient версии DSTU 2 остаются валидными ресурсами версии STU 3, хотя пока что это не является требованием. Мы ожидаем, что некоторое содержимое станет нормативным на следующем после этого голосовании. Более подробную информацию о системе уровней зрелости ресурсов см. в разеделе <a href="versions.html#maturity">Модель зрелости FHIR</a>.
 </p>
 <p>
-The FHIR specification is presented as a series of interlinked HTML pages.  They can either be reviewed online or can be
-<a href="fhir-spec.zip">downloaded</a> for exploration on your own device.  (175MB zip, ~1GB unzipped). The scope of
-the FHIR Ballot is any page where the URL starts with http://hl7.org/fhir/2016Sep. 
+Спецификация FHIR представлена в виде ряда взаимосвязанных HTML-страниц. Их можно просматривать онлайн или <a href="fhir-spec.zip">скачать</a> для просмотра на вашем устройстве. (175MB zip-архив, ~1GB в распакованном виде). Предметом голосования по FHIR является каждая страница, URL которой начинается на http://hl7.org/fhir/2016Sep. 
 </p>
 <p>
-A few notes to consider:
+Несколько примечаний для рассмотрения:
 </p>
 <ul>
-  <li>Pay close attention to the FMM level of the artifacts (as described above)</li>
-  <li>Not all of the existing outstanding issues will be resolved prior to the STU ballot passing.  Some may be left open to allow feedback 
-  from the early adopter community.</li>
-  <li>This specification is complete enough to be implementable in a variety of healthcare scenarios, including supporting the "Common 
-  Meaningful Use Data Set" and other content from the Consolidated CDA implementation guide.  However, the set 
-  of resources is not complete.  Resources may evolve and new ones will be introduced over time.  Refer to <a href="versions.html">FHIR 
-  Timelines</a> for additional guidance on expectations around the evolution of the FHIR specification, or the road maps on the module pages.</li>
+  <li>Обратите особое внимание на FMM-уровень артефактов (как описано выше)</li>
+  <li>Не все имеющиеся нерешенные вопросы будут решены до конца STU-голосования. Некоторые могут остаться открытыми в ожидании отзывов от сообщества первых компаний, внедривших FHIR.</li>
+  <li>Данная спецификация достаточно полная для осуществления различных сценариев, включая поддержку "Common 
+  Meaningful Use Data Set" и другого содержимого руководства по реализации Consolidated CDA. Однако набор ресурсов пока не полон. Ресурсы могут разиваться и со временем могут добавляться новые. Дополнительные указания по ожидаемому развитию спецификации FHIR см. в разделе <a href="versions.html">Хронология FHIR</a>, а также  и дорожные карты на страницах описания модулей.</li>
 </ul>
 
-<h3>Balloting Rules</h3>
+<h3>Правила голосования</h3>
 <p>
-HL7 ballot rules require that participants sign up prior to opening of the ballot.  If you did not sign up in advance, you
-can still submit comments using the <a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemAdd&amp;tracker_id=677">Propose a Change</a>
-link at the bottom of each page of the specification.  Feedback from balloters will be given priority, but all suggestions will be
-considered as much as time allows.  (And be sure to <a href="http://wiki.hl7.org/index.php?title=FHIR_email_list_subscription_instructions">sign up</a> 
-to the FHIR list-server and/or follow the <a href="https://twitter.com/hashtag/fhir">#FHIR</a> hash-tag so you don't miss the chance to 
-vote in the next ballot cycle.)
+Правила голосования HL7 требуют, чтобы участники зарегистрировались до открытия голосования. Если вы не зарегистрировались заранее, вы все еще может отправлять комментарии по ссылке <a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemAdd&amp;tracker_id=677">Предложить изменение</a> внизу каждой страницы спецификации. Отзывы от участников голосования будут иметь более высокий приоритет, но рассматриваться будут все предложения, насколько позволит время. (Не забудьте <a href="http://wiki.hl7.org/index.php?title=FHIR_email_list_subscription_instructions">зарегистрироваться</a> 
+на сервере рассылок FHIR и/или используйте хештег <a href="https://twitter.com/hashtag/fhir">#FHIR</a>, чтобы не упустить свой шанс проголосовать в следующем цикле голосования.)
 </p>
 <p>
-If you are signed up to ballot, you can download the balloting spreadsheet from the <a href="http://www.hl7.org/participate/onlineballoting.cfm">Ballot Desktop</a>.
-All ballot feedback must be provided using the spreadsheet template provided.  (There's a help tab that explains the meaning of each of the columns.)
-For FHIR, you have the option of making your comments directly in the spreadsheet or submitting your comment using the FHIR
-<a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemBrowse">Change Tracker</a> tool.  If you take the latter approach, you <b>must</b> include a reference to each tracker item in your
-ballot spreadsheet along with a vote (negative, affirmative typo, etc.).  All spreadsheets must be submitted along with an overall vote
-by end of day Eastern time on the designated ballot closure date for the comments to be considered as part of ballot disposition.
+Если вы зарегистрировались на голосование, вы можете скачать электронную таблицу голосования с <a href="http://www.hl7.org/participate/onlineballoting.cfm">рабочего стола голосования</a>.
+Всю обратную связь по голосованию необходимо предоставить с помощью предложенного шаблона электронной таблицы. (Там есть вкладка Help, где есть пояснения к каждой колонке.)
+Вы можете указать свои комментарии непосредственно в этой электронной таблице либо отправить ваш комментарий с помощью FHIR
+<a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemBrowse">трэкера изменений</a>. При выборе второго варианта, вы <b>должны</b> включить ссылку на каждый тикет трэкера в вашу электронную таблицу голосования наряду с самим голосованием (отрицательное, утвердительное, опечатка и т.д.). Все электронные таблицы необходимо отправить вместе с общим голосованием к концу дня по Eastern time в обозначенный день окончания голосования для рассмотрения комментариев в рамках процедуры голосования.
 </p>
 <p>
-Note: By using the tracker, you reduce some of the administrative effort of managing the ballot process.  As well, you will receive notifications
-when comments are made on your ballot comment as well as when dispositions are made.  Comments not submitted to the tracker as part of the ballot
-process will be migrated to the tracker after all ballot submissions are received.
+Примечание: используя трекер, вы упрощаете процесс голосования. Также в этом случае вы будете получать уведомления о комментариях и решениямх по вашему запросу. Комментарии, отправленные не через трекер, в рамках процесса голосования будут размещены на трекере по окончании процесса сбора комментариев к голосованию.
+
 </p>
 <p>
-When submitting your ballot feedback, if you have a general comment on something that you see occurring multiple times, please include 
-at least a couple of specific locations where you see the issue.  As much as possible, capture each separate concern as a distinct row 
-in the ballot sheet or separate <a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemBrowse">tracker item</a>.  (If using tracker items for your submissions, you <b>MUST</b> still
-submit a ballot spreadsheet referencing the relevant tracker items.)  It makes our job of reconciling much easier.  Also, don't forget to 
-fill in the section numbers (gray numbers to the left of each heading) and URLs.
+Отправляя ваш отзыв на голосование, если это общий комментарий о чём-то, что вы наблюдали, как происходило неоднократно, пожалуйста, включите хотя бы пару кокнретных мест, где вам встретилась эта пробема. Насколько это возможно, описывайте каждую отдельную проблему на новой строке таблицы или новом <a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemBrowse">тикете на трекере</a>. (Если вы используете трекер для отправки ваших запросов, вам всё равно будет  <b>необходимо</b> отправить электронную таблицу для голсования со ссылками на соответствующие тикеты на трекере). Это сильно облегчит нашу работу по согласованию запросов на изменение. И не забывайте указывать номера секций (числа серого цвета слева от каждого заголовка) и URL-ссылки.
 </p>
 <p>
-If you have questions that are interfering with the ability to review the specification or submit ballot comments, please contact one of 
-the co-chairs of the FHIR Management Group: <a href="mailto:lloyd@lmckenzie.com">Lloyd McKenzie</a> or 
+Если у вас есть вопросы, связанные с возможностью рецензировать спецификацию или отправлять комментарии на голосование, пожалуйста, обратитесь к одному из сопредседателей Управляющей группы FHIR: <a href="mailto:lloyd@lmckenzie.com">Lloyd McKenzie</a> или 
 <a href="mailto:david.hay25@gmail.com">David Hay</a>.
 </p>
 <p>
-Thanks for taking the time to review the FHIR specification.  We appreciate any feedback you can provide.
+Спасибо, что нашли время просмотреть спецификацию FHIR. Мы будем признательны за любую обратную связь от вас.
 </p>
 
-<h3>Balloting Roadmap</h3>
+<h3>План голосования</h3>
 
 <p>
-You can review which ever parts of the specification that are of interest in any order you wish.  However, if you are 
-not familiar with the FHIR specification, you may wish to follow this roadmap, by clicking on the <a href="documentation.html">Documentation</a> 
-link and read through at least the following:
+Вы можете просматривать любые интересующие вас разделы спецификации в любом порядке. Однако если вы еще не знакомы со спецификацией FHIR, можете следовать приведенному ниже плану, кликнув по ссылке <a href="documentation.html">Документация</a> и прочитав по крайней мере следующее:
 </p>
 <p>
-For context:
+Для введения в контекст:
 </p>
 <ul>
-  <li><a href="summary.html">1 page Summary (Glossy)</a></li>
-  <li><a href="overview-dev.html">Developer's Introduction</a></li>
-  <li><a href="overview-clinical.html">Clinical Introduction</a></li>
-  <li><a href="overview-arch.html">Architect's Introduction</a></li>
-  <li><a href="overview.html">Overview &amp; Roadmap</a></li>
-  <li><a href="versions.html">FHIR Timelines</a></li>
+  <li><a href="summary.html">Одностраничное введение</a></li>
+  <li><a href="overview-dev.html">Введение для разработчиков</a></li>
+  <li><a href="overview-clinical.html">Введение для медицинских работников</a></li>
+  <li><a href="overview-arch.html">Введение для архитекторов</a></li>
+  <li><a href="overview.html">Краткий обзор и план развития</a></li>
+  <li><a href="versions.html">Хронология FHIR</a></li>
 </ul>
 <p>
 To see scope:
 </p>
 <ul>
-  <li>Click on the <a href="resourcelist.html">Resources</a> link at the top to get a sense of what resources exist and maybe drill into a couple of them to see what 
-  they look like before coming back to the Documentation tab for more context</li>
+  <li>Кликните по ссылке <a href="resourcelist.html">Resources</a> наверху страницы, чтобы получить представление о том, какие ресурсы существуют и, возможно, углубиться в парочку из них, чтобы посмотреть, как они выглядят, прежде чем вернуться к странице документации для большего контекста.</li>
 </ul>
 <p>
-To understand base approach:
+Чтобы понять базовый подход:
 </p>
 <ul>
   <li><a href="resource.html">Base Resource</a></li>
@@ -123,21 +95,20 @@ To understand base approach:
   <li><a href="extensibility.html">Extensibility</a></li>
 </ul>
 <p>
-To understand key infrastructure:
+Чтобы понять основную инфраструктуру:
 </p>
 <ul>
-  <li><a href="datatypes.html">Data Types</a></li>
-  <li><a href="terminologies.html">Using Codes in Resources</a></li>
+  <li><a href="datatypes.html">Типы данных</a></li>
+  <li><a href="terminologies.html">Использование кодов в ресурсах</a></li>
 </ul>
 <p>
-For context for this ballot:
+Чтобы понять контекст данного голосования:
 </p>
 <ul>
-  <li><a href="todo.html">Outstanding Issues</a></li>
+  <li><a href="todo.html">Нерешенные вопросы</a></li>
 </ul>
 <p>
-Feel free to drill down into any other sections of interest.  If you want to ensure a complete review of the whole spec, the 
-<a href="toc.html">Table of Contents</a> may be a useful guide.
+Свободно переходить к любым интересующим вас разделам. Если вам нужен полный обзор всей спецификации, вам может пригодиться <a href="toc.html">Оглавление</a>.
 </p>
 
 </div>

@@ -12,6 +12,11 @@ grouping of resources which share a common property. Compartments have two princ
  <li>функционируют в качестве механизма доступа для быстрого поиска набора связанных ресурсов<!-- Function as an access mechanism for finding a set of related resources quickly --></li>
  <li>предоставляют определительную основу для быстрого применения контроля доступа к ресурсам<!-- Provide a definitional basis for applying access control to resources quickly --></li>
 </ul>
+<p><b>Note:</b></p>
+<p>
+At present, CompartmentDefinitions can <i>only</i> be defined by HL7 International.  This is because
+their existence creates significant impact on the behavior of servers.
+</p>
 </div> 
 
 <div> 

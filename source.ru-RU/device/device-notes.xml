@@ -6,14 +6,10 @@
 	<p>Примерная привязка, использованная в элементе device, взята из SNOMED CT. Однако есть и много других источников допустимых кодов для выбора типа устройства, включая:
 		<!-- The example binding used for the device element is from SNOMED CT. However, there are many other sources of possible codes for device type including: --></p>
 		<ul>
-    			<li><a href="https://www.gmdnagency.org/Info.aspx?pageid=1091">Глобальная номенклатура медицинских изделий</a></li>
-			<li><a href="https://rtmms.nist.gov/rtmms/index.htm">Rosetta Terminology Mapping (RTM)</a></li>
-			<li>Хранилище унифицированных идентификаторов устройств (UDI) (в США это база данных GUDID)</li>
-			<li>DI-часть (GTIN) UDI устройства</li>
-<!-- 			<li><a href="https://www.gmdnagency.org/Info.aspx?pageid=1091">Global Medical Device Nomenclature (GMDN&reg;)</a></li>
-			<li><a href="https://rtmms.nist.gov/rtmms/index.htm">Rosetta Terminology Mapping (RTM)</a></li>
-			<li>A uniform device identifier (UDI) repository (in the US this is the GUDID database)</li>
-			<li>The DI (GTIN) portion of the device’s UDI</li> -->
+    			<li><a href="https://www.gmdnagency.org/">Глобальная номенклатура медицинских изделий</a></li>
+			<li><a href="https://rtmms.nist.gov/rtmms/index.htm">Rosetta Terminology Mapping (RTM)</a></li>		
+<!-- 			<li><a href="https://www.gmdnagency.org/">Global Medical Device Nomenclature (GMDN&reg;)</a></li>
+			<li><a href="https://rtmms.nist.gov/rtmms/index.htm">Rosetta Terminology Mapping (RTM)</a></li> -->
 		</ul>
 		<p>Обратите внимание, что с помощью этих и других словарей могут предоставляться переводы кодов типов.
     <!-- Note that there may be translations of type code using one or more of these and other vocabularies --></p>

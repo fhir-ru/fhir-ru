@@ -14,7 +14,7 @@
 <div class="col-12">
 
 <h2>FHIR Life Cycle Page</h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: 3</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">STU 3</a></td></tr></table>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="versions.html#maturity">Уровень зрелости</a>: 3</td><td id="ballot"><a href="versions.html#levels">Статус голосования</a>: <a href="versions.html#std-process">Пробное использование</a></td></tr></table>
 
 <p>
 На этой странице приводится несколько вопросов, касающихся управления жизненным циклом ресурсов и их содержимого. В частности, данная страница описывает:
@@ -101,8 +101,7 @@ describes: -->
 <p>Примеры жизненного цикла запроса/заявки<!-- Examples of the request/order life cycle: --></p>
 <ul>
  <li>CommunicationRequest.status:  <%sclist CommunicationRequest.status%></li>
- <li>DeviceUseRequest.status: <%sclist DeviceUseRequest.status%></li>
- <li>DiagnosticRequest.status: <%sclist DiagnosticRequest.status%></li>
+ <li>DeviceRequest.status: <%sclist DeviceRequest.status%></li>
  <li>MedicationRequest.status: <%sclist MedicationRequest.status%></li>
  <li>ProcedureRequest.status: <%sclist ProcedureRequest.status%></li>
  <li>ReferralRequest.status: <%sclist ReferralRequest.status%></li>
@@ -175,12 +174,8 @@ might be published on the RESTful interface for the following reasons: -->
 <ul>
  <li>для отображения одного из пунктов списка текущих проблем пациента</li>
  <li>для отображения жалобы или диагноза из записи о случае обслуживания</li>
- <li>для отображения проблемы для исследования, выполненного системой диагностики в рамках пары<a href="diagnosticrequest.html">DiagnosticRequest</a>/<a href="diagnosticreport.html">DiagnosticReport</a></li>
+ <li>для отображения проблемы для исследования, выполненного системой диагностики в рамках пары <a href="procedurerequest.html">ProcedureRequest</a>/<a href="diagnosticreport.html">DiagnosticReport</a></li>
  <li>ресурсы были получены из другой системы как часть пакета направления, и считались текущими в той системе на момент их получения [в этой системе]</li>
-<!--  <li>to represent an item in a patient's curated problem list</li>
- <li>to represent a complaint or a diagnosis from an encounter record</li>
- <li>to represent a problem for investigation provided by a diagnostic system as part of a <a href="diagnosticrequest.html">DiagnosticRequest</a>/<a href="diagnosticreport.html">DiagnosticReport</a> pair</li>
- <li>the resources were received from another system as part of a referral package, and were current for that system when they were received</li> -->
 </ul>
 <p>
 В ресурсе Condition нет элемента, который мог бы передавать разницу между этими использованиями. В частности, может не быть способа различать текущие и прошлые ресурсы, без необходимости ретроспективного изменения ресурсов, что было бы проблематично с точки зрения целостности и электронных цифровых подписей.

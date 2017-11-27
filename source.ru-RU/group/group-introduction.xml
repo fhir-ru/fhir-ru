@@ -8,9 +8,9 @@
 <p>Ресурс Group используется в двух случаях:<!-- The group resource is used in one of two ways: --></p>
 <ol>
   <li>Для объединения в группу определенных людей, животных, устройств и т. п., которая отслеживается, проверяется или другим способом упоминается в рамках деятельности, связанной со здравоохранением</li>
-  <li>Чтобы задать набор "возможных" людей, животных, устройств и т. п., которые представляют интерес для каких-то будущих, связанных со здравоохранением активностей</li>
+  <li>Чтобы задать набор <i>возможных</i> людей, животных, устройств и т. п., которые представляют интерес для каких-то будущих, связанных со здравоохранением активностей</li>
 <!--   <li>To define a group of specific people, animals, devices, etc. that is being tracked, examined or otherwise referenced as part of healthcare-related activities</li>
-  <li>To define a set of *possible* people, animals, devices, etc. that are of interest for some intended future healthcare-related activities</li> -->
+  <li>To define a set of <i>possible</i> people, animals, devices, etc. that are of interest for some intended future healthcare-related activities</li> -->
 </ol>
 
 <p>Примеры для первого случая включают в себя групповую терапию или сеансы лечения, exposed entities, отслеживаемые в рамках общественного здравоохранения и т. п. Второй может использоваться для определения ожидаемых субъектов для клинического исследования. <!-- Examples of the former could include group therapy or treatment sessions, exposed entities tracked as part of public health, etc.  The latter might be used to define expected subjects for a clinical study. --></p>
@@ -57,14 +57,10 @@ of a FHIR <a href="documents.html">document</a>.  The full content of the docume
 often reference Lists as the focus of particular sections. -->
 </li>
 <li>
-Элемент <a href="domainresource.html">DomainResource</a>.<code>contained</code> позволяет многократно вкладывать ресурсы в любой DomainResource. Это особый тип группировки, где сгруппированные ресурсы теряют своё независимое существование - они перестают обладать собственными идентификаторами, их нельзя простым образом запрашивать независимо и т. п. Использование такой группировки - это технический механизм управления независимостью ресурсов, не имеющий влияния на смысловое значение. Вложенные ресурсы, ресурсы в бандлах и ресурсы по ссылкам передают один и тот же смысл.
-<!-- The <a href="domainresource.html">DomainResource</a>.<code>contained</code> element - allows multiple resources to be nested
-inside any DomainResource.  This is a special type of grouping where the grouped resources lose independent existence - they
-no longer have their own identifiers, can't easily be queried independently, etc.  Use of this grouping is a technical 
-mechanism for managing the independence of resources and has no impact on meaning.  Contained, bundles and remotely referenced
-resources convey the same meaning. -->
+Элемент <a href="domainresource.html">DomainResource</a>.<code>contained</code> позволяет многократно вкладывать ресурсы в любой DomainResource. Это особый тип группировки, где сгруппированные ресурсы теряют своё независимое существование - они перестают обладать собственными идентификаторами, их нельзя простым образом запрашивать независимо и т. п. Использование такой группировки - это технический механизм управления независимостью ресурсов, не имеющий влияния на смысловое значение.
 </li>
 </ul>
+Вложенные ресурсы, ресурсы в бандлах и ресурсы по ссылкам передают один и тот же смысл.
 
 </div>
 

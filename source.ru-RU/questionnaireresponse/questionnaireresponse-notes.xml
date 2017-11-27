@@ -5,21 +5,15 @@
 Примечания
 </h2>
 <ul>
-<li>QuestionnaireResponses могут создаваться клиницистами, самим пациентом или родственниками пациента (или даже владельцем в случае с животными). Клиницисты могут создавать QuestionnaireResponse, где ответы предоставляются другими лицами от имени пациента. Кроме того, информация, собранная для пациента, может быть о его родственниках (например в семейном анамнезе). Таким образом, QuestionnaireResponse делает различие между автором, предметом/субъектом и источником информации.
-<!-- QuestionnaireResponses can be authored by clinicians, the patient or a patient's relatives (or even the owner in the case of animals). Clinicians
-may author questionnaire responses, where the answers are provided by others on behalf of the patient. Additionally, information gathered for the
-purpose of a patient may be about the patient's relatives (e.g. in family anamnesis). Therefore, QuestionnaireResponse makes a distinction between the author,
-the subject and the source of information. --></li>
+<li>QuestionnaireResponses могут создаваться клиницистами, пациентами или родственниками пациентов (или даже владельцами в случае с животными). Клиницисты могут создавать QuestionnaireResponse, где ответы предоставляются другими лицами от имени пациента. Кроме того, информация, собранная от имени пациента, может быть о его родственниках (например в семейном анамнезе). Таким образом, QuestionnaireResponse делает различие между автором, субъектом и источником информации.
+</li>
 <li>QuestionnaireResponse может быть автономным или указывать на форму, которая определяет вопросы <a href="questionnaire.html">Questionnaire</a>. В этом втором случае связь между вопросами и группами в двух ресурсах устанавливается с помощью элемента <code>linkId</code>.
-<!-- A QuestionnaireResponse may be stand-alone or may point to the form that defines the questions in <a href="questionnaire.html">Questionnaire</a>.  In
-this second case, the linkage between the questions and groups in the two resources is established using the <code>linkId</code> element. --></li>
+</li>
+<li>If a QuestionnaireResponse references a Questionnaire, then the QuestionnaireResponse structure must be consistent with the Questionnaire (i.e. questions must be organized into the same groups, nested questions must still be nested, etc.)</li>
 <li>Из-за отсутствия явной поддержки вопросников в HL7v3, HL7 CDA документы часто использовали именованные разделы с Observations для моделирования вопросников. Сейчас вместо них в таких сценариях следует использовать ресурс QuestionnaireResponse.
-<!-- Because of the lack of explicit support for Questionnaires in <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3</a>, 
-<a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a> Documents frequently used named sections with
-Observations to model questionnaires. Such use cases should now utilize the QuestionnaireResponse resource instead. --></li>
+</li>
 <li>Элемент <i>encounter</i> ресурса QuestionnaireResponse может быть использован для связи с encounter, во время которого был сделан опрос по Questionnaire. Это может быть уместно, поскольку encounter дает контекст для ответов и может быть использован для связи информации в QuestionnaireResponse с заказами и наблюдениями, которые были сделаны в течение того же Encounter.
-<!-- The QuestionnaireResponse's <i>encounter</i> element can be used to link to the encounter when the questionnaire response was authored. This can be relevant since the
-encounter gives context to the answers and can be used to relate information in the QuestionnaireResponse to orders and observations that were done during the same Encounter. --></li>
+</li>
 <li>Порядок вопросов в группах, групп внутри групп и групп в вопросах является актуальным и должен сохраняться при отображении и вводе.
 <!-- The order of questions within groups, groups within groups and groups within questions is relevant and must be retained for display and capture. --></li>
 <li>Обычно пункты <a href="questionnaire.html">вопросника</a> типа <i>display</i> не отражаются в ответах на вопросник QuestionnaireResponse, поскольку целью ресурса QuestionnaireResponse является отражение информации, введённой на форме, а не инструкций из вопросника, хотя вопросы и заголовки групп сохраняются, чтобы ответы можно было интерпретировать независимо от вопросника.
