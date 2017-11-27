@@ -261,7 +261,7 @@ public class TurtleParser extends ParserBase {
   
   
   @Override
-  public void compose(Element e, OutputStream stream, OutputStyle style, String base) throws Exception {
+  public void compose(Element e, OutputStream stream, OutputStyle style, String base) throws IOException {
     this.base = base;
     
 		Turtle ttl = new Turtle();
@@ -271,7 +271,7 @@ public class TurtleParser extends ParserBase {
 
 
 
-  public void compose(Element e, Turtle ttl, String base) throws Exception {
+  public void compose(Element e, Turtle ttl, String base) {
     ttl.prefix("fhir", FHIR_URI_BASE);
     ttl.prefix("rdfs", "http://www.w3.org/2000/01/rdf-schema#");
     ttl.prefix("owl", "http://www.w3.org/2002/07/owl#");
@@ -329,7 +329,7 @@ public class TurtleParser extends ParserBase {
 			t.prefix("sct", "http://snomed.info/id/");
 			t.linkedPredicate("a", "sct:" + urlescape(code), null);
     } else if ("http://loinc.org".equals(system)) {
-			t.prefix("loinc", "http://loinc.org/owl#");
+			t.prefix("loinc", "http://loinc.org/rdf#");
 			t.linkedPredicate("a", "loinc:"+urlescape(code).toUpperCase(), null);
 		}  
 	}
@@ -341,7 +341,7 @@ public class TurtleParser extends ParserBase {
     else if (base.endsWith("#"))
       return "<" + base + e.getType() + "-" + id + ">";
     else
-      return "<" + Utilities.pathReverse(base, e.getType(), id) + ">";
+      return "<" + Utilities.pathURL(base, e.getType(), id) + ">";
   }
 
 	private String urlescape(String s) {

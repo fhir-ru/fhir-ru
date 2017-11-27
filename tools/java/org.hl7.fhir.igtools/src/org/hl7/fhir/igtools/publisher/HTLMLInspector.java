@@ -12,8 +12,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
-import org.hl7.fhir.dstu3.context.IWorkerContext.ILoggingService;
-import org.hl7.fhir.dstu3.context.IWorkerContext.ILoggingService.LogCategory;
+import org.hl7.fhir.r4.context.IWorkerContext.ILoggingService;
+import org.hl7.fhir.r4.context.IWorkerContext.ILoggingService.LogCategory;
 import org.hl7.fhir.exceptions.FHIRFormatError;
 import org.hl7.fhir.igtools.publisher.HTLMLInspector.NodeChangeType;
 import org.hl7.fhir.utilities.Utilities;
@@ -159,7 +159,7 @@ public class HTLMLInspector {
     for (String s : cache.keySet()) {
       LoadedFile lf = cache.get(s);
       if (lf.getXhtml() != null)
-        if (checkLinks(s, "", lf.getXhtml(), null, messages) != NodeChangeType.NONE) // returns true if changed
+        if (checkLinks(s, "", lf.getXhtml(), null, messages, false) != NodeChangeType.NONE) // returns true if changed
           saveFile(lf);
     }
  
@@ -255,8 +255,9 @@ public class HTLMLInspector {
   private void checkHtmlStructure(String s, XhtmlNode x, List<ValidationMessage> messages) {
     if (x.getNodeType() == NodeType.Document)
       x = x.getFirstElement();
-    if (!"html".equals(x.getName()))
-      messages.add(new ValidationMessage(Source.Publisher, IssueType.STRUCTURE, s, "Root node must be 'html', but is "+x.getName(), IssueSeverity.ERROR));
+    if (!"html".equals(x.getName()) && !"div".equals(x.getName()))
+      messages.add(new ValidationMessage(Source.Publisher, IssueType.STRUCTURE, s, "Root node must be 'html' or 'div', but is "+x.getName(), IssueSeverity.ERROR));
+    // We support div as well because with HTML 5, referenced files might just start with <div>
     // todo: check secure?
   }
 
@@ -269,7 +270,7 @@ public class HTLMLInspector {
       listTargets(c, targets);
   }
 
-  private NodeChangeType checkLinks(String s, String path, XhtmlNode x, String uuid, List<ValidationMessage> messages) throws IOException {
+  private NodeChangeType checkLinks(String s, String path, XhtmlNode x, String uuid, List<ValidationMessage> messages, boolean inPre) throws IOException {
     boolean changed = false;
     if (x.getName() != null)
       path = path + "/"+ x.getName();
@@ -287,7 +288,7 @@ public class HTLMLInspector {
     boolean nchanged = false;
     boolean nSelfChanged = false;
     for (XhtmlNode c : x.getChildNodes()) { 
-      NodeChangeType ct = checkLinks(s, path, c, nuid, messages);
+      NodeChangeType ct = checkLinks(s, path, c, nuid, messages, inPre || "pre".equals(x.getName()));
       if (ct == NodeChangeType.SELF) {
         nSelfChanged = true;
         nchanged = true;
@@ -297,7 +298,7 @@ public class HTLMLInspector {
     }
     if (nSelfChanged) {
       XhtmlNode a = new XhtmlNode(NodeType.Element);
-      a.setName("a").setAttribute("name", nuid).addText(" ");
+      a.setName("a").setAttribute("name", nuid).addText("\u200B");
       x.getChildNodes().add(0, a);
     } 
     if (changed)
@@ -329,7 +330,7 @@ public class HTLMLInspector {
       rref = Utilities.changeFileExt(ref, ".html");
     }
     String tgtList = "";
-    boolean resolved = Utilities.existsInList(ref, "qa.html", "http://hl7.org/fhir", "http://hl7.org", "http://www.hl7.org", "http://hl7.org/fhir/search.cfm") || ref.startsWith("http://gforge.hl7.org/gf/project/fhir/tracker/") || ref.startsWith("mailto:");
+    boolean resolved = Utilities.existsInList(ref, "qa.html", "http://hl7.org/fhir", "http://hl7.org", "http://www.hl7.org", "http://hl7.org/fhir/search.cfm") || ref.startsWith("http://gforge.hl7.org/gf/project/fhir/tracker/") || ref.startsWith("mailto:") || ref.startsWith("javascript:");
     if (!resolved)
       resolved = manual.contains(rref);
     if (!resolved && specs != null){

@@ -155,11 +155,13 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
       loadBytes(name, stream);
   }
 
-	public void connectToTSServer(String url) throws URISyntaxException {
+	public String connectToTSServer(String url) throws URISyntaxException {
 	  txServer = new FHIRToolingClient(url);
+	  txServer.setTimeout(30000);
+	  return txServer.getCapabilitiesStatementQuick().getSoftware().getVersion();
 	}
 
-	private void loadFromFile(InputStream stream, String name, IContextResourceLoader loader) throws IOException, FHIRException {
+	public void loadFromFile(InputStream stream, String name, IContextResourceLoader loader) throws IOException, FHIRException {
 		Resource f;
 		try {
 		  if (loader != null)
@@ -259,7 +261,7 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
       ProfileUtilities pu = new ProfileUtilities(this, msgs, this);
       pu.sortDifferential(sd, p, url, errors);
       for (String err : errors)
-        msgs.add(new ValidationMessage(Source.ProfileValidator, IssueType.EXCEPTION, "Error sorting Differential: "+err, ValidationMessage.IssueSeverity.ERROR));
+        msgs.add(new ValidationMessage(Source.ProfileValidator, IssueType.EXCEPTION,p.getUserString("path"), "Error sorting Differential: "+err, ValidationMessage.IssueSeverity.ERROR));
       pu.generateSnapshot(sd, p, p.getUrl(), p.getName());
       for (ValidationMessage msg : msgs) {
         if (msg.getLevel() == ValidationMessage.IssueSeverity.ERROR || msg.getLevel() == ValidationMessage.IssueSeverity.FATAL)
@@ -392,6 +394,23 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
 		if (uri.startsWith("http:") || uri.startsWith("urn:") ) {
 			if (uri.contains("#"))
 				uri = uri.substring(0, uri.indexOf("#"));
+			if (class_ == Resource.class) {
+        if (structures.containsKey(uri))
+          return (T) structures.get(uri);
+        if (valueSets.containsKey(uri))
+          return (T) valueSets.get(uri);
+        if (codeSystems.containsKey(uri))
+          return (T) codeSystems.get(uri);
+        if (operations.containsKey(uri))
+          return (T) operations.get(uri);
+        if (searchParameters.containsKey(uri))
+          return (T) searchParameters.get(uri);
+        if (maps.containsKey(uri))
+          return (T) maps.get(uri);
+        if (transforms.containsKey(uri))
+          return (T) transforms.get(uri);
+        return null;      
+			}
 			if (class_ == StructureDefinition.class) {
 				if (structures.containsKey(uri))
 					return (T) structures.get(uri);
@@ -663,6 +682,7 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
   public void setValidatorFactory(IValidatorFactory validatorFactory) {
     this.validatorFactory = validatorFactory;
   }
-  
+
+ 
   
 }

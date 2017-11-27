@@ -47,6 +47,7 @@ import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.output.ByteArrayOutputStream;
 import org.apache.commons.lang3.NotImplementedException;
 import org.hl7.fhir.dstu3.conformance.ProfileUtilities;
+import org.hl7.fhir.dstu3.conformance.ProfileUtilities.ProfileKnowledgeProvider;
 import org.hl7.fhir.dstu3.context.IWorkerContext;
 import org.hl7.fhir.dstu3.context.IWorkerContext.ValidationResult;
 import org.hl7.fhir.dstu3.formats.FormatUtilities;
@@ -59,6 +60,10 @@ import org.hl7.fhir.dstu3.model.Base64BinaryType;
 import org.hl7.fhir.dstu3.model.BooleanType;
 import org.hl7.fhir.dstu3.model.Bundle;
 import org.hl7.fhir.dstu3.model.Bundle.BundleEntryComponent;
+import org.hl7.fhir.dstu3.model.Bundle.BundleEntryRequestComponent;
+import org.hl7.fhir.dstu3.model.Bundle.BundleEntryResponseComponent;
+import org.hl7.fhir.dstu3.model.Bundle.BundleEntrySearchComponent;
+import org.hl7.fhir.dstu3.model.Bundle.BundleType;
 import org.hl7.fhir.dstu3.model.CapabilityStatement;
 import org.hl7.fhir.dstu3.model.CapabilityStatement.CapabilityStatementRestComponent;
 import org.hl7.fhir.dstu3.model.CapabilityStatement.CapabilityStatementRestResourceComponent;
@@ -87,6 +92,7 @@ import org.hl7.fhir.dstu3.model.ConceptMap.TargetElementComponent;
 import org.hl7.fhir.dstu3.model.ContactDetail;
 import org.hl7.fhir.dstu3.model.ContactPoint;
 import org.hl7.fhir.dstu3.model.ContactPoint.ContactPointSystem;
+import org.hl7.fhir.dstu3.model.DataElement;
 import org.hl7.fhir.dstu3.model.DateTimeType;
 import org.hl7.fhir.dstu3.model.DiagnosticReport;
 import org.hl7.fhir.dstu3.model.DomainResource;
@@ -101,8 +107,10 @@ import org.hl7.fhir.dstu3.model.HumanName;
 import org.hl7.fhir.dstu3.model.HumanName.NameUse;
 import org.hl7.fhir.dstu3.model.IdType;
 import org.hl7.fhir.dstu3.model.Identifier;
+import org.hl7.fhir.dstu3.model.ImplementationGuide;
 import org.hl7.fhir.dstu3.model.InstantType;
 import org.hl7.fhir.dstu3.model.Meta;
+import org.hl7.fhir.dstu3.model.MetadataResource;
 import org.hl7.fhir.dstu3.model.Narrative;
 import org.hl7.fhir.dstu3.model.Narrative.NarrativeStatus;
 import org.hl7.fhir.dstu3.model.OperationDefinition;
@@ -114,6 +122,7 @@ import org.hl7.fhir.dstu3.model.Period;
 import org.hl7.fhir.dstu3.model.PrimitiveType;
 import org.hl7.fhir.dstu3.model.Property;
 import org.hl7.fhir.dstu3.model.Quantity;
+import org.hl7.fhir.dstu3.model.Questionnaire;
 import org.hl7.fhir.dstu3.model.Range;
 import org.hl7.fhir.dstu3.model.Ratio;
 import org.hl7.fhir.dstu3.model.Reference;
@@ -141,6 +150,7 @@ import org.hl7.fhir.dstu3.model.ValueSet.ValueSetExpansionContainsComponent;
 import org.hl7.fhir.dstu3.model.ValueSet.ValueSetExpansionParameterComponent;
 import org.hl7.fhir.dstu3.terminologies.CodeSystemUtilities;
 import org.hl7.fhir.dstu3.terminologies.ValueSetExpander.ValueSetExpansionOutcome;
+import org.hl7.fhir.dstu3.utils.NarrativeGenerator.ResourceContext;
 import org.hl7.fhir.exceptions.DefinitionException;
 import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.exceptions.FHIRFormatError;
@@ -156,8 +166,47 @@ import org.hl7.fhir.utilities.xml.XmlGenerator;
 import org.w3c.dom.Element;
 
 import com.github.rjeschke.txtmark.Processor;
+import com.sun.webkit.BackForwardList;
 
 public class NarrativeGenerator implements INarrativeGenerator {
+
+  public class ResourceContext {
+    Bundle bundleResource;
+    
+    DomainResource resourceResource;
+    
+    public ResourceContext(Bundle bundle, DomainResource dr) {
+      super();
+      this.bundleResource = bundle;
+      this.resourceResource = dr;
+    }
+
+    public ResourceContext(Element bundle, Element doc) {
+    }
+
+    public ResourceContext(org.hl7.fhir.dstu3.elementmodel.Element bundle, org.hl7.fhir.dstu3.elementmodel.Element er) {
+    }
+
+    public Resource resolve(String value) {
+      if (value.startsWith("#")) {
+        for (Resource r : resourceResource.getContained()) {
+          if (r.getId().equals(value.substring(1)))
+            return r;
+        }
+        return null;
+      }
+      if (bundleResource != null) {
+        for (BundleEntryComponent be : bundleResource.getEntry()) {
+          if (be.getFullUrl().equals(value))
+            return be.getResource();
+          if (value.equals(be.getResource().fhirType()+"/"+be.getResource().getId()))
+            return be.getResource();
+        }
+      }
+      return null;
+    }
+
+  }
 
   private static final String ABSTRACT_CODE_HINT = "This code is not selectable ('Abstract')";
 
@@ -168,33 +217,50 @@ public class NarrativeGenerator implements INarrativeGenerator {
   }
 
   private Bundle bundle;
-
-  public boolean generate(Bundle b) throws EOperationOutcome, FHIRException, IOException {
+  private String definitionsTarget;
+  private String corePath;
+  private String destDir;
+  private ProfileKnowledgeProvider pkp;
+  
+  public boolean generate(Bundle b, boolean evenIfAlreadyHasNarrative) throws EOperationOutcome, FHIRException, IOException {
     boolean res = false;
     this.bundle = b;
     for (BundleEntryComponent be : b.getEntry()) {
       if (be.hasResource() && be.getResource() instanceof DomainResource) {
-        res = generate((DomainResource) be.getResource()) || res;
+        DomainResource dr = (DomainResource) be.getResource();
+        if (evenIfAlreadyHasNarrative || !dr.getText().hasDiv())
+          res = generate(new ResourceContext(b, dr), dr) || res;
       }
     }
     return res;
   }
 
   public boolean generate(DomainResource r) throws EOperationOutcome, FHIRException, IOException {
+    return generate(null, r);
+  }
+  
+  public boolean generate(ResourceContext rcontext, DomainResource r) throws EOperationOutcome, FHIRException, IOException {
+    if (rcontext == null)
+      rcontext = new ResourceContext(null, r);
+    
     if (r instanceof ConceptMap) {
-      return generate((ConceptMap) r); // Maintainer = Grahame
+      return generate(rcontext, (ConceptMap) r); // Maintainer = Grahame
     } else if (r instanceof ValueSet) {
-      return generate((ValueSet) r, true); // Maintainer = Grahame
+      return generate(rcontext, (ValueSet) r, true); // Maintainer = Grahame
     } else if (r instanceof CodeSystem) {
-      return generate((CodeSystem) r, true); // Maintainer = Grahame
+      return generate(rcontext, (CodeSystem) r, true); // Maintainer = Grahame
     } else if (r instanceof OperationOutcome) {
-      return generate((OperationOutcome) r); // Maintainer = Grahame
+      return generate(rcontext, (OperationOutcome) r); // Maintainer = Grahame
     } else if (r instanceof CapabilityStatement) {
-      return generate((CapabilityStatement) r);   // Maintainer = Grahame
+      return generate(rcontext, (CapabilityStatement) r);   // Maintainer = Grahame
     } else if (r instanceof CompartmentDefinition) {
-      return generate((CompartmentDefinition) r);   // Maintainer = Grahame
+      return generate(rcontext, (CompartmentDefinition) r);   // Maintainer = Grahame
     } else if (r instanceof OperationDefinition) {
-      return generate((OperationDefinition) r);   // Maintainer = Grahame
+      return generate(rcontext, (OperationDefinition) r);   // Maintainer = Grahame
+    } else if (r instanceof StructureDefinition) {
+      return generate(rcontext, (StructureDefinition) r);   // Maintainer = Grahame
+    } else if (r instanceof ImplementationGuide) {
+      return generate(rcontext, (ImplementationGuide) r);   // Maintainer = Lloyd (until Grahame wants to take over . . . :))
     } else if (r instanceof DiagnosticReport) {
       inject(r, generateDiagnosticReport(new ResourceWrapperDirect(r)),  NarrativeStatus.GENERATED);   // Maintainer = Grahame
       return true;
@@ -881,6 +947,11 @@ public class NarrativeGenerator implements INarrativeGenerator {
 
   // dom based version, for build program
   public String generate(Element doc) throws IOException, org.hl7.fhir.exceptions.FHIRException {
+    return generate(null, doc);
+  }
+  public String generate(ResourceContext rcontext, Element doc) throws IOException, org.hl7.fhir.exceptions.FHIRException {
+    if (rcontext == null)
+      rcontext = new ResourceContext(null, doc);
     String rt = "http://hl7.org/fhir/StructureDefinition/"+doc.getNodeName();
     StructureDefinition p = context.fetchResource(StructureDefinition.class, rt);
     return generateByProfile(doc, p, true);
@@ -888,6 +959,13 @@ public class NarrativeGenerator implements INarrativeGenerator {
 
   // dom based version, for build program
   public String generate(org.hl7.fhir.dstu3.elementmodel.Element er, boolean showCodeDetails) throws IOException, DefinitionException {
+    return generate(null, er, showCodeDetails);
+  }
+  
+  public String generate(ResourceContext rcontext, org.hl7.fhir.dstu3.elementmodel.Element er, boolean showCodeDetails) throws IOException, DefinitionException {
+    if (rcontext == null)
+      rcontext = new ResourceContext(null, er);
+    
     XhtmlNode x = new XhtmlNode(NodeType.Element, "div");
     x.para().b().tx("Generated Narrative"+(showCodeDetails ? " with Details" : ""));
     try {
@@ -1987,22 +2065,22 @@ public class NarrativeGenerator implements INarrativeGenerator {
   }
 
 
-  public boolean generate(ConceptMap cm) throws FHIRFormatError, DefinitionException, IOException {
+  public boolean generate(ResourceContext rcontext, ConceptMap cm) throws FHIRFormatError, DefinitionException, IOException {
     XhtmlNode x = new XhtmlNode(NodeType.Element, "div");
     x.h2().addText(cm.getName()+" ("+cm.getUrl()+")");
 
     XhtmlNode p = x.para();
     p.tx("Mapping from ");
-    AddVsRef(cm.getSource() instanceof Reference ? ((Reference) cm.getSource()).getReference() : ((UriType) cm.getSource()).asStringValue(), p);
+    AddVsRef(rcontext, cm.getSource() instanceof Reference ? ((Reference) cm.getSource()).getReference() : ((UriType) cm.getSource()).asStringValue(), p);
     p.tx(" to ");
-    AddVsRef(cm.getSource() instanceof Reference ? ((Reference) cm.getTarget()).getReference() : ((UriType) cm.getTarget()).asStringValue(), p);
+    AddVsRef(rcontext, cm.getSource() instanceof Reference ? ((Reference) cm.getTarget()).getReference() : ((UriType) cm.getTarget()).asStringValue(), p);
 
     p = x.para();
     if (cm.getExperimental())
       p.addText(Utilities.capitalize(cm.getStatus().toString())+" (not intended for production usage). ");
     else
       p.addText(Utilities.capitalize(cm.getStatus().toString())+". ");
-    p.tx("Published on "+cm.getDateElement().toHumanDisplay()+" by "+cm.getPublisher());
+    p.tx("Published on "+(cm.hasDate() ? cm.getDateElement().toHumanDisplay() : "??")+" by "+cm.getPublisher());
     if (!cm.getContact().isEmpty()) {
       p.tx(" (");
       boolean firsti = true;
@@ -2328,7 +2406,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
    * @throws FHIRFormatError
    * @throws Exception
    */
-  public boolean generate(CodeSystem cs, boolean header) throws FHIRFormatError, DefinitionException, IOException {
+  public boolean generate(ResourceContext rcontext, CodeSystem cs, boolean header) throws FHIRFormatError, DefinitionException, IOException {
     XhtmlNode x = new XhtmlNode(NodeType.Element, "div");
     boolean hasExtensions = false;
     hasExtensions = generateDefinition(x, cs, header);
@@ -2486,19 +2564,19 @@ public class NarrativeGenerator implements INarrativeGenerator {
    * @throws IOException
    * @throws Exception
    */
-  public boolean generate(ValueSet vs, boolean header) throws FHIRException, IOException {
-    generate(vs, null, header);
+  public boolean generate(ResourceContext rcontext, ValueSet vs, boolean header) throws FHIRException, IOException {
+    generate(rcontext, vs, null, header);
     return true;
   }
 
-  public void generate(ValueSet vs, ValueSet src, boolean header) throws FHIRException, IOException {
+  public void generate(ResourceContext rcontext, ValueSet vs, ValueSet src, boolean header) throws FHIRException, IOException {
     XhtmlNode x = new XhtmlNode(NodeType.Element, "div");
     boolean hasExtensions;
     if (vs.hasExpansion()) {
       // for now, we just accept an expansion if there is one
       hasExtensions = generateExpansion(x, vs, src, header);
     } else {
-      hasExtensions = generateComposition(x, vs, header);
+      hasExtensions = generateComposition(rcontext, x, vs, header);
     }
     inject(vs, x, hasExtensions ? NarrativeStatus.EXTENSIONS :  NarrativeStatus.GENERATED);
   }
@@ -3131,7 +3209,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
 	  return mappings;
   }
 
-  private boolean generateComposition(XhtmlNode x, ValueSet vs, boolean header) throws FHIRException, IOException {
+  private boolean generateComposition(ResourceContext rcontext, XhtmlNode x, ValueSet vs, boolean header) throws FHIRException, IOException {
 	  boolean hasExtensions = false;
     List<String> langs = new ArrayList<String>();
 
@@ -3148,10 +3226,10 @@ public class NarrativeGenerator implements INarrativeGenerator {
     XhtmlNode ul = x.ul();
     XhtmlNode li;
     for (ConceptSetComponent inc : vs.getCompose().getInclude()) {
-      hasExtensions = genInclude(ul, inc, "Include", langs) || hasExtensions;
+      hasExtensions = genInclude(rcontext, ul, inc, "Include", langs) || hasExtensions;
     }
     for (ConceptSetComponent exc : vs.getCompose().getExclude()) {
-      hasExtensions = genInclude(ul, exc, "Exclude", langs) || hasExtensions;
+      hasExtensions = genInclude(rcontext, ul, exc, "Exclude", langs) || hasExtensions;
     }
 
     // now, build observed languages
@@ -3188,11 +3266,24 @@ public class NarrativeGenerator implements INarrativeGenerator {
       }
     }
 
-  private void AddVsRef(String value, XhtmlNode li) {
-
-    ValueSet vs = context.fetchResource(ValueSet.class, value);
+  private void AddVsRef(ResourceContext rcontext, String value, XhtmlNode li) {
+    Resource res = rcontext == null ? null : rcontext.resolve(value); 
+    if (res != null && !(res instanceof MetadataResource)) {
+      li.addText(value);
+      return;      
+    }      
+    MetadataResource vs = (MetadataResource) res;
+    if (vs == null)
+    		vs = context.fetchResource(ValueSet.class, value);
+    if (vs == null)
+    		vs = context.fetchResource(StructureDefinition.class, value);
+//    if (vs == null)
+    	//      vs = context.fetchResource(DataElement.class, value);
+    if (vs == null)
+    		vs = context.fetchResource(Questionnaire.class, value);
     if (vs != null) {
       String ref = (String) vs.getUserData("path");
+      
       ref = adjustForPath(ref);
       XhtmlNode a = li.ah(ref == null ? "??" : ref.replace("\\", "/"));
       a.addText(value);
@@ -3209,7 +3300,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
 	    }
 	    else {
 	      if (value.startsWith("http://hl7.org") && !Utilities.existsInList(value, "http://hl7.org/fhir/sid/icd-10-us"))
-	        throw new Error("Unable to resolve value set "+value);
+	        System.out.println("Unable to resolve value set "+value);
 	      li.addText(value);
     }
   }
@@ -3222,7 +3313,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
       return prefix+ref;
   }
 
-  private boolean genInclude(XhtmlNode ul, ConceptSetComponent inc, String type, List<String> langs) throws FHIRException {
+  private boolean genInclude(ResourceContext rcontext, XhtmlNode ul, ConceptSetComponent inc, String type, List<String> langs) throws FHIRException {
     boolean hasExtensions = false;
     XhtmlNode li;
     li = ul.li();
@@ -3312,7 +3403,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
             first = false;
           else
             li.tx(", ");
-          AddVsRef(vs.asStringValue(), li);
+          AddVsRef(rcontext, vs.asStringValue(), li);
         }
       }
     } else {
@@ -3324,7 +3415,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
           first = false;
         else
           li.tx(", ");
-        AddVsRef(vs.asStringValue(), li);
+        AddVsRef(rcontext, vs.asStringValue(), li);
       }
     }
     return hasExtensions;
@@ -3479,7 +3570,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
    * @throws DefinitionException
    * @throws Exception
    */
-  public boolean generate(OperationOutcome op) throws DefinitionException {
+  public boolean generate(ResourceContext rcontext, OperationOutcome op) throws DefinitionException {
     XhtmlNode x = new XhtmlNode(NodeType.Element, "div");
     boolean hasSource = false;
     boolean success = true;
@@ -3565,10 +3656,28 @@ public class NarrativeGenerator implements INarrativeGenerator {
 	  return null;
   }
 
-	public boolean generate(OperationDefinition opd) throws EOperationOutcome, FHIRException, IOException {
+  public boolean generate(ResourceContext rcontext, StructureDefinition sd) throws EOperationOutcome, FHIRException, IOException {
+    ProfileUtilities pu = new ProfileUtilities(context, null, pkp);
+    XhtmlNode x = new XhtmlNode(NodeType.Element, "div");
+    x.getChildNodes().add(pu.generateTable(definitionsTarget, sd, true, destDir, false, sd.getId(), false, corePath, "", false, false));
+    inject(sd, x, NarrativeStatus.GENERATED);
+    return true;
+  }
+  public boolean generate(ResourceContext rcontext, ImplementationGuide ig) throws EOperationOutcome, FHIRException, IOException {
+    XhtmlNode x = new XhtmlNode(NodeType.Element, "div");
+    x.h2().addText(ig.getName());
+    x.para().tx("The official URL for this implementation guide is: ");
+    x.pre().tx(ig.getUrl());
+    addMarkdown(x, ig.getDescription());
+    inject(ig, x, NarrativeStatus.GENERATED);
+    return true;
+  }
+	public boolean generate(ResourceContext rcontext, OperationDefinition opd) throws EOperationOutcome, FHIRException, IOException {
     XhtmlNode x = new XhtmlNode(NodeType.Element, "div");
     x.h2().addText(opd.getName());
     x.para().addText(Utilities.capitalize(opd.getKind().toString())+": "+opd.getName());
+    x.para().tx("The official URL for this operation definition is: ");
+    x.pre().tx(opd.getUrl());
     addMarkdown(x, opd.getDescription());
 
     if (opd.getSystem())
@@ -3590,14 +3699,14 @@ public class NarrativeGenerator implements INarrativeGenerator {
     tr.td().b().tx("Binding");
     tr.td().b().tx("Documentation");
     for (OperationDefinitionParameterComponent p : opd.getParameter()) {
-      genOpParam(tbl, "", p);
+      genOpParam(rcontext, tbl, "", p);
     }
     addMarkdown(x, opd.getComment());
     inject(opd, x, NarrativeStatus.GENERATED);
     return true;
 	}
 
-	private void genOpParam(XhtmlNode tbl, String path, OperationDefinitionParameterComponent p) throws EOperationOutcome, FHIRException, IOException {
+	private void genOpParam(ResourceContext rcontext, XhtmlNode tbl, String path, OperationDefinitionParameterComponent p) throws EOperationOutcome, FHIRException, IOException {
 		XhtmlNode tr;
       tr = tbl.tr();
       tr.td().addText(p.getUse().toString());
@@ -3607,7 +3716,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
       XhtmlNode td = tr.td();
       if (p.hasBinding() && p.getBinding().hasValueSet()) {
         if (p.getBinding().getValueSet() instanceof Reference)
-          AddVsRef(p.getBinding().getValueSetReference().getReference(), td);
+          AddVsRef(rcontext, p.getBinding().getValueSetReference().getReference(), td);
         else
           td.ah(p.getBinding().getValueSetUriType().getValue()).tx("External Reference");
         td.tx(" ("+p.getBinding().getStrength().getDisplay()+")");
@@ -3615,7 +3724,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
       addMarkdown(tr.td(), p.getDocumentation());
       if (!p.hasType()) {
 			for (OperationDefinitionParameterComponent pp : p.getPart()) {
-				genOpParam(tbl, path+p.getName()+".", pp);
+				genOpParam(rcontext, tbl, path+p.getName()+".", pp);
         }
       }
     }
@@ -3657,7 +3766,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
 	  }
   }
 
-  public boolean generate(CompartmentDefinition cpd) {
+  public boolean generate(ResourceContext rcontext, CompartmentDefinition cpd) {
     StringBuilder in = new StringBuilder();
     StringBuilder out = new StringBuilder();
     for (CompartmentDefinitionResourceComponent cc: cpd.getResource()) {
@@ -3691,7 +3800,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
     }
   }
 
-  public boolean generate(CapabilityStatement conf) throws FHIRFormatError, DefinitionException, IOException {
+  public boolean generate(ResourceContext rcontext, CapabilityStatement conf) throws FHIRFormatError, DefinitionException, IOException {
     XhtmlNode x = new XhtmlNode(NodeType.Element, "div");
     x.h2().addText(conf.getName());
     addMarkdown(x, conf.getDescription());
@@ -4039,4 +4148,132 @@ public class NarrativeGenerator implements INarrativeGenerator {
     return new ArrayList<NarrativeGenerator.ObservationNode>();
   }
 
+  public XhtmlNode renderBundle(Bundle b) throws FHIRException {
+    if (b.getType() == BundleType.DOCUMENT) {
+      if (!b.hasEntry() || !(b.getEntryFirstRep().hasResource() && b.getEntryFirstRep().getResource() instanceof Composition))
+        throw new FHIRException("Invalid document - first entry is not a Composition");
+      Composition dr = (Composition) b.getEntryFirstRep().getResource();
+      return dr.getText().getDiv();
+    } else  {
+      XhtmlNode root = new XhtmlNode(NodeType.Element, "div");
+      root.para().addText("Bundle "+b.getId()+" of type "+b.getType().toCode());
+      int i = 0;
+      for (BundleEntryComponent be : b.getEntry()) {
+        root.hr();
+        root.para().addText("Entry "+Integer.toString(i)+(be.hasFullUrl() ? "Full URL = " + be.getFullUrl() : ""));
+        if (be.hasRequest())
+          renderRequest(root, be.getRequest());
+        if (be.hasSearch())
+          renderSearch(root, be.getSearch());
+        if (be.hasResponse())
+          renderResponse(root, be.getResponse());
+        if (be.hasResource()) {
+          root.para().addText("Resource "+be.getResource().fhirType()+":");
+          if (be.hasResource() && be.getResource() instanceof DomainResource) {
+            DomainResource dr = (DomainResource) be.getResource();
+            if ( dr.getText().hasDiv())
+              root.blockquote().getChildNodes().addAll(dr.getText().getDiv().getChildNodes());
+          }
+        }
+      }
+      return root;
+    }
+  }
+
+  private void renderSearch(XhtmlNode root, BundleEntrySearchComponent search) {
+    StringBuilder b = new StringBuilder();
+    b.append("Search: ");
+    if (search.hasMode())
+      b.append("mode = "+search.getMode().toCode());
+    if (search.hasScore()) {
+      if (search.hasMode())
+        b.append(",");
+      b.append("score = "+search.getScore());
+    }
+    root.para().addText(b.toString());    
+  }
+
+  private void renderResponse(XhtmlNode root, BundleEntryResponseComponent response) {
+    root.para().addText("Request:");
+    StringBuilder b = new StringBuilder();
+    b.append(response.getStatus()+"\r\n");
+    if (response.hasLocation())
+      b.append("Location: "+response.getLocation()+"\r\n");
+    if (response.hasEtag())
+      b.append("E-Tag: "+response.getEtag()+"\r\n");
+    if (response.hasLastModified())
+      b.append("LastModified: "+response.getEtag()+"\r\n");
+    root.pre().addText(b.toString());    
+  }
+
+  private void renderRequest(XhtmlNode root, BundleEntryRequestComponent request) {
+    root.para().addText("Response:");
+    StringBuilder b = new StringBuilder();
+    b.append(request.getMethod()+" "+request.getUrl()+"\r\n");
+    if (request.hasIfNoneMatch())
+      b.append("If-None-Match: "+request.getIfNoneMatch()+"\r\n");
+    if (request.hasIfModifiedSince())
+      b.append("If-Modified-Since: "+request.getIfModifiedSince()+"\r\n");
+    if (request.hasIfMatch())
+      b.append("If-Match: "+request.getIfMatch()+"\r\n");
+    if (request.hasIfNoneExist())
+      b.append("If-None-Exist: "+request.getIfNoneExist()+"\r\n");
+    root.pre().addText(b.toString());    
+  }
+
+  public XhtmlNode renderBundle(org.hl7.fhir.dstu3.elementmodel.Element element) throws FHIRException {
+    XhtmlNode root = new XhtmlNode(NodeType.Element, "div");
+    for (Base b : element.listChildrenByName("entry")) {
+      XhtmlNode c = getHtmlForResource(((org.hl7.fhir.dstu3.elementmodel.Element) b).getNamedChild("resource"));
+      if (c != null)
+        root.getChildNodes().addAll(c.getChildNodes());
+      root.hr();
+    }
+    return root;
+  }
+
+  private XhtmlNode getHtmlForResource(org.hl7.fhir.dstu3.elementmodel.Element element) {
+    org.hl7.fhir.dstu3.elementmodel.Element text = element.getNamedChild("text");
+    if (text == null)
+      return null;
+    org.hl7.fhir.dstu3.elementmodel.Element div = text.getNamedChild("div");
+    if (div == null)
+      return null;
+    else
+      return div.getXhtml();
+  }
+
+  public String getDefinitionsTarget() {
+    return definitionsTarget;
+  }
+
+  public void setDefinitionsTarget(String definitionsTarget) {
+    this.definitionsTarget = definitionsTarget;
+  }
+
+  public String getCorePath() {
+    return corePath;
+  }
+
+  public void setCorePath(String corePath) {
+    this.corePath = corePath;
+  }
+
+  public String getDestDir() {
+    return destDir;
+  }
+
+  public void setDestDir(String destDir) {
+    this.destDir = destDir;
+  }
+
+  public ProfileKnowledgeProvider getPkp() {
+    return pkp;
+  }
+
+  public void setPkp(ProfileKnowledgeProvider pkp) {
+    this.pkp = pkp;
+  }
+
+  
 }

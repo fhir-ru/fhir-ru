@@ -3,6 +3,7 @@ package org.hl7.fhir.dstu3.elementmodel;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -282,7 +283,7 @@ public class XmlParser extends ParserBase {
     				}
     			}
       	} else
-          logError(line(child), col(child), path, IssueType.STRUCTURE, "Undefined element '"+child.getLocalName()+'"', IssueSeverity.ERROR);    		
+          logError(line(child), col(child), path, IssueType.STRUCTURE, "Undefined element '"+child.getLocalName()+"'", IssueSeverity.ERROR);    		
     	} else if (child.getNodeType() == Node.CDATA_SECTION_NODE){
         logError(line(child), col(child), path, IssueType.STRUCTURE, "CDATA is not allowed", IssueSeverity.ERROR);      		
     	} else if (!Utilities.existsInList(child.getNodeType(), 3, 8)) {
@@ -382,7 +383,7 @@ public class XmlParser extends ParserBase {
   }
 
 	@Override
-  public void compose(Element e, OutputStream stream, OutputStyle style, String base) throws Exception {
+  public void compose(Element e, OutputStream stream, OutputStyle style, String base) throws IOException {
     XMLWriter xml = new XMLWriter(stream, "UTF-8");
     xml.setPretty(style == OutputStyle.PRETTY);
     xml.start();

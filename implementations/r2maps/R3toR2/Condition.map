@@ -1,12 +1,12 @@
 ﻿map "http://hl7.org/fhir/StructureMap/Condition3to2" = "R3 to R2 Conversion for Condition"
 
 conceptmap "ConditionClinicalStatus" {
-  prefix s = "http://hl7.org/fhir/devicestatus"
-  prefix t = "http://hl7.org/fhir/devicestatus"
+  prefix s = "http://hl7.org/fhir/ValueSet/condition-clinical"
+  prefix t = "http://hl7.org/fhir/ValueSet/condition-clinical"
 
-  s:available	 = t:active 
-  s:"not-available" = t:inactive
-  s:"entered-in-error" = t:"entered-in-error"
+  unmapped for s = provided
+  
+  s:recurrence = t:relapse
 }
 
 
@@ -34,6 +34,10 @@ group for type+types  Condition extends DomainResource
   "Condition-stage" : for src.stage as vs0 make tgt.stage as vt0 then cndStage(vs0, vt0)
   "Condition-evidence" : for src.evidence as vs0 make tgt.evidence as vt0 then cndEvidence(vs0, vt0)
   "Condition-bodySite" : for src.bodySite make tgt.bodySite
+  "Condition-note" : for src.note as n then {
+    "Condition.notes-text" : for n.text make tgt.notes
+  }
+  
 endgroup
 
 group cndStage extends BackboneElement

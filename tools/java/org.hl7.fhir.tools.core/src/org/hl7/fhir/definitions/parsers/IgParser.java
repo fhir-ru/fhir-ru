@@ -20,27 +20,27 @@ import org.hl7.fhir.definitions.model.LogicalModel;
 import org.hl7.fhir.definitions.model.Profile;
 import org.hl7.fhir.definitions.model.WorkGroup;
 import org.hl7.fhir.definitions.model.Profile.ConformancePackageSourceType;
-import org.hl7.fhir.dstu3.conformance.ProfileUtilities;
-import org.hl7.fhir.dstu3.conformance.ProfileUtilities.ProfileKnowledgeProvider;
-import org.hl7.fhir.dstu3.formats.XmlParser;
-import org.hl7.fhir.dstu3.model.CodeSystem;
-import org.hl7.fhir.dstu3.model.ConceptMap;
-import org.hl7.fhir.dstu3.model.DateTimeType;
-import org.hl7.fhir.dstu3.model.Extension;
-import org.hl7.fhir.dstu3.model.ImplementationGuide;
-import org.hl7.fhir.dstu3.model.ImplementationGuide.GuideDependencyType;
-import org.hl7.fhir.dstu3.model.ImplementationGuide.GuidePageKind;
-import org.hl7.fhir.dstu3.model.ImplementationGuide.ImplementationGuideDependencyComponent;
-import org.hl7.fhir.dstu3.model.ImplementationGuide.ImplementationGuidePackageComponent;
-import org.hl7.fhir.dstu3.model.ImplementationGuide.ImplementationGuidePackageResourceComponent;
-import org.hl7.fhir.dstu3.model.ImplementationGuide.ImplementationGuidePageComponent;
-import org.hl7.fhir.dstu3.model.Resource;
-import org.hl7.fhir.dstu3.model.ResourceType;
-import org.hl7.fhir.dstu3.model.StructureDefinition;
-import org.hl7.fhir.dstu3.model.StructureDefinition.StructureDefinitionKind;
-import org.hl7.fhir.dstu3.model.UriType;
-import org.hl7.fhir.dstu3.model.ValueSet;
-import org.hl7.fhir.dstu3.utils.ToolingExtensions;
+import org.hl7.fhir.r4.conformance.ProfileUtilities;
+import org.hl7.fhir.r4.conformance.ProfileUtilities.ProfileKnowledgeProvider;
+import org.hl7.fhir.r4.formats.XmlParser;
+import org.hl7.fhir.r4.model.CodeSystem;
+import org.hl7.fhir.r4.model.ConceptMap;
+import org.hl7.fhir.r4.model.DateTimeType;
+import org.hl7.fhir.r4.model.Extension;
+import org.hl7.fhir.r4.model.ImplementationGuide;
+import org.hl7.fhir.r4.model.ImplementationGuide.GuideDependencyType;
+import org.hl7.fhir.r4.model.ImplementationGuide.GuidePageKind;
+import org.hl7.fhir.r4.model.ImplementationGuide.ImplementationGuideDependencyComponent;
+import org.hl7.fhir.r4.model.ImplementationGuide.ImplementationGuidePackageComponent;
+import org.hl7.fhir.r4.model.ImplementationGuide.ImplementationGuidePackageResourceComponent;
+import org.hl7.fhir.r4.model.ImplementationGuide.ImplementationGuidePageComponent;
+import org.hl7.fhir.r4.model.Resource;
+import org.hl7.fhir.r4.model.ResourceType;
+import org.hl7.fhir.r4.model.StructureDefinition;
+import org.hl7.fhir.r4.model.StructureDefinition.StructureDefinitionKind;
+import org.hl7.fhir.r4.model.UriType;
+import org.hl7.fhir.r4.model.ValueSet;
+import org.hl7.fhir.r4.utils.ToolingExtensions;
 import org.hl7.fhir.igtools.spreadsheets.CodeSystemConvertor;
 import org.hl7.fhir.igtools.spreadsheets.MappingSpace;
 import org.hl7.fhir.tools.publisher.BuildWorkerContext;
@@ -193,7 +193,7 @@ public class IgParser {
             sd.setUserData(ToolResourceUtilities.NAME_RES_IG, igd.getCode());
             ToolResourceUtilities.updateUsage(sd, igd.getCode());
             
-            this.context.seeExtensionDefinition("http://hl7.org/fhir", sd);            
+            this.context.cacheResource(sd);            
           } else {
             Profile pr = new Profile(igd.getCode());
             pr.setSource(fn.getAbsolutePath());
@@ -234,7 +234,7 @@ public class IgParser {
           pr.setSource(fn.getAbsolutePath());
           pr.setSourceType(ConformancePackageSourceType.Spreadsheet);
           SpreadsheetParser sparser = new SpreadsheetParser(pr.getCategory(), new CSFileInputStream(pr.getSource()), Utilities.noString(pr.getId()) ? pr.getSource() : pr.getId(), igd, 
-                rootDir, logger, registry, context.getVersion(), context, genDate, false, igd.getExtensions(), pkp, false, committee, mappings, profileIds, codeSystems, maps, workgroups);
+                rootDir, logger, registry, context.getVersion(), context, genDate, false, pkp, false, committee, mappings, profileIds, codeSystems, maps, workgroups);
           sparser.getBindings().putAll(commonBindings);
           sparser.setFolder(Utilities.getDirectoryForFile(pr.getSource()));
           sparser.parseConformancePackage(pr, null, Utilities.getDirectoryForFile(pr.getSource()), pr.getCategory(), issues, null);
@@ -266,7 +266,7 @@ public class IgParser {
           if (s.endsWith("-spreadsheet.xml"))
             s = s.substring(0, s.length()-16);
           String id = igd.getCode()+"-"+s;
-          SpreadsheetParser sparser = new SpreadsheetParser(igd.getCode(), new CSFileInputStream(fn), id, igd, rootDir, logger, registry, context.getVersion(), context, genDate, false, igd.getExtensions(), pkp, false, committee, mappings, profileIds, codeSystems, maps, workgroups);
+          SpreadsheetParser sparser = new SpreadsheetParser(igd.getCode(), new CSFileInputStream(fn), id, igd, rootDir, logger, registry, context.getVersion(), context, genDate, false, pkp, false, committee, mappings, profileIds, codeSystems, maps, workgroups);
           sparser.getBindings().putAll(commonBindings);
           sparser.setFolder(Utilities.getDirectoryForFile(fn.getAbsolutePath()));
           LogicalModel lm = sparser.parseLogicalModel();

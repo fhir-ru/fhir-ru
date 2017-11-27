@@ -50,14 +50,14 @@ import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.SearchParameterDefn;
 import org.hl7.fhir.definitions.model.SearchParameterDefn.SearchType;
 import org.hl7.fhir.definitions.model.W5Entry;
-import org.hl7.fhir.dstu3.model.CodeSystem;
-import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionComponent;
-import org.hl7.fhir.dstu3.model.Enumerations.BindingStrength;
-import org.hl7.fhir.dstu3.model.ValueSet;
-import org.hl7.fhir.dstu3.model.ValueSet.ConceptSetComponent;
-import org.hl7.fhir.dstu3.terminologies.ValueSetUtilities;
-import org.hl7.fhir.dstu3.utils.Translations;
-import org.hl7.fhir.dstu3.validation.BaseValidator;
+import org.hl7.fhir.r4.model.CodeSystem;
+import org.hl7.fhir.r4.model.CodeSystem.ConceptDefinitionComponent;
+import org.hl7.fhir.r4.model.Enumerations.BindingStrength;
+import org.hl7.fhir.r4.model.ValueSet;
+import org.hl7.fhir.r4.model.ValueSet.ConceptSetComponent;
+import org.hl7.fhir.r4.terminologies.ValueSetUtilities;
+import org.hl7.fhir.r4.utils.Translations;
+import org.hl7.fhir.r4.validation.BaseValidator;
 import org.hl7.fhir.igtools.spreadsheets.TypeRef;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.validation.ValidationMessage;
@@ -571,7 +571,7 @@ public class ResourceValidator extends BaseValidator {
     rule(errors, IssueType.STRUCTURE, path, !e.getDefinition().toLowerCase().startsWith("this is"), "Definition should not start with 'this is'");
     rule(errors, IssueType.STRUCTURE, path, e.getDefinition().endsWith(".") || e.getDefinition().endsWith("?") , "Definition should end with '.' or '?', but is '"+e.getDefinition()+"'");
     if (e.usesType("string") && e.usesType("CodeableConcept"))
-      rule(errors, IssueType.STRUCTURE, path, e.getComments().contains("string") && e.getComments().contains("CodeableConcept"), "Element type cannot have both string and CodeableConcept unless the difference between their usage is explained in the comments");
+      rule(errors, IssueType.STRUCTURE, path, e.hasComments() && e.getComments().contains("string") && e.getComments().contains("CodeableConcept"), "Element type cannot have both string and CodeableConcept unless the difference between their usage is explained in the comments");
     warning(errors, IssueType.BUSINESSRULE, path, Utilities.noString(e.getTodo()), "Element has a todo associated with it ("+e.getTodo()+")");
     
     if (!Utilities.noString(e.getW5())) {
@@ -644,7 +644,7 @@ public class ResourceValidator extends BaseValidator {
     }
 		
 		if (e.hasBinding()) {
-		  rule(errors, IssueType.STRUCTURE, path, e.typeCode().equals("code") || e.typeCode().contains("Coding") 
+		  rule(errors, IssueType.STRUCTURE, path, e.typeCode().equals("code") || e.typeCode().equals("id") || e.typeCode().contains("Coding") 
 				  || e.typeCode().contains("CodeableConcept") || e.typeCode().equals("uri"), "Can only specify bindings for coded data types");
 		  if (e.getBinding().getValueSet() != null && e.getBinding().getValueSet().getName() == null)
 		    throw new Error("unnamed value set on "+e.getBinding().getName());
@@ -955,7 +955,7 @@ public class ResourceValidator extends BaseValidator {
 
   // grand fathered in, to be removed
 	private boolean isExemptFromProperBindingRules(String path) {
-    return Utilities.existsInList(path, "ModuleMetadata.type", "ActionDefinition.type", "ElementDefinition.type.code", "Account.status", "MedicationOrder.category", "MedicationStatement.category", "Sequence.type", "StructureDefinition.type");
+    return Utilities.existsInList(path, "ModuleMetadata.type", "ActionDefinition.type", "ElementDefinition.type.code", "Account.status", "MedicationOrder.category", "MedicationStatement.category", "Sequence.type", "StructureDefinition.type", "TriggerDefinition.condition.language");
   }
 
   private boolean hasInternalReference(ValueSet vs) {

@@ -1,6 +1,7 @@
 package org.hl7.fhir.definitions.parsers;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -10,43 +11,51 @@ import java.util.Map;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.BindingSpecification.BindingMethod;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.EventDefn;
-import org.hl7.fhir.dstu3.model.CodeSystem;
-import org.hl7.fhir.dstu3.model.CodeSystem.CodeSystemContentMode;
-import org.hl7.fhir.dstu3.model.CodeSystem.CodeSystemHierarchyMeaning;
-import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionComponent;
-import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionDesignationComponent;
-import org.hl7.fhir.dstu3.model.ContactDetail;
-import org.hl7.fhir.dstu3.model.ContactPoint.ContactPointSystem;
-import org.hl7.fhir.dstu3.model.Enumerations.PublicationStatus;
-import org.hl7.fhir.dstu3.model.Factory;
-import org.hl7.fhir.dstu3.model.ValueSet;
-import org.hl7.fhir.dstu3.model.ValueSet.ValueSetComposeComponent;
-import org.hl7.fhir.dstu3.terminologies.ValueSetUtilities;
-import org.hl7.fhir.dstu3.utils.ToolingExtensions;
+import org.hl7.fhir.r4.model.CodeSystem;
+import org.hl7.fhir.r4.model.CodeSystem.CodeSystemContentMode;
+import org.hl7.fhir.r4.model.CodeSystem.CodeSystemHierarchyMeaning;
+import org.hl7.fhir.r4.model.CodeSystem.ConceptDefinitionComponent;
+import org.hl7.fhir.r4.model.CodeSystem.ConceptDefinitionDesignationComponent;
+import org.hl7.fhir.r4.model.ContactDetail;
+import org.hl7.fhir.r4.model.ContactPoint.ContactPointSystem;
+import org.hl7.fhir.r4.model.Enumerations.PublicationStatus;
+import org.hl7.fhir.r4.model.Factory;
+import org.hl7.fhir.r4.model.ValueSet;
+import org.hl7.fhir.r4.model.ValueSet.ValueSetComposeComponent;
+import org.hl7.fhir.r4.terminologies.ValueSetUtilities;
+import org.hl7.fhir.r4.utils.ToolingExtensions;
 import org.hl7.fhir.igtools.spreadsheets.CodeSystemConvertor;
 import org.hl7.fhir.igtools.spreadsheets.TypeRef;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.xml.XMLUtil;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.xml.sax.SAXException;
+import org.xmlpull.v1.builder.XmlUnexpandedEntityReference;
 
 public class ValueSetGenerator {
 
   private Definitions definitions;
   private String version;
-  private Calendar genDate; 
+  private Calendar genDate;
+  private Document translations; 
 
-  public ValueSetGenerator(Definitions definitions, String version, Calendar genDate) {
+  public ValueSetGenerator(Definitions definitions, String version, Calendar genDate, String folder) throws ParserConfigurationException, SAXException, IOException {
     super();
     this.definitions = definitions;
     this.version = version;
     this.genDate = genDate;
+    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+    factory.setNamespaceAware(false);
+    DocumentBuilder builder = factory.newDocumentBuilder();
+    translations = builder.parse(new File(Utilities.path(folder, "..", "..", "implementations", "translations.xml")));
   }
 
   public void check(ValueSet vs) throws Exception {
@@ -128,17 +137,37 @@ public class ValueSetGenerator {
     for (String s : codes) {
       DefinedCode rd = definitions.getKnownResources().get(s);
       ConceptDefinitionComponent c = cs.addConcept();
+      Element t;
       if (rd == null) {
+        t = getTranslations(s);
         c.setCode(s);
         c.setDisplay(definitions.getBaseResources().get(s).getName());
         c.setDefinition((definitions.getBaseResources().get(s).isAbstract() ? "--- Abstract Type! ---" : "")+ definitions.getBaseResources().get(s).getDefinition());
       }  else {
+        t = getTranslations(rd.getCode());
         c.setCode(rd.getCode());
         c.setDisplay(rd.getCode());
         c.setDefinition(rd.getDefinition());
       }
+      if (t != null) {
+        Element e = XMLUtil.getFirstChild(t);
+        while (e != null) {
+          c.addDesignation().setLanguage(e.getAttribute("lang")).setValue(e.getTextContent());
+          e = XMLUtil.getNextSibling(e);
+        }
+      }
     }
 
+  }
+
+  private Element getTranslations(String code) {
+    Element e = XMLUtil.getFirstChild(translations.getDocumentElement());
+    while (e != null) {
+      if (code.equals(e.getAttribute("id")))
+        return e;
+      e = XMLUtil.getNextSibling(e);
+    }
+    return null;
   }
 
   private void genAbstractTypes(ValueSet vs) {
@@ -200,9 +229,16 @@ public class ValueSetGenerator {
       ConceptDefinitionComponent c = cs.addConcept();
       EventDefn e = definitions.getEvents().get(s);
       c.setCode(s);
-      c.setDisplay(e.getCode());
+      c.setDisplay(transform(e.getCode(), e.getTitle()));
       c.setDefinition(e.getDefinition());
     }
+  }
+
+  
+  private String transform(String code, String title) {
+    if (!Utilities.noString(title))
+      return title;
+    return Utilities.titleize(code.replace("-", " "));
   }
 
   public void updateHeader(BindingSpecification bs, ValueSet vs) throws Exception {
@@ -246,7 +282,7 @@ public class ValueSetGenerator {
   }
 
 
-  public void loadOperationOutcomeValueSet(BindingSpecification cd, String folder) throws Exception {
+  public void loadOperationOutcomeValueSet(BindingSpecification cd) throws Exception {
     ValueSet vs = new ValueSet();
     cd.setValueSet(vs);
     cd.setBindingMethod(BindingMethod.ValueSet);
@@ -269,11 +305,7 @@ public class ValueSetGenerator {
     vs.getCompose().addInclude().setSystem("http://hl7.org/fhir/operation-outcome");
 
     CodeSystem cs = new CodeSystem();
-    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-    factory.setNamespaceAware(false);
-    DocumentBuilder builder = factory.newDocumentBuilder();
-    Document doc = builder.parse(new File(Utilities.path(folder, "..", "..", "implementations", "translations.xml")));
-    Element n = XMLUtil.getFirstChild(doc.getDocumentElement());
+    Element n = XMLUtil.getFirstChild(translations.getDocumentElement());
     cs.setHierarchyMeaning(CodeSystemHierarchyMeaning.ISA);
     while (n != null) {
       if ("true".equals(n.getAttribute("ecode"))) {

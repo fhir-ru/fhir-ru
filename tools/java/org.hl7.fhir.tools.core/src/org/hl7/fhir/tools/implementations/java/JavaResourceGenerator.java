@@ -54,10 +54,10 @@ import org.hl7.fhir.definitions.model.ProfiledType;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.SearchParameterDefn;
 import org.hl7.fhir.definitions.model.SearchParameterDefn.SearchType;
-import org.hl7.fhir.dstu3.model.Enumeration;
-import org.hl7.fhir.dstu3.model.StringType;
-import org.hl7.fhir.dstu3.model.Enumerations.BindingStrength;
-import org.hl7.fhir.dstu3.model.Narrative.NarrativeStatus;
+import org.hl7.fhir.r4.model.Enumeration;
+import org.hl7.fhir.r4.model.StringType;
+import org.hl7.fhir.r4.model.Enumerations.BindingStrength;
+import org.hl7.fhir.r4.model.Narrative.NarrativeStatus;
 import org.hl7.fhir.igtools.spreadsheets.TypeRef;
 import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
 import org.hl7.fhir.utilities.Utilities;
@@ -118,7 +118,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 //      elem.getTypes().get(0);
 //    }
 		
-		write("package org.hl7.fhir.dstu3.model;\r\n");
+		write("package org.hl7.fhir.r4.model;\r\n");
 		write("\r\n/*\r\n"+Config.FULL_LICENSE_CODE+"*/\r\n\r\n");
 		write("// Generated on "+Config.DATE_FORMAT().format(genDate)+" for FHIR v"+version+"\r\n\r\n");
     if (clss != JavaGenClass.Constraint) {
@@ -138,7 +138,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
         if (s)
           write("import org.hl7.fhir.utilities.Utilities;\r\n");
         if (e)
-          write("import org.hl7.fhir.dstu3.model.Enumerations.*;\r\n");
+          write("import org.hl7.fhir.r4.model.Enumerations.*;\r\n");
       }
       if (clss == JavaGenClass.Resource) {
         write("import ca.uhn.fhir.model.api.annotation.ResourceDef;\r\n");
@@ -211,6 +211,8 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
       } else {
         hierarchy = supertype;
       }
+      if (adornments.containsKey(classname+".implements")) 
+        hierarchy = hierarchy +", "+adornments.get(classname+".implements").trim();
       write("public "+(isAbstract? "abstract " : "")+"class "+upFirst(name)+" extends "+hierarchy+" ");
     } else if (clss == JavaGenClass.Structure && upFirst(name).equals("Element")) {
       write("public abstract class "+upFirst(name)+" extends Base implements IBaseHasExtensions, IBaseElement ");
@@ -240,10 +242,10 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 			write("public class "+upFirst(cd.getName())+" extends " + upFirst(root.getName()) + " ");
     } else if (root.getName().equals("Quantity")) {
 		  write("@DatatypeDef(name=\""+upFirst(name)+"\")\r\n");
-			write("public class "+upFirst(name)+" extends Type implements ICompositeType ");
+			write("public class "+upFirst(name)+" extends Type implements ICompositeType, ICoding ");
     } else if (root.getName().equals("Coding")) {
       write("@DatatypeDef(name=\""+upFirst(name)+"\")\r\n");
-      write("public class "+upFirst(name)+" extends Type implements IBaseCoding, ICompositeType ");
+      write("public class "+upFirst(name)+" extends Type implements IBaseCoding, ICompositeType, ICoding ");
     } else if (root.getName().equals("Meta")) {
       write("@DatatypeDef(name=\""+upFirst(name)+"\")\r\n");
       write("public class "+upFirst(name)+" extends Type implements IBaseMetaType ");
@@ -985,14 +987,44 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
   }
 
 	private void generateChildrenRegister(ElementDefn p, String indent, boolean isAbstract) throws Exception {
-	  write(indent+"  protected void listChildren(List<Property> childrenList) {\r\n");
+	  write(indent+"  protected void listChildren(List<Property> children) {\r\n");
 	  if (!isAbstract)
-	    write(indent+"    super.listChildren(childrenList);\r\n");
+	    write(indent+"    super.listChildren(children);\r\n");
 	  for (ElementDefn e : p.getElements()) {
       if (doGenerateAccessors(e) && !e.typeCode().equals("xhtml"))
-	      write(indent+"    childrenList.add(new Property(\""+e.getName()+"\", \""+e.typeCode()+"\", \""+Utilities.escapeJava(e.getDefinition())+"\", 0, java.lang.Integer.MAX_VALUE, "+getElementName(e.getName(), true)+"));\r\n");    
+	      write(indent+"    children.add(new Property(\""+e.getName()+"\", \""+e.typeCode()+"\", \""+Utilities.escapeJava(e.getDefinition())+"\", 0, "+(e.unbounded() ? "java.lang.Integer.MAX_VALUE" : Integer.toString(e.getMaxCardinality()))+", "+getElementName(e.getName(), true)+"));\r\n");    
 	  }
 	  write(indent+"  }\r\n\r\n");  
+    write(indent+"  @Override\r\n");
+    write(indent+"  public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {\r\n");
+    write(indent+"    switch (_hash) {\r\n");
+    for (ElementDefn e : p.getElements()) {
+      if (doGenerateAccessors(e) && !e.typeCode().equals("xhtml")) {
+        write(indent+"    case "+propId(e.getName())+": /*"+e.getName()+"*/ ");
+        write(" return new Property(\""+e.getName()+"\", \""+e.typeCode()+"\", \""+Utilities.escapeJava(e.getDefinition())+"\", 0, "+(e.unbounded() ? "java.lang.Integer.MAX_VALUE" : Integer.toString(e.getMaxCardinality()))+", "+getElementName(e.getName(), true)+");\r\n");
+        if (e.getName().endsWith("[x]")) {
+          String n = e.getName().substring(0, e.getName().length()-3);
+          write(indent+"    case "+propId(n)+": /*"+n+"*/ ");
+          write(" return new Property(\""+e.getName()+"\", \""+e.typeCode()+"\", \""+Utilities.escapeJava(e.getDefinition())+"\", 0, "+(e.unbounded() ? "java.lang.Integer.MAX_VALUE" : Integer.toString(e.getMaxCardinality()))+", "+getElementName(e.getName(), true)+");\r\n");
+          if (e.typeCode().equals("*")) {
+            for (String t : new String[] {"boolean", "integer", "decimal", "base64Binary", "instant", "string", "uri", "date", "dateTime", 
+                "time", "code", "oid", "id", "unsignedInt", "positiveInt", "markdown", "Annotation", "Attachment", "Identifier", "CodeableConcept", "Coding", 
+                "Quantity", "Range", "Period", "Ratio", "SampledData", "Signature", "HumanName", "Address", "ContactPoint", "Timing", "Reference", "Meta"}) {
+              String tn = n + Utilities.capitalize(t);
+              write(indent+"    case "+propId(tn)+": /*"+tn+"*/ ");
+              write(" return new Property(\""+e.getName()+"\", \""+e.typeCode()+"\", \""+Utilities.escapeJava(e.getDefinition())+"\", 0, "+(e.unbounded() ? "java.lang.Integer.MAX_VALUE" : Integer.toString(e.getMaxCardinality()))+", "+getElementName(e.getName(), true)+");\r\n");
+            }
+          } else for (TypeRef tr : e.getTypes()) {
+            String tn = n + Utilities.capitalize(tr.getName());
+            write(indent+"    case "+propId(tn)+": /*"+tn+"*/ ");
+            write(" return new Property(\""+e.getName()+"\", \""+e.typeCode()+"\", \""+Utilities.escapeJava(e.getDefinition())+"\", 0, "+(e.unbounded() ? "java.lang.Integer.MAX_VALUE" : Integer.toString(e.getMaxCardinality()))+", "+getElementName(e.getName(), true)+");\r\n");
+          }
+        }
+      }
+    }
+    write(indent+"    default: return super.getNamedProperty(_hash, _name, _checkValid);\r\n");
+    write(indent+"    }\r\n\r\n");  
+    write(indent+"  }\r\n\r\n");  
   }
 	
   private void generatePropertyMaker(ElementDefn p, String indent) throws Exception {
@@ -1732,7 +1764,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 				else if (e.isXhtmlElement()) 
 					tn = "XhtmlNode";
 				else if (e.getTypes().get(0).isWildcardType())
-					tn ="org.hl7.fhir.dstu3.model.Type";
+					tn ="org.hl7.fhir.r4.model.Type";
 				else if (definitions.hasPrimitiveType(tn))
 				  tn = upFirst(tn)+"Type";
 

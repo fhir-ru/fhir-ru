@@ -49,6 +49,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 import org.apache.commons.io.IOUtils;
+import org.hl7.fhir.dstu3.conformance.ProfileUtilities;
 import org.hl7.fhir.dstu3.context.SimpleWorkerContext;
 import org.hl7.fhir.dstu3.elementmodel.Manager;
 import org.hl7.fhir.dstu3.elementmodel.Manager.FhirFormat;
@@ -64,6 +65,7 @@ import org.hl7.fhir.dstu3.model.OperationOutcome;
 import org.hl7.fhir.dstu3.model.OperationOutcome.OperationOutcomeIssueComponent;
 import org.hl7.fhir.dstu3.model.Questionnaire;
 import org.hl7.fhir.dstu3.model.Resource;
+import org.hl7.fhir.dstu3.model.StructureDefinition;
 import org.hl7.fhir.dstu3.utils.FHIRPathEngine;
 import org.hl7.fhir.dstu3.utils.NarrativeGenerator;
 import org.hl7.fhir.dstu3.utils.OperationOutcomeUtilities;
@@ -199,7 +201,7 @@ public class ValidationEngine {
   
   private Map<String, byte[]> loadFromUrl(String src) throws Exception {
     if (!src.endsWith("validator.pack"))
-      src = Utilities.pathReverse(src, "validator.pack");
+      src = Utilities.pathURL(src, "validator.pack");
 
 		try {
       URL url = new URL(src);
@@ -379,8 +381,15 @@ public class ValidationEngine {
         res.cntType = FhirFormat.XML; 
       else if (t.getKey().endsWith(".ttl"))
         res.cntType = FhirFormat.TURTLE; 
-      else
-        throw new Exception("Todo: Determining resource type is not yet done");
+      else {
+        String ss = Utilities.stripBOM(new String(t.getValue())).trim();
+        if (ss.startsWith("{"))
+          res.cntType = FhirFormat.JSON; 
+        else if (ss.startsWith("<"))
+          res.cntType = FhirFormat.XML; 
+        else
+          throw new Exception("Unable to determine type of "+t.getKey()+" - does not appear to be either json or xml. Use a file extension (.xml/.json/.ttl) to mark the type explicitly");
+      }
     }
     return res;
   }
@@ -398,7 +407,7 @@ public class ValidationEngine {
     results.setType(Bundle.BundleType.COLLECTION);
     for (String ref : refs) {
       Content cnt = loadContent(ref, "validate");
-      OperationOutcome outcome = validate(cnt.focus, cnt.cntType, profiles);
+      OperationOutcome outcome = validate(ref, cnt.focus, cnt.cntType, profiles);
       ToolingExtensions.addStringExtension(outcome, ToolingExtensions.EXT_OO_FILE, ref);
       results.addEntry().setResource(outcome);
     }
@@ -408,8 +417,8 @@ public class ValidationEngine {
       return results.getEntryFirstRep().getResource();
   }
 
-  public OperationOutcome validateString(String source, FhirFormat format, List<String> profiles) throws Exception {
-    return validate(source.getBytes(), format, profiles);
+  public OperationOutcome validateString(String location, String source, FhirFormat format, List<String> profiles) throws Exception {
+    return validate(location, source.getBytes(), format, profiles);
   }
 
   private boolean handleSources(List<String> sources, List<String> refs) throws IOException {
@@ -458,15 +467,15 @@ public class ValidationEngine {
     return isBundle;
   }
 
-  public OperationOutcome validate(byte[] source, FhirFormat cntType, List<String> profiles) throws Exception {
+  public OperationOutcome validate(String location, byte[] source, FhirFormat cntType, List<String> profiles) throws Exception {
     List<ValidationMessage> messages = new ArrayList<ValidationMessage>();
     if (doNative) {
       if (cntType == FhirFormat.JSON)
-        validateJsonSchema(messages);
+        validateJsonSchema(location, messages);
       if (cntType == FhirFormat.XML)
-        validateXmlSchema(messages);
+        validateXmlSchema(location, messages);
       if (cntType == FhirFormat.TURTLE)
-        validateSHEX(messages);
+        validateSHEX(location, messages);
     }
     InstanceValidator validator = new InstanceValidator(this);
     validator.setNoInvariantChecks(isNoInvariantChecks());
@@ -474,13 +483,13 @@ public class ValidationEngine {
     return messagesToOutcome(messages);
   }
 
-  private void validateSHEX(List<ValidationMessage> messages) {
-    messages.add(new ValidationMessage(Source.InstanceValidator, IssueType.INFORMATIONAL, "SHEX Validation is not done yet", IssueSeverity.INFORMATION));
+  private void validateSHEX(String location, List<ValidationMessage> messages) {
+    messages.add(new ValidationMessage(Source.InstanceValidator, IssueType.INFORMATIONAL, location, "SHEX Validation is not done yet", IssueSeverity.INFORMATION));
 	}
 
-  private void validateXmlSchema(List<ValidationMessage> messages) throws FileNotFoundException, IOException, SAXException {
+  private void validateXmlSchema(String location, List<ValidationMessage> messages) throws FileNotFoundException, IOException, SAXException {
     XmlValidator xml = new XmlValidator(messages, loadSchemas(), loadTransforms());
-    messages.add(new ValidationMessage(Source.InstanceValidator, IssueType.INFORMATIONAL, "XML Schema Validation is not done yet", IssueSeverity.INFORMATION));
+    messages.add(new ValidationMessage(Source.InstanceValidator, IssueType.INFORMATIONAL, location, "XML Schema Validation is not done yet", IssueSeverity.INFORMATION));
 	}
 
   private Map<String, byte[]> loadSchemas() throws IOException {
@@ -503,8 +512,8 @@ public class ValidationEngine {
     return res;
   }
 
-  private void validateJsonSchema(List<ValidationMessage> messages) {
-    messages.add(new ValidationMessage(Source.InstanceValidator, IssueType.INFORMATIONAL, "JSON Schema Validation is not done yet", IssueSeverity.INFORMATION));   
+  private void validateJsonSchema(String location, List<ValidationMessage> messages) {
+    messages.add(new ValidationMessage(Source.InstanceValidator, IssueType.INFORMATIONAL, location, "JSON Schema Validation is not done yet", IssueSeverity.INFORMATION));   
 	}
 
   private List<ValidationMessage> filterMessages(List<ValidationMessage> messages) {
@@ -522,7 +531,7 @@ public class ValidationEngine {
     for (ValidationMessage vm : filterMessages(messages)) {
       op.getIssue().add(OperationOutcomeUtilities.convertToIssue(vm, op));
     }
-    new NarrativeGenerator("", "", context).generate(op);
+    new NarrativeGenerator("", "", context).generate(null, op);
     return op;
 	}
   
@@ -564,6 +573,27 @@ public class ValidationEngine {
   
     new NarrativeGenerator("",  "", context).generate((DomainResource) res);
     return (DomainResource) res;
+  }
+  
+  public StructureDefinition snapshot(String source) throws Exception {
+    Content cnt = loadContent(source, "validate");
+    Resource res;
+    if (cnt.cntType == FhirFormat.XML)
+      res = new XmlParser().parse(cnt.focus);
+    else if (cnt.cntType == FhirFormat.JSON)
+      res = new JsonParser().parse(cnt.focus);
+    else if (cnt.cntType == FhirFormat.TURTLE)
+      res = new RdfParser().parse(cnt.focus);
+    else
+      throw new Error("Not supported yet");
+  
+    if (!(res instanceof StructureDefinition))
+      throw new Exception("Require a StructureDefinition for generating a snapshot");
+    StructureDefinition sd = (StructureDefinition) res;
+    StructureDefinition base = context.fetchResource(StructureDefinition.class, sd.getBaseDefinition());
+    
+    new ProfileUtilities(context, null, null).generateSnapshot(base, sd, sd.getUrl(), sd.getName());
+    return sd;
   }
   
 }

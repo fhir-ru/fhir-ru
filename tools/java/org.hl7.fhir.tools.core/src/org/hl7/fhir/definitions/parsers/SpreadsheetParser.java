@@ -72,50 +72,50 @@ import org.hl7.fhir.definitions.model.W5Entry;
 import org.hl7.fhir.definitions.model.WorkGroup;
 import org.hl7.fhir.definitions.validation.ExtensionDefinitionValidator;
 import org.hl7.fhir.definitions.validation.FHIRPathUsage;
-import org.hl7.fhir.dstu3.conformance.ProfileUtilities;
-import org.hl7.fhir.dstu3.conformance.ProfileUtilities.ProfileKnowledgeProvider;
-import org.hl7.fhir.dstu3.formats.FormatUtilities;
-import org.hl7.fhir.dstu3.formats.IParser;
-import org.hl7.fhir.dstu3.formats.JsonParser;
-import org.hl7.fhir.dstu3.formats.XmlParser;
-import org.hl7.fhir.dstu3.model.Base64BinaryType;
-import org.hl7.fhir.dstu3.model.BooleanType;
-import org.hl7.fhir.dstu3.model.CodeSystem;
-import org.hl7.fhir.dstu3.model.CodeType;
-import org.hl7.fhir.dstu3.model.CodeableConcept;
-import org.hl7.fhir.dstu3.model.ConceptMap;
-import org.hl7.fhir.dstu3.model.ContactPoint.ContactPointSystem;
-import org.hl7.fhir.dstu3.model.DateTimeType;
-import org.hl7.fhir.dstu3.model.DateType;
-import org.hl7.fhir.dstu3.model.DecimalType;
-import org.hl7.fhir.dstu3.model.Enumerations.PublicationStatus;
-import org.hl7.fhir.dstu3.model.Enumerations.SearchParamType;
-import org.hl7.fhir.dstu3.model.Factory;
-import org.hl7.fhir.dstu3.model.IdType;
-import org.hl7.fhir.dstu3.model.Identifier;
-import org.hl7.fhir.dstu3.model.InstantType;
-import org.hl7.fhir.dstu3.model.IntegerType;
-import org.hl7.fhir.dstu3.model.OidType;
-import org.hl7.fhir.dstu3.model.Period;
-import org.hl7.fhir.dstu3.model.PositiveIntType;
-import org.hl7.fhir.dstu3.model.Quantity;
-import org.hl7.fhir.dstu3.model.Quantity.QuantityComparator;
-import org.hl7.fhir.dstu3.model.Reference;
-import org.hl7.fhir.dstu3.model.SearchParameter;
-import org.hl7.fhir.dstu3.model.StringType;
-import org.hl7.fhir.dstu3.model.StructureDefinition;
-import org.hl7.fhir.dstu3.model.StructureDefinition.ExtensionContext;
-import org.hl7.fhir.dstu3.model.StructureDefinition.StructureDefinitionKind;
-import org.hl7.fhir.dstu3.model.StructureDefinition.TypeDerivationRule;
-import org.hl7.fhir.dstu3.model.TimeType;
-import org.hl7.fhir.dstu3.model.Type;
-import org.hl7.fhir.dstu3.model.UnsignedIntType;
-import org.hl7.fhir.dstu3.model.UriType;
-import org.hl7.fhir.dstu3.model.UuidType;
-import org.hl7.fhir.dstu3.model.ValueSet;
-import org.hl7.fhir.dstu3.terminologies.CodeSystemUtilities;
-import org.hl7.fhir.dstu3.terminologies.ValueSetUtilities;
-import org.hl7.fhir.dstu3.utils.ToolingExtensions;
+import org.hl7.fhir.r4.conformance.ProfileUtilities;
+import org.hl7.fhir.r4.conformance.ProfileUtilities.ProfileKnowledgeProvider;
+import org.hl7.fhir.r4.formats.FormatUtilities;
+import org.hl7.fhir.r4.formats.IParser;
+import org.hl7.fhir.r4.formats.JsonParser;
+import org.hl7.fhir.r4.formats.XmlParser;
+import org.hl7.fhir.r4.model.Base64BinaryType;
+import org.hl7.fhir.r4.model.BooleanType;
+import org.hl7.fhir.r4.model.CodeSystem;
+import org.hl7.fhir.r4.model.CodeType;
+import org.hl7.fhir.r4.model.CodeableConcept;
+import org.hl7.fhir.r4.model.ConceptMap;
+import org.hl7.fhir.r4.model.ContactPoint.ContactPointSystem;
+import org.hl7.fhir.r4.model.DateTimeType;
+import org.hl7.fhir.r4.model.DateType;
+import org.hl7.fhir.r4.model.DecimalType;
+import org.hl7.fhir.r4.model.Enumerations.PublicationStatus;
+import org.hl7.fhir.r4.model.Enumerations.SearchParamType;
+import org.hl7.fhir.r4.model.Factory;
+import org.hl7.fhir.r4.model.IdType;
+import org.hl7.fhir.r4.model.Identifier;
+import org.hl7.fhir.r4.model.InstantType;
+import org.hl7.fhir.r4.model.IntegerType;
+import org.hl7.fhir.r4.model.OidType;
+import org.hl7.fhir.r4.model.Period;
+import org.hl7.fhir.r4.model.PositiveIntType;
+import org.hl7.fhir.r4.model.Quantity;
+import org.hl7.fhir.r4.model.Quantity.QuantityComparator;
+import org.hl7.fhir.r4.model.Reference;
+import org.hl7.fhir.r4.model.SearchParameter;
+import org.hl7.fhir.r4.model.StringType;
+import org.hl7.fhir.r4.model.StructureDefinition;
+import org.hl7.fhir.r4.model.StructureDefinition.ExtensionContext;
+import org.hl7.fhir.r4.model.StructureDefinition.StructureDefinitionKind;
+import org.hl7.fhir.r4.model.StructureDefinition.TypeDerivationRule;
+import org.hl7.fhir.r4.model.TimeType;
+import org.hl7.fhir.r4.model.Type;
+import org.hl7.fhir.r4.model.UnsignedIntType;
+import org.hl7.fhir.r4.model.UriType;
+import org.hl7.fhir.r4.model.UuidType;
+import org.hl7.fhir.r4.model.ValueSet;
+import org.hl7.fhir.r4.terminologies.CodeSystemUtilities;
+import org.hl7.fhir.r4.terminologies.ValueSetUtilities;
+import org.hl7.fhir.r4.utils.ToolingExtensions;
 import org.hl7.fhir.igtools.spreadsheets.CodeSystemConvertor;
 import org.hl7.fhir.igtools.spreadsheets.MappingSpace;
 import org.hl7.fhir.igtools.spreadsheets.TabDelimitedSpreadSheet;
@@ -156,7 +156,6 @@ public class SpreadsheetParser {
   private Calendar genDate;
   private boolean isAbstract;
   private Map<String, BindingSpecification> bindings = new HashMap<String, BindingSpecification>();
-  private Map<String, StructureDefinition> extensionDefinitions = new HashMap<String, StructureDefinition>();
   private ProfileKnowledgeProvider pkp;
   private ImplementationGuideDefn ig;
   private String txFolder;
@@ -173,7 +172,7 @@ public class SpreadsheetParser {
   private ResourceDefn template;
   private String templateTitle;
 
-	public SpreadsheetParser(String usageContext, InputStream in, String name,	Definitions definitions, String root, Logger log, OIDRegistry registry, String version, BuildWorkerContext context, Calendar genDate, boolean isAbstract, Map<String, StructureDefinition> extensionDefinitions, ProfileKnowledgeProvider pkp, boolean isType, IniFile ini, WorkGroup committee, Map<String, ConstraintStructure> profileIds, List<FHIRPathUsage> fpUsages, Map<String, ConceptMap> maps) throws Exception {
+	public SpreadsheetParser(String usageContext, InputStream in, String name,	Definitions definitions, String root, Logger log, OIDRegistry registry, String version, BuildWorkerContext context, Calendar genDate, boolean isAbstract, ProfileKnowledgeProvider pkp, boolean isType, IniFile ini, WorkGroup committee, Map<String, ConstraintStructure> profileIds, List<FHIRPathUsage> fpUsages, Map<String, ConceptMap> maps) throws Exception {
 	  this.usageContext = usageContext;
 		this.name = name;
   	xls = new XLSXmlParser(in, name);
@@ -195,7 +194,6 @@ public class SpreadsheetParser {
 		this.context = context;
 		this.genDate = genDate;
 		this.isAbstract = isAbstract;
-		this.extensionDefinitions = extensionDefinitions;
 		this.pkp = pkp;
 		this.ini = ini;
 		this.committee = committee;
@@ -207,7 +205,7 @@ public class SpreadsheetParser {
 		this.maps = maps;
 	}
 
-  public SpreadsheetParser(String usageContext, InputStream in, String name, ImplementationGuideDefn ig, String root, Logger log, OIDRegistry registry, String version, BuildWorkerContext context, Calendar genDate, boolean isAbstract, Map<String, StructureDefinition> extensionDefinitions, ProfileKnowledgeProvider pkp, boolean isType, WorkGroup committee, Map<String, MappingSpace> mappings, Map<String, ConstraintStructure> profileIds, Map<String, CodeSystem> codeSystems, Map<String, ConceptMap> maps, Map<String, WorkGroup> workgroups) throws Exception {
+  public SpreadsheetParser(String usageContext, InputStream in, String name, ImplementationGuideDefn ig, String root, Logger log, OIDRegistry registry, String version, BuildWorkerContext context, Calendar genDate, boolean isAbstract, ProfileKnowledgeProvider pkp, boolean isType, WorkGroup committee, Map<String, MappingSpace> mappings, Map<String, ConstraintStructure> profileIds, Map<String, CodeSystem> codeSystems, Map<String, ConceptMap> maps, Map<String, WorkGroup> workgroups) throws Exception {
     this.usageContext = usageContext;
     this.name = name;
     this.registry = registry;
@@ -231,7 +229,6 @@ public class SpreadsheetParser {
     this.context = context;
     this.genDate = genDate;
     this.isAbstract = isAbstract;
-    this.extensionDefinitions = extensionDefinitions;
     this.pkp = pkp;
     this.committee = committee;
     this.tabfmt = new TabDelimitedSpreadSheet();
@@ -878,7 +875,7 @@ public class SpreadsheetParser {
                 pn.add(t.getValue()+".extension{"+ex.getUrl()+"}");
             } else if (p.contains(".extension{")) {
               String url = extractExtensionUrl(p);
-              StructureDefinition ex = extensionDefinitions.get(url); // not created yet?
+              StructureDefinition ex = context.fetchResource(StructureDefinition.class, url); // not created yet?
               if (ex == null)
                 ex = context.getExtensionStructure(null, url);
               if (ex == null)
@@ -1006,7 +1003,7 @@ public class SpreadsheetParser {
                 d = e.getShortDefn();
               if (p.startsWith("Extension(")) {
                 String url = extractExtensionUrl(p);
-                StructureDefinition ex = extensionDefinitions.get(url);
+                StructureDefinition ex = context.fetchResource(StructureDefinition.class, url);
                 if (ex == null)
                   throw new Exception("Search Param "+root2.getName()+"/"+n+" refers to unknown extension '"+url+"' "+ getLocation(row));
                 if (Utilities.noString(d))
@@ -1153,7 +1150,7 @@ public class SpreadsheetParser {
       tabfmt.cell(sheet.getColumn(row, "v3"));
     }
 
-		ValueSetGenerator vsGen = new ValueSetGenerator(definitions, version, genDate);
+		ValueSetGenerator vsGen = new ValueSetGenerator(definitions, version, genDate, folder);
 
 		for (int row = 0; row < sheet.rows.size(); row++) {
 		  String bindingName = sheet.getColumn(row, "Binding Name");
@@ -1205,7 +1202,7 @@ public class SpreadsheetParser {
           cd.setValueSet(loadValueSet(ref));
       } else if (cd.getBinding() == BindingMethod.Special) {
         if ("#operation-outcome".equals(sheet.getColumn(row, "Reference")))
-          new ValueSetGenerator(definitions, version, genDate).loadOperationOutcomeValueSet(cd, folder);
+          new ValueSetGenerator(definitions, version, genDate, folder).loadOperationOutcomeValueSet(cd);
         else
           throw new Exception("Special bindings are only allowed in bindings.xml");
       } else if (cd.getBinding() == BindingMethod.Reference) {
@@ -1635,6 +1632,7 @@ public class SpreadsheetParser {
 					EventDefn e = new EventDefn();
 					events.add(e);
 					e.setCode(code);
+					e.setTitle(sheet.getColumn(row, "Title"));
 					e.setDefinition(Utilities.appendPeriod(sheet.getColumn(row, "Description")));
 					e.setCategory(readCategory(sheet.getColumn(row, "Category")));
 					EventUsage u = new EventUsage();
@@ -2027,7 +2025,7 @@ public class SpreadsheetParser {
       if (definitions.getConstraints().containsKey(type))
         type = definitions.getConstraints().get(type).getBaseType();
     } else {
-      StructureDefinition sd = context.getProfiles().get("http://hl7.org/fhir/StructureDefinition/"+type);
+      StructureDefinition sd = context.fetchResource(StructureDefinition.class, "http://hl7.org/fhir/StructureDefinition/"+type);
       if (sd != null) // not loaded yet?
         type = sd.getType();
       if (type.equals("SimpleQuantity"))
@@ -2278,14 +2276,14 @@ public class SpreadsheetParser {
     ex.getDifferential().getElementFirstRep().getType().clear();
     utils.setIds(ex, false);
 
-    StructureDefinition base = definitions != null ? definitions.getSnapShotForType("Extension") : this.context.getProfiles().get("http://hl7.org/fhir/StructureDefinition/Extension");
+    StructureDefinition base = definitions != null ? definitions.getSnapShotForType("Extension") : this.context.fetchResource(StructureDefinition.class, "http://hl7.org/fhir/StructureDefinition/Extension");
     List<String> errors = new ArrayList<String>();
     utils.sortDifferential(base, ex, "extension "+ex.getUrl(), errors);
     assert(errors.size() == 0);
     utils.generateSnapshot(base, ex, ex.getUrl(), ex.getName());
     utils.setIds(ex, true);
     new ExtensionDefinitionValidator(context).validate(ex);
-	  this.context.seeExtensionDefinition("http://hl7.org/fhir", ex);
+	  this.context.cacheResource(ex);
 	  return row;
 	}
 

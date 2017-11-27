@@ -44,7 +44,7 @@ import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ProfiledType;
 import org.hl7.fhir.definitions.model.ResourceDefn;
-import org.hl7.fhir.dstu3.model.Enumerations.BindingStrength;
+import org.hl7.fhir.r4.model.Enumerations.BindingStrength;
 import org.hl7.fhir.igtools.spreadsheets.TypeRef;
 import org.hl7.fhir.tools.implementations.GeneratorUtils;
 import org.hl7.fhir.utilities.Utilities;
@@ -91,8 +91,9 @@ public class JavaParserJsonGenerator extends JavaBaseGenerator {
       if (!n.getName().equals("Element") && !n.getName().equals("BackboneElement")) {
         generateParser(n, JavaGenClass.Structure);
         String t = upFirst(n.getName());
-        //      regt.append("    else if (xpp.getName().equals(prefix+\""+n.getName()+"\"))\r\n      return parse"+t+"(xpp);\r\n");
-        //    regn.append("    if (xpp.getName().equals(prefix+\""+n.getName()+"\"))\r\n      return true;\r\n");
+        regt.append("    else if (json.has(prefix+\""+n.getName()+"\"))\r\n      return parse"+t+"(json.getAsJsonObject(prefix+\""+n.getName()+"\"));\r\n");
+        regt2.append("    else if (type.equals(\""+n.getName()+"\"))\r\n      return parse"+n.getName()+"(json);\r\n");
+        regn.append("    if (json.has(prefix+\""+n.getName()+"\"))\r\n      return true;\r\n");
         regf.append("    else if (type.equals(\""+n.getName()+"\"))\r\n      return parse"+n.getName()+"(json);\r\n");
       }
     }
@@ -219,12 +220,12 @@ public class JavaParserJsonGenerator extends JavaBaseGenerator {
   }
 
   private void start(String version, Date genDate) throws Exception {
-    write("package org.hl7.fhir.dstu3.formats;\r\n");
+    write("package org.hl7.fhir.r4.formats;\r\n");
     write("\r\n/*\r\n"+Config.FULL_LICENSE_CODE+"*/\r\n\r\n");
     write("// Generated on "+Config.DATE_FORMAT().format(genDate)+" for FHIR v"+version+"\r\n\r\n");
     for (DefinedCode dc : definitions.getPrimitives().values())
-      write("import org.hl7.fhir.dstu3.model."+getPrimitiveTypeModelName(dc.getCode())+";\r\n");
-    write("import org.hl7.fhir.dstu3.model.*;\r\n");
+      write("import org.hl7.fhir.r4.model."+getPrimitiveTypeModelName(dc.getCode())+";\r\n");
+    write("import org.hl7.fhir.r4.model.*;\r\n");
     write("import org.hl7.fhir.utilities.Utilities;\r\n");
     write("import org.hl7.fhir.utilities.xhtml.XhtmlNode;\r\n");
     write("import org.hl7.fhir.exceptions.FHIRFormatError;\r\n");
@@ -635,8 +636,8 @@ public class JavaParserJsonGenerator extends JavaBaseGenerator {
     for (ElementDefn n : definitions.getInfrastructure().values()) {
       if (!n.getName().equals("Element") && !n.getName().equals("BackboneElement")) {
         generateComposer(n, JavaGenClass.Structure);
-        //      String t = upFirst(n.getName());
-        //      regt.append("    else if (type instanceof "+t+")\r\n       compose"+n.getName()+"(prefix+\""+n.getName()+"\", ("+t+") type);\r\n");
+        regtn.append("    else if (type instanceof "+n.getName()+")\r\n       compose"+n.getName()+"(prefix+\""+n.getName()+"\", ("+n.getName()+") type);\r\n");
+        regti.append("    else if (type instanceof "+n.getName()+")\r\n       compose"+n.getName()+"Inner(("+n.getName()+") type);\r\n");
       }
     }
 

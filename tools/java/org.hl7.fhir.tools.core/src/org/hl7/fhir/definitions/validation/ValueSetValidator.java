@@ -8,17 +8,16 @@ import java.util.Map;
 import java.util.Set;
 
 import org.hl7.fhir.definitions.model.ResourceDefn.StandardsStatus;
-import org.hl7.fhir.dstu2.model.Identifier;
-import org.hl7.fhir.dstu3.model.CodeSystem;
-import org.hl7.fhir.dstu3.model.MetadataResource;
-import org.hl7.fhir.dstu3.model.CodeSystem.CodeSystemContentMode;
-import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionComponent;
-import org.hl7.fhir.dstu3.model.ValueSet;
-import org.hl7.fhir.dstu3.model.ValueSet.ConceptReferenceComponent;
-import org.hl7.fhir.dstu3.model.ValueSet.ConceptSetComponent;
-import org.hl7.fhir.dstu3.terminologies.CodeSystemUtilities;
-import org.hl7.fhir.dstu3.terminologies.ValueSetUtilities;
-import org.hl7.fhir.dstu3.validation.BaseValidator;
+import org.hl7.fhir.r4.model.CodeSystem;
+import org.hl7.fhir.r4.model.MetadataResource;
+import org.hl7.fhir.r4.model.CodeSystem.CodeSystemContentMode;
+import org.hl7.fhir.r4.model.CodeSystem.ConceptDefinitionComponent;
+import org.hl7.fhir.r4.model.ValueSet;
+import org.hl7.fhir.r4.model.ValueSet.ConceptReferenceComponent;
+import org.hl7.fhir.r4.model.ValueSet.ConceptSetComponent;
+import org.hl7.fhir.r4.terminologies.CodeSystemUtilities;
+import org.hl7.fhir.r4.terminologies.ValueSetUtilities;
+import org.hl7.fhir.r4.validation.BaseValidator;
 import org.hl7.fhir.exceptions.TerminologyServiceException;
 import org.hl7.fhir.tools.publisher.BuildWorkerContext;
 import org.hl7.fhir.utilities.Utilities;
@@ -151,7 +150,7 @@ public class ValueSetValidator extends BaseValidator {
       if (!oids.containsKey(oid)) {
         oids.put(oid, cs);
       } else 
-        rule(errors, IssueType.DUPLICATE, cs.getUserString("committee")+":CodeSystem["+cs.getId()+"]", oids.get(oid).getUrl().equals(cs.getUrl()), "Duplicate OID for "+oid+" on "+oids.get(oid).getUrl()+" and "+cs.getUrl());  
+        rule(errors, IssueType.DUPLICATE, cs.getUserString("committee")+":CodeSystem["+cs.getId()+"]", oid.endsWith(".0")|| oids.get(oid).getUrl().equals(cs.getUrl()), "Duplicate OID for "+oid+" on "+oids.get(oid).getUrl()+" and "+cs.getUrl());  
     } 
     rule(errors, IssueType.BUSINESSRULE, cs.getUserString("committee")+":CodeSystem["+cs.getId()+"].codeSystem", cs.getUrl().startsWith("http://") || 
         cs.getUrl().startsWith("urn:") , "Unacceptable code system url "+cs.getUrl());
@@ -196,7 +195,7 @@ public class ValueSetValidator extends BaseValidator {
       if (!oids.containsKey(oid)) {
         oids.put(oid, vs);
       } else 
-        rule(errors, IssueType.DUPLICATE, vs.getUserString("committee")+":ValueSet["+vs.getId()+"]", oids.get(oid).getUrl().equals(vs.getUrl()), "Duplicate OID for "+oid+" on "+oids.get(oid).getUrl()+" and "+vs.getUrl());  
+        rule(errors, IssueType.DUPLICATE, vs.getUserString("committee")+":ValueSet["+vs.getId()+"]", oid.endsWith(".0")|| oids.get(oid).getUrl().equals(vs.getUrl()), "Duplicate OID for "+oid+" on "+oids.get(oid).getUrl()+" and "+vs.getUrl());  
     }
     
     rule(errors, IssueType.BUSINESSRULE, vs.getUserString("committee")+":ValueSet["+vs.getId()+"]", vs.hasDescription(), "Value Sets in the build must have a description");
@@ -215,13 +214,13 @@ public class ValueSetValidator extends BaseValidator {
     }
     
     if (vs.hasCompose()) {
-      if (!context.getCodeSystems().containsKey("http://hl7.org/fhir/data-absent-reason") && !vs.getUrl().contains("v3")&& !vs.getUrl().contains("v2"))
+      if (!context.hasResource(CodeSystem.class, "http://hl7.org/fhir/data-absent-reason") && !vs.getUrl().contains("v3")&& !vs.getUrl().contains("v2"))
         throw new Error("d-a-r not found");
       
       int i = 0;
       for (ConceptSetComponent inc : vs.getCompose().getInclude()) {
         i++;
-        if (inc.hasSystem() && !context.getCodeSystems().containsKey(inc.getSystem()))
+        if (inc.hasSystem() && !context.hasResource(CodeSystem.class, inc.getSystem()))
           rule(errors, IssueType.BUSINESSRULE, vs.getUserString("committee")+":ValueSet["+vs.getId()+"].compose.include["+Integer.toString(i)+"]", isKnownCodeSystem(inc.getSystem()), "The system '"+inc.getSystem()+"' is not valid");
         
         if (inc.hasSystem() && canValidate(inc.getSystem())) {
@@ -247,7 +246,7 @@ public class ValueSetValidator extends BaseValidator {
   }
 
   private String getOid(ValueSet vs) {
-    for (org.hl7.fhir.dstu3.model.Identifier id : vs.getIdentifier()) {
+    for (org.hl7.fhir.r4.model.Identifier id : vs.getIdentifier()) {
       if (id.getSystem().equals("urn:ietf:rfc:3986") && id.getValue().startsWith("urn:oid:")) {
         return id.getValue().substring(8);
       }
@@ -344,6 +343,7 @@ public class ValueSetValidator extends BaseValidator {
         system.equals("urn:ietf:bcp:13") ||
         system.equals("urn:ietf:rfc:3986") ||
         system.equals("urn:iso:std:iso:11073:10101") ||
+        system.equals("urn:iso-astm:E1762-95:2013") ||
         system.equals("urn:iso:std:iso:3166") ||
         system.equals("http://nucc.org/provider-taxonomy") ||
         system.startsWith("http://example.com") ||
@@ -374,7 +374,7 @@ public class ValueSetValidator extends BaseValidator {
   }
 
   private boolean isValidCode(String code, String system) {
-    CodeSystem cs = context.getCodeSystems().get(system);
+    CodeSystem cs = context.fetchResource(CodeSystem.class, system);
     if (cs == null || cs.getContent() != CodeSystemContentMode.COMPLETE) 
       return context.validateCode(system, code, null).isOk();
     else {
@@ -396,7 +396,7 @@ public class ValueSetValidator extends BaseValidator {
 
   private boolean canValidate(String system) {
     try {
-      return context.getCodeSystems().containsKey(system) || context.supportsSystem(system);
+      return context.hasResource(CodeSystem.class, system) || context.supportsSystem(system);
     } catch (TerminologyServiceException e) {
       //If there are problems accessing the terminology server, fail gracefully
       return false;

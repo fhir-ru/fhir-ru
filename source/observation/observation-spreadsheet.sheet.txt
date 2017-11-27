@@ -37,7 +37,7 @@
   Conformance = required
 
  -- Row 6 -----------------------------------
-  Binding Name = ObservationRelationshipType
+  Binding Name = !ObservationRelationshipType
   Binding = code list
   Reference = #observation-relationshiptypes
   Definition = Codes specifying how two observations are related.
@@ -130,50 +130,6 @@
   Code = unknown
   Display = Unknown
   Definition = The authoring system does not know which of the status values currently applies for this request. Note: This concept is not to be used for \"other\" - one of the listed statuses is presumed to apply, but the authoring system does not know which.
-
-=== Sheet observation-relationshiptypes =====================================
-
- -- Row 1 -----------------------------------
-  Id = 2
-  Code = has-member
-  Display = Has Member
-  Definition = This observation is a group observation (e.g. a battery, a panel of tests, a set of vital sign measurements) that includes the target as a member of the group.
-  v3 = =ActRelationshipType.MBR
-
- -- Row 2 -----------------------------------
-  Id = 3
-  Code = derived-from
-  Display = Derived From
-  Definition = The target resource (Observation or QuestionnaireResponse) is part of the information from which this observation value is derived. (e.g. calculated anion gap, Apgar score)  NOTE:  \"derived-from\" is the only logical choice when referencing QuestionnaireResponse.
-  v3 = =ActRelationshipType.DRIV
-
- -- Row 3 -----------------------------------
-  Id = 4
-  Code = sequel-to
-  Display = Sequel To
-  Definition = This observation follows the target observation (e.g. timed tests such as Glucose Tolerance Test).
-  v3 = =ActRelationshipType.SEQL
-
- -- Row 4 -----------------------------------
-  Id = 5
-  Code = replaces
-  Display = Replaces
-  Definition = This observation replaces a previous observation (i.e. a revised value). The target observation is now obsolete.
-  v3 = =ActRelationshipType.RPLC
-
- -- Row 5 -----------------------------------
-  Id = 6
-  Code = qualified-by
-  Display = Qualified By
-  Definition = The value of the target observation qualifies (refines) the semantics of the source observation (e.g. a lipemia measure target from a plasma measure).
-  v3 = =ActRelationshipType.QUALF
-
- -- Row 6 -----------------------------------
-  Id = 7
-  Code = interfered-by
-  Display = Interfered By
-  Definition = The value of the target observation interferes (degrades quality, or prevents valid observation) with the semantics of the source observation (e.g. a hemolysis measure target from a plasma potassium measure, which has no value).
-  v3 = =ActRelationshipType.INTF
 
 === Sheet observation-statistics =====================================
 
@@ -321,9 +277,9 @@
  -- Row 3 -----------------------------------
   Id = 7
   Context = Observation
-  English = If code is the same as a component code then the value element associated with the code SHALL NOT be present
-  XPath = not(exists(f:value)) or not(count(for $coding in f:code/f:coding return parent::*/f:component/f:code/f:coding[f:code/@value=$coding/f:code/@value and f:system/@value=$coding/f:system/@value])=0)
-  Expression = value.empty() or code!=component.code
+  English = If Observation.code is the same as a Observation.component.code then the value element associated with the code SHALL NOT be present
+  XPath = not(f:*[starts-with(local-name(.), \'value\')] and (for $coding in f:code/f:coding return f:component/f:code/f:coding[f:code/@value=$coding/f:code/@value] [f:system/@value=$coding/f:system/@value]))
+  Expression = value.empty() or component.code.where( (coding.code = %resource.code.coding.code) and (coding.system = %resource.code.coding.system)).empty()
 
 === Sheet Data Elements =====================================
 
@@ -360,16 +316,30 @@
   Card. = 0..*
   Aliases = Fulfills
   Summary = Y
-  Type = Reference(CarePlan | DeviceRequest | ImmunizationRecommendation| MedicationRequest | NutritionOrder | ProcedureRequest | ReferralRequest)
+  Type = Reference(CarePlan | DeviceRequest | ImmunizationRecommendation| MedicationRequest | NutritionOrder | ServiceRequest)
   Short Name = Fulfills plan, proposal or order
   Definition = A plan, proposal or order that is fulfilled in whole or in part by this event
   Requirements = Allows tracing of authorization for the event and tracking whether proposals/recommendations were acted upon
   Workflow Mapping = Event.basedOn
   v2 Mapping = ORC
-  RIM Mapping = .outboundRelationship[typeCode=FLFS].target
+  RIM Mapping = .inboundRelationship[typeCode=COMP].source[moodCode=EVN]
   Committee Notes = 1/31/2017 EH:#9664
 
  -- Row 4 -----------------------------------
+  Element = Observation.partOf
+  Card. = 0..*
+  Aliases = Container
+  Summary = Y
+  Type = Reference(MedicationAdministration | MedicationDispense | MedicationStatement | Procedure |Immunization|ImagingStudy )
+  Short Name = Part of referenced event
+  Definition = A larger event of which this particular Observation is a component or step.  For example,  an observation as part of a procedure.
+  Comments = To link an Observation to an Encounter use `context`.  See the  [Notes](observation.html#obsgrouping) below for guidance on referencing another Observation.
+  Workflow Mapping = Event.partOF
+  v2 Mapping = Varies by domain
+  RIM Mapping = .outboundRelationship[typeCode=FLFS].target
+  Committee Notes = 11/8/2017 EH #14095
+
+ -- Row 5 -----------------------------------
   Element = Observation.status
   Card. = 1..1
   Is Modifier = y
@@ -387,7 +357,7 @@
   Display Hint = default: final
   w5 = status
 
- -- Row 5 -----------------------------------
+ -- Row 6 -----------------------------------
   Element = Observation.category
   Card. = 0..*
   Type = CodeableConcept
@@ -400,7 +370,7 @@
   Committee Notes = #7879
   w5 = class
 
- -- Row 6 -----------------------------------
+ -- Row 7 -----------------------------------
   Element = Observation.code
   Card. = 1..1
   Aliases = Name
@@ -417,7 +387,7 @@
   SNOMED CT Attribute = 116680003 |Is a|
   w5 = what
 
- -- Row 7 -----------------------------------
+ -- Row 8 -----------------------------------
   Element = Observation.subject
   Card. = 0..1
   Summary = Y
@@ -432,7 +402,7 @@
   Committee Notes = [#3447] ,[#5704],7156
   w5 = who.focus
 
- -- Row 8 -----------------------------------
+ -- Row 9 -----------------------------------
   Element = Observation.context
   Card. = 0..1
   Aliases = Encounter
@@ -447,34 +417,34 @@
   Committee Notes = [#3379]
   w5 = context
 
- -- Row 9 -----------------------------------
+ -- Row 10 -----------------------------------
   Element = Observation.effective[x]
   Card. = 0..1
   Aliases = Occurrence
   Summary = Y
-  Type = dateTime | Period
+  Type = dateTime | Period | Timing
   Short Name = Clinically relevant time/time-period for observation
   Definition = The time or time-period the observed value is asserted as being true. For biological subjects - e.g. human patients - this is usually called the \"physiologically relevant time\". This is usually either the time of the procedure or of specimen collection, but very often the source of the date/time is not known, only the date/time itself
   Requirements = Knowing when an observation was deemed true is important to its relevance as well as determining trends
-  Comments = At least a date should be present unless this observation is a historical report
+  Comments = At least a date should be present unless this observation is a historical report.  For recording imprecise or \"fuzzy\" times (For example, a blood glucose measurement taken \"after breakfast\") use the [Timing](datatypes.html#timing) datatype which allow the measurement to be tied to regular life events.
   Workflow Mapping = Event.occurrence[x]
   v2 Mapping = OBX-14, and/or OBX-19 after v2.4  (depends on who observation made)
   RIM Mapping = effectiveTime
   w5 = when.done
 
- -- Row 10 -----------------------------------
+ -- Row 11 -----------------------------------
   Element = Observation.issued
   Card. = 0..1
   Summary = Y
   Type = instant
-  Short Name = Date/Time this was made available
-  Definition = The date and time this observation was made available to providers, typically after the results have been reviewed and verified.
-  Comments = Updated when the result is updated.
+  Short Name = Date/Time this version was made available
+  Definition = The date and time this version of the observation was made available to providers, typically after the results have been reviewed and verified.
+  Comments = For Observations that don’t require review and verification, it may be the same as the [`lastUpdated` ](resource-definitions.html#Meta.lastUpdated) time of the resource itself.  For Observations that do require review and verification for certain updates, it may not be the same as the `lastUpdated` time of the resource itself due to a non-clinically significant update that doesn’t require the new version to be reviewed and verified again.
   v2 Mapping = OBR.22 (or MSH.7), or perhaps OBX-19 (depends on who observation made)
   RIM Mapping = participation[typeCode=AUT].time
   w5 = when.recorded
 
- -- Row 11 -----------------------------------
+ -- Row 12 -----------------------------------
   Element = Observation.performer
   Card. = 0..*
   Summary = Y
@@ -488,24 +458,24 @@
   Committee Notes = [#3688]{#3689]
   w5 = who.actor
 
- -- Row 12 -----------------------------------
+ -- Row 13 -----------------------------------
   Element = Observation.value[x]
   Card. = 0..1
   Summary = Y
   Inv. = 7
-  Type = Quantity|CodeableConcept|string|boolean|Range|Ratio|SampledData|Attachment|time|dateTime|Period
+  Type = Quantity|CodeableConcept|string|boolean|integer|Range|Ratio|SampledData|time|dateTime|Period
   Short Name = Actual result
   Definition = The information determined as a result of making the observation, if the information has a simple value
   Requirements = An observation exists to have a value, though it may not if it is in error, or if it represents a group of observations
-  Comments = Normally, an observation will have either a single value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. This element has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueString, valueBoolean, valueRange, valueRatio, valueSampledData, valueAttachment, valueTime, valueDateTime, or valuePeriod. (The name format is \"\'value\' + the type name\" with a capital on the first letter of the type).\r\r\rIf the data element is usually coded or if the type associated with the Observation.value defines a coded value, use CodeableConcept instead of string datatype even if the value is uncoded text.  A value set is bound to the ValueCodeableConcept element.    For further discussion and examples see the  [notes section](observation.html#notes) below.
-  Workflow Mapping = Event.notDone, Event.notDoneReason  (maps to valeu[x] or dataAbsentReason)
+  Comments = An observation may have; 1)  a single value here, 2)  both a value and a set of related or component values,  or 3)  only a set of related or component values. If a value is present, the datatype for this element should be determined by Observation.code.  A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Observation.code defines a coded value.  For additional guidance, see the [Notes section](observation.html#notes) below.
+  Workflow Mapping = Event.notDone, Event.notDoneReason  {maps to value[x] or dataAbsentReason}
   SNOMED CT Concept Domain = < 441742003 |Evaluation finding|
   v2 Mapping = OBX.2, OBX.5, OBX.6
   RIM Mapping = value
   SNOMED CT Attribute = 363714003 |Interprets|
   Committee Notes = [#3125],[#3505],[#5853],8479,{#9375]
 
- -- Row 13 -----------------------------------
+ -- Row 14 -----------------------------------
   Element = Observation.dataAbsentReason
   Card. = 0..1
   Inv. = 6
@@ -515,12 +485,12 @@
   Definition = Provides a reason why the expected value in the element Observation.value[x] is missing.
   Requirements = For many results it is necessary to handle exceptional values in measurements.
   Comments = Null or exceptional values can be represented two ways in FHIR Observations.  One way is to simply include them in the value set and represent the exceptions in the value.  For example, measurement values for a serology test could be  \"detected\", \"not detected\", \"inconclusive\", or  \"specimen unsatisfactory\".   The alternate way is to use the value element for actual observations and use the explicit dataAbsentReason element to record exceptional values.  For example, the dataAbsentReason code \"error\" could be used when the measurement was not completed. Note that an observation may only be reported if there are values to report. For example differential cell counts values may be reported only when > 0.  Because of these options, use-case agreements are required to interpret general observations for null or exceptional values.
-  Workflow Mapping = Event.notDone, Event.notDoneReason  (maps to valeu[x] or dataAbsentReason)
+  Workflow Mapping = Event.notDone, Event.notDoneReason  {maps to value[x] or dataAbsentReason}
   v2 Mapping = N/A
   RIM Mapping = value.nullFlavor
   Committee Notes = [#3434],  [#5629],
 
- -- Row 14 -----------------------------------
+ -- Row 15 -----------------------------------
   Element = Observation.interpretation
   Card. = 0..1
   Aliases = Abnormal Flag
@@ -534,7 +504,7 @@
   RIM Mapping = interpretationCode
   SNOMED CT Attribute = 363713009 |Has interpretation|
 
- -- Row 15 -----------------------------------
+ -- Row 16 -----------------------------------
   Element = Observation.comment
   Card. = 0..1
   Type = string
@@ -545,7 +515,7 @@
   v2 Mapping = NTE.3 (partner NTE to OBX, or sometimes another (child?) OBX)
   RIM Mapping = subjectOf.observationEvent[code=\"annotation\"].value
 
- -- Row 16 -----------------------------------
+ -- Row 17 -----------------------------------
   Element = !Observation.reliability
   Card. = 0..1
   Is Modifier = y
@@ -560,21 +530,21 @@
   Committee Notes = [#3002],7154
   Display Hint = default: ok
 
- -- Row 17 -----------------------------------
+ -- Row 18 -----------------------------------
   Element = Observation.bodySite
   Card. = 0..1
   Type = CodeableConcept
   Binding = BodySite
   Short Name = Observed body part
   Definition = Indicates the site on the subject\'s body where the observation was made (i.e. the target site).
-  Comments = Only used if not implicit in code found in Observation.code.  In many systems, this may be represented as a related observation instead of an inline component.   If the use case requires BodySite to be handled as a separate resource (e.g. to identify and track separately) then use the standard extension[ body-site-instance](extension-body-site-instance.html).
+  Comments = Only used if not implicit in code found in Observation.code.  In many systems, this may be represented as a related observation instead of an inline component.   If the use case requires BodySite to be handled as a separate resource (e.g. to identify and track separately) then use the standard extension[ body-structure](extension-body-structure.html).
   SNOMED CT Concept Domain = < 123037004 |Body structure|
   v2 Mapping = OBX-20
   RIM Mapping = targetSiteCode
   SNOMED CT Attribute = 718497002 |Inherent location|
   Committee Notes = Is this in the 80%?
 
- -- Row 18 -----------------------------------
+ -- Row 19 -----------------------------------
   Element = Observation.method
   Card. = 0..1
   Type = CodeableConcept
@@ -587,7 +557,7 @@
   RIM Mapping = methodCode
   Committee Notes = Is this in the 80%?
 
- -- Row 19 -----------------------------------
+ -- Row 20 -----------------------------------
   Element = Observation.specimen
   Card. = 0..1
   Type = Reference(Specimen)
@@ -600,20 +570,20 @@
   SNOMED CT Attribute = 704319004 |Inherent in|
   Committee Notes = 7158
 
- -- Row 20 -----------------------------------
+ -- Row 21 -----------------------------------
   Element = Observation.device
   Card. = 0..1
-  Type = Reference(Device|DeviceMetric)
+  Type = Reference(Device|DeviceComponent|DeviceMetric)
   Short Name = (Measurement) Device
   Definition = The device used to generate the observation data.
-  Comments = An extension should be used if further typing of the device is needed.  Devices used to support obtaining an observation can be represented using either an extension or through the Observation.related element.
+  Comments = An extension should be used if further typing of the device is needed.  Devices used to support obtaining an observation can be represented using an extension or the [Provenance](provenance.html) resource. (e.g., a device gateway such as a smart phone).
   SNOMED CT Concept Domain = < 49062001 |Device|
   v2 Mapping = OBX-17 / PRT -10
   RIM Mapping = participation[typeCode=DEV]
   SNOMED CT Attribute = 424226004 |Using device|
   Committee Notes = [#3689]
 
- -- Row 21 -----------------------------------
+ -- Row 22 -----------------------------------
   Element = !Observation.normalValue[x]
   Card. = 0..1
   Type = Range|string
@@ -622,7 +592,7 @@
   v2 Mapping = OBX.7
   RIM Mapping = outboundRelationship[typeCode=REFV]/target[classCode=OBS, moodCode=EVN,  interpretationCode=ObservationInterpretationNormality:N].value
 
- -- Row 22 -----------------------------------
+ -- Row 23 -----------------------------------
   Element = Observation.referenceRange
   Card. = 0..*
   UML = 400;320
@@ -633,7 +603,7 @@
   v2 Mapping = OBX.7
   RIM Mapping = outboundRelationship[typeCode=REFV]/target[classCode=OBS, moodCode=EVN]
 
- -- Row 23 -----------------------------------
+ -- Row 24 -----------------------------------
   Element = Observation.referenceRange.low
   Card. = 0..1
   Inv. = 3
@@ -644,7 +614,7 @@
   RIM Mapping = value:IVL_PQ.low
   Committee Notes = [#3882]
 
- -- Row 24 -----------------------------------
+ -- Row 25 -----------------------------------
   Element = Observation.referenceRange.high
   Card. = 0..1
   Inv. = 3
@@ -654,7 +624,7 @@
   v2 Mapping = OBX-7
   RIM Mapping = value:IVL_PQ.high
 
- -- Row 25 -----------------------------------
+ -- Row 26 -----------------------------------
   Element = Observation.referenceRange.type
   Card. = 0..1
   Type = CodeableConcept
@@ -668,7 +638,7 @@
   RIM Mapping = interpretationCode
   Committee Notes = [$8941][1115]
 
- -- Row 26 -----------------------------------
+ -- Row 27 -----------------------------------
   Element = Observation.referenceRange.appliesTo
   Card. = 0..*
   Type = CodeableConcept
@@ -682,7 +652,7 @@
   RIM Mapping = interpretationCode
   Committee Notes = [$8941][11115]
 
- -- Row 27 -----------------------------------
+ -- Row 28 -----------------------------------
   Element = Observation.referenceRange.age
   Card. = 0..1
   Type = Range
@@ -691,7 +661,7 @@
   Requirements = Some analytes vary greatly over age
   RIM Mapping = outboundRelationship[typeCode=PRCN].targetObservationCriterion[code=\"age\"].value
 
- -- Row 28 -----------------------------------
+ -- Row 29 -----------------------------------
   Element = Observation.referenceRange.text
   Card. = 0..1
   Type = string
@@ -700,30 +670,33 @@
   v2 Mapping = OBX-7
   RIM Mapping = value:ST
 
- -- Row 29 -----------------------------------
-  Element = !Observation.derivedFrom
-  Card. = 0..*
-  Summary = Y
-  Type = Reference(AllergyIntolerance|Condition|FamilyMemberHistory|ImagingStudy|Immunization|MedicationStatement|Procedure|QuestionnaireResponse|Observation)
-  Short Name = The resource from which an observation is derived
-  Definition = A reference to a resource from which this observation value is derived. For example an Observation resource for a calculated anion gap or Apgar score Observation or a QuestionnaireAnswer resource for an Assessment Tool Observation.( 5/18/2015 EH: TODO need to get a specific example /use cases for example using something other than Observation)
-  Comments = Observations that are a group of observations should be separate resources referenced using the related element with type \"has-member\" or as component observation(s).
-  RIM Mapping = .targetObservation
-
  -- Row 30 -----------------------------------
-  Element = Observation.related
+  Element = Observation.hasMember
   Card. = 0..*
   Summary = Y
   UML = 400;0
-  Short Name = Resource related to this observation
-  Definition = A  reference to another resource (usually another Observation) whose relationship is defined by the relationship type code.
-  Requirements = Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and a set of related observations or sometimes a QuestionnaireResponse from which the measure is derived.
-  Comments = For a discussion on the ways Observations can assembled in groups together see [Notes below](observation.html#4.20.4).
+  Type = Reference(Observation|QuestionnaireResponse|Sequence)
+  Short Name = Related resource that belongs to the Observation group
+  Definition = This observation is a group observation (e.g. a battery, a panel of tests, a set of vital sign measurements) that includes the target as a member of the group
+  Comments = When using this element, an observation will typically have either a value or a set of related resources, although both may be present in some cases.  For a discussion on the ways Observations can assembled in groups together, see [Notes](#obsgrouping) below.
   v2 Mapping = Relationships established by OBX-4 usage
   RIM Mapping = outBoundRelationship
+  Committee Notes = [#10118]
 
  -- Row 31 -----------------------------------
-  Element = Observation.related.type
+  Element = Observation.derivedFrom
+  Card. = 0..*
+  Summary = Y
+  Type = Reference(DocumentReference|ImagingStudy|Media|QuestionnaireResponse|Observation|Sequence)
+  Short Name = Related measurements the observation is made from
+  Definition = The target resource that represents a measurement from which this observation value is derived. For example, a calculated anion gap or a fetal measurement based on an ultrasound image.
+  Comments = All the reference choices that are listed in this element can represent clinical observations and other measurements that may be the source for a derived value.  The most common reference will be another Observation.  For a discussion on the ways Observations can assembled in groups together, see [Notes](#obsgrouping) below.
+  v2 Mapping = Relationships established by OBX-4 usage
+  RIM Mapping = .targetObservation
+  Committee Notes = [#10118]
+
+ -- Row 32 -----------------------------------
+  Element = !Observation.related.type
   Card. = 0..1
   Type = code
   Binding = ObservationRelationshipType
@@ -735,8 +708,8 @@
   RIM Mapping = .typeCode
   Committee Notes = [#7639]
 
- -- Row 32 -----------------------------------
-  Element = Observation.related.target
+ -- Row 33 -----------------------------------
+  Element = !Observation.related.target
   Card. = 1..1
   Type = Reference(Observation|QuestionnaireResponse|Sequence)
   Short Name = Resource that is related to this one
@@ -744,7 +717,7 @@
   RIM Mapping = .targetObservation
   Committee Notes = can an invariant be made to limit code when referencing a resource type? [#10117]
 
- -- Row 33 -----------------------------------
+ -- Row 34 -----------------------------------
   Element = Observation.component
   Card. = 0..*
   Summary = Y
@@ -757,7 +730,7 @@
   RIM Mapping = outBoundRelationship[typeCode=COMP]
   Committee Notes = 5/15/2015:#7517
 
- -- Row 34 -----------------------------------
+ -- Row 35 -----------------------------------
   Element = Observation.component.code
   Card. = 1..1
   Summary = Y
@@ -771,36 +744,36 @@
   RIM Mapping = code
   w5 = what
 
- -- Row 35 -----------------------------------
+ -- Row 36 -----------------------------------
   Element = Observation.component.value[x]
   Card. = 0..1
   Summary = Y
-  Type = Quantity|CodeableConcept|string|Range|Ratio|SampledData|Attachment|time|dateTime|Period
+  Type = Quantity|CodeableConcept|string|boolean|integer|Range|Ratio|SampledData|time|dateTime|Period
   Short Name = Actual component result
   Definition = The information determined as a result of making the observation, if the information has a simple value
   Requirements = An observation exists to have a value, though it may not if it is in error, or if it represents a group of observations
-  Comments = Normally, an observation will have either a single value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Observation.code defines a coded value.   For boolean values use valueCodeableConcept and select codes from <http://hl7.org/fhir/ValueSet/v2-0136> (these \"yes/no\" concepts can be mapped to the display name \"true/false\" or other mutually exclusive terms that may be needed\").  The element, Observation.value[x], has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueRatio, valueChoice, valuePeriod, valueSampleData, or valueString (the name format is \"\'value\' + the type name\" with a capital on the first letter of the type).
+  Comments = Used when observation has a set of component observations. An observations may have both a value (e.g. an  Apgar score)  and component observations (the observations from which the Apgar score was derived). If a value is present, the datatype for this element should be determined by Observation.code. A CodeableConcept with just a text would be used instead of a string if the field was usually coded, or if the type associated with the Observation.code defines a coded value.  For additional guidance, see the [Notes section](observation.html#notes) below.
   SNOMED CT Concept Domain = 363714003 |Interprets| < 441742003 |Evaluation finding|
   v2 Mapping = OBX.2, OBX.5, OBX.6
   RIM Mapping = value
   SNOMED CT Attribute = 363714003 |Interprets|
   Committee Notes = [#3125],[#3505],[#5853]
 
- -- Row 36 -----------------------------------
+ -- Row 37 -----------------------------------
   Element = Observation.component.dataAbsentReason
   Card. = 0..1
   Inv. = 6
   Type = CodeableConcept
   Binding = ObservationValueAbsentReason
   Short Name = Why the component result is missing
-  Definition = Provides a reason why the expected value in the element Observation.value[x] is missing.
+  Definition = Provides a reason why the expected value in the element Observation.component.value[x] is missing.
   Requirements = For many results it is necessary to handle exceptional values in measurements.
   Comments = \"Null\" or exceptional values can be represented two ways in FHIR Observations.  One way is to simply include them in the value set and represent the exceptions in the value.  For example, measurement values for a serology test could be  \"detected\", \"not detected\", \"inconclusive\", or  \"test not done\".   The alternate way is to use the value element for actual observations and use the explicit dataAbsentReason element to record exceptional values.  For example, the dataAbsentReason code \"error\" could be used when the measurement was not completed.  Because of these options, use-case agreements are required to interpret general observations for exceptional values.
   v2 Mapping = N/A
   RIM Mapping = value.nullFlavor
   Committee Notes = [#3434], preapply [#5629]
 
- -- Row 37 -----------------------------------
+ -- Row 38 -----------------------------------
   Element = Observation.component.interpretation
   Card. = 0..1
   Aliases = Abnormal Flag
@@ -816,7 +789,7 @@
   SNOMED CT Attribute = 363713009 |Has interpretation|
   Committee Notes = #9676
 
- -- Row 38 -----------------------------------
+ -- Row 39 -----------------------------------
   Element = Observation.component.referenceRange
   Card. = 0..*
   Type = @Observation.referenceRange
@@ -1039,17 +1012,17 @@
   Path = Observation.specimen
 
  -- Row 34 -----------------------------------
-  Name = related-type
+  Name = !related-type
   Type = token
   Path = Observation.related.type
 
  -- Row 35 -----------------------------------
-  Name = related-target
+  Name = !related-target
   Type = reference
   Path = Observation.related.target
 
  -- Row 36 -----------------------------------
-  Name = related
+  Name = !related
   Type = composite
   Description = Related Observations - search on related-type and related-target together
   Path = related-target & related-type
@@ -1120,77 +1093,45 @@
  -- Row 47 -----------------------------------
   Name = based-on
   Type = reference
-  Description = Reference to the test or procedure request.
+  Description = Reference to the service request.
   Path = Observation.basedOn
+
+ -- Row 48 -----------------------------------
+  Name = part-of
+  Type = reference
+  Path = Observation.partOf
+
+ -- Row 49 -----------------------------------
+  Name = derived-from
+  Type = reference
+  Path = Observation.derivedFrom
+
+ -- Row 50 -----------------------------------
+  Name = has-member
+  Type = reference
+  Path = Observation.hasMember
 
 === Sheet Profiles =====================================
 
  -- Row 1 -----------------------------------
-  Name = !C-CDA Smoking Status Observation
-  IG Name = ccda
-  Filename = observation-ccda-smokingstatus.xml
-  Type = spreadsheet
-
- -- Row 2 -----------------------------------
-  Name = !C-CDA Age Observation
-  IG Name = ccda
-  Filename = observation-ccda-age.xml
-  Type = spreadsheet
-
- -- Row 3 -----------------------------------
-  Name = !C-CDA Assessment Scale Observation
-  IG Name = ccda
-  Filename = observation-ccda-assessmentscale.xml
-  Type = spreadsheet
-
- -- Row 4 -----------------------------------
-  Name = !C-CDA Caregiver Characteristics Observation
-  IG Name = ccda
-  Filename = observation-ccda-caregiverchar.xml
-  Type = spreadsheet
-
- -- Row 5 -----------------------------------
-  Name = !C-CDA Cognitive Status Result Observation
-  IG Name = ccda
-  Filename = observation-ccda-cognitivestatusresult.xml
-  Type = spreadsheet
-
- -- Row 6 -----------------------------------
-  Name = !C-CDA Comment Activity
-  IG Name = ccda
-  Filename = observation-ccda-commentactivity.xml
-  Type = spreadsheet
-
- -- Row 7 -----------------------------------
-  Name = !C-CDA Deceased Observation
-  IG Name = ccda
-  Filename = observation-ccda-deceasedobservation.xml
-  Type = spreadsheet
-
- -- Row 8 -----------------------------------
-  Name = !Test2
-  Filename = observation-test2.xml
-  Type = spreadsheet
-
- -- Row 9 -----------------------------------
   Name = Device Metric Observation
   IG Name = core
   Filename = observation-devicemetricobservation.xml
   Type = spreadsheet
 
- -- Row 10 -----------------------------------
+ -- Row 2 -----------------------------------
   Name = observation-core
   IG Name = core
   Filename = observation-core.xml
   Type = spreadsheet
 
- -- Row 11 -----------------------------------
+ -- Row 3 -----------------------------------
   Name = Observation-Genetics
   IG Name = core
   Filename = observation-genetics.xml
   Type = spreadsheet
 
- -- Row 12 -----------------------------------
+ -- Row 4 -----------------------------------
   Name = Vital Signs Profile
   IG Name = core
   Filename = observation-vitalsigns.xml
@@ -1247,280 +1188,317 @@
   Filename = observation-example-bmi.xml
 
  -- Row 9 -----------------------------------
+  Name = BMI Height and Weight
+  Identity = bmi-using-related
+  Description = BMI with links to Height and Weight
+  Filename = observation-example-bmi-using-related.xml
+
+ -- Row 10 -----------------------------------
   Name = Oxygen Saturation (SpO2)
   Identity = satO2
   Description = Oxygen Saturation by Pulse Oximetry Example (DeviceMetricObservation profile)
   Filename = observation-example-satO2.xml
 
- -- Row 10 -----------------------------------
+ -- Row 11 -----------------------------------
   Name = Blood Pressure
   Identity = blood-pressure
   Description = Blood Pressure Measurement
   Filename = observation-example-bloodpressure.xml
 
- -- Row 11 -----------------------------------
+ -- Row 12 -----------------------------------
   Name = Blood Pressure with Data Absent
   Identity = blood-pressure-dar
   Description = Blood Pressure Measurement with an absent Diastolic measurement
   Filename = observation-example-bloodpressure-dar.xml
 
- -- Row 12 -----------------------------------
+ -- Row 13 -----------------------------------
   Name = Mean Arterial Blood Pressure
   Identity = mbp
   Description = Simple Mean Arterial Blood Pressure Example
   Filename = observation-example-mbp.xml
 
- -- Row 13 -----------------------------------
+ -- Row 14 -----------------------------------
   Name = Vitals Signs Panel
   Identity = vitals-panel
   Description = Simple Panel of Heart Rate, Repiratory Rate. Blood Pressure and Body Temperature
   Filename = observation-example-vitals-panel.xml
 
- -- Row 14 -----------------------------------
+ -- Row 15 -----------------------------------
   Name = cancelled
   Identity = blood-pressure-cancel
   Description = Blood Pressure Measurement cancelled
   Filename = observation-example-bloodpressure-cancel.xml
 
- -- Row 15 -----------------------------------
+ -- Row 16 -----------------------------------
   Name = Glucose
   Identity = f001
   Description = Real-world patient - glucose
   Filename = observation-example-f001-glucose.xml
 
- -- Row 16 -----------------------------------
+ -- Row 17 -----------------------------------
   Name = Unsat
   Identity = unsat
   Description = Specimen Reject Example
   Filename = observation-example-unsat.xml
 
- -- Row 17 -----------------------------------
+ -- Row 18 -----------------------------------
   Name = Base Excess
   Identity = f002
   Description = Real-world patient -base excess
   Filename = observation-example-f002-excess.xml
 
- -- Row 18 -----------------------------------
+ -- Row 19 -----------------------------------
   Name = Carbon Dioxide
   Identity = f003
   Description = Real-world patient - CO2
   Filename = observation-example-f003-co2.xml
 
- -- Row 19 -----------------------------------
+ -- Row 20 -----------------------------------
   Name = Erythrocyte Hemoglobin
   Identity = f004
   Description = Real-world patient - erythrocyte
   Filename = observation-example-f004-erythrocyte.xml
 
- -- Row 20 -----------------------------------
+ -- Row 21 -----------------------------------
   Name = Hemoglobin
   Identity = f005
   Description = Real-world patient - hemoglobin
   Filename = observation-example-f005-hemoglobin.xml
 
- -- Row 21 -----------------------------------
+ -- Row 22 -----------------------------------
   Name = Date last menstrual period
   Identity = date-lastmp
   Description = An \"ask at order\" response using the datetime datetype for the result value
   Filename = observation-example-date-lastmp.xml
 
- -- Row 22 -----------------------------------
+ -- Row 23 -----------------------------------
   Name = !BMI
   Identity = f201
   Description = Real-world patient - bmi
   Filename = observation-example-f201-bmi.xml
 
- -- Row 23 -----------------------------------
+ -- Row 24 -----------------------------------
   Name = Temperature
   Identity = f202
   Description = Real-world patient - temperature
   Filename = observation-example-f202-temperature.xml
 
- -- Row 24 -----------------------------------
+ -- Row 25 -----------------------------------
   Name = Bicarbonate
   Identity = f203
   Description = Real-world patient - CO2
   Filename = observation-example-f203-bicarbonate.xml
 
- -- Row 25 -----------------------------------
+ -- Row 26 -----------------------------------
   Name = Creatinine
   Identity = f204
   Description = Real-world patient - creatinine
   Filename = observation-example-f204-creatinine.xml
 
- -- Row 26 -----------------------------------
+ -- Row 27 -----------------------------------
   Name = Estimated GFR
   Identity = f205
   Description = Real-world patient - estimated gfr
   Filename = observation-example-f205-egfr.xml
 
- -- Row 27 -----------------------------------
+ -- Row 28 -----------------------------------
   Name = Staphylococcus
   Identity = f206
   Description = Real-world patient - staphylococcus
   Filename = observation-example-f206-staphylococcus.xml
 
- -- Row 28 -----------------------------------
+ -- Row 29 -----------------------------------
   Name = EKG
   Identity = ekg
   Description = EKG Example using SampledData data type
   Filename = observation-example-sample-data.xml
 
- -- Row 29 -----------------------------------
+ -- Row 30 -----------------------------------
   Name = !EEG Example
   Identity = example-eeg
   Description = EEG Example
   Filename = observation-example-eeg.xml
 
- -- Row 30 -----------------------------------
+ -- Row 31 -----------------------------------
   Name = Glasgow Score 1
   Identity = glasgow
-  Description = Clinical assessment tool example - GCS using related Observations
+  Description = Clinical assessment tool example - GCS with individual score as components
   Filename = observation-example-glasgow.xml
 
- -- Row 31 -----------------------------------
+ -- Row 32 -----------------------------------
   Name = Glasgow Score 2
   Identity = gcs-qa
-  Description = Clinical assessment tool example - GCS using related QuestionnaireAnswer
+  Description = Clinical assessment tool example - GCS with individual scores as related QuestionnaireAnswer
   Filename = observation-example-glasgow-qa.xml
 
- -- Row 32 -----------------------------------
+ -- Row 33 -----------------------------------
   Name = Genetics 1
   Identity = example-genetics-1
   Description = Genetics example 1
   Filename = observation-example-genetics-1.xml
   Profile = Observation-Genetics
 
- -- Row 33 -----------------------------------
+ -- Row 34 -----------------------------------
   Name = Genetics 2
   Identity = example-genetics-2
   Description = Genetics example 2
   Filename = observation-example-genetics-2.xml
   Profile = Observation-Genetics
 
- -- Row 34 -----------------------------------
+ -- Row 35 -----------------------------------
   Name = Genetics 3
   Identity = example-genetics-3
   Description = Genetics example 3
   Filename = observation-example-genetics-3.xml
   Profile = Observation-Genetics
 
- -- Row 35 -----------------------------------
+ -- Row 36 -----------------------------------
   Name = Genetics 4
   Identity = example-genetics-4
   Description = Genetics example 4
   Filename = observation-example-genetics-4.xml
   Profile = Observation-Genetics
 
- -- Row 36 -----------------------------------
+ -- Row 37 -----------------------------------
   Name = Genetics 5
   Identity = example-genetics-5
   Description = Genetics example 5
   Filename = observation-example-genetics-5.xml
   Profile = Observation-Genetics
 
- -- Row 37 -----------------------------------
+ -- Row 38 -----------------------------------
   Name = 1 minute Apgar Score
   Identity = 1minute-apgar-score
-  Description = Example of a 1 minute Apgar score including the individual score components
+  Description = Example of a 1 minute Apgar score with individual score as components
   Filename = observation-example-1minute-apgar-score.xml
 
- -- Row 38 -----------------------------------
+ -- Row 39 -----------------------------------
   Name = 2 minute Apgar Score
   Identity = 2minute-apgar-score
-  Description = Example of a 2 minute Apgar score including the individual score components
+  Description = Example of a 2 minute Apgar score with individual score as components
   Filename = observation-example-2minute-apgar-score.xml
 
- -- Row 39 -----------------------------------
+ -- Row 40 -----------------------------------
   Name = 5 minute Apgar Score
   Identity = 5minute-apgar-score
-  Description = Example of a 5 minute Apgar score including the individual score components
+  Description = Example of a 5 minute Apgar score with individual score as components
   Filename = observation-example-5minute-apgar-score.xml
 
- -- Row 40 -----------------------------------
+ -- Row 41 -----------------------------------
   Name = 10 minute Apgar Score
   Identity = 10minute-apgar-score
-  Description = Example of a 10 minute Apgar score including the individual score components
+  Description = Example of a 10 minute Apgar score with individual score as components
   Filename = observation-example-10minute-apgar-score.xml
 
- -- Row 41 -----------------------------------
+ -- Row 42 -----------------------------------
   Name = 20 minute Apgar Score
   Identity = 20minute-apgar-score
-  Description = Example of a 20 minute Apgar score including the individual score components
+  Description = Example of a 20 minute Apgar score with individual score as components
   Filename = observation-example-20minute-apgar-score.xml
 
- -- Row 42 -----------------------------------
+ -- Row 43 -----------------------------------
   Name = Eye Color
   Identity = eye-color
   Description = Example of a very simple personal characteristic observation
   Filename = observation-example-eye-color.xml
 
- -- Row 43 -----------------------------------
+ -- Row 44 -----------------------------------
   Name = Bone Density Measurement
   Identity = bmd
   Description = Example of an encoded BMD measurements of left femur
   Filename = observation-example-bmd.xml
 
- -- Row 44 -----------------------------------
+ -- Row 45 -----------------------------------
   Name = Diplotype(with Haplotypes Ref)
   Identity = example-diplotype1
   Description = Example of diplotype data (with haplotypes observation as reference)
   Filename = observation-example-diplotype1.xml
   Profile = Observation-Genetics
 
- -- Row 45 -----------------------------------
+ -- Row 46 -----------------------------------
   Name = Haplotype
   Identity = example-haplotype1
   Description = Example of haplotype data that is basis of a diplotype data
   Filename = observation-example-haplotype1.xml
   Profile = Observation-Genetics
 
- -- Row 46 -----------------------------------
+ -- Row 47 -----------------------------------
   Name = Haplotype-2
   Identity = example-haplotype2
   Description = Example of another haplotype data that is basis of a diplotype data
   Filename = observation-example-haplotype2.xml
   Profile = Observation-Genetics
 
- -- Row 47 -----------------------------------
+ -- Row 48 -----------------------------------
   Name = Phenotype
   Identity = example-phenotype
   Description = Example of phenotype data
   Filename = observation-example-phenotype.xml
   Profile = Observation-Genetics
 
- -- Row 48 -----------------------------------
+ -- Row 49 -----------------------------------
   Name = TPMT-diplotype
   Identity = example-TPMT-diplotype
   Description = Example of a TPMT diplotype that link to two TPMT haplotype observations
   Filename = observation-example-TPMT-diplotype.xml
   Profile = Observation-Genetics
 
- -- Row 49 -----------------------------------
+ -- Row 50 -----------------------------------
   Name = TPMT-haplotype-one
   Identity = example-TPMT-haplotype-one
   Description = Example of a TPMT haplotype observation
   Filename = observation-example-TPMT-haplotype-one.xml
   Profile = Observation-Genetics
 
- -- Row 50 -----------------------------------
+ -- Row 51 -----------------------------------
   Name = TPMT-haplotype-two
   Identity = example-TPMT-haplotype-two
   Description = Example of another TPMT haplotype observation
   Filename = observation-example-TPMT-haplotype-two.xml
   Profile = Observation-Genetics
 
+ -- Row 52 -----------------------------------
+  Name = Spirometry
+  Identity = 656
+  Description = Spirometry Example referencing DeviceComponent
+  Filename = observation-example-spirometry.xml
+
+ -- Row 53 -----------------------------------
+  Name = Breast Cancer genetic test
+  Identity = example-genetics-brcapat
+  Description = Example of breast cancer genetic observation
+  Filename = observation-example-genetics-brcapat.xml
+  Profile = Observation-Genetics
+
+ -- Row 54 -----------------------------------
+  Name = Type of alcohol consumed
+  Identity = alcohol-type
+  Description = Example of a multi-select values/answers Observation with individual answers/values as components
+  Filename = observation-example-alcohol-type.xml
+
+ -- Row 55 -----------------------------------
+  Name = Oyster Testing
+  Identity = vp-oyster
+  Description = Example of an Observations made about a location - an oyster farm
+  Filename = observation-example-vp-oyster.xml
+
+ -- Row 56 -----------------------------------
+  Name = Herd test for Mycoplasmal Pneumonia
+  Identity = herd1
+  Description = An example of a herd screening ELISA assay for Mycoplasmal Pneumonia in Pigs.
+  Filename = observation-example-herd1.xml
+
 === Sheet Examples =====================================
 
  -- Row 1 -----------------------------------
   Name = stats
   Use = Resource
-  Documentation = The Statistics operation performs a set of statistical calculations on a set of clinical measurements such as a blood pressure as stored on the server.  This operation is focused on [Observation](observation.html) resources with valueQuantity elements that have UCUM unit codes.\n\nThe set of Observations is defined by 4 parameters:\n\n*  the subject of the observations for which the statistics are being generated (`subject`)\n* which observations to generate statistics for (`code` and `system`, or `coding`)\n* the time period over which to generate statistics `\'duration` or `period`)\n* the set of statistical analyses to return (`statistic`)\n\nPossible statistical analyses (see [StatisticsCode](valueset-observation-statistics.html)):\n\n[[[valueset:observation-statistics]]]\n\nIf successful, the operation returns an Observation resource for each code with the results of the statistical calculations as component value pairs where the component code = the statistical code. The Observation also contains the input parameters `patient`,`code` and `duration` parameters. If unsuccessful, an [OperationOutcome](operationoutcome.html) with an error message will be returned.\n\nThe client can request that all the observations on which the statistics are based be returned as well, using the include parameter. If an include parameter is specified, a limit may also be specified; the sources observations are subsetted at the server\'s discretion if count > limit. This functionality is included with the intent of supporting graphical presentation
+  Documentation = The Statistics operation performs a set of statistical calculations on a set of clinical measurements such as a blood pressure as stored on the server.  This operation evaluates [Observation](observation.html) resources having valueQuantity elements that have UCUM unit codes. Observations with a status of \'entered-in-error\' will be excluded from the calculations.  \r\rThe set of Observations is defined by 4 parameters:\r\r*  the subject of the observations for which the statistics are being generated (`subject`)\r* which observations to generate statistics for (`code` and `system`, or `coding`)\r* the time period over which to generate statistics `\'duration` or `period`)\r* the set of statistical analyses to return (`statistic`)\r\rPossible statistical analyses (see [StatisticsCode](valueset-observation-statistics.html)):\r\r[[[valueset:observation-statistics]]]\r\rIf successful, the operation returns an Observation resource for each code with the results of the statistical calculations as component value pairs where the component code = the statistical code. The Observation also contains the input parameters `patient`,`code` and `duration` parameters. If unsuccessful, an [OperationOutcome](operationoutcome.html) with an error message will be returned.\r\rThe client can request that all the observations on which the statistics are based be returned as well, using the include parameter. If an include parameter is specified, a limit may also be specified; the sources observations are subsetted at the server\'s discretion if count > limit. This functionality is included with the intent of supporting graphical presentation
   Type = operation
   Example.Request = $stats-request.txt
   Example.Response = $stats-response.txt
   Title = Observation Statistics
-  Footer = This operation cannot be performed on observations that the user is not authorized to see.  It is assumed that the server has identified and secured the context appropriately, and can either associate the authorization context with a single patient, or determine whether the context has the rights to the nominated patient, if there is one. If there is no nominated patient (e.g. the operation is invoked at the system level) and the context is not associated with a single patient record, then the server should return an error. Specifying the relationship between the context, a user and patient records is outside the scope of this specification.
+  Footer = If [modifier extensions](extensibility.html#modifierExtension) are present in the Observation, they must be accounted for by implementers.  A modifier extension may affect the observation.value in a way that it should be excluded from the from the calculations.\r\rThis operation cannot be performed on observations that the user is not authorized to see.  It is assumed that the server has identified and secured the context appropriately, and can either associate the authorization context with a single patient, or determine whether the context has the rights to the nominated patient, if there is one. If there is no nominated patient (e.g. the operation is invoked at the system level) and the context is not associated with a single patient record, then the server should return an error. Specifying the relationship between the context, a user and patient records is outside the scope of this specification.
   Idempotent = True
 
  -- Row 2 -----------------------------------
@@ -1534,7 +1512,7 @@
  -- Row 3 -----------------------------------
   Name = stats.code
   Use = in
-  Documentation = The test code(s) upon which the statistics are being performed. Provide along with a system, or as a coding. For example, the code  = \"45667-2\"  will evaluate all relevant Observations with this code in Observation.code. For LOINC codes that are panels, (e.g. 55284-4) this means to include all the individual codes that are part of a panel
+  Documentation = The test code(s) upon which the statistics are being performed. Provide along with a system, or as a coding. For example, the LOINC code  = \r2339-0 (Glucose [Mass/​volume] in Blood) will evaluate all relevant Observations with this code in `Observation.code` and `Observation.component.code`. For LOINC codes that are panels, e.g., 85354-9(Blood pressure panel with all children optional), the stats operation returns statistics for each of the individual panel measurements.  That means it will include and evaluate all values grouped by code for all the individual observations that are: 1) referenced in   `.related` for `.related.type` = \'has-member\'  and 2) component observations in `Observation.component`.
   Type = string
   Min = 0
   Max = *
@@ -1596,7 +1574,7 @@
   Max = 1
 
  -- Row 11 -----------------------------------
-  Name = stats.return
+  Name = stats.statistics
   Use = out
   Documentation = A set of observations, one observation for each code, each containing one component for each statistic. The Observation.component.code contains the statistic, and is relative to the Observation.code and cannot be interpreted independently.  The Observation will also contain a subject, effectivePeriod, and code reflecting the input parameters.  The status is fixed to `final`.
   Type = Observation
@@ -1614,12 +1592,12 @@
  -- Row 13 -----------------------------------
   Name = lastn
   Use = Resource
-  Documentation = The *lastn query* meets the common need for searching for the most recent or last n=number of observations for a subject. For example, retrieving the last 5 temperatures for a patient to view trends or fetching the most recent laboratory results or vitals signs. To ask a server to return the last n=number of observations, the *lastn* queryuses the [normal search parameters](observation.html#search) defined for the Observation resource. However, rather than their normal use, they are interpreted as inputs - i.e.. instead of requiring that the resources literally contain the search parameters, they are passed to a server algorithm of some kind that uses them to determine the most appropriate matches.\n\nThe response from an lastn query is a set of observations: \n\n*  filtered by additional parameters\n* \'GROUP BY\' `Observation.code`\n* sorted from most recent to the oldest\n* limited to the number of requested responses per group specified by the optional max query parameter\n* If no maximum number is given then only the most recent Observation in each group is returned. \n\nThe set of returned observations should represent distinct real world observations and not the same observation with changes in status or versions. If there are no matches, the *lastn* query SHALL return an empty search set with no error, but may include an operation outcome with further advice.
+  Documentation = The *lastn query* meets the common need for searching for the most recent or last n=number of observations for a subject. For example, retrieving the last 5 temperatures for a patient to view trends or fetching the most recent laboratory results or vitals signs. To ask a server to return the last n=number of observations, the *lastn* query uses the [normal search parameters](observation.html#search) defined for the Observation resource.  However, rather than their normal use, they are interpreted as inputs - i.e.. instead of requiring that the resources literally contain the search parameters, they are passed to a server algorithm of some kind that uses them to determine the most appropriate matches.\r\rThe request for a lastn query SHALL include:\r\r* A `$lastn` operation parameter\r*  A subject using either the `patient` or `subject`  search parameter\r*  A `category` parameter and/or a search parameter that contains a code element in its FHIRpath expression.  ( e.g., `code` or `code-value-concept`)\r\rThe request for a lastn query MAY include:\r\r* Other Observation search parameters and modifiers\r\rThe response from a lastn query is a set of observations:\r\r*  Filtered by additional parameters\r   * If not explicitly filtered by status then will include statuses of \'entered-in-error\'\r* \'GROUP BY\' `Observation.code`\r   * Codes SHALL be considered equivalent if the `coding.value` *and* `coding.system` are the same.\r   * Text only codes SHALL be treated and grouped based on the text.\r   * For codes with translations (multiple codings), the code translations are assumed to be equal and the grouping by code SHALL follow the transitive property of equality.\r\rfor example:\r\r|Observation.code for observation a|Observation.code for observation b|Observation.code for observation c|number of groups [codes/text in each group]|\r|---|---|---|---|\r|a|b|c | 3 [a],[b],[c]|\r|a|b|a,c | 2 [a.c],[b]|\r|a|b|a,b | 1 [a,b]|\r|\'text\'|\'Text\'|\'t e x t\'|3 [\'text\'],[\'Text\'],[\'t e x t\']|\r\r* Sorted from most recent to the oldest\r* Limited to the number of requested responses per group specified by the optional *max* query parameter\r  * In case of a tie - when the effective times for >1 Observations are equal - both will be returned.  Therefore, more Observations may be returned than is specified in *max*.  For example, 4 Observations instead of 3 if the 3rd and 4th most recent observation had the same effective time.\r* If no maximum number is given then only the most recent Observation in each group is returned.\r\rThe set of returned observations should represent distinct real world observations and not the same observation with changes in status or versions. If there are no matches, the *lastn* query SHALL return an empty search set with no error, but may include an operation outcome with further advice.
   Type = operation
   Example.Request = $lastn-request.txt
   Example.Response = $lastn-response.txt
   Title = Last N Observations Query
-  Footer = The key differences between this query operation and simply searching Observation using the combination of `_count` and `_sort` parameters are:\n\n* The *lastn* query returns **only** the last N resource grouped by code.  Using the _count query method doesn\'t restrict the total mathches so you may need to page through several \"A\" Observations  before getting to Observation \"B\".\n* The server is responsible for grouping the observations by codes.  This frees the client from needing to determine which codes she should ask for.\n\nThis operation cannot be performed on observations that the user is not authorized to see.  It is assumed that the server has identified and secured the context appropriately, and can either associate the authorization context with a single patient, or determine whether the context has the rights to the nominated patient, if there is one. If there is no nominated patient (e.g. the operation is invoked at the system level) and the context is not associated with a single patient record, then the server should return an error. Specifying the relationship between the context, a user and patient records is outside the scope of this specification.
+  Footer = The key differences between this query operation and simply searching Observation using the combination of `_count` and `_sort` parameters are:\r\r* The *lastn* query returns **only** the last N resource grouped by code.  Using the _count query method doesn\'t restrict the total mathches so you may need to page through several \"A\" Observations  before getting to Observation \"B\".\r* The server is responsible for grouping the observations by codes.  This frees the client from needing to determine which codes she should ask for.\r\rThis operation cannot be performed on observations that the user is not authorized to see.  It is assumed that the server has identified and secured the context appropriately, and can either associate the authorization context with a single patient, or determine whether the context has the rights to the nominated patient, if there is one. If there is no nominated patient (e.g. the operation is invoked at the system level) and the context is not associated with a single patient record, then the server should return an error. Specifying the relationship between the context, a user and patient records is outside the scope of this specification.
   Idempotent = True
 
  -- Row 14 -----------------------------------

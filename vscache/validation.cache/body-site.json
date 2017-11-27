@@ -3,8 +3,8 @@
   "outcomes": [
     {
       "hash": "|http://snomed.info/sct|null|67734004|Upper Trunk Structure",
-      "severity": null,
-      "message": null,
+      "severity": "warning",
+      "message": "No Message returned",
       "definition": {
         "abstract": false,
         "code": null,

@@ -11,8 +11,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import org.apache.commons.lang3.StringUtils;
 
-import org.hl7.fhir.dstu2.model.api.IBaseFhirEnum;
 import org.hl7.fhir.dstu3.conformance.ProfileUtilities;
 import org.hl7.fhir.dstu3.context.IWorkerContext;
 import org.hl7.fhir.dstu3.context.IWorkerContext.ValidationResult;
@@ -103,7 +105,6 @@ import org.w3c.dom.Node;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import com.google.gson.stream.JsonWriter;
 
 import ca.uhn.fhir.util.ObjectUtil;
 
@@ -291,12 +292,13 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
     source = Source.InstanceValidator;
   }
 
-  public InstanceValidator(ValidationEngine engine) {
-    super();
-    this.context = engine.getContext();
-    fpe = engine.getFpe();
-    source = Source.InstanceValidator;
-  }
+    public InstanceValidator(ValidationEngine engine) {
+	    super();
+	    this.context = engine.getContext();
+		 fpe = engine.getFpe();
+		 source = Source.InstanceValidator;
+    }
+
 
   @Override
   public boolean isNoInvariantChecks() {
@@ -1362,19 +1364,33 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
     checkFixedValue(errors, path + ".denominator", focus.getNamedChild("denominator"), fixed.getDenominator(), "denominator", focus);
   }
 
+	private Reference readAsReference(Element item) {
+		Reference r = new Reference();
+		r.setDisplay(item.getNamedChildValue("display"));
+		r.setReference(item.getNamedChildValue("reference"));
+		List<Element> identifier = item.getChildrenByName("identifier");
+		if (identifier.isEmpty() == false) {
+			r.setIdentifier(readAsIdentifier(identifier.get(0)));
+		}
+		return r;
+	}
+	private Identifier readAsIdentifier(Element item) {
+		Identifier r = new Identifier();
+		r.setSystem(item.getNamedChildValue("system"));
+		r.setValue(item.getNamedChildValue("value"));
+		return r;
+	}
+
   private void checkReference(Object appContext, List<ValidationMessage> errors, String path, Element element, StructureDefinition profile, ElementDefinition container, String parentType, NodeStack stack) throws FHIRException, IOException {
-    String ref = null;
-    try {
-      // Do this inside a try because invalid instances might provide more than one reference.
-      ref = element.getNamedChildValue("reference");
-    } catch (Error e) {
-      
-    }
-    if (Utilities.noString(ref)) {
-      // todo - what should we do in this case?
-      warning(errors, IssueType.STRUCTURE, element.line(), element.col(), path, !Utilities.noString(element.getNamedChildValue("display")), "A Reference without an actual reference should have a display");
-      return;
-    }
+	  Reference reference = readAsReference(element);
+
+	  String ref = reference.getReference();
+	  if (Utilities.noString(ref)) {
+		  if (Utilities.noString(reference.getIdentifier().getSystem()) && Utilities.noString(reference.getIdentifier().getValue())) {
+			  warning(errors, IssueType.STRUCTURE, element.line(), element.col(), path, !Utilities.noString(element.getNamedChildValue("display")), "A Reference without an actual reference or identifier should have a display");
+		  }
+		  return;
+	  }
 
     Element we = localResolve(ref, stack, errors, path);
     String refType;
@@ -1625,27 +1641,11 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
       return element;
     
     List<String> nodes = new ArrayList<String>();
-    String s = discriminator;
-    do {
-      String node = null;
-      if (s.contains(".")) {
-        node = s.substring(0, s.indexOf('.'));
-        if (node.contains("(")) {
-          if (!s.contains(")"))
-            throw new DefinitionException("Discriminator has open bracket but no closing bracket: " + discriminator);
-          node = s.substring(0,s.indexOf(')') + 1);
-          s = s.substring(s.indexOf(")") + 1);
-          if (s.startsWith("."))
-            s = s.substring(1);
-        } else
-          s = s.substring(s.indexOf('.') + 1);
-      } else {
-        node = s;
-        s = null;
-      }
-      if (!node.startsWith("@"))
-        nodes.add(node);
-    } while (s !=null && !s.isEmpty());
+    Matcher matcher = Pattern.compile("\\.([a-zA-Z0-0]+(\\([^\\(^\\)]*\\))?)").matcher("."+discriminator);
+    while (matcher.find()) {
+      if (!matcher.group(1).startsWith("@"))
+        nodes.add(matcher.group(1));
+    }
     
     for (String fullnode : nodes) {
       String node = fullnode.contains("(") ? fullnode.substring(0, fullnode.indexOf('(')) : fullnode;
@@ -2108,6 +2108,10 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
   }
 
   private String resolve(String uri, String ref) {
+    if (isBlank(uri)) {
+      return ref;
+    }
+
     String[] up = uri.split("\\/");
     String[] rp = ref.split("\\/");
     if (context.getResourceNames().contains(up[up.length-2]) && context.getResourceNames().contains(rp[0])) {
@@ -2252,8 +2256,8 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
    * @throws IOException 
    * @throws FHIRException
    */
-  private boolean sliceMatches(Object appContext, Element element, String path, ElementDefinition slice, ElementDefinition ed, StructureDefinition profile, List<ValidationMessage> errors, NodeStack stack) throws DefinitionException, FHIRException, IOException {
-    if (!slice.getSlicing().hasDiscriminator())
+  private boolean sliceMatches(Object appContext, Element element, String path, ElementDefinition slicer, ElementDefinition ed, StructureDefinition profile, List<ValidationMessage> errors, NodeStack stack) throws DefinitionException, FHIRException, IOException {
+    if (!slicer.getSlicing().hasDiscriminator())
       return false; // cannot validate in this case
 
     ExpressionNode n = (ExpressionNode) ed.getUserData("slice.expression.cache");
@@ -2261,7 +2265,7 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
       long t = System.nanoTime();
       // GG: this approach is flawed because it treats discriminators individually rather than collectively 
       String expression = "true";
-      for (ElementDefinitionSlicingDiscriminatorComponent s : slice.getSlicing().getDiscriminator()) {
+      for (ElementDefinitionSlicingDiscriminatorComponent s : slicer.getSlicing().getDiscriminator()) {
         String discriminator = s.getPath();
         if (s.getType() == DiscriminatorType.PROFILE)
           throw new FHIRException("Validating against slices with discriminators based on profiles is not yet supported by the FHIRPath engine: " + discriminator);
@@ -2281,7 +2285,7 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
             type = criteriaElement.getType().get(0).getCode();
           }
           if (type==null)
-            throw new DefinitionException("Discriminator (" + discriminator + ") is based on type, but slice " + slice.getSliceName() + " does not declare a type");
+            throw new DefinitionException("Discriminator (" + discriminator + ") is based on type, but slice " + ed.getId() + " does not declare a type");
           if (discriminator.isEmpty())
             expression = expression + " and this is " + type;
           else
@@ -2304,7 +2308,7 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
           } else if (fixed instanceof BooleanType) {
             expression = expression + ((BooleanType)fixed).asStringValue();
           } else
-            throw new DefinitionException("Unsupported fixed value type for discriminator(" + discriminator + ") for slice " + slice.getSliceName() + ": " + fixed.getClass().getName());
+            throw new DefinitionException("Unsupported fixed value type for discriminator(" + discriminator + ") for slice " + ed.getId() + ": " + fixed.getClass().getName());
         } else if (criteriaElement.hasBinding() && criteriaElement.getBinding().hasStrength() && criteriaElement.getBinding().getStrength().equals(BindingStrength.REQUIRED) && criteriaElement.getBinding().getValueSetReference()!=null) {
           expression = expression + " and " + discriminator + " in '" + criteriaElement.getBinding().getValueSetReference().getReference() + "'";
         } else if (criteriaElement.hasMin() && criteriaElement.getMin()>0) {
@@ -2312,7 +2316,7 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
         } else if (criteriaElement.hasMax() && criteriaElement.getMax().equals("0")) {
           expression = expression + " and " + discriminator + ".exists().not()";
         } else {
-          throw new DefinitionException("Could not match discriminator (" + discriminator + ") for slice " + slice.getSliceName() + " - does not have fixed value, binding or existence assertions");
+          throw new DefinitionException("Could not match discriminator (" + discriminator + ") for slice " + ed.getId() + " - does not have fixed value, binding or existence assertions");
         }
       }
 
@@ -2822,6 +2826,8 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
     List<Element> entries = new ArrayList<Element>();
     bundle.getNamedChildren("entry", entries);
     String type = bundle.getNamedChildValue("type");
+    type = StringUtils.defaultString(type);
+
     if (entries.size() == 0) {
       rule(errors, IssueType.INVALID, stack.getLiteralPath(), !(type.equals("document") || type.equals("message")), "Documents or Messages must contain at least one entry");
     } else {
@@ -2986,7 +2992,7 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
 
     // 2. assign children to a definition
     // for each definition, for each child, check whether it belongs in the slice
-    ElementDefinition slice = null;
+    ElementDefinition slicer = null;
     boolean unsupportedSlicing = false;
     List<String> problematicPaths = new ArrayList<String>();
     String slicingPath = null;
@@ -3003,26 +3009,26 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
         slicingPath = null;
       // where are we with slicing
       if (ed.hasSlicing()) {
-        if (slice != null && slice.getPath().equals(ed.getPath()))
-          throw new DefinitionException("Slice encountered midway through path on " + slice.getPath());
-        slice = ed;
+        if (slicer != null && slicer.getPath().equals(ed.getPath()))
+          throw new DefinitionException("Slice encountered midway through path on " + slicer.getPath());
+        slicer = ed;
         process = false;
         sliceOffset = i;
-      } else if (slice != null && !slice.getPath().equals(ed.getPath()))
-        slice = null;
+      } else if (slicer != null && !slicer.getPath().equals(ed.getPath()))
+        slicer = null;
 
 //      if (process) {
         for (ElementInfo ei : children) {
           boolean match = false;
-          if (slice == null || slice == ed) {
+          if (slicer == null || slicer == ed) {
             match = nameMatches(ei.name, tail(ed.getPath()));
           } else {
 //            ei.slice = slice;
             if (nameMatches(ei.name, tail(ed.getPath())))
               try {
-                match = sliceMatches(appContext, ei.element, ei.path, slice, ed, profile, errors, stack);
+                match = sliceMatches(appContext, ei.element, ei.path, slicer, ed, profile, errors, stack);
                 if (match)
-                  ei.slice = slice;
+                  ei.slice = slicer;
               } catch (FHIRException e) {
                 warning(errors, IssueType.PROCESSING, ei.line(), ei.col(), ei.path, false, e.getMessage());
                 unsupportedSlicing = true;
@@ -3030,7 +3036,7 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
               }
           }
           if (match) {
-            if (rule(errors, IssueType.INVALID, ei.line(), ei.col(), ei.path, ei.definition == null || ei.definition == slice, "Profile " + profile.getUrl() + ", Element matches more than one slice")) {
+            if (rule(errors, IssueType.INVALID, ei.line(), ei.col(), ei.path, ei.definition == null || ei.definition == slicer, "Profile " + profile.getUrl() + ", Element matches more than one slice")) {
               ei.definition = ed;
               if (ei.slice == null) {
                 ei.index = i;
@@ -3049,8 +3055,8 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
     int lastSlice = -1;
     for (ElementInfo ei : children) {
       String sliceInfo = "";
-      if (slice != null)
-        sliceInfo = " (slice: " + slice.getPath()+")";
+      if (slicer != null)
+        sliceInfo = " (slice: " + slicer.getPath()+")";
       if (ei.path.endsWith(".extension"))
         rule(errors, IssueType.INVALID, ei.line(), ei.col(), ei.path, ei.definition != null, "Element is unknown or does not match any slice (url=\"" + ei.element.getNamedChildValue("url") + "\")" + (profile==null ? "" : " for profile " + profile.getUrl()));
       else if (!unsupportedSlicing)
@@ -3236,12 +3242,12 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
                   if (goodProfiles.size()==1) {
                     errors.addAll(goodProfiles.get(0));
                   } else if (goodProfiles.size()==0) {
-                    rule(errors, IssueType.STRUCTURE, ei.line(), ei.col(), ei.path, false, "Unable to find matching profile among choices: " + String.join("; ", profiles));
+                    rule(errors, IssueType.STRUCTURE, ei.line(), ei.col(), ei.path, false, "Unable to find matching profile among choices: " + StringUtils.join("; ", profiles));
                     for (List<ValidationMessage> messages : badProfiles) {
                       errors.addAll(messages);
                     }
                   } else {
-                    warning(errors, IssueType.STRUCTURE, ei.line(), ei.col(), ei.path, false, "Found multiple matching profiles among choices: " + String.join("; ", goodProfiles.keySet()));
+                    warning(errors, IssueType.STRUCTURE, ei.line(), ei.col(), ei.path, false, "Found multiple matching profiles among choices: " + StringUtils.join("; ", goodProfiles.keySet()));
                     for (List<ValidationMessage> messages : goodProfiles.values()) {
                       errors.addAll(messages);
                     }                    

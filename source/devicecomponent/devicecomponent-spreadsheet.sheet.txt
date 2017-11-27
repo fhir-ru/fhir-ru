@@ -37,6 +37,18 @@
   Definition = Codes identifying groupings of parameters; e.g. Cardiovascular.
   Conformance = extensible
 
+ -- Row 6 -----------------------------------
+  Binding Name = DeiviceComponentPropertyCode
+  Binding = code list
+  Reference = #device-component-property
+  Definition = Codes for identifying device properties.   This is based upon IEEE/HCD specified codes
+  Conformance = extensible
+
+ -- Row 7 -----------------------------------
+  Binding Name = DeiviceComponentPropertyValue
+  Binding = unbound
+  Definition = Property value codes for device properties
+
 === Sheet measurement-principle =====================================
 
  -- Row 1 -----------------------------------
@@ -255,6 +267,68 @@
   Display = Miscellaneous Parameter Group
   Definition = Miscellaneous Parameter Group - MDC_PGRP_MISC
 
+=== Sheet device-component-property =====================================
+
+ -- Row 1 -----------------------------------
+  System = urn:iso:std:iso:11073:10101
+  Code = 68219
+  Display = MDC_TIME_CAP_STATE
+  Definition = Time capability
+
+ -- Row 2 -----------------------------------
+  System = urn:iso:std:iso:11073:10101
+  Code = 68220
+  Display = MDC_TIME_SYNC_PROTOCOL
+  Definition = Time synchronization method
+
+ -- Row 3 -----------------------------------
+  System = urn:iso:std:iso:11073:10101
+  Code = 68221
+  Display = MDC_TIME_SYNC_ACCURACY
+  Definition = The accuracy of the time synchronization
+
+ -- Row 4 -----------------------------------
+  System = urn:iso:std:iso:11073:10101
+  Code = 68222
+  Display = MDC_TIME_RES_ABS
+  Definition = The resolution of the absolute time clock
+
+ -- Row 5 -----------------------------------
+  System = urn:iso:std:iso:11073:10101
+  Code = 68223
+  Display = MDC_TIME_RES_REL
+  Definition = The resolution of the relative time clock
+
+ -- Row 6 -----------------------------------
+  System = urn:iso:std:iso:11073:10101
+  Code = 68224
+  Display = MDC_TIME_RES_REL_HI_RES
+  Definition = The resolution of the high resolution time clock
+
+ -- Row 7 -----------------------------------
+  System = urn:iso:std:iso:11073:10101
+  Code = 68226
+  Display = MDC_TIME_RES_BO
+  Definition = The resolution of the base offset time clock
+
+ -- Row 8 -----------------------------------
+  System = urn:iso:std:iso:11073:10101
+  Code = 532353
+  Display = MDC_REG_CERT_DATA_CONTINUA_CERT_DEV_LIST
+  Definition = The specializations this device is certified for
+
+ -- Row 9 -----------------------------------
+  System = urn:iso:std:iso:11073:10101
+  Code = 532354
+  Display = MDC_REG_CERT_DATA_CONTINUA_REG_STATUS
+  Definition = The regulation type and status this device has
+
+ -- Row 10 -----------------------------------
+  System = urn:iso:std:iso:11073:10101
+  Code = 532355
+  Display = MDC_REG_CERT_DATA_CONTINUA_PHG_CERT_LIST
+  Definition = The upload transactions this gateway has been certified for
+
 === Sheet Invariants =====================================
 
 === Sheet Data Elements =====================================
@@ -270,10 +344,10 @@
 
  -- Row 2 -----------------------------------
   Element = DeviceComponent.identifier
-  Card. = 1..1
+  Card. = 0..*
   Type = Identifier
-  Short Name = Instance id assigned by the software stack
-  Definition = The locally assigned unique identification by the software. For example: handle ID.
+  Short Name = Instance identifier
+  Definition = Unique instance identifiers assigned to a device by the software, manufacturers, other organizations or owners. For example: handle ID.
   w5 = id
 
  -- Row 3 -----------------------------------
@@ -369,6 +443,38 @@
   Binding = Language
   Short Name = Language code for the human-readable text strings produced by the device
   Definition = The language code for the human-readable text string produced by the device. This language code will follow the IETF language tag. Example: en-US.
+
+ -- Row 15 -----------------------------------
+  Element = DeviceComponent.property
+  Card. = 0..*
+  Short Name = Other Attributes
+  Definition = Other device properties expressed as a `type` which identifies the property and a value(s) either as a quantity or a code.
+
+ -- Row 16 -----------------------------------
+  Element = DeviceComponent.property.type
+  Card. = 1..1
+  Type = CodeableConcept
+  Binding = DeiviceComponentPropertyCode
+  Short Name = Code that specifies the property
+  Definition = The code for the device property identifying the property being reported such as \'time capability\'.
+  Committee Notes = complete the valueset definitions/ verify conform to the IEEE IP policy for publishing these codes in FHIR spec.
+
+ -- Row 17 -----------------------------------
+  Element = DeviceComponent.property.valueQuantity
+  Card. = 0..*
+  Type = Quantity
+  Short Name = Property value as a quantity
+  Definition = The property value when the property being reported is a quantity such as the resolution of a real time clock.
+
+ -- Row 18 -----------------------------------
+  Element = DeviceComponent.property.valueCode
+  Card. = 0..*
+  Type = CodeableConcept
+  Binding = DeiviceComponentPropertyValue
+  Short Name = Property value as a code
+  Definition = The property value when the property being reported is a code, such as the code indicating that the device supports a real time clock using absolute time.
+  Comments = An example of a case with mulitple coded values would be the set of specializations for which the device has been certified.
+  Committee Notes = define at least an example valueset.
 
 === Sheet Search =====================================
 

@@ -421,7 +421,7 @@
 
  -- Row 8 -----------------------------------
   Element = PlanDefinition.status
-  Workflow Mapping = Definition.status (different ValueSet)
+  Workflow Mapping = Definition.status {different ValueSet}
 
  -- Row 9 -----------------------------------
   Element = PlanDefinition.experimental
@@ -433,7 +433,7 @@
 
  -- Row 11 -----------------------------------
   Element = PlanDefinition.publisher
-  Workflow Mapping = Definition.publisher (as string instead of Reference)
+  Workflow Mapping = Definition.publisher {as string instead of Reference}
 
  -- Row 12 -----------------------------------
   Element = PlanDefinition.description
@@ -479,7 +479,7 @@
   Short Name = E.g. Education, Treatment, Assessment, etc
   Definition = Descriptive topics related to the content of the plan definition. Topics provide a high-level categorization of the definition that can be useful for filtering and searching
   Requirements = Repositories must be able to determine how to categorize the asset so that it can be found by topical searches
-  Workflow Mapping = Definition.subjectCodableConcept
+  Workflow Mapping = Definition.subject[x]
 
  -- Row 21 -----------------------------------
   Element = PlanDefinition.contributor
@@ -605,14 +605,14 @@
   UML = 360;0
   Short Name = Action defined by the plan
   Definition = An action to be taken as part of the plan
-  Workflow Mapping = Is a contained Definition
+  Workflow Mapping = {Is a contained Definition}
 
  -- Row 38 -----------------------------------
-  Element = PlanDefinition.action.label
+  Element = PlanDefinition.action.prefix
   Card. = 0..1
   Type = string
-  Short Name = User-visible label for the action (e.g. 1. or A.)
-  Definition = A user-visible label for the action
+  Short Name = User-visible prefix for the action (e.g. 1. or A.)
+  Definition = A user-visible prefix for the action
 
  -- Row 39 -----------------------------------
   Element = PlanDefinition.action.title
@@ -678,7 +678,6 @@
   Element = PlanDefinition.action.condition
   Card. = 0..*
   UML = 320;380
-  Type = string
   Short Name = Whether or not the action is applicable
   Definition = An expression that describes applicability criteria, or start/stop conditions for the action
 
@@ -842,7 +841,7 @@
   Short Name = Description of the activity to be performed
   Definition = A reference to an ActivityDefinition that describes the action to be taken in detail, or a PlanDefinition that describes a series of actions to be taken
   Comments = Note that the definition is optional, and if no definition is specified, a dynamicValue with a root (~) path can be used to define the entire resource dynamically
-  Workflow Mapping = Definition.definition
+  Workflow Mapping = Definition.derivedFrom
 
  -- Row 69 -----------------------------------
   Element = PlanDefinition.action.transform
@@ -893,7 +892,7 @@
   Type = @PlanDefinition.action
   Short Name = A sub-action
   Definition = Sub actions that are contained within the action. The behavior of this action determines the functionality of the sub-actions. For example, a selection behavior of at-most-one indicates that of the sub-actions, at most one may be chosen as part of realizing the action definition
-  Workflow Mapping = InverseRelationship of Definition.partOf
+  Workflow Mapping = {InverseRelationship of Definition.partOf}
 
 === Sheet Search =====================================
 

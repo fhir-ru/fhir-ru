@@ -2,32 +2,33 @@ package org.hl7.fhir.igtools.renderers;
 
 import java.util.List;
 
-import org.hl7.fhir.dstu3.conformance.ProfileUtilities;
-import org.hl7.fhir.dstu3.context.IWorkerContext;
-import org.hl7.fhir.dstu3.model.MarkdownType;
-import org.hl7.fhir.dstu3.model.PrimitiveType;
-import org.hl7.fhir.dstu3.model.StringType;
-import org.hl7.fhir.dstu3.model.StructureDefinition;
-import org.hl7.fhir.dstu3.utils.TranslatingUtilities;
+import org.hl7.fhir.r4.conformance.ProfileUtilities;
+import org.hl7.fhir.r4.context.IWorkerContext;
+import org.hl7.fhir.r4.model.MarkdownType;
+import org.hl7.fhir.r4.model.PrimitiveType;
+import org.hl7.fhir.r4.model.StringType;
+import org.hl7.fhir.r4.model.StructureDefinition;
+import org.hl7.fhir.r4.utils.TranslatingUtilities;
 import org.hl7.fhir.igtools.publisher.IGKnowledgeProvider;
 import org.hl7.fhir.igtools.publisher.SpecMapManager;
+import org.hl7.fhir.utilities.MarkDownProcessor;
 import org.hl7.fhir.utilities.Utilities;
-
-import com.github.rjeschke.txtmark.Processor;
 
 public class BaseRenderer extends TranslatingUtilities {
   protected IWorkerContext context;
   protected String prefix;
   protected IGKnowledgeProvider igp;
   protected List<SpecMapManager> specmaps;
+  private MarkDownProcessor markdownEngine;
 
 
-  public BaseRenderer(IWorkerContext context, String prefix, IGKnowledgeProvider igp, List<SpecMapManager> specmaps) {
+  public BaseRenderer(IWorkerContext context, String prefix, IGKnowledgeProvider igp, List<SpecMapManager> specmaps, MarkDownProcessor markdownEngine) {
     super();
     this.context = context;
     this.prefix = prefix;
     this.igp = igp;
     this.specmaps = specmaps;
+    this.markdownEngine = markdownEngine;
   }
 
   @SuppressWarnings("rawtypes")
@@ -72,7 +73,7 @@ public class BaseRenderer extends TranslatingUtilities {
 	      while (i > 0) {
 	        if (text.substring(i, i+2).equals("](") && i+7 <= text.length()) {
 	          // The following can go horribly wrong if i+7 > text.length(), thus the check on i+7 above and the Throwable catch around the whole method just in case. 
-	          if (!text.substring(i, i+7).equals("](http:") && !text.substring(i, i+8).equals("](https:")) { 
+	          if (!text.substring(i, i+7).equals("](http:") && !text.substring(i, i+8).equals("](https:") && !text.substring(i, i+3).equals("](.")) { 
 	            text = text.substring(0, i)+"]("+prefix+text.substring(i+2);
 	          }
 	        }
@@ -80,7 +81,7 @@ public class BaseRenderer extends TranslatingUtilities {
 	      }
 	    }
 	    // 3. markdown
-	    String s = Processor.process(checkEscape(text));
+	    String s = markdownEngine.process(checkEscape(text));
 	    return s;
 	  } catch (Throwable e) {
 		  throw new Exception ("Error processing string: " + text, e);
@@ -92,7 +93,7 @@ public class BaseRenderer extends TranslatingUtilities {
     for (SpecMapManager map : specmaps) {
       String url = map.getPage(linkText);
       if (url != null)
-        return Utilities.pathReverse(map.getBase(), url);
+        return Utilities.pathURL(map.getBase(), url);
     }      
     return null;
   }

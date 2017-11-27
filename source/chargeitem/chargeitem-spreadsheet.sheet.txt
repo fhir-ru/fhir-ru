@@ -128,6 +128,7 @@
   Type = DomainResource
   Short Name = Item containing charge code(s) associated with the provision of healthcare provider products
   Definition = The resource ChargeItem describes the provision of healthcare provider products for a certain patient, therefore referring not only to the product, but containing in addition details of the provision, like date, time, amounts and participating organizations and persons. Main Usage of the ChargeItem is to enable the billing process and internal cost allocation.
+  Workflow Mapping = Event
   v2 Mapping = FT1
   RIM Mapping = Act[moodCode=EVN]
   w5 = financial.support
@@ -140,6 +141,7 @@
   Short Name = Business Identifier for item
   Definition = Identifiers assigned to this event performer or other systems
   Requirements = Allows identification of the charge Item as it is known by various participating systems and in a way that remains consistent across servers
+  Workflow Mapping = Event.identifier
   v2 Mapping = FT1.2
   RIM Mapping = .identifier
   w5 = id
@@ -152,6 +154,7 @@
   Short Name = Defining information about the code of this charge item
   Definition = References the source of pricing information, rules of application for the code this ChargeItem uses.
   Comments = Target Resource is yet to be defined as a container that holds information about list prices and rules applicable to the charge item code. Once defined, change type back to Reference(Definition Type).
+  Workflow Mapping = Event.instantiates
   v2 Mapping = Varies by domain
   RIM Mapping = .outboundRelationship[typeCode=DEFN].target
 
@@ -165,6 +168,7 @@
   Short Name = planned | billable | not-billable | aborted | billed | entered-in-error | unknown
   Definition = The current state of the ChargeItem
   Comments = Unknown does not represent \"other\" - one of the defined statuses must apply.  Unknown is used when the authoring system is not sure what the current status is.\n\nThis element is labeled as a modifier because the status contains the code entered-in-error that marks the charge item as not currently valid
+  Workflow Mapping = Event.status
   v2 Mapping = Varies by domain
   RIM Mapping = .status
   w5 = status
@@ -178,6 +182,7 @@
   Short Name = Part of referenced ChargeItem
   Definition = ChargeItems can be grouped to larger ChargeItems covering the whole set.
   Requirements = E.g. Drug administration as part of a procedure, procedure as part of observation, etc.
+  Workflow Mapping = Event.partOf
   v2 Mapping = Varies by domain
   RIM Mapping = .inboundRelationship[typeCode=COMP].source[moodCode=EVN]
 
@@ -232,6 +237,7 @@
   Short Name = When the charged service was applied
   Definition = Date/time(s) or duration when the charged service was applied
   Comments = The list of types may be constrained as appropriate for the type of charge item
+  Workflow Mapping = Event.occurrence[x]
   v2 Mapping = Varies by domain
   RIM Mapping = .effectiveTime
   w5 = when.done
@@ -242,6 +248,7 @@
   Summary = N
   Short Name = Who performed charged service
   Definition = Indicates who or what performed or participated in the charged service
+  Workflow Mapping = Event.performer
   v2 Mapping = EVN.5 or by domain
   RIM Mapping = .participation[typeCode=PRF].role[scoper.determinerCode=INSTANCE]
 
@@ -253,6 +260,7 @@
   Binding = ChargeItemPerformerRole
   Short Name = What type of performance was done
   Definition = Describes the type of performance or participation(e.g. primary surgeon, anaesthesiologiest, etc.)
+  Workflow Mapping = Event.performer.function
   v2 Mapping = Varies by domain
   RIM Mapping = .participation.functionCode
 
@@ -263,6 +271,7 @@
   Type = Reference(Practitioner|Organization|Patient|Device|RelatedPerson)
   Short Name = Individual who was performing
   Definition = The device, practitioner, etc. who performed or participated in the service
+  Workflow Mapping = Event.performer.actor
   v2 Mapping = EVN.5 or by domain
   RIM Mapping = .player
   w5 = who.actor
@@ -275,6 +284,7 @@
   Short Name = Organization providing the charged sevice
   Definition = The organization requesting the service
   Comments = Practitioners and Devices can be associated with multiple organizations. It has to be made clear, on behalf of which Organization the services have been rendered
+  Workflow Mapping = Event.performer.actor
   v2 Mapping = N/A
   RIM Mapping = .scoper
 
@@ -307,7 +317,7 @@
   Binding = BodySite
   Short Name = Anatomical location, if relevant
   Definition = The anatomical location where the related service has been applied
-  Comments = Only used if not implicit in code found in Condition.code. If the use case requires attributes from the BodySite resource (e.g. to identify and track separately) then use the standard extension [body-site-instance](extension-body-site-instance.html).  May be a summary code, or a reference to a very precise definition of the location, or both
+  Comments = Only used if not implicit in code found in Condition.code. If the use case requires attributes from the BodySite resource (e.g. to identify and track separately) then use the standard extension [body-structure](extension-body-structure.html).  May be a summary code, or a reference to a very precise definition of the location, or both
   RIM Mapping = .targetBodySiteCode
 
  -- Row 17 -----------------------------------
@@ -368,7 +378,7 @@
   Short Name = Why was the charged  service rendered?
   Definition = Describes why the event occurred in coded or textual form.
   Comments = If the application of the charge item requires a reason to be given, it can be captured here. Textual reasons can be captured using reasonCode.text
-  Workflow Mapping = Event.reasonCodeableConcept
+  Workflow Mapping = Event.reasonCode
   v2 Mapping = EVN.4 or by domain
   RIM Mapping = .reasonCode
   w5 = why
@@ -411,6 +421,7 @@
   Summary = N
   Type = Reference(Any)
   Short Name = Further information supporting the this charge
+  Workflow Mapping = Event.supportingInfo
 
 === Sheet Search =====================================
 

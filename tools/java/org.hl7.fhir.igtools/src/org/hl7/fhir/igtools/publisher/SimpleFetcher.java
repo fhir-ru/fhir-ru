@@ -2,18 +2,21 @@ package org.hl7.fhir.igtools.publisher;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hl7.fhir.dstu3.context.IWorkerContext;
-import org.hl7.fhir.dstu3.context.IWorkerContext.ILoggingService;
-import org.hl7.fhir.dstu3.formats.FormatUtilities;
-import org.hl7.fhir.dstu3.model.Reference;
-import org.hl7.fhir.dstu3.model.StructureDefinition;
-import org.hl7.fhir.dstu3.model.Type;
-import org.hl7.fhir.dstu3.model.UriType;
+import org.hl7.fhir.exceptions.FHIRException;
+import org.hl7.fhir.r4.context.IWorkerContext;
+import org.hl7.fhir.r4.context.IWorkerContext.ILoggingService;
+import org.hl7.fhir.r4.formats.FormatUtilities;
+import org.hl7.fhir.r4.model.Reference;
+import org.hl7.fhir.r4.model.StructureDefinition;
+import org.hl7.fhir.r4.model.Type;
+import org.hl7.fhir.r4.model.UriType;
+import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
 
 public class SimpleFetcher implements IFetchFile {
@@ -22,11 +25,15 @@ public class SimpleFetcher implements IFetchFile {
   private List<String> resourceDirs;
   private ILoggingService log;
   
-  public SimpleFetcher(List<String> resourceDirs, ILoggingService log) {
-    this.resourceDirs = resourceDirs;
+  public SimpleFetcher(ILoggingService log) {
     this.log = log;
   }
 
+  @Override
+  public void setResourceDirs(List<String> resourceDirs) {
+    this.resourceDirs = resourceDirs;
+  }
+  
   @Override
   public void setPkp(IGKnowledgeProvider pkp) {
     this.pkp = pkp;
@@ -38,14 +45,14 @@ public class SimpleFetcher implements IFetchFile {
     if (!f.exists())
       throw new Exception("Unable to find file "+path);
     FetchedFile ff = new FetchedFile();
-    ff.setPath(path);
+    ff.setPath(f.getCanonicalPath());
     ff.setName(fileTitle(path));
     ff.setTime(f.lastModified());
     if (f.isDirectory()) {
       ff.setContentType("application/directory");
       ff.setFolder(true);   
       for (File fl : f.listFiles())
-        ff.getFiles().add(fl.getAbsolutePath());
+        ff.getFiles().add(fl.getCanonicalPath());
     } else {
       ff.setFolder(false);   
       if (path.endsWith("json"))
@@ -63,14 +70,24 @@ public class SimpleFetcher implements IFetchFile {
   }
 
   @Override
-  public FetchedFile fetchFlexible(String path) throws Exception {
-    File f = new File(path+".xml");
-    if (!f.exists())
-      f = new File(path+".json");
-    if (!f.exists())
+  public FetchedFile fetchFlexible(String name) throws Exception {
+    File f = null;
+    String path = null;
+    for (String dir : resourceDirs) {
+      path = Utilities.path(dir, name);
+      f = new File(path+".xml");
+      if (f.exists())
+        break;
+      else {
+        f = new File(path+".json");
+        if (f.exists())
+          break;
+      }
+    }
+    if (f==null)
       throw new Exception("Unable to find file "+path+".xml or "+path+".json");
     FetchedFile ff = new FetchedFile();
-    ff.setPath(path);
+    ff.setPath(f.getCanonicalPath());
     ff.setName(fileTitle(path));
     ff.setTime(f.lastModified());
     if (f.getName().endsWith("json"))
@@ -86,7 +103,19 @@ public class SimpleFetcher implements IFetchFile {
     return ff;
   }
 
-  private String fileTitle(String path) {
+  @Override
+  public FetchedFile fetchResourceFile(String name) throws Exception {
+    for (String dir: resourceDirs) {
+      try {
+        return fetch(Utilities.path(dir, name));
+      } catch (Exception e) {
+        // If we didn't find it, keep trying
+      }
+    }
+    throw new Exception("Unable to find resource file "+name);
+  }
+  
+  static String fileTitle(String path) {
     if (path.contains(".")) {
       String ext = path.substring(path.lastIndexOf(".")+1);
       if (Utilities.isInteger(ext))
@@ -98,11 +127,14 @@ public class SimpleFetcher implements IFetchFile {
   }
 
   @Override
-  public boolean canFetchFlexible(String path) throws Exception {
-    File f = new File(path+".xml");
-    if (!f.exists())
-      f = new File(path+".json");
-    return f.exists();
+  public boolean canFetchFlexible(String name) throws Exception {
+    for (String dir : resourceDirs) {
+      if (new File(dir + File.separator + name + ".xml").exists())
+        return true;
+      else if(new File(dir + File.separator + name + ".json").exists())
+        return true;
+    }
+    return false;
   }
 
   @Override
@@ -113,7 +145,7 @@ public class SimpleFetcher implements IFetchFile {
         throw new Exception("Bad Source Reference '"+s+"' - should have the format [Type]/[id]");
       String type = s.substring(0,  s.indexOf("/"));
       String id = s.substring(s.indexOf("/")+1); 
-      if (!pkp.getContext().hasResource(StructureDefinition.class , "http://hl7.org/fhir/StructureDefinition/"+type))
+      if (!pkp.getContext().hasResource(StructureDefinition.class , "http://hl7.org/fhir/StructureDefinition/"+type) && !(pkp.getContext().hasResource(StructureDefinition.class , "http://hl7.org/fhir/StructureDefinition/Conformance") && type.equals("CapabilityStatement")))
         throw new Exception("Bad Resource Identity - should have the format [Type]/[id] where Type is a valid resource type:" + s);
       if (!id.matches(FormatUtilities.ID_REGEX))
         throw new Exception("Bad Source Reference '"+s+"' - should have the format [Type]/[id] where id is a valid FHIR id type");
@@ -152,7 +184,7 @@ public class SimpleFetcher implements IFetchFile {
     }
   }
 
-  private String findFile(List<String> dirs, String name) throws IOException {
+  String findFile(List<String> dirs, String name) throws IOException {
     for (String dir : dirs) {
       String fn = Utilities.path(dir, name);
       if (new File(fn).exists())
@@ -164,51 +196,67 @@ public class SimpleFetcher implements IFetchFile {
   private boolean exists(String fn) {
     return new File(fn).exists();
   }
-
   
   @Override
-  public List<FetchedFile> scan(String sourceDir, IWorkerContext context) {
+  public List<FetchedFile> scan(String sourceDir, IWorkerContext context, boolean autoPath) throws IOException, FHIRException {
+    List<String> sources = new ArrayList<String>();
+    if (sourceDir != null)
+      sources.add(sourceDir);
+    if (autoPath)
+      sources.addAll(resourceDirs);
+    if (sources.isEmpty())
+      throw new FHIRException("No Source directories to scan found"); // though it's not possible to get to this point...
+
     List<FetchedFile> res = new ArrayList<>();
-    for (File f : new File(sourceDir).listFiles()) {
-      if (!f.isDirectory()) {
-        String fn = f.getAbsolutePath();
-        String ext = Utilities.getFileExtension(fn);
-        boolean ok = false;
-        if (!Utilities.existsInList(ext, "json", "ttl", "html", "txt"))
-          try {
-            org.hl7.fhir.dstu3.elementmodel.Element e = new org.hl7.fhir.dstu3.elementmodel.XmlParser(context).parse(new FileInputStream(f));
-            addFile(res, f, "application/fhir+xml");
-            ok = true;
-          } catch (Exception e) {
-            log.logMessage(e.getMessage());
-          }
-        if (!ok && !Utilities.existsInList(ext, "xml", "ttl", "html", "txt")) {
-          try {
-            org.hl7.fhir.dstu3.elementmodel.Element e = new org.hl7.fhir.dstu3.elementmodel.JsonParser(context).parse(new FileInputStream(fn));
-            addFile(res, f, "application/fhir+json");
-            ok = true;
-          } catch (Exception e) {
-            log.logMessage(e.getMessage());
-          }
-        }
-        if (!ok && !Utilities.existsInList(ext, "json", "xml", "html", "txt")) {
-          try {
-            org.hl7.fhir.dstu3.elementmodel.Element e = new org.hl7.fhir.dstu3.elementmodel.TurtleParser(context).parse(new FileInputStream(fn));
-            addFile(res, f, "text/turtle");
-            ok = true;
-          } catch (Exception e) {
-            log.logMessage(e.getMessage());
+    for (String s : sources) {
+      int count = 0;
+      for (File f : new File(s).listFiles()) {
+        if (!f.isDirectory()) {
+          String fn = f.getCanonicalPath();
+          String ext = Utilities.getFileExtension(fn);
+          if (!Utilities.existsInList(ext, "md", "txt")) {
+            boolean ok = false;
+            if (!Utilities.existsInList(ext, "json", "ttl", "html", "txt"))
+              try {
+                org.hl7.fhir.r4.elementmodel.Element e = new org.hl7.fhir.r4.elementmodel.XmlParser(context).parse(new FileInputStream(f));
+                addFile(res, f, "application/fhir+xml");
+                count++;
+                ok = true;
+              } catch (Exception e) {
+                log.logMessage(e.getMessage() +" loading "+f);
+              }
+            if (!ok && !Utilities.existsInList(ext, "xml", "ttl", "html", "txt")) {
+              try {
+                org.hl7.fhir.r4.elementmodel.Element e = new org.hl7.fhir.r4.elementmodel.JsonParser(context).parse(new FileInputStream(fn));
+                addFile(res, f, "application/fhir+json");
+                count++;
+                ok = true;
+              } catch (Exception e) {
+                log.logMessage(e.getMessage() +" loading "+f);
+              }
+            }
+            if (!ok && !Utilities.existsInList(ext, "json", "xml", "html", "txt")) {
+              try {
+                org.hl7.fhir.r4.elementmodel.Element e = new org.hl7.fhir.r4.elementmodel.TurtleParser(context).parse(new FileInputStream(fn));
+                addFile(res, f, "text/turtle");
+                count++;
+                ok = true;
+              } catch (Exception e) {
+                log.logMessage(e.getMessage() +" loading "+f);
+              }
+            }
           }
         }
       }
+      log.logMessage("Loaded "+Integer.toString(count)+" files from "+s);
     }
     return res;
   }
 
   private void addFile(List<FetchedFile> res, File f, String cnt) throws IOException {
     FetchedFile ff = new FetchedFile();
-    ff.setPath(f.getAbsolutePath());
-    ff.setName(fileTitle(f.getAbsolutePath()));
+    ff.setPath(f.getCanonicalPath());
+    ff.setName(fileTitle(f.getCanonicalPath()));
     ff.setTime(f.lastModified());
     ff.setFolder(false);   
     ff.setContentType(cnt);
@@ -226,6 +274,32 @@ public class SimpleFetcher implements IFetchFile {
 
   public void setLogger(ILoggingService log) {
     this.log = log;
+  }
+
+  @Override
+  public FetchState check(String path) {
+    File f = new File(path);
+    if (!f.exists())
+      return FetchState.NOT_FOUND;
+    else if (f.isDirectory())
+      return FetchState.DIR;
+    else
+      return FetchState.FILE;
+  }
+
+  @Override
+  public String pathForFile(String path) {
+    return Utilities.getDirectoryForFile(path);
+  }
+
+  @Override
+  public InputStream openAsStream(String filename) throws FileNotFoundException {
+    return new FileInputStream(filename);
+  }
+
+  @Override
+  public String openAsString(String filename) throws IOException {
+    return TextFile.fileToString(filename);
   }
 
   

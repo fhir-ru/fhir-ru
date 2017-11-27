@@ -8,14 +8,14 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
-import org.hl7.fhir.dstu3.formats.XmlParser;
-import org.hl7.fhir.dstu3.model.Bundle;
-import org.hl7.fhir.dstu3.model.Bundle.BundleEntryComponent;
-import org.hl7.fhir.dstu3.model.Constants;
-import org.hl7.fhir.dstu3.model.OperationOutcome;
-import org.hl7.fhir.dstu3.utils.OperationOutcomeUtilities;
-import org.hl7.fhir.dstu3.utils.ToolingExtensions;
-import org.hl7.fhir.dstu3.utils.TranslatingUtilities;
+import org.hl7.fhir.r4.formats.XmlParser;
+import org.hl7.fhir.r4.model.Bundle;
+import org.hl7.fhir.r4.model.Bundle.BundleEntryComponent;
+import org.hl7.fhir.r4.model.Constants;
+import org.hl7.fhir.r4.model.OperationOutcome;
+import org.hl7.fhir.r4.utils.OperationOutcomeUtilities;
+import org.hl7.fhir.r4.utils.ToolingExtensions;
+import org.hl7.fhir.r4.utils.TranslatingUtilities;
 import org.hl7.fhir.igtools.publisher.FetchedFile;
 import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
@@ -26,9 +26,11 @@ import org.stringtemplate.v4.ST;
 public class ValidationPresenter extends TranslatingUtilities implements Comparator<FetchedFile> {
 
   private static final String INTERNAL_LINK = "internal";
+  private String statedVersion;
 
-  public ValidationPresenter() {
+  public ValidationPresenter(String statedVersion) {
     super();
+    this.statedVersion = statedVersion;
   }
 
   private List<FetchedFile> sorted(List<FetchedFile> files) {
@@ -38,10 +40,26 @@ public class ValidationPresenter extends TranslatingUtilities implements Compara
     return list;
   }
   
-  public String generate(String title, List<ValidationMessage> allErrors, List<FetchedFile> files, String path) throws IOException {
+  public String generate(String title, List<ValidationMessage> allErrors, List<FetchedFile> files, String path, List<String> filteredMessages) throws IOException {
+    int err = 0;
+    int warn = 0;
+    int info = 0;
+    
+    for (FetchedFile f : files) {
+      for (ValidationMessage vm : removeDupMessages(f.getErrors())) {
+        if (vm.getLevel().equals(ValidationMessage.IssueSeverity.FATAL)||vm.getLevel().equals(ValidationMessage.IssueSeverity.ERROR))
+          err++;
+        else if (vm.getLevel().equals(ValidationMessage.IssueSeverity.WARNING))
+          warn++;
+        else
+          info++;
+      }
+    }    
+    
+    
     List<ValidationMessage> linkErrors = removeDupMessages(allErrors); 
     StringBuilder b = new StringBuilder();
-    b.append(genHeader(title));
+    b.append(genHeader(title, err, warn, info, linkErrors.size()));
     b.append(genSummaryRowInteral(linkErrors));
     files = sorted(files);
     for (FetchedFile f : files) 
@@ -53,8 +71,15 @@ public class ValidationPresenter extends TranslatingUtilities implements Compara
     b.append(genEnd());
     for (FetchedFile f : files) {
       b.append(genStart(f));
-      for (ValidationMessage vm : f.getErrors())
+      for (ValidationMessage vm : removeDupMessages(f.getErrors())) {
         b.append(genDetails(vm));
+        if (vm.getLevel().equals(ValidationMessage.IssueSeverity.FATAL)||vm.getLevel().equals(ValidationMessage.IssueSeverity.ERROR))
+          err++;
+        else if (vm.getLevel().equals(ValidationMessage.IssueSeverity.WARNING))
+          warn++;
+        else
+          info++;
+      }
       b.append(genEnd());
     }    
     b.append(genFooter(title));
@@ -81,7 +106,7 @@ public class ValidationPresenter extends TranslatingUtilities implements Compara
     s.close();
 
     b = new StringBuilder();
-    b.append(genHeaderTxt(title));
+    b.append(genHeaderTxt(title, err, warn, info));
     b.append(genSummaryRowTxtInternal(linkErrors));
     files = sorted(files);
     for (FetchedFile f : files) 
@@ -89,21 +114,34 @@ public class ValidationPresenter extends TranslatingUtilities implements Compara
     b.append(genEnd());
     b.append(genStartTxtInternal());
     for (ValidationMessage vm : linkErrors)
-      b.append(genDetailsTxt(vm));
+      b.append(vm.getDisplay() + "\r\n");
     b.append(genEndTxt());
     for (FetchedFile f : files) {
       b.append(genStartTxt(f));
-      for (ValidationMessage vm : f.getErrors())
-        b.append(genDetailsTxt(vm));
+      for (ValidationMessage vm : removeDupMessages(f.getErrors()))
+        b.append(vm.getDisplay() + "\r\n");
       b.append(genEndTxt());
     }    
     b.append(genFooterTxt(title));
     TextFile.stringToFile(b.toString(), Utilities.changeFileExt(path, ".txt"));
     
-    return path;
+    String summary = "Errors: " + err + "  Warnings: " + warn + "  Info: " + info;
+    return path + "\r\n" + summary;
   }
 
-  private List<ValidationMessage> removeDupMessages(List<ValidationMessage> errors) {
+  public static void filterMessages(List<ValidationMessage> messages, List<String> suppressedMessages, boolean suppressErrors) {
+    List<ValidationMessage> filteredMessages = new ArrayList<ValidationMessage>();
+    for (ValidationMessage message : removeDupMessages(messages)) {
+      if ((!suppressedMessages.contains(message.getDisplay()) && !suppressedMessages.contains(message.getMessage()))
+      || (!suppressErrors && (message.getLevel().equals(ValidationMessage.IssueSeverity.FATAL) || message.getLevel().equals(ValidationMessage.IssueSeverity.ERROR))))
+        filteredMessages.add(message);
+    }
+    while(!messages.isEmpty())
+      messages.remove(0);
+    messages.addAll(filteredMessages);
+  }
+  
+  private static List<ValidationMessage> removeDupMessages(List<ValidationMessage> errors) {
     List<ValidationMessage> filteredErrors = new ArrayList<ValidationMessage>();
     for (ValidationMessage error : errors) {
       if (!filteredErrors.contains(error))
@@ -116,13 +154,14 @@ public class ValidationPresenter extends TranslatingUtilities implements Compara
   private final String headerTemplate = 
       "<!DOCTYPE HTML>\r\n"+
       "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\r\n"+
+      "<!-- broken links = $links$, errors = $err$, warn = $warn$, info = $info$ -->\r\n"+
       "<head>\r\n"+
       "  <title>$title$ : Validation Results</title>\r\n"+
       "  <link href=\"fhir.css\" rel=\"stylesheet\"/>\r\n"+
       "</head>\r\n"+
       "<body style=\"margin: 20px; background-color: #ffffff\">\r\n"+
       " <h1>Validation Results for $title$</h1>\r\n"+
-      " <p>Generated $time$. FHIR version $version$</p>\r\n"+
+      " <p>Generated $time$. FHIR version $version$ for $igversion$</p>\r\n"+
       " <table class=\"grid\">\r\n"+
       "   <tr>\r\n"+
       "     <td><b>Filename</b></td><td><b>Errors</b></td><td><b>Information messages &amp; Warnings</b></td>\r\n"+
@@ -163,7 +202,8 @@ public class ValidationPresenter extends TranslatingUtilities implements Compara
   private final String headerTemplateText = 
       "$title$ : Validation Results\r\n"+
       "=========================================\r\n\r\n"+
-      "Generated $time$. FHIR version $version$\r\n\r\n";
+      "err = $err$, warn = $warn$, info = $info$\r\n"+
+      "Generated $time$. FHIR version $version$ for $igversion$\r\n\r\n";
   
   private final String summaryTemplateText = 
       " $filename$ : $errcount$ / $other$\r\n";
@@ -184,25 +224,35 @@ public class ValidationPresenter extends TranslatingUtilities implements Compara
     return new ST(t, '$', '$');
   }
 
-  private String genHeader(String title) {
+  private String genHeader(String title, int err, int warn, int info, int links) {
     ST t = template(headerTemplate);
     t.add("version", Constants.VERSION);
+    t.add("igversion", statedVersion);
     t.add("title", title);
     t.add("time", new Date().toString());
+    t.add("err", Integer.toString(err));
+    t.add("warn", Integer.toString(warn));
+    t.add("info", Integer.toString(info));
+    t.add("links", Integer.toString(links));
     return t.render();
   }
 
-  private String genHeaderTxt(String title) {
+  private String genHeaderTxt(String title, int err, int warn, int info) {
     ST t = template(headerTemplateText);
     t.add("version", Constants.VERSION);
+    t.add("igversion", statedVersion);
     t.add("title", title);
     t.add("time", new Date().toString());
+    t.add("err",  Integer.toString(err));
+    t.add("warn",  Integer.toString(warn));
+    t.add("info",  Integer.toString(info));
     return t.render();
   }
 
   private String genEnd() {
     ST t = template(endTemplate);
     t.add("version", Constants.VERSION);
+    t.add("igversion", statedVersion);
     t.add("time", new Date().toString());
     return t.render();
   }
@@ -210,6 +260,7 @@ public class ValidationPresenter extends TranslatingUtilities implements Compara
   private String genEndTxt() {
     ST t = template(endTemplateText);
     t.add("version", Constants.VERSION);
+    t.add("igversion", statedVersion);
     t.add("time", new Date().toString());
     return t.render();
   }
@@ -217,6 +268,7 @@ public class ValidationPresenter extends TranslatingUtilities implements Compara
   private String genFooter(String title) {
     ST t = template(footerTemplate);
     t.add("version", Constants.VERSION);
+    t.add("igversion", statedVersion);
     t.add("title", title);
     t.add("time", new Date().toString());
     return t.render();
@@ -225,6 +277,7 @@ public class ValidationPresenter extends TranslatingUtilities implements Compara
   private String genFooterTxt(String title) {
     ST t = template(footerTemplateText);
     t.add("version", Constants.VERSION);
+    t.add("igversion", statedVersion);
     t.add("title", title);
     t.add("time", new Date().toString());
     return t.render();
@@ -249,11 +302,12 @@ public class ValidationPresenter extends TranslatingUtilities implements Compara
   private String genSummaryRow(FetchedFile f) {
     ST t = template(summaryTemplate);
     t.add("link", makelink(f));
+    List<ValidationMessage> uniqueErrors = removeDupMessages(f.getErrors());
     
     t.add("filename", f.getName());
-    String ec = errCount(f.getErrors());
+    String ec = errCount(uniqueErrors);
     t.add("errcount", ec);
-    t.add("other", otherCount(f.getErrors()));
+    t.add("other", otherCount(uniqueErrors));
     if ("0".equals(ec))
       t.add("color", "#EFFFEF");
     else

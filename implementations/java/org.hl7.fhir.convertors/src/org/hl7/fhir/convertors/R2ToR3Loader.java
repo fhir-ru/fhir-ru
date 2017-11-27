@@ -22,7 +22,7 @@ import org.hl7.fhir.dstu3.model.ValueSet;
 import org.hl7.fhir.dstu3.utils.ToolingExtensions;
 import org.hl7.fhir.exceptions.FHIRException;
 
-public class R2ToR3Loader implements IContextResourceLoader, VersionConvertorAdvisor {
+public class R2ToR3Loader implements IContextResourceLoader, VersionConvertorAdvisor30 {
 
   private List<CodeSystem> cslist = new ArrayList<>();
   private boolean patchUrls;
@@ -50,6 +50,7 @@ public class R2ToR3Loader implements IContextResourceLoader, VersionConvertorAdv
       be.setFullUrl(cs.getUrl());
       be.setResource(cs);
     }
+	cslist.clear();
     if (killPrimitives) {
       List<BundleEntryComponent> remove = new ArrayList<BundleEntryComponent>();
       for (BundleEntryComponent be : b.getEntry()) {

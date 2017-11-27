@@ -44,7 +44,7 @@ For example, each of the following conditions could rise to the level of importa
 <h2>Boundaries and Relationships</h2>
 <p>
     The condition resource may be referenced by other resources as "reasons" for an action (e.g. <a href="medicationrequest.html">MedicationRequest</a>,
-<a href="procedure.html">Procedure</a>, <a href="procedurerequest.html">ProcedureRequest</a>, etc.)
+<a href="procedure.html">Procedure</a>, <a href="servicerequest.html">ServiceRequest</a>, etc.)
 </p>
 <p>
 This resource is not typically used to record information about subjective and objective information that might lead to the recording of a Condition resource. Such signs and symptoms are typically captured using the <a href="observation.html">Observation</a> resource;
@@ -57,7 +57,7 @@ Use the <a href="observation.html">Observation</a> resource when a symptom is re
 Use Condition when a symptom requires long term management, tracking, or is used as a proxy for a diagnosis or problem that is not yet determined.
 </p>
 <p>
-When the diagnosis is related to an allergy or intolerance, the Condition and <a href="allergyintolerance.html">AllergyIntolerance</a> resources can both be used.  However, using Condition alone is not sufficient as the allergy or intolerance needs to be represented as an <a href="allergyintolerance.html">AllergyIntolerance</a> to be actionable for decision support
+When the diagnosis is related to an allergy or intolerance, the Condition and <a href="allergyintolerance.html">AllergyIntolerance</a> resources can both be used.  However, to be actionable for decision support, using Condition alone is not sufficient as the allergy or intolerance condition needs to be represented as an <a href="allergyintolerance.html">AllergyIntolerance</a>.
 </p>
 
 </div>

@@ -10737,6 +10737,11 @@
     <display value="Hospital-based outpatient psychiatric clinic"/>
     <display value="Hospital-based outpatient mental health clinic (environment)"/>
   </concept>
+  <concept id="14975008" display="Forearm">
+    <display value="Forearm"/>
+    <display value="Forearm structure"/>
+    <display value="Forearm structure (body structure)"/>
+  </concept>
   <concept id="15108003" display="Restricted fiber diet">
     <display value="Restricted fiber diet"/>
     <display value="Low fiber diet"/>
@@ -11323,6 +11328,11 @@
     <display value="Domestic goose"/>
     <display value="Domestic goose (organism)"/>
   </concept>
+  <concept id="23506009" display="Normal flora">
+    <display value="Normal flora"/>
+    <display value="Pathogenic bacteria not recovered"/>
+    <display value="Normal flora (finding)"/>
+  </concept>
   <concept id="235157009" display="Endoscopic brushings of GIT">
     <display value="Endoscopic brushings of GIT"/>
     <display value="Endoscopic brushings of gastrointestinal tract (procedure)"/>
@@ -11458,6 +11468,10 @@
   <concept id="25369002" display="Westphalian horse">
     <display value="Westphalian horse"/>
     <display value="Westphalian horse (organism)"/>
+  </concept>
+  <concept id="254291000" display="Staging and scales">
+    <display value="Staging and scales"/>
+    <display value="Staging and scales (staging scale)"/>
   </concept>
   <concept id="254637007" display="Non-small cell lung cancer">
     <display value="Non-small cell lung cancer"/>
@@ -11731,6 +11745,18 @@
     <display value="Objects"/>
     <display value="Physical object (physical object)"/>
   </concept>
+  <concept id="260998006" display="cS - Clinical staging">
+    <display value="cS - Clinical staging"/>
+    <display value="c - Clinical staging"/>
+    <display value="Clinical staging"/>
+    <display value="Clinical staging (qualifier value)"/>
+  </concept>
+  <concept id="261023001" display="Pathological staging">
+    <display value="Pathological staging"/>
+    <display value="pS - Pathological staging"/>
+    <display value="p - Pathological staging"/>
+    <display value="Pathological staging (qualifier value)"/>
+  </concept>
   <concept id="26105007" display="Holstein-Friesian cattle">
     <display value="Holstein-Friesian cattle breed (organism)"/>
     <display value="Holstein-Friesian cattle"/>
@@ -11752,10 +11778,22 @@
     <display value="Fracture of shaft of ulna"/>
     <display value="Fracture of shaft of ulna (disorder)"/>
   </concept>
+  <concept id="263776006" display="Heavy growth">
+    <display value="Heavy growth"/>
+    <display value="Heavy growth (qualifier value)"/>
+  </concept>
+  <concept id="263812008" display="Moderate growth">
+    <display value="Moderate growth"/>
+    <display value="Moderate growth (qualifier value)"/>
+  </concept>
   <concept id="263887005" display="Subcutaneous">
     <display value="Subcutaneous"/>
     <display value="SC - Subcutaneous"/>
     <display value="Subcutaneous (qualifier value)"/>
+  </concept>
+  <concept id="263929005" display="Volar">
+    <display value="Volar"/>
+    <display value="Volar (qualifier value)"/>
   </concept>
   <concept id="264217000" display="Superior">
     <display value="Superior"/>
@@ -12547,6 +12585,10 @@
     <display value="Closed fracture of small multangular bone of wrist"/>
     <display value="Closed fracture of trapezoidal bone of wrist (disorder)"/>
     <display value="Closed fracture trapezoid"/>
+  </concept>
+  <concept id="35748005" display="Wine">
+    <display value="Wine"/>
+    <display value="Wine (substance)"/>
   </concept>
   <concept id="35839008" display="Leghorn chicken">
     <display value="Leghorn chicken"/>
@@ -13649,6 +13691,13 @@
     <display value="Instruction"/>
     <display value="Teaching"/>
     <display value="Procedure that is synonymous with those activities such as teaching, demonstration, instruction, explanation, and advice that aim to increase knowledge and skills, change behaviors, assist coping and increase adherence to treatment."/>
+  </concept>
+  <concept id="409137002" display="No known history of drug allergy">
+    <display value="No known history of drug allergy"/>
+    <display value="No known medicine allergy"/>
+    <display value="No known drug allergy (situation)"/>
+    <display value="No known drug allergy"/>
+    <display value="NKDA - No known drug allergy"/>
   </concept>
   <concept id="40930008" display="Hypothyroidism">
     <display value="Hypothyroidism"/>
@@ -14815,6 +14864,11 @@
     <display value="Peruvian Paso horse"/>
     <display value="Peruvian Paso horse (organism)"/>
   </concept>
+  <concept id="49755003" display="Abnormal tissue appearance">
+    <display value="Abnormal tissue appearance"/>
+    <display value="Morphologically abnormal structure"/>
+    <display value="Morphologically abnormal structure (morphologic abnormality)"/>
+  </concept>
   <concept id="49852007" display="Median cubital vein">
     <display value="Median cubital vein"/>
     <display value="Structure of median cubital vein"/>
@@ -14893,6 +14947,10 @@
   <concept id="53360003" display="Oxford Down sheep">
     <display value="Oxford Down sheep"/>
     <display value="Oxford Down sheep (organism)"/>
+  </concept>
+  <concept id="53410008" display="Beer">
+    <display value="Beer"/>
+    <display value="Beer (substance)"/>
   </concept>
   <concept id="53431006" display="Boar power pig 59">
     <display value="Boar power pig 59"/>
@@ -15012,6 +15070,11 @@
   <concept id="56342008" display="Temperature taking">
     <display value="Temperature taking"/>
     <display value="Temperature taking (procedure)"/>
+  </concept>
+  <concept id="56415008" display="Klebsiella pneumoniae">
+    <display value="Klebsiella pneumoniae"/>
+    <display value="Friedlander&#39;s bacillus"/>
+    <display value="Klebsiella pneumoniae (organism)"/>
   </concept>
   <concept id="56764001" display="Holland chicken">
     <display value="Holland chicken"/>
@@ -15224,6 +15287,12 @@
     <display value="Scottish blackface sheep"/>
     <display value="Scotch blackface sheep"/>
   </concept>
+  <concept id="6524003" display="Distilled spirits">
+    <display value="Distilled spirits"/>
+    <display value="Distilled spirits (substance)"/>
+    <display value="Spirits"/>
+    <display value="Alcoholic spirits"/>
+  </concept>
   <concept id="65344003" display="Marchigiana cattle">
     <display value="Marchigiana cattle breed (organism)"/>
     <display value="Marchigiana cattle"/>
@@ -15408,6 +15477,10 @@
     <display value="Icelandic horse"/>
     <display value="Icelandic horse (organism)"/>
   </concept>
+  <concept id="705383004" display="Eating/Drinking assistive device">
+    <display value="Eating/Drinking assistive device"/>
+    <display value="Eating/Drinking assistive device (physical object)"/>
+  </concept>
   <concept id="70881005" display="Anser anser anser">
     <display value="Anser anser anser"/>
     <display value="Greylag goose"/>
@@ -15442,6 +15515,10 @@
   <concept id="71388002" display="Procedure">
     <display value="Procedure"/>
     <display value="Procedure (procedure)"/>
+  </concept>
+  <concept id="716184000" display="No known latex allergy">
+    <display value="No known latex allergy (situation)"/>
+    <display value="No known latex allergy"/>
   </concept>
   <concept id="716186003" display="No known allergy">
     <display value="No known allergy (situation)"/>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Claim xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/coverage.xsd">
+<Claim xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://hl7.org/fhir ../../schema/claim.xsd">
 	<id value="100156"/>
 
 	<text>
@@ -15,7 +16,7 @@
 	</contained>
 
 	<contained>
-		<ReferralRequest>
+		<ServiceRequest>
 			<id value="referral"/>
 			<status value="active"/>
 			<intent value="order"/>
@@ -23,7 +24,7 @@
 				<reference value="Patient/1"/>
 			</subject>
 			<!-- rest of the resource ommitted for brevity -->
-		</ReferralRequest>
+		</ServiceRequest>
 	</contained>
 
 	<identifier>
@@ -84,10 +85,9 @@
 				<code value="other"/>
 			</coding>
 		</type>
-		<resourceType>
-			<system value="http://hl7.org/fhir/ex-payee-resource-type"/>
+		<resource>
 			<code value="relatedperson"/>
-		</resourceType>
+		</resource>
 		<party>
 			<reference value="RelatedPerson/peter"/>
 		</party>

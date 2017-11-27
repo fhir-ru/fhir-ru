@@ -11,7 +11,7 @@
   <LastAuthor>Paul</LastAuthor>
   <Created>2013-07-04T21:40:46Z</Created>
   <LastSaved>2017-02-23T12:11:36Z</LastSaved>
-  <Version>15.00</Version>
+  <Version>16.00</Version>
  </DocumentProperties>
  <CustomDocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <WorkbookGuid dt:dt="string">747a3dc3-14ba-4528-94a7-b06f9d606003</WorkbookGuid>
@@ -20,12 +20,11 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>7704</WindowHeight>
-  <WindowWidth>20436</WindowWidth>
+  <WindowHeight>8520</WindowHeight>
+  <WindowWidth>30720</WindowWidth>
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
   <ActiveSheet>1</ActiveSheet>
-  <RefModeR1C1/>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -54,6 +53,9 @@
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
   </Style>
   <Style ss:ID="s65">
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+  </Style>
+  <Style ss:ID="s66">
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
    </Borders>
@@ -61,19 +63,18 @@
     ss:Bold="1"/>
    <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
   </Style>
-  <Style ss:ID="s66">
+  <Style ss:ID="s67">
    <Font ss:FontName="Verdana" x:Family="Swiss" ss:Size="9" ss:Color="#333333"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="compartments">
   <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="6" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s62" ss:DefaultColumnWidth="64.8"
+   x:FullRows="1" ss:StyleID="s62" ss:DefaultColumnWidth="65.400000000000006"
    ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="109.8" ss:Span="1"/>
-   <Column ss:Index="3" ss:StyleID="s62" ss:AutoFitWidth="0"
-    ss:Width="130.80000000000001"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="208.79999999999998"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="253.79999999999998"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="110.4" ss:Span="1"/>
+   <Column ss:Index="3" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="131.4"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="209.39999999999998"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="254.39999999999998"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s63">
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">Title</Data></Cell>
@@ -136,14 +137,15 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="resources">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="120" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="64.8" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="157.80000000000001"/>
-   <Column ss:AutoFitWidth="0" ss:Width="198"/>
-   <Column ss:AutoFitWidth="0" ss:Width="98.4"/>
-   <Column ss:Width="148.80000000000001"/>
-   <Column ss:Width="198"/>
-   <Row ss:AutoFitHeight="0" ss:StyleID="s65">
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="125" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s65" ss:DefaultColumnWidth="65.400000000000006"
+   ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="158.4"/>
+   <Column ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="198"/>
+   <Column ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="98.4"/>
+   <Column ss:StyleID="s65" ss:Width="149.4"/>
+   <Column ss:StyleID="s65" ss:Width="198"/>
+   <Row ss:AutoFitHeight="0" ss:StyleID="s66">
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell><Data ss:Type="String">Patient</Data></Cell>
     <Cell><Data ss:Type="String">Encounter</Data></Cell>
@@ -199,7 +201,7 @@
     <Cell><Data ss:Type="String">Binary</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">BodySite</Data></Cell>
+    <Cell><Data ss:Type="String">BodyStructure</Data></Cell>
     <Cell><Data ss:Type="String">patient</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -207,19 +209,19 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">CarePlan</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">patient | performer</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">patient | performer</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">performer</Data></Cell>
     <Cell><Data ss:Type="String">performer</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">CareTeam</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">patient | participant </Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">patient | participant </Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">participant </Data></Cell>
     <Cell><Data ss:Type="String">participant </Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ChargeItem</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">subject</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">subject</Data></Cell>
     <Cell><Data ss:Type="String">context</Data></Cell>
     <Cell><Data ss:Type="String">enterer | participant-actor</Data></Cell>
     <Cell><Data ss:Type="String">enterer | participant-actor</Data></Cell>
@@ -227,14 +229,14 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Claim</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">patient | payee</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">patient | payee</Data></Cell>
     <Cell><Data ss:Type="String">encounter</Data></Cell>
     <Cell><Data ss:Type="String">payee</Data></Cell>
     <Cell><Data ss:Type="String">enterer | provider | payee | care-team</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ClaimResponse</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">patient</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">patient</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">request-provider</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -283,7 +285,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Condition</Data></Cell>
     <Cell><Data ss:Type="String">patient | asserter</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">context</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">context</Data></Cell>
     <Cell><Data ss:Type="String">asserter</Data></Cell>
     <Cell><Data ss:Type="String">asserter</Data></Cell>
    </Row>
@@ -305,9 +307,6 @@
     <Cell ss:Index="4"><Data ss:Type="String">policy-holder | subscriber |payor</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">DataElement</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Device</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">{def}</Data></Cell>
    </Row>
@@ -322,8 +321,8 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">DeviceRequest</Data></Cell>
     <Cell><Data ss:Type="String">subject | requester | performer</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">encounter</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">requester |  performer</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">encounter</Data></Cell>
+    <Cell ss:Index="5" ss:StyleID="Default"><Data ss:Type="String">requester |  performer</Data></Cell>
     <Cell><Data ss:Type="String">device | subject | requester |  performer</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -334,24 +333,25 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">DiagnosticReport</Data></Cell>
     <Cell><Data ss:Type="String">subject</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">encounter</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">performer</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">encounter</Data></Cell>
+    <Cell ss:Index="5" ss:StyleID="Default"><Data ss:Type="String">performer</Data></Cell>
     <Cell><Data ss:Type="String">subject</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">DocumentManifest</Data></Cell>
-    <Cell><Data ss:Type="String">subject | author | recipient</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">author</Data></Cell>
-    <Cell><Data ss:Type="String">subject | author | recipient</Data></Cell>
-    <Cell><Data ss:Type="String">subject | author</Data></Cell>
+    <Cell><Data ss:Type="String">subject | agent | recipient</Data></Cell>
+    <Cell><Data ss:Type="String">related-ref</Data></Cell>
+    <Cell><Data ss:Type="String">agent</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">subject | agent | recipient</Data></Cell>
+    <Cell><Data ss:Type="String">subject | agent</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">DocumentReference</Data></Cell>
-    <Cell><Data ss:Type="String">subject | author</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">encounter</Data></Cell>
-    <Cell><Data ss:Type="String">author</Data></Cell>
-    <Cell><Data ss:Type="String">subject | author | authenticator</Data></Cell>
-    <Cell><Data ss:Type="String">subject | author</Data></Cell>
+    <Cell><Data ss:Type="String">subject </Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">encounter</Data></Cell>
+    <Cell><Data ss:Type="String">agent</Data></Cell>
+    <Cell><Data ss:Type="String">subject | agent | authenticator</Data></Cell>
+    <Cell><Data ss:Type="String">subject | agent</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">EligibilityRequest</Data></Cell>
@@ -382,15 +382,19 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">EpisodeOfCare</Data></Cell>
     <Cell><Data ss:Type="String">patient</Data></Cell>
-    <Cell ss:Index="5" ss:StyleID="s66"><Data ss:Type="String">care-manager</Data></Cell>
+    <Cell ss:Index="5" ss:StyleID="s67"><Data ss:Type="String">care-manager</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">EventDefinition</Data></Cell>
+    <Cell ss:Index="5" ss:StyleID="s67"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ExpansionProfile</Data></Cell>
-    <Cell ss:Index="5" ss:StyleID="s66"/>
+    <Cell ss:Index="5" ss:StyleID="s67"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ExplanationOfBenefit</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">patient | payee</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">patient | payee</Data></Cell>
     <Cell><Data ss:Type="String">encounter</Data></Cell>
     <Cell><Data ss:Type="String">payee</Data></Cell>
     <Cell><Data ss:Type="String">enterer | provider | payee | care-team</Data></Cell>
@@ -443,6 +447,12 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ImplementationGuide</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ImplementationGuideInput</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ImplementationGuideOutput</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Linkage</Data></Cell>
@@ -523,25 +533,13 @@
     <Cell><Data ss:Type="String">OperationOutcome</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">!Order</Data></Cell>
-    <Cell><Data ss:Type="String">subject</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">source | target</Data></Cell>
-    <Cell><Data ss:Type="String">target</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">!OrderResponse</Data></Cell>
-    <Cell><Data ss:Type="String">request.patient</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">who</Data></Cell>
-    <Cell><Data ss:Type="String">who</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Organization</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Patient</Data></Cell>
     <Cell><Data ss:Type="String">link</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">link</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">general-practitioner</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">general-practitioner</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">PaymentNotice</Data></Cell>
@@ -573,7 +571,7 @@
     <Cell><Data ss:Type="String">performer</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">ProcedureRequest</Data></Cell>
+    <Cell><Data ss:Type="String">ServiceRequest</Data></Cell>
     <Cell><Data ss:Type="String">subject | performer</Data></Cell>
     <Cell><Data ss:Type="String">context</Data></Cell>
     <Cell><Data ss:Type="String">performer</Data></Cell>
@@ -605,15 +603,10 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">QuestionnaireResponse</Data></Cell>
     <Cell><Data ss:Type="String">subject | author</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">context</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">context</Data></Cell>
     <Cell><Data ss:Type="String">author | source</Data></Cell>
     <Cell><Data ss:Type="String">author | source</Data></Cell>
     <Cell><Data ss:Type="String">author</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">ReferralRequest</Data></Cell>
-    <Cell><Data ss:Type="String">patient | requester</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">requester | recipient</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">RelatedPerson</Data></Cell>
@@ -678,6 +671,9 @@
     <Cell ss:Index="5"><Data ss:Type="String">supplier | receiver</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">TerminologyCapabilities</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">TestScript</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -689,7 +685,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">VisionPrescription</Data></Cell>
     <Cell><Data ss:Type="String">patient</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">encounter</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">encounter</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">prescriber</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -728,6 +724,26 @@
     <Cell><Data ss:Type="String">participant | author</Data></Cell>
     <Cell><Data ss:Type="String">author</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">EntryDefinition</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">SpecimenDefinition</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ExampleScenario</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">UserSession</Data></Cell>
+    <Cell><Data ss:Type="String">user | focus</Data></Cell>
+    <Cell><Data ss:Type="String">focus</Data></Cell>
+    <Cell><Data ss:Type="String">user</Data></Cell>
+    <Cell><Data ss:Type="String">user | focus</Data></Cell>
+    <Cell><Data ss:Type="String">user</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ObservationDefinition</Data></Cell>
+   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -746,7 +762,7 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>64</TopRowBottomPane>
+   <TopRowBottomPane>111</TopRowBottomPane>
    <ActivePane>2</ActivePane>
    <Panes>
     <Pane>
@@ -754,8 +770,7 @@
     </Pane>
     <Pane>
      <Number>2</Number>
-     <ActiveRow>83</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>125</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

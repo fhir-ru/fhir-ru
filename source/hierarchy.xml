@@ -71,6 +71,7 @@ signatures.html
 
       <page title="RESTful API" filename="http.html">
         <page title="Search" filename="search.html"/>
+        <page title="GraphQL" filename="graphql.html"/>
         <page title="_filter Parameter" filename="search_filter.html"/>
         <page title="Search Parameter Registry" filename="searchparameter-registry.html"/>
         <page title="FHIRPath Patch" filename="fhirpatch.html"/>
@@ -111,23 +112,26 @@ signatures.html
       </page>
 
       <page title="Resource Guide" filename="resourceguide.html"/>
+      <page title="5Ws Pattern" filename="fivews.html"/>
 
       <!-- infrastructure resources -->
       <page type="resource" resource="Basic"/>
       <page type="resource" resource="Binary"/>
       <page type="resource" resource="Bundle"/>
       <page type="resource" resource="Media"/>
-      
+
       <page type="resource" resource="Questionnaire"/>
       <page type="resource" resource="QuestionnaireResponse"/>
       <page type="resource" resource="List"/>
       <page type="resource" resource="Composition"/>
       <page type="resource" resource="DocumentReference"/>
       <page type="resource" resource="DocumentManifest"/>
+      <page type="resource" resource="EntryDefinition"/>
 
       <page type="resource" resource="OperationOutcome"/>
       <page type="resource" resource="Parameters"/>
       <page type="resource" resource="Subscription"/>
+      <page type="resource" resource="UserSession"/>
       <page type="resource" resource="MessageHeader"/>
       <page type="resource" resource="MessageDefinition"/>
     </page>
@@ -170,6 +174,7 @@ signatures.html
       <page type="resource" resource="ConceptMap"/>
       <page type="resource" resource="NamingSystem"/>
       <page type="resource" resource="ExpansionProfile"/>
+      <page type="resource" resource="TerminologyCapabilities"/>
     </page>
 
     <page title="Conformance" filename="conformance-module.html" icon="conformance.jpg">
@@ -183,6 +188,8 @@ signatures.html
       <page type="resource" resource="CompartmentDefinition"/>
       <page type="resource" resource="DataElement"/>
       <page type="resource" resource="ImplementationGuide"/>
+      <page type="resource" resource="ImplementationGuideInput"/>
+      <page type="resource" resource="ImplementationGuideOutput"/>
       <page type="resource" resource="GraphDefinition"/>
     </page>
 
@@ -255,6 +262,9 @@ signatures.html
       <page type="resource" resource="ResearchStudy"/>
       <page type="resource" resource="ResearchSubject"/>
   	  <page type="resource" resource="ChargeItem"/>
+  	  <page type="resource" resource="ObservationDefinition"/> 
+  	  <page type="resource" resource="SpecimenDefinition"/>
+  	  <page type="resource" resource="EntryDefinition"/>
     </page>
 
     <page title="Clinical Summary" filename="clinicalsummary-module.html" icon="clinical.png">
@@ -280,7 +290,8 @@ signatures.html
       <page type="resource" resource="ImagingManifest"/>
       <page type="resource" resource="Sequence"/>
       <page type="resource" resource="Specimen"/>
-      <page type="resource" resource="BodySite"/>
+      <page type="resource" resource="SpecimenDefinition"/>
+      <page type="resource" resource="BodyStructure"/>
       <page title="Genomics Implementer Guidance" filename="genomics.html"/>
     </page>
 
@@ -316,8 +327,7 @@ signatures.html
       <page type="resource" resource="AppointmentResponse"/>
       <page type="resource" resource="Schedule"/>
       <page type="resource" resource="Slot"/>
-      <page type="resource" resource="ReferralRequest"/>
-      <page type="resource" resource="ProcedureRequest"/>
+      <page type="resource" resource="ServiceRequest"/>
       <page type="resource" resource="NutritionOrder"/>
       <page type="resource" resource="VisionPrescription"/>
       <page type="resource" resource="ActivityDefinition"/>
@@ -328,6 +338,8 @@ signatures.html
       <page type="resource" resource="DeviceUseStatement"/>
       <page type="resource" resource="SupplyRequest"/>
       <page type="resource" resource="SupplyDelivery"/>
+      <page type="resource" resource="ExampleScenario"/>  
+
     </page>
 
     <page title="Financial" filename="financial-module.html" icon="financial.png">
@@ -345,6 +357,7 @@ signatures.html
     </page>
 
     <page title="Clinical Reasoning" filename="clinicalreasoning-module.html" icon="reasoning.png">
+      <page type="resource" resource="EventDefinition"/>
       <page type="resource" resource="Library"/>
       <page type="resource" resource="ServiceDefinition"/>
       <page type="resource" resource="GuidanceResponse"/>

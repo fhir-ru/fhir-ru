@@ -240,7 +240,7 @@
   Requirements = custom types only in logical models
   Context = StructureDefinition
   English = Custom types can only be used in logical models
-  XPath = f:kind/@value = \'logical\' or count(f:differential/f:element/f:type/f:code[@value and not(matches(@value, \'^[a-zA-Z0-9]+$\'))]|f:snapshot/f:element/f:type/f:code[@value and not(matches(@value, \'^[a-zA-Z0-9]+$\'))]) =0
+  XPath = f:kind/@value = \'logical\' or count(f:differential/f:element/f:type/f:code[@value and not(matches(string(@value), \'^[a-zA-Z0-9]+$\'))]|f:snapshot/f:element/f:type/f:code[@value and not(matches(string(@value), \'^[a-zA-Z0-9]+$\'))]) =0
   Expression = kind = \'logical\' or (differential.element.type.code.all(hasValue() implies matches(\'^[a-zA-Z0-9]+$\')) and snapshot.element.type.code.all(hasValue() implies matches(\'^[a-zA-Z0-9]+$\')))
 
  -- Row 20 -----------------------------------
@@ -337,6 +337,7 @@
   Card. = 0..1
   Summary = y
   Type = id
+  Binding = FHIRVersions
   Short Name = FHIR Version this StructureDefinition targets
   Definition = The version of the FHIR specification on which this StructureDefinition is based - this is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is $version$ for this version
   Comments = A StructureDefinition does not need to specify the target it applies to,as StructureDefinitions will often be valid across multiple versions of FHIR. FHIR tooling can determine whether a StructureDefinition is consistent with a particular StructureDefinition if desired

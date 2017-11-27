@@ -24,9 +24,11 @@
   <subject>
     <reference value="Patient/example"/>
   </subject>
-  <prescriber>
-    <reference value="Practitioner/example"/>
-  </prescriber>
+  <requester>
+    <reference value="Practitioner/f007"/>
+    <display value="Patrick Pump"/>
+
+  </requester>
 
 
 

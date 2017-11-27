@@ -13,7 +13,6 @@
                     <display value="Adcetris"/>
                 </coding>
             </code>
-            <isBrand value="true"/>
                 <form>
                     <coding>
                         <system value="http://snomed.info/sct"/>
@@ -21,13 +20,10 @@
                         <display value="Lyophilized powder for injectable solution (qualifier value) "/>
                     </coding>
                 </form>
-                <package>
-                    <batch>
-                        <lotNumber value="12345"/>
-                        <expirationDate value="2019-10-31"/>
-                    </batch>
-                </package>
-            
+            <batch>
+                <lotNumber value="12345"/>
+                <expirationDate value="2019-10-31"/>
+            </batch>
         </Medication>
     </contained>
     <identifier>
@@ -51,17 +47,12 @@
     </context>
     <authoredOn value="2015-01-15"/>
     <requester>
-        <agent>
-            <reference value="Practitioner/f007"/>
-            <display value="Patrick Pump"/>
-        </agent>
-        <onBehalfOf>
-            <reference value="Organization/f002"/>
-        </onBehalfOf>
+        <reference value="Practitioner/f007"/>
+        <display value="Patrick Pump"/>
     </requester>
     <dosageInstruction>
         <sequence value="1"/>
-        <text value="1.8 mg/kg IV infusion over 30 minutes every 3 weeks for 16 cycles" />
+        <text value="1.8 mg/kg IV infusion over 20 minutes every 3 weeks for 16 cycles" />
         <timing>
             <repeat>
                 <count value="16"/>
@@ -89,11 +80,17 @@
             <system value="http://unitsofmeasure.org"/>
             <code value="mg"/> 
         </maxDosePerLifetime>
-        <rateQuantity>
-            <value value="20"/>
-            <unit value="min"/>
-            <system value="http://unitsofmeasure.org"/>
+        <rateRatio>
+            <numerator> 
+                <value value="1.8"/> 
+                <system value="http://unitsofmeasure.org"/> 
+                <code value="mg/kg"/> 
+            </numerator> 
+            <denominator> 
+                <value value="20"/> 
+                <system value="http://unitsofmeasure.org"/> 
                 <code value="min"/> 
-        </rateQuantity>
+            </denominator> 
+        </rateRatio>
     </dosageInstruction>
 </MedicationRequest>

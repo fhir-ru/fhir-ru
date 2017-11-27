@@ -41,8 +41,8 @@ import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ProfiledType;
-import org.hl7.fhir.dstu3.model.ValueSet;
-import org.hl7.fhir.dstu3.model.ValueSet.ValueSetExpansionContainsComponent;
+import org.hl7.fhir.r4.model.ValueSet;
+import org.hl7.fhir.r4.model.ValueSet.ValueSetExpansionContainsComponent;
 import org.hl7.fhir.igtools.spreadsheets.TypeRef;
 import org.hl7.fhir.tools.publisher.BuildWorkerContext;
 import org.hl7.fhir.utilities.Utilities;
@@ -113,7 +113,7 @@ public class JsonGenerator  {
 		// The Element is Type, Structure or blank, then it is Element
 		if( (parent == null) || (parent.isEmpty()) || (parent.equals("Type")) || (parent.equals("Structure")))
 			parent="Element";
-		sup.addProperty("$ref", (relative ? "#" : parent.replace(".",  "_")+".schema.json#") +"/definitions/"+parent.replace(".",  "_"));
+		sup.addProperty("$ref", (relative ? "#" : parent.replace(".",  "_")+"#") +"/definitions/"+parent.replace(".",  "_"));
 	}
     JsonObject self = new JsonObject();
     ao.add(self);
@@ -127,6 +127,7 @@ public class JsonGenerator  {
       props.add("resourceType", rt);
       rt.addProperty("description", "This is a "+root.getName()+" resource");
       rt.addProperty("type", "string");
+      rt.addProperty("const", root.getName());
       JsonArray enums = new JsonArray();
       enums.add(new JsonPrimitive(root.getName()));
       rt.add("enum", enums);

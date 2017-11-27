@@ -69,9 +69,9 @@ import org.hl7.fhir.utilities.Utilities;
 
 public class VersionConvertor_10_30 {
 
-  public VersionConvertorAdvisor advisor;
+  public VersionConvertorAdvisor30 advisor;
 
-  public VersionConvertor_10_30(VersionConvertorAdvisor advisor) {
+  public VersionConvertor_10_30(VersionConvertorAdvisor30 advisor) {
     super();
     this.advisor = advisor;
   }
@@ -11194,7 +11194,7 @@ public class VersionConvertor_10_30 {
       return null;
     switch (src) {
     case DATATYPE:
-      if (Utilities.existsInList(dtName, "boolean", "integer", "decimal", "base64Binary", "instant", "string", "uri", "date", "dateTime", "time", "code", "oid", "uuid", "id", "unsignedInt", "positiveInt", "markdown"))
+      if (Utilities.existsInList(dtName, "boolean", "integer", "decimal", "base64Binary", "instant", "string", "uri", "date", "dateTime", "time", "code", "oid", "uuid", "id", "unsignedInt", "positiveInt", "markdown", "xhtml"))
         return org.hl7.fhir.dstu3.model.StructureDefinition.StructureDefinitionKind.PRIMITIVETYPE;
       else
         return org.hl7.fhir.dstu3.model.StructureDefinition.StructureDefinitionKind.COMPLEXTYPE;

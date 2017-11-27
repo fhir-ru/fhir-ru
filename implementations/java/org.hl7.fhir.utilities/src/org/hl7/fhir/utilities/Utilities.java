@@ -39,12 +39,10 @@ import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.math.BigDecimal;
 import java.net.URLEncoder;
 import java.nio.channels.FileChannel;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioSystem;
@@ -91,11 +89,18 @@ public class Utilities {
      * @return the pluralized form of the word, or the word itself if it could not be pluralized
      * @see #singularize(Object)
      */
-    public static String pluralizeMe( String word ) {
-    	Inflector inf = new Inflector();
-    	return inf.pluralize(word);
-    }
-    
+  public static String pluralizeMe( String word ) {
+    Inflector inf = new Inflector();
+    return inf.pluralize(word);
+  }
+  
+  public static String pluralize(String word, int count) {
+    if (count == 1)
+      return word;
+    Inflector inf = new Inflector();
+    return inf.pluralize(word);
+  }
+  
   
     public static boolean isInteger(String string) {
       try {
@@ -115,17 +120,28 @@ public class Utilities {
       }
     }
     
-  	public static boolean isDecimal(String string) {
-  		if (Utilities.noString(string))
-  			return false;
-  		try {
-  			float r = Float.parseFloat(string);
-  			return r != r + 1; // just to suppress the hint
-  		} catch (Exception e) {
-  			return false;
-  		}
-  	}
-  	
+    public static boolean isFloat(String string) {
+      if (Utilities.noString(string))
+        return false;
+      try {
+        float r = Float.parseFloat(string);
+        return r != r + 1; // just to suppress the hint
+      } catch (Exception e) {
+        return false;
+      }
+    }
+    
+    public static boolean isDecimal(String string) {
+      if (Utilities.noString(string))
+        return false;
+      try {
+        BigDecimal bd = new BigDecimal(string);
+        return bd != null;
+      } catch (Exception e) {
+        return false;
+      }
+    }
+    
 	public static String camelCase(String value) {
 	  return new Inflector().camelCase(value.trim().replace(" ", "_"), false);
 	}
@@ -150,6 +166,18 @@ public class Utilities {
 		return b.toString();
 	}
 
+	public static String titleize(String s) {
+	  StringBuilder b = new StringBuilder();
+	  boolean up = true;
+	  for (char c : s.toCharArray()) {
+	    if (up)
+	      b.append(Character.toUpperCase(c));
+	    else
+	      b.append(c);
+	    up = c == ' ';
+	  }
+	  return b.toString();
+	}
 	
 	public static String capitalize(String s)
 	{
@@ -473,21 +501,28 @@ public class Utilities {
   public static String path(String... args) throws IOException {
     StringBuilder s = new StringBuilder();
     boolean d = false;
+    boolean first = true;
     for(String arg: args) {
+      if (first && arg == null)
+        continue;
+      first = false;
       if (!d)
         d = !noString(arg);
       else if (!s.toString().endsWith(File.separator))
         s.append(File.separator);
       String a = arg;
       a = a.replace("\\", File.separator);
+      a = a.replace("/", File.separator);
       if (s.length() > 0 && a.startsWith(File.separator))
         a = a.substring(File.separator.length());
       
       while (a.startsWith(".."+File.separator)) {
         String p = s.toString().substring(0, s.length()-1);
-        if (!p.contains(File.separator))
-          throw new IOException("illegal path underrun "+args);
-        s = new StringBuilder(p.substring(0,  p.lastIndexOf(File.separator))+File.separator);
+        if (!p.contains(File.separator)) {
+          s = new StringBuilder();
+        } else {
+          s = new StringBuilder(p.substring(0,  p.lastIndexOf(File.separator))+File.separator);
+        }
         a = a.substring(3);
       }
       if ("..".equals(a)) {
@@ -499,7 +534,7 @@ public class Utilities {
     return s.toString();
   }
 
-  public static String pathReverse(String... args) {
+  public static String pathURL(String... args) {
     StringBuilder s = new StringBuilder();
     boolean d = false;
     for(String arg: args) {
@@ -522,6 +557,8 @@ public class Utilities {
 //  }
 
   public static String nmtokenize(String cs) {
+    if (cs == null)
+      return "";
     StringBuilder s = new StringBuilder();
     for (int i = 0; i < cs.length(); i++) {
       char c = cs.charAt(i);
@@ -877,7 +914,7 @@ public class Utilities {
 
 
   public static boolean isOid(String cc) {
-    return cc.matches(OID_REGEX) && cc.lastIndexOf('.') > 5;
+    return cc.matches(OID_REGEX) && cc.lastIndexOf('.') >= 5;
   }
 
 
@@ -1034,6 +1071,34 @@ public class Utilities {
       else
         b.append("\r\n"+padLeft("", ' ', indent));
       b.append(s);
+    }
+    return b.toString();
+  }
+
+
+  public static int countFilesInDirectory(String dirName) {
+    File dir = new File(dirName);
+	 if (dir.exists() == false) {
+      return 0;
+	 }
+    int i = 0;
+    for (File f : dir.listFiles())
+      if (!f.isDirectory())
+        i++;
+    return i;
+  }
+
+  public static String makeId(String name) {
+    StringBuilder b = new StringBuilder();
+    for (char ch : name.toCharArray()) {
+      if (ch >= 'a' && ch <= 'z')
+        b.append(ch);
+      else if (ch >= 'A' && ch <= 'Z')
+        b.append(ch);
+      else if (ch >= '0' && ch <= '9')
+        b.append(ch);
+      else if (ch == '-' || ch == '.')
+        b.append(ch);
     }
     return b.toString();
   }

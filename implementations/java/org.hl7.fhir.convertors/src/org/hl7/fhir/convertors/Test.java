@@ -40,11 +40,11 @@ import org.hl7.fhir.dstu3.formats.JsonParser;
 import org.hl7.fhir.dstu3.formats.XmlParser;
 import org.hl7.fhir.dstu3.model.Bundle;
 import org.hl7.fhir.utilities.Utilities;
-import org.hl7.fhir.utilities.ucum.UcumEssenceService;
+import org.fhir.ucum.UcumEssenceService;
 
 public class Test {
   public final static String DEF_TS_SERVER = "http://fhir-dev.healthintersections.com.au/open";
-  public final static String DEV_TS_SERVER = "http://local.healthintersections.com.au:960/open";
+  public final static String DEV_TS_SERVER = "http://local.fhir.org:960/open";
   
 
 	public static final String DEF_PATH = "c:\\work\\org.hl7.fhir\\build\\implementations\\java\\org.hl7.fhir.convertors\\samples\\";

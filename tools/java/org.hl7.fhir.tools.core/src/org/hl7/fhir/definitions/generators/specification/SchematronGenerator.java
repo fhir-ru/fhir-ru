@@ -11,8 +11,8 @@ import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.Invariant;
 import org.hl7.fhir.definitions.model.ResourceDefn;
-import org.hl7.fhir.dstu3.model.ElementDefinition.ElementDefinitionConstraintComponent;
-import org.hl7.fhir.dstu3.model.StructureDefinition;
+import org.hl7.fhir.r4.model.ElementDefinition.ElementDefinitionConstraintComponent;
+import org.hl7.fhir.r4.model.StructureDefinition;
 import org.hl7.fhir.igtools.spreadsheets.TypeRef;
 import org.hl7.fhir.tools.publisher.PageProcessor;
 import org.hl7.fhir.utilities.Utilities;
@@ -39,7 +39,7 @@ public class SchematronGenerator {
       generateInvariants(s, null, root.getRoot(), definitions, parents, root.getName());
     }
     Set<StructureDefinition> processed = new HashSet<StructureDefinition>(); 
-    for (StructureDefinition exd : page.getWorkerContext().getExtensionDefinitions().values()) {
+    for (StructureDefinition exd : page.getWorkerContext().getExtensionDefinitions()) {
       if (exd.getSnapshot().getElement().get(0).hasConstraint() && !processed.contains(exd)) {
         processed.add(exd);
         Section s = sch.section("Extension: "+exd.getName());

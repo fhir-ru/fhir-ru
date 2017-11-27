@@ -101,7 +101,7 @@
   Type = Reference(Organization)
   Short Name = Insurer
   Definition = The Insurer who produced this adjudicated response.
-  Workflow Mapping = Event.performer.onBehalfOf
+  Workflow Mapping = Event.performer.actor
   w5 = who.source
 
  -- Row 10 -----------------------------------
@@ -116,7 +116,7 @@
  -- Row 11 -----------------------------------
   Element = PaymentReconciliation.outcome
   Card. = 0..1
-  Type = CodeableConcept
+  Type = code
   Binding = RemittanceOutcome
   Short Name = complete | error | partial
   Definition = Transaction status: error, complete
@@ -247,7 +247,7 @@
  -- Row 30 -----------------------------------
   Element = PaymentReconciliation.processNote.type
   Card. = 0..1
-  Type = CodeableConcept
+  Type = code
   Binding = NoteType
   Short Name = display | print | printoper
   Definition = The note purpose: Print/Display.
@@ -357,6 +357,12 @@
   Type = reference
   Description = The organization who generated this resource
   Path = PaymentReconciliation.requestOrganizationReference
+
+ -- Row 17 -----------------------------------
+  Name = status
+  Type = token
+  Description = The status of the payment reconciliation
+  Path = PaymentReconciliation.status
 
 === Sheet Profiles =====================================
 

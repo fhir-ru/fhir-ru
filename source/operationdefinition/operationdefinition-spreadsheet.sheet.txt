@@ -88,7 +88,7 @@
 
  -- Row 5 -----------------------------------
   Element = OperationDefinition.status
-  Workflow Mapping = Definition.status (different ValueSet)
+  Workflow Mapping = Definition.status {different ValueSet}
 
  -- Row 6 -----------------------------------
   Element = OperationDefinition.kind
@@ -165,7 +165,7 @@
   Short Name = Marks this as a profile of the base
   Definition = Indicates that this operation definition is a constraining profile on the base
   Comments = A constrained profile can make optional parameters required or not used and clarify documentation
-  Workflow Mapping = Definition.definition
+  Workflow Mapping = Definition.derivedFrom
 
  -- Row 19 -----------------------------------
   Element = OperationDefinition.resource
@@ -176,7 +176,7 @@
   Short Name = Types this operation applies to
   Definition = The types on which this operation can be executed
   Comments = If the type is an abstract resource (\"Resource\" or \"DomainResource\") then the operation can be invoked on any concrete specialization
-  Workflow Mapping = Definition.subjectCodableConcept
+  Workflow Mapping = Definition.subject[x]
 
  -- Row 20 -----------------------------------
   Element = OperationDefinition.system
@@ -191,7 +191,7 @@
   Card. = 1..1
   Summary = Y
   Type = boolean
-  Short Name = Invole at the type level?
+  Short Name = Invoke at the type level?
   Definition = Indicates whether this operation or named query can be invoked at the resource type level for any given resource type level (e.g. without needing to choose a specific resource id for the context)
 
  -- Row 22 -----------------------------------

@@ -83,6 +83,33 @@ in order to support consistent definitions for schema and UML derived code.
         <table style="grid">
             <tbody>
                 <tr>
+                    <th><a href="definition.html">Definitions</a></th>
+                    <td colspan="3">Resources that define something that can potentially happen in a patient and time-independent manner</td>
+                </tr>
+                <tr>
+                    <td>
+                        <ul>
+                            <li><a href="activitydefinition.html">ActivityDefinition</a></li>
+                            <li><a href="measure.html">Measure</a></li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li><a href="operationdefinition.html">OperationDefinition</a></li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li><a href="plandefinition.html">PlanDefinition</a></li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li><a href="questionnaire.html">Questionnaire</a></li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
                     <th><a href="request.html">Requests</a></th>
                     <td colspan="3">Resources that ask for or express a desire/intention for something to be done</td>
                 </tr>
@@ -90,6 +117,7 @@ in order to support consistent definitions for schema and UML derived code.
                     <td>
                         <ul>
                             <li><a href="appointment.html">Appointment</a><sup><a href="#listnotes">*</a></sup></li>
+                            <li><a href="appointmentresponse.html">AppointmentResponse</a><sup><a href="#listnotes">*</a></sup></li>
                             <li><a href="careplan.html">CarePlan</a></li>
                             <li><a href="claim.html">Claim</a></li>
                             <li><a href="communicationrequest.html">CommunicationRequest</a></li>
@@ -97,23 +125,23 @@ in order to support consistent definitions for schema and UML derived code.
                     </td>
                     <td>
                         <ul>
+                            <li><a href="contract.html">Contract</a></li>
                             <li><a href="devicerequest.html">DeviceRequest</a></li>
                             <li><a href="eligibilityrequest.html">EligibilityRequest</a></li>
                             <li><a href="enrollmentrequest.html">EnrollmentRequest</a></li>
-                            <li><a href="immunizationrecommendation.html">ImmunizationRecommendation</a></li>
                         </ul>
                     </td>
                     <td>
                         <ul>
+                            <li><a href="immunizationrecommendation.html">ImmunizationRecommendation</a></li>
                             <li><a href="medicationrequest.html">MedicationRequest</a></li>
                             <li><a href="nutritionorder.html">NutritionOrder</a></li>
-                            <li><a href="procedurerequest.html">ProcedureRequest</a></li>
-                            <li><a href="processrequest.html">ProcessRequest</a><sup><a href="#listnotes">&#8224;</a></sup></li>
+                            <li><a href="servicerequest.html">ServiceRequest</a></li>
                         </ul>
                     </td>
                     <td>
                         <ul>
-                            <li><a href="referralrequest.html">ReferralRequest</a></li>
+                            <li><a href="processrequest.html">ProcessRequest</a><sup><a href="#listnotes">&#8224;</a></sup></li>
                             <li><a href="task.html">Task</a><sup><a href="#listnotes">&#8225;</a></sup></li>
                             <li><a href="supplyrequest.html">SupplyRequest</a></li>
                             <li><a href="visionprescription.html">VisionPrescription</a></li>
@@ -127,20 +155,19 @@ in order to support consistent definitions for schema and UML derived code.
                 <tr>
                     <td>
                         <ul>
-                            <li><a href="appointmentresponse.html">AppointmentResponse</a><sup><a href="#listnotes">*</a></sup></li>
+                            <li><a href="chargeitem.html">ChargeItem</a></li>
                             <li><a href="claimresponse.html">ClaimResponse</a></li>
                             <li><a href="clinicalimpression.html">ClinicalImpression</a></li>
                             <li><a href="communication.html">Communication</a></li>
                             <li><a href="composition.html">Composition</a></li>
                             <li><a href="condition.html">Condition (aka Problem)</a></li>
                             <li><a href="consent.html">Consent</a></li>
-                            <li><a href="contract.html">Contract</a></li>
                             <li><a href="coverage.html">Coverage</a></li>
+                            <li><a href="deviceusestatement.html">DeviceUseStatement</a></li>
                         </ul>
                     </td>
                     <td>
                         <ul>
-                            <li><a href="deviceusestatement.html">DeviceUseStatement</a></li>
                             <li><a href="diagnosticreport.html">DiagnosticReport</a></li>
                             <li><a href="documentmanifest.html">DocumentManifest</a></li>
                             <li><a href="documentreference.html">DocumentReference</a></li>
@@ -149,11 +176,11 @@ in order to support consistent definitions for schema and UML derived code.
                             <li><a href="enrollmentresponse.html">EnrollmentResponse</a></li>
                             <li><a href="episodeofcare.html">EpisodeOfCare</a></li>
                             <li><a href="explanationofbenefit.html">ExplanationOfBenefit</a></li>
+                            <li><a href="familymemberhistory.html">FamilyMemberHistory</a></li>
                         </ul>
                     </td>
                     <td>
                         <ul>
-                            <li><a href="familymemberhistory.html">FamilyMemberHistory</a></li>
                             <li><a href="guidanceresponse.html">GuidanceResponse</a></li>
                             <li><a href="imagingstudy.html">ImagingStudy</a></li>
                             <li><a href="immunization.html">Immunization</a></li>
@@ -175,35 +202,6 @@ in order to support consistent definitions for schema and UML derived code.
                             <li><a href="riskassessment.html">RiskAssessment</a></li>
                             <li><a href="supplydelivery.html">SupplyDelivery</a></li>
                             <li><a href="task.html">Task</a><sup><a href="#listnotes">&#8225;</a></sup></li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <th><a href="definition.html">Definitions</a></th>
-                    <td colspan="3">Resources that define something that can potentially happen in a patient and time-independent manner</td>
-                </tr>
-                <tr>
-                    <td>
-                        <ul>
-                            <li><a href="activitydefinition.html">ActivityDefinition</a></li>
-                            <li><a href="dataelement.html">DataElement</a></li>
-                        </ul>
-                    </td>
-                    <td>
-                        <ul>
-                            <li><a href="healthcareservice.html">HealthcareService</a></li>
-                            <li><a href="measure.html">Measure</a></li>
-                        </ul>
-                    </td>
-                    <td>
-                        <ul>
-                            <li><a href="operationdefinition.html">OperationDefinition</a></li>
-                            <li><a href="plandefinition.html">PlanDefinition</a></li>
-                        </ul>
-                    </td>
-                    <td>
-                        <ul>
-                            <li><a href="questionnaire.html">Questionnaire</a></li>
                         </ul>
                     </td>
                 </tr>
@@ -233,8 +231,8 @@ in order to support consistent definitions for schema and UML derived code.
         <p>
             Note that requests, events and definitions don't exist in a 1:1:1 relationship. Some requests and events have obvious pairings. For example, a
             <a href="supplyrequest.html">SupplyRequest</a> will generally always pair with a <a href="supplydelivery.html">SupplyDelivery</a>. The same goes for
-            <a href="enrollmentrequest.html">EnrollmentRequest</a>/<a href="enrollmentresponse.html">EnrollmentResponse</a>, etc. On the other hand, for other resources there isn't a strict pairing. A <a href="referralrequest.html">ReferralRequest</a>            might be responded to by an <a href="encounter.html">Encounter</a>,
-            <a href="diagnosticreport.html">DiagnosticReport</a>, <a href="procedure.html">Procedure</a>, <a href="riskassessment.html">RiskAssessment</a>, etc. Similarly, a <a href="procedure.html">Procedure</a> might be triggered by a <a href="procedurerequest.html">ProcedureRequest</a> or <a href="referralrequest.html">ReferralRequest</a>. The set of common linkages should be asserted in their respective resources. The specific types of responses for a given request will
+            <a href="enrollmentrequest.html">EnrollmentRequest</a>/<a href="enrollmentresponse.html">EnrollmentResponse</a>, etc. On the other hand, for other resources there isn't a strict pairing.  A <a href="servicerequest.html">ServiceRequest</a>            might be responded to by an <a href="encounter.html">Encounter</a>,
+            <a href="diagnosticreport.html">DiagnosticReport</a>, <a href="procedure.html">Procedure</a>, <a href="riskassessment.html">RiskAssessment</a>, etc. Similarly, a <a href="procedure.html">Procedure</a> might be triggered by a <a href="servicerequest.html">ServiceRequest</a>. The set of common linkages should be asserted in their respective resources. The specific types of responses for a given request will
             be governed by the Request.code, any workflow definitions/protocols referenced and local convention.
         </p>
 
@@ -307,7 +305,7 @@ in order to support consistent definitions for schema and UML derived code.
             </ul>
 <p>
 Feedback is welcome <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(STU_3)">here</a>.
-</p>            
+</p>
         </blockquote>
 
     </div>

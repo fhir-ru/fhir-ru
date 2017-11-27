@@ -25,58 +25,58 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.hl7.fhir.definitions.model.Definitions;
-import org.hl7.fhir.dstu3.context.BaseWorkerContext;
-import org.hl7.fhir.dstu3.context.IWorkerContext;
-import org.hl7.fhir.dstu3.formats.IParser;
-import org.hl7.fhir.dstu3.formats.JsonParser;
-import org.hl7.fhir.dstu3.formats.ParserType;
-import org.hl7.fhir.dstu3.formats.XmlParser;
-import org.hl7.fhir.dstu3.model.CodeSystem;
-import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionComponent;
-import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionDesignationComponent;
-import org.hl7.fhir.dstu3.model.ConceptMap;
-import org.hl7.fhir.dstu3.model.DataElement;
-import org.hl7.fhir.dstu3.model.ElementDefinition.TypeRefComponent;
-import org.hl7.fhir.dstu3.model.ExpansionProfile;
-import org.hl7.fhir.dstu3.model.ExpansionProfile.SystemVersionProcessingMode;
-import org.hl7.fhir.dstu3.model.MetadataResource;
-import org.hl7.fhir.dstu3.model.NamingSystem;
-import org.hl7.fhir.dstu3.model.NamingSystem.NamingSystemIdentifierType;
-import org.hl7.fhir.dstu3.model.NamingSystem.NamingSystemUniqueIdComponent;
-import org.hl7.fhir.dstu3.model.OperationDefinition;
-import org.hl7.fhir.dstu3.model.OperationOutcome;
-import org.hl7.fhir.dstu3.model.Parameters;
-import org.hl7.fhir.dstu3.model.Parameters.ParametersParameterComponent;
-import org.hl7.fhir.dstu3.model.Questionnaire;
-import org.hl7.fhir.dstu3.model.Reference;
-import org.hl7.fhir.dstu3.model.Resource;
-import org.hl7.fhir.dstu3.model.SearchParameter;
-import org.hl7.fhir.dstu3.model.StringType;
-import org.hl7.fhir.dstu3.model.StructureDefinition;
-import org.hl7.fhir.dstu3.model.ValueSet;
-import org.hl7.fhir.dstu3.model.ValueSet.ConceptSetComponent;
-import org.hl7.fhir.dstu3.model.ValueSet.ValueSetComposeComponent;
-import org.hl7.fhir.dstu3.model.ValueSet.ValueSetExpansionComponent;
-import org.hl7.fhir.dstu3.model.ValueSet.ValueSetExpansionContainsComponent;
-import org.hl7.fhir.dstu3.terminologies.CodeSystemUtilities;
-import org.hl7.fhir.dstu3.terminologies.ValueSetExpander.ValueSetExpansionOutcome;
-import org.hl7.fhir.dstu3.utils.INarrativeGenerator;
-import org.hl7.fhir.dstu3.utils.IResourceValidator;
-import org.hl7.fhir.dstu3.utils.NarrativeGenerator;
-import org.hl7.fhir.dstu3.utils.client.EFhirClientException;
-import org.hl7.fhir.dstu3.utils.client.FHIRToolingClient;
-import org.hl7.fhir.dstu3.validation.InstanceValidator;
+import org.hl7.fhir.r4.context.BaseWorkerContext;
+import org.hl7.fhir.r4.context.IWorkerContext;
+import org.hl7.fhir.r4.formats.IParser;
+import org.hl7.fhir.r4.formats.JsonParser;
+import org.hl7.fhir.r4.formats.ParserType;
+import org.hl7.fhir.r4.formats.XmlParser;
+import org.hl7.fhir.r4.model.CodeSystem;
+import org.hl7.fhir.r4.model.CodeSystem.ConceptDefinitionComponent;
+import org.hl7.fhir.r4.model.CodeSystem.ConceptDefinitionDesignationComponent;
+import org.hl7.fhir.r4.model.ConceptMap;
+import org.hl7.fhir.r4.model.ElementDefinition.TypeRefComponent;
+import org.hl7.fhir.r4.model.ExpansionProfile;
+import org.hl7.fhir.r4.model.ExpansionProfile.SystemVersionProcessingMode;
+import org.hl7.fhir.r4.model.MetadataResource;
+import org.hl7.fhir.r4.model.NamingSystem;
+import org.hl7.fhir.r4.model.NamingSystem.NamingSystemIdentifierType;
+import org.hl7.fhir.r4.model.NamingSystem.NamingSystemUniqueIdComponent;
+import org.hl7.fhir.r4.model.OperationDefinition;
+import org.hl7.fhir.r4.model.OperationOutcome;
+import org.hl7.fhir.r4.model.Parameters;
+import org.hl7.fhir.r4.model.Parameters.ParametersParameterComponent;
+import org.hl7.fhir.r4.model.Questionnaire;
+import org.hl7.fhir.r4.model.Reference;
+import org.hl7.fhir.r4.model.Resource;
+import org.hl7.fhir.r4.model.SearchParameter;
+import org.hl7.fhir.r4.model.StringType;
+import org.hl7.fhir.r4.model.StructureDefinition;
+import org.hl7.fhir.r4.model.StructureDefinition.TypeDerivationRule;
+import org.hl7.fhir.r4.model.ValueSet;
+import org.hl7.fhir.r4.model.ValueSet.ConceptSetComponent;
+import org.hl7.fhir.r4.model.ValueSet.ValueSetComposeComponent;
+import org.hl7.fhir.r4.model.ValueSet.ValueSetExpansionComponent;
+import org.hl7.fhir.r4.model.ValueSet.ValueSetExpansionContainsComponent;
+import org.hl7.fhir.r4.terminologies.CodeSystemUtilities;
+import org.hl7.fhir.r4.terminologies.ValueSetExpander.ValueSetExpansionOutcome;
+import org.hl7.fhir.r4.utils.INarrativeGenerator;
+import org.hl7.fhir.r4.utils.IResourceValidator;
+import org.hl7.fhir.r4.utils.NarrativeGenerator;
+import org.hl7.fhir.r4.utils.client.EFhirClientException;
+import org.hl7.fhir.r4.utils.client.FHIRToolingClient;
+import org.hl7.fhir.r4.validation.InstanceValidator;
 import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.exceptions.TerminologyServiceException;
-import org.hl7.fhir.exceptions.UcumException;
 import org.hl7.fhir.igtools.spreadsheets.TypeRef;
 import org.hl7.fhir.utilities.CSFileInputStream;
 import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
 import org.hl7.fhir.utilities.OIDUtils;
 import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
-import org.hl7.fhir.utilities.ucum.UcumEssenceService;
-import org.hl7.fhir.utilities.ucum.UcumService;
+import org.fhir.ucum.UcumEssenceService;
+import org.fhir.ucum.UcumException;
+import org.fhir.ucum.UcumService;
 import org.hl7.fhir.utilities.validation.ValidationMessage.IssueSeverity;
 import org.hl7.fhir.utilities.xml.XMLUtil;
 import org.hl7.fhir.utilities.xml.XMLWriter;
@@ -133,7 +133,7 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
     this.codeSystems = codeSystems;
     this.valueSets = valueSets;
     this.maps = maps;
-    this.profiles = profiles;
+    this.structures = profiles;
     this.cacheValidation = true;
     setExpansionProfile(buildExpansionProfile());
   }
@@ -162,9 +162,7 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
     } else {
       if (url.contains("#"))
         url = url.substring(0, url.indexOf("#"));
-      StructureDefinition res = extensionDefinitions.get(url);
-      if (res == null)
-        res = profiles.get(url);
+      StructureDefinition res = structures.get(url);
       if (res == null)
         return null;
       if (res.getSnapshot() == null || res.getSnapshot().getElement().isEmpty())
@@ -185,7 +183,7 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
   public boolean isResource(String name) {
     if (resourceNames.contains(name))
       return true;
-    StructureDefinition sd = profiles.get("http://hl7.org/fhir/StructureDefinition/" + name);
+    StructureDefinition sd = structures.get("http://hl7.org/fhir/StructureDefinition/" + name);
     return sd != null && (sd.getBaseDefinition().endsWith("Resource") || sd.getBaseDefinition().endsWith("DomainResource"));
   }
 
@@ -195,9 +193,9 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
 
   public StructureDefinition getTypeStructure(TypeRefComponent type) {
     if (type.hasProfile())
-      return profiles.get(type.getProfile());
+      return structures.get(type.getProfile());
     else
-      return profiles.get(type.getCode());
+      return structures.get(type.getCode());
   }
 
   public Map<String, SearchParameter> getSearchParameters() {
@@ -233,81 +231,6 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
     return new XmlParser();
   }
 
-  public <T extends Resource> T fetchResource(Class<T> class_, String uri) {
-    try {
-      return fetchResourceWithException(class_, uri);
-    } catch (FHIRException e) {
-      throw new Error(e);
-    }
-  }
-  
-  @SuppressWarnings("unchecked")
-  @Override
-  public <T extends Resource> T fetchResourceWithException(Class<T> class_, String uri) throws FHIRException {
-    if (class_ == StructureDefinition.class && !uri.contains("/"))
-      uri = "http://hl7.org/fhir/StructureDefinition/"+uri;
-
-    
-    if (uri.startsWith("http:")) {
-      if (uri.contains("#"))
-        uri = uri.substring(0, uri.indexOf("#"));
-      if (class_ == StructureDefinition.class) {
-        if (profiles.containsKey(uri))
-          return (T) profiles.get(uri);
-        else if (extensionDefinitions.containsKey(uri))
-          return (T) extensionDefinitions.get(uri);
-        else
-          return null;
-      } else if (class_ == ValueSet.class) {
-        if (valueSets.containsKey(uri))
-          return (T) valueSets.get(uri);
-        else if (codeSystems.containsKey(uri))
-          return (T) codeSystems.get(uri);
-        else
-          return null;      
-      } else if (class_ == OperationDefinition.class) {
-        OperationDefinition od = operations.get(uri);
-        if (od == null)
-          System.out.println("Unable to resolve OperationDefinition "+uri);
-        return (T) od;
-      } else if (class_ == SearchParameter.class) {
-        SearchParameter res = searchParameters.get(uri);
-        if (res == null) {
-          StringBuilder b = new StringBuilder();
-          for (String s : searchParameters.keySet()) {
-            b.append(s);
-            b.append("\r\n");
-          }
-          try {
-            TextFile.stringToFile(b.toString(), "c:\\temp\\sp.txt");
-          } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-          }
-        }
-        
-          
-        return (T) res;
-      }
-    }
-    if (class_ == null && uri.contains("/")) {
-      return null;      
-    }
-      
-    if (class_ == Questionnaire.class)
-      return null;
-    throw new FHIRException("not done yet: can't fetch "+uri);
-  }
-
-  @Override
-  public <T extends Resource> boolean hasResource(Class<T> class_, String uri) {
-    try {
-      return fetchResource(class_, uri) != null;
-    } catch (Exception e) {
-      return false;
-    }
-  }
-
   @Override
   public INarrativeGenerator getNarrativeGenerator(String prefix, String basePath) {
     return new NarrativeGenerator(prefix, basePath, this);
@@ -330,7 +253,7 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
 
   @Override
   public boolean supportsSystem(String system) throws TerminologyServiceException {
-    return "http://snomed.info/sct".equals(system) || "http://loinc.org".equals(system) || "http://unitsofmeasure.org".equals(system) || super.supportsSystem(system) ;
+    return "http://snomed.info/sct".equals(system) || "http://www.nlm.nih.gov/research/umls/rxnorm".equals(system) || "http://loinc.org".equals(system) || "http://unitsofmeasure.org".equals(system) || super.supportsSystem(system) ;
   }
   
   public static class Concept {
@@ -424,8 +347,8 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
     if (!triedServer || serverOk) {
       triedServer = true;
       HttpClient httpclient = new DefaultHttpClient();
-       HttpGet httpget = new HttpGet("http://fhir3.healthintersections.com.au/snomed/tool/"+SNOMED_EDITION+"/"+URLEncoder.encode(code, "UTF-8").replace("+", "%20"));
-//      HttpGet httpget = new HttpGet("http://local.healthintersections.com.au:960/snomed/tool/"+SNOMED_EDITION+"/"+URLEncoder.encode(code, "UTF-8").replace("+", "%20")); // don't like the url encoded this way
+       HttpGet httpget = new HttpGet("http://tx.fhir.org/snomed/tool/"+SNOMED_EDITION+"/"+URLEncoder.encode(code, "UTF-8").replace("+", "%20"));
+//      HttpGet httpget = new HttpGet("http://local.fhir.org:960/snomed/tool/"+SNOMED_EDITION+"/"+URLEncoder.encode(code, "UTF-8").replace("+", "%20")); // don't like the url encoded this way
       HttpResponse response = httpclient.execute(httpget);
       HttpEntity entity = response.getEntity();
       InputStream instream = entity.getContent();
@@ -559,13 +482,14 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
     } catch (Exception e) {
       return new ValidationResult(IssueSeverity.ERROR, "Error validating code \""+code+"\" in system \""+system+"\": "+e.getMessage());
     }
-     return new ValidationResult(IssueSeverity.WARNING, "Unknown code system "+system);
+    return super.validateCode(system, code, display);
   }
 
   
   private ValidationResult verifyUcum(String code, String display) {
     String s = ucum.validate(code);
-//    if (s != null)
+    if (s != null)
+      System.out.println("UCUM eror: "+s);
 //      return new ValidationResult(IssueSeverity.ERROR, s);
 //    else {
       ConceptDefinitionComponent def = new ConceptDefinitionComponent();
@@ -982,14 +906,14 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
   @Override
   public List<StructureDefinition> allStructures() {
     List<StructureDefinition> result = new ArrayList<StructureDefinition>();
-    result.addAll(profiles.values());
+    result.addAll(structures.values());
     return result;
   }
 
   @Override
   public List<MetadataResource> allConformanceResources() {
     List<MetadataResource> result = new ArrayList<MetadataResource>();
-    result.addAll(profiles.values());
+    result.addAll(structures.values());
     result.addAll(valueSets.values());
     result.addAll(codeSystems.values());
     result.addAll(maps.values());
@@ -1040,6 +964,24 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
     for (TypeRef tr : definitions.getKnownTypes())
       names.add(tr.getName());
     return names;
+  }
+
+  public List<StructureDefinition> getExtensionDefinitions() {
+    List<StructureDefinition> res = new ArrayList<StructureDefinition>();
+    for (StructureDefinition sd : structures.values()) {
+      if (sd.getType().equals("Extension") && sd.getDerivation() == TypeDerivationRule.CONSTRAINT)
+        res.add(sd);
+    }
+    return res;
+  }
+
+  public List<StructureDefinition> getProfiles() {
+    List<StructureDefinition> res = new ArrayList<StructureDefinition>();
+    for (StructureDefinition sd : structures.values()) {
+      if (!sd.getType().equals("Extension") && sd.getDerivation() == TypeDerivationRule.CONSTRAINT)
+        res.add(sd);
+    }
+    return res;
   }
 
 

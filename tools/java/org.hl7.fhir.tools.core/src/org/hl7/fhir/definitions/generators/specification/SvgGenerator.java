@@ -16,8 +16,8 @@ import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.PrimitiveType;
 import org.hl7.fhir.definitions.model.ProfiledType;
 import org.hl7.fhir.definitions.model.ResourceDefn;
-import org.hl7.fhir.dstu3.model.Enumerations.BindingStrength;
-import org.hl7.fhir.dstu3.model.StructureDefinition;
+import org.hl7.fhir.r4.model.Enumerations.BindingStrength;
+import org.hl7.fhir.r4.model.StructureDefinition;
 import org.hl7.fhir.igtools.spreadsheets.TypeRef;
 import org.hl7.fhir.tools.publisher.PageProcessor;
 import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
@@ -723,9 +723,9 @@ public class SvgGenerator extends BaseGenerator {
     if (link) {
       xml.enter("text");
       if (tn.equals("Extension") || tn.equals("Reference") || tn.equals("Narrative"))
-        xml.attribute("xlink:href", prefix+definitions.getSrcFile(tn) + ".html#"+tn.toLowerCase());
+        xml.attribute("xlink:href", prefix+definitions.getSrcFile(tn) + ".html#"+tn);
       else
-        xml.attribute("xlink:href", "#"+tn.toLowerCase());
+        xml.attribute("xlink:href", "#"+tn);
       xml.enter("a");
       xml.text(tn);
       xml.exit("a");

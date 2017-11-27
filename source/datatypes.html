@@ -68,6 +68,10 @@ all types, they have <a href="extensibility.html">extensions</a>). See also the 
    <td>xs:boolean, except that <b>0 and 1 are not valid values</b></td>
    <td>JSON boolean (true or false)</td>
  </tr>
+ <tr>
+   <td style="border-top: 0px silver solid"></td>
+   <td colspan="3" style="border-top: 0px silver solid">Regex: true|false</td>
+ </tr>
  <!-- leading 0s -->
  <tr>
    <td>integer<a name="integer"> </a></td>
@@ -91,13 +95,21 @@ all types, they have <a href="extensibility.html">extensions</a>). See also the 
  </tr>
  <tr>
    <td style="border-top: 0px silver solid"></td>
-   <td colspan="3" style="border-top: 0px silver solid"><i>Todo: is there any reason not to make this a SHALL?</i></td>
+   <td colspan="3" style="border-top: 0px silver solid">This data type can be <a href="terminologies.html#string">bound to a value set</a></td>
+ </tr>
+ <tr>
+   <td style="border-top: 0px silver solid"></td>
+   <td colspan="3" style="border-top: 0px silver solid">Regex: \s*(\S|\s)*  (can't put size limit in the regex - too large)</td>
  </tr>
  <tr>
    <td>decimal<a name="decimal"> </a></td>
    <td>Rational numbers that have a decimal representation. See below about the precision of the number</td>
    <td>xs:decimal, except that <b>decimals may not use exponents, and leading 0 digits are not allowed</b></td>
    <td>A JSON number, except that <b>exponents are not allowed</b></td>
+ </tr>
+ <tr>
+   <td style="border-top: 0px silver solid"></td>
+   <td colspan="3" style="border-top: 0px silver solid">Regex: -?([0]|([1-9][0-9]*))(\.[0-9]+)?</td>
  </tr>
  <tr>
    <td>uri<a name="uri"> </a></td>
@@ -107,13 +119,22 @@ all types, they have <a href="extensibility.html">extensions</a>). See also the 
  </tr>
  <tr>
    <td style="border-top: 0px silver solid"></td>
-   <td colspan="3" style="border-top: 0px silver solid">URIs can be absolute or relative, and may have an optional fragment identifier</td>
+   <td colspan="3" style="border-top: 0px silver solid">Regex: \S*</td>
+ </tr>
+ <tr>
+   <td style="border-top: 0px silver solid"></td>
+   <td colspan="3" style="border-top: 0px silver solid">URIs can be absolute or relative, and may have an optional fragment identifier<br/>
+       This data type can be <a href="terminologies.html#uri">bound to a value set</a></td>
  </tr>
  <tr>
    <td>base64Binary<a name="base64Binary"> </a><a name="base64binary"> </a></td>
    <td>A stream of bytes, base64 encoded (<a href="http://tools.ietf.org/html/rfc4648">RFC 4648</a>)</td>
    <td>xs:base64Binary</td>
    <td>A JSON string - base64 content</td>
+ </tr>
+ <tr>
+   <td style="border-top: 0px silver solid"></td>
+   <td colspan="3" style="border-top: 0px silver solid">Regex: (\s*([0-9a-zA-Z\+\=]){4}\s*)+</td>
  </tr>
  <tr>
    <td style="border-top: 0px silver solid"></td>
@@ -130,6 +151,10 @@ all types, they have <a href="extensibility.html">extensions</a>). See also the 
    <td colspan="3" style="border-top: 0px silver solid">Note: This type is for system times, not human times (see date and dateTime below).</td>
  </tr>
  <tr>
+   <td style="border-top: 0px silver solid"></td>
+   <td colspan="3" style="border-top: 0px silver solid">Regex: ([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))</td>
+ </tr>
+ <tr>
    <td>date<a name="date"> </a></td>
    <td>A date, or partial date (e.g. just year or year + month) as used in human communication. <b>There is no time zone</b>. Dates SHALL be valid dates</td>
    <td>union of xs:date, xs:gYearMonth, xs:gYear</td>
@@ -137,17 +162,17 @@ all types, they have <a href="extensibility.html">extensions</a>). See also the 
   </tr>
  <tr>
    <td style="border-top: 0px silver solid"></td>
-   <td colspan="3" style="border-top: 0px silver solid">Regex: -?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1]))?)?</td>
+   <td colspan="3" style="border-top: 0px silver solid">Regex: ([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?</td>
  </tr>
  <tr>
    <td>dateTime<a name="dateTime"> </a><a name="datetime"> </a></td>
-   <td>A date, date-time or partial date (e.g. just year or year + month) as used in human communication. If hours and minutes are specified, a time zone SHALL be populated. Seconds must be provided due to schema type constraints but may be zero-filled and may be ignored. Dates SHALL be valid dates. <b>The time "24:00" is not allowed</b></td>
+   <td>A date, date-time or partial date (e.g. just year or year + month) as used in human communication. If hours and minutes are specified, a time zone SHALL be populated. Seconds must be provided due to schema type constraints but may be zero-filled and may be ignored. Dates SHALL be valid dates. <b>The time "24:00" is not allowed</b>. Leap Seconds are allowed - see below</td>
    <td>union of xs:dateTime, xs:date, xs:gYearMonth, xs:gYear</td>
    <td>A JSON string - a union of xs:dateTime, xs:date, xs:gYearMonth, xs:gYear</td>
   </tr>
  <tr>
    <td style="border-top: 0px silver solid"></td>
-   <td colspan="3" style="border-top: 0px silver solid">Regex: -?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?</td>
+   <td colspan="3" style="border-top: 0px silver solid">Regex: ([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?(Z|(\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?</td>
  </tr>
  <tr>
    <td>time<a name="time"> </a></td>
@@ -157,17 +182,20 @@ all types, they have <a href="extensibility.html">extensions</a>). See also the 
   </tr>
  <tr>
    <td style="border-top: 0px silver solid"></td>
-   <td colspan="3" style="border-top: 0px silver solid">Regex: ([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]+)?</td>
+   <td colspan="3" style="border-top: 0px silver solid">Regex: ([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\.[0-9]+)?</td>
  </tr>
  <tr>
    <td>code<a name="code"> </a></td>
-   <td>Indicates that the value is taken from a set of controlled strings defined elsewhere (see <a href="terminologies.html">Using codes</a> for further discussion). Technically, a code is restricted to a string which has at least one character and no leading or trailing whitespace, and where there is no whitespace other than single spaces in the contents</td>
+   <td>Indicates that the value is taken from a set of controlled strings defined elsewhere (see <a href="terminologies.html">Using codes</a> 
+       for further discussion). Technically, a code is restricted to a string which has at least one character and no leading or trailing 
+       whitespace, and where there is no whitespace other than single spaces in the contents</td>
    <td>xs:token</td>
    <td>JSON string</td>
   </tr>
  <tr>
    <td style="border-top: 0px silver solid"></td>
-   <td colspan="3" style="border-top: 0px silver solid">Regex: [^\s]+([\s]?[^\s]+)*</td>
+   <td colspan="3" style="border-top: 0px silver solid">Regex: [^\s]+(\s[^\s]+)*<br/>
+       This data type can be <a href="terminologies.html#code">bound to a value set</a>.</td>
  </tr>
  <tr>
    <td>oid<a name="oid"> </a></td>
@@ -194,6 +222,10 @@ all types, they have <a href="extensibility.html">extensions</a>). See also the 
    <td>A string that may contain markdown syntax for optional processing by a markdown presentation engine</td>
    <td>xs:string</td>
    <td>JSON string</td>
+ </tr>
+ <tr>
+   <td style="border-top: 0px silver solid"></td>
+   <td colspan="3" style="border-top: 0px silver solid">Regex: \s*(\S|\s)*  (can't put size limit in the regex - too large)</td>
  </tr>
  <tr>
    <td>unsignedInt<a name="unsignedInt"> </a></td>
@@ -224,8 +256,8 @@ Notes:
  <li>For all the types, the XML, JSON and Turtle representations of the primitive values are the same except for different escaping in XML and JSON</li>
  <li>Boolean values can also be represented using coded values (such as <a href="v2/0136/index.html">HL7 v2 Table 0136</a>). See <a href="observation.html#valuex">Observation</a> for one such use</li>
  <li>The regexes may allow a broader set of values than are actually valid (e.g. leap years) so additional validation is needed</li>
- <li>The regexes should be qualified with start of string and end of string anchors based on the regex implementation used (e.g. caret '^' and dollar-sign '$' for JavaScript, POSIX, XML and XPath; '\A' and '\Z' for .NET, Java, Python and others; please verify these definitions with the regex implementation used).</li>
- <li>The data types code, string, and uri can be <a href="terminologies.html#strings">bound to a value set</a></li>
+ <li>Leap second are allowed in the datetime, instant and time types. Note, though, that many system and libraries do not support leap seconds. Applications reading times SHOULD accept and handle leap seconds gracefully, and applications producing them MAY choose to avoid encoding leap seconds</li>
+ <li>The regexes should be qualified with start of string and end of string anchors based on the regex implementation used (e.g. caret '^' and dollar-sign '$' for JavaScript, POSIX, XML and XPath; '\A' and '\Z' for .NET, Java, Python and others; please verify these definitions with the regex implementation used).</li> 
  <li>The precision of the decimal value has significance:<a name="precision"> </a>
     <ul>
       <li>e.g. 0.010 is regarded as different to 0.01, and the original precision should be preserved</li>
@@ -454,6 +486,9 @@ See also <a href="datatypes-examples.html#Coding">Examples</a>, <a href="datatyp
 A Coding is a representation of a defined concept using a symbol from a defined "code system"
 - see <a href="terminologies.html">Using Codes in resources</a> for more details.
 </p>
+<p>
+This data type can be <a href="terminologies.html#Coding">bound to a value set</a>.
+</p>
 
 [%dt Coding 2%]
 
@@ -574,6 +609,9 @@ See also <a href="datatypes-examples.html#CodeableConcept">Examples</a>, <a href
 A CodeableConcept represents a value that is usually supplied by providing a reference to one or more terminologies or ontologies, but may also be defined by the
 provision of text. This is a common pattern in healthcare data.
 </p>
+<p>
+This data type can be <a href="terminologies.html#CodeableConcept">bound to a value set</a>.
+</p>
 [%dt CodeableConcept 3%]
 <p>
 Each <code>coding</code> is a representation of the concept as described above. The concept may be coded multiple times in different code systems (or even
@@ -619,6 +657,10 @@ and <a href="datatypes-version-maps.html#Quantity">R2 Conversions</a>.
 <p>
 A measured amount (or an amount that can potentially be measured).
 </p>
+<p>
+This data type can be <a href="terminologies.html#Quantity">bound to a value set</a>.
+</p>
+
 [%dt Quantity 4%]
 
 <p>
@@ -791,14 +833,22 @@ See also <a href="datatypes-examples.html#Ratio">Examples</a>, <a href="datatype
 <p>
 A relationship between two Quantity values expressed as a numerator and a denominator.
 </p>
+<p>
+The Ratio datatype should only be used to express a relationship of two numbers if the 
+relationship cannot be suitably expressed using a Quantity and a common unit.  Where 
+the denominator value is known to be fixed to "1", Quantity should be used instead 
+of Ratio.
+</p>
 [%dt Ratio 6%]
 <p>
-Common factors in the numerator and denominator are not automatically cancelled out. The Ratio
-data type is used for titers (e.g. "1:128") and other quantities produced by laboratories that
-truly represent ratios. Ratios are not simply "structured numbers" - for example blood pressure measurements
-(e.g. "120/60") are not ratios. In addition, ratios are used where common factors in the numerator
-and denominator do not cancel out. The most common example of this is where the ratio represents a
-unit cost, and the numerator is a currency (e.g. 50/$10).
+Examples where a Quantity is typically used are rates, densities, concentrations.  
+Examples where a Ratio is used are: titres (e.g. 1:128); concentration ratios where 
+the denominator is significant (e.g. 5mg/10mL); observed frequencies (e.g. 2 repetitions/8 hr),
+and where the numerator or denominator is an amount of a currency (no UCUM code for $ etc).
+</p>
+<p>
+Common factors in the numerator and denominator are not automatically cancelled out. Ratios are not 
+simply "structured numbers" - for example blood pressure measurements (e.g. "120/60") are not ratios. 
 </p>
 <p>
 A proper ratio has both a numerator and a denominator; however these are not mandatory in order
@@ -915,7 +965,7 @@ and have a consistent meaning wherever it appears. Both <code>system</code> and 
 </p>
 <p>
 The <code>system</code> is a URI that defines a set of identifiers (i.e. how the <code>value</code> is made unique).
-It might be a specific application or a recognized standard/specification for a set or identifiers
+It might be a specific application or a recognized standard/specification for a set of identifiers
 or a way of making identifiers unique.
 FHIR defines <a href="identifier-registry.html">some useful or important system URIs directly</a>. Here are some
 example identifier namespaces:
@@ -941,12 +991,12 @@ avoid collisions and to manage that space (and the resolvability of URLs) over t
 Note that the scope of a given identifier system may extend beyond identifiers that might be captured
 by a single resource.  For example, some systems might draw all "order" identifiers from a single
 namespace, though some might be used on <a href="medicationrequest.html">MedicationRequest</a> while
-others would appear on <a href="procedurerequest.html">ProcedureRequest</a>.
+others would appear on <a href="servicerequest.html">ServiceRequest</a>.
 </p>
 <p>
 If the identifier value itself is naturally a globally unique URI (e.g. an OID, a UUID, or a URI with no trailing local part),
 then the <code>system</code> SHALL be "<code>urn:ietf:rfc:3986</code>", and the URI is in the <code>value</code>
-(OIDs and UUIDs using urn:oid: and urn:uuid: - see <a href="datatypes-examples.html#Identifier">examples</a>).
+(OIDs and UUIDs using urn:oid: and urn:uuid: - see <a href="datatypes-mappings.html#ii">note on the V3 mapping</a> and the <a href="datatypes-examples.html#Identifier">examples</a>).
 </p>
 <p>
 In some cases, the system may not be known - only the value is known (e.g. a simple device that scans a barcode),
@@ -1140,10 +1190,17 @@ Timing
 See also <a href="datatypes-examples.html#Timing">Examples</a>, <a href="datatypes-definitions.html#Timing">Detailed Descriptions</a>, <a href="datatypes-mappings.html#Timing">Mappings</a>, <a href="datatypes-extras.html#Timing">Profiles &amp; Extensions</a> and <a href="datatypes-version-maps.html#Timing">R2 Conversions</a>.
 </p>
 <p>
-Specifies an event that may occur multiple times. Timing schedules are used for specifying when events are expected or requested to occur, and may
-also be used to represent a schedule that was followed for past events. A Timing schedule can be a list of events and/or criteria for when the event happens,
-which can be expressed in a structured form and/or as a code. When both event and a repeating specification are provided, the list of events should be
-understood as an interpretation of the information in the repeat structure.
+Describes the occurrence of an event that may occur multiple times. Timing schedules are used for 
+specifying when events are expected or requested to occur, and may also be used to represent the 
+summary of a past or ongoing event.  For simplicity, the definitions of Timing components are 
+expressed as 'future' events, but such components can also be used to describe historic or 
+ongoing events.
+</p>
+<p>
+A Timing schedule can be a list of events and/or criteria for when the event happens, which 
+can be expressed in a structured form and/or as a code. When both event and a repeating 
+specification are provided, the list of events should be understood as an interpretation 
+of the information in the repeat structure.
 </p>
 [%dt Timing 13%]
 <p>
@@ -1172,12 +1229,26 @@ This table summarizes some common uses of the Timing Data Type criteria.
  <tr><td>Mon, Wed, Fri Morning</td> <td></td>             <td></td>                     <td>1</td>                <td></td>                    <td>1</td>             <td>d</td>                  <td></td>               <td>mon | wed | fri</td>    <td></td>                   <td>MORN</td>      <td></td>               <td></td>               <td></td></tr>
  <tr><td>Every day at 10am</td>  <td></td>                <td></td>                     <td>1</td>                <td></td>                    <td>1</td>             <td>d</td>                  <td></td>               <td></td>                   <td>10:00</td>              <td></td>          <td></td>               <td></td>               <td></td></tr>
  <tr><td>Take once, at any time</td>  <td></td>           <td></td>                     <td></td>                 <td></td>                    <td></td>              <td></td>                   <td></td>               <td></td>                   <td></td>                   <td></td>          <td></td>               <td></td>               <td>1</td></tr>
+ <tr><td>Take every second day, in the morning, until 20 have been taken</td><td></td>  <td></td>  <td>1</td>     <td></td>                    <td>2</td>             <td>d</td>                  <td></td>               <td></td>                   <td></td>                   <td>MORN</td>      <td></td>               <td></td>               <td>20</td></tr>
 </table>
 
 <p>
-Many systems avoid the complexity of the Timing structure by using a text field for these things (e.g. "Dosage Text").
-Those systems do not use the Timing data type. Other systems use a set of 'common' codes - including, but usually
-not limited to, widely understood acronyms such as "BID". If a <code>code</code> is
+Many systems avoid the complexity of the Timing structure by using a text field for timing instructions.
+This maps to <code>Timing.code.text</code>. For example, the text instruction "take medication in
+the morning on weekends and days off work' would be represented as:
+</p>
+<pre class="json">
+  "timing": {
+    "code" : {
+      "text" : "Take medication in the morning on weekends and days off work"
+    }    
+  }
+</pre>
+<p>
+Note, though, that some systems include timing details in 
+something like 'Dosage instructions' which is wider than just Timing; those systems do not use the 
+Timing data type. Other systems use a set of 'common' codes - including, but usually not limited to, 
+widely understood acronyms such as "BID". If a <code>Timing.code</code> is
 provided, the code is understood to be a complete statement of whatever is specified in the structured timing
 data (except for <code>Timing.repeat.bounds</code>, which applies to the code), and either the code or the
 data may be used to interpret the <code>Timing</code>. A structured timing specification SHOULD be provided whenever
@@ -1232,7 +1303,7 @@ See also <a href="datatypes-examples.html#Signature">Examples</a>, <a href="data
 </p>
 <p>
 A Signature holds an electronic representation of a signature and its supporting context in a FHIR accessible form.
-The signature may either be a cryptographic type (XML DigSig or a JWT), which is able to provide non-repudiation proof, or
+The signature may either be a cryptographic type (XML DigSig or a JWS), which is able to provide non-repudiation proof, or
 it may be a graphical image that represents a signature or a signature process.
 </p>
 [%dt Signature 14%]
@@ -1275,7 +1346,29 @@ There are three levels of signature verification:
 Deviations from these guidelines would need to be expressed in site policy, and would be enumerated in the XML-Signature block.
 For example, some environments may choose a different XAdES profile, hashing algorithm, policy identifier, or signature purpose vocabulary.
 </p>
-
+<h3>JSON Signature rules</h3>
+<p>
+When the signature is an JSON Digital Signature (contentType = application/jose), the following rules apply:
+</p>
+<ul>
+ <li>The Signature.blob is base64 encoded JWS-Signature <a href="https://tools.ietf.org/html/rfc7515">RFC 7515: JSON Web Signature (JWS)</a></li>
+ <li>The signature is a <a href="https://tools.ietf.org/html/rfc7515#appendix-F">Detached</a> Signature (where the content that is signed is separate from the signature itself)</li>
+ <li>When FHIR Resources are signed, the signature is across the <a href="json.html#canonical">Canonical JSON form</a> of the resource(s)</li>
+ <li>The Signature SHOULD use the hashing algorithm sha256. Signature validation policy will apply to the signature and determine acceptability</li>
+ <li>The Signature SHALL include a "CommitmentTypeIndication" element for the Purpose(s) of Signature. The Purpose can be the action being attested to, or the role associated with the signature. The value shall come from ASTM E1762-95(2013). The <code>Signature.type</code> shall contain the same values as the CommitmentTypeIndication element.</li>
+</ul>
+<p>
+There are three levels of signature verification:
+<ol>
+   <li>Verifying that the Digital Signature block itself has integrity through verifying the signature across the JWS-Signature.</li>
+   <li>Confirming that the signer was authentic, not revoked, and appropriate to the signature purpose.</li>
+   <li>Confirming that the signed content of interest is unmodified using the hash algorithm.</li>
+</ol>
+</p>
+<p>
+Deviations from these guidelines would need to be expressed in site policy, and would be enumerated in the JWS-Signature block.
+For example, some environments may choose a different hashing algorithm, policy identifier, or signature purpose vocabulary.
+</p>
 <p>
 Signature is used in the following places: [%dtusage Signature%]
 </p>

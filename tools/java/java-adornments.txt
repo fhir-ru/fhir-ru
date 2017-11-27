@@ -20,6 +20,11 @@
   
 ----
 
+-- ElementDefinition.imports --
+import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
+
+----
+
 // todo: should this be .getId()> 
 -- ElementDefinition --
   
@@ -39,11 +44,22 @@
     self.setMax(max);
   }
   
+  
+  public String typeSummary() {
+    CommaSeparatedStringBuilder b = new CommaSeparatedStringBuilder();
+    for (TypeRefComponent tr : type) {
+      if (tr.hasCode())
+        b.append(tr.getCode());
+    }
+    return b.toString();
+   }
+  
+
 ----
 
 
 -- StructureMap.imports --
-import org.hl7.fhir.dstu3.utils.StructureMapUtilities;
+import org.hl7.fhir.r4.utils.StructureMapUtilities;
 ----
   
 -- StructureMap --
@@ -103,6 +119,152 @@ import org.hl7.fhir.dstu3.utils.StructureMapUtilities;
         return value == null ? "null!" : value.toString();
       }
 
+
+----
+
+
+-- MetadataResource --
+      @Override
+      public String toString() {
+        return fhirType()+"["+getUrl()+"]";
+      }
+----
+
+-- BackboneElement --
+
+  public void checkNoModifiers(String noun, String verb) throws FHIRException {
+        if (hasModifierExtension()) {
+          throw new FHIRException("Found unknown Modifier Exceptions on "+noun+" doing "+verb);
+        }
+        
+  }
+----
+
+-- DomainResource --
+
+  public void checkNoModifiers(String noun, String verb) throws FHIRException {
+        if (hasModifierExtension()) {
+          throw new FHIRException("Found unknown Modifier Exceptions on "+noun+" doing "+verb);
+        }
+        
+  }
+
+  public void addExtension(String url, Type value) {
+    Extension ex = new Extension();
+    ex.setUrl(url);
+    ex.setValue(value);
+    getExtension().add(ex);    
+  }
+----
+
+-- CodeType.implements --
+ICoding    
+----
+
+-- Coding.implements --
+ICoding
+----
+
+-- Quantity.implements --
+ICoding    
+----
+
+-- CodeType --
+
+	private String system;
+	
+  @Override
+  public String getSystem() {
+    return system;
+  }
+
+  @Override
+  public boolean hasSystem() {
+    return system != null;
+  }
+  
+  public CodeType setSystem(String system) {
+    this.system = system;
+    return this;
+  }
+
+  @Override
+  public String getVersion() {
+    return null;
+  }
+
+  @Override
+  public boolean hasVersion() {
+    return false;
+  }
+  
+  @Override
+  public String getDisplay() {
+    return null;
+  }
+
+  @Override
+  public boolean hasDisplay() {
+    return false;
+  }
+  
+----
+
+-- CodeSystem --
+  public PropertyComponent getProperty(String code) {
+    for (PropertyComponent pd : getProperty()) {
+      if (pd.getCode().equalsIgnoreCase(code))
+        return pd;
+    }
+    return null;
+  }
+----
+
+-- Quantity --
+
+      @Override
+      public String getVersion() {
+        return null;
+      }
+
+      @Override
+      public boolean hasVersion() {
+        return false;
+      }
+
+      @Override
+      public boolean supportsVersion() {
+        return false;
+      }
+
+      @Override
+      public String getDisplay() {
+        return null;
+      }
+
+      @Override
+      public boolean hasDisplay() {
+        return false;
+      }
+
+      @Override
+      public boolean supportsDisplay() {
+        return false;
+      }
+
+
+----
+
+-- Coding --
+      @Override
+      public boolean supportsVersion() {
+        return true;
+      }
+
+      @Override
+      public boolean supportsDisplay() {
+        return true;
+      }
 
 ----
 

@@ -6,21 +6,21 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import org.hl7.fhir.dstu3.conformance.ProfileUtilities.ProfileKnowledgeProvider;
-import org.hl7.fhir.dstu3.context.IWorkerContext;
-import org.hl7.fhir.dstu3.elementmodel.ParserBase;
-import org.hl7.fhir.dstu3.elementmodel.Property;
-import org.hl7.fhir.dstu3.formats.FormatUtilities;
-import org.hl7.fhir.dstu3.model.CodeSystem;
-import org.hl7.fhir.dstu3.model.ElementDefinition.ElementDefinitionBindingComponent;
-import org.hl7.fhir.dstu3.model.MetadataResource;
-import org.hl7.fhir.dstu3.model.Reference;
-import org.hl7.fhir.dstu3.model.Resource;
-import org.hl7.fhir.dstu3.model.StructureDefinition;
-import org.hl7.fhir.dstu3.model.StructureDefinition.StructureDefinitionKind;
-import org.hl7.fhir.dstu3.model.StructureDefinition.TypeDerivationRule;
-import org.hl7.fhir.dstu3.model.UriType;
-import org.hl7.fhir.dstu3.model.ValueSet;
+import org.hl7.fhir.r4.conformance.ProfileUtilities.ProfileKnowledgeProvider;
+import org.hl7.fhir.r4.context.IWorkerContext;
+import org.hl7.fhir.r4.elementmodel.ParserBase;
+import org.hl7.fhir.r4.elementmodel.Property;
+import org.hl7.fhir.r4.formats.FormatUtilities;
+import org.hl7.fhir.r4.model.CodeSystem;
+import org.hl7.fhir.r4.model.ElementDefinition.ElementDefinitionBindingComponent;
+import org.hl7.fhir.r4.model.MetadataResource;
+import org.hl7.fhir.r4.model.Reference;
+import org.hl7.fhir.r4.model.Resource;
+import org.hl7.fhir.r4.model.StructureDefinition;
+import org.hl7.fhir.r4.model.StructureDefinition.StructureDefinitionKind;
+import org.hl7.fhir.r4.model.StructureDefinition.TypeDerivationRule;
+import org.hl7.fhir.r4.model.UriType;
+import org.hl7.fhir.r4.model.ValueSet;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.validation.ValidationMessage;
 import org.hl7.fhir.utilities.validation.ValidationMessage.IssueSeverity;
@@ -42,6 +42,8 @@ public class IGKnowledgeProvider implements ProfileKnowledgeProvider, ParserBase
   private List<ValidationMessage> errors;
   private JsonObject defaultConfig;
   private JsonObject resourceConfig;
+  private String pathPattern;
+  private boolean autoPath = false;
   
   public IGKnowledgeProvider(IWorkerContext context, String pathToSpec, JsonObject igs, List<ValidationMessage> errors) throws Exception {
     super();
@@ -58,18 +60,23 @@ public class IGKnowledgeProvider implements ProfileKnowledgeProvider, ParserBase
     if (e == null)
       throw new Exception("You must define a canonicalBase in the json file");
     canonical = e.getAsString();
+    e = igs.get("path-pattern");
+    if (e != null)
+      pathPattern = e.getAsString(); 
     defaultConfig = igs.getAsJsonObject("defaults");
     resourceConfig = igs.getAsJsonObject("resources");
     if (resourceConfig == null)
       throw new Exception("You must provide a list of resources in the json file");
     for (Entry<String, JsonElement> pp : resourceConfig.entrySet()) {
-      if (!pp.getKey().startsWith("_")) {
+      if (pp.getKey().equals("*")) {
+        autoPath = true;
+      } else if (!pp.getKey().startsWith("_")) {
         String s = pp.getKey();
         if (!s.contains("/"))
           throw new Exception("Bad Resource Identity - should have the format [Type]/[id]:" + s);
         String type = s.substring(0,  s.indexOf("/"));
         String id = s.substring(s.indexOf("/")+1); 
-        if (!context.hasResource(StructureDefinition.class , "http://hl7.org/fhir/StructureDefinition/"+type))
+        if (!context.hasResource(StructureDefinition.class , "http://hl7.org/fhir/StructureDefinition/"+type) && !(context.hasResource(StructureDefinition.class , "http://hl7.org/fhir/StructureDefinition/Conformance") && type.equals("CapabilityStatement")))
           throw new Exception("Bad Resource Identity - should have the format [Type]/[id] where Type is a valid resource type:" + s);
         if (!id.matches(FormatUtilities.ID_REGEX))
           throw new Exception("Bad Resource Identity - should have the format [Type]/[id] where id is a valid FHIR id type:" + s);
@@ -78,8 +85,8 @@ public class IGKnowledgeProvider implements ProfileKnowledgeProvider, ParserBase
           throw new Exception("Unexpected type in resource list - must be an object");
         JsonObject o = (JsonObject) pp.getValue();
         JsonElement p = o.get("base");
-//        if (p == null)
-//          throw new Exception("You must provide a base on each path in the json file");
+        //        if (p == null)
+        //          throw new Exception("You must provide a base on each path in the json file");
         if (p != null && !(p instanceof JsonPrimitive) && !((JsonPrimitive) p).isString())
           throw new Exception("Unexpected type in paths - base must be a string");
         p = o.get("defns");
@@ -178,6 +185,20 @@ public class IGKnowledgeProvider implements ProfileKnowledgeProvider, ParserBase
     return null;
   }
 
+  public boolean hasProperty(FetchedResource r, String propertyName) {
+    if (r.getConfig() != null && hasString(r.getConfig(), propertyName))
+      return true;
+    if (defaultConfig != null) {
+      JsonObject cfg = defaultConfig.getAsJsonObject(r.getElement().fhirType());
+      if (cfg != null && hasString(cfg, propertyName))
+        return true;
+      cfg = defaultConfig.getAsJsonObject("Any");
+      if (cfg != null && hasString(cfg, propertyName))
+        return true;
+    }
+    return false;
+  }
+
   public String getDefinitionsName(FetchedResource r) {
 	return getProperty(r, "defns");
   }
@@ -214,11 +235,11 @@ public class IGKnowledgeProvider implements ProfileKnowledgeProvider, ParserBase
   
   public void checkForPath(FetchedFile f, FetchedResource r, MetadataResource bc) {
     if (!bc.hasUrl())
-      error("Resource has no url: "+bc.getId());
+      error(f.getPath(), "Resource has no url: "+bc.getId());
     else if (bc.getUrl().startsWith(canonical) && !bc.getUrl().endsWith("/"+bc.getId()))
-      error("Resource id/url mismatch: "+bc.getId()+"/"+bc.getUrl());
+      error(f.getPath(), "Resource id/url mismatch: "+bc.getId()+"/"+bc.getUrl());
     if (!r.getId().equals(bc.getId()))
-      error("Resource id/id mismatch: "+r.getId()+"/"+bc.getUrl());
+      error(f.getPath(), "Resource id/id mismatch: "+r.getId()+"/"+bc.getUrl());
     if (r.getConfig() == null)
       findConfiguration(f, r);
     JsonObject e = r.getConfig();
@@ -226,38 +247,40 @@ public class IGKnowledgeProvider implements ProfileKnowledgeProvider, ParserBase
     String base = getProperty(r,  "base");
     if (base != null) 
       bc.setUserData("path", doReplacements(base, r, null, null));
+    else if (pathPattern != null)
+      bc.setUserData("path", pathPattern.replace("[type]", r.getElement().fhirType()).replace("[id]", r.getId()));
     else
       bc.setUserData("path", r.getElement().fhirType()+"/"+r.getId()+".html");
   }
 
-  private void error(String msg) {
+  private void error(String location, String msg) {
     if (!msgs.contains(msg)) {
       msgs.add(msg);
-      errors.add(new ValidationMessage(Source.Publisher, IssueType.INVARIANT, msg, IssueSeverity.ERROR));
+      errors.add(new ValidationMessage(Source.Publisher, IssueType.INVARIANT, location, msg, IssueSeverity.ERROR));
     }
   }
 
-  private void hint(String msg) {
+  private void hint(String location, String msg) {
     if (!msgs.contains(msg)) {
       msgs.add(msg);
-      errors.add(new ValidationMessage(Source.Publisher, IssueType.INVARIANT, msg, IssueSeverity.INFORMATION));
+      errors.add(new ValidationMessage(Source.Publisher, IssueType.INVARIANT, location, msg, IssueSeverity.INFORMATION));
     }
   }
 
   private String makeCanonical(String ref) {
-    return Utilities.pathReverse(canonical, ref);
+    return Utilities.pathURL(canonical, ref);
   }
 
-  private void brokenLinkWarning(String ref) {
+  private void brokenLinkWarning(String location, String ref) {
     String s = "The reference "+ref+" could not be resolved";
     if (!msgs.contains(s)) {
       msgs.add(s);
-      errors.add(new ValidationMessage(Source.Publisher, IssueType.INVARIANT, s, IssueSeverity.ERROR));
+      errors.add(new ValidationMessage(Source.Publisher, IssueType.INVARIANT, location, s, IssueSeverity.ERROR));
     }
   }
 
   private String specPath(String path) {
-    return Utilities.pathReverse(pathToSpec, path);
+    return Utilities.pathURL(pathToSpec, path);
   }
 
   // ---- overrides ---------------------------------------------------------------------------
@@ -284,7 +307,7 @@ public class IGKnowledgeProvider implements ProfileKnowledgeProvider, ParserBase
     StructureDefinition sd = context.fetchResource(StructureDefinition.class, "http://hl7.org/fhir/StructureDefinition/"+name);
     if (sd != null && sd.hasUserData("path"))
         return sd.getUserString("path");
-    brokenLinkWarning(name);
+    brokenLinkWarning(name, name);
     return name+".html";
   }
 
@@ -327,7 +350,7 @@ public class IGKnowledgeProvider implements ProfileKnowledgeProvider, ParserBase
         if (vs == null) {
           br.url = ref.substring(9)+".html"; // broken link, 
           br.display = ref.substring(9);
-          brokenLinkWarning(ref);
+          brokenLinkWarning(path, ref);
         } else {
           br.url = vs.getUserString("path");
           br.display = vs.getName(); 
@@ -341,7 +364,7 @@ public class IGKnowledgeProvider implements ProfileKnowledgeProvider, ParserBase
           } else { 
             br.display = ref.substring(29);
             br.url = ref.substring(29)+".html";
-            brokenLinkWarning(ref);
+            brokenLinkWarning(path, ref);
           }
         } else if (ref.startsWith("http://hl7.org/fhir/ValueSet/v3-")) {
           br.url = specPath("v3/"+ref.substring(26)+"/index.html"); 
@@ -349,12 +372,29 @@ public class IGKnowledgeProvider implements ProfileKnowledgeProvider, ParserBase
         } else if (ref.startsWith("http://hl7.org/fhir/ValueSet/v2-")) {
           br.url = specPath("v2/"+ref.substring(26)+"/index.html"); 
           br.display = ref.substring(26);
+        } else if (ref.startsWith("http://loinc.org/vs/")) {
+          String code = tail(ref);
+          if (code.startsWith("LL")) {
+            br.url = "https://r.details.loinc.org/AnswerList/"+code+".html";
+            br.display = "LOINC Answer List "+code;
+          } else {
+            br.url = "https://r.details.loinc.org/LOINC/"+code+".html";
+            br.display = "LOINC "+code;
+          }
         } else {
           ValueSet vs = context.fetchResource(ValueSet.class, ref);
           if (vs == null) {
             br.url = ref+".html"; // broken link, 
             br.display = ref;
-            brokenLinkWarning(ref);
+            brokenLinkWarning(path, ref);
+          } else if (ref.contains("|")) {
+            br.url = vs.getUserString("versionpath");
+            if (br.url==null) {
+              System.out.println("Unable to find version-specific path for reference - defaulting to version-independent reference: " + ref);
+              br.url = vs.getUserString("path");
+            }
+            br.display = vs.getName(); 
+            
           } else {
             br.url = vs.getUserString("path");
             br.display = vs.getName(); 
@@ -365,12 +405,19 @@ public class IGKnowledgeProvider implements ProfileKnowledgeProvider, ParserBase
     return br;
   }
 
+  private String tail(String ref) {
+    if  (ref.contains("/"))
+      return ref.substring(ref.lastIndexOf("/")+1);
+    else
+      return ref;
+  }
+
   @Override
   public String getLinkForProfile(StructureDefinition profile, String url) {
     StructureDefinition sd = context.fetchResource(StructureDefinition.class, url);
     if (sd != null && sd.hasUserData("path"))
         return sd.getUserString("path")+"|"+sd.getName();
-    brokenLinkWarning(url);
+    brokenLinkWarning("??", url);
     return "unknown.html|??";
   }
 
@@ -409,6 +456,31 @@ public class IGKnowledgeProvider implements ProfileKnowledgeProvider, ParserBase
 
   public IWorkerContext getContext() {
     return context;
+  }
+
+  public boolean isAutoPath() {
+    return autoPath;
+  }
+
+  public BindingResolution resolveActualUrl(String uri) {
+    BindingResolution br = new BindingResolution();
+    if (uri.startsWith("http://loinc.org/vs/")) {
+      String code = tail(uri);
+      if (code.startsWith("LL")) {
+        br.url = "https://r.details.loinc.org/AnswerList/"+code+".html";
+        br.display = "LOINC Answer List "+code;
+      } else {
+        br.url = "https://r.details.loinc.org/LOINC/"+code+".html";
+        br.display = "LOINC "+code;
+      }
+    } else if (uri.startsWith("urn:")) {
+      br.url = null;
+      br.display = uri;
+    } else {
+      br.url = uri;
+      br.display = uri;
+    }
+    return br;
   }
 
 }
