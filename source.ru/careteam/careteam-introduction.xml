@@ -4,12 +4,12 @@
 <a name="bnc"> </a>
 <h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p>
-В ресурсе CareTeam перечисляют людей и/или организации, которые планируют участвовать в координации и оказании помощи пациенту. Это могут быть не только медицинские специалисты, но и лица, осуществляющие уход - члены семьи, опекуны, сам пациент и другие.
-В зависимости от контекста использования, команда может создаваться для конкретного плана по уходу, для эпизода лечения, для случая обслуживания, либо это может быть общий список участников всех команд.
+В CareTeam входят люди, команды и организации, которые будут участвовать в координации и оказании мед. помощи пациенту или группе (например супружеская пара на терапии или группа поддержки). Также CareTeam может существовать и не в контексте пациента, например команда экстренной помощи или команда реагирования на чрезвычайные ситуации. Она не ограничена одними только мед. специалистами и может вклчючать и других лиц, осуществляющих уход, например членов семьи, опекунов, самого пациента и других.
+В зависимости от контекста использования, команда может создаваться для конкретного плана по уходу, для эпизода лечения, для случая обслуживания, либо это может быть общий список участников всех перечисленных типов команд. Персональные CareTeam могут быть динамическими, отражая например частую смену членов реабилитационной команды.
 
-<!-- The Care Team resource includes all the people and/or organizations who plan to participate in the coordination and delivery of care for a patient. This is not limited to practitioners, but may include other caregivers such as family members, guardians, the patient themself, or others. 
+<!-- The CareTeam includes all the people, teams, and organizations who plan to participate in the coordination and delivery of care for a single patient or a group (such as a married couple in therapy or a support group).  CareTeam can also be organizationally assigned without a subject in context, such as a code blue team or emergency response team. This is not limited to practitioners, but may include other caregivers such as family members, guardians, the patient themself, or others. 
 
-The Care Team, depending on where used, may include care team members specific to a particular care plan, an episode, an encounter, or may reflect all known team members across these perspectives.  --> 
+The Care Team, depending on where used, may include care team members specific to a particular care plan, an episode, an encounter, or may reflect all known team members across these perspectives. An individual's CareTeam can be dynamic over time, such that there can be transience of team members, such as a rehabilitation team.  --> 
 
 </p>
 </div>

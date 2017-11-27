@@ -7,10 +7,10 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>Grahame</Author>
-  <LastAuthor>Brian Postlethwaite</LastAuthor>
+  <LastAuthor>Eric Haas</LastAuthor>
   <Created>2012-03-19T11:12:07Z</Created>
-  <LastSaved>2017-02-19T11:41:27Z</LastSaved>
-  <Version>16.00</Version>
+  <LastSaved>2017-05-15T17:34:27Z</LastSaved>
+  <Version>12.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
@@ -21,7 +21,7 @@
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
   <TabRatio>808</TabRatio>
-  <ActiveSheet>1</ActiveSheet>
+  <ActiveSheet>7</ActiveSheet>
   <RefModeR1C1/>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -1091,7 +1091,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Нужен для возможности пометить запись пациента как непригодную к использованию, потому что она была создана по ошибке<!-- Need to be able to mark a patient record as not to be used because it was created in error --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Значение по умолчанию true. Если запись неактивная и связана с активной записью, значит будущие обновления пациента/человека/записи должны происходить на другом ресурсе patient <!-- Default is true. If a record is inactive, and linked to an active record, then future patient/record updates should occur on the other patient -->&#10;&#10;This element is labeled as a modifier because when the patient record is marked as not active it is not expected to be used/referenced without being changed back to active.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Default is true. If a record is inactive, and linked to an active record, then future patient/record updates should occur on the other patient&#10;&#10;This element is labeled as a modifier because when the patient record is marked as not active it is not expected to be used/referenced without being changed back to active.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">statusCode</Data><NamedCell
@@ -1323,7 +1323,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Факт смерти пациента влияет на клинический процесс. Кроме того, в человеческом общении и управлении отношениями необходимо знать, жив ли человек.<!-- The fact that a patient is deceased influences the clinical process. Also, in human communication and relation management it is necessary to know whether the person is alive. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Если значение элемента не указано, это значит, что нет утверждения, умер индивидуум или нет. Большинство систем будут интерпретировать отсутствие этого значения как признак того, что человек жив.<!-- If there's no value in the instance it means there is no statement on whether or not the individual is deceased. Most systems will interpret the absence of a value as a sign of the person being alive. -->&#10;&#10;This element is labeled as a modifier because once a patient is marked as deceased, the actions that are appropriate to perform on the patient may be significantly different.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">If there's no value in the instance it means there is no statement on whether or not the individual is deceased. Most systems will interpret the absence of a value as a sign of the person being alive.&#10;&#10;This element is labeled as a modifier because once a patient is marked as deceased, the actions that are appropriate to perform on the patient may be significantly different.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">player[classCode=PSN|ANM and determinerCode=INSTANCE]/deceasedInd, player[classCode=PSN|ANM and determinerCode=INSTANCE]/deceasedTime</Data><NamedCell
@@ -2257,7 +2257,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Есть несколько сценариев использования: * Записи-дубликаты пациента вследствие канцелярских ошибок, связанных с трудностью непротиворечивой идентификации людей, и * Распределение информации о пациенте среди нескольких серверов  <!-- There are multiple usecases: &#10;&#10;* Duplicate patient records due to the clerical errors associated with the difficulties of identifying humans consistently, and * Distribution of patient information across multiple servers --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Не предполагается, что связанные записи пациентов будут иметь взаимные ссылки.<!-- There is no assumption that linked patient records have mutual links.  -->&#10;&#10;This element is labelled as a modifier because it may not be the main Patient resource, and the referenced patient should be used instead of this Patient record. This is when the link.type value is 'replaced-by'</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">There is no assumption that linked patient records have mutual links. &#10;&#10;This element is labelled as a modifier because it may not be the main Patient resource, and the referenced patient should be used instead of this Patient record. This is when the link.type value is 'replaced-by'</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">outboundLink</Data><NamedCell
@@ -2329,7 +2329,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">replaced-by | replaces | refer | seealso - type of link</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Тип связи между этим ресурсом Patient и другим ресурсом Patient.<!-- The type of link between this patient resource and another patient resource. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Тип связи между этим ресурсом patient и другим ресурсом patient.<!-- The type of link between this patient resource and another patient resource. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4085,7 +4085,6 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <FilterOn/>
@@ -6540,7 +6539,7 @@
    <NamedRange ss:Name="_FilterDatabase" ss:RefersTo="=Examples!R1C1:R2C7"
     ss:Hidden="1"/>
   </Names>
-  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="40" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="39" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s140" ss:DefaultColumnWidth="260.25"
    ss:DefaultRowHeight="15">
    <Column ss:StyleID="s140" ss:Width="89.25"/>
@@ -6756,31 +6755,22 @@
     <Cell ss:StyleID="s145"><Data ss:Type="String">y</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s144"/>
+    <Cell ss:StyleID="s144"><Data ss:Type="String">Newborn1</Data></Cell>
     <Cell ss:StyleID="s87"/>
-    <Cell ss:StyleID="s89"/>
-    <Cell ss:StyleID="s87"/>
-    <Cell ss:StyleID="s87"/>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Newborn Patient Example </Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">newborn</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">patient-example-newborn.xml</Data></Cell>
     <Cell ss:StyleID="s128"/>
-    <Cell ss:StyleID="s145"/>
+    <Cell ss:StyleID="s145"><Data ss:Type="String">n</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s144"/>
+    <Cell ss:StyleID="s144"><Data ss:Type="String">Mom</Data></Cell>
     <Cell ss:StyleID="s87"/>
-    <Cell ss:StyleID="s89"/>
-    <Cell ss:StyleID="s87"/>
-    <Cell ss:StyleID="s87"/>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Mother of Newborn Patient Example</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">mom</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">patient-example-mom.xml</Data></Cell>
     <Cell ss:StyleID="s128"/>
-    <Cell ss:StyleID="s145"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s144"/>
-    <Cell ss:StyleID="s87"/>
-    <Cell ss:StyleID="s89"/>
-    <Cell ss:StyleID="s87"/>
-    <Cell ss:StyleID="s87"/>
-    <Cell ss:StyleID="s128"/>
-    <Cell ss:StyleID="s145"/>
+    <Cell ss:StyleID="s145"><Data ss:Type="String">n</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s144"/>
@@ -6935,6 +6925,7 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -6954,8 +6945,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>19</ActiveRow>
-     <ActiveCol>0</ActiveCol>
+     <ActiveRow>24</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

@@ -21,7 +21,7 @@
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
   <TabRatio>694</TabRatio>
-  <ActiveSheet>1</ActiveSheet>
+  <ActiveSheet>2</ActiveSheet>
   <RefModeR1C1/>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -1154,7 +1154,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Имя элемента для отображения или подсказки<!-- Name for element to display with or prompt for element --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A single preferred label which is Текст, отображаемый рядом с элементом, показывающий его значение или используемый для подсказки на этом элементе на экране пользователя или на форме.<!-- the text to display beside the element indicating its meaning or to use to prompt for the element in a user display or form. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A single preferred label which is the text to display beside the element indicating its meaning or to use to prompt for the element in a user display or form.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">See also the extension (http://hl7.org/fhir/StructureDefinition/elementdefinition-question)[extension-elementdefinition-question.html]</Data><NamedCell
@@ -4908,11 +4908,10 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>29</TopRowBottomPane>
+   <TopRowBottomPane>32</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>3</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -5151,10 +5150,10 @@
     <Cell ss:StyleID="s91"/>
     <Cell ss:StyleID="s91"/>
     <Cell ss:StyleID="s91"><Data ss:Type="String">ElementDefinition</Data></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">sliceName must be a proper token</Data></Cell>
+    <Cell ss:StyleID="s91"><Data ss:Type="String">sliceName must be composed of proper tokens separated by &quot;/&quot;</Data></Cell>
     <Cell ss:StyleID="s91"/>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">sliceName.empty() or sliceName.matches('^[a-zA-Z0-9\\-\\_]+$')</Data></Cell>
-    <Cell ss:StyleID="s111"><Data ss:Type="String">not(exists(f:sliceName/@value)) or matches(f:sliceName/@value, '^[a-zA-Z0-9\\-\\_]+$')</Data></Cell>
+    <Cell ss:StyleID="s91"><Data ss:Type="String">sliceName.empty() or sliceName.matches('^[a-zA-Z0-9\\/\\-\\_]+$')</Data></Cell>
+    <Cell ss:StyleID="s111"><Data ss:Type="String">not(exists(f:sliceName/@value)) or matches(f:sliceName/@value, '^[a-zA-Z0-9\\/\\-\\_]+$')</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s109"><NamedCell ss:Name="Invariantids"/></Cell>
@@ -5490,6 +5489,7 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -5511,8 +5511,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>1</ActiveRow>
-     <ActiveCol>0</ActiveCol>
+     <ActiveRow>14</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
