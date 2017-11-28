@@ -34,7 +34,7 @@ in order to support consistent definitions for schema and UML derived code.
 <ul>
 <li><a href="observation.html">Observation</a></li>
 <li><a href="diagnosticreport.html">DiagnosticReport</a></li>
-<li><a href="procedurerequest.html">ProcedureRequest</a></li>
+<li><a href="servicerequest.html">ServiceRequest</a></li>
   </ul>
 </td>
  <td width="33%">
@@ -47,13 +47,13 @@ in order to support consistent definitions for schema and UML derived code.
  <td width="33%">
 <ul>
  <li><a href="specimen.html">Specimen</a></li>
- <li><a href="bodysite.html">BodySite</a></li>
+ <li><a href="bodystructure.html">BodyStructure</a></li>
  </ul>
 </td>
 </tr>
 </table>
 
-   <p>Ниже показаны диагностические ресурсы и их взаимосвязи. Стрелки показывают направления ссылок между ресурсами (например ресурс DiagnosticReport ссылается на ProcedureRequest). Информацию о координации таких активностей, как заказывание и выполнение диагностик, см. в <a href="workflow-module.html">Модуле рабочих процессов</a>.</p>
+   <p>Ниже показаны диагностические ресурсы и их взаимосвязи. Стрелки показывают направления ссылок между ресурсами (например ресурс DiagnosticReport ссылается на ServiceRequest). Информацию о координации таких активностей, как заказывание и выполнение диагностик, см. в <a href="workflow-module.html">Модуле рабочих процессов</a>.</p>
     <img src="diagnostic-module-resources.png" alt="Image showing the diagnostic resources" width="800px"/>
 
 <p>
@@ -65,12 +65,12 @@ in order to support consistent definitions for schema and UML derived code.
         <tr><td><b>Имя</b></td><td><b>Альтернативные имена</b></td><td><b>Описание</b></td></tr>
         [%res-item Observation%]
         [%res-item DiagnosticReport%]
-        [%res-item ProcedureRequest%]
+        [%res-item ServiceRequest%]
         [%res-item ImagingStudy%]
         [%res-item ImagingManifest%]
         [%res-item Sequence%]
         [%res-item Specimen%]
-        [%res-item BodySite%]
+        [%res-item BodyStructure%]
     </table>
 
 <a name="secpriv"> </a>
@@ -87,11 +87,11 @@ The diagnostic resources often represent patient-specific data, and as such are 
 <ul>
 <li>Планирование диагностического исследования, как в этом <a href="careplan-example-f203-sepsis.html">примере плана по уходу</a></li>
 <li>Рекомендация диагностики наподобие инструментов поддержки принятия клинических решений. Более подробную информацию см. в модуле <a href="clinicalreasoning-module.html">Клиническое обоснование</a>.</li>
-<li>Заказывание лабораторного исследования, например <a href="procedurerequest-example-lipid.html">липидной панели</a></li>
+<li>Заказывание лабораторного исследования, например <a href="servicerequest-example-lipid.html">липидной панели</a></li>
 <li>Сообщение результатов лабораторного исследования, например <a href="diagnosticreport-example-lipids.html">липидной панели</a></li>
-<li>Заказывание радиологического исследования, например <a href="procedurerequest-example-di.html">компьютерной томографии</a></li>
+<li>Заказывание радиологического исследования, например <a href="servicerequest-example-di.html">компьютерной томографии</a></li>
 <li>Сообщение результатов радиологического исследования, например <a href="imagingstudy-example.html">компьютерной томографии</a></li>
-<li>Заказывание генетического исследования, например <a href="procedurerequest-genetics-example-1.html">анализа на мутации генов</a></li>
+<li>Заказывание генетического исследования, например <a href="servicerequest-genetics-example-1.html">анализа на мутации генов</a></li>
 <li>Сообщение результатов генетического исследования, например <a href="diagnosticreport-hla-genetics-results-example.html">HLA-генотипирования</a></li>
 </ul>
 <p>
@@ -102,7 +102,7 @@ The diagnostic resources often represent patient-specific data, and as such are 
 <li>запись наблюдений из социального анамнеза пациента, например употребление табака </li>
 <li>запись характеристик пациента, например состояния беременности (примечание: также в этих целях можно использовать ресурс Condition)</li>
 <li>запись результатов клинической оценки по различным шкалам, например <a href="observation-example-5minute-apgar-score.html">шкале Апгар</a>.</li>
-<li>идентификация и описание <a href="specimen-example-serum.html">образца для анализа</a> или <a href="bodysite-example-tumor.html">места на теле</a></li>
+<li>идентификация и описание <a href="specimen-example-serum.html">образца для анализа</a> или <a href="bodystructure-example-tumor.html">места на теле</a></li>
 </ul>
 
 <a name="related"> </a>
@@ -118,10 +118,10 @@ The diagnostic resources often represent patient-specific data, and as such are 
 <li>Ресурсы <em>Observation</em> и <em>Diagnostic Report</em> прошли тестирование и использование в реальных системах и достигли <a href="versions.html#maturity">уровня зрелости FMM=4</a>, на котором изменения маловероятны и требуют одобрения сообщества реализаторов. Дальнейшая работа будет направлена на создание основных профилей и разъяснение случаев использования и границ и разработку более узкоспециализированных примеров. Мы ожидаем, что по окончании этого цикла ресурсы <em>Observation</em> и <em>DiagnosticReport</em> получат нормативный статус.</li>
 <li>Ресурс <em>ImagingStudy</em> прошел некоторое тестирование и использование. Необходимо дальнейшее использование этого ресурса в реальных системах для достижения более стабильного уровня зрелости.</li>
 <li><em>ImagingManifest</em>: мы ожидаем увидеть более широкое использование этого ресурса и рост его уровня зрелости.</li>
-<li>Ресурс <em>ProcedureRequest</em> был значительно изменен по сравнению со своей версией в DSTU2. В первую очередь это слияние ресурсов <em>DiagnosticOrder</em> и <em>ProcedureRequest</em> из DSTU2 в единый ресурс. Также в результате добавления <a href="workflow.html">FHIR workflow</a> в STU3, его структура и содержимое были обновлены в соответствии с общим шаблоном "ресурса-запроса" рабочего процесса FHIR. Поэтому он остается относительно незрелым ресурсом. Серьёзные изменения его структуры в дальнейшем не ожидаются. Однако его облась действия и границы по отношению к другим ресурсам будут предметом будущей работы рабочей группы. Мы ожидаем его широкое использование реализаторами и доработку в предстоящем цикле.</li>
+<li>Ресурс <em>ServiceRequest</em> был значительно изменен по сравнению со своей версией в DSTU2. В первую очередь это слияние ресурсов <em>DiagnosticOrder</em> и <em>ServiceRequest</em> из DSTU2 в единый ресурс. Также в результате добавления <a href="workflow.html">FHIR workflow</a> в STU3, его структура и содержимое были обновлены в соответствии с общим шаблоном "ресурса-запроса" рабочего процесса FHIR. Поэтому он остается относительно незрелым ресурсом. Серьёзные изменения его структуры в дальнейшем не ожидаются. Однако его облась действия и границы по отношению к другим ресурсам будут предметом будущей работы рабочей группы. Мы ожидаем его широкое использование реализаторами и доработку в предстоящем цикле.</li>
 <li>На ресурс <em>Specimen</em> будут направлены усилия рабочей группы в предстоящем цикле. Планируется ввести новый ресурс <em>SpecimenDefinition</em> для описания типов образцов для анализа в отличие от экземпляров образцов для анализа, и возьмет на себя часть текущей области действия ресурса Specimen. Мы ожидаем более широкого использования этого ресурса и роста его уровня зрелости в будущем.</li>
 <li>Ресурс <em>Sequence</em> остается в статусе черновика, и мы ожидаем более широкого использования этого ресурса и роста его уровня зрелости в будущем.</li>
-<li><em>BodySite</em> - это пока ещё незрелый ресурс с уровнем зрелости 1. На сегодняшний день по нему имеется мало отзывов от реализаторов. </li>
+<li><em>BodyStructure</em> - это пока ещё незрелый ресурс с уровнем зрелости 1. На сегодняшний день по нему имеется мало отзывов от реализаторов. </li>
 <li>Ресурс <em>Media</em> вошёл в Диагностический модуль последним после существенного изменения его области действия и структуры в целях создания специализированного ресурса наблюдения, предназначенного для цифровых медиаданных, таких как файлы изображений и аудио. Дальнейшая работа по этому ресурсу будет направлена на разработку основных профилей и более узкоспециализированных примеров.</li>
 </ul>
 

@@ -175,19 +175,19 @@ profile call using the url elements found in the <a href="imagingstudy.html">Ima
 </p>
 <h4>Всеобъемлющий плановый рабочий процесс работы с радиологическими изображениями<!-- Comprehensive Imaging Scheduled Workflow --></h4>
 <p>
-Джо Энджене жалуется на одышку и нерегулярную боль в груди своему основному лечащему врачу доктору Пату Дауну в местной поликлинике, который заказал для него стресс-эхокардиограмму; этот заказ создаётся в виде FHIR-ресурса <a href="task.html">Task</a> для управления рабочим процессом, со ссылкой на ресурс <a href="procedurerequest.html">ProcedureRequest</a> с деталями запроса. Заказ запланирован, и его исполнение назначенено кардиологу доктору Арту Сканну, также работающему в этой поликлинике.
+Джо Энджене жалуется на одышку и нерегулярную боль в груди своему основному лечащему врачу доктору Пату Дауну в местной поликлинике, который заказал для него стресс-эхокардиограмму; этот заказ создаётся в виде FHIR-ресурса <a href="task.html">Task</a> для управления рабочим процессом, со ссылкой на ресурс <a href="servicerequest.html">ServiceRequest</a> с деталями запроса. Заказ запланирован, и его исполнение назначенено кардиологу доктору Арту Сканну, также работающему в этой поликлинике.
 </p>
 <p>
-В назначенный по расписанию день обследования Джо прибывает в лабораторию ультразвуковой эхографии для встречи с доктором Сканном и выполнения исследования. Рабочая станция доктора Сканна показывает ежедневный список <a href="task.html">Task</a>, и он переходит по ссылке для открытия заказа на диагностическое исследование (<a href="procedurerequest.html">ProcedureRequest</a>). Он может перейти по ссылкам из ресурса <a href="patient.html">Patient</a> для доступа к электронной истории болезни Джо, но в данном случае нас это не интересует.
+В назначенный по расписанию день обследования Джо прибывает в лабораторию ультразвуковой эхографии для встречи с доктором Сканном и выполнения исследования. Рабочая станция доктора Сканна показывает ежедневный список <a href="task.html">Task</a>, и он переходит по ссылке для открытия заказа на диагностическое исследование (<a href="servicerequest.html">ServiceRequest</a>). Он может перейти по ссылкам из ресурса <a href="patient.html">Patient</a> для доступа к электронной истории болезни Джо, но в данном случае нас это не интересует.
 <!-- On the scheduled day of the exam, Joe arrives at the echo lab to meet with Dr. Skann and have the study done.  
 Dr. Skann’s workstation shows the daily list of <a href="task.html">Task</a>, and he follows the link to retrieve the 
-<a href="diagnosticrequest.html">DiagnosticRequest</a>. (He may follow the links through the 
+<a href="servicerequest.html">ServiceRequest</a>. (He may follow the links through the
 referenced <a href="patient.html">Patient</a> resource to access Joe’s electronic 
 medical record, but that is not the concern of this storyboard.)   -->
 </p>
 <p>
-<a href="task.html">Task</a> и <a href="procedurerequest.html">ProcedureRequest</a> были перекодированы в DICOM Modality Worklist Scheduled Procedure Step, а оборудование в лаборатории ультразвуковой эхографии скачало Modality Worklist. Исследование выполнено, и полученные изображения и предварительные измерения специалиста по ультразвуковой эхографии сохранены в локальной системе передачи и архивации изображений поликлиники (PACS). Система создаёт ресурс <a href="imagingstudy.html">ImagingStudy</a> для каждого проводимого исследования.
-<!-- The <a href="task.html">Task</a> and <a href="procedurerequest.html">ProcedureRequest</a> has been transcoded to a DICOM Modality Worklist 
+<a href="task.html">Task</a> и <a href="servicerequest.html">ServiceRequest</a> были перекодированы в DICOM Modality Worklist Scheduled Procedure Step, а оборудование в лаборатории ультразвуковой эхографии скачало Modality Worklist. Исследование выполнено, и полученные изображения и предварительные измерения специалиста по ультразвуковой эхографии сохранены в локальной системе передачи и архивации изображений поликлиники (PACS). Система создаёт ресурс <a href="imagingstudy.html">ImagingStudy</a> для каждого проводимого исследования.
+<!-- The <a href="task.html">Task</a> and <a href="servicerequest.html">ServiceRequest</a> has been transcoded to a DICOM Modality Worklist 
 Scheduled Procedure Step, and in the echo lab the equipment has downloaded the Modality Worklist.  The 
 study is performed, and the acquired images and sonographer’s preliminary measurements are stored in the 
 Local MultiClinic Picture Archiving and Communication System (PACS).  The PACS creates 

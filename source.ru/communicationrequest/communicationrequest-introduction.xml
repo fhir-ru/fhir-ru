@@ -34,11 +34,9 @@
 <!-- This resource is a record of a request. It does not represent the actual flow of communication. -->
 </p>
 <p>
-Применение ресурса <b>CommunicationRequest</b> исключает запросы направлений, для которых имеется отдельный ресурсом <a href="referralrequest.html">ReferralRequest</a>.
-А также не включает запросы на лечение или консультации, которые описываются ресурсом <a href="procedurerequest.html">ProcedureRequest</a>.
-Результатом выполнения <b>CommunicationRequest</b> может быть создание экземпляра ресурса <a href="communication.html">Communication</a>.
-<!-- The use of <b>CommunicationRequest</b> excludes requests for referrals which are covered by the <a href="referralrequest.html">ReferralRequest</a> resource.
-It also excludes requests for therapy or counseling which would be handled by the <a href="procedurerequest.html">ProcedureRequest</a> resource.
+Ресурс <b>CommunicationRequest</b> не применяется для направлений (к мед. специалистам) и запросов на лечение или консультации, для которых есть отдельный ресурс <a href="servicerequest.html">ServiceRequest</a>.
+Результатом исполнения <b>CommunicationRequest</b> может быть ресурс <a href="communication.html">Communication</a>.
+<!-- The use of <b>CommunicationRequest</b> excludes requests for referrals and requests for therapy or counseling which would be handled by the <a href="servicerequest.html">ServiceRequest</a> resource.
 The performance of a <b>CommunicationRequest</b> may result in a <a href="communication.html">Communication</a> resource. -->
 </p>
 

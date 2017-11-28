@@ -55,7 +55,7 @@ The DiagnosticReport resource has the following aspects:
  <li>images, representation: изображения и медиа-представления отчета, а также вспомогательные изображения</li>
 <li>status, issued, identifier, performer, category: information about the diagnostic report itself</li>
  <li>subject, diagnostic[x]: information about the subject of the report</li>
- <li>request details: a reference to 0 or more <a href="procedurerequest.html">ProcedureRequest resources</a> to allow the report to connect to clinical work flows</li>
+ <li>request details: a reference to 0 or more <a href="servicerequest.html">ServiceRequest resources</a> to allow the report to connect to clinical work flows</li>
  <li>results: a reference to 0 or more <a href="observation.html">Observation resources</a> which provide
     a hierarchical tree of groups of results</li>
  <li>specimen details: a reference to 0 or more <a href="specimen.html">Specimen resources</a> on which the report is based</li>
@@ -97,8 +97,8 @@ The results are assembled in "groups" which are nested structures of Observation
 </p>
 
 <p>
-Если у вас очень структурированный отчёт, тогда используйте DiagnosticReport - в нём есть поддержка данных и рабочего процесса. Сведения о запросе на диагностическое исследование фиксируются в различных ресурсах-запросах (например ресурс <a href="procedurerequest.html">ProcedureRequest</a>) и позволяют связывать отчёт с клиническим рабочим процессом. Для более описательных отчётов с меньшим рабочим процессом (гистология/морг и др.) может больше подойти ресурс <a href="composition.html">Composition</a>.
-<!-- If you have a highly structured report, then use DiagnosticReport - it has data and workflow support.  Details about the request for a diagnostic investigation are captured in the various "request" resources (e.g., the <a href="procedurerequest.html">ProcedureRequest</a>) resource and allow the report to connect to clinical workflows. For more narrative driven reports with less work flow (histology/mortuary, etc.), the <a href="composition.html">Composition</a> resource would be more appropriate. -->
+Если у вас очень структурированный отчёт, тогда используйте DiagnosticReport - в нём есть поддержка данных и рабочего процесса. Сведения о запросе на диагностическое исследование фиксируются в различных ресурсах-запросах (например ресурс <a href="servicerequest.html">ServiceRequest</a>) и позволяют связывать отчёт с клиническим рабочим процессом. Для более описательных отчётов с меньшим рабочим процессом (гистология/морг и др.) может больше подойти ресурс <a href="composition.html">Composition</a>.
+<!-- If you have a highly structured report, then use DiagnosticReport - it has data and workflow support.  Details about the request for a diagnostic investigation are captured in the various "request" resources (e.g., the <a href="servicerequest.html">ServiceRequest</a>) resource and allow the report to connect to clinical workflows. For more narrative driven reports with less work flow (histology/mortuary, etc.), the <a href="composition.html">Composition</a> resource would be more appropriate. -->
 </p>
 
 <p>

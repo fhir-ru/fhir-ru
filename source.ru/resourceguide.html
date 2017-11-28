@@ -98,8 +98,8 @@ understand their purpose and scope, and their supporting classifications. -->
  <tr><td>Signs &amp; Symptoms</td><td>from a review of systems- Pain, Fever</td><td><a href="condition.html">Condition</a> </td></tr> -->
 
   <tr><td colspan="3"><b>Suggested Physician Orders </b></td></tr>
- <tr><td>Предложение лабораторного анализа</td><td>Анализ крови, анализ кала</td><td><a href="procedurerequest.html">ProcedureRequest</a> </td></tr>
- <tr><td>Предложение радиологической диагностики</td><td>КТ, МРТ, рентген</td><td><a href="procedurerequest.html">ProcedureRequest</a> </td></tr>
+ <tr><td>Предложение лабораторного анализа</td><td>Анализ крови, анализ кала</td><td><a href="servicerequest.html">ServiceRequest</a> </td></tr>
+ <tr><td>Предложение радиологической диагностики</td><td>КТ, МРТ, рентген</td><td><a href="servicerequest.html">ServiceRequest</a> </td></tr>
  <tr><td>Предложенный заказ питания</td><td>Заказ орального питания</td><td><a href="nutritionorder.html">NutritionOrder</a> </td></tr>
  <tr><td>Предложенный респираторный заказ</td><td>Подача кислорода</td><td>Пока нет</td></tr>
  <tr><td>Предложенные медикаменты</td><td>Аспирин, лизиноприл</td><td><a href="medicationrequest.html">MedicationRequest</a> </td></tr>
@@ -107,10 +107,10 @@ understand their purpose and scope, and their supporting classifications. -->
  
   <tr><td colspan="3"><b>Междисциплинарное планирование ухода</b></td></tr>
  <tr><td>Цель пациента</td><td>Уменьшить риск падений, сбросить вес</td><td><a href="goal.html">Goal</a> (как часть <a href="careplan.html">CarePlan</a>)</td></tr>
- <tr><td>Вмешательство</td><td>Оценка состояния пациента</td><td><a href="procedurerequest.html">ProcedureRequest</a> </td></tr>
+ <tr><td>Вмешательство</td><td>Оценка состояния пациента</td><td><a href="servicerequest.html">ServiceRequest</a> </td></tr>
 <!--  <tr><td colspan="3"><b>Interdisciplinary Care Planning</b></td></tr>
  <tr><td>Patient Goal</td><td>Reduce risk of falls, lose weight</td><td><a href="goal.html">Goal</a> (as part of a <a href="careplan.html">CarePlan</a>)</td></tr>
- <tr><td>Intervention</td><td>Patient assessments</td><td><a href="procedurerequest.html">ProcedureRequest</a> </td></tr> -->
+ <tr><td>Intervention</td><td>Patient assessments</td><td><a href="servicerequest.html">ServiceRequest</a> </td></tr> -->
 </table>
 
 <p>
@@ -256,11 +256,11 @@ updated and adjusted as ongoing care is provided. -->
 </p>
 <p>
 Ресурс <code>ReferralRequest</code> - это основа для предложенного/запрошенного передачи пациента от одного врача другому. Как правило, ассоциируется с передачей истории болезни и физическим перемещением пациента, но ничего из этого не является обязательным. 
-Ресурс <code>ProcedureRequest</code> - это запрос на осуществление процедуры.
+Ресурс <code>ServiceRequest</code> - это запрос на осуществление процедуры.
 <!-- <code>ReferralRequest</code> is the basis for a proposed/requested transfer of care from
 one clinician to another. Typically, these are associated with a transfer 
 of records, and a physical relocation of the patient, but neither of these 
-are required. A <code>ProcedureRequest</code> records a request for a procedure to be carried out.  -->
+are required. A <code>ServiceRequest</code> records a request for a procedure to be carried out.  -->
 </p>
 <p>
 Ресурс <code>NutritionOrder</code> - это запрос на предоставление питания, искусственное вскармливание (энтеральное) или оральную пищевую добавку для пациента, а ресурс 
@@ -272,7 +272,7 @@ are required. A <code>ProcedureRequest</code> records a request for a procedure 
 <tr><td><a href="careplan.html">CarePlan</a></td><td><a href="#ongoing">Ongoing</a></td><td>Act</td><td></td></tr>
 <tr><td><a href="goal.html">Goal</a></td><td><a href="#future">Future</a></td><td>Act</td><td><a href="lifecycle.html#clinical">Clinical Workflow</a></td></tr>
 <tr><td><a href="referralrequest.html">ReferralRequest</a></td><td><a href="#future">Future</a></td><td>Act</td><td><a href="lifecycle.html#clinical"><a href="lifecycle.html#clinical">Clinical Workflow</a></a></td></tr>
-<tr><td><a href="procedurerequest.html">ProcedureRequest</a></td><td><a href="#future">Future</a></td><td>Act</td><td><a href="lifecycle.html#clinical"><a href="lifecycle.html#clinical">Clinical Workflow</a></a></td></tr>
+<tr><td><a href="servicerequest.html">ServiceRequest</a></td><td><a href="#future">Future</a></td><td>Act</td><td><a href="lifecycle.html#clinical"><a href="lifecycle.html#clinical">Clinical Workflow</a></a></td></tr>
 <tr><td><a href="nutritionorder.html">NutritionOrder</a></td><td><a href="#future">Future</a>/<a href="#ongoing">Ongoing</a></td><td>Act</td><td></td></tr>
 <tr><td><a href="visionprescription.html">VisionPrescription</a></td><td><a href="#future">Future</a></td><td>Act</td><td></td></tr>
 </table>
@@ -330,10 +330,10 @@ recording the following kinds of data: -->
 use Observation where <a href="condition.html">Condition</a> is more appropriate.  -->
 </p>
 <p>
-Ресурсы <code>ProcedureRequest</code> и <code>DiagnosticReport</code> созданы для общего диагностического процесса.
+Ресурсы <code>ServiceRequest</code> и <code>DiagnosticReport</code> созданы для общего диагностического процесса.
 DiagnosticReport связывает процесс "составления отчёта", сочетая идентификаторы процесса, визуальное представление отчёта и заключения/интерпретации с Observations. 
-ProcedureRequests хранят запрос от авторизованного врача на инициализацию процесса диагностики. 
-Ресурсы <code>Specimen</code> и <code>BodySite</code> используются для записи сведений о сборе проб для анализов, хотя BodySite может также использоваться и с другими ресурсами (например для указания места проведения операции в ресурсе Procedure).
+ServiceRequests хранят запрос от авторизованного врача на инициализацию процесса диагностики. 
+Ресурсы <code>Specimen</code> и <code>BodyStructure</code> используются для записи сведений о сборе проб для анализов, хотя BodyStructure может также использоваться и с другими ресурсами (например для указания места проведения операции в ресурсе Procedure).
 </p>
 <p>
 Ресурсы <code>ImagingManifest</code> и <code>ImagingStudy</code> созданы для связывания диагностических изображений, доступных в истории болезни, где непосредственно сами изображения предоставляются специализированными системами (ресурс <a href="media.html">Media</a> предназначен для совместного использования фактических изображений напрямую, что, как правило, не подходят для диагностических данных с высоким разрешением и большим объёмом).
@@ -349,9 +349,10 @@ diagnostic images). -->
 <tr><td><b>Ресурс</b></td><td><b>Категория</b></td><td><b>RIM</b></td><td><b>Жизненный цикл</b></td></tr>
 <tr><td><a href="observation.html">Observation</a></td><td><a href="#past">Past</a></td><td>Act</td><td></td></tr>
 <tr><td><a href="diagnosticreport.html">DiagnosticReport</a></td><td><a href="#past">Past</a></td><td>Act</td><td><a href="lifecycle.html#entity">Entity Availability Workflow</a></td></tr>
-<tr><td><a href="procedurerequest.html">ProcedureRequest</a></td><td><a href="#future">Future</a></td><td>Act</td><td><a href="lifecycle.html#order">Request/Order</a></td></tr>
+<tr><td><a href="servicerequest.html">ServiceRequest</a></td><td><a href="#future">Future</a></td><td>Act</td><td><a href="lifecycle.html#order">Request/Order</a></td></tr>
 <tr><td><a href="specimen.html">Specimen</a></td><td><a href="#unrelated">Unrelated</a></td><td>Role</td><td><a href="lifecycle.html#entity">Entity Availability Workflow</a></td></tr>
-<tr><td><a href="bodysite.html">BodySite</a></td><td><a href="#unrelated">Unrelated</a></td><td>Role</td><td></td></tr>
+<tr><td><a href="specimendefinition.html">SpecimenDefinition</a></td><td><a href="#unrelated">Unrelated</a></td><td>Role</td><td><a href="lifecycle.html#entity">Entity Availability Workflow</a></td></tr>
+<tr><td><a href="bodystructure.html">BodyStructure</a></td><td><a href="#unrelated">Unrelated</a></td><td>Role</td><td></td></tr>
 <tr><td><a href="imagingmanifest.html">ImagingManifest</a></td><td><a href="#past">Past</a></td><td>Act</td><td></td></tr>
 <tr><td><a href="imagingstudy.html">ImagingStudy</a></td><td><a href="#past">Past</a></td><td>Act</td><td></td></tr>
 </table>
@@ -536,7 +537,7 @@ issues they should be aware of when providing care to a patient, or at a locatio
  <li>Ресурс <code>AppointmentResponse</code> - это принятие человеком или отказ от назначенной встречи</li>
 <!--  <li>A <code>Schedule</code> describes a set of times in the future that a service or individual may be available</li>
  <li>A <code>Slot</code> is an instance of a time in a schedule that may be reserved</li>
- <li>An <code>Appointment</code> is proposed or confirmed future event, with a list of participants who may or may not have confirmed their attendance</li>
+ <li>An <code>Appointment</code> is a proposed or confirmed future event, with a list of participants who may or may not have confirmed their attendance</li>
  <li>An <code>AppointmentResponse</code> is an individual's acceptance or rejection of an appointment</li> -->
 </ul>
 <p>
@@ -697,12 +698,12 @@ be done for many reasons - maintaining a list of work to do, of patients of inte
 <h3>Обеспечение соответствия<!-- Conformance --></h3>
 
 <p>
-Данная спецификация - это спецификация базовой платформы, которая задаёт ряд общих возможностей. Конкретные системы строят на базе этой спецификации решения интероперабельности, <a href="profiling.html">задавая ряд правил обеспечения соответствия</a>. Эти правила обеспечения соответствия поддерживаются данным набором ресурсов обеспечения соответствия.
+Данная спецификация - это спецификация базовой платформы, которая задаёт ряд общих возможностей. Конкретные системы строят на базе этой спецификации решения интероперабельности, <a href="profiling.html">задавая ряд правил обеспечения соответствия</a>. Эти правила обеспечения соответствия поддерживаются набором ресурсов обеспечения соответствия.
 <!-- This specification is a base platform specification that defines a set of 
 general capabilities. Specific systems build on top of that to create 
 interoperable solutions by <a href="profiling.html">making a set of 
 conformance rules</a>. These conformance rules are supported by a 
-this set of "conformance" resources. -->
+set of "conformance" resources. -->
 </p>
 
 <h4>Терминология<!-- Terminology --></h4>
@@ -731,14 +732,13 @@ of these systems, to foster consistency in their identification. -->
 <h4>Содержание<!-- Content --></h4>
 
 <p>
-Оба ресурса <code>StructureDefinition</code> и <code>DataElement</code> описывают набор элементов данных, который может представлять данные в целях сбора, анализа и обмена. Они имеют немного разные цели:
-<!-- <code>StructureDefinition</code> and <code>DataElement</code> both describe a
-set of data elements that can represent data for the purposes of collection, 
-analysis and exchange. They have slightly different purposes: -->
+Оба ресурса <code>StructureDefinition</code> описывает набор элементов данных, который может представлять данные в целях сбора, анализа и обмена. StructureDefinition используется в частности для описания структур, используемых в рамках данной спецификации.
+<!-- <code>StructureDefinition</code> describes a
+set of data elements that can represent data for the purposes of collection,
+analysis and exchange. StructureDefinition is used specifically to describe the structures used by or with this specification. -->
 </p>
 <ul>
  <li>StructureDefinition используется непосредственно для описания структур, используемых в спецификации или при работе с ней<!-- StructureDefinition is used specifically to describe the structures used by or with this specification --></li>
- <li>DataElement описывает элементы данных более общего вида, которые представлены и передаются во многих форматах и/или контекстах<!-- DataElement describes more general data items that are represented and exchanged in many formats and/or contexts --></li>
 </ul>
 <p>
 <code>StructureMap</code> поддерживает язык мэппинга общего назначения, который можно использовать для перевода данных из одной структуры в другую.
@@ -750,7 +750,6 @@ from one structure to another. -->
 <tr><td><b>Ресурс</b></td><td><b>Категория</b></td><td><b>RIM</b></td><td><b>Жизненный цикл</b></td></tr>
 <tr><td><a href="structuredefinition.html">StructureDefinition</a></td><td><a href="#unrelated">Unrelated</a></td><td></td><td></td></tr>
 <tr><td><a href="structuremap.html">StructureMap</a></td><td><a href="#unrelated">Unrelated</a></td><td>Unrelated</td><td></td></tr>
-<tr><td><a href="dataelement.html">DataElement</a></td><td><a href="#unrelated">Unrelated</a></td><td>Entity</td><td></td></tr>
 </table>
 
 <h4>Поведение<!-- Behavior --></h4>
@@ -803,12 +802,14 @@ systems, if the tests are carefully constructed and vetted. -->
 <!-- A <code>TestReport</code> contains the test execution results of a TestScript
 against a series of operations and outcomes that a system is expected to meet.
 TestReports provide a static recording of TestScript results for subsequent
-retrieval and review.. -->
+retrieval and review. -->
 </p>
 
 <table class="grid">
 <tr><td><b>Ресурс</b></td><td><b>Категория</b></td><td><b>RIM</b></td><td><b>Жизненный цикл</b></td></tr>
 <tr><td><a href="implementationguide.html">ImplementationGuide</a></td><td><a href="#unrelated">Unrelated</a></td><td></td><td></td></tr>
+<tr><td><a href="implementationguideinput.html">ImplementationGuideInput</a></td><td><a href="#unrelated">Unrelated</a></td><td></td><td></td></tr>
+<tr><td><a href="implementationguideoutput.html">ImplementationGuideOutput</a></td><td><a href="#unrelated">Unrelated</a></td><td></td><td></td></tr>
 <tr><td><a href="testscript.html">TestScript</a></td><td><a href="#unrelated">Unrelated</a></td><td></td><td></td></tr>
 <tr><td><a href="testreport.html">TestReport</a></td><td><a href="#unrelated">Unrelated</a></td><td></td><td></td></tr>
 </table>
