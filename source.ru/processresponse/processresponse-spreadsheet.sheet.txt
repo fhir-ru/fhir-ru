@@ -6,7 +6,7 @@
   Binding = value set
   Reference = valueset-process-outcome
   Definition = Local status of outcome codes
-  Conformance = example
+  Conformance = required
 
  -- Row 2 -----------------------------------
   Binding Name = !ProcessResponseStatus
@@ -83,7 +83,7 @@
   Type = dateTime
   Short Name = Creation date
   Definition = The date when the enclosed suite of services were performed or completed
-  Workflow Mapping = Event.occurrence
+  Workflow Mapping = Event.occurrence[x]
   w5 = when.recorded
 
  -- Row 8 -----------------------------------
@@ -92,7 +92,7 @@
   Type = Reference(Organization)
   Short Name = Authoring Organization
   Definition = The organization who produced this adjudicated response.
-  Workflow Mapping = Event.performer.onBehalfOf
+  Workflow Mapping = Event.performer
   w5 = who.source
 
  -- Row 9 -----------------------------------
@@ -107,7 +107,7 @@
  -- Row 10 -----------------------------------
   Element = ProcessResponse.outcome
   Card. = 0..1
-  Type = CodeableConcept
+  Type = code
   Binding = ProcessingOutcome
   Short Name = Processing outcome
   Definition = Transaction status: error, complete, held.
@@ -157,7 +157,7 @@
  -- Row 17 -----------------------------------
   Element = ProcessResponse.processNote.type
   Card. = 0..1
-  Type = CodeableConcept
+  Type = code
   Binding = NoteType
   Short Name = display | print | printoper
   Definition = The note purpose: Print/Display.
@@ -267,6 +267,12 @@
   Type = reference
   Description = The Organization who is responsible the request transaction
   Path = ProcessResponse.requestOrganizationReference
+
+ -- Row 14 -----------------------------------
+  Name = status
+  Type = token
+  Description = The status of the process response
+  Path = ProcessResponse.status
 
 === Sheet Profiles =====================================
 

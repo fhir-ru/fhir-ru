@@ -22,8 +22,9 @@
  -- Row 1 -----------------------------------
   Element = EnrollmentRequest
   Type = DomainResource
-  Short Name = Enrollment request
+  Short Name = Enrol in coverage
   Definition = This resource provides the insurance enrollment details to the insurer regarding a specified coverage.
+  Workflow Mapping = Request
   w5 = financial.support
 
  -- Row 2 -----------------------------------
@@ -35,6 +36,7 @@
   Type = Identifier
   Short Name = Business Identifier
   Definition = The Response business identifier
+  Workflow Mapping = Request.identifier
 
  -- Row 4 -----------------------------------
   Element = EnrollmentRequest.status
@@ -46,6 +48,7 @@
   Short Name = active | cancelled | draft | entered-in-error
   Definition = The status of the resource instance.
   Comments = This element is labeled as a modifier because the status contains codes that mark the request as not currently valid
+  Workflow Mapping = Request.status
 
  -- Row 5 -----------------------------------
   Element = !EnrollmentRequest.ruleset
@@ -70,6 +73,7 @@
   Type = dateTime
   Short Name = Creation date
   Definition = The date when this resource was created.
+  Workflow Mapping = Request.authoredOn
 
  -- Row 8 -----------------------------------
   Element = EnrollmentRequest.insurer
@@ -77,6 +81,7 @@
   Type = Reference(Organization)
   Short Name = Target
   Definition = The Insurer who is target  of the request.
+  Workflow Mapping = Request.performer
 
  -- Row 9 -----------------------------------
   Element = EnrollmentRequest.provider
@@ -84,7 +89,9 @@
   Type = Reference(Practitioner)
   Short Name = Responsible practitioner
   Definition = The practitioner who is responsible for the services rendered to the patient.
+  Workflow Mapping = Request.requester
   CDAnet v4 Mapping = B01
+  w5 = who.actor
 
  -- Row 10 -----------------------------------
   Element = EnrollmentRequest.organization
@@ -92,17 +99,21 @@
   Type = Reference(Organization)
   Short Name = Responsible organization
   Definition = The organization which is responsible for the services rendered to the patient.
+  Workflow Mapping = Request.requester
+  w5 = who.actor
 
  -- Row 11 -----------------------------------
   Element = !Patient Information
 
  -- Row 12 -----------------------------------
-  Element = EnrollmentRequest.subject
+  Element = EnrollmentRequest.candidate
   Card. = 0..1
   Type = Reference(Patient)
-  Short Name = The subject of the Products and Services
+  Short Name = The subject to be enrolled
   Definition = Patient Resource
+  Workflow Mapping = Request.subject
   CDAnet v4 Mapping = C06,C07,C08, C05, C04
+  w5 = who.actor
 
  -- Row 13 -----------------------------------
   Element = !Insurance Information
@@ -114,6 +125,7 @@
   Short Name = Insurance information
   Definition = Reference to the program or plan identification, underwriter or payor.
   Requirements = Need to identify the issuer to target for processing and for coordination of benefit processing.
+  Workflow Mapping = Request.insurance
 
 === Sheet Search =====================================
 
@@ -139,7 +151,7 @@
   Name = subject
   Type = reference
   Description = The party to be enrolled
-  Path = EnrollmentRequest.subject
+  Path = EnrollmentRequest.candidate
 
  -- Row 5 -----------------------------------
   Name = !patient-identifier
@@ -151,7 +163,13 @@
   Name = patient
   Type = reference
   Description = The party to be enrolled
-  Path = EnrollmentRequest.subject
+  Path = EnrollmentRequest.candidate
+
+ -- Row 7 -----------------------------------
+  Name = status
+  Type = token
+  Description = The status fo the enrollment
+  Path = EnrollmentRequest.status
 
 === Sheet Profiles =====================================
 

@@ -14,7 +14,6 @@
           <display value="Mometasone Furoate 0.05mg/Actuat"/>
         </coding>
       </code>
-      <isBrand value="false"/>
         <form>
           <coding>
             <system value="http://snomed.info/sct"/>
@@ -29,15 +28,16 @@
   <medicationReference> <!-- Linked to a RESOURCE Medication -->
     <reference value="#med0315"/>
   </medicationReference>
-  <informationSource>
-    <reference value="Patient/pat1"/>
-    <display value="Donald Duck"/> 
-  </informationSource>
   <subject>
     <reference value="Patient/pat1"/>
     <display value="Donald Duck"/> 
   </subject>
-  <taken value="y"/>
+  <informationSource>
+    <reference value="Patient/pat1"/>
+    <display value="Donald Duck"/> 
+  </informationSource>
+
+
   <note>
     <text value="patient plans to start using for seasonal allergies in the Spring when pollen is in the air"/>
   </note>

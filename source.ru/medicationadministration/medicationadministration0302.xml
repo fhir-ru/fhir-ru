@@ -26,7 +26,7 @@
             <numerator>
               <value value="2"/>
               <system value="http://unitsofmeasure.org"/>
-              <code value="mEq"/>
+              <code value="meq"/>
             </numerator>
             <denominator>
               <value value="1"/>
@@ -58,9 +58,6 @@
         </ingredient>   
     </Medication>
   </contained>
-  <definition>
-    <reference value="PlanDefinition/KDN5"></reference>
-  </definition>
   <partOf>
     <reference value="Procedure/biopsy"></reference>
   </partOf>
@@ -92,9 +89,6 @@
     <reference value="Practitioner/f007"/>
     <display value="Patrick Pump"/>
     </actor>
-    <onBehalfOf>
-      <reference value="Organization/f002"></reference>
-    </onBehalfOf>
   </performer>
   <reasonCode>
     <coding>
@@ -103,9 +97,9 @@
       <display value="Given as Ordered"/>
     </coding>
   </reasonCode>
-  <prescription>
+  <request>
     <reference value="MedicationRequest/medrx0322"/>
-  </prescription>
+  </request>
   <dosage>
     <text value="KCl 20 mEq in 1 L 0.9%NS IV at 100 ml/hr" />
     <site>
@@ -127,9 +121,9 @@
     </method>
     <dose>
       <value value="20"/>
-      <unit value="mEq"/>
+      <unit value="meq"/>
       <system value="http://unitsofmeasure.org"/>
-      <code value="mEq"/>
+      <code value="meq"/>
     </dose>
     <rateRatio>
       <numerator>

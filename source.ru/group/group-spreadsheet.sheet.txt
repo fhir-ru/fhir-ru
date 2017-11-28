@@ -296,6 +296,7 @@
   Type = composite
   Description = A composite of both characteristic and value
   Path = characteristic & value
+  Expression = Group.characteristic; code; value
 
 === Sheet Profiles =====================================
 
@@ -312,5 +313,11 @@
   Identity = 102
   Description = General Group Example, Member Based
   Filename = group-example-member.xml
+
+ -- Row 3 -----------------------------------
+  Name = Porcine herd
+  Identity = herd1
+  Description = Herd of 2500 breeding sows
+  Filename = group-example-herd1.xml
 
 === Sheet Examples =====================================

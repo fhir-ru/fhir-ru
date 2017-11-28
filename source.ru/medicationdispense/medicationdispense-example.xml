@@ -21,19 +21,9 @@
 		<reference value="Patient/example"/>
 	</subject>
 	<performer>
-		<role>
-			<coding>
-				<system value="http://snomed.infor/sct"/>
-				<code value="46255001"/>
-				<display value="Pharmacist"/>
-			</coding>
-		</role>
 		<actor>
 			<reference value="Practitioner/f006"/>
 		</actor>
-		<onBehalfOf>
-			<reference value="Organization/2.16.840.1.113883.19.5"></reference>
-		</onBehalfOf>
 	</performer>
 	<authorizingPrescription>
 		<reference value="MedicationRequest/medicationrequest-example"/>

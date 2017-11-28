@@ -13,7 +13,6 @@
                     <display value="Lorazepam 2mg/ml Injectable Solution (Ativan)"/>
                 </coding>
             </code>
-            <isBrand value="true"/>
                 <form>
                     <coding>
                         <system value="http://snomed.info/sct"/>
@@ -58,9 +57,6 @@
         <actor>
             <reference value="Practitioner/f006"/>
         </actor>
-        <onBehalfOf>
-            <reference value="Organization/2.16.840.1.113883.19.5"></reference>
-        </onBehalfOf>
     </performer>
     <authorizingPrescription>
         <reference value="MedicationRequest/medrx0315"/>

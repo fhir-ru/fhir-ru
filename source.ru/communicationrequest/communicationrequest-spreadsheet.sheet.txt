@@ -42,7 +42,7 @@
   Id = 1
   Context = CommunicationRequest.requester
   English = onBehalfOf can only be specified if agent is practitioner or device
-  XPath = contains(f:agent, \'/Practitioner\') or contains(f:agent, \'/Device\') or not(exists(f:onBehalfOf))
+  XPath = contains(f:agent/f:reference/@value, \'/Practitioner/\') or contains(f:agent/f:reference/@value, \'/Device/\') or not(exists(f:onBehalfOf))
   Expression = (agent.resolve() is Practitioner) or (agent.resolve() is Device) or onBehalfOf.exists().not()
 
 === Sheet Data Elements =====================================
@@ -167,13 +167,14 @@
   w5 = who.focus
 
  -- Row 12 -----------------------------------
-  Element = CommunicationRequest.topic
+  Element = CommunicationRequest.about
   Card. = 0..*
   Type = Reference(Any)
-  Short Name = Focal resources
-  Definition = The resources which were related to producing this communication request.
+  Short Name = Resources that pertain to this communication request
+  Definition = Other resources that pertain to this communication request and to which this communication request should be associated
+  Comments = Don\'t use CommunicationRequest.about element when a more specific element exists, such as basedOn, reasonReference, or replaces.
   Workflow Mapping = Request.supportingInfo
-  Committee Notes = GF#11381
+  Committee Notes = GF#11381, 13705
   w5 = context
 
  -- Row 13 -----------------------------------
@@ -201,7 +202,7 @@
   Type = string|Attachment|Reference(Any)
   Short Name = Message part content
   Definition = The communicated content (or for multi-part communications, one portion of the communication)
-  Workflow Mapping = Request.supportingInfo IF Reference, Request.note if string; No mapping if Attachment
+  Workflow Mapping = Request.supportingInfo, Request.note {supportingInfo if Reference, note if string,  No mapping if Attachment}
 
  -- Row 16 -----------------------------------
   Element = CommunicationRequest.occurrence[x]
@@ -211,7 +212,7 @@
   Type = dateTime|Period
   Short Name = When scheduled
   Definition = The time when this communication is to occur.
-  Workflow Mapping = Request.occurrence
+  Workflow Mapping = Request.occurrence[x]
   w5 = when.planned
 
  -- Row 17 -----------------------------------
@@ -231,7 +232,7 @@
   Type = Reference(Device|Organization|Patient|Practitioner|RelatedPerson)
   Short Name = Message sender
   Definition = The entity (e.g. person, organization, clinical information system, or device) which is to be the source of the communication
-  Workflow Mapping = Request.requester.agent
+  Workflow Mapping = Request.performer
   w5 = who.actor
 
  -- Row 19 -----------------------------------

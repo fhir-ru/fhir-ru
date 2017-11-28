@@ -2,7 +2,7 @@
 <DiagnosticReport mlns="http://hl7.org/fhir">
 	<id value="example-pgx"/>
 	<basedOn>
-		<reference value="ProcedureRequest/example-pgx"/>
+		<reference value="ServiceRequest/example-pgx"/>
 	</basedOn>
 	<status value="final"/>
 	<code>
@@ -20,11 +20,8 @@
 	<effectiveDateTime value="2016-10-15T12:34:56+11:00"/>
 	<issued value="2016-10-20T14:00:05+11:00"/>
 	<performer>
-		<actor>
-			<reference value="Organization/4829"/>
-		</actor>
+		<reference value="Organization/4829"/>
 	</performer>
-
 	<result>
 		<reference value="Observation/example-phenotype"/>
 	</result>

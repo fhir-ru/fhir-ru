@@ -135,7 +135,7 @@
   Type = Reference(Organization)
   Short Name = Responsible organization
   Definition = The organization which is responsible for the services rendered to the patient.
-  Workflow Mapping = Event.performer.onBehalfOf
+  Workflow Mapping = Event.performer
   w5 = who.source
 
  -- Row 10 -----------------------------------
@@ -151,7 +151,7 @@
  -- Row 11 -----------------------------------
   Element = EligibilityResponse.outcome
   Card. = 0..1
-  Type = CodeableConcept
+  Type = code
   Binding = RemittanceOutcome
   Short Name = complete | error | partial
   Definition = Transaction status: error, complete
@@ -431,6 +431,12 @@
   Type = reference
   Description = The EligibilityRequest organization
   Path = EligibilityResponse.requestOrganizationReference
+
+ -- Row 17 -----------------------------------
+  Name = status
+  Type = token
+  Description = The EligibilityRequest status
+  Path = EligibilityResponse.status
 
 === Sheet Profiles =====================================
 

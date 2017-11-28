@@ -20,9 +20,6 @@
         <actor>
             <reference value="Practitioner/f006"/>
         </actor>
-        <onBehalfOf>
-            <reference value="Organization/2.16.840.1.113883.19.5"></reference>
-        </onBehalfOf>
     </performer>
     <authorizingPrescription>
         <reference value="MedicationRequest/medrx0313"/>
@@ -36,7 +33,7 @@
     </type>
     <quantity>
         <value value="5"/>
-        <system value="http://unitsofmeasure.org"/>
+        <system value="http://hl7.org/fhir/v3/orderableDrugForm"/>
         <code value="TAB"/>
     </quantity>
     <daysSupply>

@@ -9,17 +9,27 @@
   </identifier>
 
   <!-- this was an actual adverse event, not just a potential one -->
-  <category value="AE"/>
+  <actuality value="actual"/>
+
+  <!-- high level categorision. The "event" below will say more -->
+  <category> 
+    <coding> 
+      <system value="http://hl7.org/fhir/adverse-event-category"/> 
+      <code value="ProductUseError"/> 
+      <display value="Product Use Error"/> 
+    </coding> 
+  </category> 
+
   
   <!-- more precise details of the event -->
-  <type>
+  <event>
     <coding>
-      <!-- example uses SNOMED CT. Other likely possibilitues incluide MedDRA -->
+      <!-- example uses SNOMED CT. Other likely possibilities include MedDRA -->
       <system value="http://snomed.info/sct"/>
       <code value="304386008"/>
       <display value="O/E - itchy rash"/>
     </coding>
-  </type>
+  </event>
   
   <!-- the patient that actually had the adverse event -->
   <subject>
@@ -29,14 +39,23 @@
   <!-- when the event happened --> 
   <date value="2017-01-29T12:34:56+00:00"/>
   
-  <!-- In overall terms even if it was a severe rash it is a relatively mild event overall --> 
+  <!-- This was a rash, so overall not serious -->
   <seriousness>
+      <coding>
+        <system value="http://hl7.org/fhir/adverse-event-seriousness"/>
+        <code value="Non-serious"/>
+        <display value="Non-serious"/>
+    </coding>
+  </seriousness>
+  
+  <!-- In overall terms even if it was a severe rash it is a relatively mild event overall --> 
+  <severity>
     <coding>
-      <system value="http://hl7.org/fhir/adverse-event-seriousness"></system>
+      <system value="http://hl7.org/fhir/adverse-event-severity"/>
       <code value="Mild"/>
       <display value="Mild"/>
     </coding>
-  </seriousness>
+  </severity>
 
   <!-- who made the record / last updated it -->
   <recorder>
