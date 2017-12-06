@@ -45,23 +45,24 @@ not always, lowercase). -->
 <p>
 Подход FHIR к использованию кодированных значений основывается на базовой структуре, введенной в разделе 5 документа <a href="http://www.hl7.org/documentcenter/public/standards/V3/core_principles/infrastructure/coreprinciples/v3modelcoreprinciples.html">Основополагающие принципы HL7 v3</a>, включая разделение между кодовыми системами и наборами значений.
 </p>
-<p>
-Если в ресурсах содержатся коды, то используется один из 4 типов данных:
-</p>
 
 <table class="grid">
- <tr><td><a href="datatypes.html#code">code</a></td><td>Экземпляр объекта этого типа представляет собой только <i>код</i>. Информация о <i>системе</i> подразумевается: она содержится в определении самого элемента и не указывается в экземпляре. </td></tr>
- <tr><td><a href="datatypes.html#Coding">Coding</a></td><td>Тип данных, состоящий из двух элементов: <i>код</i> и <i>система</i>. Последний идентифицирует источник определения значения кода.</td></tr>
- <tr><td><a href="datatypes.html#CodeableConcept">CodeableConcept (Кодируемый Концепт)</a></td><td>Тип, представляющий концепт с помощью обычного текста и/или одного или нескольких элементов <i>Coding</i></td></tr>
- <tr><td><a href="datatypes.html#Quantity">Quantity</a></td><td>Особый случай: содержит элементы <i>system</i> и <i>code</i> для передачи кода единиц измерений</td></tr>
+ <tr><td colspan="2">When codes are carried in resources, one of 4 different data types is used:</td></tr>
+ <tr><td><a href="datatypes.html#code">code</a><a name="code"> </a></td><td>Экземпляр объекта этого типа представляет собой только <i>код</i>. Информация о <i>системе</i> подразумевается: она содержится в определении самого элемента и не указывается в экземпляре. </td></tr>
+ <tr><td><a href="datatypes.html#Coding">Coding</a><a name="Coding"> </a></td><td>Тип данных, состоящий из двух элементов: <i>код</i> и <i>система</i>. Последний идентифицирует источник определения значения кода.</td></tr>
+ <tr><td><a href="datatypes.html#CodeableConcept">CodeableConcept (Кодируемый Концепт)</a><a name="CodeableConcept"> </a></td><td>Тип, представляющий концепт с помощью обычного текста и/или одного или нескольких элементов <i>Coding</i></td></tr>
+ <tr><td colspan="2">In addition, the following data types also carry coded values, or content that can be treated as a code and bound to a valueset:</td></tr>
+ <tr><td><a href="datatypes.html#Quantity">Quantity</a><a name="Quantity"> </a></td><td>Экземпляр этого типа содержит элементы <i>system</i> и <i>code</i> для передачи кода единиц измерений и может быть привязан к набору значений</td></tr>
+ <tr><td><a href="datatypes.html#string">string</a><a name="string"> </a></td><td>The instance carries a string. In some cases applications may wish to control the set of valid strings for a particular element, so the string value can be treated as a coded element (like <code>code</code>)</td></tr>
+ <tr><td><a href="datatypes.html#uri">uri</a><a name="uri"> </a></td><td>Like <code>string</code>, URIs can be treated as a coded element</td></tr>
 </table>
 <p>
 Примечания:
 </p>
 <ul>
  <li>Обычно выбор типа данных продиктован самим ресурсом. При выборе типа данных для <a href="extensibility.html">расширения</a>,
-см. в FHIR wiki <a href="http://wiki.hl7.org/index.php?title=FHIR_Guide_to_Designing_Resources#Choice_of_coding_data_type">рекомендации по выбору типа данных</a>.</li>
- <li>The types <a href="datatypes.html#string">string</a> and <a href="datatypes.html#uri">uri</a> can also be bound - <a href="#strings">see below</a></li>
+см. в FHIR wiki <a href="http://wiki.hl7.org/index.php?title=FHIR_Guide_to_Designing_Resources#Choice_of_coding_data_type">рекомендации по выбору типа данных</a>.</li> 
+<li><a href="#strings">see below</a> for more information about binding the types <a href="datatypes.html#string">string</a> and <a href="datatypes.html#uri">uri</a> to a value set.</li>
 </ul>
 
 <a name="valuesets"> </a>

@@ -144,11 +144,16 @@ entity that the target resource would describe.
 </div>
 
 <p>
-There is no requirement that a Reference.identifier point to something that is actually exposed as a
-FHIR instance, but it SHALL point to a business concept that would be expected to be exposed as a
-FHIR instance, and that instance would need to be of a FHIR resource type allowed by the reference.
+There is no requirement that a Reference.identifier point to something that is actually exposed or 
+exists as a FHIR instance (except, of course, that the reference will need to be resolved to a 
+target resource if any information from it is required in a FHIR context).
+The reference SHALL point to a business concept that would be expected to be exposed as a
+FHIR instance, and that instance would need to be of a FHIR resource type allowed by the reference
+For example, it would not be legitimate to send the identifier for a drug prescription if 
+the type were Reference(Observation|DiagnosticReport).  One of the use-cases for 
+<code>Reference.identifier</code> is the situation where no FHIR representation exists 
+(where the type is Reference (Any).
 </p>
-
 <p>
 When processing a resource, an application 
 may be able to use the identifier directly, on the grounds that all it needs is the identifier, 
@@ -242,7 +247,7 @@ GET fhir/ValueSet?url=http://hl7.org/fhir/ValueSet/clinical-findings&amp;version
 Note that if a canonical reference does not have a version, and the server finds multiple
 versions for the value set, the system using the reference should pick the latest version
 of the target resource and use that. Servers SHOULD support version specific searching for canonical
-URLs but automatically detecting the presence of a |[version] and performing the appropriate
+URLs by automatically detecting the presence of a |[version] and performing the appropriate
 search.
 </p>
 <p>

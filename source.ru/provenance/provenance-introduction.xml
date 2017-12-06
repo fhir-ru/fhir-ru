@@ -85,8 +85,8 @@ To record multiple activities that resulted in one (<i>target</i>), record each 
 </p>
 <p>
 Ресурс Provenance зависит от ссылок на все ресурсы, сущности и агентов, вовлечённых в активность. Эти ссылки не обязательно должны быть разрешимыми. Ссылки должны обеспечивать уникальную и однозначную идентификацию. Если ресурс, сущность или агент могут иметь различные версии, это должно быть указано, тогда в эту ссылку должна быть включена информация о версии.
-<!-- The Provenance resource depends upon having References to all of the resources, entities, and agents involved in the 
-activity. These References need not be resolvable. The references must provide a unique and ambiguous identification. 
+<!-- The Provenance resource depends upon having References to all the resources, entities, and agents involved in the 
+activity. These References need not be resolvable. The references must provide a unique and unambiguous identification. 
 If a resource, entity, or agent can have different versions that must be identified, then the Reference must have 
 versioning information included. -->
 </p><p>

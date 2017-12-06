@@ -111,7 +111,7 @@ Simple Laboratory Reports: A single set of atomic observations, and a tabular pr
  <li>Гистопатологический отчет: документированный отчет в форме для представления и описательной части. Может содержать несколько ключевых изображений и некоторые кодированные диагнозы для реестров. Если в результате исследования создается структурированный отчет, в него могут быть включены какие-то атомарные данные<!-- 
 Histopathology Report: A document report in a presented form and the narrative. Possibly a few key images, and some coded diagnoses for registries. If the service is creating a structured report, some atomic data may be included --></li>
  <li>imaging Report: документированный отчет в форме для представления и описательной части, со ссылкой на исследование изображения и, возможно, несколькими ключевыми изображениями. Некоторые imaging reports, например сканирование плотности костной ткани (Bone Density Scan), могут включать какие-то атомарные данные<!-- 
-imaging Report; A document report in a presented form and the narrative, with an imaging study reference and possibly some key images. Some imaging reports such as a Bone Density Scan may include some atomic data --></li>
+imaging Report: A document report in a presented form and the narrative, with an imaging study reference and possibly some key images. Some imaging reports such as a Bone Density Scan may include some atomic data --></li>
 	</ul>
 	<p>
 Обратите внимание, что вид отчетов для различных дисциплин, проставляющих диагностические отчеты, быстро меняется, в то время как экспертные системы предлагают улучшенные описательные отчеты для отчетов высокого объема, структурированные отчеты приносят дополнительные данные в отчеты областей, которые раньше были на описательной основе, а визуальные и лабораторные процедуры объединяются. Как следствие, описанные выше виды отчетов представляют собой всего лишь примеры использования ресурса diagnostic report.
@@ -120,4 +120,15 @@ as expert systems provide improved narrative reporting in high volume reports, s
 data to areas that have classically been narrative based, and the nature of the imaging and laboratory procedures are
 merging. As a consequence the patterns described above are only examples of how a diagnostic report can be used. -->
 </p>
+	<a name="genetics"> </a>
+	<h3>Genetic Observations</h3>
+	<p>Genetic reporting makes heavy use of the DiagnosticReport and Observation resources.  A set of profiles have been defined for representing genetic results that can be found <a href="observation-genetic.html">here</a>.</p>
+  <blockquote class="stu-note">
+    <p>The Clinical Genomics workgroup is currently exploring a couple of alternatives that are less dependent on extensions</p>
+    <ul>
+      <li>The <a href="http://harvardone.shareted.com/observation-genetic.html">Harvard (Tangram) proposal</a> is published as a customized version of the HL7 FHIR specification and provides a set of interrelated composable profiles</li>
+      <li>The <a href="http://build.fhir.org/ig/HL7/genomics2/index.html">NLM (genomics2) proposal</a> is published as a FHIR implementation guide an approach that aligns with HL7's v2 clinical genomics implementation guide</li>
+    </ul>
+    <p>These proposals are under active discussion within the <a href="http://www.hl7.org/Special/committees/clingenomics/index.cfm">Clinical Genomics WorkGroup</a>.  Feedback on these proposals can be provided to the workgroup by joining and posting to their list server, participating in a conference call or emailing the co-chairs.</p>
+  </blockquote>
 </div>

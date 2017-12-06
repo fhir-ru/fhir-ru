@@ -207,6 +207,36 @@ Identifier (Идентификатор)
 </pre>
 </div>
 
+<a name="ii"> </a>
+<h4>V3 Mapping Examples for Identifier</h4>
+
+<div class="example">
+<p>A root only:</p>
+<pre>
+  &lt;v3:id root="0.1.2.3.4.5"/&gt;
+</pre>
+<p>becomes:</p>
+<pre class="xml" fragment="Identifier">
+  &lt;identifier&gt;
+    &lt;system value="urn:ietf:rfc:3986" /&gt;
+    &lt;value value="urn:oid:0.1.2.3.4.5" /&gt;
+  &lt;/identifier&gt;
+</pre>
+<p>A root with an extension:</p>
+<pre>
+  &lt;v3:id root="0.1.2.3.4.5" extension="13412"/&gt;
+</pre>
+<p>becomes:</p>
+<pre class="xml" fragment="Identifier">
+  &lt;identifier&gt;
+    &lt;system value="urn:oid:0.1.2.3.4.5" /&gt;
+    &lt;value value="13412" /&gt;
+  &lt;/identifier&gt;
+</pre>
+<p>
+See <a href="datatypes-mappings.html#ii">v3 Mapping Notes</a>
+</p>
+</div>
 
 <a name="Coding"> </a>
 <a name="coding"> </a>
@@ -557,7 +587,6 @@ HumanName (Имя человека)
   &lt;given value="Jim" /&gt;
 &lt;/name&gt;
 </pre>
-
 <p>
 То же самое часто наблюдается у иммигрантов, которые оставляют свое настоящее имя для официального использования, а для повседневного использования принимают местное имя:
 </p>
@@ -574,6 +603,26 @@ HumanName (Имя человека)
   &lt;given value="Jim" /&gt;
 &lt;/name&gt;
 </pre>
+<p>
+Some people may also have a nickname that needs to be recorded:
+</p>
+<pre class="xml" fragment="HumanName">
+&lt;name&gt;
+  &lt;use value="official" /&gt;
+  &lt;family value="Brown" /&gt;
+  &lt;given value="Steven" /&gt;
+&lt;/name&gt;
+&lt;name&gt;
+  &lt;use value="nickname" /&gt;
+  &lt;given value="Junior" /&gt;
+&lt;/name&gt;
+</pre>
+<p>
+Note that there is some ambiguity in real life as to whether a non-official name is the patient's <code>usual</code> name, or whether it's their
+<code>nickname</code>. In principle, nick names are used occasionally and informally, whereas the usual name is used consistently, and in 
+formal contexts. However there is no formal criteria for the differentiating these usages, and even within a culture, people may vary in 
+their cases. 
+</p>
 </div>
 
 <div class="example">

@@ -3,28 +3,6 @@
 <h2>Политики<!-- Policies --></h2>
 
 <p>
-Данная спецификация определяет 2 магических значения для элемента policyRule:
-<!-- This specification defines 2 magic values for consent policyRule: -->
-</p>
-<table class="grid">
- <tr>
-  <td><b>URI</b></td>
-  <td><b>Описание</b></td>
- </tr>
- <tr>
-  <td>http://hl7.org/fhir/ConsentPolicy/opt-out</td>
-  <td>Базовая политика 'deny' - не давать никаких полномочий на доступ или использование данных. Никакие действия не санкционированы, если только они не указаны явным образом в исключениях<!-- The basic 'deny' policy is to grant no authority for data access or use. No actions are approved, unless they are explicitly detailed in the exceptions --></td>
- </tr>
- <tr>
-  <td>http://hl7.org/fhir/ConsentPolicy/opt-in</td>
-  <td>Базовая политика 'permit' - давать все общепринятые полномочия на доступ и использование данных. Все общепринятые действия санкционированы, если только они не указаны явным образом в исключениях<!-- The basic policy is to grant all authority. All actions are approved, unless they are explicitly detailed in the exceptions --></td>
- </tr>
-</table>
-<p>
-Другие юрисдикции (например филиалы HL7) могут определять свои дополнительные списки значений URI политик согласия, которые представляют собой политики согласия, установленные законом или правилами.
-<!-- Other jurisdictions (e.g. HL7 Affiliates) may define their additional lists of consent policy URI values that represent consent policies established by law or regulation -->
-</p>
-<p>
 Ресурс Consent содержит ссылку на одну <code>policyRule</code>. Большинство организаций будут работать в таком контексте, когда применяется несколько различных правил и политик согласия.
 В таких случаях элемент policyRule ссылается на документ с той политикой, которая собирает и согласовывает несколько различных политик, и представляет собой единую политику, на которую необходимо получить согласие пациента. Если всё ещё остаётся необходимость в отслеживании, к какой из нижележащих политик относится исключение, можно использовать <code>policy</code>.
 <!-- The Consent resource has a reference to a single <code>policyRule</code>. Many organizations will work in a context where multiple different consent regulations and policies apply. 

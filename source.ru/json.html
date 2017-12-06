@@ -132,18 +132,21 @@ easy, and so that XPath queries can easily be mapped to query the JSON structure
  <li>Имя массива указывается в единственном числе – так же как и XML-элемента.</li>
  <li>Элемент, который может повторяться, представляется в виде массива даже в том случае, если он не повторяется, чтобы процесс синтаксического разбора ресурса во всех случаях оставался одинаковым.</li>
  </ul>
-<pre class="xml">
- &lt;<b>coding</b>&gt;
-   &lt;<b>system</b> value="http://snomed.info/sct"/&gt;
-   &lt;<b>code</b> value="104934005"/&gt;
- &lt;/<b>coding</b>/&gt;
- &lt;<b>coding</b>&gt;
-   &lt;<b>system</b> value="http://loinc.org"/&gt;
-   &lt;<b>code</b> value="2947-0"/&gt;
- &lt;/<b>coding</b>/&gt;
+<pre class="xml" fragment="CodeableConcept">
+ &lt;code&gt;
+   &lt;coding&gt;
+     &lt;system value="http://snomed.info/sct"/&gt;
+     &lt;code value="104934005"/&gt;
+   &lt;/coding&gt;
+   &lt;coding&gt;
+     &lt;system value="http://loinc.org"/&gt;
+     &lt;code value="2947-0"/&gt;
+   &lt;/coding&gt;
+ &lt;/code&gt;
 </pre>
 <p>представляется в JSON как:</p>
-<pre class="json">
+<pre class="json" fragment="CodeableConcept">
+{
  "coding": [
    {
      "system" : "http://snomed.info/sct",
@@ -154,6 +157,7 @@ easy, and so that XPath queries can easily be mapped to query the JSON structure
      "code" : "2947-0"
    }
  ]
+}
 </pre>
 
 <a name="primitive"> </a>
@@ -248,8 +252,8 @@ FHIR-тип данных decimal определен таким образом, �
 
 <p>
 Элементы и сложные <a href="datatypes.html">типы данных</a> (типы, содержащие именованные элементы других типов) представляются с помощью JSON-объекта, содержащего соответствующий элемент для каждого элемента в типе данных. Композиции могут иметь атрибуты id, которые преобразовываются в значения JSON-элементов объекта таким же способом, как описано для примитивов. Например:</p>
- <pre class="xml">
-&lt;person&gt;
+ <pre class="xml" fragment="Patient">
+&lt;Patient&gt;
   &lt;text&gt;
     &lt;status value="generated" /&gt;
     &lt;div xmlns="http://www.w3.org/1999/xhtml"&gt;&lt;p&gt;...&lt;/p&gt;&lt;/div&gt;
@@ -259,17 +263,16 @@ FHIR-тип данных decimal определен таким образом, �
     &lt;given value="Karen" /&gt;
     &lt;family id="a2" value="Van" /&gt;
   &lt;/name&gt;
-&lt;/person&gt;
+&lt;/Patient&gt;
 </pre>
 <p>в JSON представляется так:</p>
-<pre class="json">
+<pre class="json" fragment="Patient">
 {
-  "person" : {
     "name" : [{
       "use" : "official" ,
       "given" : [ "Karen" ],
-      "family" : [ "Van" ]
-      "_family" : [ {"id" : "a2"} ]
+    "family" :  "Van",
+    "_family" : {"id" : "a2"}
      }],
     "text" : {
       "status" : "generated" ,
@@ -290,14 +293,14 @@ FHIR-тип данных decimal определен таким образом, �
 <p>
 Ресурс – это JSON-объект со свойством <code>resourceType</code>, который сообщает программе-анализатору, какой это тип ресурса:
 </p>
-<pre class="json">
+<pre class="json" fragment="Patient">
 {
   "resourceType" : "Patient",
   "text" : {
     "status" : "generated" ,
     "div" : "&lt;div xmlns=\"http://www.w3.org/1999/xhtml\"&gt;&lt;p&gt;...&lt;/p&gt;&lt;/div&gt;"
   }
-  etc...
+  // etc...
 }
 </pre>
 <p>

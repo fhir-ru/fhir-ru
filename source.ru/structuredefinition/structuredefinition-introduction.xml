@@ -31,8 +31,6 @@ set of structure definitions</a> for all resources and data types is published. 
  <li>StructureDefinitions используются экземплярами <a href="capabilitystatement.html">CapabilityStatement</a> для определения способа использования ресурсов<!-- 
 StructureDefinitions are used by <a href="capabilitystatement.html">CapabilityStatement</a> instances for specifying how resources are used --></li>
  <li>StructureDefinitions используют наборы значений <a href="valueset.html">Value Sets</a> для определения содержимого кодированных элементов</li>
- <li>StructureDefinitions задают конкретные элементы и структуры для использования исключительно с FHIR, которые имеют определенные форматы представления (XML, JSON и т. п.). Это отличается от <a href="dataelement.html">DataElement</a>, который задает абстрактные элементы, которые могут появиться где угодно - в FHIR, questionnaire questions, <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a>, <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a>, X12, OpenEHR, проприетарной базе данных и т. д. 
-DataElements могут мапиться на FHIR-ресурсы, типы данных и/или расширения, но сами по себе не имеют никакого заданного формата сериализации представления данных.</li>
 </ul>
 
 </div> 

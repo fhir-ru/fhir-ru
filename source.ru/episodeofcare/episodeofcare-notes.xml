@@ -45,7 +45,7 @@
 			<!-- The context could be in a Community/Aged Care/Disability/Mental Health setting. -->
 		</p>
 		<ul>
-			<li>Получен ReferralRequest<!-- ReferralRequest received --></li>
+			<li>Получен ServiceRequest<!-- ServiceRequest received --></li>
 			<li>
 				<i>
 				служащий приемной обрабатывает направление и решает, что требования соответствия первого уровня были выполнены
@@ -54,8 +54,8 @@
 					<!-- (e.g. Have capacity in the facility for the patient, the patient is covered by VA) -->
 				</i>
 			</li>
-			<li>EpisodeOfCare, созданный со статусом "planned", который размещен как выполняющий ReferralRequest
-			<!-- EpisodeOfCare created with status of planned which is allocated as fulfilling the ReferralRequest --></li>
+			<li>EpisodeOfCare, созданный со статусом "planned", который размещен как выполняющий ServiceRequest
+			<!-- EpisodeOfCare created with status of planned which is allocated as fulfilling the ServiceRequest --></li>
 			<li>
 				<i>Запланирована дальнейшая оценка потребностей, в этой точке, вероятно, выделяется управляющий медицинским обслуживанием
 				<!-- Further assessment of needs is scheduled to be taken, a care manager is probably allocated at this point --></i>
@@ -78,7 +78,7 @@
 			<li>
 				<i>Пациент пожелал переехать в другой район, чтобы быть ближе к семье<!-- Patient wished to move to another area to be closer to family --></i>
 			</li>
-			<li>Организация создает исходящий запрос на направление в новую организацию для продолжения предоставления ухода<!-- Organization creates an outgoing ReferralRequest to a new Organization to continue the care --></li>
+			<li>Организация создает исходящий ServiceRequest в новую организацию для продолжения предоставления ухода<!-- Organization creates an outgoing ServiceRequest to a new Organization to continue the care --></li>
 			<li>EpisodeOfCare закрыт<!-- The EpisodeOfCare is closed --></li>
 		</ul>
 		<p>

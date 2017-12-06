@@ -16,12 +16,10 @@
 <h1>Таблица статус-кодов FHIR<!-- FHIR Status Codes Grid --></h1>
 
 <p>
-Это страница внутреннего контроля качества. Назначение этой таблицы - помочь рецензентам сравнить применение статус-кодов ко всем ресурсам: там, где статус-коды имеют одинаковое значение, они должны иметь такой же самый код. Колонки не имеют формального описания; их назначение выводится из кодов, перечисленных в них.
-<!-- This is an internal QA page. The intent of this table is to help 
-reviewers compare the usage of status codes across resources: 
-where the status code means the same thing, it should have the 
-same code. The columns have no formal definition; their intent 
-is to be inferred from the codes listed in the column. -->
+This is an internal QA page. The intent of this table is to help 
+reviewers compare the mappings between the general resource 
+status codes and the status codes on particular resources. 
+<!-- Это страница внутреннего контроля качества. Назначение этой таблицы - помочь рецензентам сравнить применение статус-кодов ко всем ресурсам: там, где статус-коды имеют одинаковое значение, они должны иметь такой же самый код. Колонки не имеют формального описания; их назначение выводится из кодов, перечисленных в них. -->
 </p>
 
 <p>
@@ -32,6 +30,11 @@ use different terms for the same concept (e.g. 'withdrawn' and 'cancelled')
 then the domain concept name should be used. Conversely, where there 
 is no explicit reason for the codes to differ based on domain usage, 
 they should not. -->
+</p>
+
+<p>
+All status codes must be mapped to one of the general status codes,
+which are found in the <a href="codesystem-resource-status.html">Resource Status</a> code system.
 </p>
 
 <p>

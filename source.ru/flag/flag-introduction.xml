@@ -10,11 +10,11 @@
 информации, часто встречающийся в записях пациентов, и серьёзность потенциальных последствий упущения из виду каких-то фактов, эта
 избыточность считается целесообразной. Кроме того, некоторые флаги могут отражать информацию, не фиксируемую ни одним ресурсом в карте.
 (Например "у пациента дома большая собака").
-Флаг - это некоторый род предупреждения или уведомления пользователя, которым может быть медицинский специалист или другое лицо, вовлечённое в оказание медицинской помощи пациенту. Обычно представляет собой нечто достаточно важное, заслуживающее отдельного отображения, а не просто примечания в ресурсе.
+Флаг - это некоторый род предупреждения или уведомления пользователя, которым может быть медицинский специалист или другое лицо, вовлечённое в оказание медицинской помощи пациенту. Обычно представляет собой нечто достаточно важное, заслуживающее отдельного отображения, а не просто примечание в ресурсе.
 У флага есть элемент "subject", в котором указывается ресурс, который инициирует отображение этого флага. Это могут быть разные типы ресурсов, как показано в примерах ниже:
 
 <!-- A flag is a warning or notification of some sort presented to the user - who may be a clinician or some other person involve in patient care. It usually represents
-something of sufficient significance to be warrant a special display of some sort - rather than just a note in the resource.
+something of sufficient significance to warrant a special display of some sort - rather than just a note in the resource.
 
 A flag has a subject representing the resource that will trigger its display. This subject can be of different types, as described in the examples below: -->
 </p>

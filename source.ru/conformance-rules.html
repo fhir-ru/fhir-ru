@@ -114,10 +114,10 @@ that describe specific use cases may use other values for cardinality within the
 of the cardinality defined by the base resource. -->
 </p>
 <p>
-Обратите внимание, что когда присутствуют, элементы не могут быть пустыми - они ДОЛЖНЫ иметь атрибут value, элементы-потомки или расширения. Это означает, что назначение элементу минимального кардинального числа 1 не гарантирует присутствия допустимых данных; для гарантии, что требуемые данные будут присутствовать, необходимы определенные XPath-ограничения.
+Обратите внимание, что когда присутствуют, элементы не могут быть пустыми - они ДОЛЖНЫ иметь атрибут value, элементы-потомки или расширения. Это означает, что назначение элементу минимального кардинального числа 1 не гарантирует присутствия допустимых данных; для гарантии, что требуемые данные будут присутствовать, необходимы определенные FHIRPath-ограничения.
 <!-- Note that when present, elements cannot be empty - they SHALL have a value attribute, 
 child elements, or extensions. This means that setting an element to a minimum cardinality
-of 1 does not ensure that valid data will be present; specific XPath constraints are required
+of 1 does not ensure that valid data will be present; specific FHIRPath constraints are required
 to ensure that the required data will be present. -->
 </p>
 <p>
@@ -241,7 +241,6 @@ Here is a list of all the modifier elements defined in the specification:
 <a href="codesystem-definitions.html#CodeSystem">CodeSystem</a>,
 <a href="compartmentdefinition-definitions.html#CompartmentDefinition">CompartmentDefinition</a>,
 <a href="conceptmap-definitions.html#ConceptMap">ConceptMap</a>,
-<a href="dataelement-definitions.html#DataElement">DataElement</a>,
 <a href="expansionprofile-definitions.html#ExpansionProfile">ExpansionProfile</a>,
 <a href="graphdefinition-definitions.html#GraphDefinition">GraphDefinition</a>,
 <a href="implementationguide-definitions.html#ImplementationGuide">ImplementationGuide</a>,

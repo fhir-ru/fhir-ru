@@ -58,18 +58,18 @@
       preparation for delegation or reassignment (e.g., because it cannot be completed by the
       current owner), to restart a task due to a temporary failure (e.g., to reattempt completion of
       the activity), or in preparation to allow others to claim the task. --></p>
-    <h3>Использование операций над ресурсом Task<!-- Using Tasks with operations --></h3>
+<!--    <h3>Использование операций над ресурсом Task</h3>
     <p>Ресурс Task определяет несколько операций для обеспечения многогранного контроля над средой выполнения задач. Сервер, управляющий ресурсами Task, может разрешить себе беспрепятственный доступ в режиме чтения ко всем задачам, которые он поддерживает, однако ограничить себе доступ в режиме записи к ресурсам Task, чтобы не влиять на управление через конечный автомат задач. Вместо этого он может предложить операции над задачами, позволяющие строго контролировать операции записи, следуя общепринятым бизнес-правилам управления задачами. К примеру, только задачи в состоянии "In Process" могут перейти в состояние "Completed" или "Failed". Использование или поддержка этих операций не существенна в простых окружениях рабочего процесса, где активности задачи требуется мало управления. 
-    <!-- The Task resource defines several operations to enable rich control over the task execution
+    The Task resource defines several operations to enable rich control over the task execution
       environment. A server managing task resources may allow unfettered read access to all tasks
       that it maintains, but restrict write access to the task resources to itself in order to exert
       control over the task state machine. Instead, it might offer operations on tasks that enable
       strictly controlled write operations following commonly accepted business rules for task
       management. For example, only tasks that are in the "In Process" state might be allowed to be
       "Completed" or "Failed". Use or support of these operations is not essential in simple
-      workflow environments where task activity needs little management.  --></p>
+      workflow environments where task activity needs little management.</p>
     <p>There is no distinct operation for creating a new task because the FHIR RESTful API already
-      distinguishes between the create and update operations.</p>
+      distinguishes between the create and update operations.</p>  -->
     <p>The task history allows applications monitoring the state of a workflow to identify tasks
       that are long running, perhaps stuck in some queue, to enable management activities that could
       ensure completion. It also enables tracking of task statistics such as wait time, or time in

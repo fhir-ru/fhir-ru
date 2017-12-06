@@ -8,20 +8,21 @@
 <p>Communication is one of the <a href="workflow.html#event">event</a> resources in the FHIR <a href="workflow.html">workflow</a> specification.</p>
    
 <p>
-Данный ресурс представляет собой запись о коммуникации. Коммуникация - это передача информации от одной сущности, отправителя, к другой сущности, получателю.
+Данный ресурс представляет собой запись о коммуникации, даже если она запланированная или не состоявшаяся. Коммуникация - это передача информации от одной сущности, отправителя, к другой сущности, получателю.
 Отправителем и получателями могут быть пациенты, специалисты, имеющие отношение люди, организации и устройства. Сценарии использования коммуникации включают в себя:
-<!-- This resource is a record of a communication. A communication is a conveyance of information from one entity, a sender, to another entity, a receiver. 
+<!-- This resource is a record of a communication even if it is planned or has failed. A communication is a conveyance of information from one entity, a sender, to another entity, a receiver. 
 The sender and receivers may be patients, practitioners, related persons, organizations, or devices. Communication use cases include: -->
 </p>
 <ul>
 <li>Напоминание или оповещение, доставленное ответственному поставщику</li>
-<li>Зафиксированное уведомление от медсестры о том, что температура пациента превышает некоторое значение</li>
+<li>Зафиксированное уведомление от медсестры дежурному врачу  (или любому другому указанному лицу) о том, что температура пациента превышает некоторое значение</li>
 <li>Сообщение в орган общественного здравоохранения о пациенте с инфекционным заболеванием, подлежащим регистрации в учреждении общественного здравоохранения</li>
 <li>Обучающие материалы для пациента, высланные ему поставщиком</li>
 <!-- <li>A reminder or alert delivered to a responsible provider</li>
-<li>A recorded notification from the nurse that a patient's temperature exceeds a value</li>
+<li>A recorded notification from the nurse to the on call physician (or any other specified person) that a patient's temperature exceeds a value</li>
 <li>A notification to a public health agency of a patient presenting with a communicable disease reportable to the public health agency</li>
 <li>Patient educational material sent by a provider to a patient</li> -->
+<li>Unable to deliver lab results to ordering physician</li>
 </ul>
 <p>
 Не относящиеся к конкретному пациенту сценарии коммуникации могут включать в себя:

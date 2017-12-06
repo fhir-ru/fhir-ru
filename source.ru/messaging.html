@@ -46,13 +46,34 @@ FHIR-ресурсы могут использоваться в контекст�
 Данная спецификация игнорирует существование интерфейсных механизмов и агентов передачи сообщений, которые существуют между <i>источником</i> и <i>назначением</i>. 
 Либо они прозрачны для содержимого сообщения/транзакции и независимы от данной спецификации, либо они активно вовлечены в оперирование содержимым сообщений (в частности, заголовки источника и назначения часто меняются). Если эти промежуточные агенты модифицируют содержимое сообщения, тогда они становятся ответственными за исполнение контракта, который применяется (включая подходящие профили) в обоих направлениях.
 </p>
+
 <p>
 Ключевой аспект сообщения составляет влияние его содержания:
 </p>
 [%codelist http://hl7.org/fhir/message-significance-category%]
 <p>
-Некоторые события, определенные FHIR, отнесены к одной из описанных категорий, но остальные не возможно категоризировать заранее, поэтому категория должна определяться содержимым или контекстом.
+Некоторые события, определенные FHIR, отнесены к одной из описанных категорий, но остальные не возможно категоризировать заранее, поэтому категория должна определяться содержимым, контекстом или сценарием использования.
 </p>
+</p>
+<h4>Example: Elevation from Notification to Consequence</h4>
+<p> When it is necessary to receive an acknowledgement from multiple parties for a message 
+	of notification it becomes a message of consequence:
+	The sender will have to send multiple messages, even if they have the same endpoint. </p>
+<ul><li>Local protocol requires notification of all lab values</li>
+	<li>Local protocol requires that critical values must be acknowledged by both the ordering and primary provider.</li>
+	<li>Therefore a message of notification becomes a message of consequence.</li>
+	<li>Two messages SHALL be sent, each with a unique identifier. </li>	
+	<ul><li>One to the ordering provider</li>
+		<li>One to the primary provider</li></ul>
+			<li>Eachmessage SHALL have a unique acknowledgement</li>
+	</ul>
+<h3>Implication to Receiver</h3>
+<p>Another key aspect of a message is the impact of its destination.receiver. In some circumstances it may be sufficient to direct a message to an endpoint, while in others it may be necessary to direct the message to a specific organization or person.</p>
+<table class="grid">
+ <tr><td>Consequence</td><td>A message of consequence SHOULD have one and only one receiver specified.</td></tr>
+ <tr><td>Currency</td><td>A message of currency MAY have one or more receivers specified.</td></tr>
+ <tr><td>Notification</td><td>A message of currency MAY have one or more receivers specified.</td></tr>
+</table>
 
 <a name="synchronous"> </a>
 <a name="patterns"> </a>
@@ -80,6 +101,10 @@ FHIR-ресурсы могут использоваться в контекст�
  Когда получатель получает и обрабатывает сообщение, он отвечает новым сообщением с новым идентификатором, обернутым в комплект, который также имеет новый идентификатор. Ответное сообщение также цитирует MessageHeader.id в 
 MessageHeader.response.identifier запроса, для того чтобы система-источник могла установить связь между ответом и его запросом.
 </p>
+
+
+
+
 
 <a name="reliable"> </a>
 <h3>Отсутствие безотказного обмена сообщениями</h3>
