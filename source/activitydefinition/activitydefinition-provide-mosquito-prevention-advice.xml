@@ -138,17 +138,18 @@
 	<display value="Advice for patients about which mosquito repellents are effective and safe to use in pregnancy. [DEET, IF3535 and Picardin are safe during]"/>
 	<url value="https://www.epa.gov/insect-repellents/find-insect-repellent-right-you"/>
   </relatedArtifact>
-  <library>
-    <reference value="Library/zika-virus-intervention-logic"/>
-  </library>
+  <library value="Library/zika-virus-intervention-logic"/>
   <kind value="CommunicationRequest"/>
   <code>
     <text value="Provide Mosquito Prevention Advice"/>
   </code>
   <timingTiming>
     <event>
-      <extension url="http://hl7.org/fhir/StructureDefinition/cqif-cqlExpression">
-        <valueString value="Now()"/>
+      <extension url="http://hl7.org/fhir/StructureDefinition/cqf-expression">
+        <valueExpression>
+          <language value="text/cql"/>
+          <expression value="Now()"/>
+        </valueExpression>
       </extension>
     </event>
   </timingTiming>

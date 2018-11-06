@@ -135,6 +135,12 @@ public class TypeRef {
 		return name.equals("Reference") && !params.isEmpty();
 	}
 	
+  public boolean isCanonical()
+  {
+    // When the type is Reference(X), this is a resource reference
+    return name.equals("canonical") && !params.isEmpty();
+  }
+  
 	public boolean isContainedReference()
 	{
 		// When the type is Resource, it's a contained resource
@@ -171,7 +177,7 @@ public class TypeRef {
 	public boolean isSpecialType() {
 		return isXhtml() || isUnboundGenericParam() || isXmlLang() 
 				|| isWildcardType() || name.equals("Type") || name.equals("Narrative") || name.equals("Resource") || name.equals("ResourceBase")
-				|| name.equals("SharedDefinition") || isResourceReference() || name.equals("Structure") ||
+				|| name.equals("SharedDefinition") || isResourceReference() || name.equals("Structure") || name.equals("OperationOutcome") ||
 				isContainedReference() || isExtension();
 	}
 
@@ -216,6 +222,11 @@ public class TypeRef {
 
   public void setVersioning(ReferenceVersionRules versioning) {
     this.versioning = versioning;
+  }
+
+  @Override
+  public String toString() {
+    return summary();
   }
   
   

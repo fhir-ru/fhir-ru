@@ -19,6 +19,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 import org.apache.commons.io.IOUtils;
+import org.fhir.ucum.UcumService;
 import org.hl7.fhir.r4.conformance.ProfileUtilities;
 import org.hl7.fhir.r4.conformance.ProfileUtilities.ProfileKnowledgeProvider;
 import org.hl7.fhir.r4.context.IWorkerContext.ILoggingService.LogCategory;
@@ -48,6 +49,7 @@ import org.hl7.fhir.r4.model.StructureMap;
 import org.hl7.fhir.r4.model.StructureMap.StructureMapModelMode;
 import org.hl7.fhir.r4.model.StructureMap.StructureMapStructureComponent;
 import org.hl7.fhir.r4.model.ValueSet;
+import org.hl7.fhir.r4.terminologies.TerminologyClient;
 import org.hl7.fhir.r4.terminologies.ValueSetExpander.ValueSetExpansionOutcome;
 import org.hl7.fhir.r4.terminologies.ValueSetExpansionCache;
 import org.hl7.fhir.r4.utils.INarrativeGenerator;
@@ -60,9 +62,12 @@ import org.hl7.fhir.exceptions.FHIRFormatError;
 import org.hl7.fhir.utilities.CSFileInputStream;
 import org.hl7.fhir.utilities.OIDUtils;
 import org.hl7.fhir.utilities.Utilities;
+import org.hl7.fhir.utilities.cache.NpmPackage;
 import org.hl7.fhir.utilities.validation.ValidationMessage;
 import org.hl7.fhir.utilities.validation.ValidationMessage.IssueType;
 import org.hl7.fhir.utilities.validation.ValidationMessage.Source;
+
+import com.google.gson.JsonObject;
 
 import ca.uhn.fhir.parser.DataFormatException;
 
@@ -88,19 +93,19 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
   private String revision;
   private String date;
   private IValidatorFactory validatorFactory;
+  private boolean ignoreProfileErrors;
   
-  public SimpleWorkerContext() {
+  public SimpleWorkerContext() throws FileNotFoundException, IOException, FHIRException {
     super();
   }
   
-  public SimpleWorkerContext(SimpleWorkerContext other) {
+  public SimpleWorkerContext(SimpleWorkerContext other) throws FileNotFoundException, IOException, FHIRException {
     super();
     copy(other);
   }
   
   protected void copy(SimpleWorkerContext other) {
     super.copy(other);
-    systems.addAll(other.systems);
     questionnaire = other.questionnaire;
     binaries.putAll(other.binaries);
     version = other.version;
@@ -124,6 +129,26 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
   public static SimpleWorkerContext fromPack(String path) throws FileNotFoundException, IOException, FHIRException {
     SimpleWorkerContext res = new SimpleWorkerContext();
     res.loadFromPack(path, null);
+    return res;
+  }
+
+  public static SimpleWorkerContext fromPackage(NpmPackage pi, boolean allowDuplicates) throws FileNotFoundException, IOException, FHIRException {
+    SimpleWorkerContext res = new SimpleWorkerContext();
+    res.setAllowLoadingDuplicates(allowDuplicates);
+    res.loadFromPackage(pi, null);
+    return res;
+  }
+
+  public static SimpleWorkerContext fromPackage(NpmPackage pi) throws FileNotFoundException, IOException, FHIRException {
+    SimpleWorkerContext res = new SimpleWorkerContext();
+    res.loadFromPackage(pi, null);
+    return res;
+  }
+
+  public static SimpleWorkerContext fromPackage(NpmPackage pi, IContextResourceLoader loader) throws FileNotFoundException, IOException, FHIRException {
+    SimpleWorkerContext res = new SimpleWorkerContext();
+    res.setAllowLoadingDuplicates(true);
+    res.loadFromPackage(pi, loader);
     return res;
   }
 
@@ -179,15 +204,13 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
       loadBytes(name, stream);
   }
 
-  public String connectToTSServer(String url) throws URISyntaxException {
-    txServer = new FHIRToolingClient(url);
-    txServer.setTimeout(30000);
-    return txServer.getCapabilitiesStatementQuick().getSoftware().getVersion();
-  }
 
-  public String connectToTSServer(FHIRToolingClient client) throws URISyntaxException {
-    txServer = client;
-    return txServer.getCapabilitiesStatementQuick().getSoftware().getVersion();
+  public String connectToTSServer(TerminologyClient client, String log) throws URISyntaxException, FHIRException {
+    tlog("Connect to "+client.getAddress());
+    txClient = client;
+    txLog = new HTMLClientLogger(log);
+    txClient.setLogger(txLog);
+    return txClient.getCapabilitiesStatementQuick().getSoftware().getVersion();
   }
 
 	public void loadFromFile(InputStream stream, String name, IContextResourceLoader loader) throws IOException, FHIRException {
@@ -219,28 +242,42 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
 	}
 
   private void loadFromFileJson(InputStream stream, String name, IContextResourceLoader loader) throws IOException, FHIRException {
-    Bundle f;
+    Bundle f = null;
     try {
       if (loader != null)
         f = loader.loadBundle(stream, true);
       else {
         JsonParser json = new JsonParser();
-        f = (Bundle) json.parse(stream);
+        Resource r = json.parse(stream);
+        if (r instanceof Bundle)
+          f = (Bundle) r;
+        else
+          cacheResource(r);
       }
     } catch (FHIRFormatError e1) {
       throw new org.hl7.fhir.exceptions.FHIRFormatError(e1.getMessage(), e1);
     }
-    for (BundleEntryComponent e : f.getEntry()) {
-
-      if (e.getFullUrl() == null) {
-        logger.logDebugMessage(LogCategory.CONTEXT, "unidentified resource in " + name+" (no fullUrl)");
-      }
-      cacheResource(e.getResource());
+    if (f != null)
+      for (BundleEntryComponent e : f.getEntry()) {
+        cacheResource(e.getResource());
     }
   }
 
 	private void loadFromPack(String path, IContextResourceLoader loader) throws FileNotFoundException, IOException, FHIRException {
 		loadFromStream(new CSFileInputStream(path), loader);
+	}
+  
+	public void loadFromPackage(NpmPackage pi, IContextResourceLoader loader, String... types) throws FileNotFoundException, IOException, FHIRException {
+	  if (types.length == 0)
+	    types = new String[] { "StructureDefinition", "ValueSet", "CodeSystem", "SearchParameter", "OperationDefinition", "Questionnaire","ConceptMap","StructureMap", "NamingSystem"};
+	  for (String s : pi.list("package")) {
+	    if (s.contains("-") && s.endsWith(".json")) {
+	      String t = s.substring(0, s.indexOf("-"));
+	      if (Utilities.existsInList(t, types)) {
+	        loadDefinitionItem(s, pi.load("package", s), loader);
+	      }
+	    }
+	  }
 	}
 
   public void loadFromFile(String file, IContextResourceLoader loader) throws IOException, FHIRException {
@@ -323,18 +360,11 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
 
 
 
-	public int totalCount() {
-		return valueSets.size() +  maps.size() + structures.size() + transforms.size();
-	}
-
-	public void setCache(ValueSetExpansionCache cache) {
-	  this.expansionCache = cache;	
-	}
 
   @Override
   public List<String> getResourceNames() {
     List<String> result = new ArrayList<String>();
-    for (StructureDefinition sd : structures.values()) {
+    for (StructureDefinition sd : listStructures()) {
       if (sd.getKind() == StructureDefinitionKind.RESOURCE && sd.getDerivation() == TypeDerivationRule.SPECIALIZATION)
         result.add(sd.getName());
     }
@@ -345,7 +375,7 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
   @Override
   public List<String> getTypeNames() {
     List<String> result = new ArrayList<String>();
-    for (StructureDefinition sd : structures.values()) {
+    for (StructureDefinition sd : listStructures()) {
       if (sd.getKind() != StructureDefinitionKind.LOGICAL && sd.getDerivation() == TypeDerivationRule.SPECIALIZATION)
         result.add(sd.getName());
     }
@@ -409,14 +439,14 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
 
   @Override
   public Set<String> typeTails() {
-    return new HashSet<String>(Arrays.asList("Integer","UnsignedInt","PositiveInt","Decimal","DateTime","Date","Time","Instant","String","Uri","Oid","Uuid","Id","Boolean","Code","Markdown","Base64Binary","Coding","CodeableConcept","Attachment","Identifier","Quantity","SampledData","Range","Period","Ratio","HumanName","Address","ContactPoint","Timing","Reference","Annotation","Signature","Meta"));
+    return new HashSet<String>(Arrays.asList("Integer","UnsignedInt","PositiveInt","Decimal","DateTime","Date","Time","Instant","String","Uri","Url","Canonical","Oid","Uuid","Id","Boolean","Code","Markdown","Base64Binary","Coding","CodeableConcept","Attachment","Identifier","Quantity","SampledData","Range","Period","Ratio","HumanName","Address","ContactPoint","Timing","Reference","Annotation","Signature","Meta"));
   }
 
   @Override
   public List<StructureDefinition> allStructures() {
     List<StructureDefinition> result = new ArrayList<StructureDefinition>();
     Set<StructureDefinition> set = new HashSet<StructureDefinition>();
-    for (StructureDefinition sd : structures.values()) {
+    for (StructureDefinition sd : listStructures()) {
       if (!set.contains(sd)) {
         result.add(sd);
         set.add(sd);
@@ -425,51 +455,18 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
     return result;
   }
 
-	@Override
-  public List<MetadataResource> allConformanceResources() {
-    List<MetadataResource> result = new ArrayList<MetadataResource>();
-    result.addAll(structures.values());
-    result.addAll(codeSystems.values());
-    result.addAll(valueSets.values());
-    result.addAll(maps.values());
-    result.addAll(transforms.values());
-    return result;
+  public void loadBinariesFromFolder(String folder) throws FileNotFoundException, Exception {
+    for (String n : new File(folder).list()) {
+      loadBytes(n, new FileInputStream(Utilities.path(folder, n)));
+    }
   }
-
-	@Override
-	public String oid2Uri(String oid) {
-		String uri = OIDUtils.getUriForOid(oid);
-		if (uri != null)
-			return uri;
-		for (NamingSystem ns : systems) {
-			if (hasOid(ns, oid)) {
-				uri = getUri(ns);
-				if (uri != null)
-					return null;
-			}
-		}
-		return null;
+  
+  public void loadBinariesFromFolder(NpmPackage pi) throws FileNotFoundException, Exception {
+    for (String n : pi.list("other")) {
+      loadBytes(n, pi.load("other", n));
+    }
   }
-
-	private String getUri(NamingSystem ns) {
-		for (NamingSystemUniqueIdComponent id : ns.getUniqueId()) {
-			if (id.getType() == NamingSystemIdentifierType.URI)
-				return id.getValue();
-		}
-		return null;
-	}
-
-	private boolean hasOid(NamingSystem ns, String oid) {
-		for (NamingSystemUniqueIdComponent id : ns.getUniqueId()) {
-			if (id.getType() == NamingSystemIdentifierType.OID && id.getValue().equals(oid))
-				return true;
-		}
-		return false;
-	}
-
-
-
-
+  
   public void loadFromFolder(String folder) throws FileNotFoundException, Exception {
     for (String n : new File(folder).list()) {
       if (n.endsWith(".json")) 
@@ -495,11 +492,6 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
     }
   }
 
-  public void dropResource(Resource r) throws FHIRException {
-   throw new FHIRException("Not done yet");
-    
-  }
-
   public Map<String, byte[]> getBinaries() {
     return binaries;
   }
@@ -519,13 +511,10 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
     return version+"-"+revision;
   }
 
-  public Map<String, StructureMap> getTransforms() {
-    return transforms;
-  }
   
   public List<StructureMap> findTransformsforSource(String url) {
     List<StructureMap> res = new ArrayList<StructureMap>();
-    for (StructureMap map : transforms.values()) {
+    for (StructureMap map : listTransforms()) {
       boolean match = false;
       boolean ok = true;
       for (StructureMapStructureComponent t : map.getStructure()) {
@@ -562,12 +551,13 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
         List<ValidationMessage> msgs = new ArrayList<ValidationMessage>();
         List<String> errors = new ArrayList<String>();
         ProfileUtilities pu = new ProfileUtilities(this, msgs, this);
+        pu.setThrowException(false);
         pu.sortDifferential(sd, p, p.getUrl(), errors);
         for (String err : errors)
           msgs.add(new ValidationMessage(Source.ProfileValidator, IssueType.EXCEPTION, p.getUserString("path"), "Error sorting Differential: "+err, ValidationMessage.IssueSeverity.ERROR));
         pu.generateSnapshot(sd, p, p.getUrl(), p.getName());
         for (ValidationMessage msg : msgs) {
-          if (msg.getLevel() == ValidationMessage.IssueSeverity.ERROR || msg.getLevel() == ValidationMessage.IssueSeverity.FATAL)
+          if ((!ignoreProfileErrors && msg.getLevel() == ValidationMessage.IssueSeverity.ERROR) || msg.getLevel() == ValidationMessage.IssueSeverity.FATAL)
             throw new DefinitionException("Profile "+p.getName()+" ("+p.getUrl()+"). Error generating snapshot: "+msg.getMessage());
         }
         if (!p.hasSnapshot())
@@ -577,5 +567,16 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
     }
     super.seeMetadataResource(r, map, addId);
   }
+
+  public boolean isIgnoreProfileErrors() {
+    return ignoreProfileErrors;
+  }
+
+  public void setIgnoreProfileErrors(boolean ignoreProfileErrors) {
+    this.ignoreProfileErrors = ignoreProfileErrors;
+  }
+
+
+
 
 }

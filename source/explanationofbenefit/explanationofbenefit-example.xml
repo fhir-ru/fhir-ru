@@ -1,4 +1,4 @@
-<ExplanationOfBenefit xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+﻿<ExplanationOfBenefit xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
 	<id value="EB3500"/>
 
 	<text>
@@ -15,10 +15,12 @@
 
 	<type>
 		<coding>
-			<system value="http://hl7.org/fhir/ex-claimtype"/>
+			<system value="http://terminology.hl7.org/CodeSystem/claim-type"/>
 			<code value="oral"/>
 		</coding>
 	</type>
+	
+	<use value="claim"/>
 
 	<patient>
 		<reference value="Patient/pat1"/>
@@ -30,13 +32,25 @@
 		<reference value="Practitioner/1"/>
 	</enterer>
 
+	<insurer>
+		<reference value="Organization/3"/>
+	</insurer>
+
 	<provider>
 		<reference value="Practitioner/1"/>
 	</provider>
 
-	<organization>
-		<reference value="Organization/2"/>
-	</organization>
+	<payee>
+		<type>
+			<coding>
+				<system value="http://terminology.hl7.org/CodeSystem/payeetype"/>
+				<code value="provider"/>
+			</coding>
+		</type>
+		<party>
+			<reference value="Organization/2"/>
+		</party>
+	</payee>
 
 	<facility>
 		<reference value="Location/1"/>
@@ -51,24 +65,8 @@
 	</claimResponse> 
 
 	<outcome value="complete" />
-	
-	<disposition value="Claim settled as per contract."/>
 
-	<payee>
-		<type>
-			<coding>
-				<system value="http://hl7.org/fhir/payeetype"/>
-				<code value="provider"/>
-			</coding>
-		</type>
-		<resource>
-			<system value="http://hl7.org/fhir/resource-type-link"/>
-			<code value="organization"/>
-		</resource>
-		<party>
-			<reference value="Organization/2"/>
-		</party>
-	</payee>
+	<disposition value="Claim settled as per contract."/>
 
 	<careTeam>
 		<sequence value="1"/>
@@ -78,6 +76,7 @@
 	</careTeam>
 
 	<insurance>
+		<focal value="true"/>
 		<coverage>
 			<reference value="Coverage/9876B1"/>
 		</coverage>
@@ -85,23 +84,21 @@
 
 	<item>
 		<sequence value="1"/>
-		<careTeamLinkId value="1"/>
-		<service>
+		<careTeamSequence value="1"/>
+		<productOrService>
 			<coding>
-				<system value="http://hl7.org/fhir/service-uscls"/>
-				<code value="1200"/>
+				<system value="http://terminology.hl7.org/CodeSystem/ex-USCLS"/>
+				<code value="1205"/>
 			</coding>
-		</service>
+		</productOrService>
 		<servicedDate value="2014-08-16"/>
 		<unitPrice>
 			<value value="135.57"/>
-			<system value="urn:iso:std:iso:4217"/>
-			<code value="USD"/> 
+			<currency value="USD"/> 
 		</unitPrice> 
 		<net>
 			<value value="135.57"/>
-			<system value="urn:iso:std:iso:4217"/>
-			<code value="USD"/> 
+			<currency value="USD"/> 
 		</net> 
 		<encounter>
 			<reference value="Encounter/example"/>
@@ -114,8 +111,7 @@
 			</category>
 			<amount>
 				<value value="120.00"/>
-				<system value="urn:iso:std:iso:4217"/>
-				<code value="USD"/> 
+				<currency value="USD"/> 
 			</amount> 
 		</adjudication>
 		<adjudication>
@@ -134,22 +130,33 @@
 			</category>
 			<amount>
 				<value value="96.00"/>
-				<system value="urn:iso:std:iso:4217"/>
-				<code value="USD"/> 
+				<currency value="USD"/> 
 			</amount> 
 		</adjudication>
 	</item>
 
-	<totalCost>
-		<value value="135.57"/>
-		<system value="urn:iso:std:iso:4217"/>
-		<code value="USD"/> 
-	</totalCost>
-
-	<totalBenefit>
-		<value value="96.00"/>
-		<system value="urn:iso:std:iso:4217"/>
-		<code value="USD"/> 
-	</totalBenefit>
+	<total>
+		<category>
+			<coding>
+				<code value="submitted"/>
+			</coding>
+		</category>
+		<amount>
+			<value value="135.57"/>
+			<currency value="USD"/> 
+		</amount> 
+	</total>
+	
+	<total>
+		<category>
+			<coding>
+				<code value="benefit"/>
+			</coding>
+		</category>
+		<amount>
+			<value value="96.00"/>
+			<currency value="USD"/> 
+		</amount> 
+	</total>
 
 </ExplanationOfBenefit>

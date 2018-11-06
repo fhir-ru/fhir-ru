@@ -2,8 +2,11 @@ package org.hl7.fhir.igtools.publisher;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import org.hl7.fhir.exceptions.FHIRException;
@@ -29,13 +32,18 @@ public class SpecMapManager {
   private String name;
   private Set<String> targetSet = new HashSet<String>();
   private Set<String> imageSet = new HashSet<String>();
+  private String version;
 
-  public SpecMapManager(String version, String svnRevision, Calendar genDate, String webUrl) {
+  public SpecMapManager(String npmName, String igVersion, String toolVersion, String buildId, Calendar genDate, String webUrl) {
     spec = new JsonObject();
-    spec.addProperty("version", version);
-    spec.addProperty("build", svnRevision);
+    if (npmName != null)
+      spec.addProperty("npm-name", npmName);
+    spec.addProperty("ig-version", igVersion);
+    spec.addProperty("tool-version", toolVersion);
+    spec.addProperty("tool-build", buildId);
     spec.addProperty("webUrl", webUrl);
     spec.addProperty("date", new SimpleDateFormat("yyyy-MM-dd").format(genDate.getTime()));
+    spec.addProperty("date-time", new SimpleDateFormat("yyyyMMddhhmmssZ").format(genDate.getTime()));
     paths = new JsonObject();
     spec.add("paths", paths);
     pages = new JsonObject();
@@ -46,7 +54,8 @@ public class SpecMapManager {
     spec.add("images", images);
   }
 
-  public SpecMapManager(byte[] bytes) throws JsonSyntaxException, IOException {
+  public SpecMapManager(byte[] bytes, String version) throws JsonSyntaxException, IOException {
+    this.version = version;
     spec = (JsonObject) new com.google.gson.JsonParser().parse(TextFile.bytesToString(bytes));
     paths = spec.getAsJsonObject("paths");
     pages = spec.getAsJsonObject("pages");
@@ -73,11 +82,21 @@ public class SpecMapManager {
   }
 
   public String getVersion() throws FHIRException {
-    return str(spec, "version");
+    if (spec.has("tool-version")) 
+      return str(spec, "ig-version");
+    else
+      return version;
   }
 
+  public String getNpmName() throws FHIRException {
+    return strOpt(spec, "npm-name", "fhir");
+  }
+  
   public String getBuild() throws FHIRException {
-    return str(spec, "build");
+    if (spec.has("tool-build")) 
+      return str(spec, "tool-build");
+    else
+      return str(spec, "build");
   }
 
   /**
@@ -93,6 +112,13 @@ public class SpecMapManager {
 
   public String getPath(String url) throws Exception {
     return strOpt(paths, url);
+  }
+
+  public List<String> getPathUrls() {
+    List<String> res = new ArrayList<String>();
+    for (Entry<String, JsonElement> e : paths.entrySet()) 
+      res.add(e.getKey());
+    return res;
   }
 
   public String getPage(String title) throws Exception {
@@ -113,6 +139,17 @@ public class SpecMapManager {
   private String strOpt(JsonObject obj, String name) throws FHIRException {
     if (!obj.has(name))
       return null;
+    if (!(obj.get(name) instanceof JsonPrimitive))
+      throw new FHIRException("Property "+name+" not a primitive");
+    JsonPrimitive p = (JsonPrimitive) obj.get(name);
+    if (!p.isString())
+      throw new FHIRException("Property "+name+" not a string");
+    return p.getAsString();
+  }
+
+  private String strOpt(JsonObject obj, String name, String def) throws FHIRException {
+    if (!obj.has(name))
+      return def;
     if (!(obj.get(name) instanceof JsonPrimitive))
       throw new FHIRException("Property "+name+" not a primitive");
     JsonPrimitive p = (JsonPrimitive) obj.get(name);
@@ -184,5 +221,21 @@ public class SpecMapManager {
   public void setName(String name) {
     this.name = name;
   }
+
+  public Set<String> getTargets() {
+    return targetSet;
+  }
+
+  public Set<String> getImages() {
+    return imageSet;
+  }
+
+  public List<String> getPages() {
+    List<String> res = new ArrayList<String>();
+    for (Entry<String, JsonElement> e : pages.entrySet()) 
+      res.add(e.getKey());
+    return res;
+  }
+
 
 }

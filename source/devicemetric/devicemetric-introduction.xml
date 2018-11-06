@@ -1,7 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<a name="scope"> </a>
+<a name="scope"></a>
 <h2>Scope and Usage</h2>
 <p>
 The DeviceMetric resource describes mandatory static properties that characterize a direct or derived, quantitative or qualitative biosignal measurement, setting, or calculation produced by a medical device. 
@@ -16,14 +16,13 @@ For the initial scope, this DeviceMetric resource is only applicable to describe
 </div>
 
 <div>
-<a name="bnr"> </a>
+<a name="bnr"></a>
 <h2>Boundaries and Relationships</h2>
 <p>
 There are two related resources
 </p>
 <ul>
  <li><a href="device.html">Device</a>  - The physical device that this DeviceMetric belongs to.</li>
- <li><a href="devicecomponent.html">DeviceComponent</a>  - The DeviceComponent that this DeviceMetric is part of. This can be a DeviceComponent of any kind like a VirtualMedicalDevice, a MedicalDeviceSystem, or a Channel.</li>
 </ul>
 
 </div>

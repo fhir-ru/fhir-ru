@@ -1,7 +1,13 @@
 package org.hl7.fhir.igtools.publisher;
 
-import java.io.*;
-import java.util.*;
+import java.io.ByteArrayInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -10,7 +16,11 @@ import org.apache.commons.io.IOUtils;
 import org.hl7.fhir.r4.context.IWorkerContext;
 import org.hl7.fhir.r4.context.IWorkerContext.ILoggingService;
 import org.hl7.fhir.r4.formats.FormatUtilities;
-import org.hl7.fhir.r4.model.*;
+import org.hl7.fhir.r4.model.CanonicalType;
+import org.hl7.fhir.r4.model.Reference;
+import org.hl7.fhir.r4.model.StructureDefinition;
+import org.hl7.fhir.r4.model.Type;
+import org.hl7.fhir.r4.model.UriType;
 import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
 
@@ -124,8 +134,8 @@ public class ZipFetcher implements IFetchFile {
 
   @Override
   public FetchedFile fetch(Type source, FetchedFile src) throws Exception {
-    if (source instanceof Reference) {
-      String s = ((Reference)source).getReference();
+    if (source instanceof Reference || source instanceof CanonicalType) {
+      String s = source instanceof CanonicalType ? source.primitiveValue() : ((Reference)source).getReference();
       if (!s.contains("/"))
         throw new Exception("Bad Source Reference '"+s+"' - should have the format [Type]/[id]");
       String type = s.substring(0,  s.indexOf("/"));

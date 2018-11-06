@@ -26,13 +26,15 @@ signatures.html
       <page title="Namespace List" filename="ns.html"/>
       <page title="Workgroup List" filename="wglist.html"/>
       <page title="Getting Started" filename="modules.html"/>
-<!--      <page title="Ballot Introduction" filename="ballot-intro.html"/> -->
+      <page title="Ballot Introduction" filename="ballot-intro.html"/> 
     </page>
 
     <!-- foundation - quite a lot of documentation -->
     <page title="Foundation" filename="foundation-module.html" icon="foundation.png">
       <!--			<page title="Ballot Intro" filename="ballot-intro.html"/> -->
-      <page title="Conformance" filename="conformance-rules.html"/>
+      <page title="Conformance" filename="conformance-rules.html">
+        <page title="Best Practices" filename="best-practices.html"/>
+      </page>
       <page title="Resource Life Cycles" filename="lifecycle.html"/>
       <page title="References between Resources" filename="references.html">
         <page title="Definitions" filename="references-definitions.html"/>
@@ -49,39 +51,29 @@ signatures.html
       <page title="Formats" filename="formats.html">
         <page title="XML" filename="xml.html"/>
         <page title="JSON" filename="json.html"/>
+        <page title="ND-JSON" filename="nd-json.html"/>
+        <page title="RDF" filename="rdf.html"/>
       </page>
       <page title="Change Management and Versioning" filename="versions.html">
-        <page title="Inter-version Compatibility" filename="compatibility.html"/>
         <page title="Timelines" filename="timelines.html"/>
       </page>
+      <page title="Managing Multiple FHIR Versions" filename="versioning.html"/>
+      <page title="FHIRPath" filename="fhirpath.html"/>
       <page title="Version History" filename="history.html"/>
       <page title="Differences from DSTU Release 2" filename="diff.html"/>
-      <page title="Release 2/3 Transforms" filename="r2maps.html"/>
+      <page title="Release 2/3 Transforms" filename="r3maps.html"/>
 
       <page title="Introduction" filename="overview.html"/>
       <page title="Developer Introduction" filename="overview-dev.html"/>
       <page title="Clinical Introduction" filename="overview-clinical.html"/>
       <page title="Architect's Introduction" filename="overview-arch.html"/>
       <page title="Summary" filename="summary.html"/>
-      <page title="Glossary" filename="help.html"/>
+      <page title="Glossary #1" filename="help.html"/>
+      <page title="Glossary #2" filename="glossary.html"/>
       <page title="License and Legal Terms" filename="license.html"/>
       <page title="Community and Credits" filename="credits.html"/>
       <page title="Outstanding Issues" filename="todo.html"/>
       <page title="Coming Challenges" filename="change.html"/>
-
-      <page title="RESTful API" filename="http.html">
-        <page title="Search" filename="search.html"/>
-        <page title="GraphQL" filename="graphql.html"/>
-        <page title="_filter Parameter" filename="search_filter.html"/>
-        <page title="Search Parameter Registry" filename="searchparameter-registry.html"/>
-        <page title="FHIRPath Patch" filename="fhirpatch.html"/>
-      </page>
-      <page title="Operations" filename="operations.html">
-        <page title="Example" filename="op-example-request.html"/>
-      </page>
-      <page title="Documents" filename="documents.html"/>
-      <page title="Messaging" filename="messaging.html"/>
-      <page title="Services" filename="services.html"/>
 
       <page title="Data Types" filename="datatypes.html">
         <page title="Examples" filename="datatypes-examples.html"/>
@@ -101,6 +93,7 @@ signatures.html
       <page type="resource" resource="DomainResource"/>
       <page title="Element" filename="element.html">
         <page title="Element - Detailed Descriptions" filename="element-definitions.html"/>
+        <page title="Extensions - Element" filename="element-extras.html"/>
       </page>
       <page title="BackboneElement" filename="backboneelement.html">
         <page title="BackboneElement Detailed Descriptions" filename="backboneelement-definitions.html"/>
@@ -109,41 +102,58 @@ signatures.html
         <page title="ElementDefinition Examples" filename="elementdefinition-examples.html"/>
         <page title="ElementDefinition Detailed Descriptions" filename="elementdefinition-definitions.html"/>
         <page title="ElementDefinition Mappings" filename="elementdefinition-mappings.html"/>
+        <page title="ElementDefinition Extensions" filename="elementdefinition-extras.html"/>
       </page>
 
       <page title="Resource Guide" filename="resourceguide.html"/>
       <page title="5Ws Pattern" filename="fivews.html"/>
+      <page title="FMG Process Page" filename="fmg.html"/>
 
       <!-- infrastructure resources -->
       <page type="resource" resource="Basic"/>
       <page type="resource" resource="Binary"/>
       <page type="resource" resource="Bundle"/>
-      <page type="resource" resource="Media"/>
+      
 
       <page type="resource" resource="Questionnaire"/>
       <page type="resource" resource="QuestionnaireResponse"/>
       <page type="resource" resource="List"/>
+      <page type="resource" resource="CatalogEntry"/>
       <page type="resource" resource="Composition"/>
       <page type="resource" resource="DocumentReference"/>
       <page type="resource" resource="DocumentManifest"/>
-      <page type="resource" resource="EntryDefinition"/>
+      <page type="resource" resource="ItemInstance"/>
 
       <page type="resource" resource="OperationOutcome"/>
       <page type="resource" resource="Parameters"/>
       <page type="resource" resource="Subscription"/>
-      <page type="resource" resource="UserSession"/>
       <page type="resource" resource="MessageHeader"/>
       <page type="resource" resource="MessageDefinition"/>
     </page>
 
-    <page title="Linked Data" filename="linked-data-module.html" icon="linked-data.png">
-      <page title="RDF" filename="rdf.html"/>
+    <page title="Exchange" filename="exchange-module.html" icon="exchange.png">
+      <page title="RESTful API" filename="http.html">
+        <page title="Search" filename="search.html"/>
+        <page title="GraphQL" filename="graphql.html"/>
+        <page title="_filter Parameter" filename="search_filter.html"/>
+        <page title="Search Parameter Registry" filename="searchparameter-registry.html"/>
+        <page title="FHIRPath Patch" filename="fhirpatch.html"/>
+        <page title="Asynchronous API" filename="async.html"/>
+      </page>
+      <page title="Operations" filename="operations.html">
+        <page title="Example" filename="op-example-request.html"/>
+      </page>
+      <page title="Documents" filename="documents.html"/>
+      <page title="Messaging" filename="messaging.html"/>
+      <page title="Services" filename="services.html"/>
+      <page title="Persistent Storage" filename="storage.html"/>
       <page title="Status Code Map" filename="sc.html"/>
       <page title="W5 Map" filename="w5.html"/>
     </page>
 
     <page title="Terminology" filename="terminology-module.html" icon="terminology.png">
       <page title="Using Codes" filename="terminologies.html"/>
+        <page title="Terminology Binding Examples" filename="terminologies-binding-examples.html"/>
       <page title="Code Systems" filename="terminologies-systems.html">
         <page title="SNOMED CT" filename="snomedct.html">
           <page title="SNOMED CT Usage Report" filename="snomedct-usage.html"/>
@@ -158,6 +168,8 @@ signatures.html
         <page title="CPT" filename="cpt.html"/>
         <page title="NDC" filename="ndc.html"/>
         <page title="ICD-X" filename="icd.html"/>
+        <page title="ISO-3166" filename="iso3166.html"/>
+        <page title="MDC Codes" filename="mdc.html"/>
         <pages type="codesystem" filename="template-codesystem.html"/>
         <pages type="v2-table" filename="template-v2.html"/>
         <page title="Code Systems" filename="terminologies-v3.html"/>
@@ -173,7 +185,6 @@ signatures.html
       <page type="resource" resource="ValueSet"/>
       <page type="resource" resource="ConceptMap"/>
       <page type="resource" resource="NamingSystem"/>
-      <page type="resource" resource="ExpansionProfile"/>
       <page type="resource" resource="TerminologyCapabilities"/>
     </page>
 
@@ -188,8 +199,6 @@ signatures.html
       <page type="resource" resource="CompartmentDefinition"/>
       <page type="resource" resource="DataElement"/>
       <page type="resource" resource="ImplementationGuide"/>
-      <page type="resource" resource="ImplementationGuideInput"/>
-      <page type="resource" resource="ImplementationGuideOutput"/>
       <page type="resource" resource="GraphDefinition"/>
     </page>
 
@@ -210,6 +219,7 @@ signatures.html
       <page type="resource" resource="TestScript" />
       <page type="resource" resource="TestReport" />
       <page title="Validating Resources" filename="validation.html"/>
+      <page title="Mappings to other Standards" filename="mappings.html"/>
       <page title="Mapping Language" filename="mapping-language.html">
         <page title="Mapping Language Tutorial" filename="mapping-tutorial.html"/>
       </page>
@@ -221,6 +231,7 @@ signatures.html
       <page title="Managing Resource Identity" filename="managing.html"/>
       <page title="Interaction Patterns" filename="pushpull.html"/>
       <page title="Update Rules" filename="updates.html"/>
+      <page title="Multi-Language Support" filename="languages.html"/>
       <page title="Clinical Examples" filename="integrated-examples.html"/>
 
       <page title="Comparison" filename="comparison.html">
@@ -251,10 +262,15 @@ signatures.html
       <page type="resource" resource="Flag"/>
 
       <page type="resource" resource="Device"/>
-      <page type="resource" resource="DeviceComponent"/>
+      <page type="resource" resource="DeviceDefinition"/>
       <page type="resource" resource="DeviceMetric"/>
       <page type="resource" resource="Substance"/>
-
+      <page type="resource" resource="SubstanceSpecification"/>
+      <page type="resource" resource="SubstancePolymer"/>
+      <page type="resource" resource="SubstanceProtein"/>
+      <page type="resource" resource="SubstanceNucleicAcid"/>
+      <page type="resource" resource="SubstanceReferenceInformation"/>
+      <page type="resource" resource="SubstanceSourceMaterial"/>
       <page type="resource" resource="Person"/>
       <page type="resource" resource="Linkage"/>
       <page type="resource" resource="Communication"/>
@@ -262,9 +278,16 @@ signatures.html
       <page type="resource" resource="ResearchStudy"/>
       <page type="resource" resource="ResearchSubject"/>
   	  <page type="resource" resource="ChargeItem"/>
+	  <page type="resource" resource="ChargeItemDefinition"/>
   	  <page type="resource" resource="ObservationDefinition"/> 
   	  <page type="resource" resource="SpecimenDefinition"/>
-  	  <page type="resource" resource="EntryDefinition"/>
+  	  <page type="resource" resource="CatalogEntry"/>
+      <!-- Think these 3 need to be left off as are REALLy drafty -->
+	    <page type="resource" resource="Invoice"/>
+	    <page type="resource" resource="InsurancePlan"/>
+	    <!-- <page type="resource" resource="Network"/> -->
+	    <page type="resource" resource="OrganizationAffiliation"/>
+	    <page type="resource" resource="VerificationResult"/>
     </page>
 
     <page title="Clinical Summary" filename="clinicalsummary-module.html" icon="clinical.png">
@@ -285,14 +308,16 @@ signatures.html
 
     <page title="Diagnostics" filename="diagnostics-module.html" icon="diagnostics.jpg">
       <page type="resource" resource="Observation"/>
+      <page type="resource" resource="Media"/>
       <page type="resource" resource="DiagnosticReport"/>
       <page type="resource" resource="ImagingStudy"/>
       <page type="resource" resource="ImagingManifest"/>
-      <page type="resource" resource="Sequence"/>
+      <page type="resource" resource="MolecularSequence"/>
       <page type="resource" resource="Specimen"/>
       <page type="resource" resource="SpecimenDefinition"/>
       <page type="resource" resource="BodyStructure"/>
       <page title="Genomics Implementer Guidance" filename="genomics.html"/>
+      <page type="resource" resource="BiologicallyDerivedProduct"/>
     </page>
 
     <page title="Medications" filename="medications-module.html" icon="medication.png">
@@ -301,8 +326,20 @@ signatures.html
       <page type="resource" resource="MedicationDispense"/>
       <page type="resource" resource="MedicationStatement"/>
       <page type="resource" resource="Medication"/>
+      <page type="resource" resource="MedicationKnowledge"/>
+      <page type="resource" resource="MedicinalProduct"/>
+      <page type="resource" resource="MedicinalProductAuthorization"/>
+      <page type="resource" resource="MedicinalProductContraindication"/>
+      <page type="resource" resource="MedicinalProductIndication"/>
+      <page type="resource" resource="MedicinalProductInteraction"/>
+      <page type="resource" resource="MedicinalProductUndesirableEffect"/>
+      <page type="resource" resource="MedicinalProductIngredient"/>
+    	<page type="resource" resource="MedicinalProductManufactured"/>
+    	<page type="resource" resource="MedicinalProductPackaged"/>
+    	<page type="resource" resource="MedicinalProductPharmaceutical"/>
       <page type="resource" resource="Immunization"/>
-      <page type="resource" resource="ImmunizationRecommendation"/>
+      <page type="resource" resource="ImmunizationEvaluation"/>
+     <page type="resource" resource="ImmunizationRecommendation"/>
       <page title="Dosage" filename="dosage.html">
         <page title="Examples" filename="dosage-examples.html"/>
         <page title="Detailed Descriptions" filename="dosage-definitions.html"/>
@@ -332,8 +369,6 @@ signatures.html
       <page type="resource" resource="VisionPrescription"/>
       <page type="resource" resource="ActivityDefinition"/>
       <page type="resource" resource="PlanDefinition"/>
-      <page type="resource" resource="ProcessRequest"/>
-      <page type="resource" resource="ProcessResponse"/>
       <page type="resource" resource="DeviceRequest"/>
       <page type="resource" resource="DeviceUseStatement"/>
       <page type="resource" resource="SupplyRequest"/>
@@ -344,8 +379,8 @@ signatures.html
 
     <page title="Financial" filename="financial-module.html" icon="financial.png">
       <page type="resource" resource="Coverage"/>
-      <page type="resource" resource="EligibilityRequest"/>
-      <page type="resource" resource="EligibilityResponse"/>
+      <page type="resource" resource="CoverageEligibilityRequest"/>
+      <page type="resource" resource="CoverageEligibilityResponse"/>
       <page type="resource" resource="EnrollmentRequest"/>
       <page type="resource" resource="EnrollmentResponse"/>
       <page type="resource" resource="Claim"/>
@@ -357,13 +392,26 @@ signatures.html
     </page>
 
     <page title="Clinical Reasoning" filename="clinicalreasoning-module.html" icon="reasoning.png">
+      <page title="Using Expressions" filename="clinicalreasoning-topics-using-expressions.html"/>
+      <page title="Definitional Resources" filename="clinicalreasoning-topics-definitional-resources.html"/>
+      <page title="Representing Knowledge Artifacts" filename="clinicalreasoning-knowledge-artifact-representation.html">
+        <page title="Supporting Documentation" filename="clinicalreasoning-topics-supporting-documentation.html"/>
+      </page>
+      <page title="Sharing Knowledge Artifacts" filename="clinicalreasoning-knowledge-artifact-distribution.html"/>
+      <page title="Clinical Decision Support" filename="clinicalreasoning-cds-on-fhir.html"/>
+      <page title="Quality Reporting" filename="clinicalreasoning-quality-reporting.html"/>
+      <page type="resource" resource="EffectEvidenceSynthesis"/>
       <page type="resource" resource="EventDefinition"/>
+      <page type="resource" resource="Evidence"/>
+      <page type="resource" resource="EvidenceVariable"/>
       <page type="resource" resource="Library"/>
-      <page type="resource" resource="ServiceDefinition"/>
       <page type="resource" resource="GuidanceResponse"/>
       <page type="resource" resource="RequestGroup"/>
       <page type="resource" resource="Measure"/>
       <page type="resource" resource="MeasureReport"/>
+      <page type="resource" resource="ResearchDefinition"/>
+      <page type="resource" resource="ResearchElementDefinition"/>
+      <page type="resource" resource="RiskEvidenceSynthesis"/>
     </page>
   </page>
 

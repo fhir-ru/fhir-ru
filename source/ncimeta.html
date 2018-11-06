@@ -9,12 +9,12 @@
 <body>
 [%file newnavbar%]
 
-<div class="col-9">
+<div class="col-12">
 
 <%txheader%>
 
 <h2>Using the NCI Metathesaurus with FHIR</h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg vocab%]">[%wgt vocab%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 2</td><td id="ballot"><a href="versions.html#levels">Ballot Status</a>: <a href="versions.html#std-process">Trial Use</a></td></tr></table>
+<table class="colstu"><tr><td id="wg"><a _target="blank" href="[%wg vocab%]">[%wgt vocab%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 2</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Trial Use</a></td></tr></table>
 
 <h3>Summary</h3>
 
@@ -57,7 +57,7 @@ For example, the correct display name for a CUI is
   select STR from rxnconso where RXCUI = :code and SAB = 'RXNORM' and TTY &lt;&gt; 'SY'
 </pre>.
 
-<a name="filters"> </a>
+<a name="filters"></a>
 <h3>NCI metathesaurus Filter Properties</h3>
 
 <p>

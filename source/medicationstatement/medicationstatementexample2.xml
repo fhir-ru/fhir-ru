@@ -30,7 +30,7 @@
               <display value="Acetaminophen 500 MG"/>
             </coding>
           </itemCodeableConcept>
-          <amount>
+          <strength>
             <numerator>
               <value value="500"/>
               <system value="http://unitsofmeasure.org"/>
@@ -38,10 +38,10 @@
             </numerator>
             <denominator>
               <value value="1"/>
-              <system value="http://hl7.org/fhir/v3/orderableDrugForm"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v3-orderableDrugForm"/>
               <code value="Tab"/>
             </denominator>
-          </amount>
+          </strength>
         </ingredient>
         <ingredient>
           
@@ -52,7 +52,7 @@
               <display value="Diphenhydramine Hydrochloride 25 mg"/>
             </coding>
           </itemCodeableConcept>
-          <amount>
+          <strength>
             <numerator>
               <value value="25"/>
               <system value="http://unitsofmeasure.org"/>
@@ -60,10 +60,10 @@
             </numerator>
             <denominator>
               <value value="1"/>
-              <system value="http://hl7.org/fhir/v3/orderableDrugForm"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v3-orderableDrugForm"/>
               <code value="Tab"/>
             </denominator>
-          </amount>
+          </strength>
         </ingredient>
       <batch>
         <lotNumber value="9494788"/>
@@ -71,7 +71,7 @@
       </batch>
     </Medication>
   </contained>
-  <status value="active" />
+  <status value="active"/>
   <statusReason>
     <coding>
       <system value="http://snomed.info/sct"/>
@@ -95,6 +95,6 @@
 
 
   <note>
-    <text value="Patient can not take acetaminophen as per Dr instructions" />
+    <text value="Patient cannot take acetaminophen as per Dr instructions" />
   </note>  
 </MedicationStatement>

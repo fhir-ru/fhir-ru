@@ -82,7 +82,7 @@
   <contained>
     <Goal>
       <id value="goal"/>
-      <status value="in-progress"/>
+      <lifecycleStatus value="active" />
       <description>
         <text value="Elimination of the spenoid bone tumor"/>
       </description>
@@ -124,7 +124,7 @@
         </coding>
       </code>
       <status value="in-progress"/>
-      <prohibited value="false"/>
+      <doNotPerform value="false"/>
       <productReference>
         <reference value="#tpf"/>
       </productReference>

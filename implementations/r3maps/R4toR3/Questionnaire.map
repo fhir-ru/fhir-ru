@@ -1,0 +1,66 @@
+﻿map "http://hl7.org/fhir/StructureMap/Questionnaire4to3" = "R4 to R3 Conversion for Questionnaire"
+
+uses "http://hl7.org/fhir/StructureDefinition/Questionnaire" alias Questionnaire as source
+uses "http://hl7.org/fhir/3.0/StructureDefinition/Questionnaire" alias QuestionnaireR3 as target
+
+imports "http://hl7.org/fhir/StructureMap/*4to3"
+
+group Questionnaire(source src : QuestionnaireR3, target tgt : Questionnaire) extends DomainResource <<type+>> {
+  src.url -> tgt.url;
+  src.identifier -> tgt.identifier;
+  src.version -> tgt.version;
+  src.name -> tgt.name;
+  src.title -> tgt.title;
+  src.derivedFrom -> tgt.derivedFrom;
+  src.status -> tgt.status;
+  src.experimental -> tgt.experimental;
+  src.subjectType -> tgt.subjectType;
+  src.date -> tgt.date;
+  src.publisher -> tgt.publisher;
+  src.contact -> tgt.contact;
+  src.description -> tgt.description;
+  src.useContext -> tgt.useContext;
+  src.jurisdiction -> tgt.jurisdiction;
+  src.purpose -> tgt.purpose;
+  src.copyright -> tgt.copyright;
+  src.approvalDate -> tgt.approvalDate;
+  src.lastReviewDate -> tgt.lastReviewDate;
+  src.effectivePeriod -> tgt.effectivePeriod;
+  src.code -> tgt.code;
+  src.item as s -> tgt.item as t then QuestionnaireItem(s, t);
+}
+
+group QuestionnaireItem(source src : QuestionnaireR3, target tgt : Questionnaire) extends BackboneElement <<type+>> {
+  src.linkId -> tgt.linkId;
+  src.definition -> tgt.definition;
+  src.code -> tgt.code;
+  src.prefix -> tgt.prefix;
+  src.text -> tgt.text;
+  src.type -> tgt.type;
+  src.enableWhen as s -> tgt.enableWhen as t then QuestionnaireItemEnableWhen(s, t);
+  src.enableBehavior -> tgt.enableBehavior;
+  src.required -> tgt.required;
+  src.repeats -> tgt.repeats;
+  src.readOnly -> tgt.readOnly;
+  src.maxLength -> tgt.maxLength;
+  src.answerValueSet -> tgt.answerValueSet;
+  src.answerOption as s -> tgt.answerOption as t then QuestionnaireItemAnswerOption(s, t);
+  src.initial as s -> tgt.initial as t then QuestionnaireItemInitial(s, t);
+  src.item -> tgt.item;
+}
+
+group QuestionnaireItemEnableWhen(source src : QuestionnaireR3, target tgt : Questionnaire) extends BackboneElement <<type+>> {
+  src.question -> tgt.question;
+  src.operator -> tgt.operator;
+  src.answer -> tgt.answer;
+}
+
+group QuestionnaireItemAnswerOption(source src : QuestionnaireR3, target tgt : Questionnaire) extends BackboneElement <<type+>> {
+  src.value -> tgt.value;
+  src.initialSelected -> tgt.initialSelected;
+}
+
+group QuestionnaireItemInitial(source src : QuestionnaireR3, target tgt : Questionnaire) extends BackboneElement <<type+>> {
+  src.value -> tgt.value;
+}
+

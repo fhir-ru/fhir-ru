@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Fri, Aug 11, 2017 07:23+1000 for FHIR v3.1.0
+// Generated on Mon, Nov 5, 2018 09:03+1100 for FHIR v3.6.0
 
 import java.util.*;
 
@@ -55,20 +55,30 @@ public class Reference extends BaseReference implements IBaseReference, IComposi
     protected StringType reference;
 
     /**
-     * An identifier for the other resource. This is used when there is no way to reference the other resource directly, either because the entity is not available through a FHIR server, or because there is no way for the author of the resource to convert a known identifier to an actual location. There is no requirement that a Reference.identifier point to something that is actually exposed as a FHIR instance, but it SHALL point to a business concept that would be expected to be exposed as a FHIR instance, and that instance would need to be of a FHIR resource type allowed by the reference.
+     * The expected type of the target of the reference. If both Reference.type and Reference.reference are populated and Reference.reference is a FHIR URL, both SHALL be consistent.
+
+The type is the Canonical URL of Resource Definition that is the type this reference refers to. References are URLs that are relative to http://hl7.org/fhir/StructureDefinition/ e.g. "Patient" is a reference to http://hl7.org/fhir/StructureDefinition/Patient. Absolute URLs are only allowed for logical models (and can only be used in references in logical models, not resources).
      */
-    @Child(name = "identifier", type = {Identifier.class}, order=1, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Logical reference, when literal reference is not known", formalDefinition="An identifier for the other resource. This is used when there is no way to reference the other resource directly, either because the entity is not available through a FHIR server, or because there is no way for the author of the resource to convert a known identifier to an actual location. There is no requirement that a Reference.identifier point to something that is actually exposed as a FHIR instance, but it SHALL point to a business concept that would be expected to be exposed as a FHIR instance, and that instance would need to be of a FHIR resource type allowed by the reference." )
+    @Child(name = "type", type = {UriType.class}, order=1, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Type the reference refers to (e.g. \"Patient\")", formalDefinition="The expected type of the target of the reference. If both Reference.type and Reference.reference are populated and Reference.reference is a FHIR URL, both SHALL be consistent.\n\nThe type is the Canonical URL of Resource Definition that is the type this reference refers to. References are URLs that are relative to http://hl7.org/fhir/StructureDefinition/ e.g. \"Patient\" is a reference to http://hl7.org/fhir/StructureDefinition/Patient. Absolute URLs are only allowed for logical models (and can only be used in references in logical models, not resources)." )
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/resource-types")
+    protected UriType type;
+
+    /**
+     * An identifier for the target resource. This is used when there is no way to reference the other resource directly, either because the entity it represents is not available through a FHIR server, or because there is no way for the author of the resource to convert a known identifier to an actual location. There is no requirement that a Reference.identifier point to something that is actually exposed as a FHIR instance, but it SHALL point to a business concept that would be expected to be exposed as a FHIR instance, and that instance would need to be of a FHIR resource type allowed by the reference.
+     */
+    @Child(name = "identifier", type = {Identifier.class}, order=2, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Logical reference, when literal reference is not known", formalDefinition="An identifier for the target resource. This is used when there is no way to reference the other resource directly, either because the entity it represents is not available through a FHIR server, or because there is no way for the author of the resource to convert a known identifier to an actual location. There is no requirement that a Reference.identifier point to something that is actually exposed as a FHIR instance, but it SHALL point to a business concept that would be expected to be exposed as a FHIR instance, and that instance would need to be of a FHIR resource type allowed by the reference." )
     protected Identifier identifier;
 
     /**
      * Plain text narrative that identifies the resource in addition to the resource reference.
      */
-    @Child(name = "display", type = {StringType.class}, order=2, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "display", type = {StringType.class}, order=3, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Text alternative for the resource", formalDefinition="Plain text narrative that identifies the resource in addition to the resource reference." )
     protected StringType display;
 
-    private static final long serialVersionUID = -909353281L;
+    private static final long serialVersionUID = 784245805L;
 
   /**
    * Constructor
@@ -154,7 +164,64 @@ public class Reference extends BaseReference implements IBaseReference, IComposi
     }
 
     /**
-     * @return {@link #identifier} (An identifier for the other resource. This is used when there is no way to reference the other resource directly, either because the entity is not available through a FHIR server, or because there is no way for the author of the resource to convert a known identifier to an actual location. There is no requirement that a Reference.identifier point to something that is actually exposed as a FHIR instance, but it SHALL point to a business concept that would be expected to be exposed as a FHIR instance, and that instance would need to be of a FHIR resource type allowed by the reference.)
+     * @return {@link #type} (The expected type of the target of the reference. If both Reference.type and Reference.reference are populated and Reference.reference is a FHIR URL, both SHALL be consistent.
+
+The type is the Canonical URL of Resource Definition that is the type this reference refers to. References are URLs that are relative to http://hl7.org/fhir/StructureDefinition/ e.g. "Patient" is a reference to http://hl7.org/fhir/StructureDefinition/Patient. Absolute URLs are only allowed for logical models (and can only be used in references in logical models, not resources).). This is the underlying object with id, value and extensions. The accessor "getType" gives direct access to the value
+     */
+    public UriType getTypeElement() { 
+      if (this.type == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create Reference.type");
+        else if (Configuration.doAutoCreate())
+          this.type = new UriType(); // bb
+      return this.type;
+    }
+
+    public boolean hasTypeElement() { 
+      return this.type != null && !this.type.isEmpty();
+    }
+
+    public boolean hasType() { 
+      return this.type != null && !this.type.isEmpty();
+    }
+
+    /**
+     * @param value {@link #type} (The expected type of the target of the reference. If both Reference.type and Reference.reference are populated and Reference.reference is a FHIR URL, both SHALL be consistent.
+
+The type is the Canonical URL of Resource Definition that is the type this reference refers to. References are URLs that are relative to http://hl7.org/fhir/StructureDefinition/ e.g. "Patient" is a reference to http://hl7.org/fhir/StructureDefinition/Patient. Absolute URLs are only allowed for logical models (and can only be used in references in logical models, not resources).). This is the underlying object with id, value and extensions. The accessor "getType" gives direct access to the value
+     */
+    public Reference setTypeElement(UriType value) { 
+      this.type = value;
+      return this;
+    }
+
+    /**
+     * @return The expected type of the target of the reference. If both Reference.type and Reference.reference are populated and Reference.reference is a FHIR URL, both SHALL be consistent.
+
+The type is the Canonical URL of Resource Definition that is the type this reference refers to. References are URLs that are relative to http://hl7.org/fhir/StructureDefinition/ e.g. "Patient" is a reference to http://hl7.org/fhir/StructureDefinition/Patient. Absolute URLs are only allowed for logical models (and can only be used in references in logical models, not resources).
+     */
+    public String getType() { 
+      return this.type == null ? null : this.type.getValue();
+    }
+
+    /**
+     * @param value The expected type of the target of the reference. If both Reference.type and Reference.reference are populated and Reference.reference is a FHIR URL, both SHALL be consistent.
+
+The type is the Canonical URL of Resource Definition that is the type this reference refers to. References are URLs that are relative to http://hl7.org/fhir/StructureDefinition/ e.g. "Patient" is a reference to http://hl7.org/fhir/StructureDefinition/Patient. Absolute URLs are only allowed for logical models (and can only be used in references in logical models, not resources).
+     */
+    public Reference setType(String value) { 
+      if (Utilities.noString(value))
+        this.type = null;
+      else {
+        if (this.type == null)
+          this.type = new UriType();
+        this.type.setValue(value);
+      }
+      return this;
+    }
+
+    /**
+     * @return {@link #identifier} (An identifier for the target resource. This is used when there is no way to reference the other resource directly, either because the entity it represents is not available through a FHIR server, or because there is no way for the author of the resource to convert a known identifier to an actual location. There is no requirement that a Reference.identifier point to something that is actually exposed as a FHIR instance, but it SHALL point to a business concept that would be expected to be exposed as a FHIR instance, and that instance would need to be of a FHIR resource type allowed by the reference.)
      */
     public Identifier getIdentifier() { 
       if (this.identifier == null)
@@ -170,7 +237,7 @@ public class Reference extends BaseReference implements IBaseReference, IComposi
     }
 
     /**
-     * @param value {@link #identifier} (An identifier for the other resource. This is used when there is no way to reference the other resource directly, either because the entity is not available through a FHIR server, or because there is no way for the author of the resource to convert a known identifier to an actual location. There is no requirement that a Reference.identifier point to something that is actually exposed as a FHIR instance, but it SHALL point to a business concept that would be expected to be exposed as a FHIR instance, and that instance would need to be of a FHIR resource type allowed by the reference.)
+     * @param value {@link #identifier} (An identifier for the target resource. This is used when there is no way to reference the other resource directly, either because the entity it represents is not available through a FHIR server, or because there is no way for the author of the resource to convert a known identifier to an actual location. There is no requirement that a Reference.identifier point to something that is actually exposed as a FHIR instance, but it SHALL point to a business concept that would be expected to be exposed as a FHIR instance, and that instance would need to be of a FHIR resource type allowed by the reference.)
      */
     public Reference setIdentifier(Identifier value) { 
       this.identifier = value;
@@ -245,7 +312,8 @@ public class Reference extends BaseReference implements IBaseReference, IComposi
       protected void listChildren(List<Property> children) {
         super.listChildren(children);
         children.add(new Property("reference", "string", "A reference to a location at which the other resource is found. The reference may be a relative reference, in which case it is relative to the service base URL, or an absolute URL that resolves to the location where the resource is found. The reference may be version specific or not. If the reference is not to a FHIR RESTful server, then it should be assumed to be version specific. Internal fragment references (start with '#') refer to contained resources.", 0, 1, reference));
-        children.add(new Property("identifier", "Identifier", "An identifier for the other resource. This is used when there is no way to reference the other resource directly, either because the entity is not available through a FHIR server, or because there is no way for the author of the resource to convert a known identifier to an actual location. There is no requirement that a Reference.identifier point to something that is actually exposed as a FHIR instance, but it SHALL point to a business concept that would be expected to be exposed as a FHIR instance, and that instance would need to be of a FHIR resource type allowed by the reference.", 0, 1, identifier));
+        children.add(new Property("type", "uri", "The expected type of the target of the reference. If both Reference.type and Reference.reference are populated and Reference.reference is a FHIR URL, both SHALL be consistent.\n\nThe type is the Canonical URL of Resource Definition that is the type this reference refers to. References are URLs that are relative to http://hl7.org/fhir/StructureDefinition/ e.g. \"Patient\" is a reference to http://hl7.org/fhir/StructureDefinition/Patient. Absolute URLs are only allowed for logical models (and can only be used in references in logical models, not resources).", 0, 1, type));
+        children.add(new Property("identifier", "Identifier", "An identifier for the target resource. This is used when there is no way to reference the other resource directly, either because the entity it represents is not available through a FHIR server, or because there is no way for the author of the resource to convert a known identifier to an actual location. There is no requirement that a Reference.identifier point to something that is actually exposed as a FHIR instance, but it SHALL point to a business concept that would be expected to be exposed as a FHIR instance, and that instance would need to be of a FHIR resource type allowed by the reference.", 0, 1, identifier));
         children.add(new Property("display", "string", "Plain text narrative that identifies the resource in addition to the resource reference.", 0, 1, display));
       }
 
@@ -253,7 +321,8 @@ public class Reference extends BaseReference implements IBaseReference, IComposi
       public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
         switch (_hash) {
         case -925155509: /*reference*/  return new Property("reference", "string", "A reference to a location at which the other resource is found. The reference may be a relative reference, in which case it is relative to the service base URL, or an absolute URL that resolves to the location where the resource is found. The reference may be version specific or not. If the reference is not to a FHIR RESTful server, then it should be assumed to be version specific. Internal fragment references (start with '#') refer to contained resources.", 0, 1, reference);
-        case -1618432855: /*identifier*/  return new Property("identifier", "Identifier", "An identifier for the other resource. This is used when there is no way to reference the other resource directly, either because the entity is not available through a FHIR server, or because there is no way for the author of the resource to convert a known identifier to an actual location. There is no requirement that a Reference.identifier point to something that is actually exposed as a FHIR instance, but it SHALL point to a business concept that would be expected to be exposed as a FHIR instance, and that instance would need to be of a FHIR resource type allowed by the reference.", 0, 1, identifier);
+        case 3575610: /*type*/  return new Property("type", "uri", "The expected type of the target of the reference. If both Reference.type and Reference.reference are populated and Reference.reference is a FHIR URL, both SHALL be consistent.\n\nThe type is the Canonical URL of Resource Definition that is the type this reference refers to. References are URLs that are relative to http://hl7.org/fhir/StructureDefinition/ e.g. \"Patient\" is a reference to http://hl7.org/fhir/StructureDefinition/Patient. Absolute URLs are only allowed for logical models (and can only be used in references in logical models, not resources).", 0, 1, type);
+        case -1618432855: /*identifier*/  return new Property("identifier", "Identifier", "An identifier for the target resource. This is used when there is no way to reference the other resource directly, either because the entity it represents is not available through a FHIR server, or because there is no way for the author of the resource to convert a known identifier to an actual location. There is no requirement that a Reference.identifier point to something that is actually exposed as a FHIR instance, but it SHALL point to a business concept that would be expected to be exposed as a FHIR instance, and that instance would need to be of a FHIR resource type allowed by the reference.", 0, 1, identifier);
         case 1671764162: /*display*/  return new Property("display", "string", "Plain text narrative that identifies the resource in addition to the resource reference.", 0, 1, display);
         default: return super.getNamedProperty(_hash, _name, _checkValid);
         }
@@ -264,6 +333,7 @@ public class Reference extends BaseReference implements IBaseReference, IComposi
       public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
         switch (hash) {
         case -925155509: /*reference*/ return this.reference == null ? new Base[0] : new Base[] {this.reference}; // StringType
+        case 3575610: /*type*/ return this.type == null ? new Base[0] : new Base[] {this.type}; // UriType
         case -1618432855: /*identifier*/ return this.identifier == null ? new Base[0] : new Base[] {this.identifier}; // Identifier
         case 1671764162: /*display*/ return this.display == null ? new Base[0] : new Base[] {this.display}; // StringType
         default: return super.getProperty(hash, name, checkValid);
@@ -276,6 +346,9 @@ public class Reference extends BaseReference implements IBaseReference, IComposi
         switch (hash) {
         case -925155509: // reference
           this.reference = castToString(value); // StringType
+          return value;
+        case 3575610: // type
+          this.type = castToUri(value); // UriType
           return value;
         case -1618432855: // identifier
           this.identifier = castToIdentifier(value); // Identifier
@@ -292,6 +365,8 @@ public class Reference extends BaseReference implements IBaseReference, IComposi
       public Base setProperty(String name, Base value) throws FHIRException {
         if (name.equals("reference")) {
           this.reference = castToString(value); // StringType
+        } else if (name.equals("type")) {
+          this.type = castToUri(value); // UriType
         } else if (name.equals("identifier")) {
           this.identifier = castToIdentifier(value); // Identifier
         } else if (name.equals("display")) {
@@ -305,6 +380,7 @@ public class Reference extends BaseReference implements IBaseReference, IComposi
       public Base makeProperty(int hash, String name) throws FHIRException {
         switch (hash) {
         case -925155509:  return getReferenceElement_();
+        case 3575610:  return getTypeElement();
         case -1618432855:  return getIdentifier(); 
         case 1671764162:  return getDisplayElement();
         default: return super.makeProperty(hash, name);
@@ -316,6 +392,7 @@ public class Reference extends BaseReference implements IBaseReference, IComposi
       public String[] getTypesForProperty(int hash, String name) throws FHIRException {
         switch (hash) {
         case -925155509: /*reference*/ return new String[] {"string"};
+        case 3575610: /*type*/ return new String[] {"uri"};
         case -1618432855: /*identifier*/ return new String[] {"Identifier"};
         case 1671764162: /*display*/ return new String[] {"string"};
         default: return super.getTypesForProperty(hash, name);
@@ -327,6 +404,9 @@ public class Reference extends BaseReference implements IBaseReference, IComposi
       public Base addChild(String name) throws FHIRException {
         if (name.equals("reference")) {
           throw new FHIRException("Cannot call addChild on a primitive type Reference.reference");
+        }
+        else if (name.equals("type")) {
+          throw new FHIRException("Cannot call addChild on a primitive type Reference.type");
         }
         else if (name.equals("identifier")) {
           this.identifier = new Identifier();
@@ -348,6 +428,7 @@ public class Reference extends BaseReference implements IBaseReference, IComposi
         Reference dst = new Reference();
         copyValues(dst);
         dst.reference = reference == null ? null : reference.copy();
+        dst.type = type == null ? null : type.copy();
         dst.identifier = identifier == null ? null : identifier.copy();
         dst.display = display == null ? null : display.copy();
         return dst;
@@ -358,29 +439,30 @@ public class Reference extends BaseReference implements IBaseReference, IComposi
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof Reference))
+        if (!(other_ instanceof Reference))
           return false;
-        Reference o = (Reference) other;
-        return compareDeep(reference, o.reference, true) && compareDeep(identifier, o.identifier, true)
+        Reference o = (Reference) other_;
+        return compareDeep(reference, o.reference, true) && compareDeep(type, o.type, true) && compareDeep(identifier, o.identifier, true)
            && compareDeep(display, o.display, true);
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof Reference))
+        if (!(other_ instanceof Reference))
           return false;
-        Reference o = (Reference) other;
-        return compareValues(reference, o.reference, true) && compareValues(display, o.display, true);
+        Reference o = (Reference) other_;
+        return compareValues(reference, o.reference, true) && compareValues(type, o.type, true) && compareValues(display, o.display, true)
+          ;
       }
 
       public boolean isEmpty() {
-        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(reference, identifier, display
-          );
+        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(reference, type, identifier
+          , display);
       }
 
 

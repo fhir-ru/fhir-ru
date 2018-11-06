@@ -42,7 +42,6 @@ import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ResourceDefn;
-import org.hl7.fhir.r4.model.Enumerations.BindingStrength;
 import org.hl7.fhir.igtools.spreadsheets.TypeRef;
 import org.hl7.fhir.utilities.Utilities;
 
@@ -626,7 +625,7 @@ public class JavaParserRdfGenerator extends JavaBaseGenerator {
         }
         typeNames.put(e,  rootOf(path)+"."+tn);
       }
-      if (cd != null && cd.getBinding() == BindingSpecification.BindingMethod.ValueSet && cd.getStrength() == BindingStrength.REQUIRED) {
+      if (cd != null && isEnum(cd)) {
         tn = getCodeListType(cd.getName());
         if (!enumNames.contains(tn)) {
           enumNames.add(tn);
@@ -754,7 +753,7 @@ public class JavaParserRdfGenerator extends JavaBaseGenerator {
     for (ElementDefn n : definitions.getStructures().values()) {
       generateComposer(n, JavaGenClass.Structure);
       String nn = javaClassName(n.getName());
-      regtn.append("    else if (value instanceof "+nn+")\r\n      compose"+nn+"(parent, parentType, name, ("+nn+")value, index);\r\n");
+//      regtn.append("    else if (value instanceof "+nn+")\r\n      compose"+nn+"(parent, parentType, name, ("+nn+")value, index);\r\n");
     }
 
     for (String s : definitions.getBaseResources().keySet()) {
@@ -960,11 +959,11 @@ public class JavaParserRdfGenerator extends JavaBaseGenerator {
       if (name.endsWith("[x]"))
         name = name.substring(0, name.length()-3);
       gname = "get"+upFirst(name)+"()";
-    } else if (isJavaPrimitive(e)) {
+    } else if (isJavaPrimitive(e) || e.typeCode().startsWith("canonical(")) {
       BindingSpecification cd = e.getBinding();
       if (e.typeCode().equals("code") && cd != null && cd.getBinding() == BindingSpecification.BindingMethod.CodeList)
         tname = "Enum"; 
-      if (e.typeCode().equals("code") && cd != null && cd.getBinding() == BindingSpecification.BindingMethod.ValueSet && cd.getStrength() == BindingStrength.REQUIRED)
+      if (e.typeCode().equals("code") && cd != null && isEnum(cd))
         tname = "Enum"; 
       gname = "get"+upFirst(checkJavaReservedWord(name))+"Element()";
     }

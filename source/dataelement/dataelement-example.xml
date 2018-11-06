@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <DataElement xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/fhir-single.xsd">
 	<id value="gender"/>
 	<text>
@@ -239,7 +239,7 @@
 		<maxLength value="13"/>
 		<binding>
 			<strength value="required"/>
-			<valueSetReference>
+			<valueSet value="#2179414">
 				<extension url="http://hl7.org/fhir/StructureDefinition/11179-permitted-value-valueset">
 					<valueReference>
 						<reference value="#2179414-permitted"/>
@@ -250,8 +250,7 @@
 						<reference value="#2179414-cm"/>
 					</valueReference>
 				</extension>
-				<reference value="#2179414"/>
-			</valueSetReference>
+			</valueSet>
 		</binding>
 		<mapping>
       <identity value="fhir"/>

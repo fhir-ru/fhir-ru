@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <Questionnaire xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/questionnaire.xsd">
   <id value="zika-virus-exposure-assessment"/>
   <text>
@@ -47,10 +47,11 @@
 		<system value="http://example.org/questionnaires"/>
 		<code value="CDE: Recent Travel to Zika Area"/>
     </code>
-	<text value="Have you recently traveled to a an area with active Zika transmission?"/>
+	<text value="Have you recently traveled to an area with active Zika transmission?"/>
 	<type value="boolean"/>
 	<enableWhen>
 		<question value="1"/>
+    <operator value="="/>
 		<answerBoolean value="false"/>
 	</enableWhen>
   </item>
@@ -64,6 +65,7 @@
 	<type value="quantity"/>
 	<enableWhen>
 		<question value="2"/>
+    <operator value="="/>
 		<answerBoolean value="true"/>
 	</enableWhen>
   </item>
@@ -83,6 +85,7 @@
 	<type value="boolean"/>
 	<enableWhen>
 		<question value="2"/>
+    <operator value="="/>
 		<answerBoolean value="false"/>
 	</enableWhen>
   </item>
@@ -96,6 +99,7 @@
 	<type value="quantity"/>
 	<enableWhen>
 		<question value="4"/>
+    <operator value="="/>
 		<answerBoolean value="true"/>
 	</enableWhen>
   </item>
@@ -115,6 +119,7 @@
 	<type value="boolean"/>
 	<enableWhen>
 		<question value="4"/>
+    <operator value="="/>
 		<answerBoolean value="false"/>
 	</enableWhen>
   </item>

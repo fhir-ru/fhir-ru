@@ -10,6 +10,7 @@ public class CommaSeparatedStringBuilder {
   boolean first = true;
   String sep = ", ";
   StringBuilder b = new StringBuilder();
+  int count = 0;
 
   public CommaSeparatedStringBuilder() {
   }
@@ -22,15 +23,26 @@ public class CommaSeparatedStringBuilder {
     if (!first)
       b.append(sep);
     b.append(value);
-    first = false;    
-    
+    first = false;
+    count++;    
   }
   
   public int length() {
     return b.length();
   }
+  
+  public int count() {
+    return count;
+  }
+
   @Override
   public String toString() {
     return b.toString();
+  }
+
+  public void appendIfNotNull(String s) {
+   if (!Utilities.noString(s))
+     append(s);
+    
   }
 }

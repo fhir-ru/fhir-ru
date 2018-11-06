@@ -1,7 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<a name="scope"> </a>
+<a name="scope"></a>
 <h2>Scope and Usage</h2>
 <p><strong>This resource is an <em>event</em> resource from a FHIR workflow perspective</strong> - see <a href="workflow.html">Workflow</a>, specifically <a href="workflow.html#event">Event</a>.</p>
 
@@ -16,26 +16,26 @@ It does not apply to technical issues (e.g. lack of user permissions) but could 
 </ul>
 <!-- Describes some of the situations/use cases intended to be managed with the resource. May include a child div for "Storyboards" and "Related Specifications". The purpose of this section is to help implementers understand why the resource is needed and how it might be used. -->
 <p>
-This resource represents a specific instance of a potential issue for a particular patient. It is <b>not</b> intended to represent general patient-independent knowledge. This resource is also <b>not</b> intended to be used in defining general prohibitions on actions such as "No NSAIDs", "No solid oral dose forms" or "No MRIs - metalic tatoos".  
+This resource represents a specific instance of a potential issue for a particular patient. It is <b>not</b> intended to represent general patient-independent knowledge. This resource is also <b>not</b> intended to be used in defining general prohibitions on actions such as "No NSAIDs", "No solid oral dose forms" or "No MRIs - metallic tattoos".  
 These guidelines can be captured using the <a href="allergyintolerance.html">AllergyIntolerance</a>, and/or <a href="flag.html">Flag</a> resources.  
-Similarly this resource is not to be used to capture clinical facts that may imply contraindications such as pregnancy, breast feeding, patient preferences, past procedures, etc.  These would be represented using <a href="condition.html">Condition</a>, <a href="procedure.html">Procedure</a> or other resources.
+Similarly, this resource is not to be used to capture clinical facts that may imply contraindications such as pregnancy, breast feeding, patient preferences, past procedures, etc.  These would be represented using <a href="condition.html">Condition</a>, <a href="procedure.html">Procedure</a> or other resources.
 </p>
 </div>
 
 
 <div>
-<a name="bnr"> </a>
+<a name="bnr"></a>
 <h2>Boundaries and Relationships</h2>
 <p>
-This resource only applies to documenting a risk associated with a specific planned or ongoing action, not a general propensity to risk.  The latter would be handled using <a href="allergyintolerance.html">AllergyIntolerance</a> for substance-specific issues or <a href="flag.html">Flag</a> for other types of issues.
+This resource only applies to documenting a risk associated with a specific planned or ongoing action, or the lack of an action which should be planned - not a general propensity to risk. The latter would be handled using <a href="allergyintolerance.html">AllergyIntolerance</a> for substance-specific issues or <a href="flag.html">Flag</a> for other types of issues. In addition, the resource represents patient-specific and time-bound risk manifestations, not generic knowledge statements about risks that can exist.
 </p>
-<p>This resource is limited to clinical issues associated with a proposed or ongoing action.  It does not cover technical issues such as lack of permission, duplicate identifiers and other business rule violations. Technical issues are conveyed using the <a href="operationoutcome.html">OperationOutcome</a> resource.  
+<p>This resource is limited to clinical issues associated with a proposed or ongoing action.  It does not cover technical issues such as lack of permission, duplicate identifiers, insufficient data, and other business rule violations. Technical issues are conveyed using the <a href="operationoutcome.html">OperationOutcome</a> resource.  
 It is possible to have both <a href="operationoutcome.html">OperationOutcome</a> and <code>DetectedIssue</code> together, where the OperationOutcome might 
 indicate that a requested action was rejected due to a clinical issue and the DetectedIssue provides the details of the issue.</p>
 </div>
 
 <div>
-<a name="bnc"> </a>
+<a name="bnc"></a>
 <h2>Background and Context</h2>
 <p>
 Detected issues are typically identified by decision support systems.  However, they may also be captured directly by clinicians.  The latter typically happens for one of two reasons:

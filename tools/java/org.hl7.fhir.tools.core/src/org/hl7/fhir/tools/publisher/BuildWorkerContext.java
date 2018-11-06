@@ -1,10 +1,8 @@
 package org.hl7.fhir.tools.publisher;
 
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.StringWriter;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,14 +16,22 @@ import java.util.UUID;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.fhir.ucum.UcumEssenceService;
+import org.fhir.ucum.UcumException;
+import org.fhir.ucum.UcumService;
 import org.hl7.fhir.definitions.model.Definitions;
+import org.hl7.fhir.exceptions.FHIRException;
+import org.hl7.fhir.exceptions.TerminologyServiceException;
+import org.hl7.fhir.igtools.spreadsheets.TypeRef;
 import org.hl7.fhir.r4.context.BaseWorkerContext;
+import org.hl7.fhir.r4.context.HTMLClientLogger;
 import org.hl7.fhir.r4.context.IWorkerContext;
 import org.hl7.fhir.r4.formats.IParser;
 import org.hl7.fhir.r4.formats.JsonParser;
@@ -36,58 +42,36 @@ import org.hl7.fhir.r4.model.CodeSystem.ConceptDefinitionComponent;
 import org.hl7.fhir.r4.model.CodeSystem.ConceptDefinitionDesignationComponent;
 import org.hl7.fhir.r4.model.ConceptMap;
 import org.hl7.fhir.r4.model.ElementDefinition.TypeRefComponent;
-import org.hl7.fhir.r4.model.ExpansionProfile;
-import org.hl7.fhir.r4.model.ExpansionProfile.SystemVersionProcessingMode;
-import org.hl7.fhir.r4.model.MetadataResource;
+import org.hl7.fhir.r4.model.ImplementationGuide;
 import org.hl7.fhir.r4.model.NamingSystem;
 import org.hl7.fhir.r4.model.NamingSystem.NamingSystemIdentifierType;
 import org.hl7.fhir.r4.model.NamingSystem.NamingSystemUniqueIdComponent;
-import org.hl7.fhir.r4.model.OperationDefinition;
 import org.hl7.fhir.r4.model.OperationOutcome;
 import org.hl7.fhir.r4.model.Parameters;
 import org.hl7.fhir.r4.model.Parameters.ParametersParameterComponent;
-import org.hl7.fhir.r4.model.Questionnaire;
-import org.hl7.fhir.r4.model.Reference;
-import org.hl7.fhir.r4.model.Resource;
-import org.hl7.fhir.r4.model.SearchParameter;
 import org.hl7.fhir.r4.model.StringType;
 import org.hl7.fhir.r4.model.StructureDefinition;
 import org.hl7.fhir.r4.model.StructureDefinition.TypeDerivationRule;
 import org.hl7.fhir.r4.model.ValueSet;
 import org.hl7.fhir.r4.model.ValueSet.ConceptSetComponent;
-import org.hl7.fhir.r4.model.ValueSet.ValueSetComposeComponent;
-import org.hl7.fhir.r4.model.ValueSet.ValueSetExpansionComponent;
 import org.hl7.fhir.r4.model.ValueSet.ValueSetExpansionContainsComponent;
-import org.hl7.fhir.r4.terminologies.CodeSystemUtilities;
-import org.hl7.fhir.r4.terminologies.ValueSetExpander.ValueSetExpansionOutcome;
+import org.hl7.fhir.r4.terminologies.TerminologyClient;
+import org.hl7.fhir.r4.terminologies.TerminologyClientR4;
 import org.hl7.fhir.r4.utils.INarrativeGenerator;
 import org.hl7.fhir.r4.utils.IResourceValidator;
 import org.hl7.fhir.r4.utils.NarrativeGenerator;
 import org.hl7.fhir.r4.utils.client.EFhirClientException;
-import org.hl7.fhir.r4.utils.client.FHIRToolingClient;
-import org.hl7.fhir.r4.validation.InstanceValidator;
-import org.hl7.fhir.exceptions.FHIRException;
-import org.hl7.fhir.exceptions.TerminologyServiceException;
-import org.hl7.fhir.igtools.spreadsheets.TypeRef;
 import org.hl7.fhir.utilities.CSFileInputStream;
 import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
 import org.hl7.fhir.utilities.OIDUtils;
-import org.hl7.fhir.utilities.TextFile;
+import org.hl7.fhir.utilities.TranslatorXml;
 import org.hl7.fhir.utilities.Utilities;
-import org.fhir.ucum.UcumEssenceService;
-import org.fhir.ucum.UcumException;
-import org.fhir.ucum.UcumService;
 import org.hl7.fhir.utilities.validation.ValidationMessage.IssueSeverity;
 import org.hl7.fhir.utilities.xml.XMLUtil;
 import org.hl7.fhir.utilities.xml.XMLWriter;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-
-import com.google.gson.JsonElement;
-import com.google.gson.JsonNull;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSyntaxException;
-import com.google.gson.stream.JsonWriter;
+import org.xml.sax.SAXException;
 
 /*
  *  private static Map<String, StructureDefinition> loadProfiles() throws Exception {
@@ -126,34 +110,31 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
   
 
 
-  public BuildWorkerContext(Definitions definitions, FHIRToolingClient client, Map<String, CodeSystem> codeSystems, Map<String, ValueSet> valueSets, Map<String, ConceptMap> maps, Map<String, StructureDefinition> profiles) throws UcumException {
-    super();
+  public BuildWorkerContext(Definitions definitions, TerminologyClient client, Map<String, CodeSystem> codeSystems, Map<String, ValueSet> valueSets, Map<String, ConceptMap> maps, Map<String, StructureDefinition> profiles, Map<String, ImplementationGuide> guides, String folder) throws UcumException, ParserConfigurationException, SAXException, IOException, FHIRException {
+    super(codeSystems, valueSets, maps, profiles, guides);
     this.definitions = definitions;
-    this.txServer = client;
-    this.codeSystems = codeSystems;
-    this.valueSets = valueSets;
-    this.maps = maps;
-    this.structures = profiles;
-    this.cacheValidation = true;
+    this.txClient = client;
+    this.txLog = new HTMLClientLogger(null);
     setExpansionProfile(buildExpansionProfile());
+    this.setTranslator(new TranslatorXml(Utilities.path(folder, "implementations", "translations.xml")));
   }
 
-  private ExpansionProfile buildExpansionProfile() {
-    ExpansionProfile res = new ExpansionProfile();
-    res.setUrl("urn:uuid:"+UUID.randomUUID().toString().toLowerCase());
-    res.setExcludeNested(false);
-    res.setIncludeDesignations(true);
-    // res.setActiveOnly(true);
-    res.addFixedVersion().setSystem("http://snomed.info/sct").setVersion("http://snomed.info/sct/"+SNOMED_EDITION).setMode(SystemVersionProcessingMode.DEFAULT); // value sets are allowed to override this. for now
+  private Parameters buildExpansionProfile() {
+    Parameters res = new Parameters();
+    res.addParameter("profile-url", "urn:uuid:"+UUID.randomUUID().toString().toLowerCase());
+    res.addParameter("excludeNested", false);
+    res.addParameter("includeDesignations", true);
+    // res.addParameter("activeOnly", true);
+    res.addParameter("system-version", "http://snomed.info/sct|http://snomed.info/sct/"+SNOMED_EDITION); // value sets are allowed to override this. for now
     return res;
   }
 
   public boolean hasClient() {
-    return txServer != null;
+    return txClient != null;
   }
 
-  public FHIRToolingClient getClient() {
-    return txServer;
+  public TerminologyClient getClient() {
+    return txClient;
   }
 
   public StructureDefinition getExtensionStructure(StructureDefinition context, String url) throws Exception {
@@ -162,7 +143,7 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
     } else {
       if (url.contains("#"))
         url = url.substring(0, url.indexOf("#"));
-      StructureDefinition res = structures.get(url);
+      StructureDefinition res = getStructure(url);
       if (res == null)
         return null;
       if (res.getSnapshot() == null || res.getSnapshot().getElement().isEmpty())
@@ -183,7 +164,7 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
   public boolean isResource(String name) {
     if (resourceNames.contains(name))
       return true;
-    StructureDefinition sd = structures.get("http://hl7.org/fhir/StructureDefinition/" + name);
+    StructureDefinition sd = getStructure("http://hl7.org/fhir/StructureDefinition/" + name);
     return sd != null && (sd.getBaseDefinition().endsWith("Resource") || sd.getBaseDefinition().endsWith("DomainResource"));
   }
 
@@ -193,13 +174,9 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
 
   public StructureDefinition getTypeStructure(TypeRefComponent type) {
     if (type.hasProfile())
-      return structures.get(type.getProfile());
+      return getStructure(type.getProfile().get(0).getValue());
     else
-      return structures.get(type.getCode());
-  }
-
-  public Map<String, SearchParameter> getSearchParameters() {
-    return searchParameters;
+      return getStructure(type.getCode());
   }
 
   @Override
@@ -243,10 +220,10 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
   }
 
   @Override
-  public List<ConceptMap> findMapsForSource(String url) {
+  public List<ConceptMap> findMapsForSource(String url) throws FHIRException {
     List<ConceptMap> res = new ArrayList<ConceptMap>();
-    for (ConceptMap map : maps.values())
-      if (((Reference) map.getSource()).getReference().equals(url)) 
+    for (ConceptMap map : listMaps())
+      if (map.getSourceCanonicalType().getValue().equals(url)) 
         res.add(map);
     return res;
   }
@@ -302,8 +279,9 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
         return locateLoinc(code);
       } catch (Exception e) {
       }     
-    if (codeSystems.containsKey(system))
-      return findCodeInConcept(codeSystems.get(system).getConcept(), code);
+    CodeSystem cs = fetchCodeSystem(system);
+    if (cs != null)
+      return findCodeInConcept(cs.getConcept(), code);
     return null;
   }
 
@@ -347,8 +325,8 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
     if (!triedServer || serverOk) {
       triedServer = true;
       HttpClient httpclient = new DefaultHttpClient();
-       HttpGet httpget = new HttpGet("http://tx.fhir.org/snomed/tool/"+SNOMED_EDITION+"/"+URLEncoder.encode(code, "UTF-8").replace("+", "%20"));
-//      HttpGet httpget = new HttpGet("http://local.fhir.org:960/snomed/tool/"+SNOMED_EDITION+"/"+URLEncoder.encode(code, "UTF-8").replace("+", "%20")); // don't like the url encoded this way
+      HttpGet httpget = new HttpGet("http://tx.fhir.org/r4/snomed/tool/"+SNOMED_EDITION+"/"+URLEncoder.encode(code, "UTF-8").replace("+", "%20")); 
+//      HttpGet httpget = new HttpGet("http://local.fhir.org:960/r4/snomed/tool/"+SNOMED_EDITION+"/"+URLEncoder.encode(code, "UTF-8").replace("+", "%20")); // don't like the url encoded this way
       HttpResponse response = httpclient.execute(httpget);
       HttpEntity entity = response.getEntity();
       InputStream instream = entity.getContent();
@@ -474,8 +452,9 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
         return verifyLoinc(code, display);
       if (system.equals("http://unitsofmeasure.org"))
         return verifyUcum(code, display);
-      if (codeSystems.containsKey(system) && codeSystems.get(system) != null) {
-        return verifyCode(codeSystems.get(system), code, display);
+      CodeSystem cs = fetchCodeSystem(system);
+      if (cs != null) {
+        return verifyCode(cs, code, display);
       }
       if (system.startsWith("http://example.org"))
         return new ValidationResult(new ConceptDefinitionComponent());
@@ -527,6 +506,7 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
     FileOutputStream file = new FileOutputStream(filename);
     XMLWriter xml = new XMLWriter(file, "UTF-8");
     xml.setPretty(true);
+    xml.setLineType(XMLWriter.LINE_UNIX);
     xml.start();
     xml.comment("the build tool builds these from the designated snomed server, when it can", true);
     xml.enter("snomed");
@@ -572,6 +552,7 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
   public void saveLoinc(String filename) throws IOException {
     XMLWriter xml = new XMLWriter(new FileOutputStream(filename), "UTF-8");
     xml.setPretty(true);
+    xml.setLineType(XMLWriter.LINE_UNIX);
     xml.start();
     xml.enter("loinc");
     List<String> codes = new ArrayList<String>();
@@ -598,13 +579,14 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
       try {
         triedServer = true;
         // for this, we use the FHIR client
-        if (txServer == null) {
-          txServer = new FHIRToolingClient(tsServer);
+        if (txClient == null) {
+          txClient = new TerminologyClientR4(tsServer);
+          this.txLog = new HTMLClientLogger(null);
         }
         Map<String, String> params = new HashMap<String, String>();
         params.put("code", code);
         params.put("system", "http://loinc.org");
-        Parameters result = txServer.lookupCode(params);
+        Parameters result = txClient.lookupCode(params);
 
         for (ParametersParameterComponent p : result.getParameter()) {
           if (p.getName().equals("display"))
@@ -614,46 +596,6 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
       } catch (EFhirClientException e) {
         serverOk = true;
         throw e;
-      } catch (Exception e) {
-        serverOk = false;
-        throw e;
-      }
-    } else
-      throw new Exception("Server is not available");
-  }
-
-  @Override
-  public ValueSetExpansionOutcome expandOnServer(ValueSet vs, String cacheFn) throws Exception {
-    if (!triedServer || serverOk) {
-      JsonParser parser = new JsonParser();
-      try {
-        triedServer = true;
-        serverOk = false;
-        // for this, we use the FHIR client
-        if (txServer == null) {
-          txServer = new FHIRToolingClient(tsServer);
-        }
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("_limit", PageProcessor.CODE_LIMIT_EXPANSION);
-        params.put("_incomplete", "true");
-        System.out.println("Use Tx Server from BWS for value set "+(vs.hasUrl() ? vs.getUrl() : "??")+" on "+systems(vs));
-        ValueSet result = txServer.expandValueset(vs, expProfile.setIncludeDefinition(false), params);
-        serverOk = true;
-        FileOutputStream s = new FileOutputStream(cacheFn);
-        parser.compose(s, result);
-        s.close();
-
-        return new ValueSetExpansionOutcome(result);
-      } catch (EFhirClientException e) {
-        serverOk = true;
-        FileOutputStream s = new FileOutputStream(cacheFn);
-        if (e.getServerErrors().isEmpty())
-          parser.compose(s, buildOO(e.getMessage()));
-        else
-          parser.compose(s, e.getServerErrors().get(0));
-        s.close();
-
-        throw new Exception(e.getServerErrors().get(0).getIssue().get(0).getDetails().getText());
       } catch (Exception e) {
         serverOk = false;
         throw e;
@@ -740,137 +682,11 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
 //      throw new Exception("Server is not available");
 //  }
   
-  
-  @Override
-  public ValueSetExpansionComponent expandVS(ConceptSetComponent inc, boolean heirarchy) {
-    ValueSet vs = new ValueSet();
-    vs.setCompose(new ValueSetComposeComponent());
-    vs.getCompose().getInclude().add(inc);
-    ValueSetExpansionOutcome vse = expandVS(vs, true, heirarchy);
-    if (vse.getValueset() == null)
-      return null;
-    else
-      return vse.getValueset().getExpansion();
-  }
-
+ 
   public void saveCache() throws IOException {
-    saveValidationCache();
+    txCache.save();
   }
 
-  @Override
-  protected void loadValidationCache() throws JsonSyntaxException, Exception {
-    File dir = new File(validationCachePath);
-    if (!dir.exists())
-      return;
-    
-    if (new File(Utilities.path(validationCachePath, "noy-supported.txt")).exists())
-      for (String s : TextFile.fileToString(Utilities.path(validationCachePath, "not-supported.txt")).split("\\r?\\n"))
-        nonSupportedCodeSystems.add(s);
-    
-    String[] files = dir.list();
-    for (String f : files) {
-      if (f.endsWith(".txt"))
-        break;
-      String fn = Utilities.path(validationCachePath, f);
-      com.google.gson.JsonParser  parser = new com.google.gson.JsonParser();
-      JsonObject json = (JsonObject) parser.parse(TextFile.fileToString(fn));
-      Map<String, ValidationResult> t = new HashMap<String, IWorkerContext.ValidationResult>();
-      for (JsonElement i : json.getAsJsonArray("outcomes")) {
-        JsonObject o = (JsonObject) i;
-        String s = o.get("hash").getAsString();
-        JsonElement j = o.get("message");
-        String m = null;
-        if (!(j instanceof JsonNull))
-          m = o.get("message").getAsString();
-        j = o.get("severity");
-        IssueSeverity sev = null;
-        if (!(j instanceof JsonNull))
-          sev = IssueSeverity.fromCode(j.getAsString());
-        ConceptDefinitionComponent def = null;
-        j = o.get("definition");
-        if (j != null && j instanceof JsonObject) {
-          def = new ConceptDefinitionComponent();
-          o = (JsonObject) j;
-          if (o.get("abstract").getAsBoolean())
-            CodeSystemUtilities.setNotSelectable(null, def);
-          if (!(o.get("code") instanceof JsonNull))
-            def.setCode(o.get("code").getAsString());
-          if (!(o.get("definition") instanceof JsonNull))
-            def.setDefinition(o.get("definition").getAsString());
-          if (!(o.get("display") instanceof JsonNull))
-            def.setDisplay(o.get("display").getAsString());
-        }
-        t.put(s, new ValidationResult(sev, m, def));
-      }
-      validationCache.put(json.get("url").getAsString(), t);
-    }
-    
-  }
-
-  private void saveValidationCache() throws IOException {
-    if (noTerminologyServer)
-      return;
-    
-    File dir = new File(validationCachePath);
-    if (dir.exists())
-      Utilities.clearDirectory(validationCachePath);
-    else
-      dir.mkdir();
-
-    String sl = null;
-    for (String s : nonSupportedCodeSystems)
-      sl = sl == null ? s : sl + "\r\n" + s;
-    TextFile.stringToFile(sl, Utilities.path(validationCachePath, "not-supported.txt"));
-
-    for (String s : validationCache.keySet()) {
-      String fn = Utilities.path(validationCachePath, makeFileName(s)+".json");
-      String cnt = "";
-      if (new File(fn).exists())
-        cnt = TextFile.fileToString(fn);
-      StringWriter st = new StringWriter();
-      JsonWriter gson = new JsonWriter(st);
-      gson.setIndent("  ");
-      gson.beginObject();
-      gson.name("url");
-      gson.value(s);
-      gson.name("outcomes");
-      gson.beginArray();
-      Map<String, ValidationResult> t = validationCache.get(s);
-      for (String sp : sorted(t.keySet())) {
-        ValidationResult vr = t.get(sp);
-        gson.beginObject();
-        gson.name("hash");
-        gson.value(sp);
-        gson.name("severity");
-        if (vr.getSeverity() == null)
-          gson.nullValue();
-        else
-          gson.value(vr.getSeverity().toCode());
-        gson.name("message");
-        gson.value(vr.getMessage());
-        if (vr.asConceptDefinition() != null) {
-          gson.name("definition");
-          gson.beginObject();
-          gson.name("abstract");
-          gson.value(CodeSystemUtilities.isNotSelectable(null, vr.asConceptDefinition()));
-          gson.name("code");
-          gson.value(vr.asConceptDefinition().getCode());
-          gson.name("definition");
-          gson.value(vr.asConceptDefinition().getDefinition());
-          gson.name("display");
-          gson.value(vr.asConceptDefinition().getDisplay());
-          gson.endObject();
-        }
-        gson.endObject();
-      }
-      gson.endArray();
-      gson.endObject();
-      gson.close();
-      String ncnt = st.toString();
-      if (!ncnt.equals(cnt))
-        TextFile.stringToFile(ncnt, fn);
-    }
-  }
 
   private List<String> sorted(Set<String> keySet) {
     List<String> results = new ArrayList<String>();
@@ -900,24 +716,13 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
 
   @Override
   public Set<String> typeTails() {
-    return new HashSet<String>(Arrays.asList("Integer","UnsignedInt","PositiveInt","Decimal","DateTime","Date","Time","Instant","String","Uri","Oid","Uuid","Id","Boolean","Code","Markdown","Base64Binary","Coding","CodeableConcept","Attachment","Identifier","Quantity","SampledData","Range","Period","Ratio","HumanName","Address","ContactPoint","Timing","Reference","Annotation","Signature","Meta"));
+    return new HashSet<String>(Arrays.asList("Integer","UnsignedInt","PositiveInt","Decimal","DateTime","Date","Time","Instant","String","Uri","Url","Canonical","Oid","Uuid","Id","Boolean","Code","Markdown","Base64Binary","Coding","CodeableConcept","Attachment","Identifier","Quantity","SampledData","Range","Period","Ratio","HumanName","Address","ContactPoint","Timing","Reference","Annotation","Signature","Meta"));
   }
 
   @Override
   public List<StructureDefinition> allStructures() {
     List<StructureDefinition> result = new ArrayList<StructureDefinition>();
-    result.addAll(structures.values());
-    return result;
-  }
-
-  @Override
-  public List<MetadataResource> allConformanceResources() {
-    List<MetadataResource> result = new ArrayList<MetadataResource>();
-    result.addAll(structures.values());
-    result.addAll(valueSets.values());
-    result.addAll(codeSystems.values());
-    result.addAll(maps.values());
-    result.addAll(transforms.values());
+    result.addAll(listStructures());
     return result;
   }
 
@@ -968,7 +773,7 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
 
   public List<StructureDefinition> getExtensionDefinitions() {
     List<StructureDefinition> res = new ArrayList<StructureDefinition>();
-    for (StructureDefinition sd : structures.values()) {
+    for (StructureDefinition sd : listStructures()) {
       if (sd.getType().equals("Extension") && sd.getDerivation() == TypeDerivationRule.CONSTRAINT)
         res.add(sd);
     }
@@ -977,13 +782,17 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
 
   public List<StructureDefinition> getProfiles() {
     List<StructureDefinition> res = new ArrayList<StructureDefinition>();
-    for (StructureDefinition sd : structures.values()) {
+    for (StructureDefinition sd : listStructures()) {
       if (!sd.getType().equals("Extension") && sd.getDerivation() == TypeDerivationRule.CONSTRAINT)
         res.add(sd);
     }
     return res;
   }
 
+  @Override
+  public UcumService getUcumService() {
+    return ucum;
+  }
 
 
 }

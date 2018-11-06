@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <ServiceRequest xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir file://ERICS-AIR-2/ehaas/Documents/FHIR/build/schema/bodysite.xsd">
 	<id value="lipid"/>
 	<contained>
@@ -18,7 +18,7 @@
 			</subject>
 			<valueCodeableConcept>
 				<coding>
-					<system value="http://hl7.org/fhir/v2/0136"/>
+					<system value="http://terminology.hl7.org/CodeSystem/v2-0136"/>
 					<code value="Y"/>
 					<display value="Yes"/>
 				</coding>
@@ -50,7 +50,7 @@
 	<identifier>
 		<type>
 			<coding>
-				<system value="http://hl7.org/fhir/identifier-type"/>
+				<system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
 				<code value="PLAC"/>
 			</coding>
 			<text value="Placer"/>
@@ -70,17 +70,12 @@
 	<subject>
 		<reference value="Patient/example"/>
 	</subject>
-	<context>
+	<encounter>
 		<reference value="Encounter/example"/>
-	</context>
+	</encounter>
 	<occurrenceDateTime value="2013-05-02T16:16:00-07:00"/>
 	<requester>
-		<agent>
 			<reference value="Practitioner/example"/>
-		</agent>
-		<onBehalfOf>
-			<reference value="Organization/f001"/>
-		</onBehalfOf>
 	</requester>
 	<performer>
 		<reference value="Practitioner/f202"/>

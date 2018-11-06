@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Fri, Aug 11, 2017 07:23+1000 for FHIR v3.1.0
+// Generated on Mon, Nov 5, 2018 09:03+1100 for FHIR v3.6.0
 
 import java.util.*;
 
@@ -45,7 +45,7 @@ import org.hl7.fhir.exceptions.FHIRException;
 /**
  * Identifies two or more records (resource instances) that are referring to the same real-world "occurrence".
  */
-@ResourceDef(name="Linkage", profile="http://hl7.org/fhir/Profile/Linkage")
+@ResourceDef(name="Linkage", profile="http://hl7.org/fhir/StructureDefinition/Linkage")
 public class Linkage extends DomainResource {
 
     public enum LinkageType {
@@ -58,7 +58,7 @@ public class Linkage extends DomainResource {
          */
         ALTERNATE, 
         /**
-         * The record represents an obsolete record of the underlyng event/condition/etc.  It is not expected to be actively maintained.
+         * The record represents an obsolete record of the underlying event/condition/etc.  It is not expected to be actively maintained.
          */
         HISTORICAL, 
         /**
@@ -99,7 +99,7 @@ public class Linkage extends DomainResource {
           switch (this) {
             case SOURCE: return "The record represents the \"source of truth\" (from the perspective of this Linkage resource) for the underlying event/condition/etc.";
             case ALTERNATE: return "The record represents the alternative view of the underlying event/condition/etc.  The record may still be actively maintained, even though it is not considered to be the source of truth.";
-            case HISTORICAL: return "The record represents an obsolete record of the underlyng event/condition/etc.  It is not expected to be actively maintained.";
+            case HISTORICAL: return "The record represents an obsolete record of the underlying event/condition/etc.  It is not expected to be actively maintained.";
             default: return "?";
           }
         }
@@ -173,7 +173,12 @@ public class Linkage extends DomainResource {
         @Description(shortDefinition="Resource being linked", formalDefinition="The resource instance being linked as part of the group." )
         protected Reference resource;
 
-        private static final long serialVersionUID = 527428511L;
+        /**
+         * The actual object that is the target of the reference (The resource instance being linked as part of the group.)
+         */
+        protected Resource resourceTarget;
+
+        private static final long serialVersionUID = -209332008L;
 
     /**
      * Constructor
@@ -260,17 +265,32 @@ public class Linkage extends DomainResource {
           return this;
         }
 
+        /**
+         * @return {@link #resource} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The resource instance being linked as part of the group.)
+         */
+        public Resource getResourceTarget() { 
+          return this.resourceTarget;
+        }
+
+        /**
+         * @param value {@link #resource} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The resource instance being linked as part of the group.)
+         */
+        public LinkageItemComponent setResourceTarget(Resource value) { 
+          this.resourceTarget = value;
+          return this;
+        }
+
         protected void listChildren(List<Property> children) {
           super.listChildren(children);
           children.add(new Property("type", "code", "Distinguishes which item is \"source of truth\" (if any) and which items are no longer considered to be current representations.", 0, 1, type));
-          children.add(new Property("resource", "Reference", "The resource instance being linked as part of the group.", 0, 1, resource));
+          children.add(new Property("resource", "Reference(Any)", "The resource instance being linked as part of the group.", 0, 1, resource));
         }
 
         @Override
         public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
           switch (_hash) {
           case 3575610: /*type*/  return new Property("type", "code", "Distinguishes which item is \"source of truth\" (if any) and which items are no longer considered to be current representations.", 0, 1, type);
-          case -341064690: /*resource*/  return new Property("resource", "Reference", "The resource instance being linked as part of the group.", 0, 1, resource);
+          case -341064690: /*resource*/  return new Property("resource", "Reference(Any)", "The resource instance being linked as part of the group.", 0, 1, resource);
           default: return super.getNamedProperty(_hash, _name, _checkValid);
           }
 
@@ -355,22 +375,22 @@ public class Linkage extends DomainResource {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof LinkageItemComponent))
+        if (!(other_ instanceof LinkageItemComponent))
           return false;
-        LinkageItemComponent o = (LinkageItemComponent) other;
+        LinkageItemComponent o = (LinkageItemComponent) other_;
         return compareDeep(type, o.type, true) && compareDeep(resource, o.resource, true);
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof LinkageItemComponent))
+        if (!(other_ instanceof LinkageItemComponent))
           return false;
-        LinkageItemComponent o = (LinkageItemComponent) other;
+        LinkageItemComponent o = (LinkageItemComponent) other_;
         return compareValues(type, o.type, true);
       }
 
@@ -405,10 +425,10 @@ public class Linkage extends DomainResource {
     protected Resource authorTarget;
 
     /**
-     * Identifies one of the records that is considered to refer to the same real-world occurrence as well as how the items hould be evaluated within the collection of linked items.
+     * Identifies one of the records that is considered to refer to the same real-world occurrence as well as how the items should be evaluated within the collection of linked items.
      */
     @Child(name = "item", type = {}, order=2, min=1, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
-    @Description(shortDefinition="Item to be linked", formalDefinition="Identifies one of the records that is considered to refer to the same real-world occurrence as well as how the items hould be evaluated within the collection of linked items." )
+    @Description(shortDefinition="Item to be linked", formalDefinition="Identifies one of the records that is considered to refer to the same real-world occurrence as well as how the items should be evaluated within the collection of linked items." )
     protected List<LinkageItemComponent> item;
 
     private static final long serialVersionUID = 25900306L;
@@ -505,7 +525,7 @@ public class Linkage extends DomainResource {
     }
 
     /**
-     * @return {@link #item} (Identifies one of the records that is considered to refer to the same real-world occurrence as well as how the items hould be evaluated within the collection of linked items.)
+     * @return {@link #item} (Identifies one of the records that is considered to refer to the same real-world occurrence as well as how the items should be evaluated within the collection of linked items.)
      */
     public List<LinkageItemComponent> getItem() { 
       if (this.item == null)
@@ -561,7 +581,7 @@ public class Linkage extends DomainResource {
         super.listChildren(children);
         children.add(new Property("active", "boolean", "Indicates whether the asserted set of linkages are considered to be \"in effect\".", 0, 1, active));
         children.add(new Property("author", "Reference(Practitioner|Organization)", "Identifies the user or organization responsible for asserting the linkages and who establishes the context for evaluating the nature of each linkage.", 0, 1, author));
-        children.add(new Property("item", "", "Identifies one of the records that is considered to refer to the same real-world occurrence as well as how the items hould be evaluated within the collection of linked items.", 0, java.lang.Integer.MAX_VALUE, item));
+        children.add(new Property("item", "", "Identifies one of the records that is considered to refer to the same real-world occurrence as well as how the items should be evaluated within the collection of linked items.", 0, java.lang.Integer.MAX_VALUE, item));
       }
 
       @Override
@@ -569,7 +589,7 @@ public class Linkage extends DomainResource {
         switch (_hash) {
         case -1422950650: /*active*/  return new Property("active", "boolean", "Indicates whether the asserted set of linkages are considered to be \"in effect\".", 0, 1, active);
         case -1406328437: /*author*/  return new Property("author", "Reference(Practitioner|Organization)", "Identifies the user or organization responsible for asserting the linkages and who establishes the context for evaluating the nature of each linkage.", 0, 1, author);
-        case 3242771: /*item*/  return new Property("item", "", "Identifies one of the records that is considered to refer to the same real-world occurrence as well as how the items hould be evaluated within the collection of linked items.", 0, java.lang.Integer.MAX_VALUE, item);
+        case 3242771: /*item*/  return new Property("item", "", "Identifies one of the records that is considered to refer to the same real-world occurrence as well as how the items should be evaluated within the collection of linked items.", 0, java.lang.Integer.MAX_VALUE, item);
         default: return super.getNamedProperty(_hash, _name, _checkValid);
         }
 
@@ -677,23 +697,23 @@ public class Linkage extends DomainResource {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof Linkage))
+        if (!(other_ instanceof Linkage))
           return false;
-        Linkage o = (Linkage) other;
+        Linkage o = (Linkage) other_;
         return compareDeep(active, o.active, true) && compareDeep(author, o.author, true) && compareDeep(item, o.item, true)
           ;
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof Linkage))
+        if (!(other_ instanceof Linkage))
           return false;
-        Linkage o = (Linkage) other;
+        Linkage o = (Linkage) other_;
         return compareValues(active, o.active, true);
       }
 

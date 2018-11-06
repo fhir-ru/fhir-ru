@@ -14,6 +14,7 @@
       <display value="Vancomycin Hydrochloride (VANCOMYCIN HYDROCHLORIDE)"/>
     </coding>
   </code>
+  <status value="active"/>
   <manufacturer>
     <reference value="#org4" />
   </manufacturer>
@@ -33,7 +34,7 @@
         </coding>
       </itemCodeableConcept>
       <isActive value="true"></isActive>
-      <amount>
+      <strength>
         <numerator>
           <value value="500"/>
           <system value="http://unitsofmeasure.org"/>
@@ -44,7 +45,7 @@
           <system value="http://unitsofmeasure.org"/>
           <code value="mL"/>
         </denominator>
-      </amount>
+      </strength>
     </ingredient>
   <batch>
     <lotNumber value="9494788"/>

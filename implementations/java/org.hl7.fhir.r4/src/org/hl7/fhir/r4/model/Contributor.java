@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Fri, Aug 11, 2017 07:23+1000 for FHIR v3.1.0
+// Generated on Mon, Nov 5, 2018 09:03+1100 for FHIR v3.6.0
 
 import java.util.*;
 
@@ -49,19 +49,19 @@ public class Contributor extends Type implements ICompositeType {
 
     public enum ContributorType {
         /**
-         * An author of the content of the module
+         * An author of the content of the module.
          */
         AUTHOR, 
         /**
-         * An editor of the content of the module
+         * An editor of the content of the module.
          */
         EDITOR, 
         /**
-         * A reviewer of the content of the module
+         * A reviewer of the content of the module.
          */
         REVIEWER, 
         /**
-         * An endorser of the content of the module
+         * An endorser of the content of the module.
          */
         ENDORSER, 
         /**
@@ -104,10 +104,10 @@ public class Contributor extends Type implements ICompositeType {
         }
         public String getDefinition() {
           switch (this) {
-            case AUTHOR: return "An author of the content of the module";
-            case EDITOR: return "An editor of the content of the module";
-            case REVIEWER: return "A reviewer of the content of the module";
-            case ENDORSER: return "An endorser of the content of the module";
+            case AUTHOR: return "An author of the content of the module.";
+            case EDITOR: return "An editor of the content of the module.";
+            case REVIEWER: return "A reviewer of the content of the module.";
+            case ENDORSER: return "An endorser of the content of the module.";
             default: return "?";
           }
         }
@@ -475,23 +475,23 @@ public class Contributor extends Type implements ICompositeType {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof Contributor))
+        if (!(other_ instanceof Contributor))
           return false;
-        Contributor o = (Contributor) other;
+        Contributor o = (Contributor) other_;
         return compareDeep(type, o.type, true) && compareDeep(name, o.name, true) && compareDeep(contact, o.contact, true)
           ;
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof Contributor))
+        if (!(other_ instanceof Contributor))
           return false;
-        Contributor o = (Contributor) other;
+        Contributor o = (Contributor) other_;
         return compareValues(type, o.type, true) && compareValues(name, o.name, true);
       }
 

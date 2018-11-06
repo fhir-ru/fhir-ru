@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <CarePlan xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/CarePlan.xsd">
   <id value="integrate"/>
   <text>
@@ -124,8 +124,19 @@
       For purposes of example, will represent this way. -->
     <Condition>
       <id value="p1"/>
-      <clinicalStatus value="active"/>
-	  <verificationStatus value="confirmed"/>
+      <clinicalStatus>
+		<coding>
+		  <system value="http://terminology.hl7.org/CodeSystem/condition-clinical"/>
+		  <code value="active"/>
+		</coding>
+	  </clinicalStatus>
+
+	  <verificationStatus>
+		<coding>
+		  <system value="http://terminology.hl7.org/CodeSystem/condition-ver-status"/>
+		  <code value="confirmed"/>
+		</coding>
+	  </verificationStatus>
       <code>
         <text value="GERDS"/>
       </code>
@@ -138,8 +149,19 @@
   <contained>
     <Condition>
       <id value="p2"/>
-      <clinicalStatus value="active"/>
-	  <verificationStatus value="confirmed"/>
+      <clinicalStatus>
+		<coding>
+		  <system value="http://terminology.hl7.org/CodeSystem/condition-clinical"/>
+		  <code value="active"/>
+		</coding>
+	  </clinicalStatus>
+
+	  <verificationStatus>
+		<coding>
+		  <system value="http://terminology.hl7.org/CodeSystem/condition-ver-status"/>
+		  <code value="confirmed"/>
+		</coding>
+	  </verificationStatus>
       <code>
         <text value="Obesity"/>
       </code>
@@ -152,8 +174,19 @@
   <contained>
     <Condition>
       <id value="p3"/>
-      <clinicalStatus value="active"/>
-	  <verificationStatus value="confirmed"/>
+      <clinicalStatus>
+		<coding>
+		  <system value="http://terminology.hl7.org/CodeSystem/condition-clinical"/>
+		  <code value="active"/>
+		</coding>
+	  </clinicalStatus>
+
+	  <verificationStatus>
+		<coding>
+		  <system value="http://terminology.hl7.org/CodeSystem/condition-ver-status"/>
+		  <code value="confirmed"/>
+		</coding>
+	  </verificationStatus>
       <code>
         <text value="Psoriasis"/>
       </code>
@@ -166,7 +199,7 @@
   <contained>
     <Goal>
       <id value="g1"/>
-      <status value="in-progress"/>
+      <lifecycleStatus value="active" />
 	  <description>
         <text value="Eve will lose weight and reduce her GERDS symptoms by improving her diet"/>
       </description>
@@ -179,7 +212,7 @@
   <contained>
     <Goal>
       <id value="g2"/>
-	  <status value="in-progress"/>
+	  <lifecycleStatus value="active" />
       <description>
         <text value="Eve will improve her GERDS symptoms"/>
       </description>
@@ -192,7 +225,7 @@
   <contained>
     <Goal>
       <id value="g3"/>
-      <status value="in-progress"/>
+      <lifecycleStatus value="active" />
 	  <description>
         <text value="Eve will increase her energy by being more active"/>
       </description>
@@ -205,7 +238,7 @@
   <contained>
     <Goal>
       <id value="g4"/>
-      <status value="in-progress"/>
+      <lifecycleStatus value="active" />
 	  <description>
         <text value="Eve will set up her medications and take as prescribed"/>
       </description>
@@ -218,7 +251,7 @@
   <contained>
     <Goal>
       <id value="g5"/>
-      <status value="in-progress"/>
+      <lifecycleStatus value="active" />
 	  <description>
         <text value="Eve will restart her light treatments"/>
       </description>
@@ -277,7 +310,7 @@
         <reference value="#g1"/>
       </goal>
       <status value="not-started"/>
-      <prohibited value="false"/>
+      <doNotPerform value="false"/>
       <scheduledPeriod>
         <start value="2012-09-10"/>
       </scheduledPeriod>
@@ -298,7 +331,7 @@
         <reference value="#g1"/>
       </goal>
       <status value="not-started"/>
-      <prohibited value="false"/>
+      <doNotPerform value="false"/>
       <scheduledPeriod>
         <start value="2012-09-10"/>
       </scheduledPeriod>
@@ -314,7 +347,7 @@
         <reference value="#g2"/>
       </goal>
       <status value="in-progress"/>
-      <prohibited value="false"/>
+      <doNotPerform value="false"/>
       <scheduledPeriod>
         <start value="2012-09-10"/>
       </scheduledPeriod>
@@ -338,7 +371,7 @@
         <reference value="#g3"/>
       </goal>
       <status value="in-progress"/>
-      <prohibited value="false"/>
+      <doNotPerform value="false"/>
       <scheduledPeriod>
         <start value="2012-08-27"/>
       </scheduledPeriod>
@@ -362,7 +395,7 @@
         <reference value="#g3"/>
       </goal>
       <status value="in-progress"/>
-      <prohibited value="false"/>
+      <doNotPerform value="false"/>
       <scheduledPeriod>
         <start value="2012-07-23"/>
       </scheduledPeriod>
@@ -378,7 +411,7 @@
         <reference value="#g4"/>
       </goal>
       <status value="in-progress"/>
-      <prohibited value="false"/>
+      <doNotPerform value="false"/>
       <scheduledPeriod>
         <start value="2012-07-23"/>
       </scheduledPeriod>
@@ -402,7 +435,7 @@
         <reference value="#g5"/>
       </goal>
       <status value="in-progress"/>
-      <prohibited value="false"/>
+      <doNotPerform value="false"/>
       <scheduledPeriod>
         <start value="2012-07-23"/>
       </scheduledPeriod>
@@ -422,7 +455,7 @@
         <reference value="#g4"/>
       </goal>
       <status value="in-progress"/>
-      <prohibited value="false"/>
+      <doNotPerform value="false"/>
       <scheduledPeriod>
         <start value="2012-07-10"/>
       </scheduledPeriod>
@@ -446,7 +479,7 @@
         <reference value="#g3"/>
       </goal>
       <status value="on-hold"/>
-      <prohibited value="false"/>
+      <doNotPerform value="false"/>
       <scheduledPeriod>
         <start value="2012-07-23"/>
       </scheduledPeriod>
@@ -462,7 +495,7 @@
         <reference value="#g4"/>
       </goal>
       <status value="completed"/>
-      <prohibited value="false"/>
+      <doNotPerform value="false"/>
       <scheduledPeriod>
         <start value="2012-07-10"/>
       </scheduledPeriod>
@@ -482,7 +515,7 @@
         <reference value="#g4"/>
       </goal>
       <status value="completed"/>
-      <prohibited value="false"/>
+      <doNotPerform value="false"/>
       <scheduledPeriod>
         <start value="2012-07-10"/>
       </scheduledPeriod>
@@ -506,7 +539,7 @@
         <reference value="#g3"/>
       </goal>
       <status value="on-hold"/>
-      <prohibited value="false"/>
+      <doNotPerform value="false"/>
       <scheduledPeriod>
         <start value="2012-07-23"/>
       </scheduledPeriod>

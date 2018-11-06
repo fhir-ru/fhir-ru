@@ -8,6 +8,8 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
+import org.hl7.fhir.igtools.publisher.FetchedFile;
+import org.hl7.fhir.igtools.publisher.IGKnowledgeProvider;
 import org.hl7.fhir.r4.formats.XmlParser;
 import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.Bundle.BundleEntryComponent;
@@ -16,7 +18,6 @@ import org.hl7.fhir.r4.model.OperationOutcome;
 import org.hl7.fhir.r4.utils.OperationOutcomeUtilities;
 import org.hl7.fhir.r4.utils.ToolingExtensions;
 import org.hl7.fhir.r4.utils.TranslatingUtilities;
-import org.hl7.fhir.igtools.publisher.FetchedFile;
 import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.validation.ValidationMessage;
@@ -27,10 +28,17 @@ public class ValidationPresenter extends TranslatingUtilities implements Compara
 
   private static final String INTERNAL_LINK = "internal";
   private String statedVersion;
+  private IGKnowledgeProvider provider;
+  private IGKnowledgeProvider altProvider;
+  int err = 0;
+  int warn = 0;
+  int info = 0;
 
-  public ValidationPresenter(String statedVersion) {
+  public ValidationPresenter(String statedVersion, IGKnowledgeProvider provider, IGKnowledgeProvider altProvider) {
     super();
     this.statedVersion = statedVersion;
+    this.provider = provider;
+    this.altProvider = altProvider;
   }
 
   private List<FetchedFile> sorted(List<FetchedFile> files) {
@@ -41,9 +49,6 @@ public class ValidationPresenter extends TranslatingUtilities implements Compara
   }
   
   public String generate(String title, List<ValidationMessage> allErrors, List<FetchedFile> files, String path, List<String> filteredMessages) throws IOException {
-    int err = 0;
-    int warn = 0;
-    int info = 0;
     
     for (FetchedFile f : files) {
       for (ValidationMessage vm : removeDupMessages(f.getErrors())) {
@@ -71,6 +76,10 @@ public class ValidationPresenter extends TranslatingUtilities implements Compara
     b.append(genEnd());
     for (FetchedFile f : files) {
       b.append(genStart(f));
+      if (f.getErrors().size() > 0)
+        b.append(startTemplateErrors);
+      else
+        b.append(startTemplateNoErrors);
       for (ValidationMessage vm : removeDupMessages(f.getErrors())) {
         b.append(genDetails(vm));
         if (vm.getLevel().equals(ValidationMessage.IssueSeverity.FATAL)||vm.getLevel().equals(ValidationMessage.IssueSeverity.ERROR))
@@ -178,15 +187,27 @@ public class ValidationPresenter extends TranslatingUtilities implements Compara
   private final String startTemplate = 
       "<hr/>\r\n"+
       "<a name=\"$link$\"> </a>\r\n"+
-      "<h2>$path$</h2>\r\n"+
-      " <table class=\"grid\">\r\n"+
+      "<h2><a href=\"$xlink$\">$path$</a></h2>\r\n"+
+      " <table class=\"grid\">\r\n";
+  
+  private final String startTemplateErrors = 
       "   <tr>\r\n"+
       "     <td><b>Path</b></td><td><b>Severity</b></td><td><b>Message</b></td>\r\n"+
+      "   </tr>\r\n";
+
+  private final String startTemplateNoErrors = 
+      "   <tr>\r\n"+
+      "     <td>No Issues</td>\r\n"+
       "   </tr>\r\n";
 
   private final String detailsTemplate = 
       "   <tr style=\"background-color: $color$\">\r\n"+
       "     <td><b>$path$</b></td><td><b>$level$</b></td><td><b>$msg$</b></td>\r\n"+
+      "   </tr>\r\n";
+  
+  private final String detailsTemplateTx = 
+      "   <tr style=\"background-color: $color$\">\r\n"+
+      "     <td><b>$path$</b></td><td><b>$level$</b></td><td><b>$msg$</b> (<a href=\"$tx$\">see Tx log</a>)</td>\r\n"+
       "   </tr>\r\n";
   
   private final String detailsTemplateWithLink = 
@@ -364,6 +385,11 @@ public class ValidationPresenter extends TranslatingUtilities implements Compara
     t.add("link", makelink(f));
     t.add("filename", f.getName());
     t.add("path", f.getPath());
+    String link = provider.getLinkFor(f.getResources().get(0));
+    if (link==null) {
+      link = altProvider.getLinkFor(f.getResources().get(0));
+    }
+    t.add("xlink", link);
     return t.render();
   }
   private String genStartInternal() {
@@ -371,6 +397,7 @@ public class ValidationPresenter extends TranslatingUtilities implements Compara
     t.add("link", INTERNAL_LINK);
     t.add("filename", "Build Errors");
     t.add("path", "n/a");
+    t.add("xlink", "");
     return t.render();
   }
 
@@ -392,12 +419,13 @@ public class ValidationPresenter extends TranslatingUtilities implements Compara
     return t.render();
   }
   private String genDetails(ValidationMessage vm) {
-    ST t = template(vm.getLocationLink() != null ? detailsTemplateWithLink : detailsTemplate);
+    ST t = template(vm.getLocationLink() != null ? detailsTemplateWithLink : vm.getTxLink() != null ? detailsTemplateTx : detailsTemplate);
     t.add("path", vm.getLocation());
     t.add("pathlink", vm.getLocationLink());
     t.add("level", vm.getLevel().toCode());
     t.add("color", colorForLevel(vm.getLevel()));
     t.add("msg", vm.getHtml());
+    t.add("tx", "qa-tx.html#l"+vm.getTxLink());
     return t.render();
   }
 
@@ -426,5 +454,19 @@ public class ValidationPresenter extends TranslatingUtilities implements Compara
   @Override
   public int compare(FetchedFile f1, FetchedFile f2) {
     return f1.getName().compareTo(f2.getName());
+  }
+
+  public int getErr() {
+    return err;
+  }
+
+  public int getWarn() {
+    return warn;
+  }
+
+  public int getInfo() {
+    return info;
   }  
+  
+  
 }

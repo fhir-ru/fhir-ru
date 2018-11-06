@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <ValueSet xmlns="http://hl7.org/fhir">
   <id value="identifier-type"/>
@@ -21,7 +21,7 @@
   <description value="A coded type for an identifier that can be used to determine which identifier to use for a specific purpose."/>
   <compose>
     <include>
-      <system value="http://hl7.org/fhir/v2/0203"/>
+      <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
       <concept>
         <code value="DL"/>
       </concept>
@@ -58,9 +58,24 @@
       <concept>
         <code value="ACSN"/>
       </concept>
-    </include>
-    <include>
-      <system value="http://hl7.org/fhir/identifier-type"/>
+			<concept>
+				<code value="UDI"/>
+			</concept>
+			<concept>
+				<code value="SNO"/>
+			</concept>
+			<concept>
+				<code value="SB"/>
+			</concept>
+			<concept>
+				<code value="PLAC"/>
+			</concept>
+			<concept>
+				<code value="FILL"/>
+			</concept>
+			<concept>
+				<code value="JHN"/>
+			</concept>
     </include>
   </compose>
 </ValueSet>

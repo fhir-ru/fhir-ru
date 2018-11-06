@@ -1,10 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <CompartmentDefinition xmlns="http://hl7.org/fhir">
   <id value="example"/>
   <url value="http://hl7.org/fhir/CompartmentDefinition/example"/>
   <name value="EXAMPLE"/>
-  <title value="Base FHIR compartment definition for Device(example)"/>
   <status value="draft"/>
   <experimental value="true"/>
   <date value="2017-02-24"/>
@@ -17,10 +16,9 @@
     </telecom>
   </contact>
   <description value="The set of resources associated with a particular Device (example with Communication and CommunicationRequest resourses only)."/>
-  <purpose value="Provides an example of a FHIR compartment definition based on the Device resource type."/>
   <useContext>
     <code>
-      <system value="http://hl7.org/fhir/usage-context-type"/>
+      <system value="http://terminology.hl7.org/CodeSystem/usage-context-type"/>
       <code value="focus"/>
     </code>
     <valueCodeableConcept>
@@ -30,13 +28,7 @@
       </coding>
     </valueCodeableConcept>
   </useContext>
-  <jurisdiction>
-    <coding>
-      <system value="urn:iso:std:iso:3166"/>
-      <code value="US"/>
-      <display value="United States of America (the)"/>
-    </coding>
-  </jurisdiction>
+  <purpose value="Provides an example of a FHIR compartment definition based on the Device resource type."/>
   <code value="Device"/>
   <search value="true"/>
   <resource>

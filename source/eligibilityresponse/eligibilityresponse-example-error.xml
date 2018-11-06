@@ -1,4 +1,4 @@
-<EligibilityResponse xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/remittance.xsd">
+﻿<EligibilityResponse xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/remittance.xsd">
 	<id value="E2503"/>
 
 	<text>
@@ -17,17 +17,10 @@
 
 	<requestProvider>
 		<identifier>
-			<system value="http://national.org/provider"/>
-			<value value="PR9876"/>
-		</identifier>  
-	</requestProvider>
-
-	<requestOrganization> 
-		<identifier>
 			<system value="http://national.org/clinic"/>
 			<value value="OR1234"/>
 		</identifier>   
-	</requestOrganization>
+	</requestProvider>
 
 	<request>
 		<reference value="http://www.BenefitsInc.com/fhir/eligibility/225476332406"/>
@@ -51,7 +44,7 @@
 	<error>
 		<code>
 			<coding>
-				<system value="http://hl7.org/fhir/adjudication-error"/>
+				<system value="http://terminology.hl7.org/CodeSystem/adjudication-error"/>
 				<code value="a001"/>
 			</coding>
 		</code>

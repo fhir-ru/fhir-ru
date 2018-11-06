@@ -104,18 +104,22 @@
   <experimental value="true"/>
   <date value="2017-03-03T14:06:00Z"/>
   <publisher value="Motive Medical Intelligence"/>
+  <contact>
+    <telecom>
+      <system value="phone"/>
+      <value value="415-362-4007"/>
+      <use value="work"/>
+    </telecom>
+    <telecom>
+      <system value="email"/>
+      <value value="info@motivemi.com"/>
+      <use value="work"/>
+    </telecom>
+  </contact>
   <description value="refer to primary care mental-health integrated care program for evaluation and treatment of mental health conditions now"/>
-  <purpose value="Defines a referral to a mental-health integrated care program for use in suicide risk order sets. The definition is independent of the order set in which it appears to allow reuse of the general definition of the referrral."/>
-  <usage value="This activity definition is used as the definition of a referral request within various suicide risk order sets. Elements that apply universally are defined here, while elements that apply to the specific setting of a referral within a particular order set are defined in the order set."/>
-  <approvalDate value="2017-03-01"/>
-  <lastReviewDate value="2017-03-01"/>
-  <effectivePeriod>
-    <start value="2017-03-01"/>
-    <end value="2017-12-31"/>
-  </effectivePeriod>
   <useContext>
     <code>
-      <system value="http://hl7.org/fhir/usage-context-type"/>
+      <system value="http://terminology.hl7.org/CodeSystem/usage-context-type"/>
       <code value="age"/>
     </code>
     <valueCodeableConcept>
@@ -128,7 +132,7 @@
   </useContext>
   <useContext>
     <code>
-      <system value="http://hl7.org/fhir/usage-context-type"/>
+      <system value="http://terminology.hl7.org/CodeSystem/usage-context-type"/>
       <code value="focus"/>
     </code>
     <valueCodeableConcept>
@@ -141,7 +145,7 @@
   </useContext>
   <useContext>
     <code>
-      <system value="http://hl7.org/fhir/usage-context-type"/>
+      <system value="http://terminology.hl7.org/CodeSystem/usage-context-type"/>
       <code value="focus"/>
     </code>
     <valueCodeableConcept>
@@ -154,7 +158,7 @@
   </useContext>
   <useContext>
     <code>
-      <system value="http://hl7.org/fhir/usage-context-type"/>
+      <system value="http://terminology.hl7.org/CodeSystem/usage-context-type"/>
       <code value="focus"/>
     </code>
     <valueCodeableConcept>
@@ -167,7 +171,7 @@
   </useContext>
   <useContext>
     <code>
-      <system value="http://hl7.org/fhir/usage-context-type"/>
+      <system value="http://terminology.hl7.org/CodeSystem/usage-context-type"/>
       <code value="focus"/>
     </code>
     <valueCodeableConcept>
@@ -180,7 +184,7 @@
   </useContext>
   <useContext>
     <code>
-      <system value="http://hl7.org/fhir/usage-context-type"/>
+      <system value="http://terminology.hl7.org/CodeSystem/usage-context-type"/>
       <code value="user"/>
     </code>
     <valueCodeableConcept>
@@ -193,7 +197,7 @@
   </useContext>
   <useContext>
     <code>
-      <system value="http://hl7.org/fhir/usage-context-type"/>
+      <system value="http://terminology.hl7.org/CodeSystem/usage-context-type"/>
       <code value="venue"/>
     </code>
     <valueCodeableConcept>
@@ -210,38 +214,31 @@
       <code value="US"/>
     </coding>
   </jurisdiction>
+  <purpose value="Defines a referral to a mental-health integrated care program for use in suicide risk order sets. The definition is independent of the order set in which it appears to allow reuse of the general definition of the referrral."/>
+  <usage value="This activity definition is used as the definition of a referral request within various suicide risk order sets. Elements that apply universally are defined here, while elements that apply to the specific setting of a referral within a particular order set are defined in the order set."/>
+  <copyright value="© Copyright 2016 Motive Medical Intelligence. All rights reserved."/>
+  <approvalDate value="2017-03-01"/>
+  <lastReviewDate value="2017-03-01"/>
+  <effectivePeriod>
+    <start value="2017-03-01"/>
+    <end value="2017-12-31"/>
+  </effectivePeriod>
   <topic>
     <text value="Mental Health Referral"/>
   </topic>
-  <contributor>
-    <type value="author"/>
+  <author>
     <name value="Motive Medical Intelligence"/>
-    <contact>
-      <telecom>
-        <system value="phone"/>
-        <value value="415-362-4007"/>
-        <use value="work"/>
-      </telecom>
-      <telecom>
-        <system value="email"/>
-        <value value="info@motivemi.com"/>
-        <use value="work"/>
-      </telecom>
-    </contact>
-  </contributor>
-  <contact>
     <telecom>
-      <system value="phone"/>
-      <value value="415-362-4007"/>
-      <use value="work"/>
+	  <system value="phone"/>
+	  <value value="415-362-4007"/>
+	  <use value="work"/>
     </telecom>
     <telecom>
-      <system value="email"/>
-      <value value="info@motivemi.com"/>
-      <use value="work"/>
+  	  <system value="email"/>
+	  <value value="info@motivemi.com"/>
+	  <use value="work"/>
     </telecom>
-  </contact>
-  <copyright value="© Copyright 2016 Motive Medical Intelligence. All rights reserved."/>
+  </author>
   <relatedArtifact>
     <type value="citation"/>
     <display value="Practice Guideline for the Treatment of Patients with Major Depressive Disorder"/>
@@ -249,9 +246,7 @@
   </relatedArtifact>
   <relatedArtifact>
     <type value="predecessor"/>
-    <resource>
-      <reference value="ActivityDefinition/referralPrimaryCareMentalHealth-initial"/>
-    </resource>
+    <resource value="ActivityDefinition/referralPrimaryCareMentalHealth-initial"/>
   </relatedArtifact>
   <!-- Kind indicates the type of resource that is defined by this activity, a ServiceRequest in this case -->
   <kind value="ServiceRequest"/>
@@ -266,8 +261,11 @@
     <event>
 	  <!-- The expression here specifies the value for the timing of the resulting resource.
 		   In this case, ServiceRequest.fulfillmentTime.start -->
-      <extension url="http://hl7.org/fhir/StructureDefinition/cqif-cqlExpression">
-        <valueString value="Now()"/>
+      <extension url="http://hl7.org/fhir/StructureDefinition/cqf-expression">
+        <valueExpression>
+          <language value="text/cql"/>
+          <expression value="Now()"/>
+        </valueExpression>
       </extension>
     </event>
   </timingTiming>

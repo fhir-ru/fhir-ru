@@ -112,21 +112,20 @@
   </relatedArtifact>
   <relatedArtifact>
     <type value="derived-from"/>
-    <resource>
-      <reference value="ActivityDefinition/serum-dengue-virus-igm"/>
-    </resource>
+    <resource value="ActivityDefinition/serum-dengue-virus-igm"/>
   </relatedArtifact>
-  <library>
-    <reference value="Library/zika-virus-intervention-logic"/>
-  </library>
+  <library value="Library/zika-virus-intervention-logic"/>
   <kind value="ServiceRequest"/>
   <code>
     <text value="Serum Zika and Dengue Virus IgM"/>
   </code>
   <timingTiming>
     <event>
-      <extension url="http://hl7.org/fhir/StructureDefinition/cqif-cqlExpression">
-        <valueString value="Now()"/>
+      <extension url="http://hl7.org/fhir/StructureDefinition/cqf-expression">
+        <valueExpression>
+          <language value="text/cql"/>
+          <expression value="Now()"/>
+        </valueExpression>
       </extension>
     </event>
   </timingTiming>

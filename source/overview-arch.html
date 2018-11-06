@@ -10,11 +10,11 @@
 <body>
 [%file newnavbar%]
 
-<div class="col-9">
+<div class="col-12">
 
 
 <h2>FHIR Overview - Architects</h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="versions.html#levels">Ballot Status</a>: <a href="versions.html#std-process">Informative</a></td></tr></table>
+<table class="colsi"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Informative</a></td></tr></table>
 
 
 <p>
@@ -38,9 +38,8 @@ From an operational perspective, HL7’s internal standards development and gove
 resource and which resources exist. In addition, the FHIR specification also provides a mechanism for contextualizing resources for
 specific needs within specific bounds (see <a href="profiling.html">Profiling Resources</a>).
 </p>
-<h3>
-Architecture Frameworks and FHIR Alignment
-</h3>
+<a name="frameworks"></a>
+<h3>Architecture Frameworks and FHIR Alignment</h3>
 <p>
 FHIR resources fit firmly within the information architecture domain and the FHIR APIs for data exchange
 address aspects of application architecture.
@@ -49,8 +48,9 @@ address aspects of application architecture.
 <tr>
 <td>
 <p>
-From a <a href="http://www.opengroup.org/subjectareas/enterprise/togaf">TOGAF perspective</a>, FHIR address aspects architecture
-views related information model definition and data exchange in the Information Systems Architectures portion of the TOGAF Architecture Development Method.
+From a <a href="http://www.opengroup.org/subjectareas/enterprise/togaf">TOGAF perspective</a>, FHIR addresses aspects of architecture
+views related to information model definition and data exchange, which are described in the Information Systems Architectures portion 
+of the TOGAF Architecture Development Method.
 </p>
 </td>
 <td>
@@ -87,9 +87,8 @@ Information Models and the Behavioral Models Viewpoints, respectively.
 </td>
 </tr>
 </table>
-<h3>
-FHIR and Architectural Principles
-</h3>
+<a name="principles"></a>
+<h3>FHIR and Architectural Principles</h3>
 <p>
 FHIR’s primary purpose is to address interoperability with well-structured, expressive data models and simple, efficient data exchange mechanisms.
 In addition, FHIR aligns to the following architectural principles:
@@ -110,8 +109,9 @@ Scalability – Aligning FHIR APIs to the REST architectural style ensure that a
 reduces memory usage, eliminates the needs for “sticky” sessions within a server farm and therefore supports horizontal scalability.
 </li>
 <li>
-Performance – FHIR resources are lean and optimized for exchange across the network. This has the potential to
-improve performance in complex transactions across multiple systems connected via a shared and finite network.
+Performance – FHIR resources are lean and suitable for exchange across the network. Highly optimized formats are available, which has the potential to
+improve performance in complex transactions across multiple systems connected via a shared and finite network, though most implementers find the standard
+JSON / XML formats adequate.
 </li>
 <li>
 Usability – FHIR resources are understood by technical experts and non-technical people alike. Even if the details of
@@ -131,18 +131,17 @@ FHIR is easily understood and readily implemented using industry standards and c
 There are additional architecture principles related to consistency, granularity, referential integrity, and others that are not as
 well established or proven. See the section below on Outstanding Issues for details.
 </p>
-<h3>
-FHIR Decomposition
-</h3>
+<a name="decomposition"></a>
+<h3>FHIR Decomposition</h3>
 <p>
-As discussed, FHIR’s principle components are resources and RESTful APIs. However, there is more to the FHIR specification including the components depicted below.
+As discussed, FHIR’s principal components are resources and RESTful APIs. However, there is more to the FHIR specification including the components depicted below.
 </p>
 <blockquote>
 <p>
 NOTE: The term “component” is used loosely to mean a part of something and does not intend to carry the specific meanings for this term
 provided by rigorous ontologies, modeling frameworks, or other architectural and organizational constructs. Diagrammatically, the components
 below are depicted below as UML classes. This is done purely to take advantage of the semantics afforded using this notation. FHIR is neither
-objected oriented in its modeling approach nor are the component that make up the FHIR specification UML classes or objects in the formal sense.
+objected oriented in its modeling approach nor are the components that make up the FHIR specification UML classes or objects in the formal sense.
 Likewise, the UML packages shown below are notional and used for organizational purposes only.
 </p>
 </blockquote>
@@ -196,9 +195,8 @@ Component definitions:
   </li>
 </ul>
 
-<h3>
-Creating Resources – Architectural Considerations
-</h3>
+<a name="creating"></a>
+<h3>Creating Resources – Architectural Considerations</h3>
 
 <p>
 The following list provides general guidelines that apply when FHIR resources are defined. Most of these items are not enforced programmatically
@@ -224,9 +222,8 @@ requiring human due diligence and governance to ensure adherence.
 <li>There is a bias towards fewer resources rather than more</li>
 </ul>
 
-<h3>
-Organizing FHIR Resources
-</h3>
+<a name="organizing"></a>
+<h3>Organizing FHIR Resources</h3>
 <p>
 It is impractical to model the entirety of health data in a single information model. Every modeling
 initiative in healthcare from HL7 version 2 message specifications to FHIR resources decomposes the
@@ -254,7 +251,7 @@ referenced by  other resources, but don't typically reference other resources th
  therefore require the highest degree of consistency and architectural rigor. Governance is greatest for resources in layers one and two.</li>
 <li><b>Clinical Resources</b>: Layer 3 includes the resources that are clinical in nature but are also very common across many use cases. This
 includes resources for clinical observations, clinical treatment, care provision, and medications. These resources can be used by themselves, but
-typically build on the resources in later two. For example, an observation resource will reference the patient resource from layer two. These resources
+typically build on the resources in layer two. For example, an observation resource will reference the patient resource from layer two. These resources
 are also frequently contextualized when they are referenced by resources in layers three, four and five.</li>
 <li><b>Financial Resources</b>: Layer four is dedicated to financial resources. Logically, financial resources build on clinical and base resources.
 For example, a billing resource will reference clinical events and activities as well as base resources like a patient.</li>
@@ -296,12 +293,12 @@ to say that the business transactions needed for the higher layers are not impor
 they are not as common across the whole healthcare space.
 </p>
 <p>
-The 6th layer of the framework are not actually resources. Profiles and Clusters are extensions of resources
-or resource compositions that continue the progression through the FHIR Composition Framework. The provide
+The 6th layer of the framework are not actually resources. Profiles and Graphs are extensions of resources
+or resource compositions that continue the progression through the FHIR Composition Framework. They provide
 additional contextualization required to satisfy certain use cases.
 </p>
 <p>
-There are several benefits expected from aligning the creation of FHIR resources to this framework, including::
+There are several benefits expected from aligning the creation of FHIR resources to this framework, including:
 </p>
 <ul>
 <li>Organization and manageability of health domains - the framework provides a basis for decomposition and modularity</li>
@@ -316,12 +313,10 @@ The framework is further elaborated in the <a href="http://wiki.hl7.org/index.ph
 Another useful tool for visualizing how FHIR resources are organized relative to each other can be found using the Resource Reference
 Visualization tool on <a href="https://fhirblog.com/2016/06/14/resource-reference-visualization-in-clinfhir/">clinFHIR</a>.
 </p>
-<h3>
-FHIR Implementation – High-Level Design Considerations
-</h3>
-<h4>
-FHIR Servers and the FHIR APIs
-</h4>
+<a name="implementations"></a>
+<h3>FHIR Implementation – High-Level Design Considerations</h3>
+<a name="APIs"></a>
+<h4>FHIR Servers and the FHIR APIs</h4>
 <p>
 A FHIR REST server is any software that implements the FHIR APIs and uses FHIR resources to exchange data. The diagram below describes the FHIR interface definitions. The methods are classified as:
 </p>
@@ -342,21 +337,19 @@ Additional details on the FHIR APIs can be found at <a href="http.html">the FHIR
 <p>
 <img src="arch-uml1.png" width="600" height="332" style="float: none"/>
 </p>
-<h4>
-FHIR Transactions
-</h4>
+<a name="transactions"></a>
+<h4>FHIR Transactions</h4>
 <p>
-As mentioned, FHIR resources are optimized for stateless transactions with RESTful APIs. Although this is not the only way FHIR resources can be used, these types or transactions are the only ones with defined interfaces and behaviors in the FHIR specification.
+As mentioned, FHIR resources are optimized for stateless transactions with RESTful APIs. Although this is not the only way FHIR resources can be used, these types of transactions are the only ones with defined interfaces and behaviors in the FHIR specification.
 </p>
 <p>
-FHIR transactions follow a simple request and response transaction pattern. The request and response can be for a single payload or can operate as batch. The payload or a request and response consists of a header and the content of interest. See diagram below for details.
+FHIR transactions follow a simple request and response transaction pattern. The request and response can be for a single payload or can operate as batch. The payload or a request and response consist of a header and the content of interest. See diagram below for details.
 </p>
 <p>
 <img src="arch-uml2.png" width="600" height="502" style="float: none"/>
 </p>
-<h4>
-Security
-</h4>
+<a name="security"></a>
+<h4>Security</h4>
 <p>
 <i>(section to be filled out)</i> (but see <a href="security.html">Security</a> in the meantime).
 </p>
@@ -384,7 +377,7 @@ the patient is successfully authenticated and authorized to access FHIR resource
 <p>
 The basic flow of the use case is that the patient registers (if required), logs in, enters search criteria to identify a patient or
 patients of interest (the patient is most like themselves in this use case), retrieves clinical documents for the patient and
-retrieves clinical resources for the patient. The use cases utilizes the GET methods on the iServeInstance interface and works
+retrieves clinical resources for the patient. The use cases utilize the GET methods on the iServeInstance interface and works
 with the following types of FHIR resources:
 </p>
 <ul>
@@ -404,9 +397,8 @@ One or more clinical resource(s)
 <p>
 Although this example use case is very simple, more complex transactions using a combination of GETs, PUTs and DELETEs against resources and metadata can be envisioned. However, the exact details of these use cases including which methods are used, the orchestration of methods and the specific resources involved are outside the scope of the FHIR specification.
 </p>
-<h3>
-Outstanding Issues
-</h3>
+<a name="issues"></a>
+<h3>Outstanding Issues</h3>
 <ul>
 <li>
 <b>Resource Consistency and Granularity</b> – there is nothing intrinsically prohibiting one resource from duplicating the same information
@@ -428,7 +420,7 @@ business processes it supports, FHIR will always carry forward some of the data 
 practice of healthcare across different organizations and practitioners. Nonetheless, the
 issues of resource consistency and granularity is a topic that gets considerable ongoing discussion, and may change as FHIR approaches a final
 normative standard and as FHIR adoption approaches a level
-where more control is warranted, or a more information/process consistency emerges in the existing healthcare systems.
+where more control is warranted, or more information/process consistency emerges in the existing healthcare systems.
 </li>
 <li>
 <b>Resource References</b> – there are currently a lack of strict rules for what resources should be referenced by other resources and under what circumstance.
@@ -451,7 +443,7 @@ regard are only gradually developing.
 </li>
 <li>
 <b>Business Rule Enforcement and Validation</b> – As governance increases and more resource rules are defined, it may be advantageous to have a resource validation
-tool that checks for things like resource consistency, duplication, referential integrity, circular or non-sensical references, and other defined and approved
+tool that checks for things like resource consistency, duplication, referential integrity, circular or nonsensical references, and other defined and approved
 validation rules. Once rules are agreed to, this level of automation can help address the other issues outlined above. These kinds of facilities are planned
 for the future.
 </li>

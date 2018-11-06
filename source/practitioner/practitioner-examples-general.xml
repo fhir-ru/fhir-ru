@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <Bundle xmlns="http://hl7.org/fhir">
   <id value="3ad0687e-f477-468c-afd5-fcc2bf897809"/>
@@ -15,6 +15,36 @@
           <status value="generated"/>
           <div xmlns="http://www.w3.org/1999/xhtml">Dr. Beverly Crusher</div>
         </text>
+		<identifier>
+          <type>
+            <coding>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
+              <code value="SS"/>
+            </coding>
+          </type>
+          <system value="http://hl7.org/fhir/sid/us-ssn"/>
+          <value value="333333333"/>
+        </identifier>
+		<identifier>
+          <type>
+            <coding>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
+              <code value="NPI"/>
+            </coding>
+          </type>
+          <system value="http://hl7.org/fhir/sid/us-npi"/>
+		  <value value="1122334499"/>
+        </identifier>
+		<identifier>
+          <type>
+            <coding>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
+              <code value="DEA"/>
+            </coding>
+          </type>
+          <system value="https://www.deanumber.com/"/>
+		  <value value="F91234567-001AB"/>
+        </identifier>
         <name>
           <family value="Beverly"/>
           <given value="Crusher"/>
@@ -40,7 +70,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -81,7 +111,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -122,7 +152,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -163,7 +193,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -204,7 +234,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -245,7 +275,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -286,7 +316,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -327,7 +357,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -368,7 +398,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -409,7 +439,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -450,7 +480,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -491,7 +521,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -532,7 +562,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -573,7 +603,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -614,7 +644,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -655,7 +685,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -696,7 +726,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -737,7 +767,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -778,7 +808,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -819,7 +849,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -860,7 +890,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -901,7 +931,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -942,7 +972,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -983,7 +1013,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -1024,7 +1054,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -1065,7 +1095,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -1106,7 +1136,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -1147,7 +1177,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -1188,7 +1218,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -1229,7 +1259,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -1270,7 +1300,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -1311,7 +1341,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -1352,7 +1382,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -1393,7 +1423,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -1434,7 +1464,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -1475,7 +1505,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -1516,7 +1546,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -1557,7 +1587,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -1598,7 +1628,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -1639,7 +1669,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -1680,7 +1710,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -1721,7 +1751,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -1762,7 +1792,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -1803,7 +1833,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -1844,7 +1874,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -1885,7 +1915,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -1926,7 +1956,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -1967,7 +1997,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -2008,7 +2038,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -2049,7 +2079,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -2090,7 +2120,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -2131,7 +2161,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -2172,7 +2202,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -2213,7 +2243,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -2253,7 +2283,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -2294,7 +2324,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -2335,7 +2365,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>
@@ -2376,7 +2406,7 @@
         <identifier>
           <type>
             <coding>
-              <system value="http://hl7.org/fhir/v2/0203"/>
+              <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
               <code value="SS"/>
             </coding>
           </type>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <MedicationAdministration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://hl7.org/fhir ../../schema/medicationadministration.xsd"
  xmlns="http://hl7.org/fhir"> 
@@ -22,7 +22,7 @@
               <display value="Potassium Chloride"/>
             </coding>
           </itemCodeableConcept>
-          <amount>
+          <strength>
             <numerator>
               <value value="2"/>
               <system value="http://unitsofmeasure.org"/>
@@ -33,7 +33,7 @@
               <system value="http://unitsofmeasure.org"/>
               <code value="mL"/>
             </denominator>
-          </amount>
+          </strength>
         </ingredient>
         <ingredient>
           <itemCodeableConcept>
@@ -43,7 +43,7 @@
               <display value="Sodium Chloride 0.9% injectable solution"/>
             </coding>
           </itemCodeableConcept>
-          <amount>
+          <strength>
             <numerator>
               <value value="0.9"/>
               <system value="http://unitsofmeasure.org"/>
@@ -54,17 +54,17 @@
               <system value="http://unitsofmeasure.org"/>
               <code value="mL"/>
             </denominator>
-          </amount>
+          </strength>
         </ingredient>   
     </Medication>
   </contained>
   <partOf>
     <reference value="Procedure/biopsy"></reference>
   </partOf>
-  <status value="completed" />
+  <status value="completed"/>
   <category>
     <coding>
-      <system value="http://hl7.org/fhir/medication-admin-category"/>
+      <system value="http://terminology.hl7.org/CodeSystem/medication-admin-category"/>
       <code value="inpatient"/>
       <display value="Inpatient"/>
     </coding>
@@ -92,7 +92,7 @@
   </performer>
   <reasonCode>
     <coding>
-      <system value="http://hl7.org/fhir/reason-medication-given"/>
+      <system value="http://terminology.hl7.org/CodeSystem/reason-medication-given"/>
       <code value="b"/>
       <display value="Given as Ordered"/>
     </coding>

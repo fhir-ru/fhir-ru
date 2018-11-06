@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <ValueSet xmlns="http://hl7.org/fhir">
   <meta>
     <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
   </meta>
-  <name value="Example Use Codes for List"/>
+  <name value="ExampleUseCodesForList"/>
+  <title value="Example Use Codes for List"/>
   <status value="draft"/>
   <publisher value="FHIR Project"/>
   <contact>
@@ -16,7 +17,7 @@
   <description value="Example use codes for the List resource - typical kinds of use."/>
   <compose>
     <include>
-      <system value="http://hl7.org/fhir/list-example-use-codes"/>
+      <system value="http://terminology.hl7.org/CodeSystem/list-example-use-codes"/>
     </include>
   </compose>
 </ValueSet>

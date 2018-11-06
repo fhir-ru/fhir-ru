@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Fri, Aug 11, 2017 07:23+1000 for FHIR v3.1.0
+// Generated on Mon, Nov 5, 2018 09:03+1100 for FHIR v3.6.0
 
 import java.util.*;
 
@@ -45,240 +45,8 @@ import org.hl7.fhir.exceptions.FHIRException;
 /**
  * Risk of harmful or undesirable, physiological response which is unique to an individual and associated with exposure to a substance.
  */
-@ResourceDef(name="AllergyIntolerance", profile="http://hl7.org/fhir/Profile/AllergyIntolerance")
+@ResourceDef(name="AllergyIntolerance", profile="http://hl7.org/fhir/StructureDefinition/AllergyIntolerance")
 public class AllergyIntolerance extends DomainResource {
-
-    public enum AllergyIntoleranceClinicalStatus {
-        /**
-         * An active record of a risk of a reaction to the identified substance.
-         */
-        ACTIVE, 
-        /**
-         * An inactivated record of a risk of a reaction to the identified substance.
-         */
-        INACTIVE, 
-        /**
-         * A reaction to the identified substance has been clinically reassessed by testing or re-exposure and considered to be resolved.
-         */
-        RESOLVED, 
-        /**
-         * added to help the parsers with the generic types
-         */
-        NULL;
-        public static AllergyIntoleranceClinicalStatus fromCode(String codeString) throws FHIRException {
-            if (codeString == null || "".equals(codeString))
-                return null;
-        if ("active".equals(codeString))
-          return ACTIVE;
-        if ("inactive".equals(codeString))
-          return INACTIVE;
-        if ("resolved".equals(codeString))
-          return RESOLVED;
-        if (Configuration.isAcceptInvalidEnums())
-          return null;
-        else
-          throw new FHIRException("Unknown AllergyIntoleranceClinicalStatus code '"+codeString+"'");
-        }
-        public String toCode() {
-          switch (this) {
-            case ACTIVE: return "active";
-            case INACTIVE: return "inactive";
-            case RESOLVED: return "resolved";
-            default: return "?";
-          }
-        }
-        public String getSystem() {
-          switch (this) {
-            case ACTIVE: return "http://hl7.org/fhir/allergy-clinical-status";
-            case INACTIVE: return "http://hl7.org/fhir/allergy-clinical-status";
-            case RESOLVED: return "http://hl7.org/fhir/allergy-clinical-status";
-            default: return "?";
-          }
-        }
-        public String getDefinition() {
-          switch (this) {
-            case ACTIVE: return "An active record of a risk of a reaction to the identified substance.";
-            case INACTIVE: return "An inactivated record of a risk of a reaction to the identified substance.";
-            case RESOLVED: return "A reaction to the identified substance has been clinically reassessed by testing or re-exposure and considered to be resolved.";
-            default: return "?";
-          }
-        }
-        public String getDisplay() {
-          switch (this) {
-            case ACTIVE: return "Active";
-            case INACTIVE: return "Inactive";
-            case RESOLVED: return "Resolved";
-            default: return "?";
-          }
-        }
-    }
-
-  public static class AllergyIntoleranceClinicalStatusEnumFactory implements EnumFactory<AllergyIntoleranceClinicalStatus> {
-    public AllergyIntoleranceClinicalStatus fromCode(String codeString) throws IllegalArgumentException {
-      if (codeString == null || "".equals(codeString))
-            if (codeString == null || "".equals(codeString))
-                return null;
-        if ("active".equals(codeString))
-          return AllergyIntoleranceClinicalStatus.ACTIVE;
-        if ("inactive".equals(codeString))
-          return AllergyIntoleranceClinicalStatus.INACTIVE;
-        if ("resolved".equals(codeString))
-          return AllergyIntoleranceClinicalStatus.RESOLVED;
-        throw new IllegalArgumentException("Unknown AllergyIntoleranceClinicalStatus code '"+codeString+"'");
-        }
-        public Enumeration<AllergyIntoleranceClinicalStatus> fromType(Base code) throws FHIRException {
-          if (code == null)
-            return null;
-          if (code.isEmpty())
-            return new Enumeration<AllergyIntoleranceClinicalStatus>(this);
-          String codeString = ((PrimitiveType) code).asStringValue();
-          if (codeString == null || "".equals(codeString))
-            return null;
-        if ("active".equals(codeString))
-          return new Enumeration<AllergyIntoleranceClinicalStatus>(this, AllergyIntoleranceClinicalStatus.ACTIVE);
-        if ("inactive".equals(codeString))
-          return new Enumeration<AllergyIntoleranceClinicalStatus>(this, AllergyIntoleranceClinicalStatus.INACTIVE);
-        if ("resolved".equals(codeString))
-          return new Enumeration<AllergyIntoleranceClinicalStatus>(this, AllergyIntoleranceClinicalStatus.RESOLVED);
-        throw new FHIRException("Unknown AllergyIntoleranceClinicalStatus code '"+codeString+"'");
-        }
-    public String toCode(AllergyIntoleranceClinicalStatus code) {
-      if (code == AllergyIntoleranceClinicalStatus.ACTIVE)
-        return "active";
-      if (code == AllergyIntoleranceClinicalStatus.INACTIVE)
-        return "inactive";
-      if (code == AllergyIntoleranceClinicalStatus.RESOLVED)
-        return "resolved";
-      return "?";
-      }
-    public String toSystem(AllergyIntoleranceClinicalStatus code) {
-      return code.getSystem();
-      }
-    }
-
-    public enum AllergyIntoleranceVerificationStatus {
-        /**
-         * A low level of certainty about the propensity for a reaction to the identified substance.
-         */
-        UNCONFIRMED, 
-        /**
-         * A high level of certainty about the propensity for a reaction to the identified substance, which may include clinical evidence by testing or rechallenge.
-         */
-        CONFIRMED, 
-        /**
-         * A propensity for a reaction to the identified substance has been disproven with a high level of clinical certainty, which may include testing or rechallenge, and is refuted.
-         */
-        REFUTED, 
-        /**
-         * The statement was entered in error and is not valid.
-         */
-        ENTEREDINERROR, 
-        /**
-         * added to help the parsers with the generic types
-         */
-        NULL;
-        public static AllergyIntoleranceVerificationStatus fromCode(String codeString) throws FHIRException {
-            if (codeString == null || "".equals(codeString))
-                return null;
-        if ("unconfirmed".equals(codeString))
-          return UNCONFIRMED;
-        if ("confirmed".equals(codeString))
-          return CONFIRMED;
-        if ("refuted".equals(codeString))
-          return REFUTED;
-        if ("entered-in-error".equals(codeString))
-          return ENTEREDINERROR;
-        if (Configuration.isAcceptInvalidEnums())
-          return null;
-        else
-          throw new FHIRException("Unknown AllergyIntoleranceVerificationStatus code '"+codeString+"'");
-        }
-        public String toCode() {
-          switch (this) {
-            case UNCONFIRMED: return "unconfirmed";
-            case CONFIRMED: return "confirmed";
-            case REFUTED: return "refuted";
-            case ENTEREDINERROR: return "entered-in-error";
-            default: return "?";
-          }
-        }
-        public String getSystem() {
-          switch (this) {
-            case UNCONFIRMED: return "http://hl7.org/fhir/allergy-verification-status";
-            case CONFIRMED: return "http://hl7.org/fhir/allergy-verification-status";
-            case REFUTED: return "http://hl7.org/fhir/allergy-verification-status";
-            case ENTEREDINERROR: return "http://hl7.org/fhir/allergy-verification-status";
-            default: return "?";
-          }
-        }
-        public String getDefinition() {
-          switch (this) {
-            case UNCONFIRMED: return "A low level of certainty about the propensity for a reaction to the identified substance.";
-            case CONFIRMED: return "A high level of certainty about the propensity for a reaction to the identified substance, which may include clinical evidence by testing or rechallenge.";
-            case REFUTED: return "A propensity for a reaction to the identified substance has been disproven with a high level of clinical certainty, which may include testing or rechallenge, and is refuted.";
-            case ENTEREDINERROR: return "The statement was entered in error and is not valid.";
-            default: return "?";
-          }
-        }
-        public String getDisplay() {
-          switch (this) {
-            case UNCONFIRMED: return "Unconfirmed";
-            case CONFIRMED: return "Confirmed";
-            case REFUTED: return "Refuted";
-            case ENTEREDINERROR: return "Entered In Error";
-            default: return "?";
-          }
-        }
-    }
-
-  public static class AllergyIntoleranceVerificationStatusEnumFactory implements EnumFactory<AllergyIntoleranceVerificationStatus> {
-    public AllergyIntoleranceVerificationStatus fromCode(String codeString) throws IllegalArgumentException {
-      if (codeString == null || "".equals(codeString))
-            if (codeString == null || "".equals(codeString))
-                return null;
-        if ("unconfirmed".equals(codeString))
-          return AllergyIntoleranceVerificationStatus.UNCONFIRMED;
-        if ("confirmed".equals(codeString))
-          return AllergyIntoleranceVerificationStatus.CONFIRMED;
-        if ("refuted".equals(codeString))
-          return AllergyIntoleranceVerificationStatus.REFUTED;
-        if ("entered-in-error".equals(codeString))
-          return AllergyIntoleranceVerificationStatus.ENTEREDINERROR;
-        throw new IllegalArgumentException("Unknown AllergyIntoleranceVerificationStatus code '"+codeString+"'");
-        }
-        public Enumeration<AllergyIntoleranceVerificationStatus> fromType(Base code) throws FHIRException {
-          if (code == null)
-            return null;
-          if (code.isEmpty())
-            return new Enumeration<AllergyIntoleranceVerificationStatus>(this);
-          String codeString = ((PrimitiveType) code).asStringValue();
-          if (codeString == null || "".equals(codeString))
-            return null;
-        if ("unconfirmed".equals(codeString))
-          return new Enumeration<AllergyIntoleranceVerificationStatus>(this, AllergyIntoleranceVerificationStatus.UNCONFIRMED);
-        if ("confirmed".equals(codeString))
-          return new Enumeration<AllergyIntoleranceVerificationStatus>(this, AllergyIntoleranceVerificationStatus.CONFIRMED);
-        if ("refuted".equals(codeString))
-          return new Enumeration<AllergyIntoleranceVerificationStatus>(this, AllergyIntoleranceVerificationStatus.REFUTED);
-        if ("entered-in-error".equals(codeString))
-          return new Enumeration<AllergyIntoleranceVerificationStatus>(this, AllergyIntoleranceVerificationStatus.ENTEREDINERROR);
-        throw new FHIRException("Unknown AllergyIntoleranceVerificationStatus code '"+codeString+"'");
-        }
-    public String toCode(AllergyIntoleranceVerificationStatus code) {
-      if (code == AllergyIntoleranceVerificationStatus.UNCONFIRMED)
-        return "unconfirmed";
-      if (code == AllergyIntoleranceVerificationStatus.CONFIRMED)
-        return "confirmed";
-      if (code == AllergyIntoleranceVerificationStatus.REFUTED)
-        return "refuted";
-      if (code == AllergyIntoleranceVerificationStatus.ENTEREDINERROR)
-        return "entered-in-error";
-      return "?";
-      }
-    public String toSystem(AllergyIntoleranceVerificationStatus code) {
-      return code.getSystem();
-      }
-    }
 
     public enum AllergyIntoleranceType {
         /**
@@ -1251,24 +1019,24 @@ public class AllergyIntolerance extends DomainResource {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof AllergyIntoleranceReactionComponent))
+        if (!(other_ instanceof AllergyIntoleranceReactionComponent))
           return false;
-        AllergyIntoleranceReactionComponent o = (AllergyIntoleranceReactionComponent) other;
+        AllergyIntoleranceReactionComponent o = (AllergyIntoleranceReactionComponent) other_;
         return compareDeep(substance, o.substance, true) && compareDeep(manifestation, o.manifestation, true)
            && compareDeep(description, o.description, true) && compareDeep(onset, o.onset, true) && compareDeep(severity, o.severity, true)
            && compareDeep(exposureRoute, o.exposureRoute, true) && compareDeep(note, o.note, true);
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof AllergyIntoleranceReactionComponent))
+        if (!(other_ instanceof AllergyIntoleranceReactionComponent))
           return false;
-        AllergyIntoleranceReactionComponent o = (AllergyIntoleranceReactionComponent) other;
+        AllergyIntoleranceReactionComponent o = (AllergyIntoleranceReactionComponent) other_;
         return compareValues(description, o.description, true) && compareValues(onset, o.onset, true) && compareValues(severity, o.severity, true)
           ;
       }
@@ -1286,27 +1054,27 @@ public class AllergyIntolerance extends DomainResource {
   }
 
     /**
-     * This records identifiers associated with this allergy/intolerance concern that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).
+     * Business identifiers assigned to this AllergyIntolerance by the performer or other systems which remain constant as the resource is updated and propagates from server to server.
      */
     @Child(name = "identifier", type = {Identifier.class}, order=0, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
-    @Description(shortDefinition="External ids for this item", formalDefinition="This records identifiers associated with this allergy/intolerance concern that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation)." )
+    @Description(shortDefinition="External ids for this item", formalDefinition="Business identifiers assigned to this AllergyIntolerance by the performer or other systems which remain constant as the resource is updated and propagates from server to server." )
     protected List<Identifier> identifier;
 
     /**
      * The clinical status of the allergy or intolerance.
      */
-    @Child(name = "clinicalStatus", type = {CodeType.class}, order=1, min=0, max=1, modifier=true, summary=true)
+    @Child(name = "clinicalStatus", type = {CodeableConcept.class}, order=1, min=0, max=1, modifier=true, summary=true)
     @Description(shortDefinition="active | inactive | resolved", formalDefinition="The clinical status of the allergy or intolerance." )
-    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/allergy-clinical-status")
-    protected Enumeration<AllergyIntoleranceClinicalStatus> clinicalStatus;
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/allergyintolerance-clinical")
+    protected CodeableConcept clinicalStatus;
 
     /**
      * Assertion about certainty associated with the propensity, or potential risk, of a reaction to the identified substance (including pharmaceutical product).
      */
-    @Child(name = "verificationStatus", type = {CodeType.class}, order=2, min=1, max=1, modifier=true, summary=true)
+    @Child(name = "verificationStatus", type = {CodeableConcept.class}, order=2, min=0, max=1, modifier=true, summary=true)
     @Description(shortDefinition="unconfirmed | confirmed | refuted | entered-in-error", formalDefinition="Assertion about certainty associated with the propensity, or potential risk, of a reaction to the identified substance (including pharmaceutical product)." )
-    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/allergy-verification-status")
-    protected Enumeration<AllergyIntoleranceVerificationStatus> verificationStatus;
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/allergyintolerance-verification")
+    protected CodeableConcept verificationStatus;
 
     /**
      * Identification of the underlying physiological mechanism for the reaction risk.
@@ -1353,23 +1121,35 @@ public class AllergyIntolerance extends DomainResource {
     protected Patient patientTarget;
 
     /**
+     * The encounter when the allergy or intolerance was asserted.
+     */
+    @Child(name = "encounter", type = {Encounter.class}, order=8, min=0, max=1, modifier=false, summary=false)
+    @Description(shortDefinition="Encounter when the allergy or intolerance was asserted", formalDefinition="The encounter when the allergy or intolerance was asserted." )
+    protected Reference encounter;
+
+    /**
+     * The actual object that is the target of the reference (The encounter when the allergy or intolerance was asserted.)
+     */
+    protected Encounter encounterTarget;
+
+    /**
      * Estimated or actual date,  date-time, or age when allergy or intolerance was identified.
      */
-    @Child(name = "onset", type = {DateTimeType.class, Age.class, Period.class, Range.class, StringType.class}, order=8, min=0, max=1, modifier=false, summary=false)
+    @Child(name = "onset", type = {DateTimeType.class, Age.class, Period.class, Range.class, StringType.class}, order=9, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="When allergy or intolerance was identified", formalDefinition="Estimated or actual date,  date-time, or age when allergy or intolerance was identified." )
     protected Type onset;
 
     /**
-     * The date on which the existance of the AllergyIntolerance was first asserted or acknowledged.
+     * The recordedDate represents when this particular AllergyIntolerance record was created in the system, which is often a system-generated date.
      */
-    @Child(name = "assertedDate", type = {DateTimeType.class}, order=9, min=0, max=1, modifier=false, summary=false)
-    @Description(shortDefinition="Date record was believed accurate", formalDefinition="The date on which the existance of the AllergyIntolerance was first asserted or acknowledged." )
-    protected DateTimeType assertedDate;
+    @Child(name = "recordedDate", type = {DateTimeType.class}, order=10, min=0, max=1, modifier=false, summary=false)
+    @Description(shortDefinition="Date record was first recorded", formalDefinition="The recordedDate represents when this particular AllergyIntolerance record was created in the system, which is often a system-generated date." )
+    protected DateTimeType recordedDate;
 
     /**
      * Individual who recorded the record and takes responsibility for its content.
      */
-    @Child(name = "recorder", type = {Practitioner.class, Patient.class}, order=10, min=0, max=1, modifier=false, summary=false)
+    @Child(name = "recorder", type = {Practitioner.class, Patient.class, RelatedPerson.class}, order=11, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Who recorded the sensitivity", formalDefinition="Individual who recorded the record and takes responsibility for its content." )
     protected Reference recorder;
 
@@ -1381,7 +1161,7 @@ public class AllergyIntolerance extends DomainResource {
     /**
      * The source of the information about the allergy that is recorded.
      */
-    @Child(name = "asserter", type = {Patient.class, RelatedPerson.class, Practitioner.class}, order=11, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "asserter", type = {Patient.class, RelatedPerson.class, Practitioner.class}, order=12, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Source of the information about the allergy", formalDefinition="The source of the information about the allergy that is recorded." )
     protected Reference asserter;
 
@@ -1393,25 +1173,25 @@ public class AllergyIntolerance extends DomainResource {
     /**
      * Represents the date and/or time of the last known occurrence of a reaction event.
      */
-    @Child(name = "lastOccurrence", type = {DateTimeType.class}, order=12, min=0, max=1, modifier=false, summary=false)
+    @Child(name = "lastOccurrence", type = {DateTimeType.class}, order=13, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Date(/time) of last known occurrence of a reaction", formalDefinition="Represents the date and/or time of the last known occurrence of a reaction event." )
     protected DateTimeType lastOccurrence;
 
     /**
      * Additional narrative about the propensity for the Adverse Reaction, not captured in other fields.
      */
-    @Child(name = "note", type = {Annotation.class}, order=13, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "note", type = {Annotation.class}, order=14, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Additional text not captured in other fields", formalDefinition="Additional narrative about the propensity for the Adverse Reaction, not captured in other fields." )
     protected List<Annotation> note;
 
     /**
      * Details about each adverse reaction event linked to exposure to the identified substance.
      */
-    @Child(name = "reaction", type = {}, order=14, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "reaction", type = {}, order=15, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Adverse Reaction Events linked to exposure to substance", formalDefinition="Details about each adverse reaction event linked to exposure to the identified substance." )
     protected List<AllergyIntoleranceReactionComponent> reaction;
 
-    private static final long serialVersionUID = 948924623L;
+    private static final long serialVersionUID = 393192289L;
 
   /**
    * Constructor
@@ -1423,14 +1203,13 @@ public class AllergyIntolerance extends DomainResource {
   /**
    * Constructor
    */
-    public AllergyIntolerance(Enumeration<AllergyIntoleranceVerificationStatus> verificationStatus, Reference patient) {
+    public AllergyIntolerance(Reference patient) {
       super();
-      this.verificationStatus = verificationStatus;
       this.patient = patient;
     }
 
     /**
-     * @return {@link #identifier} (This records identifiers associated with this allergy/intolerance concern that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).)
+     * @return {@link #identifier} (Business identifiers assigned to this AllergyIntolerance by the performer or other systems which remain constant as the resource is updated and propagates from server to server.)
      */
     public List<Identifier> getIdentifier() { 
       if (this.identifier == null)
@@ -1483,19 +1262,15 @@ public class AllergyIntolerance extends DomainResource {
     }
 
     /**
-     * @return {@link #clinicalStatus} (The clinical status of the allergy or intolerance.). This is the underlying object with id, value and extensions. The accessor "getClinicalStatus" gives direct access to the value
+     * @return {@link #clinicalStatus} (The clinical status of the allergy or intolerance.)
      */
-    public Enumeration<AllergyIntoleranceClinicalStatus> getClinicalStatusElement() { 
+    public CodeableConcept getClinicalStatus() { 
       if (this.clinicalStatus == null)
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create AllergyIntolerance.clinicalStatus");
         else if (Configuration.doAutoCreate())
-          this.clinicalStatus = new Enumeration<AllergyIntoleranceClinicalStatus>(new AllergyIntoleranceClinicalStatusEnumFactory()); // bb
+          this.clinicalStatus = new CodeableConcept(); // cc
       return this.clinicalStatus;
-    }
-
-    public boolean hasClinicalStatusElement() { 
-      return this.clinicalStatus != null && !this.clinicalStatus.isEmpty();
     }
 
     public boolean hasClinicalStatus() { 
@@ -1503,48 +1278,23 @@ public class AllergyIntolerance extends DomainResource {
     }
 
     /**
-     * @param value {@link #clinicalStatus} (The clinical status of the allergy or intolerance.). This is the underlying object with id, value and extensions. The accessor "getClinicalStatus" gives direct access to the value
+     * @param value {@link #clinicalStatus} (The clinical status of the allergy or intolerance.)
      */
-    public AllergyIntolerance setClinicalStatusElement(Enumeration<AllergyIntoleranceClinicalStatus> value) { 
+    public AllergyIntolerance setClinicalStatus(CodeableConcept value) { 
       this.clinicalStatus = value;
       return this;
     }
 
     /**
-     * @return The clinical status of the allergy or intolerance.
+     * @return {@link #verificationStatus} (Assertion about certainty associated with the propensity, or potential risk, of a reaction to the identified substance (including pharmaceutical product).)
      */
-    public AllergyIntoleranceClinicalStatus getClinicalStatus() { 
-      return this.clinicalStatus == null ? null : this.clinicalStatus.getValue();
-    }
-
-    /**
-     * @param value The clinical status of the allergy or intolerance.
-     */
-    public AllergyIntolerance setClinicalStatus(AllergyIntoleranceClinicalStatus value) { 
-      if (value == null)
-        this.clinicalStatus = null;
-      else {
-        if (this.clinicalStatus == null)
-          this.clinicalStatus = new Enumeration<AllergyIntoleranceClinicalStatus>(new AllergyIntoleranceClinicalStatusEnumFactory());
-        this.clinicalStatus.setValue(value);
-      }
-      return this;
-    }
-
-    /**
-     * @return {@link #verificationStatus} (Assertion about certainty associated with the propensity, or potential risk, of a reaction to the identified substance (including pharmaceutical product).). This is the underlying object with id, value and extensions. The accessor "getVerificationStatus" gives direct access to the value
-     */
-    public Enumeration<AllergyIntoleranceVerificationStatus> getVerificationStatusElement() { 
+    public CodeableConcept getVerificationStatus() { 
       if (this.verificationStatus == null)
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create AllergyIntolerance.verificationStatus");
         else if (Configuration.doAutoCreate())
-          this.verificationStatus = new Enumeration<AllergyIntoleranceVerificationStatus>(new AllergyIntoleranceVerificationStatusEnumFactory()); // bb
+          this.verificationStatus = new CodeableConcept(); // cc
       return this.verificationStatus;
-    }
-
-    public boolean hasVerificationStatusElement() { 
-      return this.verificationStatus != null && !this.verificationStatus.isEmpty();
     }
 
     public boolean hasVerificationStatus() { 
@@ -1552,27 +1302,10 @@ public class AllergyIntolerance extends DomainResource {
     }
 
     /**
-     * @param value {@link #verificationStatus} (Assertion about certainty associated with the propensity, or potential risk, of a reaction to the identified substance (including pharmaceutical product).). This is the underlying object with id, value and extensions. The accessor "getVerificationStatus" gives direct access to the value
+     * @param value {@link #verificationStatus} (Assertion about certainty associated with the propensity, or potential risk, of a reaction to the identified substance (including pharmaceutical product).)
      */
-    public AllergyIntolerance setVerificationStatusElement(Enumeration<AllergyIntoleranceVerificationStatus> value) { 
+    public AllergyIntolerance setVerificationStatus(CodeableConcept value) { 
       this.verificationStatus = value;
-      return this;
-    }
-
-    /**
-     * @return Assertion about certainty associated with the propensity, or potential risk, of a reaction to the identified substance (including pharmaceutical product).
-     */
-    public AllergyIntoleranceVerificationStatus getVerificationStatus() { 
-      return this.verificationStatus == null ? null : this.verificationStatus.getValue();
-    }
-
-    /**
-     * @param value Assertion about certainty associated with the propensity, or potential risk, of a reaction to the identified substance (including pharmaceutical product).
-     */
-    public AllergyIntolerance setVerificationStatus(AllergyIntoleranceVerificationStatus value) { 
-        if (this.verificationStatus == null)
-          this.verificationStatus = new Enumeration<AllergyIntoleranceVerificationStatus>(new AllergyIntoleranceVerificationStatusEnumFactory());
-        this.verificationStatus.setValue(value);
       return this;
     }
 
@@ -1804,6 +1537,50 @@ public class AllergyIntolerance extends DomainResource {
     }
 
     /**
+     * @return {@link #encounter} (The encounter when the allergy or intolerance was asserted.)
+     */
+    public Reference getEncounter() { 
+      if (this.encounter == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create AllergyIntolerance.encounter");
+        else if (Configuration.doAutoCreate())
+          this.encounter = new Reference(); // cc
+      return this.encounter;
+    }
+
+    public boolean hasEncounter() { 
+      return this.encounter != null && !this.encounter.isEmpty();
+    }
+
+    /**
+     * @param value {@link #encounter} (The encounter when the allergy or intolerance was asserted.)
+     */
+    public AllergyIntolerance setEncounter(Reference value) { 
+      this.encounter = value;
+      return this;
+    }
+
+    /**
+     * @return {@link #encounter} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The encounter when the allergy or intolerance was asserted.)
+     */
+    public Encounter getEncounterTarget() { 
+      if (this.encounterTarget == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create AllergyIntolerance.encounter");
+        else if (Configuration.doAutoCreate())
+          this.encounterTarget = new Encounter(); // aa
+      return this.encounterTarget;
+    }
+
+    /**
+     * @param value {@link #encounter} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The encounter when the allergy or intolerance was asserted.)
+     */
+    public AllergyIntolerance setEncounterTarget(Encounter value) { 
+      this.encounterTarget = value;
+      return this;
+    }
+
+    /**
      * @return {@link #onset} (Estimated or actual date,  date-time, or age when allergy or intolerance was identified.)
      */
     public Type getOnset() { 
@@ -1814,65 +1591,75 @@ public class AllergyIntolerance extends DomainResource {
      * @return {@link #onset} (Estimated or actual date,  date-time, or age when allergy or intolerance was identified.)
      */
     public DateTimeType getOnsetDateTimeType() throws FHIRException { 
+      if (this.onset == null)
+        this.onset = new DateTimeType();
       if (!(this.onset instanceof DateTimeType))
         throw new FHIRException("Type mismatch: the type DateTimeType was expected, but "+this.onset.getClass().getName()+" was encountered");
       return (DateTimeType) this.onset;
     }
 
     public boolean hasOnsetDateTimeType() { 
-      return this.onset instanceof DateTimeType;
+      return this != null && this.onset instanceof DateTimeType;
     }
 
     /**
      * @return {@link #onset} (Estimated or actual date,  date-time, or age when allergy or intolerance was identified.)
      */
     public Age getOnsetAge() throws FHIRException { 
+      if (this.onset == null)
+        this.onset = new Age();
       if (!(this.onset instanceof Age))
         throw new FHIRException("Type mismatch: the type Age was expected, but "+this.onset.getClass().getName()+" was encountered");
       return (Age) this.onset;
     }
 
     public boolean hasOnsetAge() { 
-      return this.onset instanceof Age;
+      return this != null && this.onset instanceof Age;
     }
 
     /**
      * @return {@link #onset} (Estimated or actual date,  date-time, or age when allergy or intolerance was identified.)
      */
     public Period getOnsetPeriod() throws FHIRException { 
+      if (this.onset == null)
+        this.onset = new Period();
       if (!(this.onset instanceof Period))
         throw new FHIRException("Type mismatch: the type Period was expected, but "+this.onset.getClass().getName()+" was encountered");
       return (Period) this.onset;
     }
 
     public boolean hasOnsetPeriod() { 
-      return this.onset instanceof Period;
+      return this != null && this.onset instanceof Period;
     }
 
     /**
      * @return {@link #onset} (Estimated or actual date,  date-time, or age when allergy or intolerance was identified.)
      */
     public Range getOnsetRange() throws FHIRException { 
+      if (this.onset == null)
+        this.onset = new Range();
       if (!(this.onset instanceof Range))
         throw new FHIRException("Type mismatch: the type Range was expected, but "+this.onset.getClass().getName()+" was encountered");
       return (Range) this.onset;
     }
 
     public boolean hasOnsetRange() { 
-      return this.onset instanceof Range;
+      return this != null && this.onset instanceof Range;
     }
 
     /**
      * @return {@link #onset} (Estimated or actual date,  date-time, or age when allergy or intolerance was identified.)
      */
     public StringType getOnsetStringType() throws FHIRException { 
+      if (this.onset == null)
+        this.onset = new StringType();
       if (!(this.onset instanceof StringType))
         throw new FHIRException("Type mismatch: the type StringType was expected, but "+this.onset.getClass().getName()+" was encountered");
       return (StringType) this.onset;
     }
 
     public boolean hasOnsetStringType() { 
-      return this.onset instanceof StringType;
+      return this != null && this.onset instanceof StringType;
     }
 
     public boolean hasOnset() { 
@@ -1883,55 +1670,57 @@ public class AllergyIntolerance extends DomainResource {
      * @param value {@link #onset} (Estimated or actual date,  date-time, or age when allergy or intolerance was identified.)
      */
     public AllergyIntolerance setOnset(Type value) { 
+      if (value != null && !(value instanceof DateTimeType || value instanceof Age || value instanceof Period || value instanceof Range || value instanceof StringType))
+        throw new Error("Not the right type for AllergyIntolerance.onset[x]: "+value.fhirType());
       this.onset = value;
       return this;
     }
 
     /**
-     * @return {@link #assertedDate} (The date on which the existance of the AllergyIntolerance was first asserted or acknowledged.). This is the underlying object with id, value and extensions. The accessor "getAssertedDate" gives direct access to the value
+     * @return {@link #recordedDate} (The recordedDate represents when this particular AllergyIntolerance record was created in the system, which is often a system-generated date.). This is the underlying object with id, value and extensions. The accessor "getRecordedDate" gives direct access to the value
      */
-    public DateTimeType getAssertedDateElement() { 
-      if (this.assertedDate == null)
+    public DateTimeType getRecordedDateElement() { 
+      if (this.recordedDate == null)
         if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create AllergyIntolerance.assertedDate");
+          throw new Error("Attempt to auto-create AllergyIntolerance.recordedDate");
         else if (Configuration.doAutoCreate())
-          this.assertedDate = new DateTimeType(); // bb
-      return this.assertedDate;
+          this.recordedDate = new DateTimeType(); // bb
+      return this.recordedDate;
     }
 
-    public boolean hasAssertedDateElement() { 
-      return this.assertedDate != null && !this.assertedDate.isEmpty();
+    public boolean hasRecordedDateElement() { 
+      return this.recordedDate != null && !this.recordedDate.isEmpty();
     }
 
-    public boolean hasAssertedDate() { 
-      return this.assertedDate != null && !this.assertedDate.isEmpty();
+    public boolean hasRecordedDate() { 
+      return this.recordedDate != null && !this.recordedDate.isEmpty();
     }
 
     /**
-     * @param value {@link #assertedDate} (The date on which the existance of the AllergyIntolerance was first asserted or acknowledged.). This is the underlying object with id, value and extensions. The accessor "getAssertedDate" gives direct access to the value
+     * @param value {@link #recordedDate} (The recordedDate represents when this particular AllergyIntolerance record was created in the system, which is often a system-generated date.). This is the underlying object with id, value and extensions. The accessor "getRecordedDate" gives direct access to the value
      */
-    public AllergyIntolerance setAssertedDateElement(DateTimeType value) { 
-      this.assertedDate = value;
+    public AllergyIntolerance setRecordedDateElement(DateTimeType value) { 
+      this.recordedDate = value;
       return this;
     }
 
     /**
-     * @return The date on which the existance of the AllergyIntolerance was first asserted or acknowledged.
+     * @return The recordedDate represents when this particular AllergyIntolerance record was created in the system, which is often a system-generated date.
      */
-    public Date getAssertedDate() { 
-      return this.assertedDate == null ? null : this.assertedDate.getValue();
+    public Date getRecordedDate() { 
+      return this.recordedDate == null ? null : this.recordedDate.getValue();
     }
 
     /**
-     * @param value The date on which the existance of the AllergyIntolerance was first asserted or acknowledged.
+     * @param value The recordedDate represents when this particular AllergyIntolerance record was created in the system, which is often a system-generated date.
      */
-    public AllergyIntolerance setAssertedDate(Date value) { 
+    public AllergyIntolerance setRecordedDate(Date value) { 
       if (value == null)
-        this.assertedDate = null;
+        this.recordedDate = null;
       else {
-        if (this.assertedDate == null)
-          this.assertedDate = new DateTimeType();
-        this.assertedDate.setValue(value);
+        if (this.recordedDate == null)
+          this.recordedDate = new DateTimeType();
+        this.recordedDate.setValue(value);
       }
       return this;
     }
@@ -2171,17 +1960,18 @@ public class AllergyIntolerance extends DomainResource {
 
       protected void listChildren(List<Property> children) {
         super.listChildren(children);
-        children.add(new Property("identifier", "Identifier", "This records identifiers associated with this allergy/intolerance concern that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).", 0, java.lang.Integer.MAX_VALUE, identifier));
-        children.add(new Property("clinicalStatus", "code", "The clinical status of the allergy or intolerance.", 0, 1, clinicalStatus));
-        children.add(new Property("verificationStatus", "code", "Assertion about certainty associated with the propensity, or potential risk, of a reaction to the identified substance (including pharmaceutical product).", 0, 1, verificationStatus));
+        children.add(new Property("identifier", "Identifier", "Business identifiers assigned to this AllergyIntolerance by the performer or other systems which remain constant as the resource is updated and propagates from server to server.", 0, java.lang.Integer.MAX_VALUE, identifier));
+        children.add(new Property("clinicalStatus", "CodeableConcept", "The clinical status of the allergy or intolerance.", 0, 1, clinicalStatus));
+        children.add(new Property("verificationStatus", "CodeableConcept", "Assertion about certainty associated with the propensity, or potential risk, of a reaction to the identified substance (including pharmaceutical product).", 0, 1, verificationStatus));
         children.add(new Property("type", "code", "Identification of the underlying physiological mechanism for the reaction risk.", 0, 1, type));
         children.add(new Property("category", "code", "Category of the identified substance.", 0, java.lang.Integer.MAX_VALUE, category));
         children.add(new Property("criticality", "code", "Estimate of the potential clinical harm, or seriousness, of the reaction to the identified substance.", 0, 1, criticality));
         children.add(new Property("code", "CodeableConcept", "Code for an allergy or intolerance statement (either a positive or a negated/excluded statement).  This may be a code for a substance or pharmaceutical product that is considered to be responsible for the adverse reaction risk (e.g., \"Latex\"), an allergy or intolerance condition (e.g., \"Latex allergy\"), or a negated/excluded code for a specific substance or class (e.g., \"No latex allergy\") or a general or categorical negated statement (e.g.,  \"No known allergy\", \"No known drug allergies\").  Note: the substance for a specific reaction may be different from the substance identified as the cause of the risk, but it must be consistent with it. For instance, it may be a more specific substance (e.g. a brand medication) or a composite product that includes the identified substance. It must be clinically safe to only process the 'code' and ignore the 'reaction.substance'.  If a receiving system is unable to confirm that AllergyIntolerance.reaction.substance falls within the semantic scope of AllergyIntolerance.code, then the receiving system should ignore AllergyIntolerance.reaction.substance.", 0, 1, code));
         children.add(new Property("patient", "Reference(Patient)", "The patient who has the allergy or intolerance.", 0, 1, patient));
+        children.add(new Property("encounter", "Reference(Encounter)", "The encounter when the allergy or intolerance was asserted.", 0, 1, encounter));
         children.add(new Property("onset[x]", "dateTime|Age|Period|Range|string", "Estimated or actual date,  date-time, or age when allergy or intolerance was identified.", 0, 1, onset));
-        children.add(new Property("assertedDate", "dateTime", "The date on which the existance of the AllergyIntolerance was first asserted or acknowledged.", 0, 1, assertedDate));
-        children.add(new Property("recorder", "Reference(Practitioner|Patient)", "Individual who recorded the record and takes responsibility for its content.", 0, 1, recorder));
+        children.add(new Property("recordedDate", "dateTime", "The recordedDate represents when this particular AllergyIntolerance record was created in the system, which is often a system-generated date.", 0, 1, recordedDate));
+        children.add(new Property("recorder", "Reference(Practitioner|Patient|RelatedPerson)", "Individual who recorded the record and takes responsibility for its content.", 0, 1, recorder));
         children.add(new Property("asserter", "Reference(Patient|RelatedPerson|Practitioner)", "The source of the information about the allergy that is recorded.", 0, 1, asserter));
         children.add(new Property("lastOccurrence", "dateTime", "Represents the date and/or time of the last known occurrence of a reaction event.", 0, 1, lastOccurrence));
         children.add(new Property("note", "Annotation", "Additional narrative about the propensity for the Adverse Reaction, not captured in other fields.", 0, java.lang.Integer.MAX_VALUE, note));
@@ -2191,14 +1981,15 @@ public class AllergyIntolerance extends DomainResource {
       @Override
       public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
         switch (_hash) {
-        case -1618432855: /*identifier*/  return new Property("identifier", "Identifier", "This records identifiers associated with this allergy/intolerance concern that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).", 0, java.lang.Integer.MAX_VALUE, identifier);
-        case -462853915: /*clinicalStatus*/  return new Property("clinicalStatus", "code", "The clinical status of the allergy or intolerance.", 0, 1, clinicalStatus);
-        case -842509843: /*verificationStatus*/  return new Property("verificationStatus", "code", "Assertion about certainty associated with the propensity, or potential risk, of a reaction to the identified substance (including pharmaceutical product).", 0, 1, verificationStatus);
+        case -1618432855: /*identifier*/  return new Property("identifier", "Identifier", "Business identifiers assigned to this AllergyIntolerance by the performer or other systems which remain constant as the resource is updated and propagates from server to server.", 0, java.lang.Integer.MAX_VALUE, identifier);
+        case -462853915: /*clinicalStatus*/  return new Property("clinicalStatus", "CodeableConcept", "The clinical status of the allergy or intolerance.", 0, 1, clinicalStatus);
+        case -842509843: /*verificationStatus*/  return new Property("verificationStatus", "CodeableConcept", "Assertion about certainty associated with the propensity, or potential risk, of a reaction to the identified substance (including pharmaceutical product).", 0, 1, verificationStatus);
         case 3575610: /*type*/  return new Property("type", "code", "Identification of the underlying physiological mechanism for the reaction risk.", 0, 1, type);
         case 50511102: /*category*/  return new Property("category", "code", "Category of the identified substance.", 0, java.lang.Integer.MAX_VALUE, category);
         case -1608054609: /*criticality*/  return new Property("criticality", "code", "Estimate of the potential clinical harm, or seriousness, of the reaction to the identified substance.", 0, 1, criticality);
         case 3059181: /*code*/  return new Property("code", "CodeableConcept", "Code for an allergy or intolerance statement (either a positive or a negated/excluded statement).  This may be a code for a substance or pharmaceutical product that is considered to be responsible for the adverse reaction risk (e.g., \"Latex\"), an allergy or intolerance condition (e.g., \"Latex allergy\"), or a negated/excluded code for a specific substance or class (e.g., \"No latex allergy\") or a general or categorical negated statement (e.g.,  \"No known allergy\", \"No known drug allergies\").  Note: the substance for a specific reaction may be different from the substance identified as the cause of the risk, but it must be consistent with it. For instance, it may be a more specific substance (e.g. a brand medication) or a composite product that includes the identified substance. It must be clinically safe to only process the 'code' and ignore the 'reaction.substance'.  If a receiving system is unable to confirm that AllergyIntolerance.reaction.substance falls within the semantic scope of AllergyIntolerance.code, then the receiving system should ignore AllergyIntolerance.reaction.substance.", 0, 1, code);
         case -791418107: /*patient*/  return new Property("patient", "Reference(Patient)", "The patient who has the allergy or intolerance.", 0, 1, patient);
+        case 1524132147: /*encounter*/  return new Property("encounter", "Reference(Encounter)", "The encounter when the allergy or intolerance was asserted.", 0, 1, encounter);
         case -1886216323: /*onset[x]*/  return new Property("onset[x]", "dateTime|Age|Period|Range|string", "Estimated or actual date,  date-time, or age when allergy or intolerance was identified.", 0, 1, onset);
         case 105901603: /*onset*/  return new Property("onset[x]", "dateTime|Age|Period|Range|string", "Estimated or actual date,  date-time, or age when allergy or intolerance was identified.", 0, 1, onset);
         case -1701663010: /*onsetDateTime*/  return new Property("onset[x]", "dateTime|Age|Period|Range|string", "Estimated or actual date,  date-time, or age when allergy or intolerance was identified.", 0, 1, onset);
@@ -2206,8 +1997,8 @@ public class AllergyIntolerance extends DomainResource {
         case -1545082428: /*onsetPeriod*/  return new Property("onset[x]", "dateTime|Age|Period|Range|string", "Estimated or actual date,  date-time, or age when allergy or intolerance was identified.", 0, 1, onset);
         case -186664742: /*onsetRange*/  return new Property("onset[x]", "dateTime|Age|Period|Range|string", "Estimated or actual date,  date-time, or age when allergy or intolerance was identified.", 0, 1, onset);
         case -1445342188: /*onsetString*/  return new Property("onset[x]", "dateTime|Age|Period|Range|string", "Estimated or actual date,  date-time, or age when allergy or intolerance was identified.", 0, 1, onset);
-        case -174231629: /*assertedDate*/  return new Property("assertedDate", "dateTime", "The date on which the existance of the AllergyIntolerance was first asserted or acknowledged.", 0, 1, assertedDate);
-        case -799233858: /*recorder*/  return new Property("recorder", "Reference(Practitioner|Patient)", "Individual who recorded the record and takes responsibility for its content.", 0, 1, recorder);
+        case -1952893826: /*recordedDate*/  return new Property("recordedDate", "dateTime", "The recordedDate represents when this particular AllergyIntolerance record was created in the system, which is often a system-generated date.", 0, 1, recordedDate);
+        case -799233858: /*recorder*/  return new Property("recorder", "Reference(Practitioner|Patient|RelatedPerson)", "Individual who recorded the record and takes responsibility for its content.", 0, 1, recorder);
         case -373242253: /*asserter*/  return new Property("asserter", "Reference(Patient|RelatedPerson|Practitioner)", "The source of the information about the allergy that is recorded.", 0, 1, asserter);
         case 1896977671: /*lastOccurrence*/  return new Property("lastOccurrence", "dateTime", "Represents the date and/or time of the last known occurrence of a reaction event.", 0, 1, lastOccurrence);
         case 3387378: /*note*/  return new Property("note", "Annotation", "Additional narrative about the propensity for the Adverse Reaction, not captured in other fields.", 0, java.lang.Integer.MAX_VALUE, note);
@@ -2221,15 +2012,16 @@ public class AllergyIntolerance extends DomainResource {
       public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
         switch (hash) {
         case -1618432855: /*identifier*/ return this.identifier == null ? new Base[0] : this.identifier.toArray(new Base[this.identifier.size()]); // Identifier
-        case -462853915: /*clinicalStatus*/ return this.clinicalStatus == null ? new Base[0] : new Base[] {this.clinicalStatus}; // Enumeration<AllergyIntoleranceClinicalStatus>
-        case -842509843: /*verificationStatus*/ return this.verificationStatus == null ? new Base[0] : new Base[] {this.verificationStatus}; // Enumeration<AllergyIntoleranceVerificationStatus>
+        case -462853915: /*clinicalStatus*/ return this.clinicalStatus == null ? new Base[0] : new Base[] {this.clinicalStatus}; // CodeableConcept
+        case -842509843: /*verificationStatus*/ return this.verificationStatus == null ? new Base[0] : new Base[] {this.verificationStatus}; // CodeableConcept
         case 3575610: /*type*/ return this.type == null ? new Base[0] : new Base[] {this.type}; // Enumeration<AllergyIntoleranceType>
         case 50511102: /*category*/ return this.category == null ? new Base[0] : this.category.toArray(new Base[this.category.size()]); // Enumeration<AllergyIntoleranceCategory>
         case -1608054609: /*criticality*/ return this.criticality == null ? new Base[0] : new Base[] {this.criticality}; // Enumeration<AllergyIntoleranceCriticality>
         case 3059181: /*code*/ return this.code == null ? new Base[0] : new Base[] {this.code}; // CodeableConcept
         case -791418107: /*patient*/ return this.patient == null ? new Base[0] : new Base[] {this.patient}; // Reference
+        case 1524132147: /*encounter*/ return this.encounter == null ? new Base[0] : new Base[] {this.encounter}; // Reference
         case 105901603: /*onset*/ return this.onset == null ? new Base[0] : new Base[] {this.onset}; // Type
-        case -174231629: /*assertedDate*/ return this.assertedDate == null ? new Base[0] : new Base[] {this.assertedDate}; // DateTimeType
+        case -1952893826: /*recordedDate*/ return this.recordedDate == null ? new Base[0] : new Base[] {this.recordedDate}; // DateTimeType
         case -799233858: /*recorder*/ return this.recorder == null ? new Base[0] : new Base[] {this.recorder}; // Reference
         case -373242253: /*asserter*/ return this.asserter == null ? new Base[0] : new Base[] {this.asserter}; // Reference
         case 1896977671: /*lastOccurrence*/ return this.lastOccurrence == null ? new Base[0] : new Base[] {this.lastOccurrence}; // DateTimeType
@@ -2247,12 +2039,10 @@ public class AllergyIntolerance extends DomainResource {
           this.getIdentifier().add(castToIdentifier(value)); // Identifier
           return value;
         case -462853915: // clinicalStatus
-          value = new AllergyIntoleranceClinicalStatusEnumFactory().fromType(castToCode(value));
-          this.clinicalStatus = (Enumeration) value; // Enumeration<AllergyIntoleranceClinicalStatus>
+          this.clinicalStatus = castToCodeableConcept(value); // CodeableConcept
           return value;
         case -842509843: // verificationStatus
-          value = new AllergyIntoleranceVerificationStatusEnumFactory().fromType(castToCode(value));
-          this.verificationStatus = (Enumeration) value; // Enumeration<AllergyIntoleranceVerificationStatus>
+          this.verificationStatus = castToCodeableConcept(value); // CodeableConcept
           return value;
         case 3575610: // type
           value = new AllergyIntoleranceTypeEnumFactory().fromType(castToCode(value));
@@ -2272,11 +2062,14 @@ public class AllergyIntolerance extends DomainResource {
         case -791418107: // patient
           this.patient = castToReference(value); // Reference
           return value;
+        case 1524132147: // encounter
+          this.encounter = castToReference(value); // Reference
+          return value;
         case 105901603: // onset
           this.onset = castToType(value); // Type
           return value;
-        case -174231629: // assertedDate
-          this.assertedDate = castToDateTime(value); // DateTimeType
+        case -1952893826: // recordedDate
+          this.recordedDate = castToDateTime(value); // DateTimeType
           return value;
         case -799233858: // recorder
           this.recorder = castToReference(value); // Reference
@@ -2303,11 +2096,9 @@ public class AllergyIntolerance extends DomainResource {
         if (name.equals("identifier")) {
           this.getIdentifier().add(castToIdentifier(value));
         } else if (name.equals("clinicalStatus")) {
-          value = new AllergyIntoleranceClinicalStatusEnumFactory().fromType(castToCode(value));
-          this.clinicalStatus = (Enumeration) value; // Enumeration<AllergyIntoleranceClinicalStatus>
+          this.clinicalStatus = castToCodeableConcept(value); // CodeableConcept
         } else if (name.equals("verificationStatus")) {
-          value = new AllergyIntoleranceVerificationStatusEnumFactory().fromType(castToCode(value));
-          this.verificationStatus = (Enumeration) value; // Enumeration<AllergyIntoleranceVerificationStatus>
+          this.verificationStatus = castToCodeableConcept(value); // CodeableConcept
         } else if (name.equals("type")) {
           value = new AllergyIntoleranceTypeEnumFactory().fromType(castToCode(value));
           this.type = (Enumeration) value; // Enumeration<AllergyIntoleranceType>
@@ -2321,10 +2112,12 @@ public class AllergyIntolerance extends DomainResource {
           this.code = castToCodeableConcept(value); // CodeableConcept
         } else if (name.equals("patient")) {
           this.patient = castToReference(value); // Reference
+        } else if (name.equals("encounter")) {
+          this.encounter = castToReference(value); // Reference
         } else if (name.equals("onset[x]")) {
           this.onset = castToType(value); // Type
-        } else if (name.equals("assertedDate")) {
-          this.assertedDate = castToDateTime(value); // DateTimeType
+        } else if (name.equals("recordedDate")) {
+          this.recordedDate = castToDateTime(value); // DateTimeType
         } else if (name.equals("recorder")) {
           this.recorder = castToReference(value); // Reference
         } else if (name.equals("asserter")) {
@@ -2344,16 +2137,17 @@ public class AllergyIntolerance extends DomainResource {
       public Base makeProperty(int hash, String name) throws FHIRException {
         switch (hash) {
         case -1618432855:  return addIdentifier(); 
-        case -462853915:  return getClinicalStatusElement();
-        case -842509843:  return getVerificationStatusElement();
+        case -462853915:  return getClinicalStatus(); 
+        case -842509843:  return getVerificationStatus(); 
         case 3575610:  return getTypeElement();
         case 50511102:  return addCategoryElement();
         case -1608054609:  return getCriticalityElement();
         case 3059181:  return getCode(); 
         case -791418107:  return getPatient(); 
+        case 1524132147:  return getEncounter(); 
         case -1886216323:  return getOnset(); 
         case 105901603:  return getOnset(); 
-        case -174231629:  return getAssertedDateElement();
+        case -1952893826:  return getRecordedDateElement();
         case -799233858:  return getRecorder(); 
         case -373242253:  return getAsserter(); 
         case 1896977671:  return getLastOccurrenceElement();
@@ -2368,15 +2162,16 @@ public class AllergyIntolerance extends DomainResource {
       public String[] getTypesForProperty(int hash, String name) throws FHIRException {
         switch (hash) {
         case -1618432855: /*identifier*/ return new String[] {"Identifier"};
-        case -462853915: /*clinicalStatus*/ return new String[] {"code"};
-        case -842509843: /*verificationStatus*/ return new String[] {"code"};
+        case -462853915: /*clinicalStatus*/ return new String[] {"CodeableConcept"};
+        case -842509843: /*verificationStatus*/ return new String[] {"CodeableConcept"};
         case 3575610: /*type*/ return new String[] {"code"};
         case 50511102: /*category*/ return new String[] {"code"};
         case -1608054609: /*criticality*/ return new String[] {"code"};
         case 3059181: /*code*/ return new String[] {"CodeableConcept"};
         case -791418107: /*patient*/ return new String[] {"Reference"};
+        case 1524132147: /*encounter*/ return new String[] {"Reference"};
         case 105901603: /*onset*/ return new String[] {"dateTime", "Age", "Period", "Range", "string"};
-        case -174231629: /*assertedDate*/ return new String[] {"dateTime"};
+        case -1952893826: /*recordedDate*/ return new String[] {"dateTime"};
         case -799233858: /*recorder*/ return new String[] {"Reference"};
         case -373242253: /*asserter*/ return new String[] {"Reference"};
         case 1896977671: /*lastOccurrence*/ return new String[] {"dateTime"};
@@ -2393,10 +2188,12 @@ public class AllergyIntolerance extends DomainResource {
           return addIdentifier();
         }
         else if (name.equals("clinicalStatus")) {
-          throw new FHIRException("Cannot call addChild on a primitive type AllergyIntolerance.clinicalStatus");
+          this.clinicalStatus = new CodeableConcept();
+          return this.clinicalStatus;
         }
         else if (name.equals("verificationStatus")) {
-          throw new FHIRException("Cannot call addChild on a primitive type AllergyIntolerance.verificationStatus");
+          this.verificationStatus = new CodeableConcept();
+          return this.verificationStatus;
         }
         else if (name.equals("type")) {
           throw new FHIRException("Cannot call addChild on a primitive type AllergyIntolerance.type");
@@ -2414,6 +2211,10 @@ public class AllergyIntolerance extends DomainResource {
         else if (name.equals("patient")) {
           this.patient = new Reference();
           return this.patient;
+        }
+        else if (name.equals("encounter")) {
+          this.encounter = new Reference();
+          return this.encounter;
         }
         else if (name.equals("onsetDateTime")) {
           this.onset = new DateTimeType();
@@ -2435,8 +2236,8 @@ public class AllergyIntolerance extends DomainResource {
           this.onset = new StringType();
           return this.onset;
         }
-        else if (name.equals("assertedDate")) {
-          throw new FHIRException("Cannot call addChild on a primitive type AllergyIntolerance.assertedDate");
+        else if (name.equals("recordedDate")) {
+          throw new FHIRException("Cannot call addChild on a primitive type AllergyIntolerance.recordedDate");
         }
         else if (name.equals("recorder")) {
           this.recorder = new Reference();
@@ -2483,8 +2284,9 @@ public class AllergyIntolerance extends DomainResource {
         dst.criticality = criticality == null ? null : criticality.copy();
         dst.code = code == null ? null : code.copy();
         dst.patient = patient == null ? null : patient.copy();
+        dst.encounter = encounter == null ? null : encounter.copy();
         dst.onset = onset == null ? null : onset.copy();
-        dst.assertedDate = assertedDate == null ? null : assertedDate.copy();
+        dst.recordedDate = recordedDate == null ? null : recordedDate.copy();
         dst.recorder = recorder == null ? null : recorder.copy();
         dst.asserter = asserter == null ? null : asserter.copy();
         dst.lastOccurrence = lastOccurrence == null ? null : lastOccurrence.copy();
@@ -2506,37 +2308,37 @@ public class AllergyIntolerance extends DomainResource {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof AllergyIntolerance))
+        if (!(other_ instanceof AllergyIntolerance))
           return false;
-        AllergyIntolerance o = (AllergyIntolerance) other;
+        AllergyIntolerance o = (AllergyIntolerance) other_;
         return compareDeep(identifier, o.identifier, true) && compareDeep(clinicalStatus, o.clinicalStatus, true)
            && compareDeep(verificationStatus, o.verificationStatus, true) && compareDeep(type, o.type, true)
            && compareDeep(category, o.category, true) && compareDeep(criticality, o.criticality, true) && compareDeep(code, o.code, true)
-           && compareDeep(patient, o.patient, true) && compareDeep(onset, o.onset, true) && compareDeep(assertedDate, o.assertedDate, true)
-           && compareDeep(recorder, o.recorder, true) && compareDeep(asserter, o.asserter, true) && compareDeep(lastOccurrence, o.lastOccurrence, true)
-           && compareDeep(note, o.note, true) && compareDeep(reaction, o.reaction, true);
+           && compareDeep(patient, o.patient, true) && compareDeep(encounter, o.encounter, true) && compareDeep(onset, o.onset, true)
+           && compareDeep(recordedDate, o.recordedDate, true) && compareDeep(recorder, o.recorder, true) && compareDeep(asserter, o.asserter, true)
+           && compareDeep(lastOccurrence, o.lastOccurrence, true) && compareDeep(note, o.note, true) && compareDeep(reaction, o.reaction, true)
+          ;
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof AllergyIntolerance))
+        if (!(other_ instanceof AllergyIntolerance))
           return false;
-        AllergyIntolerance o = (AllergyIntolerance) other;
-        return compareValues(clinicalStatus, o.clinicalStatus, true) && compareValues(verificationStatus, o.verificationStatus, true)
-           && compareValues(type, o.type, true) && compareValues(category, o.category, true) && compareValues(criticality, o.criticality, true)
-           && compareValues(assertedDate, o.assertedDate, true) && compareValues(lastOccurrence, o.lastOccurrence, true)
+        AllergyIntolerance o = (AllergyIntolerance) other_;
+        return compareValues(type, o.type, true) && compareValues(category, o.category, true) && compareValues(criticality, o.criticality, true)
+           && compareValues(recordedDate, o.recordedDate, true) && compareValues(lastOccurrence, o.lastOccurrence, true)
           ;
       }
 
       public boolean isEmpty() {
         return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(identifier, clinicalStatus
-          , verificationStatus, type, category, criticality, code, patient, onset, assertedDate
-          , recorder, asserter, lastOccurrence, note, reaction);
+          , verificationStatus, type, category, criticality, code, patient, encounter, onset
+          , recordedDate, recorder, asserter, lastOccurrence, note, reaction);
       }
 
   @Override
@@ -2567,19 +2369,19 @@ public class AllergyIntolerance extends DomainResource {
  /**
    * Search parameter: <b>date</b>
    * <p>
-   * Description: <b>Date record was believed accurate</b><br>
+   * Description: <b>Date record was first recorded</b><br>
    * Type: <b>date</b><br>
-   * Path: <b>AllergyIntolerance.assertedDate</b><br>
+   * Path: <b>AllergyIntolerance.recordedDate</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="date", path="AllergyIntolerance.assertedDate", description="Date record was believed accurate", type="date" )
+  @SearchParamDefinition(name="date", path="AllergyIntolerance.recordedDate", description="Date record was first recorded", type="date" )
   public static final String SP_DATE = "date";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>date</b>
    * <p>
-   * Description: <b>Date record was believed accurate</b><br>
+   * Description: <b>Date record was first recorded</b><br>
    * Type: <b>date</b><br>
-   * Path: <b>AllergyIntolerance.assertedDate</b><br>
+   * Path: <b>AllergyIntolerance.recordedDate</b><br>
    * </p>
    */
   public static final ca.uhn.fhir.rest.gclient.DateClientParam DATE = new ca.uhn.fhir.rest.gclient.DateClientParam(SP_DATE);
@@ -2632,7 +2434,7 @@ public class AllergyIntolerance extends DomainResource {
    * Path: <b>AllergyIntolerance.recorder</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="recorder", path="AllergyIntolerance.recorder", description="Who recorded the sensitivity", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Patient"), @ca.uhn.fhir.model.api.annotation.Compartment(name="Practitioner") }, target={Patient.class, Practitioner.class } )
+  @SearchParamDefinition(name="recorder", path="AllergyIntolerance.recorder", description="Who recorded the sensitivity", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Patient"), @ca.uhn.fhir.model.api.annotation.Compartment(name="Practitioner") }, target={Patient.class, Practitioner.class, RelatedPerson.class } )
   public static final String SP_RECORDER = "recorder";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>recorder</b>

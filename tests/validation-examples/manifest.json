@@ -4,6 +4,9 @@
 			"bundle-good.json": {
 				"errorCount": 0
 			},
+			"bundle-bad-empty.json": {
+				"errorCount": 2
+			},
 			"group-choice-bad1.json": {
 				"errorCount": 2,
 				"errors": ["/Group/characteristic (line 10, col21) Unrecognised property '@value' ",
@@ -59,8 +62,8 @@
 				"errorCount": 0
 			},
 			"list-extension2.json": {
-				"errorCount": 1,
-				"errors": ["/List/status/extension (line 18, col8) Unrecognised property '@valueCodeX' "]
+				"errorCount": 2,
+				"errors": ["/List/status/extension (line 18, col8) Unrecognised property '@valueCodeX' ", "List.status.extension (line 15, col8) Must have either extensions or value[x], not both [extension.exists() != value.exists()]"]
 			},
 			"list-minimal.json": {
 				"errorCount": 0
@@ -86,6 +89,10 @@
 			"list-xhtml-correct2.json": {
 				"errorCount": 0
 			},
+			"primitive-good-ws.json": {
+				"errorCount": 0,
+				"warningCount": 1
+			},
 			"list-xhtml-element.json": {
 				"errorCount": 2,
 				"errors": ["List.text.div (line 15, col4) Illegal element name in the XHTML ('object') ",
@@ -106,7 +113,26 @@
 			"list-xhtml-xxe.json": {
 				"errorCount": 1,
 				"errors": ["/List/text/div (line 7, col4) Error parsing XHTML: Malformed XHTML: Found a DocType declaration, and these are not allowed (XXE security vulnerability protection) "]
-			}
+			},
+			"synthea.json": {
+				"errorCount": 2
+			}, 
+      "patient-good.json" : {
+        "errorCount": 0,
+        "warningCount": 0
+      }, 
+      "patient-lang1.json" : {
+        "errorCount": 0,
+        "warningCount": 1
+      }, 
+      "patient-lang2.json" : {
+        "errorCount": 0,
+        "warningCount": 0
+      }, 
+      "patient-lang3.json" : {
+        "errorCount": 0,
+        "warningCount": 1
+      }
 		},
 		"Xml": {
 			"bundle-good.xml": {
@@ -117,6 +143,9 @@
       },
       "primitive-bad.xml" : {
 				"errorCount": 49
+      },
+      "primitive-bad-empty.xml" : {
+				"errorCount": 3
       },
 			"group-choice-bad1.xml": {
 				"errorCount": 2,
@@ -239,7 +268,7 @@
 			  "errorCount": 0,
         "profile" : {
           "source" : "slice-by-polymorphic-type-profile.xml", 
-          "errorCount": 0          
+          "errorCount": 0
         }
 			},
       "code-correct.xml" : {
@@ -277,6 +306,22 @@
           "errorCount": 1
         }
       },
+      "string-extensions-and-constraints-example.xml" : {
+        "use-test" : true,
+        "allowed-extension-domain" : "http://hl7.org/fhir/ccda/StructureDefinition/",
+        "errorCount": 0,
+        "profile" : {
+          "source" : "string-extensions-and-constraints-profile.xml", 
+          "errorCount": 4
+        }
+      },
+      "slicing-types-by-string.xml" : {
+        "errorCount": 0,
+        "profile" : {
+          "source" : "slicing-types-by-string-profile.xml", 
+          "errorCount": 0
+        }
+      },
       "uk-nhs-pat.xml" : {
         "version" : "1.0.2",
         "use-test" : false,
@@ -286,6 +331,62 @@
           "source" : "uk-nhs-sd-pat.xml", 
           "errorCount": 1
         }
+      },
+      "entry-resource-bad1.xml" : {
+          "errorCount": 0,
+          "x-errors": ["Resource ID does not match the ID in the entry full URL"]
+      },
+      "reference-good.xml" : {
+          "validate" : "CHECK_EXISTS_AND_TYPE",
+          "errorCount": 0
+      },
+      "reference-bad.xml" : {
+          "validate" : "CHECK_EXISTS_AND_TYPE",
+          "errorCount": 1
+      },
+      "reference-good-contained.xml" : {
+          "validate" : "CHECK_EXISTS_AND_TYPE",
+          "errorCount": 0
+      },
+      "reference-good-typed.xml" : {
+          "validate" : "CHECK_EXISTS_AND_TYPE",
+          "errorCount": 0
+      },
+      "reference-good-logical.xml" : {
+          "validate" : "CHECK_EXISTS_AND_TYPE",
+          "errorCount": 0
+      },
+      "reference-bad-logical.xml" : {
+          "validate" : "CHECK_EXISTS_AND_TYPE",
+          "errorCount": 1
+      },
+      "reference-bad-typed.xml" : {
+          "validate" : "CHECK_EXISTS_AND_TYPE",
+          "errorCount": 1
+      }, 
+      "primitive-good-ws.xml" : {
+ 			  "errorCount": 0,
+        "warningCount": 1
+      }, 
+      "qr.xml" : {
+        "questionnaire" : "q.xml",
+        "errorCount": 2
+      }, 
+      "patient-good.xml" : {
+        "errorCount": 0,
+        "warningCount": 0
+      }, 
+      "patient-lang1.xml" : {
+        "errorCount": 0,
+        "warningCount": 1
+      }, 
+      "patient-lang2.xml" : {
+        "errorCount": 0,
+        "warningCount": 0
+      }, 
+      "patient-lang3.xml" : {
+        "errorCount": 0,
+        "warningCount": 1
       }
 		}
 	}

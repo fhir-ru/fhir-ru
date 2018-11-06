@@ -1,5 +1,8 @@
 package org.hl7.fhir.rdf;
 
+import java.io.OutputStream;
+import java.util.List;
+
 import org.apache.jena.datatypes.xsd.XSDDatatype;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
@@ -9,9 +12,6 @@ import org.apache.jena.riot.RDFFormat;
 import org.apache.jena.vocabulary.OWL2;
 import org.apache.jena.vocabulary.RDF;
 import org.apache.jena.vocabulary.RDFS;
-
-import java.io.OutputStream;
-import java.util.List;
 
 
 public class FHIRResourceFactory {
@@ -227,15 +227,24 @@ public class FHIRResourceFactory {
     }
 
     /**
-     * Return a a datatype restriction
+     * Return a simple datatype restriction
+     * @param dataType data type to be restricted
+     * @return
+     */
+    public FHIRResource fhir_datatype(Resource dataType) {
+        return fhir_bnode()
+                .addType(RDFS.Datatype)
+                .addObjectProperty(OWL2.onDatatype, dataType);
+    }
+
+    /**
+     * Return a datatype restriction
      * @param dataType data type to be restricted
      * @param facets List of facets
      * @return
      */
     public Resource fhir_datatype_restriction(Resource dataType, List<Resource> facets) {
-        return fhir_bnode()
-                .addType(RDFS.Datatype)
-                .addObjectProperty(OWL2.onDatatype, dataType)
+        return fhir_datatype(dataType)
                 .addObjectProperty(OWL2.withRestrictions, new FHIRResource(model, facets))
                 .resource;
     }

@@ -33,7 +33,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.StringWriter;
-import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 
 import org.hl7.fhir.utilities.Utilities;
@@ -44,27 +43,22 @@ public class XhtmlComposer {
 
   public static final String XHTML_NS = "http://www.w3.org/1999/xhtml";
   private boolean pretty;
-  private boolean xmlOnly;
+  private boolean xml; 
   
+  public static final boolean XML = true; 
+  public static final boolean HTML = false; 
   
-  public boolean isPretty() {
-    return pretty;
-  }
-
-  public XhtmlComposer setPretty(boolean pretty) {
+  public XhtmlComposer(boolean xml, boolean pretty) {
+    super();
     this.pretty = pretty;
-    return this;
+    this.xml = xml;
   }
 
-  public boolean isXmlOnly() {
-    return xmlOnly;
+  public XhtmlComposer(boolean xml) {
+    super();
+    this.pretty = false;
+    this.xml = xml;
   }
-
-  public XhtmlComposer setXmlOnly(boolean xmlOnly) {
-    this.xmlOnly = xmlOnly;
-    return this;
-  }
-
 
   private Writer dst;
 
@@ -78,7 +72,7 @@ public class XhtmlComposer {
   public String compose(XhtmlNode node) throws IOException  {
     StringWriter sdst = new StringWriter();
     dst = sdst;
-    writeNode("", node);
+    writeNode("", node, false);
     return sdst.toString();
   }
 
@@ -92,21 +86,21 @@ public class XhtmlComposer {
 
   private void composeDoc(XhtmlDocument doc) throws IOException  {
     // headers....
-//    dst.append("<html>" + (isPretty() ? "\r\n" : ""));
+//    dst.append("<html>" + (pretty ? "\r\n" : ""));
     for (XhtmlNode c : doc.getChildNodes())
-      writeNode("  ", c);
-//    dst.append("</html>" + (isPretty() ? "\r\n" : ""));
+      writeNode("  ", c, false);
+//    dst.append("</html>" + (pretty ? "\r\n" : ""));
   }
 
-  private void writeNode(String indent, XhtmlNode node) throws IOException  {
+  private void writeNode(String indent, XhtmlNode node, boolean noPrettyOverride) throws IOException  {
     if (node.getNodeType() == NodeType.Comment)
-      writeComment(indent, node);
+      writeComment(indent, node, noPrettyOverride);
     else if (node.getNodeType() == NodeType.DocType)
       writeDocType(node);
     else if (node.getNodeType() == NodeType.Instruction)
       writeInstruction(node);
     else if (node.getNodeType() == NodeType.Element)
-      writeElement(indent, node);
+      writeElement(indent, node, noPrettyOverride);
     else if (node.getNodeType() == NodeType.Document)
       writeDocument(indent, node);
     else if (node.getNodeType() == NodeType.Text)
@@ -126,10 +120,11 @@ public class XhtmlComposer {
         dst.append("&lt;");
       else if (c == '>')
         dst.append("&gt;");
-      else if (c == '"')
-        dst.append("&quot;");
-      else if (xmlOnly) {
-        dst.append(c);
+      else if (xml) {
+        if (c == '"')
+          dst.append("&quot;");
+        else 
+          dst.append(c);
       } else {
         if (c == XhtmlNode.NBSP.charAt(0))
           dst.append("&nbsp;");
@@ -149,8 +144,8 @@ public class XhtmlComposer {
     }
   }
 
-  private void writeComment(String indent, XhtmlNode node) throws IOException {
-    dst.append(indent + "<!-- " + node.getContent().trim() + " -->" + (isPretty() ? "\r\n" : ""));
+  private void writeComment(String indent, XhtmlNode node, boolean noPrettyOverride) throws IOException {
+    dst.append(indent + "<!-- " + node.getContent().trim() + " -->" + (pretty && !noPrettyOverride ? "\r\n" : ""));
 }
 
   private void writeDocType(XhtmlNode node) throws IOException {
@@ -186,52 +181,57 @@ public class XhtmlComposer {
     return s.toString();
   }
   
-  private void writeElement(String indent, XhtmlNode node) throws IOException  {
-    if (!pretty)
+  private void writeElement(String indent, XhtmlNode node, boolean noPrettyOverride) throws IOException  {
+    if (!pretty || noPrettyOverride)
       indent = "";
-    
-    if (node.getChildNodes().size() == 0)
-      dst.append(indent + "<" + node.getName() + attributes(node) + "/>" + (isPretty() ? "\r\n" : ""));
+
+    // html self closing tags: http://xahlee.info/js/html5_non-closing_tag.html 
+    if (node.getChildNodes().size() == 0 && (xml || Utilities.existsInList(node.getName(), "area", "base", "br", "col", "command", "embed", "hr", "img", "input", "keygen", "link", "menuitem", "meta", "param", "source", "track", "wbr")))
+      dst.append(indent + "<" + node.getName() + attributes(node) + "/>" + (pretty && !noPrettyOverride ? "\r\n" : ""));
     else {
     boolean act = node.allChildrenAreText();
-    if (act || !pretty)
+    if (act || !pretty ||  noPrettyOverride)
       dst.append(indent + "<" + node.getName() + attributes(node)+">");
     else
       dst.append(indent + "<" + node.getName() + attributes(node) + ">\r\n");
     if (node.getName() == "head" && node.getElement("meta") == null)
-      dst.append(indent + "  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"/>" + (isPretty() ? "\r\n" : ""));
+      dst.append(indent + "  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"/>" + (pretty && !noPrettyOverride ? "\r\n" : ""));
 
 
     for (XhtmlNode c : node.getChildNodes())
-      writeNode(indent + "  ", c);
+      writeNode(indent + "  ", c, noPrettyOverride || node.isNoPretty());
     if (act)
-      dst.append("</" + node.getName() + ">" + (isPretty() ? "\r\n" : ""));
+      dst.append("</" + node.getName() + ">" + (pretty && !noPrettyOverride ? "\r\n" : ""));
     else if (node.getChildNodes().get(node.getChildNodes().size() - 1).getNodeType() == NodeType.Text)
-      dst.append((isPretty() ? "\r\n"+ indent : "")  + "</" + node.getName() + ">" + (isPretty() ? "\r\n" : ""));
+      dst.append((pretty && !noPrettyOverride ? "\r\n"+ indent : "")  + "</" + node.getName() + ">" + (pretty && !noPrettyOverride ? "\r\n" : ""));
     else
-      dst.append(indent + "</" + node.getName() + ">" + (isPretty() ? "\r\n" : ""));
+      dst.append(indent + "</" + node.getName() + ">" + (pretty && !noPrettyOverride ? "\r\n" : ""));
     }
   }
 
   private void writeDocument(String indent, XhtmlNode node) throws IOException  {
     indent = "";
     for (XhtmlNode c : node.getChildNodes())
-      writeNode(indent, c);
+      writeNode(indent, c, false);
   }
 
 
   public void compose(IXMLWriter xml, XhtmlNode node) throws IOException  {
+    compose(xml, node, false);
+  }
+  
+  public void compose(IXMLWriter xml, XhtmlNode node, boolean noPrettyOverride) throws IOException  {
     if (node.getNodeType() == NodeType.Comment)
-      xml.comment(node.getContent(), isPretty());
+      xml.comment(node.getContent(), pretty && !noPrettyOverride);
     else if (node.getNodeType() == NodeType.Element)
-      composeElement(xml, node);
+      composeElement(xml, node, noPrettyOverride);
     else if (node.getNodeType() == NodeType.Text)
       xml.text(node.getContent());
     else
       throw new Error("Unhandled node type: "+node.getNodeType().toString());
   }
 
-  private void composeElement(IXMLWriter xml, XhtmlNode node) throws IOException  {
+  private void composeElement(IXMLWriter xml, XhtmlNode node, boolean noPrettyOverride) throws IOException  {
     for (String n : node.getAttributes().keySet()) {
       if (n.equals("xmlns")) 
       	xml.setDefaultNamespace(node.getAttributes().get(n));
@@ -242,7 +242,7 @@ public class XhtmlComposer {
     }
     xml.enter(XHTML_NS, node.getName());
     for (XhtmlNode n : node.getChildNodes())
-      compose(xml, n);
+      compose(xml, n, noPrettyOverride || node.isNoPretty());
     xml.exit(XHTML_NS, node.getName());
   }
 
@@ -323,7 +323,7 @@ public class XhtmlComposer {
     stream.write(bom);
     dst = new OutputStreamWriter(stream, "UTF-8");
     dst.append("<html><head><link rel=\"stylesheet\" href=\"fhir.css\"/></head><body>\r\n");
-    writeNode("", x);
+    writeNode("", x, false);
     dst.append("</body></html>\r\n");
     dst.flush();
   }
@@ -332,7 +332,7 @@ public class XhtmlComposer {
     byte[] bom = new byte[] { (byte)0xEF, (byte)0xBB, (byte)0xBF };
     f.write(bom);
     dst = new OutputStreamWriter(f, "UTF-8");
-    writeNode("", xhtml);
+    writeNode("", xhtml, false);
     dst.flush();
     dst.close();
   }

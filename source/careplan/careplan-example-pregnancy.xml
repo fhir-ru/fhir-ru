@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <CarePlan xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/CarePlan.xsd">
   <id value="preg"/>
   <text>
@@ -13,8 +13,19 @@
   <contained>
     <Condition>
       <id value="p1"/>
-      <clinicalStatus value="active"/>
-	  <verificationStatus value="confirmed"/>
+      <clinicalStatus>
+		<coding>
+		  <system value="http://terminology.hl7.org/CodeSystem/condition-clinical"/>
+		  <code value="active"/>
+		</coding>
+	  </clinicalStatus>
+
+	  <verificationStatus>
+		<coding>
+		  <system value="http://terminology.hl7.org/CodeSystem/condition-ver-status"/>
+		  <code value="confirmed"/>
+		</coding>
+	  </verificationStatus>
       <code>
         <text value="pregnancy"/>
       </code>
@@ -80,7 +91,7 @@
   <contained>
     <Goal>
       <id value="goal"/>
-      <status value="in-progress"/>
+      <lifecycleStatus value="active" />
       <description>
         <text value="Maintain patient's health throughout pregnancy and ensure a healthy child"/>
       </description>
@@ -136,7 +147,7 @@
         <text value="First Antenatal encounter"/>
       </code>
       <status value="scheduled"/>
-      <prohibited value="false"/>
+      <doNotPerform value="false"/>
       <scheduledTiming>
         <!-- The encounter should occur between 14 feb and 28 feb -->
         <repeat>
@@ -173,7 +184,7 @@
         <text value="Follow-up Antenatal encounter"/>
       </code>
       <status value="not-started"/>
-      <prohibited value="false"/>
+      <doNotPerform value="false"/>
       <scheduledTiming>
         <!-- The encounter should occur between 1 march and 14 march -->
         <repeat>
@@ -209,7 +220,7 @@
         <text value="Delivery"/>
       </code>
       <status value="not-started"/>
-      <prohibited value="false"/>
+      <doNotPerform value="false"/>
       <scheduledTiming>
         <!-- The delivery should occur between 1 September and 14 September -->
         <repeat>

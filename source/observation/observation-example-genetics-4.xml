@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- NOTE: This example will soon be revised and moved to the Genomics Reporting implementation guide - current version at http://hl7.org/fhir/uv/genomics-reporting -->
 <Observation xmlns="http://hl7.org/fhir">
 	<id value="example-genetics-4"/>
 	<status value="final"/>
@@ -16,7 +17,7 @@
 	</performer>
 	<interpretation>
 		<coding>
-			<system value="http://hl7.org/fhir/v2/0078"/>
+			<system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
 			<code value="POS"/>
 		</coding>
 		<text value="Positive"/>

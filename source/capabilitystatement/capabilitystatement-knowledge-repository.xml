@@ -1,4 +1,4 @@
-<CapabilityStatement xmlns="http://hl7.org/fhir">
+﻿<CapabilityStatement xmlns="http://hl7.org/fhir">
   <id value="knowledge-repository"/>
   <text>
     <status value="generated"/>
@@ -85,8 +85,7 @@
   <software>
     <name value="ACME Knowledge Repository Service"/>
   </software>
-  <fhirVersion value="3.1.0"/>
-  <acceptUnknown value="both"/>
+  <fhirVersion value="3.6.0"/>
   <format value="json"/>
   <format value="xml"/>
   <rest>
@@ -96,16 +95,14 @@
       <cors value="true"/>
       <service>
         <coding>
-          <system value="http://hl7.org/fhir/restful-security-service"/>
+          <system value="http://terminology.hl7.org/CodeSystem/restful-security-service"/>
           <code value="Certificates"/>
         </coding>
       </service>
     </security>
     <resource>
       <type value="Library"/>
-      <profile>
-        <reference value="StructureDefinition/Library"/>
-      </profile>
+      <profile value="StructureDefinition/Library"/>
       <interaction>
         <code value="read"/>
         <documentation value="Read allows clients to get the logical definitions of the libraries"/>
@@ -172,9 +169,7 @@
     </resource>
 	<resource>
       <type value="PlanDefinition"/>
-      <profile>
-        <reference value="StructureDefinition/PlanDefinition"/>
-      </profile>
+      <profile value="StructureDefinition/PlanDefinition"/>
       <interaction>
         <code value="read"/>
         <documentation value="Read allows clients to get the logical definitions of the plan definitions"/>
@@ -241,9 +236,7 @@
     </resource>
 	<resource>
       <type value="ActivityDefinition"/>
-      <profile>
-        <reference value="StructureDefinition/ActivityDefinition"/>
-      </profile>
+      <profile value="StructureDefinition/ActivityDefinition"/>
       <interaction>
         <code value="read"/>
         <documentation value="Read allows clients to get the logical definitions of the activity definitions"/>
@@ -310,9 +303,7 @@
     </resource>
 	<resource>
       <type value="Measure"/>
-      <profile>
-        <reference value="StructureDefinition/Measure"/>
-      </profile>
+      <profile value="StructureDefinition/Measure"/>
       <interaction>
         <code value="read"/>
         <documentation value="Read allows clients to get the logical definitions of the measures"/>
@@ -379,9 +370,7 @@
     </resource>
 	<resource>
 		<type value="Questionnaire"/>
-		<profile>
-		  <reference value="StructureDefinition/Questionnaire"/>
-		</profile>
+		<profile value="StructureDefinition/Questionnaire"/>
 	  <interaction>
 		<code value="read"/>
 		<documentation value="Read allows clients to get the logical definitions of the measures"/>
@@ -433,9 +422,7 @@
 	</resource>
     <operation>
 		<name value="data-requirements"/>
-		<definition>
-		  <reference value="OperationDefinition/Library-data-requirements"/>
-		</definition>
+		<definition value="OperationDefinition/Library-data-requirements"/>
 	</operation>
   </rest>
 </CapabilityStatement>

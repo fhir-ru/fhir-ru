@@ -1,3 +1,5 @@
+// When the request can be processed ok
+
 HTTP/1.1 200 OK
 [other headers]
 
@@ -13,7 +15,7 @@ HTTP/1.1 200 OK
     "valueString" : "2.48"
   },
   {
-    "name" : "designation",
+    "name" : "display",
     "valueString" : "Bicarbonate [Moles/volume] in Serum"
   },
   {
@@ -25,9 +27,33 @@ HTTP/1.1 200 OK
     "part" : [
     {
       "name" : "value",
-      "valueString" : "Bicarbonate [Moles/volume] in Serum "
+      "valueString" : "Bicarbonate [Moles/volume] in Serum"
     }
     ]
   }
+  ]
+}
+
+--------------------------------------
+// an error - e.g. the requested code is not known
+
+HTTP/1.1 400 Bad Request
+[other headers]
+
+{
+  "resourceType": "OperationOutcome",
+  "id": "exception",
+  "text": {
+    "status": "additional",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Code "ABC-23" not found</div>"
+  },
+  "issue": [
+    {
+      "severity": "error",
+      "code": "not-found",
+      "details": {
+        "text": "Code "ABC-23" not found"
+      }
+    }
   ]
 }

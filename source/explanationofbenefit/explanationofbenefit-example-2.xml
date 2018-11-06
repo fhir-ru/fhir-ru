@@ -1,4 +1,4 @@
-<ExplanationOfBenefit xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+﻿<ExplanationOfBenefit xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
 	<id value="EB3501"/>
 
 	<text>
@@ -15,44 +15,57 @@
 
 	<type>
 		<coding>
-			<system value="http://hl7.org/fhir/ex-claimtype"/>
+			<system value="http://terminology.hl7.org/CodeSystem/claim-type"/>
 			<code value="oral"/>
 		</coding>
 	</type>
 
 	<subType>
 		<coding>
-			<system value="http://hl7.org/fhir/ex-claimsubtype"/>
+			<system value="http://terminology.hl7.org/CodeSystem/ex-claimsubtype"/>
 			<code value="emergency"/>
 		</coding>
 	</subType>
-	
+
+	<use value="claim"/>
+
 	<patient>
 		<reference value="Patient/pat1"/>
 	</patient>
 
-  <billablePeriod>
-  	<start value="2014-02-01"/>
-  	<end value="2014-03-01"/>
-  </billablePeriod>
-	
+	<billablePeriod>
+		<start value="2014-02-01"/>
+		<end value="2014-03-01"/>
+	</billablePeriod>
+
 	<created value="2014-08-16"/>
 
 	<enterer>
 		<reference value="Practitioner/1"/>
 	</enterer>
 
-  <insurer>
-  	<reference value="Organization/2"/>
-  </insurer>
-	
+	<insurer>
+		<reference value="Organization/2"/>
+	</insurer>
+
 	<provider>
-		<reference value="Practitioner/1"/>
+		<reference value="Organization/2"/>
 	</provider>
 
-	<organization>
-		<reference value="Organization/2"/>
-	</organization>
+	<related>
+		<reference>
+			<system value="http://www.BenefitsInc.com/case-number"/>
+			<value value="23-56Tu-XX-47-20150M14"/>
+		</reference>
+	</related>
+
+	<prescription>
+		<reference value="MedicationRequest/medrx002"/>
+	</prescription>
+
+	<originalPrescription>
+		<reference value="MedicationRequest/medrx0301"/>
+	</originalPrescription>
 
 	<facility>
 		<reference value="Location/1"/>
@@ -67,24 +80,37 @@
 	</claimResponse> 
 
 	<outcome value="error" />
-	
+
 	<disposition value="Could not process."/>
 
-  <related>
-  	<reference>
-  		<system value="http://www.BenefitsInc.com/case-number"/>
-  		<value value="23-56Tu-XX-47-20150M14"/>
-  	</reference>
-  </related>
+	<supportingInfo>
+		<sequence value="1"/>
+		<category>
+			<coding>
+				<system value="http://terminology.hl7.org/CodeSystem/claiminformationcategory"/>
+				<code value="employmentimpacted"/>
+			</coding>
+		</category>
+		<timingPeriod>
+			<start value="2014-02-14"/>
+			<end value="2014-02-28"/>
+		</timingPeriod>
+	</supportingInfo>
 
-	<prescription>
-  	<reference value="MedicationRequest/medrx002"/>
-  </prescription>
-  
-	<originalPrescription>
-  	<reference value="MedicationRequest/medrx0301"/>
-  </originalPrescription>
-	
+	<supportingInfo>
+		<sequence value="2"/>
+		<category>
+			<coding>
+				<system value="http://terminology.hl7.org/CodeSystem/claiminformationcategory"/>
+				<code value="hospitalized"/>
+			</coding>
+		</category>
+		<timingPeriod>
+			<start value="2014-02-14"/>
+			<end value="2014-02-16"/>
+		</timingPeriod>
+	</supportingInfo>
+
 	<procedure>
 		<sequence value="1"/>
 		<date value="2014-02-14"/>
@@ -95,66 +121,69 @@
 			</coding>
 		</procedureCodeableConcept>
 	</procedure>
-	
+
 	<precedence value="2"/>
-	
+
 	<insurance>
+		<focal value="true"/>
 		<coverage>
 			<reference value="Coverage/9876B1"/>
 		</coverage>
 	</insurance>
 
-  <accident>
-  	<date value="2014-02-14"/>
-  	<type>
-  		<coding>
-  			<system value="http://hl7.org/fhir/v3/ActCode" />
-  			<code value="SPT" />
-  		</coding>
-  	</type>
-  	<locationReference>
-  		<reference value="Location/ph"/>
-  	</locationReference>
-  </accident>
-	
-	<employmentImpacted>
-		<start value="2014-02-14"/>
-		<end value="2014-02-28"/>
-	</employmentImpacted>
-	
-	<hospitalization>
-		<start value="2014-02-14"/>
-		<end value="2014-02-16"/>
-	</hospitalization>
-	
-	<totalCost>
-		<value value="2478.57"/>
-		<system value="urn:iso:std:iso:4217"/>
-		<code value="USD"/> 
-	</totalCost>
+	<accident>
+		<date value="2014-02-14"/>
+		<type>
+			<coding>
+				<system value="http://terminology.hl7.org/CodeSystem/v3-ActCode" />
+				<code value="SPT" />
+			</coding>
+		</type>
+		<locationReference>
+			<reference value="Location/ph"/>
+		</locationReference>
+	</accident>
 
-	<totalBenefit>
-		<value value="0.00"/>
-		<system value="urn:iso:std:iso:4217"/>
-		<code value="USD"/> 
-	</totalBenefit>
-	
-	<form>
+	<total>
+		<category>
+			<coding>
+				<code value="submitted"/>
+			</coding>
+		</category>
+		<amount>
+			<value value="2478.57"/>
+			<currency value="USD"/> 
+		</amount> 
+	</total>
+
+	<total>
+		<category>
+			<coding>
+				<code value="benefit"/>
+			</coding>
+		</category>
+		<amount>
+			<value value="0.00"/>
+			<currency value="USD"/> 
+		</amount> 
+	</total>
+
+	<formCode>
 		<coding>
-			<system value="http://hl7.org/fhir/forms-codes" />
+			<system value="http://terminology.hl7.org/CodeSystem/forms-codes" />
 			<code value="2" />
 		</coding>
-	</form>
+	</formCode>
 
-  <processNote>
-  	<number value="1"/>
-  	<type value="display" />
-  	<text value="Invalid claim"/>
-  	<language>
-  		<coding>
-  			<system value="urn:ietf:bcp:47" />
-  			<code value="en-CA" />
-  		</coding>
-  	</language>
-  </processNote>
+	<processNote>
+		<number value="1"/>
+		<type value="display" />
+		<text value="Invalid claim"/>
+		<language>
+			<coding>
+				<system value="urn:ietf:bcp:47" />
+				<code value="en-CA" />
+			</coding>
+		</language>
+	</processNote>
 </ExplanationOfBenefit>

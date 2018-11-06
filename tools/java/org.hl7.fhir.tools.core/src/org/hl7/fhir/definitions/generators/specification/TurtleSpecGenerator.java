@@ -11,9 +11,9 @@ import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ProfiledType;
-import org.hl7.fhir.r4.model.StructureDefinition;
-import org.hl7.fhir.igtools.spreadsheets.TypeParser;
 import org.hl7.fhir.igtools.spreadsheets.TypeRef;
+import org.hl7.fhir.r4.model.StructureDefinition;
+import org.hl7.fhir.r4.utils.TypesUtilities;
 import org.hl7.fhir.tools.publisher.PageProcessor;
 import org.hl7.fhir.utilities.Utilities;
 
@@ -39,7 +39,7 @@ public class TurtleSpecGenerator extends OutputStreamWriter {
     if (bs == null)
       return "terminologies.html#unbound";
     if (bs.getValueSet() != null) 
-      return bs.getValueSet().getUserString("path");
+      return bs.getValueSet().hasUserData("external.url") ? bs.getValueSet().getUserString("external.url") : bs.getValueSet().getUserString("path");
     else if (!Utilities.noString(bs.getReference()))
       return bs.getReference();      
     else 
@@ -108,7 +108,10 @@ public class TurtleSpecGenerator extends OutputStreamWriter {
           write("  # from <a href=\""+prefix+"domainresource.html\">DomainResource</a>: <a href=\""+prefix+"narrative.html#Narrative\">.text</a>, <a href=\""+prefix+"references.html#contained\">.contained</a>, <a href=\""+prefix+"extensibility.html\">.extension</a>, and <a href=\""+prefix+"extensibility.html#modifierExtension\">.modifierExtension</a>\r\n");
       }
     } else {
-      write(" # from Element: <a href=\""+prefix+"extensibility.html\">Element.extension</a>\r\n");
+      if (root.typeCode().equals("BackboneElement"))
+        write(" # from BackboneElement: <a href=\""+prefix+"extensibility.html\">Element.extension</a>, <a href=\""+prefix+"extensibility.html\">BackboneElement.modifierextension</a>\r\n");
+      else
+        write(" # from Element: <a href=\""+prefix+"extensibility.html\">Element.extension</a>\r\n");
     }
 		for (ElementDefn elem : root.getElements()) {
 		  generateCoreElem(elem, 1, root.getName(), rn.equals(root.getName()) && resource);
@@ -174,7 +177,7 @@ public class TurtleSpecGenerator extends OutputStreamWriter {
   private List<TypeRef> getTypes(ElementDefn elem) {
     if (elem.getTypes().size() == 1 && elem.getTypes().get(0).isWildcardType()) {
       List<TypeRef> res = new ArrayList<TypeRef>();
-      for (String t : TypeParser.wildcardTypes()) {
+      for (String t : TypesUtilities.wildcardTypes()) {
         TypeRef tr = new TypeRef();
         tr.setName(t);
         res.add(tr);

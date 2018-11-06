@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <ValueSet xmlns="http://hl7.org/fhir">
   <meta>
     <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
   </meta>
-  <name value="Contract Term Type Codes"/>
+  <name value="ContractTermTypeCodes"/>
+  <title value="Contract Term Type Codes"/>
   <status value="draft"/>
   <publisher value="Financial Management"/>
   <contact>
@@ -17,7 +18,7 @@
   <copyright value="This is an example set."/>
   <compose>
     <include>
-      <system value="http://hl7.org/fhir/contracttermtypecodes"/>
+      <system value="http://terminology.hl7.org/CodeSystem/contracttermtypecodes"/>
     </include>
   </compose>
 </ValueSet>

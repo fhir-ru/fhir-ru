@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- NOTE: This example will soon be revised and moved to the Genomics Reporting implementation guide - current version at http://hl7.org/fhir/uv/genomics-reporting -->
 <DiagnosticReport mlns="http://hl7.org/fhir">
 	<id value="example-pgx"/>
 	<basedOn>
@@ -26,7 +27,7 @@
 		<reference value="Observation/example-phenotype"/>
 	</result>
 	<presentedForm>
-		<contentType value="PDF"/>
+		<contentType value="application/pdf"/>
 		<language value="en"/>
 		<data value="cGRmSW5CYXNlNjRCaW5hcnk="/>
 		<hash value="571ef9c5655840f324e679072ed62b1b95eef8a0"/>

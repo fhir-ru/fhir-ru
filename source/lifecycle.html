@@ -11,10 +11,10 @@
 [%file newnavbar%]
 
 
-<div class="col-9">
+<div class="col-12">
 
 <h2>FHIR Life Cycle Page</h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 3</td><td id="ballot"><a href="versions.html#levels">Ballot Status</a>: <a href="versions.html#std-process">Trial Use</a></td></tr></table>
+<table class="colstu"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 3</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Trial Use</a></td></tr></table>
 
 <p>
 This page describes several issues around lifecycle management for
@@ -27,7 +27,7 @@ describes:
  <li><a href="#error">Entered in Error</a>: information about how erroneous entry is handled for the resources</li>
 </ul>
 
-<a name="status"> </a>
+<a name="status"></a>
 <h3>Resource Status</h3>
 
 <p>Many FHIR resources have a status element that represents the lifecycle state of the resource or the clinical process represented by the resource. Work groups can specify status values appropriate to the individual resource. Although consistency between resources is not the primary objective, it is helpful to users and developers to have well-crafted value sets that cover all possible states (since the value sets are typically required and non-extensible).</p>
@@ -40,7 +40,16 @@ describes:
 	<li>Clinical status life cycle</li>
 </ul>
 
-<a name="clinical"> </a>
+<p>
+For additional information about managing resource life cycles, see:
+</p>
+<ul>
+ <li><a href="resource.html#id">Resource Identity</a></li>
+ <li><a href="resource.html#versions">Technical vs Business Versions</a></li>
+ <li><a href="managing.html">Managing Resource Identity</a> (including "Consistent Resource Identification")</li>
+</ul>
+
+<a name="clinical"></a>
 <h3>Clinical Workflow Process Life Cycle</h3>
 
 <p>Describes the lifecycle states of complex activities common in healthcare. Typically, these states follow a chronological life cycle that leads from initiation to the conclusion of the action.
@@ -57,13 +66,13 @@ A characteristic (but non-exhaustive) set of states for the clinical workflow pr
 <ul>
  <li>Communication.status: <%sclist Communication.status%></li>
  <li>Encounter.status:  <%sclist Encounter.status%></li>
- <li>Goal.status: <%sclist Goal.status%></li>
+ <li>Goal.lifecycleStatus: <%sclist Goal.lifecycleStatus%></li>
  <li>MedicationAdministration.status: <%sclist MedicationAdministration.status%></li>
  <li>MedicationDispense.status: <%sclist MedicationDispense.status%></li>
  <li>Procedure.status: <%sclist Procedure.status%></li>
 </ul>
 
-<a name="order"> </a>
+<a name="order"></a>
 
 <h3>Request/Order Life Cycle</h3>
 
@@ -89,7 +98,7 @@ A characteristic (but non-exhaustive) set of states for the clinical workflow pr
  <li>ServiceRequest.status: <%sclist ServiceRequest.status%></li>
 </ul>
 
-<a name="entity"> </a>
+<a name="entity"></a>
 <h3>Entity Availability Life Cycle</h3>
 
 <p>The entity availability life cycle indicates if the resource, or the entity described by the resource, is ready for use, not yet ready for use, or has been retired from use. A characteristic (but non-exhaustive) set of states for the entity availability life cycle include: </p>
@@ -97,7 +106,7 @@ A characteristic (but non-exhaustive) set of states for the clinical workflow pr
 <ul>
  <li>draft: The entity is being prepared but is not yet in use</li>
  <li>active: The entity is in use</li>
- <li>suspended: The entity is not in use at the momesnt, but may return to active status</li>
+ <li>suspended: The entity is not in use at the moment, but may return to active status</li>
  <li>amended: The entity has undergone a revision but is still active</li>
  <li>retired (superseded): The entity is no longer in use.</li>
 </ul>
@@ -118,7 +127,7 @@ A characteristic (but non-exhaustive) set of states for the clinical workflow pr
 </ul>
 <p></p>
 
-<a name="cstatus"> </a>
+<a name="cstatus"></a>
 
 <h3>Clinical Status Life Cycle</h3>
 <p>Clinical status is somewhat different than the previous status values, since it does not deal with workflow or lifecycle. Instead, it indicates how evidence is affecting a clinical interpretation. Here are two examples:</p>
@@ -130,7 +139,7 @@ A characteristic (but non-exhaustive) set of states for the clinical workflow pr
 
 <hr/>
 
-<a name="current"> </a>
+<a name="current"></a>
 <h3>Current Resource Lists</h3>
 
 <p>
@@ -153,7 +162,7 @@ might be published on the RESTful interface for the following reasons:
  <li>the resources were received from another system as part of a referral package, and were current for that system when they were received</li>
 </ul>
 <p>
-There is no element on the Condition resource than can convey the difference between these usages. In particular, there can be
+There is no element on the Condition resource that can convey the difference between these usages. In particular, there can be
 no way to differentiate between current and past resources without having to retrospectively alter resources, which is
 problematic with regard to integrity and digital signatures.
 </p>
@@ -177,12 +186,12 @@ On the RESTful API, this is done using the <a href="search.html#current">list se
 This is a request to fetch all the allergies in the patient 42's "Current Problem List".
 Note that the server is not required to actually make a resource representation of the current allergy list
 available, though doing so assists clients in their audit/integrity tasks. See
-<a href="list-operations.html#find">List Operation "Find"</a> for further information.
+<a href="list-operation-find.html">List Operation "Find"</a> for further information.
 </p>
 <p>
 In a document, current lists are determined by the code on a Composition section.
 </p>
-<a name="lists"> </a>
+<a name="lists"></a>
 <p>
 FHIR defines the following names for functional lists:
 </p>
@@ -223,11 +232,11 @@ FHIR defines the following names for functional lists:
 </table>
 
 <hr/>
-<a name="error"> </a>
+<a name="error"></a>
 <h3>Entered in Error Summary</h3>
 
 <p>
-The entered-in-error state indicates the resource was created accidentally, and
+The entered-in-error state indicates the resource was created accidentally and
 should be ignored. This state can apply to resources created by manual
 entry. It is usually not associated with the Clinical Workflow Process life cycle,
 but can be associated with the Request/Order and the Entity Availability life cycles.

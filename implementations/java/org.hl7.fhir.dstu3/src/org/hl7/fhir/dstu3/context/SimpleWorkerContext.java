@@ -36,7 +36,6 @@ import org.hl7.fhir.dstu3.model.NamingSystem;
 import org.hl7.fhir.dstu3.model.NamingSystem.NamingSystemIdentifierType;
 import org.hl7.fhir.dstu3.model.NamingSystem.NamingSystemUniqueIdComponent;
 import org.hl7.fhir.dstu3.model.OperationDefinition;
-import org.hl7.fhir.dstu3.model.OperationOutcome.IssueSeverity;
 import org.hl7.fhir.dstu3.model.Questionnaire;
 import org.hl7.fhir.dstu3.model.Resource;
 import org.hl7.fhir.dstu3.model.ResourceType;
@@ -86,7 +85,6 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
 	private List<NamingSystem> systems = new ArrayList<NamingSystem>();
 	private Questionnaire questionnaire;
 	private Map<String, byte[]> binaries = new HashMap<String, byte[]>();
-  private boolean allowLoadingDuplicates;
   private String version;
   private String revision;
   private String date;
@@ -240,10 +238,6 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
 		valueSets.put(vs.getUrl(), vs);
 		if (!vs.getUrl().equals(url))
 			valueSets.put(url, vs);
-	}
-
-	private void seeCodeSystem(String url, CodeSystem cs) throws DefinitionException {
-		codeSystems.put(cs.getUrl(), cs);
 	}
 
 	public void seeProfile(String url, StructureDefinition p) throws FHIRException {
@@ -622,22 +616,11 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
     }
   }
 
-  public void dropResource(Resource r) throws FHIRException {
-   throw new FHIRException("Not done yet");
-    
-  }
 
   public Map<String, byte[]> getBinaries() {
     return binaries;
   }
 
-  public boolean isAllowLoadingDuplicates() {
-    return allowLoadingDuplicates;
-  }
-
-  public void setAllowLoadingDuplicates(boolean allowLoadingDuplicates) {
-    this.allowLoadingDuplicates = allowLoadingDuplicates;
-  }
 
   @Override
   public boolean prependLinks() {

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><CarePlan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://hl7.org/fhir" xsi:schemaLocation="http://hl7.org/fhir ../../schema/careplan.xsd">
+﻿<?xml version="1.0" encoding="UTF-8"?><CarePlan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://hl7.org/fhir" xsi:schemaLocation="http://hl7.org/fhir ../../schema/careplan.xsd">
   <id value="gpvisit"/>
   <text>
     <status value="additional"/>
@@ -17,8 +17,19 @@
     <!-- This is the reason for the encounter. It is referenced by the concern -->
     <Condition>
       <id value="p1"/>
-      <clinicalStatus value="active"/>
-	  <verificationStatus value="confirmed"/>
+      <clinicalStatus>
+		<coding>
+		  <system value="http://terminology.hl7.org/CodeSystem/condition-clinical"/>
+		  <code value="active"/>
+		</coding>
+	  </clinicalStatus>
+
+	  <verificationStatus>
+		<coding>
+		  <system value="http://terminology.hl7.org/CodeSystem/condition-ver-status"/>
+		  <code value="confirmed"/>
+		</coding>
+	  </verificationStatus>
       <code>
         <!-- Could coded if we wanted to...-->
         <text value="Overseas encounter"/>
@@ -92,7 +103,7 @@
 <contained>
     <Goal>
       <id value="goal"/>
-      <status value="planned"/>
+      <lifecycleStatus value="planned" />
 	  <description>
         <text value="Complete consultation"/>
       </description>
@@ -141,7 +152,7 @@
         <text value="Nurse Consultation"/>
       </code>
       <status value="completed"/>
-      <prohibited value="false"/>
+      <doNotPerform value="false"/>
       <scheduledPeriod>
         <!-- the nurse saw the patient between 10:38 and 10:50 -->
         <start value="2013-01-01T10:38:00+00:00"/>
@@ -167,7 +178,7 @@
         <text value="Doctor Consultation"/>
       </code>
       <status value="scheduled"/>
-      <prohibited value="false"/>
+      <doNotPerform value="false"/>
       <!-- The status is 'scheduled' so the doctor knows the patient is waiting.  -->
       <performer>
         <!-- refer to the participant (the nurse) in this resource-->

@@ -2,7 +2,7 @@
 
 <!-- template-logical-mappings.html -->
 
-<%settitle Resource {xtitle} - Mappings%>
+<%settitle Pattern {xtitle} - Mappings%>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <%file newheader%>
@@ -16,9 +16,13 @@
 
 <h2><%title%></h2>
 
+<table class="<%fmm-style%>">
+ <tr><td><a href="<%wg%>"><%wgt%></a></td><td><%fmm%></td><td><a href="versions.html#std-process">Informative</a><!--!ns!--></td><td></td></tr>
+</table>
+
 <%maponthispage%>
 
-<p>Mappings for the <%name%> resource.</p>
+<p>Mappings for the <%name%> pattern (see <a href="mappings.html">Mappings to Other Standards</a> for further information &amp; status).</p>
 
 <%mappings%>
 

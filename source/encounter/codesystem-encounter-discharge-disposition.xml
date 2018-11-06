@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <CodeSystem xmlns="http://hl7.org/fhir">
-  <url value="http://hl7.org/fhir/discharge-disposition"/>
+  <url value="http://terminology.hl7.org/CodeSystem/discharge-disposition"/>
   <name value="DischargeDisposition"/>
   <status value="draft"/>
   <experimental value="false"/>
@@ -12,6 +12,11 @@
     <code value="home"/>
     <display value="Home"/>
     <definition value="The patient was dicharged and has indicated that they are going to return home afterwards." />
+  </concept>
+    <concept>
+    <code value="alt-home"/>
+    <display value="Alternative home"/>
+    <definition value="The patient was discharged and has indicated that they are going to return home afterwards, but not the patient's home - e.g. a family member's home." />
   </concept>
   <concept>
     <code value="other-hcf"/>

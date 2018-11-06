@@ -63,10 +63,10 @@ import org.hl7.fhir.dstu3.model.StructureMap.StructureMapGroupRuleTargetComponen
 import org.hl7.fhir.dstu3.model.StructureMap.StructureMapGroupRuleTargetParameterComponent;
 import org.hl7.fhir.dstu3.model.StructureMap.StructureMapGroupTypeMode;
 import org.hl7.fhir.dstu3.model.StructureMap.StructureMapInputMode;
-import org.hl7.fhir.dstu3.model.StructureMap.StructureMapSourceListMode;
-import org.hl7.fhir.dstu3.model.StructureMap.StructureMapTargetListMode;
 import org.hl7.fhir.dstu3.model.StructureMap.StructureMapModelMode;
+import org.hl7.fhir.dstu3.model.StructureMap.StructureMapSourceListMode;
 import org.hl7.fhir.dstu3.model.StructureMap.StructureMapStructureComponent;
+import org.hl7.fhir.dstu3.model.StructureMap.StructureMapTargetListMode;
 import org.hl7.fhir.dstu3.model.StructureMap.StructureMapTransform;
 import org.hl7.fhir.dstu3.model.Type;
 import org.hl7.fhir.dstu3.model.TypeDetails;
@@ -79,9 +79,9 @@ import org.hl7.fhir.dstu3.utils.FHIRLexer.FHIRLexerException;
 import org.hl7.fhir.dstu3.utils.FHIRPathEngine.IEvaluationContext;
 import org.hl7.fhir.exceptions.DefinitionException;
 import org.hl7.fhir.exceptions.FHIRException;
+import org.hl7.fhir.exceptions.FHIRFormatError;
 import org.hl7.fhir.exceptions.PathEngineException;
 import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
-import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.xhtml.NodeType;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
@@ -1044,7 +1044,7 @@ public class StructureMapUtilities {
 	}
 
 
-	private void parseParameter(StructureMapGroupRuleTargetComponent target, FHIRLexer lexer) throws FHIRLexerException {
+	private void parseParameter(StructureMapGroupRuleTargetComponent target, FHIRLexer lexer) throws FHIRLexerException, FHIRFormatError {
 		if (!lexer.isConstant(true)) {
 			target.addParameter().setValue(new IdType(lexer.take()));
 		} else if (lexer.isStringConstant())
@@ -2497,7 +2497,7 @@ public class StructureMapUtilities {
     if (t.equals(code))
       return true;
     if (t.equals("string")) {
-      StructureDefinition sd = worker.fetchResource(StructureDefinition.class, "http://hl7.org/fhir/StructureDefinition/"+code);
+      StructureDefinition sd = worker.fetchTypeDefinition(code);
       if (sd != null && sd.getBaseDefinition().equals("http://hl7.org/fhir/StructureDefinition/string"))
         return true;
     }

@@ -33,11 +33,15 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hl7.fhir.definitions.model.BindingSpecification;
+import org.hl7.fhir.definitions.model.BindingSpecification.BindingMethod;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
+import org.hl7.fhir.igtools.spreadsheets.TypeRef;
 import org.hl7.fhir.r4.model.CodeSystem;
 import org.hl7.fhir.r4.model.CodeSystem.ConceptDefinitionComponent;
-import org.hl7.fhir.igtools.spreadsheets.TypeRef;
+import org.hl7.fhir.r4.model.Enumerations.BindingStrength;
+import org.hl7.fhir.r4.model.ValueSet.ConceptSetComponent;
 import org.hl7.fhir.tools.implementations.GeneratorUtils;
 import org.hl7.fhir.utilities.Utilities;
 
@@ -82,14 +86,16 @@ public class JavaBaseGenerator extends OutputStreamWriter {
 		if (type.getParams().size() == 1) {
 			if (type.isResourceReference())
 				return "Reference";
-			else if (type.getName().equals("Interval"))
-				return "Interval<"+getTypeName(type.getParams().get(0))+">";
+			else if (type.isCanonical())
+        return "CanonicalType";
 			else
 				throw new Exception("not supported");
 		} else if (type.getParams().size() > 1) {
 			if (type.isResourceReference())
 				return "Reference";
-			else
+			else if (type.isCanonical())
+        return "CanonicalType";
+      else
 				throw new Exception("not supported");
 		} else {
 			return getTypeName(type.getName());
@@ -101,6 +107,8 @@ public class JavaBaseGenerator extends OutputStreamWriter {
 			return "StringType";
 		} else if (tn.equals("Any")) {
 			return "Reference";
+    } else if (tn.equals("SimpleQuantity")) {
+      return "Quantity";
     } else if (definitions.hasPrimitiveType(tn)) {
       return getTitle(tn)+"Type";
 		} else {
@@ -143,6 +151,8 @@ public class JavaBaseGenerator extends OutputStreamWriter {
       cc = "greater_Or_Equal";
     else if (cc.equals("="))
       cc = "equal";
+    else if (cc.equals("!="))
+      cc = "not_equal";
     else if (allPlusMinus(cc))
       cc = cc.replace("-", "Minus").replace("+", "Plus");
     else
@@ -167,5 +177,18 @@ public class JavaBaseGenerator extends OutputStreamWriter {
         return false;
     return true;
   }
+
+  protected boolean isEnum(BindingSpecification cd) {
+    boolean ok = cd.getBinding() == (BindingSpecification.BindingMethod.CodeList) || (cd.getStrength() == BindingStrength.REQUIRED && cd.getBinding() == BindingMethod.ValueSet);
+    if (ok) {
+      if (cd.getValueSet() != null && cd.getValueSet().hasCompose() && cd.getValueSet().getCompose().getInclude().size() == 1) {
+        ConceptSetComponent inc = cd.getValueSet().getCompose().getIncludeFirstRep();
+        if (inc.hasSystem() && !inc.hasFilter() && !inc.hasConcept() && !inc.getSystem().startsWith("http://hl7.org/fhir"))
+          ok = false;
+      }
+    }
+    return ok;
+  }
+
 
 }

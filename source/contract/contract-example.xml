@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <Contract xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xsi:schemaLocation="http://hl7.org/fhir ../../schema/contract.xsd">
    <id value="C-123"/>
@@ -18,13 +18,15 @@
          <text value="Can't refuse"/>
       </offer>
       <asset>
-         <class>
+         <type>
+           <coding>
             <system value="urn:ietf:rfc:3986"/>
             <code value="RicardianContract"/>
-         </class>
-         <code>
-            <display value="sample"/>
-         </code>
+          </coding>
+         </type>
+         <subtype>
+            <text value="sample"/>
+         </subtype>
          <period>
             <start value="2017-06-01"/>
          </period>
@@ -42,15 +44,13 @@
             </quantity>
             <unitPrice>
                <value value="200.00"/>
-               <system value="urn:iso:std:iso:4217"/>
-               <code value="CAD"/>
+               <currency value="CAD"/>
             </unitPrice>
             <factor value="1.0"/>
             <points value="1.0"/>
             <net>
                <value value="200.00"/>
-               <system value="urn:iso:std:iso:4217"/>
-               <code value="CAD"/>
+               <currency value="CAD"/>
             </net>
          </valuedItem>
       </asset>
@@ -65,14 +65,14 @@
 
   <type>
      <coding>
-	   <system value="http://hl7.org/fhir/contracttypecodes"/>
+	   <system value="http://terminology.hl7.org/CodeSystem/coverage-copay-type"/>
 	   <code value="disclosure"/>
 	 </coding>
   </type>
 
   <subtype>
      <coding>
-	   <system value="http://hl7.org/fhir/contractsubtypecodes"/>
+	   <system value="http://terminology.hl7.org/CodeSystem/contractsubtypecodes"/>
 	   <code value="disclosure-US"/>
 	 </coding>
   </subtype>

@@ -30,11 +30,11 @@ public class StructureMapTests {
 
   private void testParse(String path) throws FileNotFoundException, IOException, FHIRException {
     if (TestingUtilities.context == null)
-    	TestingUtilities.context = SimpleWorkerContext.fromPack(Utilities.path(TestingUtilities.home(), "publish", "definitions.xml.zip"));
+    	TestingUtilities.context = SimpleWorkerContext.fromPack(Utilities.path(TestingUtilities.content(), "definitions.xml.zip"));
     
     StructureMapUtilities scm = new StructureMapUtilities(TestingUtilities.context, null, null);
     StructureMap map = scm.parse(TextFile.fileToString(Utilities.path(TestingUtilities.home(), path)));
-    TextFile.stringToFile(scm.render(map), Utilities.path(TestingUtilities.home(), path+".out"));
+    TextFile.stringToFile(scm.render(map, false), Utilities.path(TestingUtilities.home(), path+".out"));
   }
   
 //  @Test
@@ -82,7 +82,7 @@ public class StructureMapTests {
 //    Map<String, StructureMap> maps = new HashMap<String, StructureMap>();
 //
 //    if (TestingUtilities.context == null)
-//    	TestingUtilities.context = SimpleWorkerContext.fromPack(Utilities.path(TestingUtilities.home(), "publish", "definitions.xml.zip"));
+//    	TestingUtilities.context = SimpleWorkerContext.fromPack(Utilities.path(TestingUtilities.content(), "definitions.xml.zip"));
 //
 //    StructureMapUtilities scu = new StructureMapUtilities(TestingUtilities.context, maps, null);
 //    

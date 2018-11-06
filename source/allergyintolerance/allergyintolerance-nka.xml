@@ -9,8 +9,21 @@
     </div>   
   </text>
 
-  <clinicalStatus value="active"/>
-  <verificationStatus value="confirmed"/>
+  <clinicalStatus>
+    <coding>
+      <system value="http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical"/>
+      <code value="active"/>
+      <display value="Active"/>
+    </coding>
+  </clinicalStatus>
+
+  <verificationStatus>
+    <coding>
+      <system value="http://terminology.hl7.org/CodeSystem/allergyintolerance-verification"/>
+      <code value="confirmed"/>
+      <display value="Confirmed"/>
+    </coding>
+  </verificationStatus>
      
   <code>
     <coding>
@@ -26,7 +39,7 @@
   </patient>
 
   <!-- the date that this entry was recorded -->  
-  <assertedDate value="2015-08-06T15:37:31-06:00"/>
+  <recordedDate value="2015-08-06T15:37:31-06:00"/>
   
   <!-- who made the record / last updated it -->
   <recorder>

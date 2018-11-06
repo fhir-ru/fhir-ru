@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <RequestGroup xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/requestgroup.xsd">
   <id value="kdn5-example"/>
   <text>
@@ -8,6 +8,7 @@
   <contained>
     <MedicationRequest>
       <id value="1111"/>
+      <status value="unknown"/>
       <intent value="proposal"/>
       <medicationCodeableConcept>
         <coding>
@@ -31,16 +32,26 @@
         <route>
           <text value="IV" />
         </route>
-        <doseQuantity>
+        <doseAndRate>
+          <type>
+            <coding>
+              <system value="http://terminology.hl7.org/CodeSystem/dose-rate-type"/>
+              <code value="ordered"/>
+              <display value="Ordered"/>
+            </coding> 
+          </type>
+          <doseQuantity>
           <value value="1250" />
           <unit value="mg/m²" />
-        </doseQuantity>
+          </doseQuantity>
+        </doseAndRate>
       </dosageInstruction>
     </MedicationRequest>
   </contained>
   <contained>
     <MedicationRequest>
       <id value="2222"/>
+      <status value="unknown"/>
       <intent value="proposal"/>
       <medicationCodeableConcept>
         <coding>
@@ -64,25 +75,33 @@
         <route>
           <text value="IV" />
         </route>
-        <doseQuantity>
-          <!-- AUC as dose unit or as an extension? -->
-          <extension url="http://example.org/fhir/AUC-dose" >
-            <valueInteger value="5" />
-          </extension>
-          <!-- <value value="5" />
+        <doseAndRate>
+          <type>
+            <coding>
+              <system value="http://terminology.hl7.org/CodeSystem/dose-rate-type"/>
+              <code value="ordered"/>
+              <display value="Ordered"/>
+            </coding> 
+          </type>
+          <doseQuantity>
+            <!-- AUC as dose unit or as an extension? -->
+            <extension url="http://example.org/fhir/AUC-dose" >
+              <valueInteger value="5" />
+            </extension>
+            <!-- <value value="5" />
           <unit value="AUC" />
           <system value="http://snomed.info/sct" />
           <code value="413573002" /> -->
-        </doseQuantity>
+          </doseQuantity>
+        </doseAndRate>
+       
       </dosageInstruction>
     </MedicationRequest>
   </contained>
   <identifier>
     <value value="requestgroup-kdn5"/>
   </identifier>  
-  <definition>
-    <reference value="PlanDefinition/KDN5"/>
-  </definition>
+  <instantiatesCanonical value="PlanDefinition/KDN5"/>
   <status value="draft"/>
   <intent value="plan"/>
   <priority value="routine"/>

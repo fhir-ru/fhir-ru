@@ -47,13 +47,13 @@ import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.PrimitiveType;
 import org.hl7.fhir.definitions.model.ProfiledType;
 import org.hl7.fhir.definitions.model.ResourceDefn;
+import org.hl7.fhir.igtools.spreadsheets.TypeRef;
 import org.hl7.fhir.r4.model.CodeSystem;
 import org.hl7.fhir.r4.model.CodeSystem.ConceptDefinitionComponent;
 import org.hl7.fhir.r4.model.CodeSystem.ConceptDefinitionDesignationComponent;
 import org.hl7.fhir.r4.model.ValueSet;
 import org.hl7.fhir.r4.model.ValueSet.ValueSetExpansionContainsComponent;
-import org.hl7.fhir.igtools.spreadsheets.TypeParser;
-import org.hl7.fhir.igtools.spreadsheets.TypeRef;
+import org.hl7.fhir.r4.utils.TypesUtilities;
 import org.hl7.fhir.tools.publisher.BuildWorkerContext;
 import org.hl7.fhir.utilities.Utilities;
 
@@ -632,7 +632,7 @@ public class XSDBaseGenerator {
       }
       close = "/>";
     }
-    for (String t : TypeParser.wildcardTypes()) {
+    for (String t : TypesUtilities.wildcardTypes()) {
       if (!definitions.getInfrastructure().containsKey(t) && !definitions.getConstraints().containsKey(t) && !definitions.getShared().contains(t)) {
         if (t.equals("ReferenceXX")) {
           write("           <xs:element name=\""+prefix+"Resource\" type=\"Reference\""+close+"\r\n");        
@@ -703,7 +703,7 @@ public class XSDBaseGenerator {
       else if ("div".equals(e.getName()) && e.typeCode().equals("xhtml"))
         write("<xs:element ref=\"xhtml:div\" ");
       else if (e.usesCompositeType()) {
-        ElementDefn ref = root.getElementByName(definitions, e.typeCode().substring(1), true, false);
+        ElementDefn ref = root.getElementByName(definitions, e.typeCode().substring(1), true, false, null);
         String rtn = this.types.get(ref);
         if (rtn == null)
           throw new Exception("logic error in schema generator (null composite reference in "+types.toString()+")");
@@ -771,6 +771,8 @@ public class XSDBaseGenerator {
       throws Exception {
     if (type.isResourceReference())
       return "Reference";
+    if (type.isCanonical())
+      return "canonical";
     //    else if (params
     //        && definitions.getPrimitives().containsKey(type.getName())
     //        && definitions.getPrimitives().get(type.getName()) instanceof PrimitiveType)

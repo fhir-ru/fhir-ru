@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!-- 
  An example of a herd screening observation for Mycoplasmal Pneumonia in Pigs
 (Enzootic pneumonia).  Many thanks to Veterinary Diagnostic Laboratory Iowa State University for the data.
@@ -10,7 +10,7 @@ This uses the Group resource as the subject-->
 	<!-- category code is A code that classifies the general type of observation being made. This is used for searching, sorting and display purposes.-->
 	<category>
 		<coding>
-			<system value="http://hl7.org/fhir/observation-category"/>
+			<system value="http://terminology.hl7.org/CodeSystem/observation-category"/>
 			<code value="laboratory"/>
 			<display value="Laboratory"/>
 		</coding>
@@ -42,9 +42,9 @@ This uses the Group resource as the subject-->
 	<subject>
 		<reference value="Group/herd1"/>
 	</subject>
-	<context>
+	<encounter>
 		<display value="part of a health assurance program"/>
-	</context>
+	</encounter>
 	<effectiveDateTime value="2017-11-20"/>
 	<!--  In FHIR, units may be represented twice. Once in the
     agreed human representation, and once in a coded form.
@@ -63,7 +63,7 @@ This uses the Group resource as the subject-->
 	</valueQuantity>
 	<interpretation>
 		<coding>
-			<system value="http://hl7.org/fhir/v2/0078"/>
+			<system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
 			<code value="NEG"/>
 			<display value="Negative"/>
 		</coding>

@@ -1,10 +1,11 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<a name="scope"> </a>
+<a name="scope"></a>
 <h2>Scope and Usage</h2>
 <p> 
-A DocumentReference resource is used to describe a document that is made available to a healthcare system. 
+A DocumentReference resource is used to index a document, clinical note, and other binary objects 
+to make them available to a healthcare system. 
 A document is some sequence of bytes that is identifiable, establishes its own context (e.g., what subject, 
 author, etc. can be displayed to the user), and has defined update management. The DocumentReference resource can be 
 used with any document format that has a recognized mime type and that conforms to this definition.
@@ -19,14 +20,15 @@ DocumentReference is metadata describing a document such as:</p>
  <li><a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a> documents in FHIR systems</li>
  <li><a href="documents.html">FHIR documents</a> stored elsewhere (i.e. registry/repository following the XDS model)</li>
  <li><a href="http://en.wikipedia.org/wiki/Portable_Document_Format">PDF documents</a>, Scanned Paper, and digital records of faxes</li>
+ <li>Clinical Notes in various forms</li>
  <li>Image files (e.g., JPEG, GIF, TIFF)</li>
  <li>Non-Standard formats (e.g., WORD)</li>
- <li>Other kinds of documents, such as records of prescriptions</li> 
+ <li>Other kinds of documents, such as records of prescriptions or immunizations</li> 
 </ul>
 </div>
 
 <div>
-<a name="bnr"> </a>
+<a name="bnr"></a>
 <h2>Boundaries and Relationships</h2>
 <p>
 FHIR defines both a <a href="documents.html">document format</a> and this document reference. FHIR documents are for documents 

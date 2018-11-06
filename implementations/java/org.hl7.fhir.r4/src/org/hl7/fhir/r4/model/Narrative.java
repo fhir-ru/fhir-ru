@@ -29,9 +29,10 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Fri, Aug 11, 2017 07:23+1000 for FHIR v3.1.0
+// Generated on Mon, Nov 5, 2018 09:03+1100 for FHIR v3.6.0
 
 import java.util.*;
+import org.hl7.fhir.utilities.xhtml.NodeType;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
 
 import org.hl7.fhir.utilities.Utilities;
@@ -43,26 +44,26 @@ import ca.uhn.fhir.model.api.annotation.Block;
 import org.hl7.fhir.instance.model.api.*;
 import org.hl7.fhir.exceptions.FHIRException;
 /**
- * A human-readable formatted text, including images.
+ * A human-readable summary of the resource conveying the essential clinical and business information for the resource.
  */
 @DatatypeDef(name="Narrative")
 public class Narrative extends BaseNarrative implements INarrative {
 
     public enum NarrativeStatus {
         /**
-         * The contents of the narrative are entirely generated from the structured data in the content.
+         * The contents of the narrative are entirely generated from the core elements in the content.
          */
         GENERATED, 
         /**
-         * The contents of the narrative are entirely generated from the structured data in the content and some of the content is generated from extensions
+         * The contents of the narrative are entirely generated from the core elements in the content and some of the content is generated from extensions. The narrative SHALL reflect the impact of all modifier extensions.
          */
         EXTENSIONS, 
         /**
-         * The contents of the narrative may contain additional information not found in the structured data. Note that there is no computable way to determine what the extra information is, other than by human inspection
+         * The contents of the narrative may contain additional information not found in the structured data. Note that there is no computable way to determine what the extra information is, other than by human inspection.
          */
         ADDITIONAL, 
         /**
-         * The contents of the narrative are some equivalent of "No human-readable text provided in this case"
+         * The contents of the narrative are some equivalent of "No human-readable text provided in this case".
          */
         EMPTY, 
         /**
@@ -105,10 +106,10 @@ public class Narrative extends BaseNarrative implements INarrative {
         }
         public String getDefinition() {
           switch (this) {
-            case GENERATED: return "The contents of the narrative are entirely generated from the structured data in the content.";
-            case EXTENSIONS: return "The contents of the narrative are entirely generated from the structured data in the content and some of the content is generated from extensions";
-            case ADDITIONAL: return "The contents of the narrative may contain additional information not found in the structured data. Note that there is no computable way to determine what the extra information is, other than by human inspection";
-            case EMPTY: return "The contents of the narrative are some equivalent of \"No human-readable text provided in this case\"";
+            case GENERATED: return "The contents of the narrative are entirely generated from the core elements in the content.";
+            case EXTENSIONS: return "The contents of the narrative are entirely generated from the core elements in the content and some of the content is generated from extensions. The narrative SHALL reflect the impact of all modifier extensions.";
+            case ADDITIONAL: return "The contents of the narrative may contain additional information not found in the structured data. Note that there is no computable way to determine what the extra information is, other than by human inspection.";
+            case EMPTY: return "The contents of the narrative are some equivalent of \"No human-readable text provided in this case\".";
             default: return "?";
           }
         }
@@ -292,7 +293,7 @@ public class Narrative extends BaseNarrative implements INarrative {
       public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
         switch (hash) {
         case -892481550: /*status*/ return this.status == null ? new Base[0] : new Base[] {this.status}; // Enumeration<NarrativeStatus>
-        case 99473: /*div*/ return this.div == null ? new Base[0] : new Base[] {new StringType(new org.hl7.fhir.utilities.xhtml.XhtmlComposer().setXmlOnly(true).composeEx(this.div))}; // XhtmlNode
+        case 99473: /*div*/ return this.div == null ? new Base[0] : new Base[] {new StringType(new org.hl7.fhir.utilities.xhtml.XhtmlComposer(true).composeEx(this.div))}; // XhtmlNode
         default: return super.getProperty(hash, name, checkValid);
         }
 
@@ -329,6 +330,10 @@ public class Narrative extends BaseNarrative implements INarrative {
       public Base makeProperty(int hash, String name) throws FHIRException {
         switch (hash) {
         case -892481550:  return getStatusElement();
+        case 99473: /*div*/
+          if (div == null)
+            div = new XhtmlNode(NodeType.Element, "div");
+          return new StringType(new org.hl7.fhir.utilities.xhtml.XhtmlComposer(true).composeEx(this.div));
         default: return super.makeProperty(hash, name);
         }
 
@@ -371,22 +376,22 @@ public class Narrative extends BaseNarrative implements INarrative {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof Narrative))
+        if (!(other_ instanceof Narrative))
           return false;
-        Narrative o = (Narrative) other;
+        Narrative o = (Narrative) other_;
         return compareDeep(status, o.status, true) && compareDeep(div, o.div, true);
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof Narrative))
+        if (!(other_ instanceof Narrative))
           return false;
-        Narrative o = (Narrative) other;
+        Narrative o = (Narrative) other_;
         return compareValues(status, o.status, true);
       }
 

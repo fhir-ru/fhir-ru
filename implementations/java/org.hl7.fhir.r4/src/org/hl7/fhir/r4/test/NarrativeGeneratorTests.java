@@ -25,7 +25,7 @@ public class NarrativeGeneratorTests {
 	@Before
 	public void setUp() throws FileNotFoundException, IOException, FHIRException {
     if (TestingUtilities.context == null)
-      TestingUtilities.context = SimpleWorkerContext.fromPack(Utilities.path(TestingUtilities.home(), "publish", "definitions.xml.zip"));
+      TestingUtilities.context = SimpleWorkerContext.fromPack(Utilities.path(TestingUtilities.content(), "definitions.xml.zip"));
 		if (gen == null)
   		gen = new NarrativeGenerator("", null, TestingUtilities.context);
 	}
@@ -42,7 +42,7 @@ public class NarrativeGeneratorTests {
 	private void process(String path) throws FileNotFoundException, IOException, XmlPullParserException, EOperationOutcome, FHIRException {
 	  XmlParser p = new XmlParser();
 	  DomainResource r = (DomainResource) p.parse(new FileInputStream(path));
-	  gen.generate(r);
+	  gen.generate(r, null);
 	  FileOutputStream s = new FileOutputStream(Utilities.path(TestingUtilities.temp(), "gen.xml"));
     new XmlParser().compose(s, r, true);
     s.close();

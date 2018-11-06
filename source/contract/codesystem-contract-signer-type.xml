@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <CodeSystem xmlns="http://hl7.org/fhir">
-  <url value="http://www.hl7.org/fhir/contractsignertypecodes"/>
-  <name value="Contract Signer Type Codes"/>
+  <url value="http://terminology.hl7.org/CodeSystem/contractsignertypecodes"/>
+  <name value="ContractSignerTypeCodes"/>
+  <title value="Contract Signer Type Codes"/>
   <status value="draft"/>
   <experimental value="false"/>
   <description value="This value set includes sample Contract Signer Type codes."/>
@@ -52,7 +53,7 @@
   <concept>
     <code value="COAUTH"/>
     <display value="Co-Author"/>
-    <definition value="The entity that co-authored content. There can be multiple co-authors of content,which may take such forms as a  such as a contract, a healthcare record entry or document, a policy, or a consent directive."/>
+    <definition value="The entity that co-authored content. There can be multiple co-authors of content, which may take such forms as a contract, a healthcare record entry or document, a policy, or a consent directive."/>
   </concept>
   <concept>
     <code value="CONSENTER"/>
@@ -72,7 +73,7 @@
   <concept>
     <code value="COPART"/>
     <display value="Co-Participant"/>
-    <definition value="A person who participates in the generation of and attest to veracity of content, but is not an author or co-author. For example a surgeon who is required by institutional, regulatory, or legal rules to sign an operative report, but who was not involved in the authorship of that report."/>
+    <definition value="A person who participates in the generation of and attest to veracity of content but is not an author or co-author. For example, a surgeon who is required by institutional, regulatory, or legal rules to sign an operative report, but who was not involved in the authorship of that report."/>
   </concept>
   <concept>
     <code value="COVPTY"/>
@@ -92,7 +93,7 @@
   <concept>
     <code value="DEPEND"/>
     <display value="Dependent"/>
-    <definition value="A person covered under an insurance policy or program based on an association with a subscriber, which is recognized by the policy holder. The dependent has an association with the subscriber such as a financial dependency or personal relationship such as that of a spouse, or a natural or adopted child. The policy holder may be required by law to recognize certain associations or may have discretion about the associations. For example, a policy holder may dictate the criteria for the dependent status of adult children who are students, such as requiring full time enrollment, or may recognize domestic partners as dependents. Under certain circumstances, the dependent may be under the indirect authority of a responsible party acting as a surrogate for the subscriber, for example, if the subscriber is differently-abled or deceased, a guardian ad Lidem or estate executor may be appointed to assume the subscriber's legal standing in the relationship with the dependent."/>
+    <definition value="A person covered under an insurance policy or program based on an association with a subscriber, which is recognized by the policy holder. The dependent has an association with the subscriber such as a financial dependency or personal relationship such as that of a spouse, or a natural or adopted child. The policy holder may be required by law to recognize certain associations or may have discretion about the associations. For example, a policy holder may dictate the criteria for the dependent status of adult children who are students, such as requiring full time enrollment, or may recognize domestic partners as dependents. Under certain circumstances, the dependent may be under the indirect authority of a responsible party acting as a surrogate for the subscriber, for example, if the subscriber is differently-abled or deceased, a guardian ad lidem or estate executor may be appointed to assume the subscriber's legal standing in the relationship with the dependent."/>
   </concept>
   <concept>
     <code value="DPOWATT"/>
@@ -172,7 +173,7 @@
   <concept>
     <code value="NMDINS"/>
     <display value="Named Insured"/>
-    <definition value="A party to an insurance policy under which the insurer agrees to indemnify for losses, provides benefits for, or renders services. A named insured may be either a person, non-person living subject, or an organization, or a group of persons, non-person living subject that is the named insured under a comprehensive automobile, disability, or property and casualty policy.  The named insured and may or may not be the policy holder."/>
+    <definition value="A party to an insurance policy under which the insurer agrees to indemnify for losses, provides benefits for, or renders services. A named insured may be either a person, non-person living subject, or an organization, or a group of persons, non-person living subject that is the named insured under a comprehensive automobile, disability, or property and casualty policy.  The named insured and might or might not be the policy holder."/>
   </concept>
   <concept>
     <code value="NOK"/>
@@ -207,7 +208,7 @@
   <concept>
     <code value="RECIP"/>
     <display value="Recipient"/>
-    <definition value="An entity that may, should receive, or has received information or an object, which may not have been primarily addressed to it. For example, the staff of a provider, a clearinghouse, or other intermediary."/>
+    <definition value="An entity that may, should receive, or has received information or an object, which might not have been primarily addressed to it. For example, the staff of a provider, a clearinghouse, or other intermediary."/>
   </concept>
   <concept>
     <code value="RESPRSN"/>

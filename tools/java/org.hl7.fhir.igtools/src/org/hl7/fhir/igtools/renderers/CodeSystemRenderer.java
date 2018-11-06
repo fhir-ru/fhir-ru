@@ -7,30 +7,29 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.hl7.fhir.exceptions.FHIRException;
+import org.hl7.fhir.igtools.publisher.IGKnowledgeProvider;
+import org.hl7.fhir.igtools.publisher.SpecMapManager;
 import org.hl7.fhir.r4.context.IWorkerContext;
 import org.hl7.fhir.r4.model.CodeSystem;
 import org.hl7.fhir.r4.model.CodeSystem.CodeSystemContentMode;
 import org.hl7.fhir.r4.model.MetadataResource;
-import org.hl7.fhir.r4.model.PrimitiveType;
-import org.hl7.fhir.r4.model.StringType;
 import org.hl7.fhir.r4.model.ValueSet;
 import org.hl7.fhir.r4.model.ValueSet.ConceptSetComponent;
 import org.hl7.fhir.r4.terminologies.CodeSystemUtilities;
 import org.hl7.fhir.r4.utils.EOperationOutcome;
 import org.hl7.fhir.r4.utils.NarrativeGenerator;
-import org.hl7.fhir.exceptions.FHIRException;
-import org.hl7.fhir.igtools.publisher.IGKnowledgeProvider;
-import org.hl7.fhir.igtools.publisher.SpecMapManager;
 import org.hl7.fhir.utilities.MarkDownProcessor;
 import org.hl7.fhir.utilities.Utilities;
+import org.hl7.fhir.utilities.cache.NpmPackage;
 import org.hl7.fhir.utilities.xhtml.XhtmlComposer;
 
 public class CodeSystemRenderer extends BaseRenderer {
 
   private CodeSystem cs;
 
-  public CodeSystemRenderer(IWorkerContext context, String prefix, CodeSystem cs, IGKnowledgeProvider igp, List<SpecMapManager> maps, MarkDownProcessor markdownEngine) {
-    super(context, prefix, igp, maps, markdownEngine);
+  public CodeSystemRenderer(IWorkerContext context, String prefix, CodeSystem cs, IGKnowledgeProvider igp, List<SpecMapManager> maps, MarkDownProcessor markdownEngine, NpmPackage packge) {
+    super(context, prefix, igp, maps, markdownEngine, packge);
     this.cs = cs;
   }
 
@@ -38,6 +37,8 @@ public class CodeSystemRenderer extends BaseRenderer {
     StringBuilder b = new StringBuilder();
     b.append("<table class=\"grid\">\r\n");
     b.append(" <tbody><tr><td>"+translate("cs.summary", "Defining URL")+":</td><td>"+Utilities.escapeXml(cs.getUrl())+"</td></tr>\r\n");
+    if (cs.hasVersion())
+      b.append(" <tr><td>"+translate("cs.summary", "Version")+":</td><td>"+Utilities.escapeXml(cs.getVersion())+"</td></tr>\r\n");
     b.append(" <tr><td>"+translate("cs.summary", "Name")+":</td><td>"+Utilities.escapeXml(gt(cs.getNameElement()))+"</td></tr>\r\n");
     b.append(" <tr><td>"+translate("cs.summary", "Status")+":</td><td>"+describeContent(cs.getContent())+"</td></tr>\r\n");
     b.append(" <tr><td>"+translate("cs.summary", "Definition")+":</td><td>"+processMarkdown("description", cs.getDescriptionElement())+"</td></tr>\r\n");
@@ -48,7 +49,7 @@ public class CodeSystemRenderer extends BaseRenderer {
     if (cs.hasCopyright())
       b.append(" <tr><td>"+translate("cs.summary", "Copyright")+":</td><td>"+Utilities.escapeXml(gt(cs.getCopyrightElement()))+"</td></tr>\r\n");
     if (xml || json || ttl) {
-      b.append(" <tr><td>"+translate("cs.summary", "Source Resource")+"</td><td>");
+      b.append(" <tr><td>"+translate("cs.summary", "Source Resource")+":</td><td>");
       boolean first = true;
       if (xml) {
         first = false;
@@ -80,15 +81,15 @@ public class CodeSystemRenderer extends BaseRenderer {
     return "?? illegal status";
   }
 
-  public String content() throws EOperationOutcome, FHIRException, IOException, org.hl7.fhir.exceptions.FHIRException  {
+  public String content(Set<String> outputTracker) throws EOperationOutcome, FHIRException, IOException, org.hl7.fhir.exceptions.FHIRException  {
 //    if (cs.hasText() && cs.getText().hasDiv())
 //      return new XhtmlComposer().compose(cs.getText().getDiv());
 //    else {
       CodeSystem csc = cs.copy();
       csc.setId(cs.getId()); // because that's not copied
       csc.setText(null);
-      new NarrativeGenerator(prefix, prefix, context).generate(csc);
-      return new XhtmlComposer().compose(csc.getText().getDiv());
+      new NarrativeGenerator(prefix, prefix, context).generate(csc, outputTracker);
+      return new XhtmlComposer(XhtmlComposer.HTML).compose(csc.getText().getDiv());
 //    }
   }
 

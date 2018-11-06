@@ -1,0 +1,45 @@
+﻿map "http://hl7.org/fhir/StructureMap/ResearchStudy4to3" = "R4 to R3 Conversion for ResearchStudy"
+
+uses "http://hl7.org/fhir/StructureDefinition/ResearchStudy" alias ResearchStudy as source
+uses "http://hl7.org/fhir/3.0/StructureDefinition/ResearchStudy" alias ResearchStudyR3 as target
+
+imports "http://hl7.org/fhir/StructureMap/*4to3"
+
+group ResearchStudy(source src : ResearchStudyR3, target tgt : ResearchStudy) extends DomainResource <<type+>> {
+  src.identifier -> tgt.identifier;
+  src.title -> tgt.title;
+  src.protocol -> tgt.protocol;
+  src.partOf -> tgt.partOf;
+  src.status -> tgt.status;
+  src.primaryPurposeType -> tgt.primaryPurposeType;
+  src.phase -> tgt.phase;
+  src.category -> tgt.category;
+  src.focus -> tgt.focus;
+  src.condition -> tgt.condition;
+  src.contact -> tgt.contact;
+  src.relatedArtifact -> tgt.relatedArtifact;
+  src.keyword -> tgt.keyword;
+  src.location -> tgt.location;
+  src.description -> tgt.description;
+  src.enrollment -> tgt.enrollment;
+  src.period -> tgt.period;
+  src.sponsor -> tgt.sponsor;
+  src.principalInvestigator -> tgt.principalInvestigator;
+  src.site -> tgt.site;
+  src.reasonStopped -> tgt.reasonStopped;
+  src.note -> tgt.note;
+  src.arm as s -> tgt.arm as t then ResearchStudyArm(s, t);
+  src.objective as s -> tgt.objective as t then ResearchStudyObjective(s, t);
+}
+
+group ResearchStudyArm(source src : ResearchStudyR3, target tgt : ResearchStudy) extends BackboneElement <<type+>> {
+  src.name -> tgt.name;
+  src.type -> tgt.type;
+  src.description -> tgt.description;
+}
+
+group ResearchStudyObjective(source src : ResearchStudyR3, target tgt : ResearchStudy) extends BackboneElement <<type+>> {
+  src.name -> tgt.name;
+  src.type -> tgt.type;
+}
+

@@ -15,8 +15,9 @@
 <div class="col-12">
 
 
-<a name="root"> </a>
+<a name="root"></a>
 <h2>Getting Started with FHIR</h2>
+<table class="colsi"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Informative</a></td></tr></table>
 
 <p>
 FHIR is a platform specification that defines a set of capabilities use across the healthcare
@@ -34,25 +35,34 @@ start? Generally, an implementer needs to resolve:
  <li>How will information be exchanged? (see <a href="foundation-module.html#uses">Foundation Module</a>)</li>
  <li>How are terminologies being used? (see <a href="terminology-module.html#uses">Terminology Module</a>)</li>
  <li>How will the information be secured? (see <a href="secpriv-module.html#uses">Security and Privacy Module</a>)</li>
+ <li>When is information exchanged? (See <a href="workflow-module.html">Workflow Module</a>)</li>
  <li>What information is going to be exchanged?</li>
 </ul>
 <p>
 The remaining sections provide guidance on specific areas (Foundation, Implementer Support, Security and Privacy, Conformance,
 Terminology, Linked Data, Administration, Clinical, Diagnostics, Medications, Workflow, Financial and Clinical Reasoning).
 </p>
-<a name="modules"> </a>
+<p>
+All implementers should be aware of how versioning works in the FHIR specification. See both:
+</p>
+<ul>
+ <li><a href="versioning.html">Managing Multiple FHIR Versions</a></li>
+ <li><a href="versions.html">Specification Version Management Policy </a></li>
+</ul>
+
+<a name="modules"></a>
 <h3>Modules</h3>
 <p>
 In order to help implementers find their way around the specification and answer these questions,
-it is organised into a set of "modules". Each module represents a different functional area of the
+it is organized into a set of "modules". Each module represents a different functional area of the
 specification, and contains:
 </p>
 <ul>
- <li><b>Scope and Index</b>:A description of the content covered by the module, and an index of the important content</li>
- <li><b>Use cases</b>: guidance for common uses of the module, and how to approach them. This is a key resource for
+ <li><b>Scope and Index</b>: A description of the content covered by the module, and an index of the important content</li>
+ <li><b>Use cases</b>: Guidance for common uses of the module, and how to approach them. This is a key resource for
    implementers familiarizing themselves with the FHIR specification</li>
- <li><b>Security / Privacy</b>: information</li>
- <li><b>Roadmap</b>: Where the content covered by the module is in terms of overall progress (see also, for general information: <a href="versions.html">FHIR Timelines</a></li>
+ <li><b>Security / Privacy</b>: Information</li>
+ <li><b>Roadmap</b>: Where the content covered by the module is in terms of overall progress (see also, for general information: <a href="versions.html">FHIR Timelines</a>)</li>
 </ul>
 
 <p>

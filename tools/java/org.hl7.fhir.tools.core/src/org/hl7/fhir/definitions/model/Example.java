@@ -28,7 +28,6 @@ POSSIBILITY OF SUCH DAMAGE.
 
 */
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.HashSet;
 import java.util.Set;
@@ -74,7 +73,6 @@ public class Example {
     this.type = type;
     this.registered = registered;
     this.title = title;
-    this.element = element;
     
     xml = doc;
     resourceName = xml.getDocumentElement().getNodeName();

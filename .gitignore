@@ -1,1 +1,86 @@
 *sw?
+
+# Per discussion at https://chat.fhir.org/#narrow/stream/9-committers/subject/clean.2Esh/near/183706
+/publish/
+/temp/
+*.bak
+*.class
+*.~*
+*.gen.svg
+*.bck
+holder.txt
+/schema/*.xsd
+/schema/codegen
+/schema/datatypes
+/implementations/javascript/app
+
+# Boring system files that don’t belong in the project repository
+.DS_Store
+source/.DS_Store
+
+# Below here, default github template for Java projects
+
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+*.png
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+/schema/fhir.schema.json
+/tests/graphql/simple.json.out
+/tests/resources/unicode.out.xml
+*.prefs
+pharmacy-medRequest
+/tests/ig/output
+/tests/ig/qa
+/tests/ig/temp
+/tests/ig10/output
+/tests/ig10/qa
+/tests/ig10/temp
+/tests/ig14/output
+/tests/ig14/qa
+/tests/ig14/temp
+/tests/ig30/output
+/tests/ig30/qa
+/tests/ig30/temp
+/tests/ig/ig.ini
+/tests/ig/resources/ig-expansion-parameters.json
+/tests/ig/resources/ig-new.json
+/tests/ig/resources/ig-new.xml
+/tests/ig/resources/ig-validation-parameters.json
+/tests/ig10/ig.ini
+/tests/ig10/resources/ig-expansion-parameters.json
+/tests/ig10/resources/ig-new.json
+/tests/ig10/resources/ig-new.xml
+/tests/ig10/resources/ig-validation-parameters.json
+/tests/ig14/ig.ini
+/tests/ig14/resources/ig-expansion-parameters.json
+/tests/ig14/resources/ig-new.json
+/tests/ig14/resources/ig-new.xml
+/tests/ig14/resources/ig-validation-parameters.json
+/tests/ig30/ig.ini
+/tests/ig30/resources/ig-expansion-parameters.json
+/tests/ig30/resources/ig-new.json
+/tests/ig30/resources/ig-new.xml
+/tests/ig30/resources/ig-validation-parameters.json
+
+/implementations/r3maps/test-output

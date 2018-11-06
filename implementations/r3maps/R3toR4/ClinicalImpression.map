@@ -1,0 +1,46 @@
+﻿map "http://hl7.org/fhir/StructureMap/ClinicalImpression3to4" = "R3 to R4 Conversions for ClinicalImpression"
+
+conceptmap "ClinicalImpressionStatus" {
+  prefix s = "http://hl7.org/fhir/clinical-impression-status"
+  prefix t = "http://hl7.org/fhir/event-status"
+
+  s:draft - t:"in-progress"
+  s:completed - t:completed
+  s:"entered-in-error" - t:"entered-in-error"
+}
+
+uses "http://hl7.org/fhir/3.0/StructureDefinition/ClinicalImpression" alias ClinicalImpressionR3 as source
+uses "http://hl7.org/fhir/StructureDefinition/ClinicalImpression" alias ClinicalImpression as target
+
+imports "http://hl7.org/fhir/StructureMap/*3to4"
+
+group ClinicalImpression(source src : ClinicalImpressionR3, target tgt : ClinicalImpression) extends DomainResource <<type+>> {
+  src.identifier -> tgt.identifier;
+  src.status as v -> tgt.status = translate(v, "#Clinical Impression Status", "code");
+  src.code -> tgt.code;
+  src.description -> tgt.description;
+  src.subject -> tgt.subject;
+  src.context -> tgt.context;
+  src.effective : dateTime as vs -> tgt.effective = create("dateTime") as vt then dateTime(vs, vt);
+  src.effective : Period as vs -> tgt.effective = create("Period") as vt then Period(vs, vt);
+  src.date -> tgt.date;
+  src.assessor -> tgt.assessor;
+  src.previous -> tgt.previous;
+  src.problem -> tgt.problem;
+  src.investigation as vs0 -> tgt.investigation as vt0 then {
+    vs0.code -> vt0.code;
+    vs0.item -> vt0.item;
+  };
+  src.protocol -> tgt.protocol;
+  src.summary -> tgt.summary;
+  src.finding as vs0 -> tgt.finding as vt0 then {
+    vs0.itemCodeableConcept -> vt0.itemCodeableConcept;
+    vs0.itemReference -> vt0.itemReference;
+    vs0.basis -> vt0.basis;
+  };
+  src.prognosisCodeableConcept -> tgt.prognosisCodeableConcept;
+  src.prognosisReference -> tgt.prognosisReference;
+  src.action -> tgt.action;
+  src.note -> tgt.note;
+}
+

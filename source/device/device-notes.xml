@@ -1,22 +1,20 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 	<h3>Notes</h3>
-	<h4>Device Types</h4>
-	<p>
-		The example binding used for the device element is from SNOMED CT. However, there are many other sources of possible codes for device type including:</p>
+	<a name="identifierandtype"></a>
+	<h4>Device Identifier and Device Type</h4>
+
+	<p>Nearly all devices are assigned a string of characters to represent one or more identifiers or codes, which are usually printed or affixed to the device using either barcodes or RFIDs.   The identifier or code can come from the manufacturer (for example, a 'serial number', 'reference number', or 'catalog number'), various institution and registries. Any of these identifiers or codes assigned to the device can and should be recorded in the device resource.   However, there can there can be confusion where to represent them in the resource because codes and identifiers are represented in FHIR as semantically distinct elements and because organizations may conflate the term 'code' for an identifier or 'identifier' for a code in their names.</p>
+
+	<p>The <code>identifier</code> element is <em>only</em> intended for use when it's an actual identifier for a specific instance of a device. That would mean that each device would have a separate serial number and would be represented using this element - devices without serial numbers (for example, a box of syringes) would not.  Concepts such as a reference number or catalog number or GTIN describe a code which represents a <em>kind</em> of device and are conveyed using the <code>type</code> element.  Some sources of standard codes for devices and translations within <code>type</code> are listed below:</p>
+
+
 		<ul>
+		<li><a href="valueset-device-kind.html">SNOMED CT</a> - the example binding used here</li>
 			<li><a href="https://www.gmdnagency.org/">Global Medical Device Nomenclature (GMDN&reg;)</a></li>
 			<li><a href="https://rtmms.nist.gov/rtmms/index.htm">Rosetta Terminology Mapping (RTM)</a></li>
 		</ul>
-		<p>Note that there may be translations of type code using one or more of these and other vocabularies</p>
 
-	<h4>Device Identifiers</h4>
-	<p>
-Nearly all devices are assigned one or more identifiers, which are usually printed or affixed to the device using either barcodes or RFIDs.
-The identifiers can come from the manufacturer (often called the "serial number," "reference number," or "catalog number"),  various institution and registries. Any of
-these identifiers assigned to the device can and should be recorded in the device resource. The different identifiers are
-differentiated by their use, label, and system values.
-</p>
-
+<a name="udi"></a>
 <h4>Unique Device Identifier (UDI)</h4>
 	<p>
 The International Medical Device Regulators Forum IMDRF UDI Working Group published <a href="http://www.imdrf.org/consultations/cons-udi.asp">UDI System for Medical Devices (Version 2.0)</a>, the base specification for Unique Device Identifiers (UDI). The United States Food and Drug Administration has produced an <a href="http://www.fda.gov/MedicalDevices/DeviceRegulationandGuidance/UniqueDeviceIdentification/default.htm">implementation guide</a> for Unique Device Identifiers (UDI) which implements the IMDRF specification and other jurisdictions may produce similar IMDRF implementation guides as well.  The full UDI string that represents the barcode as printed on the packaging of the device or Automatic Identification and Data Capture (AIDC) representation is called the "UDI carrier".  The UDI has 2 components*:
@@ -33,5 +31,5 @@ The International Medical Device Regulators Forum IMDRF UDI Working Group publis
 <p>
 The DI of the UDI may be stored in a jurisdictional repository and used as the primary key to access other device information. For example, in the United States, the DI of the UDI is submitted in a device record to the <a href="http://www.fda.gov/MedicalDevices/DeviceRegulationandGuidance/UniqueDeviceIdentification/GlobalUDIDatabaseGUDID/default.htm">Global Unique Device Identification Database (GUDID)</a>.  The UDI may identify an instance of a device uniquely (when the PI includes a serial number), or it may just identify the type of the device. The UDI is parsed into its constituent parts (DI, PI and other elements) by parsing rules developed by each Issuing Agency standard. Where the device has an assigned UDI, the other details carried in the resource (e.g., lot, expiration date, etc.) SHALL be consistent with the information encoded in the UDI string or registered in the local repository.
 </p>
-<p>Best practice guidelines for transmitting UDI data using the Device resource dictate transmitting both the UDI Carrier and all components found within the UDI as described in Device <a href="device-mappings.html#udi)">UDI Mapping</a>.   Several  <a href="device-examples.html">examples</a> are provided for futher guidance.</p>
+<p>Best practice guidelines for transmitting UDI data using the Device resource dictate transmitting both the UDI Carrier and all components found within the UDI as described in Device <a href="device-mappings.html#udi)">UDI Mapping</a>.   Several  <a href="device-examples.html">examples</a> are provided for further guidance.</p>
 </div>

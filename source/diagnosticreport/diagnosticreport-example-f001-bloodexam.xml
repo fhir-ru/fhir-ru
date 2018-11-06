@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <Bundle xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir file://Mac/Home/Documents/FHIR/working%20build/schema/account.xsd">
 	<id value="f001"/>
 	<type value="collection"/>
@@ -22,7 +22,7 @@
 						<display value="Haematology test"/>
 					</coding>
 					<coding>
-						<system value="http://hl7.org/fhir/v2/0074"/>
+						<system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
 						<code value="HM"/>
 					</coding>
 				</category>
@@ -92,14 +92,12 @@
 					<reference value="Patient/f001"/>
 					<display value="P. van den Heuvel"/>
 				</subject>
-				<context>
+				<encounter>
 					<reference value="Encounter/f001"/>
-				</context>
+				</encounter>
 				<requester>
-					<agent>
 						<reference value="Practitioner/f001"/>
 						<display value="E.van den Broek"/>
-					</agent>
 				</requester>
 				<note>
 					<text value="patient almost fainted during procedure"/>

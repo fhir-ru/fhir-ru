@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <CapabilityStatement xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/fhir-single.xsd">
 	<id value="example"/>
 	<text>
@@ -37,12 +37,12 @@
 	<description value="This is the FHIR capability statement for the main EHR at ACME for the private interface - it does not describe the public interface"/>
 	<useContext>
 		<code>
-			<system value="http://hl7.org/fhir/usage-context-type"/>
+			<system value="http://terminology.hl7.org/CodeSystem/usage-context-type"/>
 			<code value="focus"/>
 		</code>
 		<valueCodeableConcept>
 			<coding>
-				<system value="http://hl7.org/fhir/variant-state"/>
+				<system value="http://terminology.hl7.org/CodeSystem/variant-state"/>
 				<code value="positive"/>
 			</coding>
 		</valueCodeableConcept>
@@ -68,10 +68,8 @@
 		<url value="http://10.2.3.4/fhir"/>
 	</implementation>
 	<!--  while the FHIR infrastructure is turning over prior to development, a version is 
-    required. Note that this may be rescinded later?  -->
-	<fhirVersion value="1.0.0"/>
-	<!--  this system accepts unknown content in the resources  -->
-	<acceptUnknown value="both"/>
+    required.   -->
+	<fhirVersion value="3.6.0"/>
 	<!--  this system can do either xml or json. (Listing both implies full support for either, with interconversion)  -->
 	<format value="xml"/>
 	<format value="json"/>
@@ -80,10 +78,6 @@
 	<patchFormat value="application/json-patch+json"/>
 	<!--  this system supports the US Lab implementation guide  -->
 	<implementationGuide value="http://hl7.org/fhir/us/lab"/>
-	<!--  this system supports the Genetics family history profile -->
-	<profile>
-		<reference value="http://hl7.org/fhir/us/core/StructureDefinition/familymemberhistory-genetic"/>
-	</profile>
 	<!--  in a real capability statement, it's unlikely that a single capability statement 
     would declare capability for REST, messaging and documents, though it is legal. 
     This example does so in order to show all the parts of a capability statement  -->
@@ -98,28 +92,23 @@
 			<cors value="true"/>
 			<service>
 				<coding>
-					<system value="http://hl7.org/fhir/restful-security-service"/>
+					<system value="http://terminology.hl7.org/CodeSystem/restful-security-service"/>
 					<code value="SMART-on-FHIR"/>
 				</coding>
 			</service>
 			<description value="See Smart on FHIR documentation"/>
-			<certificate>
-				<type value="application/jwt"/>
-				<!-- base JWT. this blob is not valid -->
-				<blob value="IHRoaXMgYmxvYiBpcyBub3QgdmFsaWQ="/>
-			</certificate>
 		</security>
 		<!--  zero or more of these - declaration of support for a resource  -->
 		<resource>
 			<type value="Patient"/>
-			<!--  let's assume that HL7 has stood up a profile registry at http://fhir.hl7.org/fhir 
+			<!--  let's assume that HL7 has stood up a profile registry at http://registry.fhir.org
         - it's likely to have a registry, though this is not decided, nor is a URL decided. 
         This application simply uses a profile registered directly with HL7. For the simplest 
         case of a FHIR REST Server, just delete this profile reference. Profile references do 
         not need to be a UUID, though a profile registry could insist that they are  -->
-			<profile>
-				<reference value="http://fhir.hl7.org/base/StructureDefinition/7896271d-57f6-4231-89dc-dcc91eab2416"/>
-			</profile>
+			<profile value="http://registry.fhir.org/r4/StructureDefinition/7896271d-57f6-4231-89dc-dcc91eab2416"/>
+      <!--  this system supports a specific profile for animals -->
+      <supportedProfile value="http://registry.fhir.org/r4/StructureDefinition/00ab9e7a-06c7-4f77-9234-4154ca1e3347"/>
 			<documentation value="This server does not let the clients create identities."/>
 			<interaction>
 				<code value="read"/>
@@ -177,7 +166,7 @@
 	<messaging>
 		<endpoint>
 			<protocol>
-				<system value="http://hl7.org/fhir/message-transport"/>
+				<system value="http://terminology.hl7.org/CodeSystem/message-transport"/>
 				<code value="mllp"/>
 			</protocol>
 			<!-- LLP server at 10.1.1.10 on port 9234 -->
@@ -185,25 +174,10 @@
 		</endpoint>
 		<reliableCache value="30"/>
 		<documentation value="ADT A08 equivalent for external system notifications"/>
-		<event>
-			<code>
-				<system value="http://hl7.org/fhir/message-events"/>
-				<code value="admin-notify"/>
-			</code>
-			<category value="Consequence"/>
-			<!--  this a receiver - i.e. answers. Not neccessariy a server (though this is)  -->
-			<mode value="receiver"/>
-			<focus value="Patient"/>
-			<!--  specify a profile for the request person. Very often there's no 
-        point profiling the response, it's not interesting.  In this case, we just   -->
-			<request>
-				<reference value="StructureDefinition/Patient"/>
-			</request>
-			<response>
-				<reference value="StructureDefinition/MessageHeader"/>
-			</response>
-			<documentation value="Notification of an update to a patient resource. changing the links is not supported"/>
-		</event>
+    <supportedMessage>
+      <mode value="receiver"/>
+      <definition value="MessageDefinition/example"/>
+    </supportedMessage>
 	</messaging>
 	<!--  a document capability statement  -->
 	<document>
@@ -211,8 +185,6 @@
 		<documentation value="Basic rules for all documents in the EHR system"/>
 		<!--  this is the important element: a reference to a published document profile 
        note that this is a version specific reference. -->
-		<profile>
-			<reference value="http://fhir.hl7.org/base/Profilebc054d23-75e1-4dc6-aca5-838b6b1ac81d/_history/b5fdd9fc-b021-4ea1-911a-721a60663796"/>
-		</profile>
+		<profile value="http://fhir.hl7.org/base/Profilebc054d23-75e1-4dc6-aca5-838b6b1ac81d/_history/b5fdd9fc-b021-4ea1-911a-721a60663796"/>
 	</document>
 </CapabilityStatement>

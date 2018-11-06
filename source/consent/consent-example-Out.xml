@@ -15,9 +15,14 @@
    </p>
    </div>
   </text>
-  <status value="active"/>
-  <scope value="privacy"/>
-  <category>
+  <status value="in-progress"/>
+  <scope>
+    <coding>
+      <system value="http://terminology.hl7.org/CodeSystem/consentscope"/>
+      <code value="patient-privacy"/>
+    </coding>
+    </scope>
+      <category>
     <coding>
       <system value="http://loinc.org"/>
       <code value="59284-0"/>
@@ -41,7 +46,7 @@
   <!-- this is opt-out - e.g. everything approved unless otherwise stated -->
   <policyRule>
     <coding>
-      <system value="http://hl7.org/fhir/v3/ActCode"/>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
       <code value="OPTOUT"/>
     </coding>
   </policyRule>
@@ -49,7 +54,7 @@
     <actor>
       <role>
         <coding>
-          <system value="http://hl7.org/fhir/v3/ParticipationType"/>
+          <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationType"/>
           <code value="CST"/>
         </coding>
       </role>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <QuestionnaireResponse xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/questionnaireresponse.xsd">
   <id value="3141"/>
   <text>
@@ -46,9 +46,7 @@
         <reference value="#patsub"/>
       </subject>
       <requester>
-        <agent>
           <reference value="Practitioner/example"/>
-        </agent>
       </requester>
     </ServiceRequest>
   </contained>
@@ -106,9 +104,9 @@
   <subject>
     <reference value="#patsub"/>
   </subject>
-  <context>
+  <encounter>
     <reference value="Encounter/example"/>
-  </context>
+  </encounter>
   <authored value="2013-02-19T14:15:00-05:00"/>
   <author>
     <reference value="#questauth"/>

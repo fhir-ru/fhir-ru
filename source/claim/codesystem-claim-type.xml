@@ -1,12 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <CodeSystem xmlns="http://hl7.org/fhir">
-  <url value="http://hl7.org/fhir/ex-claimtype"/>
-  <name value="Example Claim Type Codes"/>
+  <url value="http://terminology.hl7.org/CodeSystem/claim-type"/>
+  <name value="ClaimTypeCodes"/>
+  <title value="Claim Type Codes"/>
   <status value="draft"/>
   <experimental value="false"/>
-  <description value="This value set includes sample Claim Type codes."/>
-  <copyright value="This is an example set."/>
+  <description value="This value set includes Claim Type codes."/>
+  <copyright value="HL7 Inc."/>
   <caseSensitive value="true"/>
   <content value="complete"/>
   <concept>
@@ -27,7 +28,7 @@
   <concept>
     <code value="professional"/>
     <display value="Professional"/>
-    <definition value="Typically outpatient claims from Physician, Psychological, Chiropractor, Physiotherapy, Speech Pathology, rehabilitative, consulting."/>
+    <definition value="Typically, outpatient claims from Physician, Psychological, Chiropractor, Physiotherapy, Speech Pathology, rehabilitative, consulting."/>
   </concept>
   <concept>
     <code value="vision"/>

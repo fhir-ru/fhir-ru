@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Fri, Aug 11, 2017 07:23+1000 for FHIR v3.1.0
+// Generated on Mon, Nov 5, 2018 09:03+1100 for FHIR v3.6.0
 
 import java.util.*;
 
@@ -43,34 +43,34 @@ import ca.uhn.fhir.model.api.annotation.Block;
 import org.hl7.fhir.instance.model.api.*;
 import org.hl7.fhir.exceptions.FHIRException;
 /**
- * Represents a defined collection of entities that may be discussed or acted upon collectively but which are not expected to act collectively and are not formally or legally recognized; i.e. a collection of entities that isn't an Organization.
+ * Represents a defined collection of entities that may be discussed or acted upon collectively but which are not expected to act collectively, and are not formally or legally recognized; i.e. a collection of entities that isn't an Organization.
  */
-@ResourceDef(name="Group", profile="http://hl7.org/fhir/Profile/Group")
+@ResourceDef(name="Group", profile="http://hl7.org/fhir/StructureDefinition/Group")
 public class Group extends DomainResource {
 
     public enum GroupType {
         /**
-         * Group contains "person" Patient resources
+         * Group contains "person" Patient resources.
          */
         PERSON, 
         /**
-         * Group contains "animal" Patient resources
+         * Group contains "animal" Patient resources.
          */
         ANIMAL, 
         /**
-         * Group contains healthcare practitioner resources
+         * Group contains healthcare practitioner resources (Practitioner or PractitionerRole).
          */
         PRACTITIONER, 
         /**
-         * Group contains Device resources
+         * Group contains Device resources.
          */
         DEVICE, 
         /**
-         * Group contains Medication resources
+         * Group contains Medication resources.
          */
         MEDICATION, 
         /**
-         * Group contains Substance resources
+         * Group contains Substance resources.
          */
         SUBSTANCE, 
         /**
@@ -121,12 +121,12 @@ public class Group extends DomainResource {
         }
         public String getDefinition() {
           switch (this) {
-            case PERSON: return "Group contains \"person\" Patient resources";
-            case ANIMAL: return "Group contains \"animal\" Patient resources";
-            case PRACTITIONER: return "Group contains healthcare practitioner resources";
-            case DEVICE: return "Group contains Device resources";
-            case MEDICATION: return "Group contains Medication resources";
-            case SUBSTANCE: return "Group contains Substance resources";
+            case PERSON: return "Group contains \"person\" Patient resources.";
+            case ANIMAL: return "Group contains \"animal\" Patient resources.";
+            case PRACTITIONER: return "Group contains healthcare practitioner resources (Practitioner or PractitionerRole).";
+            case DEVICE: return "Group contains Device resources.";
+            case MEDICATION: return "Group contains Medication resources.";
+            case SUBSTANCE: return "Group contains Substance resources.";
             default: return "?";
           }
         }
@@ -216,14 +216,14 @@ public class Group extends DomainResource {
         /**
          * The value of the trait that holds (or does not hold - see 'exclude') for members of the group.
          */
-        @Child(name = "value", type = {CodeableConcept.class, BooleanType.class, Quantity.class, Range.class}, order=2, min=1, max=1, modifier=false, summary=false)
+        @Child(name = "value", type = {CodeableConcept.class, BooleanType.class, Quantity.class, Range.class, Reference.class}, order=2, min=1, max=1, modifier=false, summary=false)
         @Description(shortDefinition="Value held by characteristic", formalDefinition="The value of the trait that holds (or does not hold - see 'exclude') for members of the group." )
         protected Type value;
 
         /**
          * If true, indicates the characteristic is one that is NOT held by members of the group.
          */
-        @Child(name = "exclude", type = {BooleanType.class}, order=3, min=1, max=1, modifier=true, summary=false)
+        @Child(name = "exclude", type = {BooleanType.class}, order=3, min=1, max=1, modifier=false, summary=false)
         @Description(shortDefinition="Group includes or excludes", formalDefinition="If true, indicates the characteristic is one that is NOT held by members of the group." )
         protected BooleanType exclude;
 
@@ -288,52 +288,75 @@ public class Group extends DomainResource {
          * @return {@link #value} (The value of the trait that holds (or does not hold - see 'exclude') for members of the group.)
          */
         public CodeableConcept getValueCodeableConcept() throws FHIRException { 
+          if (this.value == null)
+            this.value = new CodeableConcept();
           if (!(this.value instanceof CodeableConcept))
             throw new FHIRException("Type mismatch: the type CodeableConcept was expected, but "+this.value.getClass().getName()+" was encountered");
           return (CodeableConcept) this.value;
         }
 
         public boolean hasValueCodeableConcept() { 
-          return this.value instanceof CodeableConcept;
+          return this != null && this.value instanceof CodeableConcept;
         }
 
         /**
          * @return {@link #value} (The value of the trait that holds (or does not hold - see 'exclude') for members of the group.)
          */
         public BooleanType getValueBooleanType() throws FHIRException { 
+          if (this.value == null)
+            this.value = new BooleanType();
           if (!(this.value instanceof BooleanType))
             throw new FHIRException("Type mismatch: the type BooleanType was expected, but "+this.value.getClass().getName()+" was encountered");
           return (BooleanType) this.value;
         }
 
         public boolean hasValueBooleanType() { 
-          return this.value instanceof BooleanType;
+          return this != null && this.value instanceof BooleanType;
         }
 
         /**
          * @return {@link #value} (The value of the trait that holds (or does not hold - see 'exclude') for members of the group.)
          */
         public Quantity getValueQuantity() throws FHIRException { 
+          if (this.value == null)
+            this.value = new Quantity();
           if (!(this.value instanceof Quantity))
             throw new FHIRException("Type mismatch: the type Quantity was expected, but "+this.value.getClass().getName()+" was encountered");
           return (Quantity) this.value;
         }
 
         public boolean hasValueQuantity() { 
-          return this.value instanceof Quantity;
+          return this != null && this.value instanceof Quantity;
         }
 
         /**
          * @return {@link #value} (The value of the trait that holds (or does not hold - see 'exclude') for members of the group.)
          */
         public Range getValueRange() throws FHIRException { 
+          if (this.value == null)
+            this.value = new Range();
           if (!(this.value instanceof Range))
             throw new FHIRException("Type mismatch: the type Range was expected, but "+this.value.getClass().getName()+" was encountered");
           return (Range) this.value;
         }
 
         public boolean hasValueRange() { 
-          return this.value instanceof Range;
+          return this != null && this.value instanceof Range;
+        }
+
+        /**
+         * @return {@link #value} (The value of the trait that holds (or does not hold - see 'exclude') for members of the group.)
+         */
+        public Reference getValueReference() throws FHIRException { 
+          if (this.value == null)
+            this.value = new Reference();
+          if (!(this.value instanceof Reference))
+            throw new FHIRException("Type mismatch: the type Reference was expected, but "+this.value.getClass().getName()+" was encountered");
+          return (Reference) this.value;
+        }
+
+        public boolean hasValueReference() { 
+          return this != null && this.value instanceof Reference;
         }
 
         public boolean hasValue() { 
@@ -344,6 +367,8 @@ public class Group extends DomainResource {
          * @param value {@link #value} (The value of the trait that holds (or does not hold - see 'exclude') for members of the group.)
          */
         public GroupCharacteristicComponent setValue(Type value) { 
+          if (value != null && !(value instanceof CodeableConcept || value instanceof BooleanType || value instanceof Quantity || value instanceof Range || value instanceof Reference))
+            throw new Error("Not the right type for Group.characteristic.value[x]: "+value.fhirType());
           this.value = value;
           return this;
         }
@@ -420,7 +445,7 @@ public class Group extends DomainResource {
         protected void listChildren(List<Property> children) {
           super.listChildren(children);
           children.add(new Property("code", "CodeableConcept", "A code that identifies the kind of trait being asserted.", 0, 1, code));
-          children.add(new Property("value[x]", "CodeableConcept|boolean|Quantity|Range", "The value of the trait that holds (or does not hold - see 'exclude') for members of the group.", 0, 1, value));
+          children.add(new Property("value[x]", "CodeableConcept|boolean|Quantity|Range|Reference", "The value of the trait that holds (or does not hold - see 'exclude') for members of the group.", 0, 1, value));
           children.add(new Property("exclude", "boolean", "If true, indicates the characteristic is one that is NOT held by members of the group.", 0, 1, exclude));
           children.add(new Property("period", "Period", "The period over which the characteristic is tested; e.g. the patient had an operation during the month of June.", 0, 1, period));
         }
@@ -429,12 +454,13 @@ public class Group extends DomainResource {
         public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
           switch (_hash) {
           case 3059181: /*code*/  return new Property("code", "CodeableConcept", "A code that identifies the kind of trait being asserted.", 0, 1, code);
-          case -1410166417: /*value[x]*/  return new Property("value[x]", "CodeableConcept|boolean|Quantity|Range", "The value of the trait that holds (or does not hold - see 'exclude') for members of the group.", 0, 1, value);
-          case 111972721: /*value*/  return new Property("value[x]", "CodeableConcept|boolean|Quantity|Range", "The value of the trait that holds (or does not hold - see 'exclude') for members of the group.", 0, 1, value);
-          case 924902896: /*valueCodeableConcept*/  return new Property("value[x]", "CodeableConcept|boolean|Quantity|Range", "The value of the trait that holds (or does not hold - see 'exclude') for members of the group.", 0, 1, value);
-          case 733421943: /*valueBoolean*/  return new Property("value[x]", "CodeableConcept|boolean|Quantity|Range", "The value of the trait that holds (or does not hold - see 'exclude') for members of the group.", 0, 1, value);
-          case -2029823716: /*valueQuantity*/  return new Property("value[x]", "CodeableConcept|boolean|Quantity|Range", "The value of the trait that holds (or does not hold - see 'exclude') for members of the group.", 0, 1, value);
-          case 2030761548: /*valueRange*/  return new Property("value[x]", "CodeableConcept|boolean|Quantity|Range", "The value of the trait that holds (or does not hold - see 'exclude') for members of the group.", 0, 1, value);
+          case -1410166417: /*value[x]*/  return new Property("value[x]", "CodeableConcept|boolean|Quantity|Range|Reference", "The value of the trait that holds (or does not hold - see 'exclude') for members of the group.", 0, 1, value);
+          case 111972721: /*value*/  return new Property("value[x]", "CodeableConcept|boolean|Quantity|Range|Reference", "The value of the trait that holds (or does not hold - see 'exclude') for members of the group.", 0, 1, value);
+          case 924902896: /*valueCodeableConcept*/  return new Property("value[x]", "CodeableConcept|boolean|Quantity|Range|Reference", "The value of the trait that holds (or does not hold - see 'exclude') for members of the group.", 0, 1, value);
+          case 733421943: /*valueBoolean*/  return new Property("value[x]", "CodeableConcept|boolean|Quantity|Range|Reference", "The value of the trait that holds (or does not hold - see 'exclude') for members of the group.", 0, 1, value);
+          case -2029823716: /*valueQuantity*/  return new Property("value[x]", "CodeableConcept|boolean|Quantity|Range|Reference", "The value of the trait that holds (or does not hold - see 'exclude') for members of the group.", 0, 1, value);
+          case 2030761548: /*valueRange*/  return new Property("value[x]", "CodeableConcept|boolean|Quantity|Range|Reference", "The value of the trait that holds (or does not hold - see 'exclude') for members of the group.", 0, 1, value);
+          case 1755241690: /*valueReference*/  return new Property("value[x]", "CodeableConcept|boolean|Quantity|Range|Reference", "The value of the trait that holds (or does not hold - see 'exclude') for members of the group.", 0, 1, value);
           case -1321148966: /*exclude*/  return new Property("exclude", "boolean", "If true, indicates the characteristic is one that is NOT held by members of the group.", 0, 1, exclude);
           case -991726143: /*period*/  return new Property("period", "Period", "The period over which the characteristic is tested; e.g. the patient had an operation during the month of June.", 0, 1, period);
           default: return super.getNamedProperty(_hash, _name, _checkValid);
@@ -506,7 +532,7 @@ public class Group extends DomainResource {
       public String[] getTypesForProperty(int hash, String name) throws FHIRException {
         switch (hash) {
         case 3059181: /*code*/ return new String[] {"CodeableConcept"};
-        case 111972721: /*value*/ return new String[] {"CodeableConcept", "boolean", "Quantity", "Range"};
+        case 111972721: /*value*/ return new String[] {"CodeableConcept", "boolean", "Quantity", "Range", "Reference"};
         case -1321148966: /*exclude*/ return new String[] {"boolean"};
         case -991726143: /*period*/ return new String[] {"Period"};
         default: return super.getTypesForProperty(hash, name);
@@ -536,6 +562,10 @@ public class Group extends DomainResource {
           this.value = new Range();
           return this.value;
         }
+        else if (name.equals("valueReference")) {
+          this.value = new Reference();
+          return this.value;
+        }
         else if (name.equals("exclude")) {
           throw new FHIRException("Cannot call addChild on a primitive type Group.exclude");
         }
@@ -558,23 +588,23 @@ public class Group extends DomainResource {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof GroupCharacteristicComponent))
+        if (!(other_ instanceof GroupCharacteristicComponent))
           return false;
-        GroupCharacteristicComponent o = (GroupCharacteristicComponent) other;
+        GroupCharacteristicComponent o = (GroupCharacteristicComponent) other_;
         return compareDeep(code, o.code, true) && compareDeep(value, o.value, true) && compareDeep(exclude, o.exclude, true)
            && compareDeep(period, o.period, true);
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof GroupCharacteristicComponent))
+        if (!(other_ instanceof GroupCharacteristicComponent))
           return false;
-        GroupCharacteristicComponent o = (GroupCharacteristicComponent) other;
+        GroupCharacteristicComponent o = (GroupCharacteristicComponent) other_;
         return compareValues(exclude, o.exclude, true);
       }
 
@@ -593,14 +623,14 @@ public class Group extends DomainResource {
     @Block()
     public static class GroupMemberComponent extends BackboneElement implements IBaseBackboneElement {
         /**
-         * A reference to the entity that is a member of the group. Must be consistent with Group.type.
+         * A reference to the entity that is a member of the group. Must be consistent with Group.type. If the entity is another group, then the type must be the same.
          */
-        @Child(name = "entity", type = {Patient.class, Practitioner.class, Device.class, Medication.class, Substance.class}, order=1, min=1, max=1, modifier=false, summary=false)
-        @Description(shortDefinition="Reference to the group member", formalDefinition="A reference to the entity that is a member of the group. Must be consistent with Group.type." )
+        @Child(name = "entity", type = {Patient.class, Practitioner.class, PractitionerRole.class, Device.class, Medication.class, Substance.class, Group.class}, order=1, min=1, max=1, modifier=false, summary=false)
+        @Description(shortDefinition="Reference to the group member", formalDefinition="A reference to the entity that is a member of the group. Must be consistent with Group.type. If the entity is another group, then the type must be the same." )
         protected Reference entity;
 
         /**
-         * The actual object that is the target of the reference (A reference to the entity that is a member of the group. Must be consistent with Group.type.)
+         * The actual object that is the target of the reference (A reference to the entity that is a member of the group. Must be consistent with Group.type. If the entity is another group, then the type must be the same.)
          */
         protected Resource entityTarget;
 
@@ -636,7 +666,7 @@ public class Group extends DomainResource {
       }
 
         /**
-         * @return {@link #entity} (A reference to the entity that is a member of the group. Must be consistent with Group.type.)
+         * @return {@link #entity} (A reference to the entity that is a member of the group. Must be consistent with Group.type. If the entity is another group, then the type must be the same.)
          */
         public Reference getEntity() { 
           if (this.entity == null)
@@ -652,7 +682,7 @@ public class Group extends DomainResource {
         }
 
         /**
-         * @param value {@link #entity} (A reference to the entity that is a member of the group. Must be consistent with Group.type.)
+         * @param value {@link #entity} (A reference to the entity that is a member of the group. Must be consistent with Group.type. If the entity is another group, then the type must be the same.)
          */
         public GroupMemberComponent setEntity(Reference value) { 
           this.entity = value;
@@ -660,14 +690,14 @@ public class Group extends DomainResource {
         }
 
         /**
-         * @return {@link #entity} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (A reference to the entity that is a member of the group. Must be consistent with Group.type.)
+         * @return {@link #entity} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (A reference to the entity that is a member of the group. Must be consistent with Group.type. If the entity is another group, then the type must be the same.)
          */
         public Resource getEntityTarget() { 
           return this.entityTarget;
         }
 
         /**
-         * @param value {@link #entity} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (A reference to the entity that is a member of the group. Must be consistent with Group.type.)
+         * @param value {@link #entity} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (A reference to the entity that is a member of the group. Must be consistent with Group.type. If the entity is another group, then the type must be the same.)
          */
         public GroupMemberComponent setEntityTarget(Resource value) { 
           this.entityTarget = value;
@@ -745,7 +775,7 @@ public class Group extends DomainResource {
 
         protected void listChildren(List<Property> children) {
           super.listChildren(children);
-          children.add(new Property("entity", "Reference(Patient|Practitioner|Device|Medication|Substance)", "A reference to the entity that is a member of the group. Must be consistent with Group.type.", 0, 1, entity));
+          children.add(new Property("entity", "Reference(Patient|Practitioner|PractitionerRole|Device|Medication|Substance|Group)", "A reference to the entity that is a member of the group. Must be consistent with Group.type. If the entity is another group, then the type must be the same.", 0, 1, entity));
           children.add(new Property("period", "Period", "The period that the member was in the group, if known.", 0, 1, period));
           children.add(new Property("inactive", "boolean", "A flag to indicate that the member is no longer in the group, but previously may have been a member.", 0, 1, inactive));
         }
@@ -753,7 +783,7 @@ public class Group extends DomainResource {
         @Override
         public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
           switch (_hash) {
-          case -1298275357: /*entity*/  return new Property("entity", "Reference(Patient|Practitioner|Device|Medication|Substance)", "A reference to the entity that is a member of the group. Must be consistent with Group.type.", 0, 1, entity);
+          case -1298275357: /*entity*/  return new Property("entity", "Reference(Patient|Practitioner|PractitionerRole|Device|Medication|Substance|Group)", "A reference to the entity that is a member of the group. Must be consistent with Group.type. If the entity is another group, then the type must be the same.", 0, 1, entity);
           case -991726143: /*period*/  return new Property("period", "Period", "The period that the member was in the group, if known.", 0, 1, period);
           case 24665195: /*inactive*/  return new Property("inactive", "boolean", "A flag to indicate that the member is no longer in the group, but previously may have been a member.", 0, 1, inactive);
           default: return super.getNamedProperty(_hash, _name, _checkValid);
@@ -851,23 +881,23 @@ public class Group extends DomainResource {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof GroupMemberComponent))
+        if (!(other_ instanceof GroupMemberComponent))
           return false;
-        GroupMemberComponent o = (GroupMemberComponent) other;
+        GroupMemberComponent o = (GroupMemberComponent) other_;
         return compareDeep(entity, o.entity, true) && compareDeep(period, o.period, true) && compareDeep(inactive, o.inactive, true)
           ;
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof GroupMemberComponent))
+        if (!(other_ instanceof GroupMemberComponent))
           return false;
-        GroupMemberComponent o = (GroupMemberComponent) other;
+        GroupMemberComponent o = (GroupMemberComponent) other_;
         return compareValues(inactive, o.inactive, true);
       }
 
@@ -934,20 +964,32 @@ public class Group extends DomainResource {
     protected UnsignedIntType quantity;
 
     /**
-     * Identifies the traits shared by members of the group.
+     * Entity responsible for defining and maintaining Group characteristics and/or registered members.
      */
-    @Child(name = "characteristic", type = {}, order=7, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
-    @Description(shortDefinition="Trait of group members", formalDefinition="Identifies the traits shared by members of the group." )
+    @Child(name = "managingEntity", type = {Organization.class, RelatedPerson.class, Practitioner.class, PractitionerRole.class}, order=7, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Entity that is the custodian of the Group's definition", formalDefinition="Entity responsible for defining and maintaining Group characteristics and/or registered members." )
+    protected Reference managingEntity;
+
+    /**
+     * The actual object that is the target of the reference (Entity responsible for defining and maintaining Group characteristics and/or registered members.)
+     */
+    protected Resource managingEntityTarget;
+
+    /**
+     * Identifies traits whose presence r absence is shared by members of the group.
+     */
+    @Child(name = "characteristic", type = {}, order=8, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Description(shortDefinition="Include / Exclude group members by Trait", formalDefinition="Identifies traits whose presence r absence is shared by members of the group." )
     protected List<GroupCharacteristicComponent> characteristic;
 
     /**
      * Identifies the resource instances that are members of the group.
      */
-    @Child(name = "member", type = {}, order=8, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "member", type = {}, order=9, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Who or what is in group", formalDefinition="Identifies the resource instances that are members of the group." )
     protected List<GroupMemberComponent> member;
 
-    private static final long serialVersionUID = 659980713L;
+    private static final long serialVersionUID = -550945963L;
 
   /**
    * Constructor
@@ -1272,7 +1314,46 @@ public class Group extends DomainResource {
     }
 
     /**
-     * @return {@link #characteristic} (Identifies the traits shared by members of the group.)
+     * @return {@link #managingEntity} (Entity responsible for defining and maintaining Group characteristics and/or registered members.)
+     */
+    public Reference getManagingEntity() { 
+      if (this.managingEntity == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create Group.managingEntity");
+        else if (Configuration.doAutoCreate())
+          this.managingEntity = new Reference(); // cc
+      return this.managingEntity;
+    }
+
+    public boolean hasManagingEntity() { 
+      return this.managingEntity != null && !this.managingEntity.isEmpty();
+    }
+
+    /**
+     * @param value {@link #managingEntity} (Entity responsible for defining and maintaining Group characteristics and/or registered members.)
+     */
+    public Group setManagingEntity(Reference value) { 
+      this.managingEntity = value;
+      return this;
+    }
+
+    /**
+     * @return {@link #managingEntity} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Entity responsible for defining and maintaining Group characteristics and/or registered members.)
+     */
+    public Resource getManagingEntityTarget() { 
+      return this.managingEntityTarget;
+    }
+
+    /**
+     * @param value {@link #managingEntity} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Entity responsible for defining and maintaining Group characteristics and/or registered members.)
+     */
+    public Group setManagingEntityTarget(Resource value) { 
+      this.managingEntityTarget = value;
+      return this;
+    }
+
+    /**
+     * @return {@link #characteristic} (Identifies traits whose presence r absence is shared by members of the group.)
      */
     public List<GroupCharacteristicComponent> getCharacteristic() { 
       if (this.characteristic == null)
@@ -1386,7 +1467,8 @@ public class Group extends DomainResource {
         children.add(new Property("code", "CodeableConcept", "Provides a specific type of resource the group includes; e.g. \"cow\", \"syringe\", etc.", 0, 1, code));
         children.add(new Property("name", "string", "A label assigned to the group for human identification and communication.", 0, 1, name));
         children.add(new Property("quantity", "unsignedInt", "A count of the number of resource instances that are part of the group.", 0, 1, quantity));
-        children.add(new Property("characteristic", "", "Identifies the traits shared by members of the group.", 0, java.lang.Integer.MAX_VALUE, characteristic));
+        children.add(new Property("managingEntity", "Reference(Organization|RelatedPerson|Practitioner|PractitionerRole)", "Entity responsible for defining and maintaining Group characteristics and/or registered members.", 0, 1, managingEntity));
+        children.add(new Property("characteristic", "", "Identifies traits whose presence r absence is shared by members of the group.", 0, java.lang.Integer.MAX_VALUE, characteristic));
         children.add(new Property("member", "", "Identifies the resource instances that are members of the group.", 0, java.lang.Integer.MAX_VALUE, member));
       }
 
@@ -1400,7 +1482,8 @@ public class Group extends DomainResource {
         case 3059181: /*code*/  return new Property("code", "CodeableConcept", "Provides a specific type of resource the group includes; e.g. \"cow\", \"syringe\", etc.", 0, 1, code);
         case 3373707: /*name*/  return new Property("name", "string", "A label assigned to the group for human identification and communication.", 0, 1, name);
         case -1285004149: /*quantity*/  return new Property("quantity", "unsignedInt", "A count of the number of resource instances that are part of the group.", 0, 1, quantity);
-        case 366313883: /*characteristic*/  return new Property("characteristic", "", "Identifies the traits shared by members of the group.", 0, java.lang.Integer.MAX_VALUE, characteristic);
+        case -988474523: /*managingEntity*/  return new Property("managingEntity", "Reference(Organization|RelatedPerson|Practitioner|PractitionerRole)", "Entity responsible for defining and maintaining Group characteristics and/or registered members.", 0, 1, managingEntity);
+        case 366313883: /*characteristic*/  return new Property("characteristic", "", "Identifies traits whose presence r absence is shared by members of the group.", 0, java.lang.Integer.MAX_VALUE, characteristic);
         case -1077769574: /*member*/  return new Property("member", "", "Identifies the resource instances that are members of the group.", 0, java.lang.Integer.MAX_VALUE, member);
         default: return super.getNamedProperty(_hash, _name, _checkValid);
         }
@@ -1417,6 +1500,7 @@ public class Group extends DomainResource {
         case 3059181: /*code*/ return this.code == null ? new Base[0] : new Base[] {this.code}; // CodeableConcept
         case 3373707: /*name*/ return this.name == null ? new Base[0] : new Base[] {this.name}; // StringType
         case -1285004149: /*quantity*/ return this.quantity == null ? new Base[0] : new Base[] {this.quantity}; // UnsignedIntType
+        case -988474523: /*managingEntity*/ return this.managingEntity == null ? new Base[0] : new Base[] {this.managingEntity}; // Reference
         case 366313883: /*characteristic*/ return this.characteristic == null ? new Base[0] : this.characteristic.toArray(new Base[this.characteristic.size()]); // GroupCharacteristicComponent
         case -1077769574: /*member*/ return this.member == null ? new Base[0] : this.member.toArray(new Base[this.member.size()]); // GroupMemberComponent
         default: return super.getProperty(hash, name, checkValid);
@@ -1449,6 +1533,9 @@ public class Group extends DomainResource {
         case -1285004149: // quantity
           this.quantity = castToUnsignedInt(value); // UnsignedIntType
           return value;
+        case -988474523: // managingEntity
+          this.managingEntity = castToReference(value); // Reference
+          return value;
         case 366313883: // characteristic
           this.getCharacteristic().add((GroupCharacteristicComponent) value); // GroupCharacteristicComponent
           return value;
@@ -1477,6 +1564,8 @@ public class Group extends DomainResource {
           this.name = castToString(value); // StringType
         } else if (name.equals("quantity")) {
           this.quantity = castToUnsignedInt(value); // UnsignedIntType
+        } else if (name.equals("managingEntity")) {
+          this.managingEntity = castToReference(value); // Reference
         } else if (name.equals("characteristic")) {
           this.getCharacteristic().add((GroupCharacteristicComponent) value);
         } else if (name.equals("member")) {
@@ -1496,6 +1585,7 @@ public class Group extends DomainResource {
         case 3059181:  return getCode(); 
         case 3373707:  return getNameElement();
         case -1285004149:  return getQuantityElement();
+        case -988474523:  return getManagingEntity(); 
         case 366313883:  return addCharacteristic(); 
         case -1077769574:  return addMember(); 
         default: return super.makeProperty(hash, name);
@@ -1513,6 +1603,7 @@ public class Group extends DomainResource {
         case 3059181: /*code*/ return new String[] {"CodeableConcept"};
         case 3373707: /*name*/ return new String[] {"string"};
         case -1285004149: /*quantity*/ return new String[] {"unsignedInt"};
+        case -988474523: /*managingEntity*/ return new String[] {"Reference"};
         case 366313883: /*characteristic*/ return new String[] {};
         case -1077769574: /*member*/ return new String[] {};
         default: return super.getTypesForProperty(hash, name);
@@ -1544,6 +1635,10 @@ public class Group extends DomainResource {
         else if (name.equals("quantity")) {
           throw new FHIRException("Cannot call addChild on a primitive type Group.quantity");
         }
+        else if (name.equals("managingEntity")) {
+          this.managingEntity = new Reference();
+          return this.managingEntity;
+        }
         else if (name.equals("characteristic")) {
           return addCharacteristic();
         }
@@ -1573,6 +1668,7 @@ public class Group extends DomainResource {
         dst.code = code == null ? null : code.copy();
         dst.name = name == null ? null : name.copy();
         dst.quantity = quantity == null ? null : quantity.copy();
+        dst.managingEntity = managingEntity == null ? null : managingEntity.copy();
         if (characteristic != null) {
           dst.characteristic = new ArrayList<GroupCharacteristicComponent>();
           for (GroupCharacteristicComponent i : characteristic)
@@ -1591,32 +1687,32 @@ public class Group extends DomainResource {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof Group))
+        if (!(other_ instanceof Group))
           return false;
-        Group o = (Group) other;
+        Group o = (Group) other_;
         return compareDeep(identifier, o.identifier, true) && compareDeep(active, o.active, true) && compareDeep(type, o.type, true)
            && compareDeep(actual, o.actual, true) && compareDeep(code, o.code, true) && compareDeep(name, o.name, true)
-           && compareDeep(quantity, o.quantity, true) && compareDeep(characteristic, o.characteristic, true)
-           && compareDeep(member, o.member, true);
+           && compareDeep(quantity, o.quantity, true) && compareDeep(managingEntity, o.managingEntity, true)
+           && compareDeep(characteristic, o.characteristic, true) && compareDeep(member, o.member, true);
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof Group))
+        if (!(other_ instanceof Group))
           return false;
-        Group o = (Group) other;
+        Group o = (Group) other_;
         return compareValues(active, o.active, true) && compareValues(type, o.type, true) && compareValues(actual, o.actual, true)
            && compareValues(name, o.name, true) && compareValues(quantity, o.quantity, true);
       }
 
       public boolean isEmpty() {
         return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(identifier, active, type
-          , actual, code, name, quantity, characteristic, member);
+          , actual, code, name, quantity, managingEntity, characteristic, member);
       }
 
   @Override
@@ -1685,6 +1781,32 @@ public class Group extends DomainResource {
   public static final ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.TokenClientParam> CHARACTERISTIC_VALUE = new ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.TokenClientParam>(SP_CHARACTERISTIC_VALUE);
 
  /**
+   * Search parameter: <b>managing-entity</b>
+   * <p>
+   * Description: <b>Entity that is the custodian of the Group's definition</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>Group.managingEntity</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="managing-entity", path="Group.managingEntity", description="Entity that is the custodian of the Group's definition", type="reference", target={Organization.class, Practitioner.class, PractitionerRole.class, RelatedPerson.class } )
+  public static final String SP_MANAGING_ENTITY = "managing-entity";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>managing-entity</b>
+   * <p>
+   * Description: <b>Entity that is the custodian of the Group's definition</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>Group.managingEntity</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam MANAGING_ENTITY = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_MANAGING_ENTITY);
+
+/**
+   * Constant for fluent queries to be used to add include statements. Specifies
+   * the path value of "<b>Group:managing-entity</b>".
+   */
+  public static final ca.uhn.fhir.model.api.Include INCLUDE_MANAGING_ENTITY = new ca.uhn.fhir.model.api.Include("Group:managing-entity").toLocked();
+
+ /**
    * Search parameter: <b>code</b>
    * <p>
    * Description: <b>The kind of resources contained</b><br>
@@ -1712,7 +1834,7 @@ public class Group extends DomainResource {
    * Path: <b>Group.member.entity</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="member", path="Group.member.entity", description="Reference to the group member", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Device"), @ca.uhn.fhir.model.api.annotation.Compartment(name="Patient"), @ca.uhn.fhir.model.api.annotation.Compartment(name="Practitioner") }, target={Device.class, Medication.class, Patient.class, Practitioner.class, Substance.class } )
+  @SearchParamDefinition(name="member", path="Group.member.entity", description="Reference to the group member", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Device"), @ca.uhn.fhir.model.api.annotation.Compartment(name="Patient"), @ca.uhn.fhir.model.api.annotation.Compartment(name="Practitioner") }, target={Device.class, Group.class, Medication.class, Patient.class, Practitioner.class, PractitionerRole.class, Substance.class } )
   public static final String SP_MEMBER = "member";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>member</b>

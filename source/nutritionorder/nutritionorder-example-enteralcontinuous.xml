@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <NutritionOrder xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/supply.xsd"><!-- id = enteralcontinuous  file name = nutritionorder-example-enteralcontinuous.xml  Name= Enteral Continuous Feeding  Description = Nutrition Order Enteral Continuous Feeding Canonical Example
 editor Eric Haas Health eData Inc
 --><!-- Tube feedings given as continuous rate --><id value="enteralcontinuous"/>
@@ -6,7 +6,7 @@ editor Eric Haas Health eData Inc
 		<system value="http://www.acme.org/nutritionorders"/>
 		<value value="123"/>
 	</identifier>
-	<status value="active"/>
+	<status value="active"/><intent value="order"/>
 	<patient>
 		<reference value="Patient/example"/>
 		<display value="Peter Chalmers"/>
@@ -38,7 +38,7 @@ editor Eric Haas Health eData Inc
 		</caloricDensity>
 		<routeofAdministration>
 			<coding>
-				<system value="http://hl7.org/fhir/v3/RouteOfAdministration"/>
+				<system value="http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration"/>
 				<code value="NGT"/>
 				<display value="Instillation, nasogastric tube"/>
 			</coding>

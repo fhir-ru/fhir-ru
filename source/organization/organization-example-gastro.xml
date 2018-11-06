@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <Organization xmlns="http://hl7.org/fhir">
   <id value="1"/>
@@ -28,8 +28,4 @@
     <value value="gastro@acme.org"/>
     <use value="work"/>
   </telecom>
-  <partOf>
-    <reference value="Organization/1"/>
-    <display value="ACME Healthcare, Inc"/>
-  </partOf>
 </Organization>

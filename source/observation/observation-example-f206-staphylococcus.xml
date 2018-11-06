@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!-- @version June 2013 @author Melchior Ferdinand Pot --><Observation xmlns="http://hl7.org/fhir">
+﻿<?xml version="1.0" encoding="UTF-8"?><!-- @version June 2013 @author Melchior Ferdinand Pot --><Observation xmlns="http://hl7.org/fhir">
 	<id value="f206"/>
 	<status value="final"/>
 	<code><!-- Kind of observation = Blood culture --><coding>
@@ -29,7 +29,7 @@
 	</valueCodeableConcept>
 	<interpretation>
 		<coding>
-			<system value="http://hl7.org/fhir/v2/0078"/>
+			<system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
 			<code value="POS"/>
 		</coding>
 	</interpretation><!-- BodySite not relevant --><method>

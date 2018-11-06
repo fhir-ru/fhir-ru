@@ -1,0 +1,28 @@
+﻿map "http://hl7.org/fhir/StructureMap/MedicationStatement4to3" = "R4 to R3 Conversion for MedicationStatement"
+
+uses "http://hl7.org/fhir/StructureDefinition/MedicationStatement" alias MedicationStatement as source
+uses "http://hl7.org/fhir/3.0/StructureDefinition/MedicationStatement" alias MedicationStatementR3 as target
+
+imports "http://hl7.org/fhir/StructureMap/*4to3"
+
+group MedicationStatement(source src : MedicationStatement, target tgt : MedicationStatementR3) extends DomainResource <<type+>> {
+  src.identifier -> tgt.identifier;
+  src.basedOn -> tgt.basedOn;
+  src.partOf -> tgt.partOf;
+  src.context -> tgt.context;
+  src.status -> tgt.status;
+  src.category -> tgt.category;
+  src.medication : CodeableConcept as vs -> tgt.medication = create("CodeableConcept") as vt then CodeableConcept(vs, vt);
+  src.medication : Reference as vs -> tgt.medication = create("Reference") as vt then Reference(vs, vt);
+  src.effective : dateTime as vs -> tgt.effective = create("dateTime") as vt then dateTime(vs, vt);
+  src.effective : Period as vs -> tgt.effective = create("Period") as vt then Period(vs, vt);
+  src.dateAsserted -> tgt.dateAsserted;
+  src.informationSource -> tgt.informationSource;
+  src.subject -> tgt.subject;
+  src.derivedFrom -> tgt.derivedFrom;
+  src.reasonCode -> tgt.reasonCode;
+  src.reasonReference -> tgt.reasonReference;
+  src.note -> tgt.note;
+  src.dosage -> tgt.dosage;
+}
+

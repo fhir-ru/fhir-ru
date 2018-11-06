@@ -1,0 +1,36 @@
+﻿map "http://hl7.org/fhir/StructureMap/Claim3to4" = "R3 to R4 Conversions for Claim"
+
+conceptmap "Use" {
+  prefix s = "http://hl7.org/fhir/claim-use"
+  prefix t = "http://hl7.org/fhir/claim-use"
+
+  s:complete - t:claim
+  s:proposed - t:preauthorization
+  s:exploratory - t:predetermination
+}
+
+uses "http://hl7.org/fhir/3.0/StructureDefinition/Claim" alias ClaimR3 as source
+uses "http://hl7.org/fhir/StructureDefinition/Claim" alias Claim as target
+
+imports "http://hl7.org/fhir/StructureMap/*3to4"
+
+group Claim(source src : ClaimR3, target tgt : Claim) extends DomainResource <<type+>> {
+  src.identifier -> tgt.identifier;
+  src.status -> tgt.status;
+  src.type -> tgt.type;
+  src.subType -> tgt.subType;
+  src.use as v -> tgt.use = translate(v, "#Use", "code");
+  src.patient -> tgt.patient;
+  src.billablePeriod -> tgt.billablePeriod;
+  src.created -> tgt.created;
+  src.enterer -> tgt.enterer;
+  src.insurer -> tgt.insurer;
+  src.provider -> tgt.provider;
+  src.fundsReserve -> tgt.fundsReserve;
+  src.prescription -> tgt.prescription;
+  src.originalPrescription -> tgt.originalPrescription;
+  src.referral -> tgt.referral;
+  src.facility -> tgt.facility;
+  src.total -> tgt.total;
+}
+

@@ -1,6 +1,6 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
-<a name="notes"> </a>
+<a name="notes"></a>
 <h2>
 Notes:
 </h2>
@@ -16,9 +16,33 @@ constrain its structure and flexibility using profiles to define standardized, r
 Observations to model Questionnaires. Such use cases should now use the Questionnaire Resource instead.</li>
 <li>The order of questions within groups, groups within groups and groups within questions is relevant and must be retained for display and capture.</li>
 <li>Display items allow the inclusion of instructions, background information and similar content within a questionnaire.</li>
+<li>In cases where it is necessary or appropriate to capture the reason why a response is missing (that is, why a particular question was not answered), there should be an explicit child item defined for the relevant question(s) in the Questionnaire; e.g. add a child question of "Reason not specified:" with an enableWhen operator "not exists" to the parent question.</li>
 </ul>
 
-<a name="qversusr"> </a>
+<a name="sdc"> </a>
+<h3>Structured Data Capture</h3>
+<p>
+The base questionnaire resource is aimed at the capabilities of "most" healthcare systems that deal with forms and questionnaires.  While the resource structure
+supports a reasonable degree of complexity, it doesn't provide the degree of control over rendering, question flow and data management needed by some portions 
+of the healthcare space.  Many of these more sophisticated requirements are addressed by a supplemental implementation guide called 
+<a href="http://build.fhir.org/ig/HL7/sdc/">Structured Data Capture (SDC)</a>.  This implementation guide covers the following capabilities, plus several others:
+</p>
+<ul>
+  <li>Rendering grids of questions, multi-column drop-downs, multi-language questionnaires, and other 'advanced' formatting capabilities</li>
+  <li>Advanced dynamic questionnaires including calculated scores, enabling of questions and groups based on complex logic, drop-downs driven by answers to other questions</li>
+  <li>Support for populating questionnaires from existing clinical data based on the current patient, encounter, etc., including the ability to render the form as HTML or to redirect to a website to complete unanswered items</li>
+  <li>Support for extracting information from a completed QuestionnaireResponse to generate other FHIR resources such as Observations, MedicationStatements, etc.</li>
+  <li>Support for completing 'adaptive' questionnaires (see below)</li>
+</ul>
+
+<a name="adaptive"> </a>
+<h3>Adaptive Questionnaires</h3>
+<p>
+Some questionnaires might not provide a full listing of questions, instead relying on a service to interactively sending partially completed forms to a server which generates the next set of questions.  
+As such, some questionnaires might be 'active' but have either no questions or an insufficient set of questions for their purpose.  Further guidance on the use of such forms, can be found in the <a href="#sdc">SDC</a> implementation guide.
+</p>
+
+<a name="qversusr"></a>
 <h3>Using Questionnaires versus using Resources</h3>
 <p>
 There is considerable overlap between the information covered by <b>Questionnaires</b> and other Resources (especially <a href="familymemberhistory.html">FamilyMemberHistory</a>,
@@ -29,8 +53,8 @@ distill separate resources from it and capturing the data in a <b>Questionnaire<
 </p>
 
 <p>
-However, data captured only in <b>Questionnaires</b> can be difficult to query after-the-fact. Queries against other Resources will not return data captured only in <b>Questionnaires</b>,
-and querying against <b>Questionnaires</b> directly may not find all desired data, depending on how the questions may have been phrased or encoded over time or by different clinicians.
+However, data captured only in <b>Questionnaires</b> can be difficult to query after-the-fact. Queries against other Resources will not return data captured only in <b>Questionnaires</b>
+and querying against <b>Questionnaires</b> directly might not find all desired data, depending on how the questions may have been phrased or encoded over time or by different clinicians.
 Moreover, interoperability of such <b>Questionnaires</b> is limited, as interpretation of its contents is only known to the circle of parties that were involved in its definition: encoding data from
 such <b>Questionnaires</b> using more specific resources increases the availability of the information they contain.
 </p>
@@ -45,6 +69,7 @@ can be used to identify the Questionnaire as the data source for the other resou
 <code>Observation.valueQuantity</code> can be created.
 </p>
 
+<a name="structure"> </a>
 <h3>Structure of the Questionnaire</h3>
 <p>
 A Questionnaire is built out of two components, Questionnaire and item:</p>
@@ -58,7 +83,8 @@ A Questionnaire is built out of two components, Questionnaire and item:</p>
       <li><b>group</b> items organize content of the questionnaire into sections, sub-sections, etc.  Groups don't have answers associated with them directly, but generally contain child
         'question' items which do.  </li>
       <li><b>question</b> items ask a specific question to which an answer may be given.  There isn't a single
-        <code>type</code> for question items. Instead, the type conveys the data type of the answer for the question.  If an item isn't a 'display' or a 'group', then it's a question which allows a particular type of answer to be gathered. Questions may also have nested content - groups and/or
+        <code>type</code> for question items. Instead, the type conveys the data type of the answer for the question.  If an item isn't a 'display' or a 'group', 
+        then it's a question which allows a particular type of answer to be gathered. Questions may also have nested content - groups and/or
         other questions. This way, one can model "panels" of questions which would only be relevant (and thus would only be displayed)
         depending on the answers of a parent question; e.g. a question "Did the patient receive treatment in the past six months?" would contain a nested
         group of questions asking for further details about the treatment. See an <a href="questionnaire-example-bluebook.xml.html">example</a> from
@@ -68,8 +94,15 @@ A Questionnaire is built out of two components, Questionnaire and item:</p>
 </ul>
 <p>
 Specific controls on dynamic display of groups, questions, etc. based on the answers to other questions is outside the scope of the base resource and
-are handled using extensions.</p>
+are handled using extensions.
+</p>
+<p>
+Group text is intended to provide a "label" for a collection of nested items.  The text will often be rendered in a "heading" style.  As such, it should be kept relatively short.  
+Detailed instructions should be conveyed by a nested "display" item.  It's not necessary to create groups in order to relate an instruction to a collection of questions - you can simply intermix
+display items and questions or groups, with the expectation that users will see the display text before encountering the following questions. 
+</p>
 
+<a name="identifiers"> </a>
 <h3>Identifiers within Questionnaire</h3>
 <p>There are three different "identifying" elements within Questionnaire: <code>identifier</code>, <code>id</code> and <code>linkId</code>.  Each serves very distinct
 purposes:</p>
@@ -81,19 +114,11 @@ purposes:</p>
   definition inside a Questionnaire.  This is the <i>only</i> way to link between the groups and questions in a Questionnaire and QuestionnaireResponse.  These are also not displayed to end users</li>
 </ul>
 
+<a name="definition"> </a>
 <h3>Question Definitions</h3>
 <p>
 Questionnaires can be crafted using any questions the author can conceive and can be phrased in whatever manner is appropriate or convenient.  However, standardization of
-questions and the constraints enforced on the accompanying answers increases the ability to compare data gathered across questionnaires.  <!--There are two
-mechanisms defined in the specification for linking a Question (or Group) to a standardized definition:
-</p>
-<ul>
-  <li>The <code>concept</code> element on both Group and Question allows an individual question, a group of questions or even the questionnaire as a whole to be associated
-  with a pre-defined terminology of questions and question groups such as LOINC</li>
-  <li>The <a href="questionnaire-extensions.html#deReference">deReference</a> extension allows a question or group to be associated with the
-  <a href="dataelement.html">DataElement</a> (DE) resource that formally defines the data element.</li>
-</ul>
--->
+questions and the constraints enforced on the accompanying answers increases the ability to compare data gathered across questionnaires. 
 Items can be directly linked to an <a href="elementdefinition.html">ElementDefinition</a> using <code>Questionnaire.item.definition</code>
 which provides details for the item. If a definition is provided, then the following element values can be derived from the definition:
 </p>
@@ -103,22 +128,29 @@ which provides details for the item. If a definition is provided, then the follo
 <li>required (from ElementDefinition.min)</li>
 <li>repeats (from ElementDefinition.max)</li>
 <li>maxLength (from ElementDefinition.maxLength)</li>
-<li>options (from ElementDefinition.binding)</li>
+<li>answerValueSet (from ElementDefinition.binding.valueSet)</li>
 </ul>
 <p>
-Any information provided in these elements overrides the information from the definition.
-The url refers to a an ElementDefinition in  <a href="structuredefinition.html">StructureDefinition</a>, and always starts with the canonical URL for the target resource.
+Any information provided in these elements overrides the information from the definition, and some are always required to be populated so that invariants can be enforced, etc. 
+The url refers to an ElementDefinition in  <a href="structuredefinition.html">StructureDefinition</a>, and always starts with the canonical URL for the target resource.
 When referring to a StructureDefinition, a fragment identifier is used to specify the element definition by its
 id (Element.id). E.g. http://hl7.org/fhir/StructureDefinition/Observation#Observation.value[x]. In the absence
-of a fragment identifier, the first/root element definition in the target is the matching element definition.
-</p>
+of a fragment identifier, the first/root element definition in the target is the matching element definition. Examples:
+</p> 
+<table class="grid">
+ <tr><td>Value of definition</td><td>Explanation</td></tr>
+ <tr><td><code>http://hl7.org/fhir/StructureDefinition/Observation#Observation.comment</code></td><td>A reference to the standard Observation element <code>comment</code></td></tr>
+ <tr><td><code>http://example.org/definitions/xxx</code></td><td>A reference to the <a href="structuredefinition.html#logical">logical model</a> "xxx" that represents a data element</td></tr>
+ <tr><td><code>http://example.org/StructureDefinition/Oedema#Observation.category:XXX</code></td><td>A reference to slice <code>XXX</code> on the Observation <code>category</code> element on an Oedema Scale profile</td></tr>
+ <tr><td><code>http://example.org/StructureDefinition/Oedema|2.0#Observation.category:XXX</code></td><td>A reference to slice <code>XXX</code> on the Observation <code>category</code> element on an Oedema Scale profile, specifying version 2.0</td></tr>
+</table>
 <p>
-The definitions may also be used to automatically pre-populate answers, or extract data from a corresponding <a href="questionnaireresponse.html">QuestionnaireResponse</a> resource.
+The definitions may also be used to automatically pre-populate answers, or extract data from a corresponding pre-existing <a href="questionnaireresponse.html">QuestionnaireResponse</a> resource.
 </p>
 <p>
 NOTE: Even if a standard question definition is provided<!--s are referenced using <code>concept</code> or the <code>deReference</code> extension-->, information such as the question text,
-data type and value set SHOULD still be declared for the question.  Systems processing the questionnaire may not have access to or support the ability to look
-up the question definitions from external sources.  If the information is not included in-line within the questionnaire, other systems may not be able to render
+data type and value set SHOULD still be declared for the question.  Systems processing the questionnaire might not have access to or support the ability to look
+up the question definitions from external sources.  If the information is not included in-line within the questionnaire, other systems might not be able to render
 or use the Questionnaire.
 </p>
 <p>
@@ -128,6 +160,7 @@ alignment is required; e.g. Does the question text need to match exactly?  Is it
 These rules will need to be established within implementation environments.
 </p>
 
+<a name="question-types"> </a>
 <h3>Question types</h3>
 <p>
 The codes for the data type for each question are slightly different than the data types allowed in the <a href="questionnaireresponse.html">QuestionnaireResponse</a> resource.
@@ -158,18 +191,18 @@ Where the names are the same (ignoring case), the "answer" must use the specifie
   </tbody>
 </table>
 
-<a name="choices"> </a>
+<a name="choices"></a>
 <h3>Permitted values for questions</h3>
 <p>
-Many questionnaires place constraints on the allowed list of values for a given question.  FHIR supports this notion through the <code>item.options</code> or the
-<code>item.option</code> element.
+Many questionnaires place constraints on the allowed list of values for a given question.  FHIR supports this notion through the <code>item.answerValueSet</code> or the
+<code>item.answerOption</code> element.
 </p>
 <p>
-The "option" mechanism is simplest - all options are listed in-line with the question using the <code>item.option</code> element.  Maintenance of the set of permitted question answers involves maintenance of
+The "answerOption" mechanism is simplest - all possible answers are listed in-line with the question using the <code>item.answerOption</code> element.  Maintenance of the set of permitted question answers involves maintenance of
 the questionnaire itself.
 </p>
 <p>
-The "options" mechanism is more sophisticated.  Rather than listing the options directly, the <code>item.options</code> element points to a <a href="valueset.html">ValueSet</a> resource.  This approach adds complexity for
+The "answerValueSet" mechanism is more sophisticated.  Rather than listing the possible answers directly, the <code>item.answerValueSet</code> element refers to a <a href="valueset.html">ValueSet</a> resource.  This approach adds complexity for
 questionnaires having a simple list of strings as choices for a question, but provides several benefits, including:
 </p>
 <ul>
@@ -182,11 +215,12 @@ questionnaires having a simple list of strings as choices for a question, but pr
 <p>
 In many cases, the set of code choices will be specific to a given questionnaire and should be maintained as part of the questionnaire.  In this case, the referenced
 ValueSet can be included as a <a href="references.html#contained">contained</a> resource.  All contained ValueSets are listed together and then are referenced by the
-individual questions as necessary.  Alternatively, the <code>item.options</code> element can reference the value set in a version-specific manner.  This ensures that the Questionnaire
+individual questions as necessary.  Alternatively, the <code>item.answerValueSet</code> element can reference the value set in a version-specific manner.  This ensures that the Questionnaire
 will not adopt a new version of the referenced value set without revising the Questionnaire to point to that new version - putting the author of the Questionnaire
 in control of any changes.
 </p>
 
+<a name="valuesets"> </a>
 <h3>Useful Value Sets</h3>
 <p>
 Many questions have a common set of possible codes for their answer. These value sets may be useful to help,
@@ -196,6 +230,7 @@ and when referenced by full URL, do not need to be provided as part of the quest
  <li><a href="valueset-example-yesnodontknow.html">Yes | No | Don't Know</a>: http://hl7.org/fhir/ValueSet/yesnodontknow</li>
 </ul>
 
+<a name="polymorphic"> </a>
 <h3>Questions with multiple answer types</h3>
 <p>
 In some questionnaires, it may be possible to respond to a question with multiple types of answers.  For example, capturing a coded answer plus free text,
@@ -204,15 +239,35 @@ each question can have nested child questions.  These nested child questions can
 guidance is provided by the parent question or group.
 </p>
 
+<a name="math"> </a>
 <h3>Questionnaires with Math</h3>
 <p>
 Many questionnaires involve computations on questionnaire answers, e.g. tabulating scores.
 
-To help with associating numeric values to coded answers, there are two extensions defined - one for defining the numeric weighting of a code defined in a value set -
-<a href="extension-valueset-ordinalvalue.html">valueset-ordinalValue</a> and the other for defining a code that can appear within a Coding itself -
-<a href="extension-iso21090-co-value.html">iso21090-CO-value</a>.
+To help with associating numeric values to coded answers, the <a href="extension-ordinalValue.html">ordinalValue</a> 
+extension can be used to define the numeric weighting of a code defined in a value set or in the questionnaire itself.
 </p>
 
-<p>In addition, there are extensions for defining the dynamic value of an element usings expressions. For more information, see the <a href="cqif/cqif-topics-using-expressions.html">Using Expressions</a> and <a href="cqif/cqif-knowledge-artifact-representation.html#documentation-template">Documentation Template</a> topics in the Clinical Reasoning module.</p>
+<p>In addition, there are extensions for defining the dynamic value of an element using expressions. For more information, see the 
+<a href="clinicalreasoning-topics-using-expressions.html">Using Expressions</a> and <a href="clinicalreasoning-knowledge-artifact-representation.html#documentation-template">Documentation Template</a> 
+topics in the Clinical Reasoning module.</p>
 
+<a name="advanced"> </a>
+<h3>More advanced questionnaires</h3>
+<p>
+The capabilities of the Questionnaire resource are fairly simple and try to adhere to what most systems that deal with questionnaires would be capable of.
+However, there are lots of systems that require more sophisticated capabilities, such as:
+</p>
+<ul>
+  <li>Greater control over rendering, including tables, read-only values, hidden answers, multi-column drop-downs</li>
+  <li>Greater control over question flow, including formula-based rules for conditional display of elements</li>
+  <li>Ability to pre-populate forms with data found in the client system</li>
+  <li>Ability to define how to convert a completed QuestionnaireResponse for a Questionnaire into a collection of Observations and/or other resources</li>
+</ul>
+<p>
+Extensions have been defined for all of these purposes and many more.  (Questionnaire has the most 'core' extensions of any resource to-date.)  A list of these
+extensions can be found <a href="questionnaire-profiles.html#extensions">here</a>.  However, some of the extensions are complex and work together in particular
+ways.  To support more advanced questionnaire implementation, the <a href="http://hl7.org/fhir/uv/sdc">Structured Data Capture (SDC)</a> implementation guide has been 
+created to provide non-country-specific guidance on the use of most of these extensions and sets expectations for systems wishing to support more complex forms.
+</p>
 </div>

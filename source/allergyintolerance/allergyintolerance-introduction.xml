@@ -1,6 +1,6 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 	<div>
-		<a name="scope"> </a>
+		<a name="scope"></a>
 		<h2>Scope and Usage</h2>
 		<p>
 A record of a clinical assessment of an allergy or intolerance; a propensity, or a potential risk 
@@ -32,7 +32,7 @@ Presently open issues for this resource:
 		</ul>
 	</div>
 	<div>
-		<a name="bnr"> </a>
+		<a name="bnr"></a>
 		<h2>Boundaries and Relationships</h2>
 		<p>
 This resource is used to provide a single place within the health record to document a range of clinical statements about adverse reactions to substances/products, including:
@@ -63,7 +63,7 @@ Adverse reactions may be:
 			<li>an intolerance (typically non-immune adverse reactions that are not determined or perceived to be allergic or "allergy-like", and are to some degree idiosyncratic and/or individually specific [i.e. are not a reaction that is expected to occur with most or all patients given similar circumstances])</li>
 		</ul>
 		<p>
-In clinical practice distinguishing between allergy and intolerance is difficult and may not be practical. Often the term "allergy" is used rather generically and may overlap with "intolerance", and the boundaries between these concepts may not be well-defined or understood. As noted above, the term "intolerance" should generally be applied to a propensity for adverse reactions which is either determined (to the extent that is possible) or perceived to not be allergic or "allergy-like".  If it is not possible to determine whether a particular propensity condition is an allergy or an intolerance, then the type element should be omitted from the resource.  Identification of the type of reaction is not a proxy for seriousness or risk of harm to the patient, which is better expressed in the documentation of the clinical manifestation and the assessment of criticality.</p>
+In clinical practice distinguishing between allergy and intolerance is difficult and might not be practical. Often the term "allergy" is used rather generically and may overlap with "intolerance", and the boundaries between these concepts might not be well-defined or understood. As noted above, the term "intolerance" should generally be applied to a propensity for adverse reactions which is either determined (to the extent that is possible) or perceived to not be allergic or "allergy-like".  If it is not possible to determine whether a particular propensity condition is an allergy or an intolerance, then the type element should be omitted from the resource.  Identification of the type of reaction is not a proxy for seriousness or risk of harm to the patient, which is better expressed in the documentation of the clinical manifestation and the assessment of criticality.</p>
 		<p>
 The sensitivity in the case of either an allergy or intolerance is unique to the individual, and is distinguished from those reactions that are a property of the circumstance, such as toxicity of a food or drug, overdose, drug-drug, drug-food, or drug-disease interaction (which are reactions that would be expected to occur for any individual given the same circumstances). </p>
 		<p>
@@ -144,17 +144,15 @@ Provides additional detail on exactly how the resource is to be used
 </p>
 </div>
 -->
-<a name="dstu0"> </a>
-<blockquote class="stu-note">
-<p>
-<b>STU Note:</b>Requests have been received (GF#10369) to add codes to the extension-allergyintolerance-certainty value set (reaction-event-certainty), which is a required binding.  The requested codes include "unknown", "ruled out" and "possible".  
+<a name="dstu0"></a>
+[%stu-note%]
+Requests have been received (GF#10369) to add codes to the extension-allergyintolerance-certainty value set (reaction-event-certainty), which is a required binding.  The requested codes include "unknown", "ruled out" and "possible".  
 The Patient Care WG has voted to add "unknown" to the value set, but recommends that if other terms (including "ruled out" and "possible") are desired for use in a specific setting, an extension or profile should be used.  
 During the STU period feedback is solicited regarding (1) the need and desirability of adding the code "unknown" to the value set, vs. omitting the element if the certainty is not known; and (2) whether or not additional codes besides "unknown" should be added to the value set for the core specification, or whether additional codes, if needed, should be added in an extension/profile.
 </p>
 <p>
 Feedback is welcome <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(STU_3)">here</a>.
-</p>
-</blockquote>
+[%end-note%]
 </div>
 
 </div>

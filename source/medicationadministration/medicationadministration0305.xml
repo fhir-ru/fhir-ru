@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <MedicationAdministration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://hl7.org/fhir ../../schema/medicationadministration.xsd"
  xmlns="http://hl7.org/fhir"> 
@@ -32,7 +32,8 @@
       
     </Medication>
   </contained>
-  <status value="completed" />
+  <instantiates value="http://www.bccancer.bc.ca/chemotherapy-protocols-site/Documents/Lymphoma-Myeloma/ULYBRENTUX%20Protocol_1Jun2017.pdf"/>
+  <status value="completed"/>
   <medicationReference>
     <reference value="#med0306"/> 
   </medicationReference>

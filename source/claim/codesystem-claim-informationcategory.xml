@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <CodeSystem xmlns="http://hl7.org/fhir">
-  <url value="http://hl7.org/fhir/claiminformationcategory"/>
-  <name value="Claim Information Category Codes"/>
+  <url value="http://terminology.hl7.org/CodeSystem/claiminformationcategory"/>
+  <name value="ClaimInformationCategoryCodes"/>
+  <title value="Claim Information Category Codes"/>
   <status value="draft"/>
   <experimental value="false"/>
   <description value="This value set includes sample Information Category codes."/>
@@ -27,7 +28,7 @@
   <concept>
     <code value="related"/>
     <display value="Related Services"/>
-    <definition value="Nature and date of the related event eg. Last exam, service, Xray etc."/>
+    <definition value="Nature and date of the related event e.g. Last exam, service, X-ray etc."/>
   </concept>
   <concept>
     <code value="exception"/>
@@ -37,7 +38,7 @@
   <concept>
     <code value="material"/>
     <display value="Materials Forwarded"/>
-    <definition value="Materials being forwarded, eg. Models, molds, images, documents."/>
+    <definition value="Materials being forwarded, e.g. Models, molds, images, documents."/>
   </concept>
   <concept>
     <code value="attachment"/>
@@ -58,5 +59,25 @@
     <code value="other"/>
     <display value="Other"/>
     <definition value="Other information identified by the type.system."/>
+  </concept>
+  <concept>
+    <code value="hospitalized"/>
+    <display value="Hospitalized"/>
+    <definition value="An indication that the patient was hospitalized, the period if known otherwise a Yes/No (boolean)."/>
+  </concept>
+  <concept>
+    <code value="employmentimpacted"/>
+    <display value="EmploymentImpacted"/>
+    <definition value="An indication that the patient was unable to work, the period if known otherwise a Yes/No (boolean)."/>
+  </concept>
+  <concept>
+    <code value="externalcause"/>
+    <display value="External Caause"/>
+    <definition value="The external cause of an illness or injury."/>
+  </concept>
+  <concept>
+    <code value="patientreasonforvisit"/>
+    <display value="Patient Reason for Visit"/>
+    <definition value="The reason for the patient visit."/>
   </concept>
 </CodeSystem>

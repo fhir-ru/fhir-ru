@@ -1,13 +1,13 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<a name="bnc"> </a>
+<a name="bnc"></a>
 <h2>Scope and Usage</h2>
 <p><strong>This resource is a <em>definition</em> resource from a FHIR workflow perspective</strong> - see <a href="workflow.html">Workflow</a>, specifically <a href="workflow.html#definition">Definition</a>.</p>
 
 <p>An ActivityDefinition is a shareable, consumable description of some activity to be performed. It may be used to specify actions to be taken as part of a workflow, order set, or protocol, or it may be used independently as part of a catalog of activities such as orderables.</p>
 
-<p>For more information on how activity definitions can be used to construct request resources, see the Realizing an ActivityDefinition topic below.</p>
+<p>For more information on how activity definitions can be used to construct request resources, see the Applying an ActivityDefinition topic below.</p>
 </div>
 
 <div>

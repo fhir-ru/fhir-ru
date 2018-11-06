@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PlanDefinition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<PlanDefinition xmlns="http://hl7.org/fhir" 
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://hl7.org/fhir ../../schema/plandefinition.xsd"
+>
   <id value="chlamydia-screening-intervention"/>
   <text>
     <status value="generated"/>
@@ -72,7 +75,7 @@
                <td style="padding-left: 25px; padding-right: 25px;">
                   <span>
                      <b>text: </b>
-                     <span>Chlamydia Screeening</span>
+                     <span>Chlamydia Screening</span>
                   </span>
                </td>
             </tr>
@@ -129,21 +132,25 @@
   <date value="2015-07-22"/>
   <description value="Chlamydia Screening CDS Example Using Common"/>
   <topic>
-    <text value="Chlamydia Screeening"/>
+    <text value="Chlamydia Screening"/>
   </topic>
-  <library>
-    <reference value="Library/example"/>
-  </library>
+  <library value="Library/example"/>
   <action>
     <title value="Patient has not had chlamydia screening within the recommended timeframe..."/>
     <condition>
 	  <kind value="applicability"/>
-      <expression value="NoScreening"/>
+	  <expression>
+        <language value="text/cql"/>
+        <expression value="NoScreening"/>
+      </expression>
     </condition>
     <dynamicValue>
-      <!-- The '~' here indicates the dynamic value is providing the entire result, rather than a value of a particular element -->
-      <path value="~"/>
-      <expression value="ChlamydiaScreeningRequest"/>
+      <!-- The '$this' here indicates the dynamic value is providing the entire result, rather than a value of a particular element -->
+      <path value="$this"/>
+      <expression>
+        <language value="text/cql"/>
+        <expression value="ChlamydiaScreeningRequest"/>
+      </expression>
     </dynamicValue>
   </action>
 </PlanDefinition>

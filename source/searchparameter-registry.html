@@ -8,21 +8,29 @@
 <body>
 [%file newnavbar%]
 
-<div class="col-9">
+<div class="col-12">
 
 <h2>Defined Search Parameters</h2>
+<table class="colsi"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Informative</a></td></tr></table>
 
 <p>
 This page lists all search parameters defined as part of this specification. For further details regarding 
 using search parameters, see <a href="search.html">searching</a> on the <a href="http.html">RESTful API</a>.
 </p>
 
+<p>
+All resources have the canonical URL http://hl7.org/fhir/SearchParameter/[id] where [id] is 
+taken from the table below. You can download <a href="search-parameters.xml">XML</a> 
+and <a href="search-parameters.json">JSON</a> source for this page.
+</p>
+
 <table class="grid">
  <tr>
-   <th>Parameter</th>
-   <th>Type</th>
-   <th>Description</th>
-   <th>Paths</th>
+   <th width="130px">Parameter</th>
+   <th width="70px">Type</th>
+   <th width="120px">Id</th>
+   <th width="420px">Description</th>
+   <th>Paths (Expression)</th>
  </tr>
  <%allsearchparams%>
 </table>

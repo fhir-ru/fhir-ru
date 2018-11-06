@@ -55,7 +55,7 @@ public class GraphQLSchemaGenerator {
         tl.put(sd.getName(), sd);
       }
     }
-    writer.write("# FHIR GraphQL Schema. Version "+Constants.VERSION+"-"+Constants.REVISION+"\r\n\r\n");
+    writer.write("# FHIR GraphQL Schema. Version "+Constants.VERSION+"\r\n\r\n");
     writer.write("# FHIR Defined Primitive types\r\n");
     for (String n : sorted(pl.keySet()))
       generatePrimitive(writer, pl.get(n));
@@ -75,7 +75,7 @@ public class GraphQLSchemaGenerator {
 
   public void generateResource(OutputStream stream, StructureDefinition sd, List<SearchParameter> parameters, EnumSet<FHIROperationType> operations) throws IOException, FHIRException {
     BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(stream));
-    writer.write("# FHIR GraphQL Schema. Version "+Constants.VERSION+"-"+Constants.REVISION+"\r\n\r\n");
+    writer.write("# FHIR GraphQL Schema. Version "+Constants.VERSION+"\r\n\r\n");
     generateType(writer, sd);
     if (operations.contains(FHIROperationType.READ))
       generateIdAccess(writer, sd.getName());
@@ -253,7 +253,7 @@ public class GraphQLSchemaGenerator {
       } else {
         boolean ref  = false;
         for (TypeRefComponent t : child.getType()) {
-          if (!"Reference".equals(t.getCode()))
+          if (!t.hasTarget())
             generateProperty(list, b, typeName, sd, child, t, true, null, mode);
           else if (!ref) {
             ref = true;
@@ -344,7 +344,7 @@ public class GraphQLSchemaGenerator {
 
   private boolean isPrimitive(TypeRefComponent type) {
     String typeName = type.getCode();
-    StructureDefinition sd = context.fetchResource(StructureDefinition.class, "http://hl7.org/fhir/StructureDefinition/"+typeName);
+    StructureDefinition sd = context.fetchTypeDefinition(typeName);
     if (sd == null)
       return false;
     return sd.getKind() == StructureDefinitionKind.PRIMITIVETYPE;

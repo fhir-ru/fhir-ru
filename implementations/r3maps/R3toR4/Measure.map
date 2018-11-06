@@ -1,0 +1,77 @@
+﻿map "http://hl7.org/fhir/StructureMap/Measure3to4" = "R3 to R4 Conversions for Measure"
+
+uses "http://hl7.org/fhir/3.0/StructureDefinition/Measure" alias MeasureR3 as source
+uses "http://hl7.org/fhir/StructureDefinition/Measure" alias Measure as target
+
+imports "http://hl7.org/fhir/StructureMap/*3to4"
+
+group Measure(source src : MeasureR3, target tgt : Measure) extends DomainResource <<type+>> {
+  src.url -> tgt.url;
+  src.identifier -> tgt.identifier;
+  src.version -> tgt.version;
+  src.name -> tgt.name;
+  src.title -> tgt.title;
+  src.subtitle -> tgt.subtitle;
+  src.status -> tgt.status;
+  src.experimental -> tgt.experimental;
+  src.subject -> tgt.subject;
+  src.date -> tgt.date;
+  src.publisher -> tgt.publisher;
+  src.contact -> tgt.contact;
+  src.description -> tgt.description;
+  src.useContext -> tgt.useContext;
+  src.jurisdiction -> tgt.jurisdiction;
+  src.purpose -> tgt.purpose;
+  src.usage -> tgt.usage;
+  src.copyright -> tgt.copyright;
+  src.approvalDate -> tgt.approvalDate;
+  src.lastReviewDate -> tgt.lastReviewDate;
+  src.effectivePeriod -> tgt.effectivePeriod;
+  src.topic -> tgt.topic;
+  src.contributor -> tgt.contributor;
+  src.relatedArtifact -> tgt.relatedArtifact;
+  src.library -> tgt.library;
+  src.disclaimer -> tgt.disclaimer;
+  src.scoring -> tgt.scoring;
+  src.compositeScoring -> tgt.compositeScoring;
+  src.type -> tgt.type;
+  src.riskAdjustment -> tgt.riskAdjustment;
+  src.rateAggregation -> tgt.rateAggregation;
+  src.rationale -> tgt.rationale;
+  src.clinicalRecommendationStatement -> tgt.clinicalRecommendationStatement;
+  src.improvementNotation -> tgt.improvementNotation;
+  src.definition -> tgt.definition;
+  src.guidance -> tgt.guidance;
+  src.set -> tgt.set;
+  src.group as s -> tgt.group as t then MeasureGroup(s, t);
+  src.supplementalData as s -> tgt.supplementalData as t then MeasureSupplementalData(s, t);
+}
+
+group Measuregroup(source src : MeasureR3, target tgt : Measure) extends BackboneElement <<type+>> {
+  src.code -> tgt.code;
+  src.description -> tgt.description;
+  src.population as s -> tgt.population as t then MeasureGroupPopulation(s, t);
+  src.stratifier as s -> tgt.stratifier as t then MeasureGroupStratifier(s, t);
+}
+
+group MeasureGroupPopulation(source src : MeasureR3, target tgt : Measure) extends BackboneElement <<type+>> {
+  src.code -> tgt.code;
+  src.description -> tgt.description;
+  src.criteria -> tgt.criteria;
+}
+
+group MeasureGroupStratifier(source src : MeasureR3, target tgt : Measure) extends BackboneElement <<type+>> {
+  src.code -> tgt.code;
+  src.description -> tgt.description;
+  src.criteria -> tgt.criteria;
+  src.path -> tgt.path;
+}
+
+group MeasureSupplementalData(source src : MeasureR3, target tgt : Measure) extends BackboneElement <<type+>> {
+  src.code -> tgt.code;
+  src.usage -> tgt.usage;
+  src.description -> tgt.description;
+  src.criteria -> tgt.criteria;
+  src.path -> tgt.path;
+}
+

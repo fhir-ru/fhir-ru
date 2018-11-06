@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.fhir.ucum.Decimal;
+import org.fhir.ucum.UcumException;
 import org.hl7.fhir.dstu3.context.IWorkerContext;
 import org.hl7.fhir.dstu3.model.Base;
 import org.hl7.fhir.dstu3.model.BooleanType;
@@ -41,8 +43,6 @@ import org.hl7.fhir.exceptions.DefinitionException;
 import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.exceptions.PathEngineException;
 import org.hl7.fhir.utilities.Utilities;
-import org.fhir.ucum.Decimal;
-import org.fhir.ucum.UcumException;
 
 import ca.uhn.fhir.rest.server.exceptions.InternalErrorException;
 import ca.uhn.fhir.util.ElementUtil;
@@ -1214,6 +1214,7 @@ public class FHIRPathEngine {
       return result;
     case Concatenate:
       result = new TypeDetails(CollectionStatus.SINGLETON, "");
+      return result;
     case Plus:
       result = new TypeDetails(CollectionStatus.SINGLETON);
       if (left.hasType(worker, "integer") && right.hasType(worker, "integer"))
@@ -1795,7 +1796,7 @@ public class FHIRPathEngine {
   }
 
   private TypeDetails executeType(String type, ExpressionNode exp, boolean atEntry) throws PathEngineException, DefinitionException {
-    if (atEntry && Character.isUpperCase(exp.getName().charAt(0)) && tail(type).equals(exp.getName())) // special case for start up
+    if (atEntry && Character.isUpperCase(exp.getName().charAt(0)) && hashTail(type).equals(exp.getName())) // special case for start up
       return new TypeDetails(CollectionStatus.SINGLETON, type);
     TypeDetails result = new TypeDetails(null);
     getChildTypesByName(type, exp.getName(), result);
@@ -1803,7 +1804,7 @@ public class FHIRPathEngine {
   }
 
 
-  private String tail(String type) {
+  private String hashTail(String type) {
     return type.contains("#") ? "" : type.substring(type.lastIndexOf("/")+1);
   }
 
@@ -2436,22 +2437,28 @@ public class FHIRPathEngine {
         String s = convertToString(item);
         if (item.fhirType().equals("Reference")) {
           Property p = item.getChildByName("reference");
-          if (p.hasValues())
+          if (p != null && p.hasValues())
             s = convertToString(p.getValues().get(0));
+          else
+            s = null; // a reference without any valid actual reference (just identifier or display, but we can't resolve it)
         }
+        if (s != null) {
         Base res = null;
         if (s.startsWith("#")) {
           String id = s.substring(1);
           Property p = context.resource.getChildByName("contained");
           for (Base c : p.getValues()) {
-            if (id.equals(c.getIdBase()))
+              if (id.equals(c.getIdBase())) {
               res = c;
+                break;
+              }
           }
         } else
          res = hostServices.resolveReference(context.appInfo, s);
         if (res != null)
           result.add(res);
       }
+    }
     }
     return result;
   }
@@ -2713,13 +2720,13 @@ public class FHIRPathEngine {
     if (m != null && hasDataType(m.definition)) {
       if (m.fixedType != null)
       {
-        StructureDefinition dt = worker.fetchResource(StructureDefinition.class, "http://hl7.org/fhir/StructureDefinition/"+m.fixedType);
+        StructureDefinition dt = worker.fetchTypeDefinition(m.fixedType);
         if (dt == null)
           throw new DefinitionException("unknown data type "+m.fixedType);
         sdl.add(dt);
       } else
         for (TypeRefComponent t : m.definition.getType()) {
-          StructureDefinition dt = worker.fetchResource(StructureDefinition.class, "http://hl7.org/fhir/StructureDefinition/"+t.getCode());
+          StructureDefinition dt = worker.fetchTypeDefinition(t.getCode());
           if (dt == null)
             throw new DefinitionException("unknown data type "+t.getCode());
           sdl.add(dt);
@@ -2823,7 +2830,7 @@ public class FHIRPathEngine {
         // now we walk into the type.
         if (ed.getType().size() > 1)  // if there's more than one type, the test above would fail this
           throw new PathEngineException("Internal typing issue....");
-        StructureDefinition nsd = worker.fetchResource(StructureDefinition.class, "http://hl7.org/fhir/StructureDefinition/"+ed.getType().get(0).getCode());
+        StructureDefinition nsd = worker.fetchTypeDefinition(ed.getType().get(0).getCode());
   	    if (nsd == null)
   	      throw new PathEngineException("Unknown type "+ed.getType().get(0).getCode());
         return getElementDefinition(nsd, nsd.getId()+path.substring(ed.getPath().length()), allowTypedName);

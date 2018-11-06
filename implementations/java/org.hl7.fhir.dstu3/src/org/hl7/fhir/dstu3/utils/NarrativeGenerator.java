@@ -156,7 +156,9 @@ import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.exceptions.FHIRFormatError;
 import org.hl7.fhir.exceptions.TerminologyServiceException;
 import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
+import org.hl7.fhir.utilities.MarkDownProcessor;
 import org.hl7.fhir.utilities.Utilities;
+import org.hl7.fhir.utilities.MarkDownProcessor.Dialect;
 import org.hl7.fhir.utilities.xhtml.NodeType;
 import org.hl7.fhir.utilities.xhtml.XhtmlComposer;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
@@ -164,9 +166,6 @@ import org.hl7.fhir.utilities.xhtml.XhtmlParser;
 import org.hl7.fhir.utilities.xml.XMLUtil;
 import org.hl7.fhir.utilities.xml.XmlGenerator;
 import org.w3c.dom.Element;
-
-import com.github.rjeschke.txtmark.Processor;
-import com.sun.webkit.BackForwardList;
 
 public class NarrativeGenerator implements INarrativeGenerator {
 
@@ -273,7 +272,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
       if (p == null)
         p = context.fetchResource(StructureDefinition.class, r.getResourceType().toString());
       if (p == null)
-        p = context.fetchResource(StructureDefinition.class, "http://hl7.org/fhir/StructureDefinition/"+r.getResourceType().toString().toLowerCase());
+        p = context.fetchTypeDefinition(r.getResourceType().toString().toLowerCase());
       if (p != null)
         return generateByProfile(r, p, true);
       else
@@ -416,7 +415,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
     }
 
     private boolean isPrimitive(String code) {
-      StructureDefinition sd = context.fetchResource(StructureDefinition.class, "http://hl7.org/fhir/StructureDefinition/"+code);
+      StructureDefinition sd = context.fetchTypeDefinition(code);
       return sd != null && sd.getKind() == StructureDefinitionKind.PRIMITIVETYPE;
     }
 
@@ -670,7 +669,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
         list = new ArrayList<NarrativeGenerator.ResourceWrapper>();
         for (Element e : children) {
           Element c = XMLUtil.getFirstChild(e);
-          list.add(new ResurceWrapperElement(c, context.fetchResource(StructureDefinition.class, "http://hl7.org/fhir/StructureDefinition/"+c.getNodeName())));
+          list.add(new ResurceWrapperElement(c, context.fetchTypeDefinition(c.getNodeName())));
         }
       }
       return list;
@@ -979,7 +978,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
       x.para().b().setAttribute("style", "color: maroon").tx("Exception generating Narrative: "+e.getMessage());
     }
     inject(er, x,  NarrativeStatus.GENERATED);
-    return new XhtmlComposer().setXmlOnly(true).compose(x);
+    return new XhtmlComposer(XhtmlComposer.XML).compose(x);
   }
 
   private boolean generateByProfile(DomainResource r, StructureDefinition profile, boolean showCodeDetails) {
@@ -1005,7 +1004,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
       x.para().b().setAttribute("style", "color: maroon").tx("Exception generating Narrative: "+e.getMessage());
     }
     inject(er, x,  NarrativeStatus.GENERATED);
-    return new XhtmlComposer().setXmlOnly(true).compose(x);
+    return new XhtmlComposer(XhtmlComposer.XML).compose(x);
   }
 
   private void generateByProfile(Element eres, StructureDefinition profile, Element ee, List<ElementDefinition> allElements, ElementDefinition defn, List<ElementDefinition> children,  XhtmlNode x, String path, boolean showCodeDetails) throws FHIRException, UnsupportedEncodingException, IOException {
@@ -1343,7 +1342,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
     } else if (e instanceof ElementDefinition) {
       x.tx("todo-bundle");
     } else if (e != null && !(e instanceof Attachment) && !(e instanceof Narrative) && !(e instanceof Meta)) {
-      StructureDefinition sd = context.fetchResource(StructureDefinition.class, "http://hl7.org/fhir/StructureDefinition/"+e.fhirType());
+      StructureDefinition sd = context.fetchTypeDefinition(e.fhirType());
       if (sd == null)
         throw new NotImplementedException("type "+e.getClass().getName()+" not handled yet, and no structure found");
       else
@@ -2070,11 +2069,18 @@ public class NarrativeGenerator implements INarrativeGenerator {
     x.h2().addText(cm.getName()+" ("+cm.getUrl()+")");
 
     XhtmlNode p = x.para();
-    p.tx("Mapping from ");
-    AddVsRef(rcontext, cm.getSource() instanceof Reference ? ((Reference) cm.getSource()).getReference() : ((UriType) cm.getSource()).asStringValue(), p);
+    if (cm.hasSource() || cm.hasTarget())
+      p.tx("Mapping from ");
+    if (!cm.hasSource())
+      p.tx("(unspecified)");
+    else
+      AddVsRef(rcontext, cm.getSource() instanceof Reference ? ((Reference) cm.getSource()).getReference() : ((UriType) cm.getSource()).asStringValue(), p);
     p.tx(" to ");
-    AddVsRef(rcontext, cm.getSource() instanceof Reference ? ((Reference) cm.getTarget()).getReference() : ((UriType) cm.getTarget()).asStringValue(), p);
-
+    if (!cm.hasTarget())
+      p.tx("(unspecified)");
+    else 
+      AddVsRef(rcontext, cm.getTarget() instanceof Reference ? ((Reference) cm.getTarget()).getReference() : ((UriType) cm.getTarget()).asStringValue(), p);
+    
     p = x.para();
     if (cm.getExperimental())
       p.addText(Utilities.capitalize(cm.getStatus().toString())+" (not intended for production usage). ");
@@ -2313,7 +2319,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
     }
     if (div.hasChildNodes())
       div.appendChild(er.getOwnerDocument().createElementNS(FormatUtilities.XHTML_NS, "hr"));
-    new XhtmlComposer().setXmlOnly(true).compose(div, x);
+    new XhtmlComposer(XhtmlComposer.XML).compose(div, x);
   }
 
   private void inject(org.hl7.fhir.dstu3.elementmodel.Element er, XhtmlNode x, NarrativeStatus status) throws DefinitionException, IOException {
@@ -2340,7 +2346,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
     if (div == null) {
       div = new org.hl7.fhir.dstu3.elementmodel.Element("div", txt.getProperty().getChild(null, "div"));
       txt.getChildren().add(div);
-      div.setValue(new XhtmlComposer().setXmlOnly(true).compose(x));
+      div.setValue(new XhtmlComposer(XhtmlComposer.XML).compose(x));
     }
     div.setXhtml(x);
   }
@@ -3656,10 +3662,10 @@ public class NarrativeGenerator implements INarrativeGenerator {
 	  return null;
   }
 
-  public boolean generate(ResourceContext rcontext, StructureDefinition sd) throws EOperationOutcome, FHIRException, IOException {
+  public boolean generate(ResourceContext rcontext, StructureDefinition sd, java.util.Set<String> outputTracker) throws EOperationOutcome, FHIRException, IOException {
     ProfileUtilities pu = new ProfileUtilities(context, null, pkp);
     XhtmlNode x = new XhtmlNode(NodeType.Element, "div");
-    x.getChildNodes().add(pu.generateTable(definitionsTarget, sd, true, destDir, false, sd.getId(), false, corePath, "", false, false));
+    x.getChildNodes().add(pu.generateTable(definitionsTarget, sd, true, destDir, false, sd.getId(), false, corePath, "", false, false, outputTracker));
     inject(sd, x, NarrativeStatus.GENERATED);
     return true;
   }
@@ -3740,7 +3746,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
 	      String[] parts = link.split("\\#");
 	      StructureDefinition p = context.fetchResource(StructureDefinition.class, parts[0]);
 	      if (p == null)
-	        p = context.fetchResource(StructureDefinition.class, "http://hl7.org/fhir/StructureDefinition/"+parts[0]);
+	        p = context.fetchTypeDefinition(parts[0]);
 	      if (p == null)
 	        p = context.fetchResource(StructureDefinition.class, link);
 	      if (p != null) {
@@ -3754,7 +3760,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
 	    }
 
 	    // 2. markdown
-	    String s = Processor.process(Utilities.escapeXml(text));
+	    String s =  new MarkDownProcessor(Dialect.DARING_FIREBALL).process(Utilities.escapeXml(text), "NarrativeGenerator");
 	    XhtmlParser p = new XhtmlParser();
 	    XhtmlNode m;
 		try {

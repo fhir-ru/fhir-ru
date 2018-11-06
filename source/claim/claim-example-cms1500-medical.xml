@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Claim xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/coverage.xsd">
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Claim xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
 	<id value="MED-00050"/>
 
 	<text>
@@ -41,7 +41,7 @@
 
 			<type>
 				<coding>
-					<system value="http://hl7.org/fhir/v3/ActCode"/>
+					<system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
 					<code value="HIP"/>
 					<display value="health insurance plan policy"/>
 				</coding>
@@ -74,9 +74,15 @@
 				<display value="Humana Inc."/>
 			</payor>
 
-			<grouping>
-				<group value="80902206"/>
-			</grouping> 
+			<class>
+				<type>
+					<coding>
+						<system value="http://terminology.hl7.org/CodeSystem/coverage-class"/>
+						<code value="group"/>
+					</coding>
+				</type>
+				<value value="80902206"/>
+			</class>
 
 		</Coverage>
 	</contained>
@@ -90,7 +96,7 @@
 
 	<type>
 		<coding>
-			<system value="http://hl7.org/fhir/ex-claimtype"/>
+			<system value="http://terminology.hl7.org/CodeSystem/claim-type"/>
 			<code value="institutional"/>
 		</coding>
 	</type>
@@ -103,7 +109,7 @@
 		</coding>
 	</subType>
 
-	<use value="complete"/>
+	<use value="claim"/>
 
 	<patient>
 		<reference value="#patient-1"/>
@@ -119,9 +125,9 @@
 		<display value="Humana Inc."/>
 	</insurer>
 
-	<organization>
+	<provider>
 		<reference value="Organization/1"/>
-	</organization>
+	</provider>
 
 	<priority>
 		<coding>
@@ -132,7 +138,7 @@
 	<payee>
 		<type>
 			<coding>
-				<system value="http://hl7.org/fhir/payeetype"/>
+				<system value="http://terminology.hl7.org/CodeSystem/payeetype"/>
 				<code value="provider"/>
 			</coding>
 		</type>
@@ -148,11 +154,25 @@
 		</provider>
 	</careTeam>
 
-	<information>
+	<supportingInfo>
 		<sequence value="1"/>
 		<category>
 			<coding>
-				<system value="http://hl7.org/fhir/claiminformationcategory"/>
+				<system value="http://terminology.hl7.org/CodeSystem/claiminformationcategory"/>
+				<code value="hospitalized"/>
+			</coding>
+		</category>
+		<timingPeriod>
+			<start value="2015-10-01T00:00:00-07:00"/>
+			<end value="2015-10-05T00:00:00-07:00"/>
+		</timingPeriod>
+	</supportingInfo>
+
+	<supportingInfo>
+		<sequence value="2"/>
+		<category>
+			<coding>
+				<system value="http://terminology.hl7.org/CodeSystem/claiminformationcategory"/>
 				<code value="discharge"/>
 			</coding>
 		</category>
@@ -163,7 +183,7 @@
 				<display value="Discharge to Home or Self Care"/>
 			</coding>
 		</code>
-	</information>
+	</supportingInfo>
 
 	<diagnosis>
 		<sequence value="1"/>
@@ -220,24 +240,19 @@
 		</coverage>
 	</insurance>
 
-	<hospitalization>
-		<start value="2015-10-01T00:00:00-07:00"/>
-		<end value="2015-10-05T00:00:00-07:00"/>
-	</hospitalization>
-
 	<item>
 		<sequence value="1"/>
-		<careTeamLinkId value="1"/>
-		<diagnosisLinkId value="2"/>
-		<diagnosisLinkId value="4"/>
-		<informationLinkId value="1"/>
-		<service>
+		<careTeamSequence value="1"/>
+		<diagnosisSequence value="2"/>
+		<diagnosisSequence value="4"/>
+		<informationSequence value="1"/>
+		<productOrService>
 			<coding>
 				<system value="http://www.ama-assn.org/go/cpt"/>
 				<code value="62264"/>
 				<display value="Surgical Procedures on the Spine and Spinal Cord"/>
 			</coding>
-		</service>
+		</productOrService>
 		<servicedDate value="2015-10-13"/>
 		<locationCodeableConcept>
 			<coding>
@@ -248,21 +263,18 @@
 		</locationCodeableConcept>
 		<unitPrice>
 			<value value="12500.00"/>
-			<system value="urn:iso:std:iso:4217"/>
-			<code value="USD"/> 
+			<currency value="USD"/> 
 		</unitPrice> 
 
 		<net>
 			<value value="12500.00"/>
-			<system value="urn:iso:std:iso:4217"/>
-			<code value="USD"/> 
+			<currency value="USD"/> 
 		</net> 
 	</item>
 
 	<total>
 		<value value="12500.00"/>
-		<system value="urn:iso:std:iso:4217"/>
-		<code value="USD"/> 
+		<currency value="USD"/> 
 	</total> 
 
 </Claim>

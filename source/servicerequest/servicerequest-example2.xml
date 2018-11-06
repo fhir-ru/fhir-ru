@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <ServiceRequest xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/fhir-single.xsd">
 	<id value="physiotherapy"/>
 	<!-- demonstrating in this example the reason reference element using contained resources for the purpose of this example only typically this would be a separate independent resource-->
@@ -12,14 +12,14 @@
 			<agent>
 				<role>
 					<coding>
-						<system value="http://hl7.org/fhir/v3/ParticipationType"/>
+						<system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationType"/>
 						<code value="AUT"/>
 					</coding>
 				</role>
-				<whoReference>
+				<who>
 					<reference value="Practitioner/example"/>
 					<display value="Dr Adam Careful"/>
-				</whoReference>
+				</who>
 			</agent>
 			<signature>
 				<type>
@@ -28,23 +28,35 @@
 					<display value="Author's Signature"/>
 				</type>
 				<when value="2017-02-01T17:23:07Z"/>
-				<whoReference>
+				<who>
 					<reference value="Practitioner/example"/>
 					<display value="Dr Adam Careful"/>
-				</whoReference>
-				<contentType value="application/signature+xml"/>
-				<blob value="dGhpcyBibG9iIGlzIHNuaXBwZWQ="/>
+				</who>
+				<targetFormat value="application/fhir+xml"/>
+				<sigFormat value="application/signature+xml"/>
+				<data value="dGhpcyBibG9iIGlzIHNuaXBwZWQ="/>
 			</signature>
 		</Provenance>
 	</contained>
 	<contained>
 		<Condition>
 			<id value="cystic-fibrosis"/>
-			<clinicalStatus value="active"/>
-			<verificationStatus value="confirmed"/>
+			<clinicalStatus>
+			  <coding>
+			    <system value="http://terminology.hl7.org/CodeSystem/condition-clinical"/>
+			    <code value="active"/>
+			  </coding>
+		    </clinicalStatus>
+
+		    <verificationStatus>
+			  <coding>
+			    <system value="http://terminology.hl7.org/CodeSystem/condition-ver-status"/>
+			    <code value="confirmed"/>
+			  </coding>
+		    </verificationStatus>
 			<category>
 				<coding>
-					<system value="http://hl7.org/fhir/condition-category"/>
+					<system value="http://terminology.hl7.org/CodeSystem/condition-category"/>
 					<code value="problem-list-item"/>
 					<display value="Problem List Item"/>
 				</coding>
@@ -73,7 +85,7 @@
 	<identifier>
 		<type>
 			<coding>
-				<system value="http://hl7.org/fhir/identifier-type"/>
+				<system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
 				<code value="PLAC"/>
 				<display value="Placer Identifier"/>
 			</coding>
@@ -117,14 +129,8 @@
 	<!-- TimeStamp when order authorized-->
 	<authoredOn value="2017-02-01T17:23:07Z"/>
 	<requester>
-		<agent>
 			<reference value="Practitioner/example"/>
 			<display value="Dr Adam Careful"/>
-		</agent>
-		<onBehalfOf>
-			<reference value="Organization/2"/>
-			<display value="Good Health Clinic"/>
-		</onBehalfOf>
 	</requester>
 	<!-- demonstrating in this example the reason reference element using a contained resource for the purpose of this example only typically would reference an external resource-->
 	<reasonReference>

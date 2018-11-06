@@ -7,6 +7,8 @@ import java.util.Set;
 
 import org.hl7.fhir.r4.model.ExpressionNode;
 import org.hl7.fhir.r4.model.SearchParameter;
+import org.hl7.fhir.utilities.StandardsStatus;
+import org.hl7.fhir.utilities.Utilities;
 
 /*
 Copyright (c) 2011+, HL7, Inc
@@ -63,7 +65,8 @@ public class SearchParameterDefn {
     quantity, // search parameter is onto a quantity (= token + -lower & -upper, and canonical)
     reference,// search parameter refers to a resource reference
     token,   // search parameter is onto a pair of fixed value strings, space and value. Space is optional
-    uri;     // search onto a URI
+    uri,     // search onto a URI
+    special;  // special case - not one of the others
   }
   
   
@@ -81,6 +84,9 @@ public class SearchParameterDefn {
   private boolean XPathDone;
   private List<String> otherResources = new ArrayList<String>();
   private String commonId;
+  private boolean hierarchy;
+  private StandardsStatus standardsStatus;
+  private String url;
   
   // operational tracking
   private String xPath;
@@ -102,27 +108,33 @@ public class SearchParameterDefn {
     return type;
   }
   
-  public SearchParameterDefn(String code, String description, SearchType type, SearchParameter.XPathUsageType xPathUsage) {
+  public SearchParameterDefn(String code, String description, SearchType type, SearchParameter.XPathUsageType xPathUsage, StandardsStatus status) {
     super();
     this.code = code;
     this.description = description;
     this.type = type;
     this.xPathUsage = xPathUsage; 
+    this.standardsStatus = status;
   }
     
-  public SearchParameterDefn(SearchParameterDefn source, String oldName, String newName, String title) {
+  public SearchParameterDefn(SearchParameterDefn source, String oldName, String newName, String title, String name, StandardsStatus status) {
     super();
     code = source.code;
-    description = source.description.replace("{{title}}", title);
+    description = source.description.replace("{{title}}", title).replace("{{titles}}", Utilities.pluralize(title, 2));
     type = source.type;
     xPathUsage = source.xPathUsage;
     for (String s : source.paths)
       paths.add(s.replace(oldName+'.', newName+'.')); 
-    expression = source.expression;
+    if (source.expression != null)
+      expression = source.expression.replace("{{name}}", name);
     composites.addAll(source.composites);
     targets.addAll(source.targets);
     manualTargets.addAll(source.manualTargets);
     otherResources.addAll(source.otherResources);
+    if (type == SearchType.composite && source.getStandardsStatus() != null)
+      this.standardsStatus = source.getStandardsStatus();
+    else
+      this.standardsStatus = status;
   }
 
   public List<String> getPaths() {
@@ -249,6 +261,30 @@ public class SearchParameterDefn {
 
   public void setCommonId(String commonId) {
     this.commonId = commonId;
+  }
+
+  public boolean isHierarchy() {
+    return hierarchy;
+  }
+
+  public void setHierarchy(boolean hierarchy) {
+    this.hierarchy = hierarchy;
+  }
+
+  public StandardsStatus getStandardsStatus() {
+    return standardsStatus;
+  }
+
+  public void setStandardsStatus(StandardsStatus standardsStatus) {
+    this.standardsStatus = standardsStatus;
+  }
+
+  public String getUrl() {
+    return url;
+  }
+
+  public void setUrl(String url) {
+    this.url = url;
   }
   
 }

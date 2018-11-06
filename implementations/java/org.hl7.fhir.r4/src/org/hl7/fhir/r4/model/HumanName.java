@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Fri, Aug 11, 2017 07:23+1000 for FHIR v3.1.0
+// Generated on Mon, Nov 5, 2018 09:03+1100 for FHIR v3.6.0
 
 import java.util.*;
 
@@ -49,7 +49,7 @@ public class HumanName extends Type implements ICompositeType {
 
     public enum NameUse {
         /**
-         * Known as/conventional/the one you normally use
+         * Known as/conventional/the one you normally use.
          */
         USUAL, 
         /**
@@ -61,19 +61,19 @@ public class HumanName extends Type implements ICompositeType {
          */
         TEMP, 
         /**
-         * A name that is used to address the person in an informal manner, but is not part of their formal or usual name
+         * A name that is used to address the person in an informal manner, but is not part of their formal or usual name.
          */
         NICKNAME, 
         /**
-         * Anonymous assigned name, alias, or pseudonym (used to protect a person's identity for privacy reasons)
+         * Anonymous assigned name, alias, or pseudonym (used to protect a person's identity for privacy reasons).
          */
         ANONYMOUS, 
         /**
-         * This name is no longer in use (or was never correct, but retained for records)
+         * This name is no longer in use (or was never correct, but retained for records).
          */
         OLD, 
         /**
-         * A name used prior to changing name because of marriage. This name use is for use by applications that collect and store names that were used prior to a marriage. Marriage naming customs vary greatly around the world, and are constantly changing. This term is not gender specific. The use of this term does not imply any particular history for a person's name
+         * A name used prior to changing name because of marriage. This name use is for use by applications that collect and store names that were used prior to a marriage. Marriage naming customs vary greatly around the world, and are constantly changing. This term is not gender specific. The use of this term does not imply any particular history for a person's name.
          */
         MAIDEN, 
         /**
@@ -128,13 +128,13 @@ public class HumanName extends Type implements ICompositeType {
         }
         public String getDefinition() {
           switch (this) {
-            case USUAL: return "Known as/conventional/the one you normally use";
+            case USUAL: return "Known as/conventional/the one you normally use.";
             case OFFICIAL: return "The formal name as registered in an official (government) registry, but which name might not be commonly used. May be called \"legal name\".";
             case TEMP: return "A temporary name. Name.period can provide more detailed information. This may also be used for temporary names assigned at birth or in emergency situations.";
-            case NICKNAME: return "A name that is used to address the person in an informal manner, but is not part of their formal or usual name";
-            case ANONYMOUS: return "Anonymous assigned name, alias, or pseudonym (used to protect a person's identity for privacy reasons)";
-            case OLD: return "This name is no longer in use (or was never correct, but retained for records)";
-            case MAIDEN: return "A name used prior to changing name because of marriage. This name use is for use by applications that collect and store names that were used prior to a marriage. Marriage naming customs vary greatly around the world, and are constantly changing. This term is not gender specific. The use of this term does not imply any particular history for a person's name";
+            case NICKNAME: return "A name that is used to address the person in an informal manner, but is not part of their formal or usual name.";
+            case ANONYMOUS: return "Anonymous assigned name, alias, or pseudonym (used to protect a person's identity for privacy reasons).";
+            case OLD: return "This name is no longer in use (or was never correct, but retained for records).";
+            case MAIDEN: return "A name used prior to changing name because of marriage. This name use is for use by applications that collect and store names that were used prior to a marriage. Marriage naming customs vary greatly around the world, and are constantly changing. This term is not gender specific. The use of this term does not imply any particular history for a person's name.";
             default: return "?";
           }
         }
@@ -228,10 +228,10 @@ public class HumanName extends Type implements ICompositeType {
     protected Enumeration<NameUse> use;
 
     /**
-     * A full text representation of the name.
+     * Specifies the entire name as it should be displayed e.g. on an application UI. This may be provided instead of or as well as the specific parts.
      */
     @Child(name = "text", type = {StringType.class}, order=1, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Text representation of the full name", formalDefinition="A full text representation of the name." )
+    @Description(shortDefinition="Text representation of the full name", formalDefinition="Specifies the entire name as it should be displayed e.g. on an application UI. This may be provided instead of or as well as the specific parts." )
     protected StringType text;
 
     /**
@@ -328,7 +328,7 @@ public class HumanName extends Type implements ICompositeType {
     }
 
     /**
-     * @return {@link #text} (A full text representation of the name.). This is the underlying object with id, value and extensions. The accessor "getText" gives direct access to the value
+     * @return {@link #text} (Specifies the entire name as it should be displayed e.g. on an application UI. This may be provided instead of or as well as the specific parts.). This is the underlying object with id, value and extensions. The accessor "getText" gives direct access to the value
      */
     public StringType getTextElement() { 
       if (this.text == null)
@@ -348,7 +348,7 @@ public class HumanName extends Type implements ICompositeType {
     }
 
     /**
-     * @param value {@link #text} (A full text representation of the name.). This is the underlying object with id, value and extensions. The accessor "getText" gives direct access to the value
+     * @param value {@link #text} (Specifies the entire name as it should be displayed e.g. on an application UI. This may be provided instead of or as well as the specific parts.). This is the underlying object with id, value and extensions. The accessor "getText" gives direct access to the value
      */
     public HumanName setTextElement(StringType value) { 
       this.text = value;
@@ -356,14 +356,14 @@ public class HumanName extends Type implements ICompositeType {
     }
 
     /**
-     * @return A full text representation of the name.
+     * @return Specifies the entire name as it should be displayed e.g. on an application UI. This may be provided instead of or as well as the specific parts.
      */
     public String getText() { 
       return this.text == null ? null : this.text.getValue();
     }
 
     /**
-     * @param value A full text representation of the name.
+     * @param value Specifies the entire name as it should be displayed e.g. on an application UI. This may be provided instead of or as well as the specific parts.
      */
     public HumanName setText(String value) { 
       if (Utilities.noString(value))
@@ -481,7 +481,7 @@ public class HumanName extends Type implements ICompositeType {
       if (this.given == null)
         return false;
       for (StringType v : this.given)
-        if (v.equals(value)) // string
+        if (v.getValue().equals(value)) // string
           return true;
       return false;
     }
@@ -542,7 +542,7 @@ public class HumanName extends Type implements ICompositeType {
       if (this.prefix == null)
         return false;
       for (StringType v : this.prefix)
-        if (v.equals(value)) // string
+        if (v.getValue().equals(value)) // string
           return true;
       return false;
     }
@@ -603,7 +603,7 @@ public class HumanName extends Type implements ICompositeType {
       if (this.suffix == null)
         return false;
       for (StringType v : this.suffix)
-        if (v.equals(value)) // string
+        if (v.getValue().equals(value)) // string
           return true;
       return false;
     }
@@ -701,7 +701,7 @@ public class HumanName extends Type implements ICompositeType {
       protected void listChildren(List<Property> children) {
         super.listChildren(children);
         children.add(new Property("use", "code", "Identifies the purpose for this name.", 0, 1, use));
-        children.add(new Property("text", "string", "A full text representation of the name.", 0, 1, text));
+        children.add(new Property("text", "string", "Specifies the entire name as it should be displayed e.g. on an application UI. This may be provided instead of or as well as the specific parts.", 0, 1, text));
         children.add(new Property("family", "string", "The part of a name that links to the genealogy. In some cultures (e.g. Eritrea) the family name of a son is the first name of his father.", 0, 1, family));
         children.add(new Property("given", "string", "Given name.", 0, java.lang.Integer.MAX_VALUE, given));
         children.add(new Property("prefix", "string", "Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the start of the name.", 0, java.lang.Integer.MAX_VALUE, prefix));
@@ -713,7 +713,7 @@ public class HumanName extends Type implements ICompositeType {
       public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
         switch (_hash) {
         case 116103: /*use*/  return new Property("use", "code", "Identifies the purpose for this name.", 0, 1, use);
-        case 3556653: /*text*/  return new Property("text", "string", "A full text representation of the name.", 0, 1, text);
+        case 3556653: /*text*/  return new Property("text", "string", "Specifies the entire name as it should be displayed e.g. on an application UI. This may be provided instead of or as well as the specific parts.", 0, 1, text);
         case -1281860764: /*family*/  return new Property("family", "string", "The part of a name that links to the genealogy. In some cultures (e.g. Eritrea) the family name of a son is the first name of his father.", 0, 1, family);
         case 98367357: /*given*/  return new Property("given", "string", "Given name.", 0, java.lang.Integer.MAX_VALUE, given);
         case -980110702: /*prefix*/  return new Property("prefix", "string", "Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the start of the name.", 0, java.lang.Integer.MAX_VALUE, prefix);
@@ -884,24 +884,24 @@ public class HumanName extends Type implements ICompositeType {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof HumanName))
+        if (!(other_ instanceof HumanName))
           return false;
-        HumanName o = (HumanName) other;
+        HumanName o = (HumanName) other_;
         return compareDeep(use, o.use, true) && compareDeep(text, o.text, true) && compareDeep(family, o.family, true)
            && compareDeep(given, o.given, true) && compareDeep(prefix, o.prefix, true) && compareDeep(suffix, o.suffix, true)
            && compareDeep(period, o.period, true);
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof HumanName))
+        if (!(other_ instanceof HumanName))
           return false;
-        HumanName o = (HumanName) other;
+        HumanName o = (HumanName) other_;
         return compareValues(use, o.use, true) && compareValues(text, o.text, true) && compareValues(family, o.family, true)
            && compareValues(given, o.given, true) && compareValues(prefix, o.prefix, true) && compareValues(suffix, o.suffix, true)
           ;

@@ -1,6 +1,6 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
-<a name="why"> </a>
+<a name="why"></a>
 <h2>Why not custom resources?</h2>
 <p>
 Technically, nothing prevents implementers from going off and defining their own resources containing
@@ -43,7 +43,7 @@ handling custom resource requirements in a safe manner may be explored.  Ideas a
 strategies for managing this issue are welcome.
 </p>
 
-<a name="docs"> </a>
+<a name="docs"></a>
 <h2>Documents and narrative-only resources</h2>
 <p>
 Documents are constructed of sections, where a key part of each section is the narrative.  The narratives
@@ -63,7 +63,7 @@ fully encode pieces of the free-form narrative found in the Basic resource.  If 
 for the meaning of the content, extensions can also be used.
 </p>
 
-<a name="bp"> </a>
+<a name="bp"></a>
 <h2>Best practices for using 'Basic'</h2>
 <p>
 There are several good practices to follow when making use of the Basic resource:
@@ -90,18 +90,18 @@ There are several good practices to follow when making use of the Basic resource
   your use-case.</li>
   
   <li>Use a <a href="structuredefinition.html">StructureDefinition</a> to define the extensions relevant to each type of other resource used.
-  Profile can also be used to define additional search criteria appropriate for the resource.</li>
+  Profiles can also be used to define additional search criteria appropriate for the resource.</li>
   
   <li>When defining a profile on Basic, include mappings to the w5 categories to allow systems to easily manage 
   <a href="auditevent.html">AuditEvent</a> and <a href="provenance.html">Provenance</a> uses as well as other potential
   higher-level abstractions of the data.</li>
   
-  <li>As well, profiles should consider how best to handle common notions such as "Entered in error" status and alignment
+  <li>As well, profiles should consider how best to handle common notions such as "entered in error" status and alignment
   with common practices within similar resource families (other request resources, medication-related resources), etc.
   </li>
 </ol>
 
-<a name="ref"> </a>
+<a name="ref"></a>
 <h2>Referencing Basic resources</h2>
 <p>
 None of the standard resources will have direct references to Basic, aside from those that allow linking to

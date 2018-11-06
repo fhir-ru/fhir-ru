@@ -21,6 +21,10 @@
     <display value="Eggs (edible)"/>
     <display value="Eggs (edible) (substance)"/>
   </concept>
+  <concept id="102409004" display="Second hand cigarette smoke">
+    <display value="Second hand cigarette smoke"/>
+    <display value="Second hand cigarette smoke (substance)"/>
+  </concept>
   <concept id="10261003" display="Belgium landrace pig">
     <display value="Belgium landrace pig"/>
     <display value="Belgium landrace pig (organism)"/>
@@ -86,6 +90,11 @@
     <display value="Araucana chicken (organism)"/>
     <display value="Araucana chicken"/>
   </concept>
+  <concept id="108252007" display="Laboratory procedure">
+    <display value="Laboratory procedure"/>
+    <display value="Laboratory procedure (procedure)"/>
+    <display value="Laboratory procedures"/>
+  </concept>
   <concept id="10828004" display="Positive">
     <display value="Positive"/>
     <display value="Positive for"/>
@@ -108,6 +117,11 @@
   <concept id="1118004" display="Viking horse">
     <display value="Viking horse"/>
     <display value="Viking horse (organism)"/>
+  </concept>
+  <concept id="112144000" display="Blood group A">
+    <display value="Blood group A"/>
+    <display value="Group A - blood"/>
+    <display value="Blood group A (finding)"/>
   </concept>
   <concept id="112485003" display="Gujarati cattle">
     <display value="Gujarati cattle breed (organism)"/>
@@ -480,6 +494,12 @@
     <display value="Clydesdale horse"/>
     <display value="Clydesdale horse (organism)"/>
   </concept>
+  <concept id="1250004" display="Decreased">
+    <display value="Decreased"/>
+    <display value="Diminished"/>
+    <display value="Decreased by"/>
+    <display value="Decreased (qualifier value)"/>
+  </concept>
   <concept id="125074003" display="Hereford cattle">
     <display value="Hereford cattle"/>
     <display value="Hereford cattle superbreed (organism)"/>
@@ -594,6 +614,23 @@
   <concept id="129300006" display="Puncture - action">
     <display value="Puncture - action"/>
     <display value="Puncture - action (qualifier value)"/>
+  </concept>
+  <concept id="129304002" display="Excision - action">
+    <display value="Excision - action"/>
+    <display value="Excision - action (qualifier value)"/>
+  </concept>
+  <concept id="129314006" display="Biopsy - action">
+    <display value="Biopsy - action"/>
+    <display value="Biopsy - action (qualifier value)"/>
+    <display value="BX - Biopsy"/>
+  </concept>
+  <concept id="129316008" display="Aspiration - action">
+    <display value="Aspiration - action"/>
+    <display value="Aspiration - action (qualifier value)"/>
+  </concept>
+  <concept id="129323009" display="Scraping - action">
+    <display value="Scraping - action"/>
+    <display value="Scraping - action (qualifier value)"/>
   </concept>
   <concept id="129472003" display="Alemtuzumab">
     <display value="Alemtuzumab"/>
@@ -10850,6 +10887,14 @@
     <display value="Nasal fluid sample"/>
     <display value="Nasal fluid sample (specimen)"/>
   </concept>
+  <concept id="16857009" display="Per vagina">
+    <display value="Per vagina"/>
+    <display value="Vaginal route"/>
+    <display value="Vaginal use"/>
+    <display value="Per vagina (route)"/>
+    <display value="Vaginal route (qualifier value)"/>
+    <display value="A route that begins in the vagina."/>
+  </concept>
   <concept id="169068008" display="CT of neck">
     <display value="CT of neck"/>
     <display value="Computed tomography of neck (procedure)"/>
@@ -10956,6 +11001,14 @@
     <display value="Review of medication"/>
     <display value="Review of medication (procedure)"/>
   </concept>
+  <concept id="182888003" display="Medication requested">
+    <display value="Medication requested"/>
+    <display value="Medication requested (situation)"/>
+  </concept>
+  <concept id="182895007" display="Drug declined by patient">
+    <display value="Drug declined by patient"/>
+    <display value="Drug declined by patient (situation)"/>
+  </concept>
   <concept id="182922004" display="Dietary regime">
     <display value="Dietary regime"/>
     <display value="Dietary regime (regime/therapy)"/>
@@ -11010,6 +11063,13 @@
   <concept id="190753003" display="Sucrose intolerance">
     <display value="Sucrose intolerance"/>
     <display value="Sucrose intolerance (disorder)"/>
+  </concept>
+  <concept id="191788006" display="Feminism in boy">
+    <display value="Feminism in boy"/>
+    <display value="Feminism in boy (finding)"/>
+    <display value="Femininity in a boy"/>
+    <display value="Effeminacy in boy"/>
+    <display value="Behavioral characteristics of a boy which are considered typical of the gender role of a female."/>
   </concept>
   <concept id="19356005" display="Hunter horse">
     <display value="Hunter horse"/>
@@ -11140,6 +11200,12 @@
     <display value="Health profession"/>
     <display value="Healthcare professional (occupation)"/>
   </concept>
+  <concept id="224363007" display="In work">
+    <display value="In work"/>
+    <display value="In employment"/>
+    <display value="Employed"/>
+    <display value="Employed (finding)"/>
+  </concept>
   <concept id="224542009" display="Coronary care nurse">
     <display value="Coronary care nurse"/>
     <display value="CCU - Coronary care nurse"/>
@@ -11160,6 +11226,10 @@
   <concept id="225109005" display="Collection of nephrostomy urine specimen">
     <display value="Collection of nephrostomy urine specimen"/>
     <display value="Collection of nephrostomy urine specimen (procedure)"/>
+  </concept>
+  <concept id="225113003" display="Timed urine collection">
+    <display value="Timed urine collection"/>
+    <display value="Timed urine collection (procedure)"/>
   </concept>
   <concept id="225164002" display="Removal of ligature">
     <display value="Removal of ligature"/>
@@ -11374,9 +11444,29 @@
     <display value="Drug not available for administration"/>
     <display value="Drug not available for administration (event)"/>
   </concept>
+  <concept id="243144002" display="Patient triggered inspiratory assistance">
+    <display value="Patient triggered inspiratory assistance"/>
+    <display value="IPPB - Intermittent positive pressure breathing"/>
+    <display value="Inspiratory assist"/>
+    <display value="Pressure support"/>
+    <display value="Intermittent positive pressure breathing"/>
+    <display value="Patient triggered inspiratory assistance (procedure)"/>
+  </concept>
+  <concept id="243150007" display="Assisted controlled mandatory ventilation">
+    <display value="Assisted controlled mandatory ventilation"/>
+    <display value="Triggered ventilation"/>
+    <display value="Assist control"/>
+    <display value="Assisted controlled mandatory ventilation (procedure)"/>
+  </concept>
   <concept id="24319000" display="Boar power pig 414">
     <display value="Boar power pig 414"/>
     <display value="Boar power pig 414 (organism)"/>
+  </concept>
+  <concept id="243796009" display="Context-dependent categories">
+    <display value="Context-dependent categories"/>
+    <display value="Context-dependent category"/>
+    <display value="Situation with explicit context (situation)"/>
+    <display value="Situation with explicit context"/>
   </concept>
   <concept id="24438005" display="Pekin duck">
     <display value="Pekin duck"/>
@@ -11439,6 +11529,10 @@
     <display value="Apgar color score"/>
     <display value="Apgar colour score"/>
     <display value="Apgar color score (observable entity)"/>
+  </concept>
+  <concept id="249497008" display="Vomiting symptom">
+    <display value="Vomiting symptom (finding)"/>
+    <display value="Vomiting symptom"/>
   </concept>
   <concept id="249943000:363698007=72098002,260868000=6934004" display="Weakness of distal arms and legs where Finding site = Left arm, and Permanence = Permanent"/>
   <concept id="25062003" display="Feeding tube">
@@ -11826,6 +11920,11 @@
     <display value="Dysmenorrhea (disorder)"/>
     <display value="Menorrhalgia"/>
   </concept>
+  <concept id="2667000" display="Absent">
+    <display value="Absent"/>
+    <display value="Absence of"/>
+    <display value="Absent (qualifier value)"/>
+  </concept>
   <concept id="266710000" display="Drugs not taken/completed">
     <display value="Drugs not taken/completed"/>
     <display value="Drugs not taken/completed (situation)"/>
@@ -11876,6 +11975,11 @@
     <display value="Urinalysis"/>
     <display value="Urinalysis procedure"/>
     <display value="Urinalysis (procedure)"/>
+  </concept>
+  <concept id="272379006" display="Events">
+    <display value="Events"/>
+    <display value="Event"/>
+    <display value="Event (event)"/>
   </concept>
   <concept id="272394005" display="Technique">
     <display value="Technique"/>
@@ -12041,6 +12145,11 @@
   <concept id="28647000" display="Meat">
     <display value="Meat"/>
     <display value="Meat (substance)"/>
+  </concept>
+  <concept id="286812008" display="PCV - Pressure controlled ventilation">
+    <display value="PCV - Pressure controlled ventilation"/>
+    <display value="Pressure controlled ventilation"/>
+    <display value="Pressure controlled ventilation (procedure)"/>
   </concept>
   <concept id="28744004" display="Black Welsh cattle">
     <display value="Black Welsh cattle breed (organism)"/>
@@ -12478,6 +12587,11 @@
     <display value="Kentucky red berkshire pig"/>
     <display value="Kentucky red berkshire pig (organism)"/>
   </concept>
+  <concept id="33586001" display="Sitting position">
+    <display value="Sitting position"/>
+    <display value="Sitting"/>
+    <display value="Sitting position (finding)"/>
+  </concept>
   <concept id="33607002" display="Buttercup chicken">
     <display value="Buttercup chicken"/>
     <display value="Buttercup chicken (organism)"/>
@@ -12780,6 +12894,10 @@
     <display value="Hospital-based outpatient paediatric clinic"/>
     <display value="Hospital-based outpatient pediatric clinic (environment)"/>
   </concept>
+  <concept id="373066001" display="Yes">
+    <display value="Yes (qualifier value)"/>
+    <display value="Yes"/>
+  </concept>
   <concept id="373147003" display="Medication not administered because contraindicated">
     <display value="Medication not administered because contraindicated"/>
     <display value="Administration of medication not done due to contraindication (situation)"/>
@@ -12893,6 +13011,10 @@
     <display value="Clinical evaluation"/>
     <display value="Determination of a value, conclusion, or inference by evaluating evidence"/>
   </concept>
+  <concept id="386089008" display="Collection of coughed sputum">
+    <display value="Collection of coughed sputum (procedure)"/>
+    <display value="Collection of coughed sputum"/>
+  </concept>
   <concept id="386144009" display="Line insertion site">
     <display value="Line insertion site (morphologic abnormality)"/>
     <display value="Line insertion site"/>
@@ -12981,6 +13103,12 @@
     <display value="Kingdom Animalia"/>
     <display value="Animal"/>
     <display value="Animals"/>
+  </concept>
+  <concept id="388393002" display="Genus Sus">
+    <display value="Genus Sus (organism)"/>
+    <display value="Genus Sus"/>
+    <display value="Pig"/>
+    <display value="Swine genus"/>
   </concept>
   <concept id="388445009" display="Genus Equus">
     <display value="Genus Equus (organism)"/>
@@ -13476,6 +13604,16 @@
     <display value="Refusal to take medication"/>
     <display value="Medication refused (situation)"/>
   </concept>
+  <concept id="40617009" display="Artificial respiration">
+    <display value="Artificial respiration"/>
+    <display value="Mechanical ventilation"/>
+    <display value="Artificial ventilation"/>
+    <display value="Mechanically assisted breathing"/>
+    <display value="Respiratory assist, mechanical"/>
+    <display value="Mechanically assisted ventilation"/>
+    <display value="Artificial respiration (procedure)"/>
+    <display value="An assistance of respiration"/>
+  </concept>
   <concept id="406466009" display="House dust allergen">
     <display value="House dust allergen (substance)"/>
     <display value="House dust allergen"/>
@@ -13758,6 +13896,19 @@
     <display value="Assess physical therapist service"/>
     <display value="Physical therapy assessment (procedure)"/>
   </concept>
+  <concept id="410211008" display="Tracheostomy care assessment">
+    <display value="Tracheostomy care assessment"/>
+    <display value="Assess tracheostomy care"/>
+    <display value="Tracheostomy care assessment (procedure)"/>
+  </concept>
+  <concept id="410606002" display="Social service procedure">
+    <display value="Social service procedure (procedure)"/>
+    <display value="Social service procedure"/>
+  </concept>
+  <concept id="410684002" display="Drug therapy status">
+    <display value="Drug therapy status"/>
+    <display value="Drug therapy status (situation)"/>
+  </concept>
   <concept id="41092008" display="Cleveland bay horse">
     <display value="Cleveland bay horse"/>
     <display value="Cleveland bay horse (organism)"/>
@@ -13889,6 +14040,11 @@
   <concept id="41754002" display="Lipizzaner horse">
     <display value="Lipizzaner horse"/>
     <display value="Lipizzaner horse (organism)"/>
+  </concept>
+  <concept id="417924000" display="Apply">
+    <display value="Apply"/>
+    <display value="Apply - dosing instruction imperative (qualifier value)"/>
+    <display value="Apply - dosing instruction imperative"/>
   </concept>
   <concept id="418002000" display="Pediatric oncology">
     <display value="Pediatric oncology (qualifier value)"/>
@@ -14055,6 +14211,11 @@
   <concept id="421026006" display="Oral tablet">
     <display value="Oral tablet"/>
     <display value="Oral tablet (qualifier value)"/>
+  </concept>
+  <concept id="421257003" display="Insert">
+    <display value="Insert - dosing instruction imperative (qualifier value)"/>
+    <display value="Insert"/>
+    <display value="Insert - dosing instruction imperative"/>
   </concept>
   <concept id="421521009" display="Swallow">
     <display value="Swallow - dosing instruction imperative (qualifier value)"/>
@@ -14242,6 +14403,10 @@
   <concept id="434711009" display="Specimen container">
     <display value="Specimen container (physical object)"/>
     <display value="Specimen container"/>
+  </concept>
+  <concept id="43478001" display="Abdominal tenderness">
+    <display value="Abdominal tenderness"/>
+    <display value="Abdominal tenderness (finding)"/>
   </concept>
   <concept id="43500007" display="Boar power pig 454">
     <display value="Boar power pig 454"/>
@@ -14770,6 +14935,14 @@
     <display value="Post-traumatic stress disorder"/>
     <display value="Posttraumatic stress disorder (disorder)"/>
   </concept>
+  <concept id="47545007" display="Continuous positive airway pressure ventilation treatment">
+    <display value="Continuous positive airway pressure ventilation treatment"/>
+    <display value="CPAP treatment"/>
+    <display value="CPAP - Continuous positive airways pressure"/>
+    <display value="CPAP - Continuous positive airways pressure therapy"/>
+    <display value="Continuous positive airways pressure therapy"/>
+    <display value="Continuous positive airway pressure ventilation treatment (regime/therapy)"/>
+  </concept>
   <concept id="47625008" display="Intravenous route">
     <display value="Intravenous route"/>
     <display value="Intravenous route (qualifier value)"/>
@@ -15148,6 +15321,14 @@
     <display value="Traveler&#39;s aid clinic"/>
     <display value="Traveler&#39;s aid clinic (environment)"/>
   </concept>
+  <concept id="59427005" display="Synchronized intermittent mandatory ventilation">
+    <display value="Synchronized intermittent mandatory ventilation"/>
+    <display value="SIMV therapy"/>
+    <display value="Synchronized intermittent mandatory ventilation"/>
+    <display value="Synchronized intermittent mandatory ventilation (procedure)"/>
+    <display value="SIMV - Synchronized intermittent mandatory ventilation"/>
+    <display value="SIMV - Synchronized intermittent mandatory ventilation"/>
+  </concept>
   <concept id="59573005" display="Potassium measurement">
     <display value="Potassium measurement"/>
     <display value="Potassium measurement (procedure)"/>
@@ -15173,6 +15354,12 @@
     <display value="DK pig 33"/>
     <display value="Dekalb hybrid pig line 33 (organism)"/>
     <display value="Dekalb hybrid pig line 33"/>
+  </concept>
+  <concept id="6064005" display="Topical route">
+    <display value="Topical route"/>
+    <display value="Topical route (qualifier value)"/>
+    <display value="Topical use"/>
+    <display value="A route that begins on the surface of the body."/>
   </concept>
   <concept id="6073002" display="Ligament of left superior vena cava">
     <display value="Ligament of left superior vena cava"/>
@@ -15317,6 +15504,15 @@
     <display value="Gastric antrum"/>
     <display value="Pyloric antrum structure"/>
     <display value="Pyloric antrum structure (body structure)"/>
+  </concept>
+  <concept id="66071002" display="Type B viral hepatitis">
+    <display value="Type B viral hepatitis"/>
+    <display value="Serum hepatitis"/>
+    <display value="Hepatitis B"/>
+    <display value="SH - Serum hepatitis"/>
+    <display value="Hepatitis B infection"/>
+    <display value="Viral hepatitis type B"/>
+    <display value="Viral hepatitis type B (disorder)"/>
   </concept>
   <concept id="66168008" display="Hanoverian horse">
     <display value="Hanoverian horse"/>
@@ -15481,6 +15677,14 @@
     <display value="Eating/Drinking assistive device"/>
     <display value="Eating/Drinking assistive device (physical object)"/>
   </concept>
+  <concept id="70777001" display="Urine specimen collection, catheterized">
+    <display value="Urine specimen collection, catheterized"/>
+    <display value="CSU - Collection of catheter specimen of urine"/>
+    <display value="Collecting catheter specimen of urine"/>
+    <display value="Collection of catheter specimen of urine"/>
+    <display value="Urine specimen collection, catheterised"/>
+    <display value="Urine specimen collection, catheterized (procedure)"/>
+  </concept>
   <concept id="70881005" display="Anser anser anser">
     <display value="Anser anser anser"/>
     <display value="Greylag goose"/>
@@ -15584,6 +15788,15 @@
     <display value="Diabetes mellitus"/>
     <display value="DM - Diabetes mellitus"/>
     <display value="Diabetes mellitus (disorder)"/>
+  </concept>
+  <concept id="73416001" display="Urine specimen collection, clean catch">
+    <display value="Urine specimen collection, clean catch"/>
+    <display value="Collection of clean catch urine specimen"/>
+    <display value="Urine specimen collection, clean catch (procedure)"/>
+  </concept>
+  <concept id="734163000" display="Care plan">
+    <display value="Care plan (record artifact)"/>
+    <display value="Care plan"/>
   </concept>
   <concept id="73644007" display="Hospital-based outpatient endocrinology clinic">
     <display value="Hospital-based outpatient endocrinology clinic"/>
@@ -15708,6 +15921,11 @@
   <concept id="77068002" display="Cholesterol measurement">
     <display value="Cholesterol measurement"/>
     <display value="Cholesterol measurement (procedure)"/>
+  </concept>
+  <concept id="77176002" display="Smoker">
+    <display value="Smoker"/>
+    <display value="Current smoker"/>
+    <display value="Smoker (finding)"/>
   </concept>
   <concept id="77236002" display="Large white pig">
     <display value="Large white pig"/>
@@ -15901,6 +16119,10 @@
   <concept id="82249009" display="California chicken">
     <display value="California chicken"/>
     <display value="California chicken (organism)"/>
+  </concept>
+  <concept id="82423001" display="Chronic pain">
+    <display value="Chronic pain"/>
+    <display value="Chronic pain (finding)"/>
   </concept>
   <concept id="82440005" display="Hampshire Down sheep">
     <display value="Hampshire Down sheep"/>
@@ -16134,6 +16356,10 @@
   <concept id="900000000000003001" display="Fully specified name">
     <display value="Fully specified name"/>
     <display value="Fully specified name (core metadata concept)"/>
+  </concept>
+  <concept id="900000000000013009" display="Synonym">
+    <display value="Synonym (core metadata concept)"/>
+    <display value="Synonym"/>
   </concept>
   <concept id="900000000000446008" display="Description type">
     <display value="Description type (core metadata concept)"/>

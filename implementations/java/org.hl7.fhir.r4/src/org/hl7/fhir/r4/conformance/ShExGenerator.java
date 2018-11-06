@@ -11,6 +11,7 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
+import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.r4.context.IWorkerContext;
 import org.hl7.fhir.r4.elementmodel.TurtleParser;
 import org.hl7.fhir.r4.model.DomainResource;
@@ -24,7 +25,6 @@ import org.hl7.fhir.r4.model.UriType;
 import org.hl7.fhir.r4.model.ValueSet;
 import org.hl7.fhir.r4.terminologies.ValueSetExpander;
 import org.hl7.fhir.r4.utils.ToolingExtensions;
-import org.hl7.fhir.exceptions.FHIRException;
 import org.stringtemplate.v4.ST;
 
 public class ShExGenerator {
@@ -388,7 +388,7 @@ public class ShExGenerator {
       for (String dt : new HashSet<String>(datatypes)) {
         if (!emittedDatatypes.contains(dt)) {
           StructureDefinition sd = context.fetchResource(StructureDefinition.class,
-                  "http://hl7.org/fhir/StructureDefinition/" + dt);
+              ProfileUtilities.sdNs(dt, null));
           // TODO: Figure out why the line below doesn't work
           // if (sd != null && !uniq_structures.contains(sd))
           if(sd != null && !uniq_structure_urls.contains(sd.getUrl()))
@@ -722,10 +722,10 @@ public class ShExGenerator {
   private String getTypeName(ElementDefinition.TypeRefComponent typ) {
     // TODO: This is brittle. There has to be a utility to do this...
     if (typ.hasTargetProfile()) {
-      String[] els = typ.getTargetProfile().split("/");
+      String[] els = typ.getTargetProfile().get(0).getValue().split("/");
       return els[els.length - 1];
     } else if (typ.hasProfile()) {
-      String[] els = typ.getProfile().split("/");
+      String[] els = typ.getProfile().get(0).getValue().split("/");
       return els[els.length - 1];
     } else {
       return typ.getCode();
@@ -748,23 +748,11 @@ public class ShExGenerator {
 
 
   // TODO: find a utility that implements this
-  private ValueSet resolveBindingReference(DomainResource ctxt, Type reference) {
-    if (reference instanceof UriType) {
-      return context.fetchResource(ValueSet.class, ((UriType) reference).getValue().toString());
-    }
-    else if (reference instanceof Reference) {
-      String s = ((Reference) reference).getReference();
-      if (s.startsWith("#")) {
-        for (Resource c : ctxt.getContained()) {
-          if (c.getId().equals(s.substring(1)) && (c instanceof ValueSet))
-            return (ValueSet) c;
-        }
-        return null;
-      } else {
-        return context.fetchResource(ValueSet.class, ((Reference) reference).getReference());
-      }
-    }
-    else
+  private ValueSet resolveBindingReference(DomainResource ctxt, String reference) {
+    try {
+      return context.fetchResource(ValueSet.class, reference);
+    } catch (Throwable e) {
       return null;
+    }
   }
 }

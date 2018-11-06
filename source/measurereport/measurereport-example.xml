@@ -5,6 +5,9 @@
     <status value="generated" />
     <div xmlns="http://www.w3.org/1999/xhtml">[Put rendering here]</div>
   </text>
+  <status value="complete"/>
+  <type value="individual"/>
+  <measure value="Measure/measure-cms146-example"/>
 
   <!-- insert contents here -->
   

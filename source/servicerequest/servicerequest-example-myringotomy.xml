@@ -5,9 +5,6 @@
 		<system value="http://orionhealth.com/fhir/apps/referralids"/>
 		<value value="ret4421"/>
 	</identifier>
-	<definition>
-		<display value="Protocol for insertion of tympanic ventilation tube"/>
-	</definition>
 	<basedOn>
 		<display value="ServiceRequest for Myringotomy and insertion of tympanic ventilation tube"/>
 	</basedOn>
@@ -19,14 +16,14 @@
 	</requisition>
 	<status value="active"/>
 	<intent value="order"/>
+  <category>
+    <coding>
+      <system value="http://snomed.info/sct"/>
+      <code value="103696004"/>
+      <display value="Patient referral to specialist"/>
+    </coding>
+  </category>
 	<priority value="routine"/>
-	<category>
-		<coding>
-			<system value="http://snomed.info/sct"/>
-			<code value="103696004"/>
-			<display value="Patient referral to specialist"/>
-		</coding>
-	</category>
 	<code>
 		<coding>
 			<system value="http://snomed.info/sct"/>
@@ -39,18 +36,16 @@
 		<reference value="https://fhir.orionhealth.com/blaze/fhir/Patient/77662"/>
 		<display value="Beverly Weaver"/>
 	</subject>
-	<context>
+	<encounter>
 		<display value="Beverly Waver's encounter on 2014-02-14"/>
-	</context>
+	</encounter>
 	<occurrencePeriod>
 		<end value="2014-03-14"/>
 	</occurrencePeriod>
 	<authoredOn value="2014-02-14"/>
 	<requester>
-		<agent>
 			<reference value="https://fhir.orionhealth.com/blaze/fhir/Practitioner/77272"/>
 			<display value="Serena Shrink"/>
-		</agent>
 	</requester>
 	<performerType>
 		<coding>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <CarePlan xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/CarePlan.xsd">
   <id value="example"/>
   <text>
@@ -10,8 +10,19 @@
   <contained>
     <Condition>
       <id value="p1"/>
-      <clinicalStatus value="active"/>
-	  <verificationStatus value="confirmed"/>
+      <clinicalStatus>
+		<coding>
+		  <system value="http://terminology.hl7.org/CodeSystem/condition-clinical"/>
+		  <code value="active"/>
+		</coding>
+	  </clinicalStatus>
+
+	  <verificationStatus>
+		<coding>
+		  <system value="http://terminology.hl7.org/CodeSystem/condition-ver-status"/>
+		  <code value="confirmed"/>
+		</coding>
+	  </verificationStatus>
       <code>
         <text value="Obesity"/>
       </code>
@@ -24,9 +35,7 @@
 	<identifier>
 		<value value="12345" />
 	</identifier>
-	<definition>
-		<display value="A PlanDefinition protocol for obesity" />
-	</definition>
+	<instantiatesUri value="http://example.org/protocol-for-obesity"/> 
 	<basedOn>
 		<display value="Management of Type 2 Diabetes" />
 	</basedOn>
@@ -46,12 +55,13 @@
 		<reference value="Patient/example"/>
 		<display value="Peter James Chalmers"/>
 	</subject>
-	<context>
+	<encounter>
 		<reference value="Encounter/home" />
-	</context>
+	</encounter>
 	<period>
 		<end value="2017-06-01"/>
 	</period>
+	<created value="2016-01-01"/>
 	<author>
 		<reference value="Practitioner/example" />
 		<display value="Dr Adam Careful" />
@@ -94,8 +104,10 @@
 			</coding>
 		</code>
 		<status value="completed"/>
-		<statusReason value="Achieved weight loss to mitigate diabetes risk." />
-		<prohibited value="false"/>
+		<statusReason>
+			<text value="Achieved weight loss to mitigate diabetes risk." />
+		</statusReason>
+		<doNotPerform value="false"/>
 		<scheduledTiming>
 			<repeat>
 				<frequency value="1"/>

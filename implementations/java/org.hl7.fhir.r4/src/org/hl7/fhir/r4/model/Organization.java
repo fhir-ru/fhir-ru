@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Fri, Aug 11, 2017 07:23+1000 for FHIR v3.1.0
+// Generated on Mon, Nov 5, 2018 09:03+1100 for FHIR v3.6.0
 
 import java.util.*;
 
@@ -43,9 +43,9 @@ import ca.uhn.fhir.model.api.annotation.Block;
 import org.hl7.fhir.instance.model.api.*;
 import org.hl7.fhir.exceptions.FHIRException;
 /**
- * A formally or informally recognized grouping of people or organizations formed for the purpose of achieving some form of collective action.  Includes companies, institutions, corporations, departments, community groups, healthcare practice groups, etc.
+ * A formally or informally recognized grouping of people or organizations formed for the purpose of achieving some form of collective action.  Includes companies, institutions, corporations, departments, community groups, healthcare practice groups, payer/insurer, etc.
  */
-@ResourceDef(name="Organization", profile="http://hl7.org/fhir/Profile/Organization")
+@ResourceDef(name="Organization", profile="http://hl7.org/fhir/StructureDefinition/Organization")
 public class Organization extends DomainResource {
 
     @Block()
@@ -340,23 +340,23 @@ public class Organization extends DomainResource {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof OrganizationContactComponent))
+        if (!(other_ instanceof OrganizationContactComponent))
           return false;
-        OrganizationContactComponent o = (OrganizationContactComponent) other;
+        OrganizationContactComponent o = (OrganizationContactComponent) other_;
         return compareDeep(purpose, o.purpose, true) && compareDeep(name, o.name, true) && compareDeep(telecom, o.telecom, true)
            && compareDeep(address, o.address, true);
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof OrganizationContactComponent))
+        if (!(other_ instanceof OrganizationContactComponent))
           return false;
-        OrganizationContactComponent o = (OrganizationContactComponent) other;
+        OrganizationContactComponent o = (OrganizationContactComponent) other_;
         return true;
       }
 
@@ -402,10 +402,10 @@ public class Organization extends DomainResource {
     protected StringType name;
 
     /**
-     * A list of alternate names that the organization is known as, or was known as in the past.
+     * A list of alternate names that the organization is known as, or was known as in the past.
      */
     @Child(name = "alias", type = {StringType.class}, order=4, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
-    @Description(shortDefinition="A list of alternate names that the organization is known as, or was known as in the past", formalDefinition="A list of alternate names that the organization is known as, or was known as in the past." )
+    @Description(shortDefinition="A list of alternate names that the organization is known as, or was known as in the past", formalDefinition="A list of alternate names that the organization is known as, or was known as in the past." )
     protected List<StringType> alias;
 
     /**
@@ -663,7 +663,7 @@ public class Organization extends DomainResource {
     }
 
     /**
-     * @return {@link #alias} (A list of alternate names that the organization is known as, or was known as in the past.)
+     * @return {@link #alias} (A list of alternate names that the organization is known as, or was known as in the past.)
      */
     public List<StringType> getAlias() { 
       if (this.alias == null)
@@ -689,7 +689,7 @@ public class Organization extends DomainResource {
     }
 
     /**
-     * @return {@link #alias} (A list of alternate names that the organization is known as, or was known as in the past.)
+     * @return {@link #alias} (A list of alternate names that the organization is known as, or was known as in the past.)
      */
     public StringType addAliasElement() {//2 
       StringType t = new StringType();
@@ -700,7 +700,7 @@ public class Organization extends DomainResource {
     }
 
     /**
-     * @param value {@link #alias} (A list of alternate names that the organization is known as, or was known as in the past.)
+     * @param value {@link #alias} (A list of alternate names that the organization is known as, or was known as in the past.)
      */
     public Organization addAlias(String value) { //1
       StringType t = new StringType();
@@ -712,13 +712,13 @@ public class Organization extends DomainResource {
     }
 
     /**
-     * @param value {@link #alias} (A list of alternate names that the organization is known as, or was known as in the past.)
+     * @param value {@link #alias} (A list of alternate names that the organization is known as, or was known as in the past.)
      */
     public boolean hasAlias(String value) { 
       if (this.alias == null)
         return false;
       for (StringType v : this.alias)
-        if (v.equals(value)) // string
+        if (v.getValue().equals(value)) // string
           return true;
       return false;
     }
@@ -1007,7 +1007,7 @@ public class Organization extends DomainResource {
         children.add(new Property("active", "boolean", "Whether the organization's record is still in active use.", 0, 1, active));
         children.add(new Property("type", "CodeableConcept", "The kind(s) of organization that this is.", 0, java.lang.Integer.MAX_VALUE, type));
         children.add(new Property("name", "string", "A name associated with the organization.", 0, 1, name));
-        children.add(new Property("alias", "string", "A list of alternate names that the organization is known as, or was known as in the past.", 0, java.lang.Integer.MAX_VALUE, alias));
+        children.add(new Property("alias", "string", "A list of alternate names that the organization is known as, or was known as in the past.", 0, java.lang.Integer.MAX_VALUE, alias));
         children.add(new Property("telecom", "ContactPoint", "A contact detail for the organization.", 0, java.lang.Integer.MAX_VALUE, telecom));
         children.add(new Property("address", "Address", "An address for the organization.", 0, java.lang.Integer.MAX_VALUE, address));
         children.add(new Property("partOf", "Reference(Organization)", "The organization of which this organization forms a part.", 0, 1, partOf));
@@ -1022,7 +1022,7 @@ public class Organization extends DomainResource {
         case -1422950650: /*active*/  return new Property("active", "boolean", "Whether the organization's record is still in active use.", 0, 1, active);
         case 3575610: /*type*/  return new Property("type", "CodeableConcept", "The kind(s) of organization that this is.", 0, java.lang.Integer.MAX_VALUE, type);
         case 3373707: /*name*/  return new Property("name", "string", "A name associated with the organization.", 0, 1, name);
-        case 92902992: /*alias*/  return new Property("alias", "string", "A list of alternate names that the organization is known as, or was known as in the past.", 0, java.lang.Integer.MAX_VALUE, alias);
+        case 92902992: /*alias*/  return new Property("alias", "string", "A list of alternate names that the organization is known as, or was known as in the past.", 0, java.lang.Integer.MAX_VALUE, alias);
         case -1429363305: /*telecom*/  return new Property("telecom", "ContactPoint", "A contact detail for the organization.", 0, java.lang.Integer.MAX_VALUE, telecom);
         case -1147692044: /*address*/  return new Property("address", "Address", "An address for the organization.", 0, java.lang.Integer.MAX_VALUE, address);
         case -995410646: /*partOf*/  return new Property("partOf", "Reference(Organization)", "The organization of which this organization forms a part.", 0, 1, partOf);
@@ -1243,12 +1243,12 @@ public class Organization extends DomainResource {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof Organization))
+        if (!(other_ instanceof Organization))
           return false;
-        Organization o = (Organization) other;
+        Organization o = (Organization) other_;
         return compareDeep(identifier, o.identifier, true) && compareDeep(active, o.active, true) && compareDeep(type, o.type, true)
            && compareDeep(name, o.name, true) && compareDeep(alias, o.alias, true) && compareDeep(telecom, o.telecom, true)
            && compareDeep(address, o.address, true) && compareDeep(partOf, o.partOf, true) && compareDeep(contact, o.contact, true)
@@ -1256,12 +1256,12 @@ public class Organization extends DomainResource {
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof Organization))
+        if (!(other_ instanceof Organization))
           return false;
-        Organization o = (Organization) other;
+        Organization o = (Organization) other_;
         return compareValues(active, o.active, true) && compareValues(name, o.name, true) && compareValues(alias, o.alias, true)
           ;
       }
@@ -1325,17 +1325,17 @@ public class Organization extends DomainResource {
  /**
    * Search parameter: <b>address</b>
    * <p>
-   * Description: <b>A (part of the) address of the organization</b><br>
+   * Description: <b>A server defined search that may match any of the string fields in the Address, including line, city, district, state, country, postalCode, and/or text</b><br>
    * Type: <b>string</b><br>
    * Path: <b>Organization.address</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="address", path="Organization.address", description="A (part of the) address of the organization", type="string" )
+  @SearchParamDefinition(name="address", path="Organization.address", description="A server defined search that may match any of the string fields in the Address, including line, city, district, state, country, postalCode, and/or text", type="string" )
   public static final String SP_ADDRESS = "address";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>address</b>
    * <p>
-   * Description: <b>A (part of the) address of the organization</b><br>
+   * Description: <b>A server defined search that may match any of the string fields in the Address, including line, city, district, state, country, postalCode, and/or text</b><br>
    * Type: <b>string</b><br>
    * Path: <b>Organization.address</b><br>
    * </p>
@@ -1365,17 +1365,17 @@ public class Organization extends DomainResource {
  /**
    * Search parameter: <b>active</b>
    * <p>
-   * Description: <b>A server defined search that may match any of the string fields in the Address, including line, city, state, country, postalCode, and/or text</b><br>
+   * Description: <b>Is the Organization record active</b><br>
    * Type: <b>token</b><br>
    * Path: <b>Organization.active</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="active", path="Organization.active", description="A server defined search that may match any of the string fields in the Address, including line, city, state, country, postalCode, and/or text", type="token" )
+  @SearchParamDefinition(name="active", path="Organization.active", description="Is the Organization record active", type="token" )
   public static final String SP_ACTIVE = "active";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>active</b>
    * <p>
-   * Description: <b>A server defined search that may match any of the string fields in the Address, including line, city, state, country, postalCode, and/or text</b><br>
+   * Description: <b>Is the Organization record active</b><br>
    * Type: <b>token</b><br>
    * Path: <b>Organization.active</b><br>
    * </p>

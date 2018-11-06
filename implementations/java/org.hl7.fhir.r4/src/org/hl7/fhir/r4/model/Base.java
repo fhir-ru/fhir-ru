@@ -12,11 +12,12 @@ import org.hl7.fhir.r4.elementmodel.ObjectConverter;
 import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.instance.model.api.IBase;
 import org.hl7.fhir.utilities.Utilities;
+import org.hl7.fhir.utilities.xhtml.XhtmlComposer;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
 import org.hl7.fhir.utilities.xhtml.XhtmlParser;
 
 import ca.uhn.fhir.model.api.IElement;
-//Add comment to test SVN
+
 public abstract class Base implements Serializable, IBase, IElement {
 
   /**
@@ -104,6 +105,10 @@ private Map<String, Object> userData;
 		return false;
 	}
 	
+  public boolean isBooleanPrimitive() {
+    return false;
+  }
+
 	public boolean hasPrimitiveValue() {
 		return isPrimitive();
 	}
@@ -189,6 +194,19 @@ private Map<String, Object> userData;
 	public boolean equalsShallow(Base other) {
 	  return other != null;
   }  
+  
+  public static boolean compareDeep(String s1, String s2, boolean allowNull) {
+    if (allowNull) {
+      boolean noLeft = s1 == null || Utilities.noString(s1);
+      boolean noRight = s2 == null || Utilities.noString(s2);
+      if (noLeft && noRight) {
+        return true;
+      }
+    }
+    if (s1 == null || s2 == null)
+      return false;
+    return s1.equals(s2);   
+  }
   
 	public static boolean compareDeep(List<? extends Base> e1, List<? extends Base> e2, boolean allowNull) {
 		if (noList(e1) && noList(e2) && allowNull)
@@ -314,15 +332,33 @@ private Map<String, Object> userData;
 			throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a String");
 	}
 	
-	public UriType castToUri(Base b) throws FHIRException {
-		if (b instanceof UriType)
-			return (UriType) b;
-		else if (b.hasPrimitiveValue())
-			return new UriType(b.primitiveValue());
-		else
-			throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a Uri");
-	}
-	
+  public UriType castToUri(Base b) throws FHIRException {
+    if (b instanceof UriType)
+      return (UriType) b;
+    else if (b.hasPrimitiveValue())
+      return new UriType(b.primitiveValue());
+    else
+      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a Uri");
+  }
+  
+  public UrlType castToUrl(Base b) throws FHIRException {
+    if (b instanceof UrlType)
+      return (UrlType) b;
+    else if (b.hasPrimitiveValue())
+      return new UrlType(b.primitiveValue());
+    else
+      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a Uri");
+  }
+  
+  public CanonicalType castToCanonical(Base b) throws FHIRException {
+    if (b instanceof CanonicalType)
+      return (CanonicalType) b;
+    else if (b.hasPrimitiveValue())
+      return new CanonicalType(b.primitiveValue());
+    else
+      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a Uri");
+  }
+  
 	public DateType castToDate(Base b) throws FHIRException {
 		if (b instanceof DateType)
 			return (DateType) b;
@@ -420,18 +456,26 @@ private Map<String, Object> userData;
 			throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to an Identifier");
 	}
 	
-	public CodeableConcept castToCodeableConcept(Base b) throws FHIRException {
-		if (b instanceof CodeableConcept)
-			return (CodeableConcept) b;
+  public CodeableConcept castToCodeableConcept(Base b) throws FHIRException {
+    if (b instanceof CodeableConcept)
+      return (CodeableConcept) b;
     else if (b instanceof Element) {
       return ObjectConverter.readAsCodeableConcept((Element) b);
     } else if (b instanceof CodeType) {
-		  CodeableConcept cc = new CodeableConcept();
-		  cc.addCoding().setCode(((CodeType) b).asStringValue());
-		  return cc;
-		} else
-			throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a CodeableConcept");
-	}
+      CodeableConcept cc = new CodeableConcept();
+      cc.addCoding().setCode(((CodeType) b).asStringValue());
+      return cc;
+    } else
+      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a CodeableConcept");
+  }
+  
+  public Population castToPopulation(Base b) throws FHIRException {
+    if (b instanceof Population)
+      return (Population) b;
+    else
+      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a Population");
+  }
+  
 	
 	public Coding castToCoding(Base b) throws FHIRException {
     if (b instanceof Coding)
@@ -595,6 +639,36 @@ private Map<String, Object> userData;
 			throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a Meta");
 	}
 		
+	
+  public MarketingStatus castToMarketingStatus(Base b) throws FHIRException {
+    if (b instanceof MarketingStatus)
+      return (MarketingStatus) b;
+    else
+      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a MarketingStatus");
+  }
+    
+  public ProductShelfLife castToProductShelfLife(Base b) throws FHIRException {
+    if (b instanceof ProductShelfLife)
+      return (ProductShelfLife) b;
+    else
+      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a ProductShelfLife");
+  }
+    
+  public ProdCharacteristic castToProdCharacteristic(Base b) throws FHIRException {
+    if (b instanceof ProdCharacteristic)
+      return (ProdCharacteristic) b;
+    else
+      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a ProdCharacteristic");
+  }
+    
+  
+  public SubstanceAmount castToSubstanceAmount(Base b) throws FHIRException {
+    if (b instanceof SubstanceAmount)
+      return (SubstanceAmount) b;
+    else
+      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a SubstanceAmount");
+  }
+    
 	public Extension castToExtension(Base b) throws FHIRException {
 		if (b instanceof Extension)
 			return (Extension) b;
@@ -624,13 +698,21 @@ private Map<String, Object> userData;
 			throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a ElementDefinition");
 	}
 
-	public DataRequirement castToDataRequirement(Base b) throws FHIRException {
-		if (b instanceof DataRequirement)
-			return (DataRequirement) b;
-		else
-			throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a DataRequirement");
-	}
+  public DataRequirement castToDataRequirement(Base b) throws FHIRException {
+    if (b instanceof DataRequirement)
+      return (DataRequirement) b;
+    else
+      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a DataRequirement");
+  }
 
+  public Expression castToExpression(Base b) throws FHIRException {
+    if (b instanceof Expression)
+      return (Expression) b;
+    else
+      throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a Expression");
+  }
+
+	
 	public ParameterDefinition castToParameterDefinition(Base b) throws FHIRException {
 		if (b instanceof ParameterDefinition)
 			return (ParameterDefinition) b;
@@ -648,6 +730,8 @@ private Map<String, Object> userData;
   public XhtmlNode castToXhtml(Base b) throws FHIRException {
     if (b instanceof Element) {
       return ((Element) b).getXhtml();
+    } else if (b instanceof XhtmlType) {
+      return ((XhtmlType) b).getValue();
     } else if (b instanceof StringType) {
       try {
         return new XhtmlParser().parseFragment(((StringType) b).asStringValue());
@@ -661,6 +745,12 @@ private Map<String, Object> userData;
   public String castToXhtmlString(Base b) throws FHIRException {
     if (b instanceof Element) {
       return ((Element) b).getValue();
+    } else if (b instanceof XhtmlType) {
+      try {
+        return new XhtmlComposer(true).compose(((XhtmlType) b).getValue());
+      } catch (IOException e) {
+        return null;
+      }
     } else if (b instanceof StringType) {
       return ((StringType) b).asStringValue();
     } else

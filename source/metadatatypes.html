@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
       
-[%settitle Data Types%]
+[%settitle MetaData Types%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
 <head>
 [%file newheader%]
@@ -8,46 +8,47 @@
 <body>
 [%file newnavbar%]
 
-<div class="col-9">
+<div class="col-12">
 
 <%mdtheader base%>  
 
 <h1>MetaData Types</h1>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 4</td><td id="ballot"><a href="versions.html#levels">Ballot Status</a>: <a href="versions.html#std-process">Trial Use</a></td></tr></table>
+<table class="colsn"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 4</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Normative</a></td></tr></table>
+[%mixednormative page infrastructure%]
 
 
 <p>
-The FHIR specification defines a set of data types that are used for the 
-resource elements. There are four categories of data types: 
-</p>
-<ol>
-  <li><a href="datatypes.html#primitive">simple / primitive types, which are single elements with a primitive value</a></li>
-  <li><a href="datatypes.html#complex">General purpose complex types, which are re-usable clusters of elements</a></li>
-  <li>Complex data types for metadata</li>
-  <li>Special purpose data types: <a href="references.html#Reference">Reference</a>, <a href="narrative.html#Narrative">Narrative</a>, <a href="extensibility.html#Extension">Extension</a>, <a href="resource.html#Meta">Meta</a>, and <a href="dosage.html#Dosage">Dosage</a></li>
-</ol>  
-<p>
-This page describes the metadata types. 
+This page describes a set of types used for conveying metadata 
+about knowledge resources (mainly for 
+<a href="terminology-module.html">Terminology</a>,
+<a href="conformance-module.html">Conformance</a> and
+<a href="clinicalreasoning-module.html">Clinical Definition</a> resources).
 </p>
 
 <p><b>Table of Contents</b></p>
 <table class="grid">
  <tr>
-  <td><a href="#ContactDetail">ContactDetail</a></td>
-  <td><a href="#Contributor">Contributor</a></td>
-  <td><a href="#DataRequirement">DataRequirement</a></td>
-  <td><a href="#ParameterDefinition">ParameterDefinition</a></td>
+  <td style="background-color: #e6ffe6"><a href="#ContactDetail">ContactDetail</a></td>
+  <td style="background-color: #ffe6e6"><a href="#Contributor">Contributor</a></td>
+  <td style="background-color: #ffe6e6"><a href="#DataRequirement">DataRequirement</a></td>
+  <td style="background-color: #ffe6e6"><a href="#ParameterDefinition">ParameterDefinition</a></td>
  </tr>
  <tr>
-  <td><a href="#RelatedArtifact">RelatedArtifact</a></td>
-  <td><a href="#TriggerDefinition">TriggerDefinition</a></td>
-  <td><a href="#UsageContext">UsageContext</a></td>
+  <td style="background-color: #ffe6e6"><a href="#RelatedArtifact">RelatedArtifact</a></td>
+  <td style="background-color: #ffe6e6"><a href="#TriggerDefinition">TriggerDefinition</a></td>
+  <td style="background-color: #ffe6e6"><a href="#Expression">Expression</a></td>
+  <td style="background-color: #ffe6e6"><a href="#UsageContext">UsageContext</a></td>
  </tr>
 </table>
+<p>
+For an index of all data types, see <a href="datatypes.html">the Data types page</a>.
+</p>
 
-<a name="ContactDetail"> </a>
-<a name="contactdetail"> </a>
+<a name="ContactDetail"></a>
+<a name="contactdetail"></a>
 <h3 style="margin-bottom: 1px">ContactDetail</h3>
+[%StandardsStatus normative DataType infrastructure%]
+
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
 See also <a href="metadatatypes-examples.html#ContactDetail">Examples</a>, <a href="metadatatypes-definitions.html#ContactDetail">Detailed Descriptions</a> and <a href="metadatatypes-mappings.html#ContactDetail">Mappings</a>.
 </p>
@@ -65,7 +66,7 @@ See also <a href="metadatatypes-examples.html#ContactDetail">Examples</a>, <a hr
 ContactDetail is used in the following places: [%dtusage ContactDetail%]
 </p>
 
-<a name="interpretation"> </a>
+<a name="interpretation"></a>
 <h4>Interpretation of ContactDetail in different contexts</h4>
 
 <!-- TODO -->
@@ -73,9 +74,10 @@ ContactDetail is used in the following places: [%dtusage ContactDetail%]
 &nbsp;
 </p>
 
-<a name="Contributor"> </a>
-<a name="contributor"> </a>
+<a name="Contributor"></a>
+<a name="contributor"></a>
 <h3 style="margin-bottom: 1px">Contributor</h3>
+[%StandardsStatus trial-use DataType_(and_the_rest_on_this_page) infrastructure%]
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
 See also <a href="metadatatypes-examples.html#Contributor">Examples</a>, <a href="metadatatypes-definitions.html#Contributor">Detailed Descriptions</a> and <a href="metadatatypes-mappings.html#Contributor">Mappings</a>.
 </p>
@@ -86,13 +88,14 @@ See also <a href="metadatatypes-examples.html#Contributor">Examples</a>, <a href
 <div class="use">
 <p><b>Constraints</b></p>
 [%dt.constraints Contributor%]
+[%tx Contributor%]
 </div>
 
 <p>
 Contributor is used in the following places: [%dtusage Contributor%]
 </p>
 
-<a name="interpretation"> </a>
+<a name="interpretation"></a>
 <h4>Interpretation of Contributor in different contexts</h4>
 
 <!-- TODO -->
@@ -100,8 +103,8 @@ Contributor is used in the following places: [%dtusage Contributor%]
 &nbsp;
 </p>
 
-<a name="DataRequirement"> </a>
-<a name="datarequirement"> </a>
+<a name="DataRequirement"></a>
+<a name="datarequirement"></a>
 <h3 style="margin-bottom: 1px">DataRequirement</h3>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
 See also <a href="metadatatypes-examples.html#DataRequirement">Examples</a>, <a href="metadatatypes-definitions.html#DataRequirement">Detailed Descriptions</a> and <a href="metadatatypes-mappings.html#DataRequirement">Mappings</a>.
@@ -110,15 +113,15 @@ See also <a href="metadatatypes-examples.html#DataRequirement">Examples</a>, <a 
 <p>The DataRequirement structure defines a general data requirement for a knowledge asset such as a decision support rule or quality measure.</p>
 
 [%dt DataRequirement 1%]
-
 <div class="use">
 <p><b>Constraints</b></p>
 [%dt.constraints DataRequirement%]
+[%tx DataRequirement%]
 </div>
 
 <p>A DataRequirement differs from a parameter in that it specifies the data to be provided in terms of the type of data, and specific filters on code-valued and/or date-valued attributes. Data requirements are not named because they are referenced by type within the evaluation context.</p>
 
-<p>Data requirements are used by knowledge modules to communicate the set of required data to a consumer in a way that is computable (as opposed to a set of named parameters which must be integrated by hand based on the meaning of the parameter as communicated through the documentation).</p>
+<p>DataRequirements are used by knowledge modules to communicate the set of required data to a consumer in a way that is computable (as opposed to a set of named parameters which must be integrated by hand based on the meaning of the parameter as communicated through the documentation).</p>
 
 <p>DataRequirements are typically used to communicate patient-dependent information such as MedicationStatements and Encounters, whereas Parameters are typically used to communicate patient-independent information such as configuration values.</p>
 
@@ -176,8 +179,8 @@ DataRequirement is used in the following places: [%dtusage DataRequirement%]
 <p>
 &nbsp;
 </p>
-<a name="ParameterDefinition"> </a>
-<a name="parameterdefinition"> </a>
+<a name="ParameterDefinition"></a>
+<a name="parameterdefinition"></a>
 <h3 style="margin-bottom: 1px">ParameterDefinition</h3>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
 See also <a href="metadatatypes-examples.html#ParameterDefinition">Examples</a>, <a href="metadatatypes-definitions.html#ParameterDefinition">Detailed Descriptions</a> and <a href="metadatatypes-mappings.html#ParameterDefinition">Mappings</a>.
@@ -188,17 +191,17 @@ See also <a href="metadatatypes-examples.html#ParameterDefinition">Examples</a>,
 <p>Parameters are typically used to communicate patient-independent information such as configuration values, whereas DataRequirements are typically used to communicate patient-dependent information such as MedicationStatements and Encounters.</p>
 
 [%dt ParameterDefinition 1%]
-
 <div class="use">
 <p><b>Constraints</b></p>
 [%dt.constraints ParameterDefinition%]
+[%tx ParameterDefinition%]
 </div>
 
 <p>
 &nbsp;
 </p>
-<a name="RelatedArtifact"> </a>
-<a name="relatedartifact"> </a>
+<a name="RelatedArtifact"></a>
+<a name="relatedartifact"></a>
 <h3 style="margin-bottom: 1px">RelatedArtifact</h3>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
 See also <a href="metadatatypes-examples.html#RelatedArtifact">Examples</a>, <a href="metadatatypes-definitions.html#RelatedArtifact">Detailed Descriptions</a> and <a href="metadatatypes-mappings.html#RelatedArtifact">Mappings</a>.
@@ -209,17 +212,35 @@ See also <a href="metadatatypes-examples.html#RelatedArtifact">Examples</a>, <a 
 
 [%dt RelatedArtifact 1%]
 
-
 <div class="use">
 <p><b>Constraints</b></p>
 [%dt.constraints RelatedArtifact%]
+[%tx RelatedArtifact%]
 </div>
+
+<p>The following examples illustrate the use of relatedArtifact elements to provide citations:</p>
+
+<pre><code>&lt;relatedArtifact&gt;
+    &lt;label value=&quot;1&quot;/&gt;
+    &lt;type value=&quot;citation&quot;/&gt;
+    &lt;citation value=&quot;Linder, J.A., D.W. Bates, G.M. Lee, J.A. Finkelstein. 2005. _Antibiotic treatment of children with sore throat_ JAMA 294(18):2315-2322. &quot;/&gt;
+  &lt;/relatedArtifact&gt;
+  &lt;relatedArtifact&gt;
+    &lt;type value=&quot;citation&quot;/&gt;
+    &lt;label value=&quot;2&quot;/&gt;
+    &lt;citation value=&quot;Infectious Diseases Society of America. 2012. _Clinical Practice Guideline for the Diagnosis and Management of Group A Streptococcal Pharyngitis: 2012 Update._ &quot;/&gt;
+  &lt;/relatedArtifact&gt;
+  &lt;relatedArtifact&gt;
+    &lt;type value=&quot;citation&quot;/&gt;
+    &lt;label value=&quot;3&quot;/&gt;
+    &lt;citation value=&quot;Roberts, R.R., B. Hota, I. Ahmad, et al. _Hospital and Societal Costs of Antimicrobial-Resistant Infections in a Chicago Teaching Hospital: Implications for Antibiotic Stewardship._ Clin Infect Dis. Oct 2009; 49(8):1175-84.&quot;/&gt;
+  &lt;/relatedArtifact&gt;</code></pre>
 
 <p>
 RelatedArtifact is used in the following places: [%dtusage RelatedArtifact%]
 </p>
 
-<a name="interpretation"> </a>
+<a name="interpretation"></a>
 <h4>Interpretation of RelatedArtifact in different contexts</h4>
 
 <!-- TODO -->
@@ -227,8 +248,8 @@ RelatedArtifact is used in the following places: [%dtusage RelatedArtifact%]
 <p>
 &nbsp;
 </p>
-<a name="TriggerDefinition"> </a>
-<a name="triggerdefinition"> </a>
+<a name="TriggerDefinition"></a>
+<a name="triggerdefinition"></a>
 <h3 style="margin-bottom: 1px">TriggerDefinition</h3>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
 See also <a href="metadatatypes-examples.html#TriggerDefinition">Examples</a>, <a href="metadatatypes-definitions.html#TriggerDefinition">Detailed Descriptions</a> and <a href="metadatatypes-mappings.html#TriggerDefinition">Mappings</a>.
@@ -248,8 +269,8 @@ depending on the value of <code>type</code>:</p>
 A named event is an event identified by the implementation environment. This allows 
 any event generated within the implementation environment to be used as a trigger, 
 but it requires pre-coordination of the names involved with the consuming environments.
-<a href="v2/0003/index.html">HL7 v2 events</a> are assigned the URI http://hl7.org/fhir/v2/0003#[code] 
-e.g. http://hl7.org/fhir/v2/0003/A01, and reference any data change that would trigger
+<a href="v2/0003/index.html">HL7 v2 events</a> are assigned the URI http://terminology.hl7.org/CodeSystem/v2-0003#[code] 
+e.g. http://terminology.hl7.org/CodeSystem/v2-0003/A01, and reference any data change that would trigger
 the sending of the matching HL7 v2 version, if the application providing the FHIR API
 supports v2 events internally.
 </p>
@@ -268,6 +289,7 @@ A condition may also be specified to further refine the trigger</p>
 <div class="use">
 <p><b>Constraints</b></p>
 [%dt.constraints TriggerDefinition%]
+[%tx TriggerDefinition%]
 </div>
 
 <p>
@@ -277,8 +299,41 @@ TriggerDefinition is used in the following places: [%dtusage TriggerDefinition%]
 <p>
 &nbsp;
 </p>
-<a name="UsageContext"> </a>
-<a name="usagecontext"> </a>
+<a name="Expression"></a>
+<a name="expression"></a>
+<h3 style="margin-bottom: 1px">Expression</h3>
+<p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
+See also <a href="metadatatypes-examples.html#Expression">Examples</a>, <a href="metadatatypes-definitions.html#Expression">Detailed Descriptions</a> and <a href="metadatatypes-mappings.html#Expression">Mappings</a>.
+</p>
+
+
+<p>The Expression structure defines an expression that generates a value.
+The expression is provided in a specifed language (by mime type)</p>
+
+<p>
+The context of use of the expression must specify the context in which the 
+expression is evaluated, and how the result of the expression is used.
+</p>
+
+[%dt Expression 1%]
+
+
+<div class="use">
+<p><b>Constraints</b></p>
+[%dt.constraints Expression%]
+[%tx Expression%]
+</div>
+
+<p>
+Expression is used in the following places: [%dtusage Expression%]
+</p>
+
+
+<p>
+&nbsp;
+</p>
+<a name="UsageContext"></a>
+<a name="usagecontext"></a>
 <h3 style="margin-bottom: 1px">UsageContext</h3>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
 See also <a href="metadatatypes-examples.html#UsageContext">Examples</a>, <a href="metadatatypes-definitions.html#UsageContext">Detailed Descriptions</a> and <a href="metadatatypes-mappings.html#UsageContext">Mappings</a>.
@@ -289,17 +344,17 @@ See also <a href="metadatatypes-examples.html#UsageContext">Examples</a>, <a hre
 
 [%dt UsageContext 1%]
 
-
 <div class="use">
 <p><b>Constraints</b></p>
 [%dt.constraints UsageContext%]
+[%tx UsageContext%]
 </div>
 
 <p>
 UsageContext is used in the following places: [%dtusage UsageContext%]
 </p>
 
-<a name="interpretation"> </a>
+<a name="interpretation"></a>
 <h2>Interpretation of UsageContext in different contexts</h2>
 
 <!-- TODO -->
@@ -327,6 +382,7 @@ $( '#tabs-DataRequirement' ).tabs({ active: currentTabIndex, activate: function(
 $( '#tabs-ParameterDefinition' ).tabs({ active: currentTabIndex, activate: function( event, ui ) { store(ui.newTab.index()); } });
 $( '#tabs-RelatedArtifact' ).tabs({ active: currentTabIndex, activate: function( event, ui ) { store(ui.newTab.index()); } });
 $( '#tabs-TriggerDefinition' ).tabs({ active: currentTabIndex, activate: function( event, ui ) { store(ui.newTab.index()); } });
+$( '#tabs-Expression' ).tabs({ active: currentTabIndex, activate: function( event, ui ) { store(ui.newTab.index()); } });
 $( '#tabs-UsageContext' ).tabs({ active: currentTabIndex, activate: function( event, ui ) { store(ui.newTab.index()); } });
      
      
@@ -341,6 +397,7 @@ function store(currentTab) {
   $( '#tabs-ParameterDefinition' ).tabs('option', 'active', currentTab);
   $( '#tabs-RelatedArtifact' ).tabs('option', 'active', currentTab);
   $( '#tabs-TriggerDefinition' ).tabs('option', 'active', currentTab);
+  $( '#tabs-Expression' ).tabs('option', 'active', currentTab);
   $( '#tabs-UsageContext' ).tabs('option', 'active', currentTab);
   document.activeElement.blur();
 }     

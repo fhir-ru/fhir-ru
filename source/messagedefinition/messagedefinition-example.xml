@@ -18,8 +18,11 @@
 			<value value="http://hl7.org"/>
 		</telecom>
 	</contact>
-	<purpose value="Defines a base example for other MessageDefintion instances."/>
-	<event value="http://acme.com/ehr/fhir/event"/>
-	<category value="Notification"/>
-	<responseRequired value="false"/>
+	<purpose value="Defines a base example for other MessageDefinition instances."/>
+  <eventCoding>
+    <system value="http://example.org/fhir/message-events"/>
+    <code value="admin-notify"/>
+  </eventCoding>
+	<category value="notification"/>
+
 </MessageDefinition>

@@ -8,13 +8,27 @@
     <value value="49476534"/>
   </identifier>
 
-  <!-- this individual has had several reactions --> 
-  <clinicalStatus value="active"/>
-  <verificationStatus value="confirmed"/>
+  <!-- this individual has had several reactions -->   
+  <clinicalStatus>
+    <coding>
+      <system value="http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical"/>
+      <code value="active"/>
+      <display value="Active"/>
+    </coding>
+  </clinicalStatus>
+
+  <verificationStatus>
+    <coding>
+      <system value="http://terminology.hl7.org/CodeSystem/allergyintolerance-verification"/>
+      <code value="confirmed"/>
+      <display value="Confirmed"/>
+    </coding>
+  </verificationStatus>
+  
   <!-- note: it's often unknown whether an allergy is mediated by an immune response, and not as significant as once thought -->
   <type value="allergy"/>
   
-  <!-- this categorisation is implied by "cashew nut" and therefore basically 
+  <!-- this categorization is implied by "cashew nut" and therefore basically 
     redundant, but many systems collect this field anyway, since it's either 
     useful when the substance is not coded, or it's quicker to sort/filter on
     than using terminology based reasoning -->
@@ -45,7 +59,7 @@
   <onsetDateTime value="2004"/>
 
   <!-- the date that this entry was recorded -->  
-  <assertedDate value="2014-10-09T14:58:00+11:00"/>
+  <recordedDate value="2014-10-09T14:58:00+11:00"/>
   
   <!-- who made the record / last updated it -->
   <recorder>

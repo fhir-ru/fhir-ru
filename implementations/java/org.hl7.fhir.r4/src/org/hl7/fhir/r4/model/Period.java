@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Fri, Aug 11, 2017 07:23+1000 for FHIR v3.1.0
+// Generated on Mon, Nov 5, 2018 09:03+1100 for FHIR v3.6.0
 
 import java.util.*;
 
@@ -54,10 +54,10 @@ public class Period extends Type implements ICompositeType {
     protected DateTimeType start;
 
     /**
-     * The end of the period. If the end of the period is missing, it means that the period is ongoing. The start may be in the past, and the end date in the future, which means that period is expected/planned to end at that time.
+     * The end of the period. If the end of the period is missing, it means no end was known or planned at the time the instance was created. The start may be in the past, and the end date in the future, which means that period is expected/planned to end at that time.
      */
     @Child(name = "end", type = {DateTimeType.class}, order=1, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="End time with inclusive boundary, if not ongoing", formalDefinition="The end of the period. If the end of the period is missing, it means that the period is ongoing. The start may be in the past, and the end date in the future, which means that period is expected/planned to end at that time." )
+    @Description(shortDefinition="End time with inclusive boundary, if not ongoing", formalDefinition="The end of the period. If the end of the period is missing, it means no end was known or planned at the time the instance was created. The start may be in the past, and the end date in the future, which means that period is expected/planned to end at that time." )
     protected DateTimeType end;
 
     private static final long serialVersionUID = 649791751L;
@@ -119,7 +119,7 @@ public class Period extends Type implements ICompositeType {
     }
 
     /**
-     * @return {@link #end} (The end of the period. If the end of the period is missing, it means that the period is ongoing. The start may be in the past, and the end date in the future, which means that period is expected/planned to end at that time.). This is the underlying object with id, value and extensions. The accessor "getEnd" gives direct access to the value
+     * @return {@link #end} (The end of the period. If the end of the period is missing, it means no end was known or planned at the time the instance was created. The start may be in the past, and the end date in the future, which means that period is expected/planned to end at that time.). This is the underlying object with id, value and extensions. The accessor "getEnd" gives direct access to the value
      */
     public DateTimeType getEndElement() { 
       if (this.end == null)
@@ -139,7 +139,7 @@ public class Period extends Type implements ICompositeType {
     }
 
     /**
-     * @param value {@link #end} (The end of the period. If the end of the period is missing, it means that the period is ongoing. The start may be in the past, and the end date in the future, which means that period is expected/planned to end at that time.). This is the underlying object with id, value and extensions. The accessor "getEnd" gives direct access to the value
+     * @param value {@link #end} (The end of the period. If the end of the period is missing, it means no end was known or planned at the time the instance was created. The start may be in the past, and the end date in the future, which means that period is expected/planned to end at that time.). This is the underlying object with id, value and extensions. The accessor "getEnd" gives direct access to the value
      */
     public Period setEndElement(DateTimeType value) { 
       this.end = value;
@@ -147,14 +147,14 @@ public class Period extends Type implements ICompositeType {
     }
 
     /**
-     * @return The end of the period. If the end of the period is missing, it means that the period is ongoing. The start may be in the past, and the end date in the future, which means that period is expected/planned to end at that time.
+     * @return The end of the period. If the end of the period is missing, it means no end was known or planned at the time the instance was created. The start may be in the past, and the end date in the future, which means that period is expected/planned to end at that time.
      */
     public Date getEnd() { 
       return this.end == null ? null : this.end.getValue();
     }
 
     /**
-     * @param value The end of the period. If the end of the period is missing, it means that the period is ongoing. The start may be in the past, and the end date in the future, which means that period is expected/planned to end at that time.
+     * @param value The end of the period. If the end of the period is missing, it means no end was known or planned at the time the instance was created. The start may be in the past, and the end date in the future, which means that period is expected/planned to end at that time.
      */
     public Period setEnd(Date value) { 
       if (value == null)
@@ -196,14 +196,14 @@ public class Period extends Type implements ICompositeType {
       protected void listChildren(List<Property> children) {
         super.listChildren(children);
         children.add(new Property("start", "dateTime", "The start of the period. The boundary is inclusive.", 0, 1, start));
-        children.add(new Property("end", "dateTime", "The end of the period. If the end of the period is missing, it means that the period is ongoing. The start may be in the past, and the end date in the future, which means that period is expected/planned to end at that time.", 0, 1, end));
+        children.add(new Property("end", "dateTime", "The end of the period. If the end of the period is missing, it means no end was known or planned at the time the instance was created. The start may be in the past, and the end date in the future, which means that period is expected/planned to end at that time.", 0, 1, end));
       }
 
       @Override
       public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
         switch (_hash) {
         case 109757538: /*start*/  return new Property("start", "dateTime", "The start of the period. The boundary is inclusive.", 0, 1, start);
-        case 100571: /*end*/  return new Property("end", "dateTime", "The end of the period. If the end of the period is missing, it means that the period is ongoing. The start may be in the past, and the end date in the future, which means that period is expected/planned to end at that time.", 0, 1, end);
+        case 100571: /*end*/  return new Property("end", "dateTime", "The end of the period. If the end of the period is missing, it means no end was known or planned at the time the instance was created. The start may be in the past, and the end date in the future, which means that period is expected/planned to end at that time.", 0, 1, end);
         default: return super.getNamedProperty(_hash, _name, _checkValid);
         }
 
@@ -294,22 +294,22 @@ public class Period extends Type implements ICompositeType {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof Period))
+        if (!(other_ instanceof Period))
           return false;
-        Period o = (Period) other;
+        Period o = (Period) other_;
         return compareDeep(start, o.start, true) && compareDeep(end, o.end, true);
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof Period))
+        if (!(other_ instanceof Period))
           return false;
-        Period o = (Period) other;
+        Period o = (Period) other_;
         return compareValues(start, o.start, true) && compareValues(end, o.end, true);
       }
 

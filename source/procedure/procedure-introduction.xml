@@ -1,15 +1,15 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<a name="scope"> </a>
+<a name="scope"></a>
 <h2>Scope and Usage</h2>
 <p>Procedure is one of the <a href="workflow.html#event">event</a> resources in the FHIR <a href="workflow.html">workflow</a> specification.</p>
 
 <p>
-This resource is used to record the details of procedures performed on a patient. A procedure is an activity 
-that is performed with or on a patient as part of the provision of care. Examples include surgical 
-procedures, diagnostic procedures, endoscopic procedures, biopsies, counseling, physiotherapy, exercise, etc.
-Procedures may be performed by a healthcare professional, a friend or relative or in some cases by the patient
+This resource is used to record the details of current and historical procedures performed on or for a patient. A procedure is an activity 
+that is performed on, with, or for a patient as part of the provision of care. Examples include surgical 
+procedures, diagnostic procedures, endoscopic procedures, biopsies, counseling, physiotherapy, personal support services, adult day care services, non-emergency transportation, home modification, exercise, etc.
+Procedures may be performed by a healthcare professional, a service provider, a friend or relative or in some cases by the patient
 themselves.
 </p>
 <p>
@@ -21,7 +21,7 @@ real-time procedure information awaits the identification of a specific implemen
 </div>
 
 <div>
-<a name="bnr"> </a>
+<a name="bnr"></a>
 <h2>Boundaries and Relationships</h2>
 <p>
 The Procedure resource should not be used to capture an event if a more specific resource already exists - i.e. 
@@ -39,9 +39,14 @@ such an observation does not require an explicit representation of the procedure
 observation, but where there are details of interest about how the diagnostic procedure was performed, 
 the procedure resource is used to describe the activity.
 </p>
-<p> Some diagnostic procedures may not have a Procedure record. The Procedure record is only necessary when 
+<p> Some diagnostic procedures might not have a Procedure record. The Procedure record is only necessary when 
 there is a need to capture information about the physical intervention that was performed to capture the diagnostic 
 information (e.g. anesthetic, incision, scope size, etc.)</p>
+<p>
+A <a href="task.html">Task</a> is a workflow step such as cancelling an order, fulfilling an order, signing an order, merging a set of records, admitting a patient. 
+Procedures are actions that are intended to result in a physical or mental change to or for the subject (e.g. surgery, physiotherapy, training, counseling). 
+A <a href="task.html">Task</a> resource often exists in parallel with clinical resources. For example, a <a href="task.html">Task</a> might request fulfillment of a <a href="servicerequest.html">ServiceRequest</a> ordering a Procedure.
+</p>
 
 </div>
 

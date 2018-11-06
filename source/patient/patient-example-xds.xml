@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <Patient xmlns="http://hl7.org/fhir">
   <id value="xds"/>
@@ -14,7 +14,7 @@
     <use value="usual"/>
     <type>
       <coding>
-        <system value="http://hl7.org/fhir/v2/0203"/>
+        <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
         <code value="MR"/>
       </coding>
     </type>

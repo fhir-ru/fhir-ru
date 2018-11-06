@@ -49,6 +49,7 @@ import org.hl7.fhir.dstu3.model.Enumeration;
 import org.hl7.fhir.dstu3.model.Timing.EventTiming;
 import org.hl7.fhir.dstu3.model.UsageContext;
 import org.hl7.fhir.exceptions.FHIRException;
+import org.hl7.fhir.utilities.Utilities;
 
 public class VersionConvertor_14_30 {
 
@@ -1400,7 +1401,7 @@ public class VersionConvertor_14_30 {
     copyElement(src, tgt);
     tgt.setCode(src.getCode());
     for (org.hl7.fhir.dstu2016may.model.UriType t : src.getProfile()) {
-      if (src.getCode().equals("Reference"))
+      if (src.hasTarget())
         tgt.setTargetProfile(t.getValueAsString());
       else
         tgt.setProfile(t.getValueAsString());
@@ -1417,7 +1418,7 @@ public class VersionConvertor_14_30 {
     org.hl7.fhir.dstu2016may.model.ElementDefinition.TypeRefComponent tgt = new org.hl7.fhir.dstu2016may.model.ElementDefinition.TypeRefComponent();
     copyElement(src, tgt);
     tgt.setCode(src.getCode());
-    if (src.hasCode() && "Reference".equals(src.getCode()))
+    if (src.hasTarget())
       tgt.addProfile(src.getTargetProfile());
     else
       tgt.addProfile(src.getProfile());
@@ -1981,7 +1982,7 @@ public class VersionConvertor_14_30 {
       return convertMeta((org.hl7.fhir.dstu2016may.model.Meta) src);
     if (src instanceof org.hl7.fhir.dstu2016may.model.Timing)
       return convertTiming((org.hl7.fhir.dstu2016may.model.Timing) src);
-    throw new Error("Unknown type "+src.fhirType());
+    throw new FHIRException("Unknown type "+src.fhirType());
   }
 
   public static org.hl7.fhir.dstu2016may.model.Type convertType(org.hl7.fhir.dstu3.model.Type src) throws FHIRException {
@@ -2071,7 +2072,7 @@ public class VersionConvertor_14_30 {
       return convertMeta((org.hl7.fhir.dstu3.model.Meta) src);
     if (src instanceof org.hl7.fhir.dstu3.model.Timing)
       return convertTiming((org.hl7.fhir.dstu3.model.Timing) src);
-    throw new Error("Unknown type "+src.fhirType());
+    throw new FHIRException("Unknown type "+src.fhirType());
   }
 
   private static void copyDomainResource(org.hl7.fhir.dstu2016may.model.DomainResource src, org.hl7.fhir.dstu3.model.DomainResource tgt) throws FHIRException {
@@ -7192,7 +7193,7 @@ public class VersionConvertor_14_30 {
       return convertValueSet((org.hl7.fhir.dstu2016may.model.ValueSet) src);
 /*    if (src instanceof org.hl7.fhir.dstu2016may.model.VisionPrescription)
       return convertVisionPrescription((org.hl7.fhir.dstu2016may.model.VisionPrescription) src);*/
-    throw new Error("Unknown resource "+src.fhirType());
+    throw new FHIRException("Unknown resource "+src.fhirType());
   }
 
   public static org.hl7.fhir.dstu2016may.model.Resource convertResource(org.hl7.fhir.dstu3.model.Resource src) throws FHIRException {
@@ -7234,7 +7235,11 @@ public class VersionConvertor_14_30 {
       return convertValueSet((org.hl7.fhir.dstu3.model.ValueSet) src);
 /*    if (src instanceof org.hl7.fhir.dstu3.model.VisionPrescription)
       return convertVisionPrescription((org.hl7.fhir.dstu3.model.VisionPrescription) src);*/
-    throw new Error("Unknown resource "+src.fhirType());
+    throw new FHIRException("Unknown resource "+src.fhirType());
+  }
+
+  public static boolean convertsResource(String rt) {
+    return Utilities.existsInList(rt, "Parameters", "Bundle", "CodeSystem", "CompartmentDefinition", "ConceptMap", "CapabilityStatement", "DataElement", "ImplementationGuide", "NamingSystem", "OperationDefinition", "OperationOutcome", "Questionnaire", "QuestionnaireResponse", "SearchParameter", "StructureDefinition", "TestScript", "ValueSet");
   }
 
 

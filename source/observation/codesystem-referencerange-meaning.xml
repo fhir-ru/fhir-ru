@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <CodeSystem xmlns="http://hl7.org/fhir">
-  <url value="http://hl7.org/fhir/referencerange-meaning"/>
-  <name value="Observation Reference Range Meaning Codes"/>
+  <url value="http://terminology.hl7.org/CodeSystem/referencerange-meaning"/>
+  <name value="ObservationReferenceRangeMeaningCodes"/>
+  <title value="Observation Reference Range Meaning Codes"/>
   <status value="draft"/>
   <experimental value="false"/>
   <description value="This value set defines a set of codes that can be used to indicate the meaning/use of a reference range."/>
@@ -12,7 +13,7 @@
   <content value="complete"/>
   <property>
     <code value="abstract"/>
-    <description value="True if an element is considered &#39;abstract&#39; - that is the code is not for use as a real concept"/>
+    <description value="True if an element is considered &#39;abstract&#39; - in otherwords, the code is not for use as a real concept"/>
     <type value="boolean"/>
   </property>
   <concept>
@@ -26,7 +27,7 @@
     <concept>
       <code value="normal"/>
       <display value="Normal Range"/>
-      <definition value="Based on 95th percentile for the relevant control population."/>
+      <definition value="Within two standard deviations from the mean and accounting for 95.45% of the relevant control population."/>
     </concept>
     <concept>
       <code value="recommended"/>
@@ -75,7 +76,7 @@
     <concept>
       <code value="midcycle"/>
       <display value="MidCycle"/>
-      <definition value="An expected range in an individual during the follicular stage of the cycle."/>
+      <definition value="An expected range in an individual during the midcycle stage of the cycle."/>
     </concept>
     <concept>
       <code value="luteal"/>
@@ -83,7 +84,7 @@
       <definition value="An expected range in an individual during the luteal stage of the cycle."/>
     </concept>
     <concept>
-      <code value="postmeopausal"/>
+      <code value="postmenopausal"/>
       <display value="Post-Menopause"/>
       <definition value="An expected range in an individual post-menopause."/>
     </concept>

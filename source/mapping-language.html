@@ -8,15 +8,15 @@
 [%file newnavbar%]
 
 
-<div class="col-9">
+<div class="col-12">
 
 <h2>FHIR Mapping Language</h2>
-<table class="colsd"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 0 (Draft)</td><td id="ballot"><a href="versions.html#levels">Ballot Status</a>: <a href="versions.html#std-process">Trial Use</a></td></tr></table>
+<table class="colsd"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 0 (Draft)</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Trial Use</a></td></tr></table>
 
 <p>
 The FHIR Specification includes a mapping language. The mapping language has a concrete syntax, defined
 and described in this page, and an abstract syntax, which is found in the <a href="structuremap.html">StructureMap</a>
-resource (and there is an <a href="mapping.g4">antlr grammar for the concrete syntax</a>). See also the <a href="mapping-tutorial.html">Tutorial</a>.
+resource (and there <i>will be</i> an ANTLR grammar for the concrete syntax). See also the <a href="mapping-tutorial.html">Tutorial</a>.
 </p>
 <p>
 The mapping language describes how one set of Directed Acyclic Graphs (an instance) is transformed to another set of
@@ -45,7 +45,7 @@ A map has 6 parts:
  <li>A series of transformation rules in each group</li>
 </ul>
 
-<a name="execution"> </a>
+<a name="execution"></a>
 <h3>Executing Maps</h3>
 
 <p>
@@ -69,7 +69,7 @@ Generally, it is assumed the invocation of the engine follows some pattern like 
 </p>
 <ul>
 <li>The host application creates the engine, and passes it a handle to the standard services</li>
-<li>The host application chooses the model map resource, and asks the engine to prepare it (load, check, cache-up etc)</li>
+<li>The host application chooses the model map resource, and asks the engine to prepare it (load, check, cache-up etc.)</li>
 <li>The host application asks the engine to execute and provides a set of resources that match defined inputs in the map</li>
 <li>Any created output will be created via the standard API</li>
 </ul>
@@ -80,11 +80,11 @@ order to manage the map execution process.
 </p>
 
 
-<a name="syntax"> </a>
+<a name="syntax"></a>
 <h3>General Syntax Notes</h3>
 <p>
-Mapping files are always plain text in unicode. Whitespace is any unicode whitespace, and the particular whitespace used
-is not significant, except that unicode end of line characters terminate a
+Mapping files are always plain text in Unicode. Whitespace is any Unicode whitespace, and the particular whitespace used
+is not significant, except that Unicode end of line characters terminate a
 comment. Comments are started by the characters "//".
 </p>
 <p>
@@ -98,7 +98,7 @@ All names defined by the map language - group, rule and variable names - must be
 and must start with a letter. The special boolean values 'true' and 'false' are not allowed as variable names.
 </p>
 
-<a name="metadata"> </a>
+<a name="metadata"></a>
 <h3>Metadata</h3>
 
 <p>
@@ -116,7 +116,7 @@ the map uniquely, and then a human readable name for the map.
 <i>todo: add additional metadata?</i>
 </p>
 
-<a name="typing"> </a>
+<a name="typing"></a>
 <h3>Structure Definition References</h3>
 
 <p>
@@ -164,7 +164,7 @@ indicate any structure definitions can still be used, but the type features of t
 and such maps typically require special development to integrate the execution of the map into an application.
 </p>
 
-<a name="imports"> </a>
+<a name="imports"></a>
 <h3>Map Imports</h3>
 <p>
 This section references additional maps that are used by this map:
@@ -181,7 +181,7 @@ The [url] may contain a "*" as a wildcard character to include any matching maps
 that are available to the mapping engine.
 </p>
 
-<a name="groups"> </a>
+<a name="groups"></a>
 <h3>Groups</h3>
 <p>
 Each Mapping source contains one or more groups of rules. Each group
@@ -211,7 +211,7 @@ Maps may have additional input or output inputs, where that's necessary.
 </p>
 <p>
 Groups may extend other groups, which means that the rules in the other group
-also apply (typically, this is used with specialising classes in an OO context).
+also apply (typically, this is used with specializing classes in an OO context).
 When a group extends another group, it SHALL have the same input parameters (by name, type and mode)
 though their order may differ, and it MAY have additional parameters.
 </p>
@@ -228,7 +228,7 @@ source to target. There are 2 variants:
 In both these cases, the group SHALL have 2 parameters, a source, and a target, in that order, and both SHALL have specified types for the inputs.
 </p>
 
-<a name="rules"> </a>
+<a name="rules"></a>
 <h3>Transform Rules</h3>
 
 <p>
@@ -275,14 +275,14 @@ context.element { : type {min..max}} {default [value]} { list-option } as variab
 </pre>
 <ul>
  <li><b>context</b>: A variable that is the context in which this rule applies. Variables are not prefixed, and must be declared elsewhere in the map ('as variable' below, or in the input source variables)</li>
- <li><b>element</b>: An optional name of a child element of the context. If this is not provided, the source is the context. If this is provided, the rule will apply once for each element on the context that matches this name. If the element name contains spaces (possible in some contexts), it can be quoted using &quot; </li>
+ <li><b>element</b>: An optional name of a child element of the context. If this is not provided, the source is the context. If this is provided, the rule will apply once for each element on the context that matches this name. If the element name contains spaces (possible in some contexts) or other non-valid identifier characters, it can be quoted using &quot; </li>
  <li><b>type</b>: A type may be specified. If a type is specified, only elements that have the specified type are selected as part of the source</li>
  <li><b>min..max</b>: Specified cardinality. If a cardinality is specified, and the input document does not conform to the cardinality, the mapping engine raises an exception instead of completing the transformation</li>
  <li><b>default</b>: A default value, used if there is no source value found. If there's a default value on an item that can repeat, it will only be used once</li>
  <li><b>list-option</b>: by default, the rule will apply once for each occurrence of the element in context. The list option can override this to specify only to apply the first, last, or not to those</li>
  <li><b>as variable</b>: if an element is specified, a variable must be assigned. This variable name may be used in the target statement, and may be re-used in other dependent rules (see below). There is one special case described below (simple form) where the variable name is provided explicitly</li>
- <li><b>where [condition]</b>: a fluent path (ref) expression that is evaluated to boolean on the context. If the expression returns false, the source element has no match</li>
- <li><b>check [condition]</b>: a fluent path (ref) expression that is evaluated to boolean on the context. If the expression returns false, the mapping engine terminates execution with an error. Note: it's usual to have either a where or a check clause, but possible to have both. If both are provided, the where clause is evaluated first, and the check only applies if the where expression is true</li>
+ <li><b>where [condition]</b>: a FHIRPath (ref) expression that is evaluated to boolean on the context. If the expression returns false, the source element has no match</li>
+ <li><b>check [condition]</b>: a FHIRPath (ref) expression that is evaluated to boolean on the context. If the expression returns false, the mapping engine terminates execution with an error. Note: it's usual to have either a where or a check clause, but possible to have both. If both are provided, the where clause is evaluated first, and the check only applies if the where expression is true</li>
 </ul>
 <p>
 If all the source elements have a match the rule applies for the permutation of the source
@@ -293,6 +293,29 @@ if there is more than one source element, only one of the elements can repeat.
 Once the source statement is evaluated, the engine performing the evaluation has a list of variables, each of which
 contains a single value for each named variable. These variables are now mapped into the target structures in the target transformation.
 </p>
+<h4>Log Statement</h4>
+<p>
+Each source can include a log statement:
+</p>
+<pre>
+ log [expression]
+</pre>
+<p>
+Where expression is a FHIRPath statement. e.g. 
+</p>
+<pre>
+ log 'not handled yet'
+</pre>
+<p>
+Puts a plain string in the log file. Alternatively, the log statement can contain FHIRPath:
+</p>
+<pre>
+ log src.field
+</pre>
+<p>
+Log statements are often used to note that some particular source element is not yet mapped.
+</p>
+
 <h4>Target Transform</h4>
 <p>
 Each rule specifies zero or more elements to be created in the target structure. These targets can also be assigned to variables
@@ -336,7 +359,7 @@ The following list specifies that transforms that can be specified. Each transfo
  <tr><td>escape</td> <td>source, format1, format2</td> <td>Change the internal escaping of a string element. Note: this is not often needed, as mostly the escaping is done on the base format</td></tr>
  <tr><td>cast</td> <td>source, type?</td> <td>cast source from one type to another. target type can be left as implicit if there is one and only one target type known</td></tr>
  <tr><td>append</td> <td>source...</td> <td>source is element or string - just append them all together</td></tr>
- <tr><td>translate</td> <td>source, map_uri, output</td> <td>use the <a href="conceptmap-operations.html#translate">translate operation</a>. The source is some type of code or coded datatype, and the source and map_uri are passed to the translate operation. The output determines what value from the translate operation is used for the result of the operation (code, system, display, Coding, or CodeableConcept)</td></tr>
+ <tr><td>translate</td> <td>source, map_uri, output</td> <td>use the <a href="conceptmap-operation-translate.html">translate operation</a>. The source is some type of code or coded datatype, and the source and map_uri are passed to the translate operation. The output determines what value from the translate operation is used for the result of the operation (code, system, display, Coding, or CodeableConcept)</td></tr>
  <tr><td>reference</td> <td>source</td> <td>return a string that references the provided tree properly</td></tr>
  <tr><td>dateOp</td> <td>??</td> <td>Perform a date operation. Parameters to be documented</td></tr>
  <tr><td>uuid</td> <td>n/a</td> <td>Generate a random UUID (in lowercase). No Parameters</td></tr>
@@ -392,7 +415,7 @@ referenced by the uses (see above) statements. The name must be unique within th
 of these maps.
 </p>
 
-<a name="simple"> </a>
+<a name="simple"></a>
 <h3>Simple Form + Implicit Type Dependencies</h3>
 <p>
 If no dependent rules are specified, and if the is only one source and target, and
@@ -419,12 +442,12 @@ and tgt.element:
  src.element</li>
 </ul>
 
-<a name="grammar"> </a>
+<a name="grammar"></a>
 <h3>Formal Grammar</h3>
 
 <p>todo</p>
 
-<a name="api"> </a>
+<a name="api"></a>
 <h3>Mapping Support API</h3>
 
 <p>todo</p>

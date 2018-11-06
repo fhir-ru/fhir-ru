@@ -3,17 +3,18 @@ package org.hl7.fhir.igtools.renderers;
 import java.io.IOException;
 import java.util.List;
 
+import org.hl7.fhir.exceptions.FHIRException;
+import org.hl7.fhir.igtools.publisher.FetchedResource;
+import org.hl7.fhir.igtools.publisher.IGKnowledgeProvider;
+import org.hl7.fhir.igtools.publisher.SpecMapManager;
 import org.hl7.fhir.r4.context.IWorkerContext;
 import org.hl7.fhir.r4.model.StructureDefinition;
 import org.hl7.fhir.r4.model.StructureMap;
 import org.hl7.fhir.r4.utils.StructureMapUtilities;
 import org.hl7.fhir.r4.utils.StructureMapUtilities.StructureMapAnalysis;
-import org.hl7.fhir.exceptions.FHIRException;
-import org.hl7.fhir.igtools.publisher.FetchedResource;
-import org.hl7.fhir.igtools.publisher.IGKnowledgeProvider;
-import org.hl7.fhir.igtools.publisher.SpecMapManager;
 import org.hl7.fhir.utilities.MarkDownProcessor;
 import org.hl7.fhir.utilities.Utilities;
+import org.hl7.fhir.utilities.cache.NpmPackage;
 import org.hl7.fhir.utilities.xhtml.XhtmlComposer;
 
 public class StructureMapRenderer extends BaseRenderer {
@@ -24,11 +25,11 @@ public class StructureMapRenderer extends BaseRenderer {
   private StructureMapAnalysis analysis;
   private String destDir;
 
-  public StructureMapRenderer(IWorkerContext context, String prefix, StructureMap map, String destDir, IGKnowledgeProvider igp, List<SpecMapManager> maps, MarkDownProcessor markdownEngine) {
-    super(context, prefix, igp, maps, markdownEngine);
+  public StructureMapRenderer(IWorkerContext context, String prefix, StructureMap map, String destDir, IGKnowledgeProvider igp, List<SpecMapManager> maps, MarkDownProcessor markdownEngine, NpmPackage packge) {
+    super(context, prefix, igp, maps, markdownEngine, packge);
     this.map = map;
     this.destDir = destDir;
-    utils = new StructureMapUtilities(context, null, null, igp);
+    utils = new StructureMapUtilities(context, null, igp);
     analysis = (StructureMapAnalysis) map.getUserData("analysis");
   }
 
@@ -37,6 +38,8 @@ public class StructureMapRenderer extends BaseRenderer {
     StringBuilder b = new StringBuilder();
     b.append("<table class=\"grid\">\r\n");
     b.append(" <tbody><tr><td>"+translate("sm.summary", "Defining URL")+":</td><td>"+Utilities.escapeXml(map.getUrl())+"</td></tr>\r\n");
+    if (map.hasVersion())
+      b.append(" <tr><td>"+translate("cs.summary", "Version")+":</td><td>"+Utilities.escapeXml(map.getVersion())+"</td></tr>\r\n");
     b.append(" <tr><td>"+translate("sm.summary", "Name")+":</td><td>"+Utilities.escapeXml(gt(map.getNameElement()))+"</td></tr>\r\n");
     if (map.hasDescription())
       b.append(" <tr><td>"+translate("sm.summary", "Definition")+":</td><td>"+processMarkdown("description", map.getDescriptionElement())+"</td></tr>\r\n");
@@ -45,7 +48,7 @@ public class StructureMapRenderer extends BaseRenderer {
     if (map.hasCopyright())
       b.append(" <tr><td>"+translate("sm.summary", "Copyright")+":</td><td>"+Utilities.escapeXml(gt(map.getCopyrightElement()))+"</td></tr>\r\n");
     if (xml || json || ttl) {
-      b.append(" <tr><td>"+translate("sm.summary", "Source Resource")+"</td><td>");
+      b.append(" <tr><td>"+translate("sm.summary", "Source Resource")+":</td><td>");
       boolean first = true;
       String filename = igp.getProperty(r, "format");
       if (filename == null)
@@ -80,11 +83,11 @@ public class StructureMapRenderer extends BaseRenderer {
   }
 
   public String script() throws FHIRException {
-    return utils.render(map);
+    return utils.render(map, false);
   }
 
   public String content() throws IOException {
-    return new XhtmlComposer().compose(analysis.getSummary());
+    return new XhtmlComposer(XhtmlComposer.HTML).compose(analysis.getSummary());
   }
 
 

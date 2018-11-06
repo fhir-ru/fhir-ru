@@ -1,11 +1,11 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<a name="scope"> </a>
+<a name="scope"></a>
 <h2>Scope and Usage</h2>
 <p>
-The Provenance resource tracks information about the activity that created a version of a resource, including the entities and agents involved in producing a resource.
-This information can be used to form assessments about its quality, reliability or trustworthiness, or to provide pointers for where to go to further investigate the origins of the resource and the information in it. 
+The Provenance resource tracks information about the activity that created, revised, deleted, or signed a version of a resource, describing the entities and agents involved.
+This information can be used to form assessments about its quality, reliability, trustworthiness, or to provide pointers for where to go to further investigate the origins of the resource and the information in it. 
 </p>
 <p>
 <a href="provenance.html">Provenance resources</a> are a record-keeping assertion that gathers information about the context in which the information in a resource was obtained. 
@@ -16,16 +16,16 @@ AuditEvent resources are often (though not exclusively) created by the applicati
 </div>
 
 <div>
-<a name="bnr"> </a>
+<a name="bnr"></a>
 <h2>Boundaries and Relationships</h2>
-<a name="overlap"> </a>
+<a name="overlap"></a>
 <p>
 Many other FHIR resources contain some elements that represent information
 about how the resource was obtained, and therefore they overlap with the 
 functionality of the Provenance resource. These properties in other resources
 should always be used in preference to the Provenance resource, and the 
 Provenance resource should be used where additional information is required,
-though overlap can occur. 
+or explicit record or provenance is desired. 
 </p>
 <p>
 The relationship between a resource and its provenance is established
@@ -37,12 +37,12 @@ or version of a resource.
 </div>
 
 <div>
-<a name="bnc"> </a>
+<a name="bnc"></a>
 <h2>Background and Context</h2>
 <p>
 The Provenance resource is based on the <a href="http://www.w3.org/TR/2013/NOTE-prov-overview-20130430/">W3C Provenance specification</a>, 
 and mappings are provided. The Provenance resource is tailored to fit the FHIR use-cases for provenance more directly. 
-In terms of <a href="http://www.w3.org/TR/prov-dm/">W3C Provenance</a> the FHIR <a href="provenance.html">Provenance resources</a> covers "Generation" of "Entity" with 
+In terms of <a href="http://www.w3.org/TR/prov-dm/">W3C Provenance</a> the FHIR <a href="provenance.html">Provenance resource</a> covers "Generation" of "Entity" with 
 respect to FHIR defined resources for creation or updating; 
 whereas <a href="auditevent.html">AuditEvent</a> covers "Usage" of "Entity" and all other "Activity" as defined in W3C Provenance.
 </p>
@@ -56,7 +56,6 @@ The W3C Provenance Specification has the following fundamental model:
 Where:
 </p>
 <ul>
-<li>Target - An entity that is a FHIR resource instance that is created, updated or deleted.</li>
 <li>Entity - An entity is a physical, digital, conceptual or other kind of thing with some fixed aspects; entities may be real or imaginary.</li>
 <li>Agent - An agent is something that bears some form of responsibility for an activity taking place, for the existence of an entity, or for another agent's activity.</li>
 <li>Activity - An activity is something that occurs over a time period and acts upon or with entities. It may include consuming, processing, transforming, modifying, relocating, using, or generating entities.</li>
@@ -76,7 +75,7 @@ Versioning and unique identification are not mandated for all systems that provi
 But, inclusion of Provenance requirements may introduce requirements for versioning and unique identification on those systems
 </p><p>
 The Provenance resource is based on leveraging the W3C Provenance specification  to represent HL7 support of provenance throughout 
-its standards and explicitly modelled as functional capabilities in ISO/HL7 10781 EHR System Functional Model Release 2 and 
+its standards and explicitly modeled as functional capabilities in ISO/HL7 10781 EHR System Functional Model Release 2 and 
 ISO 21089 Trusted End-to-End Information Flows.  Mappings are provided. The Provenance resource is tailored to fit the 
 FHIR use-cases for provenance more directly. In terms of W3C Provenance the FHIR Provenance resources 
 covers "Generation" of "Entity" with respect to FHIR defined resources for creation or updating; whereas AuditEvent 

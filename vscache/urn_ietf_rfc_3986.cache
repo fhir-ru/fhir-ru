@@ -1,0 +1,75 @@
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "urn:ietf:rfc:3986",
+  "code" : "http://hl7.org/fhir/StructureDefinition/lipidprofile"
+}, "valueSet" :null}####
+v: {
+  "display" : "",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"hierarchical" : false, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "include" : [{
+      "system" : "urn:ietf:rfc:3986",
+      "concept" : [{
+        "code" : "http://hl7.org/fhir/StructureDefinition/lipidprofile",
+        "display" : "Lipid Lab Report"
+      }]
+    }]
+  }
+}}####
+e: {
+  "valueSet" : {
+  "resourceType" : "ValueSet",
+  "expansion" : {
+    "identifier" : "urn:uuid:ec8b1cb7-8d57-441a-9058-ded968493f0d",
+    "timestamp" : "2018-11-03T13:27:22.675Z",
+    "parameter" : [{
+      "name" : "limitedExpansion",
+      "valueString" : "-1"
+    },
+    {
+      "name" : "includeDesignations",
+      "valueString" : "-1"
+    },
+    {
+      "name" : "excludeNested",
+      "valueString" : "-1"
+    },
+    {
+      "name" : "version",
+      "valueString" : "urn:ietf:rfc:3986?version=n/a"
+    }],
+    "contains" : [{
+      "system" : "urn:ietf:rfc:3986",
+      "code" : "http://hl7.org/fhir/StructureDefinition/lipidprofile",
+      "display" : "Lipid Lab Report"
+    }]
+  }
+},
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "urn:ietf:rfc:3986",
+  "code" : "RicardianContract"
+}, "valueSet" :null}####
+v: {
+  "display" : "",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "urn:ietf:rfc:3986",
+  "code" : "urn:oid:1.2.840.10008.5.1.4.1.1.2"
+}, "valueSet" :null}####
+v: {
+  "display" : "",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------

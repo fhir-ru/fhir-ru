@@ -1,9 +1,9 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
-<a name="typical"> </a>
+<a name="typical"></a>
 	<h2>Typical Status Transition Examples:</h2>
 
-<a name="status-flow"> </a>
+<a name="status-flow"></a>
 	<h3>Typical flow of statuses for an appointment:</h3>
 	<table  class="grid">
 		<tr>
@@ -154,7 +154,7 @@
 		</tr>
 	</table>
 
-<a name="reject-flow"> </a>
+<a name="reject-flow"></a>
 	<h3>Flow for the rejection/cancellation of an appointment</h3>
 	<table  class="grid">
 		<tr>
@@ -231,7 +231,7 @@
 		</tr>
 	</table>
 
-<a name="negotiate-flow"> </a>
+<a name="negotiate-flow"></a>
 	<h3>Flow for re-negotiation:</h3>
 	<table  class="grid">
 		<tr>
@@ -250,7 +250,7 @@
 		</tr>
 		<tr>
 			<td>
-				An appointment is requested (e.g.,with Brian and Peter)<br/>(Role: Requester)
+				An appointment is requested (e.g. with Brian and Peter)<br/>(Role: Requester)
 			</td> <!-- Activity Description -->
 			<td></td> <!-- Slot -->
 			<td>
@@ -344,7 +344,7 @@
 		</tr>
 	</table>
 	
-<a name="noshow-flow"> </a>
+<a name="noshow-flow"></a>
 	<h3>Flow for a patient no-show:</h3>
 	<table  class="grid">
 		<tr>
@@ -387,18 +387,79 @@
 		</tr>
 	</table>	
 	
-<a name="notes"> </a>
+	
+<a name="waitlist-flow"></a>
+	<h3>Flow for a patient waitlist:</h3>
+	<table  class="grid">
+		<tr>
+			<th>Activity Description</th>
+			<th>Appointment (inconvenient)</th>
+			<th>Appointment (preferred)</th>
+		</tr>
+		<tr>
+			<td>An appointment is booked for an inconvenient time using a typical status flow</td>
+			<!-- Activity Description -->
+			<td>
+				status = booked<br/>
+				participant.status = accepted
+			</td>
+			<!-- Appointment -->
+			<td></td>
+			<!-- Appointment Waitlist -->
+		</tr>
+		<tr>
+			<td>Waitlist appointment created</td>
+			<!-- Activity Description -->
+			<td>
+				status = booked<br/>
+				participant.status = accepted
+			</td>
+			<!-- Appointment -->
+			<td>
+				status = waitlist<br/>
+				requestedPeriod = <i>(more convinient time period)</i>
+			</td>
+			<!-- Appointment Waitlist -->
+		</tr>
+		<tr>
+			<td>Patient notified of availability of a better slot</td>
+			<!-- Activity Description -->
+			<td>
+				status = booked
+			</td>
+			<!-- Appointment -->
+			<td>
+				status = proposed<br/>
+				participant.status = needs-action
+			</td>
+			<!-- Appointment Response -->
+		</tr>
+		<tr>
+			<td>Patient accepts better slot</td>
+			<!-- Activity Description -->
+			<td>
+				status = cancelled
+			</td>
+			<!-- Appointment -->
+			<td>
+				status = booked<br/>
+				participant.status = accepted
+			</td>
+			<!-- Appointment Response -->
+		</tr>
+	</table>
+	
+	
+<a name="notes"></a>
 	<h2>Notes:</h2>
 	<ul>
-		<li>Placer/Filler (<a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a>)</li>
-		<p>
+		<li>Placer/Filler (<a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a>)<br/>
 			The appointment information is effectively the same between the filler and placer, and given the nature of the
 			FHIR resource, there is only a single resource for both purposes. The placer is the actor that performs the
 			PUT or POST operation on the resource, and the filler is the actor that receives these resource messages and
 			processes the information and makes a decision if the appointment can be used.
-		</p>
-		<li>Interaction with other Standards</li>
-		<p>
+</li>
+		<li>Interaction with other Standards<br/>
 			The strong desire is that implementers of this resource should consider providing this resource
 			in the iCalendar format as an alternative representation. Many 3rd party applications and component providers
 			have parsers and user interface controls to display this information.
@@ -406,18 +467,15 @@
 			consumer space. This would permit the easier creation of a mobile application that creates appointments
 			in the devices native calendar.<br/>
 			The iCalendar specification can be found at <a href="http://www.ietf.org/rfc/rfc2445.txt">http://www.ietf.org/rfc/rfc2445.txt</a>.
-		</p>
+		</li>
 	</ul>
-<blockquote class="stu-note">
 <a name="dstu"> </a>
-<p>
-<b>STU Note:</b> Implementer feedback is sought on the values for Appointment.priority and how interoperable they are.
+[%stu-note%]
+Implementer feedback is sought on the values for Appointment.priority and how interoperable they are.
 Using an extension to record a CodeableConcept for named values may be tested at a future Connectathon.
 </p>
 <p>
 Feedback <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(STU_3)">here</a>.
-</p>
-
-</blockquote>
+[%end-note%]
   
 </div>

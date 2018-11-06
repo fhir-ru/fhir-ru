@@ -41,6 +41,7 @@ import org.hl7.fhir.r4.model.IdType;
 import org.hl7.fhir.r4.model.Resource;
 import org.hl7.fhir.r4.model.StringType;
 import org.hl7.fhir.r4.model.Type;
+import org.hl7.fhir.r4.utils.formats.JsonTrackingParser;
 import org.hl7.fhir.exceptions.FHIRFormatError;
 import org.hl7.fhir.instance.model.api.IIdType;
 import org.hl7.fhir.utilities.TextFile;
@@ -65,12 +66,13 @@ public abstract class JsonParserBase extends ParserBase implements IParser {
 	  return ParserType.JSON;
   }
 
-	private static com.google.gson.JsonParser  parser = new com.google.gson.JsonParser();
+	// private static com.google.gson.JsonParser  parser = new com.google.gson.JsonParser();
   
   // -- in descendent generated code --------------------------------------
   
   abstract protected Resource parseResource(JsonObject json) throws IOException, FHIRFormatError;
   abstract protected Type parseType(JsonObject json, String type) throws IOException, FHIRFormatError;
+  abstract protected Type parseAnyType(JsonObject json, String type) throws IOException, FHIRFormatError;
   abstract protected Type parseType(String prefix, JsonObject json) throws IOException, FHIRFormatError;
   abstract protected boolean hasTypeName(JsonObject json, String prefix);
   abstract protected void composeResource(Resource resource) throws IOException;
@@ -105,6 +107,12 @@ public abstract class JsonParserBase extends ParserBase implements IParser {
     return parseType(json, type);
   }
 
+  @Override
+  public Type parseAnyType(InputStream input, String type) throws IOException, FHIRFormatError {
+    JsonObject json = loadJson(input);
+    return parseAnyType(json, type);
+  }
+
   /**
    * Compose a resource to a stream, possibly using pretty presentation for a human reader (used in the spec, for example, but not normally in production)
    * @throws IOException 
@@ -115,7 +123,7 @@ public abstract class JsonParserBase extends ParserBase implements IParser {
     if (style == OutputStyle.CANONICAL)
       json = new JsonCreatorCanonical(osw);
     else
-      json = new JsonCreatorGson(osw);
+      json = new JsonCreatorDirect(osw); // use this instead of Gson because this preserves decimal formatting
     json.setIndent(style == OutputStyle.PRETTY ? "  " : "");
     json.beginObject();
     composeResource(resource);
@@ -139,7 +147,7 @@ public abstract class JsonParserBase extends ParserBase implements IParser {
     if (style == OutputStyle.CANONICAL)
       json = new JsonCreatorCanonical(osw);
     else
-      json = new JsonCreatorGson(osw);
+      json = new JsonCreatorDirect(osw);// use this instead of Gson because this preserves decimal formatting
     json.setIndent(style == OutputStyle.PRETTY ? "  " : "");
     json.beginObject();
     composeTypeInner(type);
@@ -156,7 +164,8 @@ public abstract class JsonParserBase extends ParserBase implements IParser {
   private boolean htmlPretty;
   
   private JsonObject loadJson(InputStream input) throws JsonSyntaxException, IOException {
-    return parser.parse(TextFile.streamToString(input)).getAsJsonObject();
+    return JsonTrackingParser.parse(TextFile.streamToString(input), null);
+    // return parser.parse(TextFile.streamToString(input)).getAsJsonObject();
   }
   
 //  private JsonObject loadJson(String input) {
@@ -210,6 +219,12 @@ public abstract class JsonParserBase extends ParserBase implements IParser {
     json.value(value);
   }
 
+  protected void propNum(String name, String value) throws IOException {
+    if (name != null)
+      json.name(name);
+    json.valueNum(value);
+  }
+
   protected void prop(String name, java.lang.Integer value) throws IOException {
     if (name != null)
       json.name(name);
@@ -220,9 +235,7 @@ public abstract class JsonParserBase extends ParserBase implements IParser {
 		if (!Utilities.noString(xhtmlMessage)) {
       prop(name, "<div>!-- "+xhtmlMessage+" --></div>");
 		} else {
-		XhtmlComposer comp = new XhtmlComposer();
-		comp.setPretty(htmlPretty);
-		  comp.setXmlOnly(true);
+		XhtmlComposer comp = new XhtmlComposer(XhtmlComposer.XML, htmlPretty);
 		prop(name, comp.compose(html));
 		}
 	}

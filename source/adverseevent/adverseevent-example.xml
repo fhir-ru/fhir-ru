@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <AdverseEvent xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/allergyintolerance.xsd">
   <id value="example"/>
 
@@ -11,11 +11,11 @@
   <!-- this was an actual adverse event, not just a potential one -->
   <actuality value="actual"/>
 
-  <!-- high level categorision. The "event" below will say more -->
+  <!-- high level categorizion. The "event" below will say more -->
   <category> 
     <coding> 
-      <system value="http://hl7.org/fhir/adverse-event-category"/> 
-      <code value="ProductUseError"/> 
+      <system value="http://terminology.hl7.org/CodeSystem/adverse-event-category"/> 
+      <code value="product-use-error"/> 
       <display value="Product Use Error"/> 
     </coding> 
   </category> 
@@ -29,6 +29,7 @@
       <code value="304386008"/>
       <display value="O/E - itchy rash"/>
     </coding>
+	<text value="This was a mild rash on the left forearm"/>
   </event>
   
   <!-- the patient that actually had the adverse event -->
@@ -42,7 +43,7 @@
   <!-- This was a rash, so overall not serious -->
   <seriousness>
       <coding>
-        <system value="http://hl7.org/fhir/adverse-event-seriousness"/>
+        <system value="http://terminology.hl7.org/CodeSystem/adverse-event-seriousness"/>
         <code value="Non-serious"/>
         <display value="Non-serious"/>
     </coding>
@@ -51,8 +52,8 @@
   <!-- In overall terms even if it was a severe rash it is a relatively mild event overall --> 
   <severity>
     <coding>
-      <system value="http://hl7.org/fhir/adverse-event-severity"/>
-      <code value="Mild"/>
+      <system value="http://terminology.hl7.org/CodeSystem/adverse-event-severity"/>
+      <code value="mild"/>
       <display value="Mild"/>
     </coding>
   </severity>
@@ -61,8 +62,6 @@
   <recorder>
     <reference value="Practitioner/example"/>
   </recorder>
-  
-  <description value="This was a mild rash on the left forearm"/>
 
   <!-- may have been for cream to treat sunburn on that arm, reference to that medication -->
   <suspectEntity>

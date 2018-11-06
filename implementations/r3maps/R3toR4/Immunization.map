@@ -1,0 +1,30 @@
+﻿map "http://hl7.org/fhir/StructureMap/Immunization3to4" = "R3 to R4 Conversions for Immunization"
+
+uses "http://hl7.org/fhir/3.0/StructureDefinition/Immunization" alias ImmunizationR3 as source
+uses "http://hl7.org/fhir/StructureDefinition/Immunization" alias Immunization as target
+
+imports "http://hl7.org/fhir/StructureMap/*3to4"
+
+group Immunization(source src : ImmunizationR3, target tgt : Immunization) extends DomainResource <<type+>> {
+  src.identifier -> tgt.identifier;
+  src.status -> tgt.status;
+  src.vaccineCode -> tgt.vaccineCode;
+  src.patient -> tgt.patient;
+  src.encounter -> tgt.encounter;
+  src.primarySource -> tgt.primarySource;
+  src.reportOrigin -> tgt.reportOrigin;
+  src.location -> tgt.location;
+  src.manufacturer -> tgt.manufacturer;
+  src.lotNumber -> tgt.lotNumber;
+  src.expirationDate -> tgt.expirationDate;
+  src.site -> tgt.site;
+  src.route -> tgt.route;
+  src.doseQuantity -> tgt.doseQuantity;
+  src.practitioner as vs0 -> tgt.performer as vt0 then {
+    vs0.role -> vt0.function "function";
+    vs0.actor -> vt0.actor;
+  } "performer";
+  src.note -> tgt.note;
+  src.reason -> tgt.reasonCode "reasonCode";
+}
+

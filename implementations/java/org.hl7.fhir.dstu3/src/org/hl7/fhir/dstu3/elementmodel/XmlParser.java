@@ -3,11 +3,10 @@ package org.hl7.fhir.dstu3.elementmodel;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -254,7 +253,7 @@ public class XmlParser extends ParserBase {
     		if (property != null) {
     			if (!property.isChoice() && "xhtml".equals(property.getType())) {
           	XhtmlNode xhtml = new XhtmlParser().setValidatorMode(true).parseHtmlNode((org.w3c.dom.Element) child);
-						context.getChildren().add(new Element("div", property, "xhtml", new XhtmlComposer().setXmlOnly(true).compose(xhtml)).setXhtml(xhtml).markLocation(line(child), col(child)));
+						context.getChildren().add(new Element("div", property, "xhtml", new XhtmlComposer(XhtmlComposer.XML).compose(xhtml)).setXhtml(xhtml).markLocation(line(child), col(child)));
     			} else {
     			  String npath = path+"/"+pathPrefix(child.getNamespaceURI())+child.getLocalName();
     				Element n = new Element(child.getLocalName(), property).markLocation(line(child), col(child));
@@ -338,7 +337,7 @@ public class XmlParser extends ParserBase {
   private void parseResource(String string, org.w3c.dom.Element container, Element parent, Property elementProperty) throws FHIRFormatError, DefinitionException, FHIRException, IOException {
   	org.w3c.dom.Element res = XMLUtil.getFirstChild(container);
     String name = res.getLocalName();
-    StructureDefinition sd = context.fetchResource(StructureDefinition.class, "http://hl7.org/fhir/StructureDefinition/"+name);
+    StructureDefinition sd = context.fetchTypeDefinition(name);
     if (sd == null)
       throw new FHIRFormatError("Contained resource does not appear to be a FHIR resource (unknown name '"+res.getLocalName()+"')");
     parent.updateProperty(new Property(context, sd.getSnapshot().getElement().get(0), sd), SpecialElement.fromProperty(parent.getProperty()), elementProperty);

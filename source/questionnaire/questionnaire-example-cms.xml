@@ -47,12 +47,12 @@
         <linkId value="M0018.1"/>
         <type value="choice"/>
         <required value="true"/>
-        <option>
+        <answerOption>
           <valueCoding>
             <code value="NA"/>
             <display value="Not Applicable"/>
           </valueCoding>
-        </option>
+        </answerOption>
       </item>
     </item>
     <item>
@@ -82,12 +82,12 @@
         <linkId value="M0030.1"/>
         <type value="choice"/>
         <required value="true"/>
-        <option>
+        <answerOption>
           <valueCoding>
             <code value="NA"/>
             <display value="Not Applicable"/>
           </valueCoding>
-        </option>
+        </answerOption>
       </item>
     </item>
     <item>
@@ -122,12 +122,12 @@
         <linkId value="M0063.1"/>
         <type value="choice"/>
         <required value="true"/>
-        <option>
+        <answerOption>
           <valueCoding>
             <code value="NA"/>
             <display value="No Medicare"/>
           </valueCoding>
-        </option>
+        </answerOption>
       </item>
     </item>
     <item>
@@ -141,12 +141,12 @@
         <linkId value="M0064.1"/>
         <type value="choice"/>
         <required value="true"/>
-        <option>
+        <answerOption>
           <valueCoding>
             <code value="UK"/>
             <display value="Unknown or Not Available"/>
           </valueCoding>
-        </option>
+        </answerOption>
       </item>
     </item>
     <item>
@@ -157,12 +157,12 @@
         <linkId value="M0065.1"/>
         <type value="choice"/>
         <required value="true"/>
-        <option>
+        <answerOption>
           <valueCoding>
             <code value="NA"/>
             <display value="No Medicaid"/>
           </valueCoding>
-        </option>
+        </answerOption>
       </item>
     </item>
     <item>
@@ -179,18 +179,18 @@
       <text value="Gender"/>
       <type value="choice"/>
       <required value="true"/>
-      <option>
+      <answerOption>
         <valueCoding>
           <code value="1"/>
           <display value="Male"/>
         </valueCoding>
-      </option>
-      <option>
+      </answerOption>
+      <answerOption>
         <valueCoding>
           <code value="2"/>
           <display value="Female"/>
         </valueCoding>
-      </option>
+      </answerOption>
     </item>
     <item>
       <linkId value="M0140"/>
@@ -198,42 +198,42 @@
       <type value="choice"/>
       <required value="true"/>
       <repeats value="true"/>
-      <option>
+      <answerOption>
         <valueCoding>
           <code value="1"/>
           <display value="American Indian or Alaska Native"/>
         </valueCoding>
-      </option>
-      <option>
+      </answerOption>
+      <answerOption>
         <valueCoding>
           <code value="2"/>
           <display value="Asian"/>
         </valueCoding>
-      </option>
-      <option>
+      </answerOption>
+      <answerOption>
         <valueCoding>
           <code value="3"/>
           <display value="Black or African-American"/>
         </valueCoding>
-      </option>
-      <option>
+      </answerOption>
+      <answerOption>
         <valueCoding>
           <code value="4"/>
           <display value="Hispanic or Latino"/>
         </valueCoding>
-      </option>
-      <option>
+      </answerOption>
+      <answerOption>
         <valueCoding>
           <code value="5"/>
           <display value="Native Hawaiian or Pacific Islander"/>
         </valueCoding>
-      </option>
-      <option>
+      </answerOption>
+      <answerOption>
         <valueCoding>
           <code value="6"/>
           <display value="White"/>
         </valueCoding>
-      </option>
+      </answerOption>
     </item>
     <item>
       <linkId value="M0150"/>
@@ -241,89 +241,91 @@
       <type value="choice"/>
       <required value="true"/>
       <repeats value="true"/>
-      <option>
+      <answerOption>
         <valueCoding>
           <code value="0"/>
           <display value="None; no charge for current services"/>
         </valueCoding>
-      </option>
-      <option>
+      </answerOption>
+      <answerOption>
         <valueCoding>
           <code value="1"/>
           <display value="Medicare (traditional fee-for-service)"/>
         </valueCoding>
-      </option>
-      <option>
+      </answerOption>
+      <answerOption>
         <valueCoding>
           <code value="2"/>
           <display value="Medicare (HMO/managed care/Advantage plan)"/>
         </valueCoding>
-      </option>
-      <option>
+      </answerOption>
+      <answerOption>
         <valueCoding>
           <code value="3"/>
           <display value="Medicaid (traditional fee-for-service)"/>
         </valueCoding>
-      </option>
-      <option>
+      </answerOption>
+      <answerOption>
         <valueCoding>
           <code value="4"/>
           <display value="Medicaid (HMO/managed care)"/>
         </valueCoding>
-      </option>
-      <option>
+      </answerOption>
+      <answerOption>
         <valueCoding>
           <code value="5"/>
           <display value="Workers' compensation"/>
         </valueCoding>
-      </option>
-      <option>
+      </answerOption>
+      <answerOption>
         <valueCoding>
           <code value="6"/>
           <display value="Title programs (e.g. Title III, V, or XX)"/>
         </valueCoding>
-      </option>
-      <option>
+      </answerOption>
+      <answerOption>
         <valueCoding>
           <code value="7"/>
           <display value="Other government (e.g. TriCare, VA, etc.)"/>
         </valueCoding>
-      </option>
-      <option>
+      </answerOption>
+      <answerOption>
         <valueCoding>
           <code value="8"/>
           <display value="Private insurance"/>
         </valueCoding>
-      </option>
-      <option>
+      </answerOption>
+      <answerOption>
         <valueCoding>
           <code value="9"/>
           <display value="Private HMO/managed care"/>
         </valueCoding>
-      </option>
-      <option>
+      </answerOption>
+      <answerOption>
         <valueCoding>
           <code value="10"/>
           <display value="Self-pay"/>
         </valueCoding>
-      </option>
-      <option>
+      </answerOption>
+      <answerOption>
         <valueCoding>
           <code value="11"/>
           <display value="Other (specify)"/>
         </valueCoding>
-      </option>
-      <option>
+      </answerOption>
+      <answerOption>
         <valueCoding>
           <code value="UK"/>
           <display value="Unknown"/>
         </valueCoding>
-      </option>
+      </answerOption>
       <item>
         <linkId value="M0140.1"/>
         <type value="string"/>
         <enableWhen>
           <question value="M0150"/>
+          <operator value="exists"/>
+          <answerBoolean value="true"/>
         </enableWhen>
         <required value="true"/>
       </item>
@@ -465,7 +467,7 @@ Rate the degree of symptom control for the condition listed in Column 1 using th
 3 - Symptoms poorly controlled; patient needs frequent adjustment in treatment and dose monitoring
 4 - Symptoms poorly controlled; history of re-hospitalizations
 Note that in Column 2 the rating for symptom control of each diagnosis should not be used to determine the
-sequencing of the diagnoses listed in Column 1. These are separate items and sequencing may not coincide.
+sequencing of the diagnoses listed in Column 1. These are separate items and sequencing might not coincide.
 Sequencing of diagnoses should reflect the seriousness of each condition and support the disciplines and services
 provided.
 Column 3: (OPTIONAL) If a V-code is assigned to any row in Column 2, in place of a case mix diagnosis, it may be
@@ -490,7 +492,7 @@ ICD-9-C M and symptom
 control rating for each
 condition.
 Note that the sequencing of
-these ratings may not match
+these ratings might not match
 the sequencing of the
 diagnoses
 Complete if a V-code is
@@ -757,7 +759,7 @@ record in centimeters. If no Stage III or Stage IV pressure ulcers, go to M1320.
 | ___ | ___ | . | ___ | (cm)
 (M1320) Status of Most Problematic (Observable) Pressure Ulcer:
 ⃞ 0 - Newly epithelialized
-⃞ 1 - Fully granulating
+⃞ 1 - Fully granularing
 ⃞ 2 - Early/partial granulation
 ⃞ 3 - Not healing
 ⃞ NA - No observable pressure ulcer
@@ -785,7 +787,7 @@ dressing) [ Go to M1340 ]
 ⃞ 4 - Four or more
 (M1334) Status of Most Problematic (Observable) Stasis Ulcer:
 ⃞ 0 - Newly epithelialized
-⃞ 1 - Fully granulating
+⃞ 1 - Fully granularing
 ⃞ 2 - Early/partial granulation
 ⃞ 3 - Not healing
 (M1340) Does this patient have a Surgical Wound?
@@ -794,7 +796,7 @@ dressing) [ Go to M1340 ]
 ⃞ 2 - Surgical wound known but not observable due to non-removable dressing [ Go to M1350 ]
 (M1342) Status of Most Problematic (Observable) Surgical Wound:
 ⃞ 0 - Newly epithelialized
-⃞ 1 - Fully granulating
+⃞ 1 - Fully granularing
 ⃞ 2 - Early/partial granulation
 ⃞ 3 - Not healing
 (M1350) Does this patient have a Skin Lesion or Open Wound, excluding bowel ostomy, other than those described
@@ -838,7 +840,7 @@ ELIMINATION STATUS
 ⃞ 0 - No
 ⃞ 1 - Yes
 ⃞ NA - Patient on prophylactic treatment
-⃞ UK - Unknown [Omit ―UK‖ option on DC]
+⃞ UK - Unknown [Omit ―UK‖ answerOption on DC]
 (M1610) Urinary Incontinence or Urinary Catheter Presence:
 ⃞ 0 - No incontinence or catheter (includes anuria or ostomy for urinary drainage) [ Go to M1620 ]
 ⃞ 1 - Patient is incontinent
@@ -859,7 +861,7 @@ ELIMINATION STATUS
 ⃞ 4 - On a daily basis
 ⃞ 5 - More often than once daily
 ⃞ NA - Patient has ostomy for bowel elimination
-⃞ UK - Unknown [Omit ―UK‖ option on FU, DC]
+⃞ UK - Unknown [Omit ―UK‖ answerOption on FU, DC]
 (M1630) Ostomy for Bowel Elimination: Does this patient have an ostomy for bowel elimination that (within the last
 14 days): a) was related to an inpatient facility stay, or b) necessitated a change in medical or treatment
 regimen?
@@ -1215,7 +1217,7 @@ agency staff)?
 ⃞ 3 - One to two times per week
 ⃞ 4 - Received, but less often than weekly
 ⃞ 5 - No assistance received
-⃞ UK - Unknown [Omit ―UK‖ option on DC]
+⃞ UK - Unknown [Omit ―UK‖ answerOption on DC]
 THERAPY NEED AND PLAN OF CARE
 (M2200) Therapy Need: In the home health plan of care for the Medicare payment episode for which this assessment
 will define a case mix group, what is the indicated need for therapy visits (total of reasonable and necessary
@@ -1331,7 +1333,7 @@ wound healing
 ⃞ 2 - Rehabilitation facility [ Go to M0903 ]
 ⃞ 3 - Nursing home [ Go to M2440 ]
 ⃞ 4 - Hospice [ Go to M0903 ]
-⃞ NA - No inpatient facility admission [Omit ―NA‖ option on TRN]
+⃞ NA - No inpatient facility admission [Omit ―NA‖ answerOption on TRN]
 (M2420) Discharge Disposition: Where is the patient after discharge from your agency? (Choose only one
 answer.)
 ⃞ 1 - Patient remained in the community (without formal assistive services)

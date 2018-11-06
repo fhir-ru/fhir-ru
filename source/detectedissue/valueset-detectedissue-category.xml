@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <ValueSet xmlns="http://hl7.org/fhir">
-  <name value="Detected Issue Category"/>
+  <name value="DetectedIssueCategory"/>
+  <title value="Detected Issue Category"/>
   <status value="draft"/>
   <publisher value="FHIR Project team"/>
   <contact>
@@ -13,7 +14,7 @@
   <description value="Kinds of issues or contraindications, such as &#39;drug-drug interaction&#39;, &#39;duplicate therapy&#39;, etc."/>
   <compose>
     <include>
-      <system value="http://hl7.org/fhir/v3/ActCode"/>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
       <filter>
         <property value="concept"/>
         <op value="is-a"/>
@@ -21,7 +22,7 @@
       </filter>
     </include>
     <include>
-      <system value="http://hl7.org/fhir/v3/ActCode"/>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
       <filter>
         <property value="concept"/>
         <op value="is-a"/>
@@ -29,7 +30,7 @@
       </filter>
     </include>
     <include>
-      <system value="http://hl7.org/fhir/v3/ActCode"/>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
       <filter>
         <property value="concept"/>
         <op value="is-a"/>

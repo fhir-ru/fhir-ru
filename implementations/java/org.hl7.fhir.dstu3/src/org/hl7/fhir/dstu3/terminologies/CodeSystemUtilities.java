@@ -8,12 +8,13 @@ import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionComponent;
 import org.hl7.fhir.dstu3.model.CodeSystem.ConceptPropertyComponent;
 import org.hl7.fhir.dstu3.model.CodeSystem.PropertyComponent;
 import org.hl7.fhir.dstu3.model.CodeSystem.PropertyType;
-import org.hl7.fhir.dstu3.utils.ToolingExtensions;
 import org.hl7.fhir.dstu3.model.DateTimeType;
 import org.hl7.fhir.dstu3.model.Identifier;
 import org.hl7.fhir.dstu3.model.Meta;
 import org.hl7.fhir.dstu3.model.UriType;
+import org.hl7.fhir.dstu3.utils.ToolingExtensions;
 import org.hl7.fhir.exceptions.FHIRException;
+import org.hl7.fhir.exceptions.FHIRFormatError;
 import org.hl7.fhir.utilities.Utilities;
 
 public class CodeSystemUtilities {
@@ -22,6 +23,8 @@ public class CodeSystemUtilities {
     for (ConceptPropertyComponent p : def.getProperty()) {
       if (p.getCode().equals("deprecated") && p.hasValue() && p.getValue() instanceof BooleanType) 
         return ((BooleanType) p.getValue()).getValue();
+      if (p.getCode().equals("deprecationDate") && p.hasValue() && p.getValue() instanceof DateTimeType) 
+        return ((DateTimeType) p.getValue()).before(new DateTimeType());
     }
     return false;
   }
@@ -34,19 +37,19 @@ public class CodeSystemUtilities {
     return false;
   }
 
-  public static void setNotSelectable(CodeSystem cs, ConceptDefinitionComponent concept) {
+  public static void setNotSelectable(CodeSystem cs, ConceptDefinitionComponent concept) throws FHIRFormatError {
     defineNotSelectableProperty(cs);
     concept.addProperty().setCode("notSelectable").setValue(new BooleanType(true));    
   }
 
-  public static void setInactive(CodeSystem cs, ConceptDefinitionComponent concept) {
+  public static void setInactive(CodeSystem cs, ConceptDefinitionComponent concept) throws FHIRFormatError {
     defineInactiveProperty(cs);
     concept.addProperty().setCode("inactive").setValue(new BooleanType(true));    
   }
 
-  public static void setDeprecated(CodeSystem cs, ConceptDefinitionComponent concept, DateTimeType date) {
+  public static void setDeprecated(CodeSystem cs, ConceptDefinitionComponent concept, DateTimeType date) throws FHIRFormatError {
     defineDeprecatedProperty(cs);
-    concept.addProperty().setCode("deprecated").setValue(date);    
+    concept.addProperty().setCode("deprecationDate").setValue(date);    
   }
 
   public static void defineNotSelectableProperty(CodeSystem cs) {
@@ -58,7 +61,7 @@ public class CodeSystemUtilities {
   }
 
   public static void defineDeprecatedProperty(CodeSystem cs) {
-    defineCodeSystemProperty(cs, "deprecated", "The date at which a concept was deprecated. Concepts that are deprecated but not inactive can still be used, but their use is discouraged", PropertyType.DATETIME);
+    defineCodeSystemProperty(cs, "deprecationDate", "The date at which a concept was deprecated. Concepts that are deprecated but not inactive can still be used, but their use is discouraged", PropertyType.DATETIME);
   }
 
   public static void defineCodeSystemProperty(CodeSystem cs, String code, String description, PropertyType type) {

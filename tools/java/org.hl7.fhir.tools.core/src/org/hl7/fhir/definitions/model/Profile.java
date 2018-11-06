@@ -5,12 +5,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.hl7.fhir.igtools.spreadsheets.MappingSpace;
 import org.hl7.fhir.r4.model.Composition;
 import org.hl7.fhir.r4.model.MetadataResource;
 import org.hl7.fhir.r4.model.SearchParameter;
 import org.hl7.fhir.r4.model.StructureDefinition;
 import org.hl7.fhir.r4.model.ValueSet;
-import org.hl7.fhir.igtools.spreadsheets.MappingSpace;
 import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
 import org.hl7.fhir.utilities.xhtml.XhtmlComposer;
 
@@ -117,7 +117,7 @@ public class Profile {
     putMetadata("date", c.getDateElement().asStringValue());
     putMetadata("title", c.getTitle());
     putMetadata("status", c.getStatus().toCode());
-    putMetadata("description", new XhtmlComposer().compose(c.getText().getDiv()));
+    putMetadata("description", new XhtmlComposer(XhtmlComposer.HTML).compose(c.getText().getDiv()));
     title = c.getTitle();
     this.source = source;
   }

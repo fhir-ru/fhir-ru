@@ -15,15 +15,15 @@
     </div>
   </text>
   <status value="final"/>
-  <category>
+  <code>
     <coding>
-      <system value="http://hl7.org/fhir/v3/ActCode"/>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
       <code value="DRG"/>
       <display value="Drug Interaction Alert"/>
     </coding>
-  </category>
+  </code>
   <severity value="high"/>
-  <date value="2014-01-05"/>
+  <identifiedDateTime value="2014-01-05"/>
   <author>
     <reference value="Device/software"/>
   </author>
@@ -39,7 +39,7 @@
   <mitigation>
     <action>
       <coding>
-        <system value="http://hl7.org/fhir/v3/ActCode"/>
+        <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
         <code value="13"/>
         <display value="Stopped Concurrent Therapy"/>
       </coding>

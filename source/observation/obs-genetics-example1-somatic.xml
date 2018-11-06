@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- NOTE: This example will soon be revised and moved to the Genomics Reporting implementation guide - current version at http://hl7.org/fhir/uv/genomics-reporting -->
 <Observation xmlns="http://hl7.org/fhir">
   <id value="genetics-example1-somatic"/>
   <contained>
@@ -7,7 +8,7 @@
       <verificationStatus value="provisional"/>
       <category>
         <coding>
-          <system value="http://hl7.org/fhir/condition-category"/>
+          <system value="http://terminology.hl7.org/CodeSystem/condition-category"/>
           <code value="finding"/>
           <display value="Finding"/>
         </coding>
@@ -127,12 +128,12 @@
   </performer>
   <interpretation>
     <coding>
-      <system value="http://hl7.org/fhir/v2/0078"/>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
       <code value="POS"/>
     </coding>
     <text value="positive"/>
   </interpretation>
-  <comment value="The EGFR p.L858R mutation has been associated with response to anti-EGFR therapy"/>
+  <note><text value="The EGFR p.L858R mutation has been associated with response to anti-EGFR therapy"/></note>
   <specimen>
     <reference value="Specimen/genetics-example1-somatic"/>
     <display value="Molecular Specimen ID: MLD45-Z4-1234"/>

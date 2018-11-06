@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <DiagnosticReport xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir file:///C:/Users/Eric/Documents/HL7/FHIR/BUILD_EDIT_FILES/schema/diagnosticreport.xsd">
 	<id value="f201"/>
 	<status value="final"/><!-- No identifier or request details were available --><category><!-- The request was honored by the Department of Radiology --><coding>
@@ -7,7 +7,7 @@
 			<display value="Radiology"/>
 		</coding>
 		<coding>
-			<system value="http://hl7.org/fhir/v2/0074"/>
+			<system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
 			<code value="RAD"/>
 		</coding>
 	</category>
@@ -32,11 +32,11 @@
 		<display value="HEAD and NECK CT DICOM imaging study"/>
 	</imagingStudy>
 	<conclusion value="CT brains: large tumor sphenoid/clivus."/>
-	<codedDiagnosis>
+	<conclusionCode>
 		<coding>
 			<system value="http://snomed.info/sct"/>
 			<code value="188340000"/>
 			<display value="Malignant tumor of craniopharyngeal duct"/>
 		</coding>
-	</codedDiagnosis>
+	</conclusionCode>
 </DiagnosticReport>

@@ -1,11 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <ValueSet xmlns="http://hl7.org/fhir">
   <extension url="http://hl7.org/fhir/StructureDefinition/valueset-warning">
     <valueMarkdown value="Licensing note: this value set has an extensible binding, and includes concepts from SNOMED CT. The SNOMED CT concepts included in this value set - description types for SCT terms - are for use with SNOMED-CT, and not expected to be used with other code systems."/>
   </extension>
   <url value="http://hl7.org/fhir/ValueSet/designation-use"/>
-  <name value="Designation Use"/>
+  <name value="DesignationUse"/>
+  <title value="Designation Use"/>
   <status value="draft"/>
   <publisher value="FHIR Project"/>
   <description value="Details of how a designation would be used"/>
@@ -13,12 +14,12 @@
   <compose>
     <include>
       <system value="http://snomed.info/sct"/>
-      <filter>
-      <!--   Snomed description types   -->
-        <property value="concept"/>
-        <op value="is-a"/>
-        <value value="900000000000446008"/>
-      </filter>
+      <concept>
+        <code value="900000000000003001"/>
+      </concept>
+      <concept>
+        <code value="900000000000013009"/>
+      </concept>
     </include>
   </compose>
 </ValueSet>

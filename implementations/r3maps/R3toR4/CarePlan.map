@@ -1,0 +1,61 @@
+﻿map "http://hl7.org/fhir/StructureMap/CarePlan3to4" = "R3 to R4 Conversions for CarePlan"
+
+uses "http://hl7.org/fhir/3.0/StructureDefinition/CarePlan" alias CarePlanR3 as source
+uses "http://hl7.org/fhir/StructureDefinition/CarePlan" alias CarePlan as target
+
+imports "http://hl7.org/fhir/StructureMap/*3to4"
+
+group CarePlan(source src : CarePlanR3, target tgt : CarePlan) extends DomainResource <<type+>> {
+  src.identifier -> tgt.identifier;
+  src.instantiatesCanonical -> tgt.instantiatesCanonical;
+  src.instantiatesUri -> tgt.instantiatesUri;
+  src.basedOn -> tgt.basedOn;
+  src.replaces -> tgt.replaces;
+  src.partOf -> tgt.partOf;
+  src.status -> tgt.status;
+  src.intent -> tgt.intent;
+  src.category -> tgt.category;
+  src.title -> tgt.title;
+  src.description -> tgt.description;
+  src.subject -> tgt.subject;
+  src.context -> tgt.context;
+  src.period -> tgt.period;
+  src.created -> tgt.created;
+  src.author -> tgt.author;
+  src.contributor -> tgt.contributor;
+  src.careTeam -> tgt.careTeam;
+  src.addresses -> tgt.addresses;
+  src.supportingInfo -> tgt.supportingInfo;
+  src.goal -> tgt.goal;
+  src.activity as s -> tgt.activity as t then CarePlanActivity(s, t);
+  src.note -> tgt.note;
+}
+
+group CarePlanActivity(source src : CarePlanR3, target tgt : CarePlan) extends BackboneElement <<type+>> {
+  src.outcomeCodeableConcept -> tgt.outcomeCodeableConcept;
+  src.outcomeReference -> tgt.outcomeReference;
+  src.progress -> tgt.progress;
+  src.reference -> tgt.reference;
+  src.detail as s -> tgt.detail as t then CarePlanActivityDetail(s, t);
+}
+
+group CarePlanActivityDetail(source src : CarePlanR3, target tgt : CarePlan) extends BackboneElement <<type+>> {
+  src.kind -> tgt.kind;
+  src.instantiatesCanonical -> tgt.instantiatesCanonical;
+  src.instantiatesUri -> tgt.instantiatesUri;
+  src.code -> tgt.code;
+  src.reasonCode -> tgt.reasonCode;
+  src.reasonReference -> tgt.reasonReference;
+  src.goal -> tgt.goal;
+  src.status -> tgt.status;
+  src.statusReason -> tgt.statusReason;
+  src.doNotPerform -> tgt.doNotPerform;
+  src.scheduled -> tgt.scheduled;
+  src.location -> tgt.location;
+  src.performer -> tgt.performer;
+  src.product -> tgt.product;
+  src.dailyAmount -> tgt.dailyAmount;
+  src.quantity -> tgt.quantity;
+  src.description -> tgt.description;
+}
+

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!-- This example demonstrates the use of the presented form for an anatomic pathology report
+﻿<?xml version="1.0" encoding="UTF-8"?><!-- This example demonstrates the use of the presented form for an anatomic pathology report
 --><DiagnosticReport xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir http://build.fhir.org/device.xsd">
 	<id value="gingival-mass"/>
 	<identifier>
@@ -8,7 +8,7 @@
 	<status value="final"/>
 	<category>
 		<coding>
-			<system value="http://hl7.org/fhir/v2/0074"/>
+			<system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
 			<code value="PAT"/>
 			<display value="Pathology (gross &amp; histopath, not surgical)"/>
 		</coding>

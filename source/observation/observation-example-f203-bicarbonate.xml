@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <Observation xmlns="http://hl7.org/fhir">
 	<id value="f203"/>
 	<identifier>
@@ -36,7 +36,7 @@
 			<display value="Serum bicarbonate level normal"/>
 		</coding>
 		<coding>
-			<system value="http://hl7.org/fhir/v2/0078"/>
+			<system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
 			<code value="N"/>
 		</coding>
 	</interpretation><!-- The observation is complete --><!-- No reliability concerns --><method><!-- Method was enzymatic method --><text value="enzymatic method"/>
@@ -49,7 +49,7 @@
 		</high>
 		<type>
 			<coding>
-				<system value="http://hl7.org/fhir/referencerange-meaning"/>
+				<system value="http://terminology.hl7.org/CodeSystem/referencerange-meaning"/>
 				<code value="normal"/>
 				<display value="Normal Range"/>
 			</coding>

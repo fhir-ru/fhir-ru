@@ -1,7 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 	<div>
-		<a name="scope"> </a>
+		<a name="scope"></a>
 		<h2>Scope and Usage</h2>
 		<p> 
 		Appointment resources are used to provide information about 
@@ -9,7 +9,7 @@
 		for a series of repeating visits.  Examples include a scheduled surgery, a follow-up for a
 		clinical visit, a scheduled conference call between clinicians to discuss a case, the reservation
 		of a piece of diagnostic equipment for a particular use, etc.  The visit scheduled by an appointment
-		may be in person or remote (by phone, video conference, etc.)  All that matters is that the time and
+		may be in person or remote (by phone, video conference, etc.).  All that matters is that the time and
 		usage of one or more individuals, locations and/or pieces of equipment is being fully or partially
 		reserved for a designated period of time.
 		</p>
@@ -18,7 +18,7 @@
 		them to be relevant in the community healthcare space, and also ease exposure to other
 		appointment / calendar standards widely used outside of Healthcare.
 		</p>
-		<a name="basic-workflow"> </a>
+		<a name="basic-workflow"></a>
 		<h3>The basic workflow to create an appointment</h3>
 		<ul>
 			<li>

@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Fri, Aug 11, 2017 07:23+1000 for FHIR v3.1.0
+// Generated on Mon, Nov 5, 2018 09:03+1100 for FHIR v3.6.0
 
 import java.util.*;
 
@@ -51,9 +51,9 @@ public class SampledData extends Type implements ICompositeType {
     /**
      * The base quantity that a measured value of zero represents. In addition, this provides the units of the entire measurement series.
      */
-    @Child(name = "origin", type = {SimpleQuantity.class}, order=0, min=1, max=1, modifier=false, summary=true)
+    @Child(name = "origin", type = {Quantity.class}, order=0, min=1, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Zero value and units", formalDefinition="The base quantity that a measured value of zero represents. In addition, this provides the units of the entire measurement series." )
-    protected SimpleQuantity origin;
+    protected Quantity origin;
 
     /**
      * The length of time between sampling times, measured in milliseconds.
@@ -93,11 +93,11 @@ public class SampledData extends Type implements ICompositeType {
     /**
      * A series of data points which are decimal values separated by a single space (character u20). The special values "E" (error), "L" (below detection limit) and "U" (above detection limit) can also be used in place of a decimal value.
      */
-    @Child(name = "data", type = {StringType.class}, order=6, min=1, max=1, modifier=false, summary=false)
+    @Child(name = "data", type = {StringType.class}, order=6, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Decimal values with spaces, or \"E\" | \"U\" | \"L\"", formalDefinition="A series of data points which are decimal values separated by a single space (character u20). The special values \"E\" (error), \"L\" (below detection limit) and \"U\" (above detection limit) can also be used in place of a decimal value." )
     protected StringType data;
 
-    private static final long serialVersionUID = -1763278368L;
+    private static final long serialVersionUID = -1984181262L;
 
   /**
    * Constructor
@@ -109,23 +109,22 @@ public class SampledData extends Type implements ICompositeType {
   /**
    * Constructor
    */
-    public SampledData(SimpleQuantity origin, DecimalType period, PositiveIntType dimensions, StringType data) {
+    public SampledData(Quantity origin, DecimalType period, PositiveIntType dimensions) {
       super();
       this.origin = origin;
       this.period = period;
       this.dimensions = dimensions;
-      this.data = data;
     }
 
     /**
      * @return {@link #origin} (The base quantity that a measured value of zero represents. In addition, this provides the units of the entire measurement series.)
      */
-    public SimpleQuantity getOrigin() { 
+    public Quantity getOrigin() { 
       if (this.origin == null)
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create SampledData.origin");
         else if (Configuration.doAutoCreate())
-          this.origin = new SimpleQuantity(); // cc
+          this.origin = new Quantity(); // cc
       return this.origin;
     }
 
@@ -136,7 +135,7 @@ public class SampledData extends Type implements ICompositeType {
     /**
      * @param value {@link #origin} (The base quantity that a measured value of zero represents. In addition, this provides the units of the entire measurement series.)
      */
-    public SampledData setOrigin(SimpleQuantity value) { 
+    public SampledData setOrigin(Quantity value) { 
       this.origin = value;
       return this;
     }
@@ -489,9 +488,13 @@ public class SampledData extends Type implements ICompositeType {
      * @param value A series of data points which are decimal values separated by a single space (character u20). The special values "E" (error), "L" (below detection limit) and "U" (above detection limit) can also be used in place of a decimal value.
      */
     public SampledData setData(String value) { 
+      if (Utilities.noString(value))
+        this.data = null;
+      else {
         if (this.data == null)
           this.data = new StringType();
         this.data.setValue(value);
+      }
       return this;
     }
 
@@ -524,7 +527,7 @@ public class SampledData extends Type implements ICompositeType {
       @Override
       public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
         switch (hash) {
-        case -1008619738: /*origin*/ return this.origin == null ? new Base[0] : new Base[] {this.origin}; // SimpleQuantity
+        case -1008619738: /*origin*/ return this.origin == null ? new Base[0] : new Base[] {this.origin}; // Quantity
         case -991726143: /*period*/ return this.period == null ? new Base[0] : new Base[] {this.period}; // DecimalType
         case -1282148017: /*factor*/ return this.factor == null ? new Base[0] : new Base[] {this.factor}; // DecimalType
         case 1209133370: /*lowerLimit*/ return this.lowerLimit == null ? new Base[0] : new Base[] {this.lowerLimit}; // DecimalType
@@ -540,7 +543,7 @@ public class SampledData extends Type implements ICompositeType {
       public Base setProperty(int hash, String name, Base value) throws FHIRException {
         switch (hash) {
         case -1008619738: // origin
-          this.origin = castToSimpleQuantity(value); // SimpleQuantity
+          this.origin = castToQuantity(value); // Quantity
           return value;
         case -991726143: // period
           this.period = castToDecimal(value); // DecimalType
@@ -568,7 +571,7 @@ public class SampledData extends Type implements ICompositeType {
       @Override
       public Base setProperty(String name, Base value) throws FHIRException {
         if (name.equals("origin")) {
-          this.origin = castToSimpleQuantity(value); // SimpleQuantity
+          this.origin = castToQuantity(value); // Quantity
         } else if (name.equals("period")) {
           this.period = castToDecimal(value); // DecimalType
         } else if (name.equals("factor")) {
@@ -619,7 +622,7 @@ public class SampledData extends Type implements ICompositeType {
       @Override
       public Base addChild(String name) throws FHIRException {
         if (name.equals("origin")) {
-          this.origin = new SimpleQuantity();
+          this.origin = new Quantity();
           return this.origin;
         }
         else if (name.equals("period")) {
@@ -667,24 +670,24 @@ public class SampledData extends Type implements ICompositeType {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof SampledData))
+        if (!(other_ instanceof SampledData))
           return false;
-        SampledData o = (SampledData) other;
+        SampledData o = (SampledData) other_;
         return compareDeep(origin, o.origin, true) && compareDeep(period, o.period, true) && compareDeep(factor, o.factor, true)
            && compareDeep(lowerLimit, o.lowerLimit, true) && compareDeep(upperLimit, o.upperLimit, true) && compareDeep(dimensions, o.dimensions, true)
            && compareDeep(data, o.data, true);
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof SampledData))
+        if (!(other_ instanceof SampledData))
           return false;
-        SampledData o = (SampledData) other;
+        SampledData o = (SampledData) other_;
         return compareValues(period, o.period, true) && compareValues(factor, o.factor, true) && compareValues(lowerLimit, o.lowerLimit, true)
            && compareValues(upperLimit, o.upperLimit, true) && compareValues(dimensions, o.dimensions, true) && compareValues(data, o.data, true)
           ;

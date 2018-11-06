@@ -274,8 +274,7 @@
   </contact>
   <description value="This profile defines the expected capabilities of an &#39;&#39;Electronic Health Record System&#39;&#39; when conforming to the EHRS functional model&#39;s Record Lifecycle specification."/>
   <kind value="requirements"/>
-  <fhirVersion value="1.0.0"/>
-  <acceptUnknown value="extensions"/>
+  <fhirVersion value="3.6.0"/>
   <format value="xml"/>
   <format value="json"/>
   <rest>
@@ -286,9 +285,7 @@
     </security>
     <resource>
       <type value="Provenance"/>
-      <profile>
-        <reference value="http://hl7.org/fhir/StructureDefinition/ehrsrle-provenance"/>
-      </profile>
+      <profile value="http://hl7.org/fhir/StructureDefinition/ehrsrle-provenance"/>
       <interaction>
         <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
           <valueCode value="SHALL"/>
@@ -299,9 +296,7 @@
     </resource>
     <resource>
       <type value="AuditEvent"/>
-      <profile>
-        <reference value="http://hl7.org/fhir/StructureDefinition/ehrsrle-auditevent"/>
-      </profile>
+      <profile value="http://hl7.org/fhir/StructureDefinition/ehrsrle-auditevent"/>
       <interaction>
         <extension url="http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation">
           <valueCode value="SHALL"/>

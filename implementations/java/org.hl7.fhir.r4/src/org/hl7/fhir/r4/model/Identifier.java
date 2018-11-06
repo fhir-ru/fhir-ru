@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Fri, Aug 11, 2017 07:23+1000 for FHIR v3.1.0
+// Generated on Mon, Nov 5, 2018 09:03+1100 for FHIR v3.6.0
 
 import java.util.*;
 
@@ -43,7 +43,7 @@ import ca.uhn.fhir.model.api.annotation.Block;
 import org.hl7.fhir.instance.model.api.*;
 import org.hl7.fhir.exceptions.FHIRException;
 /**
- * A technical identifier - identifies some entity uniquely and unambiguously.
+ * An identifier - identifies some entity uniquely and unambiguously. Typically this is used for business identifiers.
  */
 @DatatypeDef(name="Identifier")
 public class Identifier extends Type implements ICompositeType {
@@ -54,7 +54,7 @@ public class Identifier extends Type implements ICompositeType {
          */
         USUAL, 
         /**
-         * The identifier considered to be most trusted for the identification of this item.
+         * The identifier considered to be most trusted for the identification of this item. Sometimes also known as "primary" and "main". The determination of "official" is subjective and implementation guides often provide additional guidelines for use.
          */
         OFFICIAL, 
         /**
@@ -65,6 +65,10 @@ public class Identifier extends Type implements ICompositeType {
          * An identifier that was assigned in secondary use - it serves to identify the object in a relative context, but cannot be consistently assigned to the same object again in a different context.
          */
         SECONDARY, 
+        /**
+         * The identifier id no longer considered valid, but may be relevant for search purposes.  E.g. Changes to identifier schemes, account merges, etc.
+         */
+        OLD, 
         /**
          * added to help the parsers with the generic types
          */
@@ -80,6 +84,8 @@ public class Identifier extends Type implements ICompositeType {
           return TEMP;
         if ("secondary".equals(codeString))
           return SECONDARY;
+        if ("old".equals(codeString))
+          return OLD;
         if (Configuration.isAcceptInvalidEnums())
           return null;
         else
@@ -91,6 +97,7 @@ public class Identifier extends Type implements ICompositeType {
             case OFFICIAL: return "official";
             case TEMP: return "temp";
             case SECONDARY: return "secondary";
+            case OLD: return "old";
             default: return "?";
           }
         }
@@ -100,15 +107,17 @@ public class Identifier extends Type implements ICompositeType {
             case OFFICIAL: return "http://hl7.org/fhir/identifier-use";
             case TEMP: return "http://hl7.org/fhir/identifier-use";
             case SECONDARY: return "http://hl7.org/fhir/identifier-use";
+            case OLD: return "http://hl7.org/fhir/identifier-use";
             default: return "?";
           }
         }
         public String getDefinition() {
           switch (this) {
             case USUAL: return "The identifier recommended for display and use in real-world interactions.";
-            case OFFICIAL: return "The identifier considered to be most trusted for the identification of this item.";
+            case OFFICIAL: return "The identifier considered to be most trusted for the identification of this item. Sometimes also known as \"primary\" and \"main\". The determination of \"official\" is subjective and implementation guides often provide additional guidelines for use.";
             case TEMP: return "A temporary identifier.";
             case SECONDARY: return "An identifier that was assigned in secondary use - it serves to identify the object in a relative context, but cannot be consistently assigned to the same object again in a different context.";
+            case OLD: return "The identifier id no longer considered valid, but may be relevant for search purposes.  E.g. Changes to identifier schemes, account merges, etc.";
             default: return "?";
           }
         }
@@ -118,6 +127,7 @@ public class Identifier extends Type implements ICompositeType {
             case OFFICIAL: return "Official";
             case TEMP: return "Temp";
             case SECONDARY: return "Secondary";
+            case OLD: return "Old";
             default: return "?";
           }
         }
@@ -136,6 +146,8 @@ public class Identifier extends Type implements ICompositeType {
           return IdentifierUse.TEMP;
         if ("secondary".equals(codeString))
           return IdentifierUse.SECONDARY;
+        if ("old".equals(codeString))
+          return IdentifierUse.OLD;
         throw new IllegalArgumentException("Unknown IdentifierUse code '"+codeString+"'");
         }
         public Enumeration<IdentifierUse> fromType(Base code) throws FHIRException {
@@ -154,6 +166,8 @@ public class Identifier extends Type implements ICompositeType {
           return new Enumeration<IdentifierUse>(this, IdentifierUse.TEMP);
         if ("secondary".equals(codeString))
           return new Enumeration<IdentifierUse>(this, IdentifierUse.SECONDARY);
+        if ("old".equals(codeString))
+          return new Enumeration<IdentifierUse>(this, IdentifierUse.OLD);
         throw new FHIRException("Unknown IdentifierUse code '"+codeString+"'");
         }
     public String toCode(IdentifierUse code) {
@@ -165,6 +179,8 @@ public class Identifier extends Type implements ICompositeType {
         return "temp";
       if (code == IdentifierUse.SECONDARY)
         return "secondary";
+      if (code == IdentifierUse.OLD)
+        return "old";
       return "?";
       }
     public String toSystem(IdentifierUse code) {
@@ -176,7 +192,7 @@ public class Identifier extends Type implements ICompositeType {
      * The purpose of this identifier.
      */
     @Child(name = "use", type = {CodeType.class}, order=0, min=0, max=1, modifier=true, summary=true)
-    @Description(shortDefinition="usual | official | temp | secondary (If known)", formalDefinition="The purpose of this identifier." )
+    @Description(shortDefinition="usual | official | temp | secondary | old (If known)", formalDefinition="The purpose of this identifier." )
     @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/identifier-use")
     protected Enumeration<IdentifierUse> use;
 
@@ -631,24 +647,24 @@ public class Identifier extends Type implements ICompositeType {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof Identifier))
+        if (!(other_ instanceof Identifier))
           return false;
-        Identifier o = (Identifier) other;
+        Identifier o = (Identifier) other_;
         return compareDeep(use, o.use, true) && compareDeep(type, o.type, true) && compareDeep(system, o.system, true)
            && compareDeep(value, o.value, true) && compareDeep(period, o.period, true) && compareDeep(assigner, o.assigner, true)
           ;
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof Identifier))
+        if (!(other_ instanceof Identifier))
           return false;
-        Identifier o = (Identifier) other;
+        Identifier o = (Identifier) other_;
         return compareValues(use, o.use, true) && compareValues(system, o.system, true) && compareValues(value, o.value, true)
           ;
       }

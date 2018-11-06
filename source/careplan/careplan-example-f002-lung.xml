@@ -14,7 +14,15 @@
   <contained>
     <Goal>
       <id value="goal"/>
-      <status value="achieved"/>
+      <lifecycleStatus value="completed" />
+	  <achievementStatus>
+		<coding>
+			<system value="http://terminology.hl7.org/CodeSystem/goal-achievement" />
+			<code value="achieved" />
+			<display value="Achieved" />
+		</coding>
+		<text value="Achieved" />
+	  </achievementStatus>
       <description>
         <text value="succesful surgery on lung of patient"/>
       </description>
@@ -66,7 +74,7 @@
         </coding>
       </code>
       <status value="completed"/>
-      <prohibited value="true"/>
+      <doNotPerform value="true"/>
       <scheduledString value="2011-07-07T09:30:10+01:00"/>
       <performer>
         <reference value="Practitioner/f003"/>

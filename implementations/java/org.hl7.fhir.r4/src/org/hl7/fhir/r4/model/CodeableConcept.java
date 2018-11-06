@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Fri, Aug 11, 2017 07:23+1000 for FHIR v3.1.0
+// Generated on Mon, Nov 5, 2018 09:03+1100 for FHIR v3.6.0
 
 import java.util.*;
 
@@ -277,22 +277,22 @@ public class CodeableConcept extends Type implements ICompositeType {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof CodeableConcept))
+        if (!(other_ instanceof CodeableConcept))
           return false;
-        CodeableConcept o = (CodeableConcept) other;
+        CodeableConcept o = (CodeableConcept) other_;
         return compareDeep(coding, o.coding, true) && compareDeep(text, o.text, true);
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof CodeableConcept))
+        if (!(other_ instanceof CodeableConcept))
           return false;
-        CodeableConcept o = (CodeableConcept) other;
+        CodeableConcept o = (CodeableConcept) other_;
         return compareValues(text, o.text, true);
       }
 
@@ -300,6 +300,24 @@ public class CodeableConcept extends Type implements ICompositeType {
         return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(coding, text);
       }
 
+// added from java-adornments.txt:
+ 
+  public boolean hasCoding(String system, String code) {
+    for (Coding c : getCoding()) {
+      if (system.equals(c.getSystem()) && code.equals(c.getCode()))
+        return true;
+    }
+    return false;
+  } 
+
+  public CodeableConcept(Coding code) {
+    super();
+    addCoding(code);
+  }
+  
+  
+
+// end addition
 
 }
 

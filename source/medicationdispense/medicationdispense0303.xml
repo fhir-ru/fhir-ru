@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <MedicationDispense xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://hl7.org/fhir ../../schema/medicationdispense.xsd"
+ xsi:schemaLocation="http://hl7.org/fhir ../../../../GForge/FHIRBuild/build/schema/medicationdispense.xsd"
  xmlns="http://hl7.org/fhir">
     <id value="meddisp0303"/>
     <contained>
@@ -18,10 +18,13 @@
     <partOf>
         <reference value="Procedure/biopsy"></reference>
     </partOf>
-    <status value="on-hold"/>
+   <status value="on-hold"/>
+    <statusReasonReference>
+        <reference value="DetectedIssue/allergy"></reference>
+    </statusReasonReference>
     <category>
         <coding>
-            <system value="http://hl7.org/fhir/medication-dispense-category"/>
+            <system value="http://terminology.hl7.org/CodeSystem/medication-dispense-category"/>
             <code value="outpatient"/>
             <display value="Outpatient"/>
         </coding>
@@ -47,14 +50,14 @@
     </authorizingPrescription>
     <type>
         <coding>
-            <system value="http://hl7.org/fhir/v3/ActCode"/>
+            <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
             <code value="EM"/>
             <display value="Emergency Supply"/>
         </coding>
     </type>
     <quantity>
         <value value="30"/>
-        <system value="http://hl7.org/fhir/v3/orderableDrugForm"/>
+        <system value="http://terminology.hl7.org/CodeSystem/v3-orderableDrugForm"/>
         <code value="TAB"/>
     </quantity>
     <daysSupply>
@@ -107,9 +110,7 @@
     <detectedIssue>
         <reference value="DetectedIssue/allergy"></reference>
     </detectedIssue>
-    <statusReasonReference>
-        <reference value="DetectedIssue/allergy"></reference>
-    </statusReasonReference>
+
 </MedicationDispense>
 
 

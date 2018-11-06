@@ -1,4 +1,4 @@
-<Bundle xmlns="http://hl7.org/fhir">
+﻿<Bundle xmlns="http://hl7.org/fhir">
   <id value="terminologies"/>
   <type value="collection"/>
   <entry>
@@ -315,28 +315,6 @@
   <entry>
     <resource>
       <NamingSystem>
-        <id value="tx-icd-10-de"/>
-        <name value="ICD-10 International (WHO) (German Variant)"/>
-        <status value="draft"/>
-        <kind value="codesystem"/>
-        <publisher value="HL7, Inc"/>
-        <date value="2015-08-21"/>
-        <uniqueId>
-          <type value="uri"/>
-          <value value="http://hl7.org/fhir/sid/icd-10-de"/>
-          <preferred value="true"/>
-        </uniqueId>
-        <uniqueId>
-          <type value="uri"/>
-          <value value="1.2.276.0.76.5.409"/>
-          <preferred value="false"/>
-        </uniqueId>
-      </NamingSystem>
-    </resource>
-  </entry>
-  <entry>
-    <resource>
-      <NamingSystem>
         <id value="tx-icd-10-nl"/>
         <name value="ICD-10 International (WHO) (Dutch Variant)"/>
         <status value="draft"/>
@@ -359,7 +337,7 @@
   <entry>
     <resource>
       <NamingSystem>
-        <id value="tx-icd-10-us"/>
+        <id value="tx-icd-10-cm"/>
         <name value="ICD-10 International (WHO) (US Variant)"/>
         <status value="draft"/>
         <kind value="codesystem"/>
@@ -367,7 +345,7 @@
         <date value="2015-08-21"/>
         <uniqueId>
           <type value="uri"/>
-          <value value="http://hl7.org/fhir/sid/icd-10-us"/>
+          <value value="http://hl7.org/fhir/sid/icd-10-cm"/>
           <preferred value="true"/>
         </uniqueId>
       </NamingSystem>
@@ -565,7 +543,7 @@
         <kind value="codesystem"/>
         <publisher value="HL7, Inc"/>
         <date value="2015-08-21"/>
-        <description value="This is used for identifying langauge throughout FHIR. Note that usually these codes are in a code and the system is assumed"/>
+        <description value="This is used for identifying language throughout FHIR. Note that usually these codes are in a code and the system is assumed"/>
         <uniqueId>
           <type value="uri"/>
           <value value="urn:ietf:bcp:47"/>
@@ -746,7 +724,7 @@
         <date value="2015-08-21"/>
         <uniqueId>
           <type value="uri"/>
-          <value value="http://www.hgvs.org/mutnomen"/>
+          <value value="http://varnomen.hgvs.org/"/>
           <preferred value="true"/>
         </uniqueId>
         <uniqueId>

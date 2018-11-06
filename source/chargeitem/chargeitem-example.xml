@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="../../publish/chargeitem.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <ChargeItem xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/chargeitem.xsd">
 	<id value="example"/>
@@ -10,7 +10,7 @@
 		<system value="http://myHospital.org/ChargeItems"/>
 		<value value="654321"/>
 	</identifier>
-	<definition value = "http://www.kbv.de/tools/ebm/html/01520_2904360860826220813632.html"/>
+	<definitionUri value = "http://www.kbv.de/tools/ebm/html/01520_2904360860826220813632.html"/>
 	<status value = "billable"/>
 
 	<code>
@@ -29,30 +29,30 @@
 		<start value ="2017-01-25T08:00:00+01:00"/>
 		<end value ="2017-01-25T12:35:00+01:00"/>
 	</occurrencePeriod>
-	<participant>
-		<role>
+	<performer>
+		<function>
 			<coding>
 				<system value= "http://snomed.info/sct"/>
 				<code value= "17561000"/>
 				<display value="Cardiologist"/>	
 			</coding>
-		</role>
+		</function>
 		<actor>
 			<reference value="Practitioner/example"/>
 		</actor>
-	</participant>
-	<participant>
-		<role>
+	</performer>
+	<performer>
+		<function>
 			<coding>
 				<system value= "http://snomed.info/sct"/>
 				<code value= "224542009"/>
 				<display value="Coronary Care Nurse"/>	
 			</coding>
-		</role>
+		</function>
 		<actor>
 			<reference value="Practitioner/example"/>
 		</actor>
-	</participant>
+	</performer>
 	<performingOrganization>
 		<identifier>
 			<system value= "http://myhospital/NamingSystem/departments"/>
@@ -71,9 +71,7 @@
 	<factorOverride value="0.8"/>
 	<priceOverride>
 	    <value value="40"/>
-        <unit value="EUR"/>
-        <system value="urn:iso:std:iso:4217"/>
-        <code value="EUR"/>
+        <currency value="EUR"/>
 	</priceOverride>
 	<overrideReason value= "Patient is Cardiologist's golf buddy, so he gets a 20% discount!"/>
 	<enterer>

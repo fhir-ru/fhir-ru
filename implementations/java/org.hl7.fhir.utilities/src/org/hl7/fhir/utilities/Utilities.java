@@ -42,7 +42,10 @@ import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.net.URLEncoder;
 import java.nio.channels.FileChannel;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioSystem;
@@ -63,8 +66,7 @@ public class Utilities {
 
 //	 private static final String TOKEN_REGEX = "^a-z[A-Za-z0-9]*$";
 
-
-  private static final String OID_REGEX = "[0-2](\\.(0|[1-9]([0-9])*))*";
+  private static final String OID_REGEX = "[0-2](\\.(0|[1-9][0-9]*))+";
 
   /**
      * Returns the plural form of the word in the string.
@@ -197,7 +199,7 @@ public class Utilities {
    String[] files = src.list();
    for (String f : files) {
      if (new CSFile(sourceFolder+File.separator+f).isDirectory()) {
-       if (!f.startsWith(".")) // ignore .svn...
+       if (!f.startsWith(".")) // ignore .git files...
          copyDirectory(sourceFolder+File.separator+f, destFolder+File.separator+f, notifier);
      } else {
        if (notifier != null)
@@ -473,7 +475,7 @@ public class Utilities {
   public static boolean isPlural(String word) {
     word = word.toLowerCase();
     if ("restricts".equals(word) || "contains".equals(word) || "data".equals(word) || "specimen".equals(word) || "replaces".equals(word) || "addresses".equals(word) 
-        || "supplementalData".equals(word) || "instantiates".equals(word))
+        || "supplementalData".equals(word) || "instantiates".equals(word) || "imports".equals(word))
       return false;
     Inflector inf = new Inflector();
     return !inf.singularize(word).equals(word);
@@ -511,6 +513,8 @@ public class Utilities {
       else if (!s.toString().endsWith(File.separator))
         s.append(File.separator);
       String a = arg;
+      if ("[tmp]".equals(a))
+        a = System.getProperty("java.io.tmpdir");
       a = a.replace("\\", File.separator);
       a = a.replace("/", File.separator);
       if (s.length() > 0 && a.startsWith(File.separator))
@@ -824,13 +828,15 @@ public class Utilities {
         b.append("\\r");
       else if (c == '\n')
         b.append("\\n");
+      else if (c == '\t')
+        b.append("\\t");
       else if (c == '"')
         b.append("\\\"");
-      else if (c == '\'')
-        b.append("\\'");
       else if (c == '\\')
         b.append("\\\\");
-      else 
+      else if (((int) c) < 32)
+        b.append("\\u"+Utilities.padLeft(String.valueOf((int) c), '0', 4));  
+      else
         b.append(c);
     }   
     return b.toString();
@@ -993,7 +999,7 @@ public class Utilities {
 
 
   public static boolean isAbsoluteUrl(String ref) {
-    return ref != null && ref.startsWith("http:") || ref.startsWith("https:") || ref.startsWith("urn:uuid:") || ref.startsWith("urn:oid:") ;
+    return ref != null && (ref.startsWith("http:") || ref.startsWith("https:") || ref.startsWith("urn:uuid:") || ref.startsWith("urn:oid:")) ;
   }
 
 
@@ -1046,7 +1052,7 @@ public class Utilities {
   }
 
 
-  private static boolean isWindows() {
+  public static boolean isWindows() {
     return System.getProperty("os.name").startsWith("Windows");
   }
 
@@ -1103,7 +1109,22 @@ public class Utilities {
     return b.toString();
   }
 
+  public interface FileVisitor {
+    void visitFile(File file) throws FileNotFoundException, IOException;
+  }
 
+  public static void visitFiles(String folder, String extension, FileVisitor visitor) throws FileNotFoundException, IOException {
+    visitFiles(new File(folder), extension, visitor);
+  }
+  
+  public static void visitFiles(File folder, String extension, FileVisitor visitor) throws FileNotFoundException, IOException {
+    for (File file : folder.listFiles()) {
+      if (file.isDirectory()) 
+        visitFiles(file, extension, visitor);
+      else if (extension == null || file.getName().endsWith(extension)) 
+        visitor.visitFile(file);
+    }    
+  }
 
 
 }

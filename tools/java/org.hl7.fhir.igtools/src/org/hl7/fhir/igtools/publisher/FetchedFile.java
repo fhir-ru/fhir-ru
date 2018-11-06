@@ -1,6 +1,5 @@
 package org.hl7.fhir.igtools.publisher;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -9,10 +8,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.utilities.validation.ValidationMessage;
 
 public class FetchedFile {
+  public enum FetchedBundleType {
+    NATIVE, SPREADSHEET
+  }
   public final static int PROCESS_RESOURCE = 0;
   public final static int PROCESS_XSLT = 1;
   public final static int PROCESS_NONE = 2;
@@ -30,13 +31,14 @@ public class FetchedFile {
   private List<FetchedFile> dependencies;
   private List<FetchedResource> resources = new ArrayList<FetchedResource>();
   private List<ValidationMessage> errors = new ArrayList<ValidationMessage>();
-  private Bundle bundle;
+  private FetchedResource bundle;
+  private FetchedBundleType bundleType;
   private Map<String, String> valuesetsToLoad = new HashMap<String, String>();
   private boolean folder;
   private List<String> files; // if it's a folder
   private int processMode;
   private Set<String> outputNames = new HashSet<String>();
-
+  
   public String getPath() {
     return path;
   }
@@ -111,10 +113,10 @@ public class FetchedFile {
   public List<ValidationMessage> getErrors() {
     return errors;
   }
-  public Bundle getBundle() {
+  public FetchedResource getBundle() {
     return bundle;
   }
-  public void setBundle(Bundle bundle) {
+  public void setBundle(FetchedResource bundle) {
     this.bundle = bundle;
   }
   public Map<String, String> getValuesetsToLoad() {
@@ -150,4 +152,15 @@ public class FetchedFile {
   public boolean matches(FetchedFile other) {
     return this.path.equals(other.path);
   }
+  public FetchedBundleType getBundleType() {
+    return bundleType;
+  }
+  public void setBundleType(FetchedBundleType bundleType) {
+    this.bundleType = bundleType;
+  }
+  @Override
+  public String toString() {
+    return "FetchedFile["+name+"]";
+  }
+  
 }

@@ -19,12 +19,12 @@ POST [baseurl]/Claim/$submit
 
 	<type>
 		<coding>
-			<system value="http://hl7.org/fhir/ex-claimtype"/>
+			<system value="http://hl7.org/fhir/claim-type"/>
 			<code value="oral"/>
 		</coding>	
 	</type>
 
-	<use value="complete"/>
+	<use value="claim"/>
 
 	<patient>
 		<reference value="Patient/1"/>
@@ -85,20 +85,18 @@ POST [baseurl]/Claim/$submit
 	<item>
 		<sequence value="1"/>
 		<careTeamLinkId value="1"/>
-		<service>
+		<billcode>
 			<coding>
 				<code value="1200"/>
 			</coding> 
-		</service>
+		</billcode>
 		<servicedDate value="2014-08-16"/>
 		<unitPrice>
 			<value value="135.57"/>
-			<system value="urn:iso:std:iso:4217"/>
 			<code value="USD"/> 
 		</unitPrice> 
 		<net>
 			<value value="135.57"/>
-			<system value="urn:iso:std:iso:4217"/>
 			<code value="USD"/> 
 		</net> 
 	</item>

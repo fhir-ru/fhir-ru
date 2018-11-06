@@ -691,7 +691,7 @@ public class ProfileUtilities {
     if (type.hasProfile())  
       sd = context.fetchResource(StructureDefinition.class, type.getProfile().get(0).asStringValue()); 
     if (sd == null) 
-      sd = context.fetchResource(StructureDefinition.class, "http://hl7.org/fhir/StructureDefinition/"+type.getCode());
+      sd = context.fetchTypeDefinition(type.getCode());
     if (sd == null)
       System.out.println("XX: failed to find profle for type: " + type.getCode()); // debug GJM
     return sd;
@@ -1134,7 +1134,7 @@ public class ProfileUtilities {
   }
 
 
-  public XhtmlNode generateExtensionTable(String defFile, StructureDefinition ed, String imageFolder, boolean inlineGraphics, boolean full, String corePath) throws IOException, FHIRException {
+  public XhtmlNode generateExtensionTable(String defFile, StructureDefinition ed, String imageFolder, boolean inlineGraphics, boolean full, String corePath, Set<String> outputTracker) throws IOException, FHIRException {
     HierarchicalTableGenerator gen = new HierarchicalTableGenerator(imageFolder, inlineGraphics);
     TableModel model = gen.initNormalTable(corePath, false);
 
@@ -1200,7 +1200,7 @@ public class ProfileUtilities {
 
 
     try {
-		return gen.generate(model, corePath, 0);
+		return gen.generate(model, corePath, 0, outputTracker);
 	} catch (org.hl7.fhir.exceptions.FHIRException e) {
 		throw new FHIRException(e.getMessage(), e);
 	}
@@ -1395,7 +1395,7 @@ public class ProfileUtilities {
     return piece;
   }
 
-  public XhtmlNode generateTable(String defFile, StructureDefinition profile, boolean diff, String imageFolder, boolean inlineGraphics, String profileBaseFileName, boolean snapshot, String corePath, boolean logicalModel) throws IOException, FHIRException {
+  public XhtmlNode generateTable(String defFile, StructureDefinition profile, boolean diff, String imageFolder, boolean inlineGraphics, String profileBaseFileName, boolean snapshot, String corePath, boolean logicalModel, Set<String> outputTracker) throws IOException, FHIRException {
     assert(diff != snapshot);// check it's ok to get rid of one of these
     HierarchicalTableGenerator gen = new HierarchicalTableGenerator(imageFolder, inlineGraphics);
     TableModel model = gen.initNormalTable(corePath, false);
@@ -1404,7 +1404,7 @@ public class ProfileUtilities {
     profiles.add(profile);
     genElement(defFile == null ? null : defFile+"#"+profile.getId()+".", gen, model.getRows(), list.get(0), list, profiles, diff, profileBaseFileName, null, snapshot, corePath, true, logicalModel);
     try {
-		return gen.generate(model, corePath, 0);
+		return gen.generate(model, corePath, 0, outputTracker);
 	} catch (org.hl7.fhir.exceptions.FHIRException e) {
 		throw new FHIRException(e.getMessage(), e);
 	}
@@ -1455,13 +1455,13 @@ public class ProfileUtilities {
       Cell gc = gen.new Cell();
       row.getCells().add(gc);
       if (element != null && element.getIsModifier())
-        checkForNoChange(element.getIsModifierElement(), gc.addImage(corePath+"modifier.png", "This element is a modifier element", "?!", null, null));
+        checkForNoChange(element.getIsModifierElement(), gc.addStyledText("This element is a modifier element", "?!", null, null, null, false));
       if (element != null && element.getMustSupport())
-        checkForNoChange(element.getMustSupportElement(), gc.addImage(corePath+"mustsupport.png", "This element must be supported", "S", null, null));
+        checkForNoChange(element.getMustSupportElement(), gc.addStyledText("This element must be supported", "S", null, null, null, false));
       if (element != null && element.getIsSummary())
-        checkForNoChange(element.getIsSummaryElement(), gc.addImage(corePath+"summary.png", "This element is included in summaries", "∑", null, null));
+        checkForNoChange(element.getIsSummaryElement(), gc.addStyledText("This element is included in summaries", "∑", null, null, null, false));
       if (element != null && (!element.getConstraint().isEmpty() || !element.getCondition().isEmpty()))
-        gc.addImage(corePath+"lock.png", "This element has or is affected by some invariants", "I", null, null);
+        gc.addStyledText("This element has or is affected by some invariants", "I", null, null, null, false);
 
       ExtensionContext extDefn = null;
       if (ext) {
@@ -1982,12 +1982,12 @@ public class ProfileUtilities {
         } else if (ed.getType().get(0).getCode().equals("Extension") && child.getSelf().getType().size() == 1 && child.getSelf().getType().get(0).hasProfile()) {
           ccmp = new ElementDefinitionComparer(true, context.fetchResource(StructureDefinition.class, child.getSelf().getType().get(0).getProfile().get(0).getValue()).getSnapshot().getElement(), ed.getType().get(0).getCode(), child.getSelf().getPath().length(), cmp.name);
         } else if (ed.getType().size() == 1 && !ed.getType().get(0).getCode().equals("*")) {
-          ccmp = new ElementDefinitionComparer(false, context.fetchResource(StructureDefinition.class, "http://hl7.org/fhir/StructureDefinition/"+ed.getType().get(0).getCode()).getSnapshot().getElement(), ed.getType().get(0).getCode(), child.getSelf().getPath().length(), cmp.name);
+          ccmp = new ElementDefinitionComparer(false, context.fetchTypeDefinition(ed.getType().get(0).getCode()).getSnapshot().getElement(), ed.getType().get(0).getCode(), child.getSelf().getPath().length(), cmp.name);
         } else if (child.getSelf().getType().size() == 1) {
-          ccmp = new ElementDefinitionComparer(false, context.fetchResource(StructureDefinition.class, "http://hl7.org/fhir/StructureDefinition/"+child.getSelf().getType().get(0).getCode()).getSnapshot().getElement(), child.getSelf().getType().get(0).getCode(), child.getSelf().getPath().length(), cmp.name);
+          ccmp = new ElementDefinitionComparer(false, context.fetchTypeDefinition(child.getSelf().getType().get(0).getCode()).getSnapshot().getElement(), child.getSelf().getType().get(0).getCode(), child.getSelf().getPath().length(), cmp.name);
         } else if (ed.getPath().endsWith("[x]") && !child.getSelf().getPath().endsWith("[x]")) {
           String p = child.getSelf().getPath().substring(ed.getPath().length()-3);
-          StructureDefinition sd = context.fetchResource(StructureDefinition.class, "http://hl7.org/fhir/StructureDefinition/"+p);
+          StructureDefinition sd = context.fetchTypeDefinition(p);
           if (sd == null)
             throw new Error("Unable to find profile "+p);
           ccmp = new ElementDefinitionComparer(false, sd.getSnapshot().getElement(), p, child.getSelf().getPath().length(), cmp.name);

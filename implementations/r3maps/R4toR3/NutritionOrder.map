@@ -1,0 +1,70 @@
+﻿map "http://hl7.org/fhir/StructureMap/NutritionOrder4to3" = "R4 to R3 Conversion for NutritionOrder"
+
+uses "http://hl7.org/fhir/StructureDefinition/NutritionOrder" alias NutritionOrder as source
+uses "http://hl7.org/fhir/3.0/StructureDefinition/NutritionOrder" alias NutritionOrderR3 as target
+
+imports "http://hl7.org/fhir/StructureMap/*4to3"
+
+group NutritionOrder(source src : NutritionOrderR3, target tgt : NutritionOrder) extends DomainResource <<type+>> {
+  src.identifier -> tgt.identifier;
+  src.instantiates -> tgt.instantiates;
+  src.status -> tgt.status;
+  src.intent -> tgt.intent;
+  src.patient -> tgt.patient;
+  src.context -> tgt.context;
+  src.dateTime -> tgt.dateTime;
+  src.orderer -> tgt.orderer;
+  src.allergyIntolerance -> tgt.allergyIntolerance;
+  src.foodPreferenceModifier -> tgt.foodPreferenceModifier;
+  src.excludeFoodModifier -> tgt.excludeFoodModifier;
+  src.oralDiet as s -> tgt.oralDiet as t then NutritionOrderOralDiet(s, t);
+  src.supplement as s -> tgt.supplement as t then NutritionOrderSupplement(s, t);
+  src.enteralFormula as s -> tgt.enteralFormula as t then NutritionOrderEnteralFormula(s, t);
+  src.note -> tgt.note;
+}
+
+group NutritionOrderOralDiet(source src : NutritionOrderR3, target tgt : NutritionOrder) extends BackboneElement <<type+>> {
+  src.type -> tgt.type;
+  src.schedule -> tgt.schedule;
+  src.nutrient as s -> tgt.nutrient as t then NutritionOrderOralDietNutrient(s, t);
+  src.texture as s -> tgt.texture as t then NutritionOrderOralDietTexture(s, t);
+  src.fluidConsistencyType -> tgt.fluidConsistencyType;
+  src.instruction -> tgt.instruction;
+}
+
+group NutritionOrderOralDietNutrient(source src : NutritionOrderR3, target tgt : NutritionOrder) extends BackboneElement <<type+>> {
+  src.modifier -> tgt.modifier;
+  src.amount -> tgt.amount;
+}
+
+group NutritionOrderOralDietTexture(source src : NutritionOrderR3, target tgt : NutritionOrder) extends BackboneElement <<type+>> {
+  src.modifier -> tgt.modifier;
+  src.foodType -> tgt.foodType;
+}
+
+group NutritionOrderSupplement(source src : NutritionOrderR3, target tgt : NutritionOrder) extends BackboneElement <<type+>> {
+  src.type -> tgt.type;
+  src.productName -> tgt.productName;
+  src.schedule -> tgt.schedule;
+  src.quantity -> tgt.quantity;
+  src.instruction -> tgt.instruction;
+}
+
+group NutritionOrderEnteralFormula(source src : NutritionOrderR3, target tgt : NutritionOrder) extends BackboneElement <<type+>> {
+  src.baseFormulaType -> tgt.baseFormulaType;
+  src.baseFormulaProductName -> tgt.baseFormulaProductName;
+  src.additiveType -> tgt.additiveType;
+  src.additiveProductName -> tgt.additiveProductName;
+  src.caloricDensity -> tgt.caloricDensity;
+  src.routeofAdministration -> tgt.routeofAdministration;
+  src.administration as s -> tgt.administration as t then NutritionOrderEnteralFormulaAdministration(s, t);
+  src.maxVolumeToDeliver -> tgt.maxVolumeToDeliver;
+  src.administrationInstruction -> tgt.administrationInstruction;
+}
+
+group NutritionOrderEnteralFormulaAdministration(source src : NutritionOrderR3, target tgt : NutritionOrder) extends BackboneElement <<type+>> {
+  src.schedule -> tgt.schedule;
+  src.quantity -> tgt.quantity;
+  src.rate -> tgt.rate;
+}
+

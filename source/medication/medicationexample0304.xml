@@ -33,7 +33,7 @@
           <display value="Busulfan (substance)"/>
         </coding>
       </itemCodeableConcept>
-      <amount>
+      <strength>
         <numerator>
           <value value="2"/>
           <system value="http://unitsofmeasure.org"/>
@@ -41,10 +41,10 @@
         </numerator>
         <denominator>
           <value value="1"/>
-          <system value="http://hl7.org/fhir/v3/orderableDrugForm"/>
+          <system value="http://terminology.hl7.org/CodeSystem/v3-orderableDrugForm"/>
           <code value="Tab"/>
         </denominator>
-      </amount>
+      </strength>
     </ingredient>
   <batch>
     <lotNumber value="9494788"/>

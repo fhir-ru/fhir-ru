@@ -1,0 +1,29 @@
+﻿map "http://hl7.org/fhir/StructureMap/TestReport3to4" = "R3 to R4 Conversions for TestReport"
+
+uses "http://hl7.org/fhir/3.0/StructureDefinition/TestReport" alias TestReportR3 as source
+uses "http://hl7.org/fhir/StructureDefinition/TestReport" alias TestReport as target
+
+imports "http://hl7.org/fhir/StructureMap/*3to4"
+
+group TestReport(source src : TestReportR3, target tgt : TestReport) extends DomainResource <<type+>> {
+  src.identifier -> tgt.identifier;
+  src.name -> tgt.name;
+  src.status -> tgt.status;
+  src.testScript -> tgt.testScript;
+  src.result -> tgt.result;
+  src.score -> tgt.score;
+  src.tester -> tgt.tester;
+  src.issued -> tgt.issued;
+  src.participant as vs0 -> tgt.participant as vt0 then {
+    vs0.type -> vt0.type;
+    vs0.uri -> vt0.uri;
+    vs0.display -> vt0.display;
+  };
+  src.setup -> tgt.setup;
+  src.test as vs0 -> tgt.test as vt0 then {
+    vs0.name -> vt0.name;
+    vs0.description -> vt0.description;
+  };
+  src.teardown -> tgt.teardown;
+}
+

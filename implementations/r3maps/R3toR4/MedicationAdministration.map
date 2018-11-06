@@ -1,0 +1,43 @@
+﻿map "http://hl7.org/fhir/StructureMap/MedicationAdministration3to4" = "R3 to R4 Conversions for MedicationAdministration"
+
+uses "http://hl7.org/fhir/3.0/StructureDefinition/MedicationAdministration" alias MedicationAdministrationR3 as source
+uses "http://hl7.org/fhir/StructureDefinition/MedicationAdministration" alias MedicationAdministration as target
+
+imports "http://hl7.org/fhir/StructureMap/*3to4"
+
+group MedicationAdministration(source src : MedicationAdministrationR3, target tgt : MedicationAdministration) extends DomainResource <<type+>> {
+  src.identifier -> tgt.identifier;
+  src.instantiates -> tgt.instantiates;
+  src.partOf -> tgt.partOf;
+  src.status -> tgt.status;
+  src.category -> tgt.category;
+  src.medication -> tgt.medication;
+  src.subject -> tgt.subject;
+  src.context -> tgt.context;
+  src.supportingInformation -> tgt.supportingInformation;
+  src.effective -> tgt.effective;
+  src.performer as s -> tgt.performer as t then MedicationAdministrationPerformer(s, t);
+  src.statusReason -> tgt.statusReason;
+  src.reasonCode -> tgt.reasonCode;
+  src.reasonReference -> tgt.reasonReference;
+  src.request -> tgt.request;
+  src.device -> tgt.device;
+  src.note -> tgt.note;
+  src.dosage as s -> tgt.dosage as t then MedicationAdministrationDosage(s, t);
+  src.eventHistory -> tgt.eventHistory;
+}
+
+group MedicationAdministrationPerformer(source src : MedicationAdministrationR3, target tgt : MedicationAdministration) extends BackboneElement <<type+>> {
+  src.function -> tgt.function;
+  src.actor -> tgt.actor;
+}
+
+group MedicationAdministrationDosage(source src : MedicationAdministrationR3, target tgt : MedicationAdministration) extends BackboneElement <<type+>> {
+  src.text -> tgt.text;
+  src.site -> tgt.site;
+  src.route -> tgt.route;
+  src.method -> tgt.method;
+  src.dose -> tgt.dose;
+  src.rate -> tgt.rate;
+}
+

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <NutritionOrder xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir file:///L:/HL7/FHIR/20141020Build/schema/nutritionorder.xsd"><!-- Using only instruction element in oralDiet and Supplement minimal other elements  id = pureeddiet-simple file name = nutritionorder-example-pureeddiet-simple.xml  Name= Pureed Diet Simple Description = Nutrition Order Pureed Diet with Energy/Protein Supplement Simple Example
 edited by Eric Haas Health eData Inc
 --><!-- EH: use oral Diet element --><id value="pureeddiet-simple"/>
@@ -6,7 +6,7 @@ edited by Eric Haas Health eData Inc
 		<system value="http://goodhealthhospital.org/nutrition-requests"/>
 		<value value="123"/>
 	</identifier>
-	<status value="active"/>
+	<status value="active"/><intent value="order"/>
 	<patient>
 		<reference value="Patient/example"/>
 		<display value="Peter Chalmers"/>

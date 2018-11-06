@@ -7,7 +7,7 @@
  </identifier>
  <status value="finished"/><!--Encounter has finished-->
     <class>
-        <system value="http://hl7.org/fhir/v3/ActCode"/>
+        <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
         <code value="AMB"/> <!-- outpatient -->
         <display value="ambulatory"/>
     </class>
@@ -34,9 +34,9 @@
          <reference value="Practitioner/f201"/>
     </individual>
  </participant>
- <reason>
+ <reasonCode>
    <text value="The patient had fever peaks over the last couple of days. He is worried about these peaks."/>
- </reason>
+ </reasonCode>
  <!--No indication, because no referral took place-->
  <!--No hospitalization was deemed necessary-->
  <serviceProvider>

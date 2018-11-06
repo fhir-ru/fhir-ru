@@ -8,12 +8,12 @@
 <body>
 [%file newnavbar%]
 
-<div class="col-9">
+<div class="col-12">
 
 <h2>License and Legal Terms</h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="versions.html#levels">Ballot Status</a>: <a href="versions.html#std-process">Informative</a></td></tr></table>
+<table class="colsi"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Informative</a></td></tr></table>
 
-<a name="disclaimer"> </a>
+<a name="disclaimer"></a>
 <h3>Disclaimer and Warning of Use</h3>
 <p>
 FHIR Resource definitions developed by HL7 are derived from the considerable collective 
@@ -23,12 +23,12 @@ definitions are generalized to support multiple contexts of use. It is the respo
 of the persons or organizations using these Resources to ensure their use is fit for the 
 particular purpose in which they are used, including validation for clinical and operational use.
 </p>
-<a name="ballotstatus"> </a>
+<a name="ballotstatus"></a>
 <p>
 See also the specific warnings associated with <a href="todo.html">use of the STU</a>.
 </p>
 
-<a name="license"> </a>
+<a name="license"></a>
 <h3>FHIR License</h3>
 
 <p>
@@ -66,9 +66,9 @@ specification or to create derivative works per the Creative Commons license, HL
 trademark carefully. This means that:
 </p>
 <ul>
- <li>You can use the trademarks "FHIR" and the <img  style="float: none; margin: 0px; padding: 0px; vertical-align: bottom" src="icon-fhir-16.png"/> logo to refer the FHIR specification itself (nominatively, or under the terms of <a href="https://en.wikipedia.org/wiki/Fair_use_(U.S._trademark_law)">fair use</a></li>
+ <li>You can use the trademarks "FHIR" and the <a href="icon-pack.zip"><img  style="float: none; margin: 0px; padding: 0px; vertical-align: bottom" src="icon-fhir-16.png"/> logo</a> to refer the FHIR specification itself (nominatively, or under the terms of <a href="https://en.wikipedia.org/wiki/Fair_use_(U.S._trademark_law)">fair use</a></li>
  <li>When referencing the FHIR® standard in a website, document, presentation, or otherwise, please in a place of prominence refer to it as the "HL7® FHIR® standard".  In subsequent uses, please refer to it as the "FHIR® standard" or "FHIR®", using the ® symbol as often as is practical, at least once on each page of printed matter, generally in connection with the first or dominant usage. </li>
- <li>When using the <img  style="float: none; margin: 0px; padding: 0px; vertical-align: bottom" src="icon-fhir-16.png"/> logo, always include the ® symbol</li>
+ <li>When using the <a href="icon-pack.zip"><img  style="float: none; margin: 0px; padding: 0px; vertical-align: bottom" src="icon-fhir-16.png"/> logo</a>, always include the ® symbol</li>
  <li>All non-trademark uses of the foregoing marks should include the ® symbol and indicate in text that:<br/>
     "HL7, FHIR and the FHIR [FLAME DESIGN] are the registered trademarks of Health Level Seven International."</li>
  <li>Use of Health Level Seven International trademarks in URL domains or to brand your product or service without the express written consent of Health Level Seven International is strictly prohibited. 
@@ -90,17 +90,17 @@ Third Party IP in connection with the specification or otherwise.
 Following is a non-exhaustive list of third-party artifacts and terminologies that may require a separate license:
 </p>
 
-<a name="loinc"> </a>
+<a name="loinc"></a>
 <table class="grid">
  <tr><td><b>Artifact/Terminology</b></td><td><b>Statement/Owner/Contact</b></td></tr>
- <tr><td>SNOMED CT</td><td>International Healthcare Terminology Standards Developing Organization (<a href="http://ihtsdo.org">IHTSDO</a>).<br/>This specification includes content from SNOMED CT, which is copyright © 2002+ International Health Terminology Standards Development Organisation (IHTSDO), and distributed by agreement between IHTSDO and HL7. Implementer use of SNOMED CT is not covered by this agreement</td></tr>
+ <tr><td>SNOMED CT</td><td>International Healthcare Terminology Standards Developing Organization (<a href="http://snomed.org">IHTSDO</a>).<br/>This specification includes content from SNOMED CT, which is copyright © 2002+ International Health Terminology Standards Development Organisation (IHTSDO) and distributed by agreement between IHTSDO and HL7. Implementer use of SNOMED CT is not covered by this agreement</td></tr>
  <tr><td>DICOM</td><td>National Electrical Manufacturers Association (<a href="http://dicom.nema.org/">NEMA</a>).<br/>This specification includes content from DICOM, which is copyright NEMA, and distributed by agreement between NEMA/DICOM and HL7. Implementer use of DICOM is not covered by this agreement</td></tr>
  <tr><td>Logical Observation Identifiers Names &amp; Codes (LOINC)</td><td>This material contains content from LOINC&reg; (<a href="http://loinc.org">http://loinc.org</a>). The LOINC table, LOINC codes, and 
 LOINC panels and forms file are copyright &copy; 1995-2014, Regenstrief Institute, Inc. and the Logical Observation Identifiers 
 Names and Codes (LOINC) Committee and available at no cost under the license at 
 <a href="http://loinc.org/terms-of-use">http://loinc.org/terms-of-use</a>.</td></tr>
  <tr><td>International Classification of Diseases (ICD) codes</td><td>Consult the World Health Organization (<a href="http://who.int">WHO</a>)</td></tr>
- <tr><td>Current Procedures Terminology (CPT) code set</td>American Medical Association (<a href="http://www.ama-assn.org/">AMA</a>)<br/>CPT copyright 2014 American Medical Association. All rights reserved.<td></td></tr>
+ <tr><td>Current Procedures Terminology (CPT) code set</td><td>American Medical Association (<a href="http://www.ama-assn.org/">AMA</a>)<br/>CPT copyright 2014 American Medical Association. All rights reserved.</td></tr>
 </table>
 
 </div>

@@ -34,12 +34,16 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Result;
+import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
@@ -309,6 +313,13 @@ public class XMLUtil {
     return c;
   }
 
+  public static Element getNamedChildByAttribute(Element e, String name, String nname, String nvalue) {
+    Element c = getFirstChild(e);
+    while (c != null && !((name.equals(c.getLocalName()) || name.equals(c.getNodeName())) && nvalue.equals(c.getAttribute(nname))))
+      c = getNextSibling(c);
+    return c;
+  }
+
   public static Element getNextSibling(Element e) {
     Node n = e.getNextSibling();
     while (n != null && n.getNodeType() != Node.ELEMENT_NODE)
@@ -323,6 +334,17 @@ public class XMLUtil {
         set.add(c);
       c = getNextSibling(c);
     }
+  }
+
+  public static List<Element> getNamedChildren(Element e, String name) {
+    List<Element> res = new ArrayList<Element>();
+    Element c = getFirstChild(e);
+    while (c != null) {
+      if (name.equals(c.getLocalName()) || name.equals(c.getNodeName()) )
+        res.add(c);
+      c = getNextSibling(c);
+    }
+    return res;
   }
 
   public static String htmlToXmlEscapedPlainText(Element r) {
@@ -467,6 +489,74 @@ public class XMLUtil {
     }
 	  return b.toString().trim();
 	}
+
+  public static void deleteByName(Element e, String name) {
+    List<Element> matches = getNamedChildren(e, name);
+    for (Element m : matches)
+      e.removeChild(m);    
+  }
+
+  public static void deleteAttr(Element e, String namespaceURI, String localName) {
+    if (e.hasAttributeNS(namespaceURI, localName))
+      e.removeAttributeNS(namespaceURI, localName);
+    
+  }
+
+  public static Node[] children(Element ed) {
+    Node[] res = new Node[ed.getChildNodes().getLength()];
+    for (int i = 0; i < ed.getChildNodes().getLength(); i++)
+      res[i] = ed.getChildNodes().item(i);
+    return res;
+  }
+
+  public static Element insertChild(Document doc, Element element, String name, String namespace, int indent) {
+    Node node = doc.createTextNode("\n"+Utilities.padLeft("", ' ', indent));
+    Element child = doc.createElementNS(namespace, name);
+    element.insertBefore(child, element.getFirstChild());
+    element.insertBefore(node, element.getFirstChild());
+    return child;
+  }
+
+  public static Element insertChild(Document doc, Element element, String name, String namespace, Node before, int indent) {
+    if (before == null) {
+      Node node = doc.createTextNode("\n"+Utilities.padLeft("", ' ', indent));
+      element.insertBefore(node, before);
+    }
+    Element child = doc.createElementNS(namespace, name);
+    element.insertBefore(child, before);
+    if (before != null) {
+      Node node = doc.createTextNode("\n"+Utilities.padLeft("", ' ', indent));
+      element.insertBefore(node, before);
+    }
+    return child;
+  }
+
+  public static void addTextTag(Document doc, Element element, String name, String namespace, String text, int indent) {
+    Node node = doc.createTextNode("\n"+Utilities.padLeft("", ' ', indent));
+    element.appendChild(node);
+    Element child = doc.createElementNS(namespace, name);
+    element.appendChild(child);
+    child.setAttribute("value", text);    
+  }
+
+  public static void saveToFile(Element root, OutputStream stream) throws TransformerException {
+    Transformer transformer = TransformerFactory.newInstance().newTransformer();
+    Result output = new StreamResult(stream);
+    Source input = new DOMSource(root);
+
+    transformer.transform(input, output);
+  }
+
+  public static void spacer(Document doc, Element element, int indent) {
+    Node node = doc.createTextNode("\n"+Utilities.padLeft("", ' ', indent));
+    element.appendChild(node);
+   
+  }
+
+  public static String getNamedChildText(Element element, String name) {
+    Element e = getNamedChild(element, name);
+    return e == null ? null : e.getTextContent();
+  }
 
  	
 }

@@ -32,6 +32,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -45,6 +47,9 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.io.output.ByteArrayOutputStream;
+import org.apache.commons.net.ftp.FTP;
+import org.apache.commons.net.ftp.FTPClient;
 import org.hl7.fhir.definitions.generators.specification.DataTypeTableGenerator;
 import org.hl7.fhir.definitions.generators.specification.ProfileGenerator;
 import org.hl7.fhir.definitions.generators.specification.ToolResourceUtilities;
@@ -68,11 +73,21 @@ import org.hl7.fhir.definitions.model.Profile;
 import org.hl7.fhir.definitions.model.Profile.ConformancePackageSourceType;
 import org.hl7.fhir.definitions.model.ProfiledType;
 import org.hl7.fhir.definitions.model.ResourceDefn;
-import org.hl7.fhir.definitions.model.ResourceDefn.StandardsStatus;
+import org.hl7.fhir.definitions.model.ResourceDefn.FMGApproval;
+import org.hl7.fhir.definitions.model.ResourceDefn.PointSpec;
+import org.hl7.fhir.definitions.model.ResourceDefn.SecurityCategorization;
 import org.hl7.fhir.definitions.model.SearchParameterDefn;
+import org.hl7.fhir.definitions.model.TypeDefn;
 import org.hl7.fhir.definitions.model.W5Entry;
 import org.hl7.fhir.definitions.model.WorkGroup;
 import org.hl7.fhir.definitions.validation.FHIRPathUsage;
+import org.hl7.fhir.r4.model.Constants;
+import org.hl7.fhir.exceptions.FHIRException;
+import org.hl7.fhir.exceptions.FHIRFormatError;
+import org.hl7.fhir.igtools.spreadsheets.CodeSystemConvertor;
+import org.hl7.fhir.igtools.spreadsheets.MappingSpace;
+import org.hl7.fhir.igtools.spreadsheets.TypeParser;
+import org.hl7.fhir.igtools.spreadsheets.TypeRef;
 import org.hl7.fhir.r4.conformance.ProfileUtilities;
 import org.hl7.fhir.r4.formats.FormatUtilities;
 import org.hl7.fhir.r4.formats.XmlParser;
@@ -82,34 +97,34 @@ import org.hl7.fhir.r4.model.Bundle.BundleType;
 import org.hl7.fhir.r4.model.CodeSystem;
 import org.hl7.fhir.r4.model.CodeType;
 import org.hl7.fhir.r4.model.Composition;
+import org.hl7.fhir.r4.model.Enumerations.FHIRVersion;
+import org.hl7.fhir.r4.model.MetadataResource;
 import org.hl7.fhir.r4.model.Resource;
 import org.hl7.fhir.r4.model.SearchParameter;
-import org.hl7.fhir.r4.model.StringType;
 import org.hl7.fhir.r4.model.StructureDefinition;
+import org.hl7.fhir.r4.model.StructureDefinition.StructureDefinitionContextComponent;
 import org.hl7.fhir.r4.model.StructureDefinition.TypeDerivationRule;
-import org.hl7.fhir.r4.utils.ToolingExtensions;
 import org.hl7.fhir.r4.model.ValueSet;
-import org.hl7.fhir.exceptions.FHIRFormatError;
-import org.hl7.fhir.igtools.spreadsheets.CodeSystemConvertor;
-import org.hl7.fhir.igtools.spreadsheets.MappingSpace;
-import org.hl7.fhir.igtools.spreadsheets.TypeParser;
-import org.hl7.fhir.igtools.spreadsheets.TypeRef;
+import org.hl7.fhir.r4.utils.ToolingExtensions;
 import org.hl7.fhir.tools.publisher.BuildWorkerContext;
 import org.hl7.fhir.tools.publisher.PageProcessor;
+import org.hl7.fhir.tools.publisher.PageProcessor.PageInfo;
 import org.hl7.fhir.utilities.CSFile;
 import org.hl7.fhir.utilities.CSFileInputStream;
 import org.hl7.fhir.utilities.IniFile;
 import org.hl7.fhir.utilities.Logger;
 import org.hl7.fhir.utilities.Logger.LogMessageType;
+import org.hl7.fhir.utilities.StandardsStatus;
 import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
-import org.hl7.fhir.utilities.XLSXmlParser;
-import org.hl7.fhir.utilities.XLSXmlParser.Sheet;
 import org.hl7.fhir.utilities.validation.ValidationMessage;
 import org.hl7.fhir.utilities.xhtml.NodeType;
 import org.hl7.fhir.utilities.xhtml.XhtmlComposer;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
 import org.hl7.fhir.utilities.xhtml.XhtmlParser;
+import org.hl7.fhir.utilities.xls.XLSXmlNormaliser;
+import org.hl7.fhir.utilities.xls.XLSXmlParser;
+import org.hl7.fhir.utilities.xls.XLSXmlParser.Sheet;
 import org.hl7.fhir.utilities.xml.XMLUtil;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -137,16 +152,20 @@ public class SourceParser {
   public String dtDir;
   private final String rootDir;
   private final OIDRegistry registry;
-  private final String version;
+  private final FHIRVersion version;
   private final BuildWorkerContext context;
   private final Calendar genDate;
   private final PageProcessor page;
   private final Set<String> igNames = new HashSet<String>();
   private boolean forPublication;
   private List<FHIRPathUsage> fpUsages;
+  private boolean tryNetwork;
+  private Bundle externals;
+  private List<String> errors = new ArrayList<String>();
+  private boolean exceptionIfExcelNotNormalised;
   
 
-  public SourceParser(Logger logger, String root, Definitions definitions, boolean forPublication, String version, BuildWorkerContext context, Calendar genDate, PageProcessor page, List<FHIRPathUsage> fpUsages) throws IOException, ParserConfigurationException, SAXException {
+  public SourceParser(Logger logger, String root, Definitions definitions, boolean forPublication, FHIRVersion version, BuildWorkerContext context, Calendar genDate, PageProcessor page, List<FHIRPathUsage> fpUsages, boolean exceptionIfExcelNotNormalised) throws IOException, ParserConfigurationException, SAXException {
     this.logger = logger;
     this.forPublication = forPublication;
     this.registry = new OIDRegistry(root, forPublication);
@@ -161,12 +180,12 @@ public class SourceParser {
     srcDir = root + sl + "source" + sl;
     dstDir = root + sl + "publish" + sl;
     ini = new IniFile(srcDir + "fhir.ini");
-
     termDir = srcDir + "terminologies" + sl;
     dtDir = srcDir + "datatypes" + sl;
     imgDir = root + sl + "images" + sl;
     rootDir = root + sl;
-    vsGen = new ValueSetGenerator(definitions, version, genDate, srcDir+"test");
+    vsGen = new ValueSetGenerator(definitions, version.toCode(), genDate, context.translator());
+    this.exceptionIfExcelNotNormalised = exceptionIfExcelNotNormalised;
   }
 
 
@@ -175,11 +194,14 @@ public class SourceParser {
   public void parse(Calendar genDate, List<ValidationMessage> issues) throws Exception {
     logger.log("Loading", LogMessageType.Process);
 
+    loadNormativePackages();
     loadWorkGroups();
     loadW5s();
     loadMappingSpaces();
     loadGlobalBindings();
 
+    loadExternals();
+    
     loadTLAs();
     loadIgs();
     loadTypePages();
@@ -195,21 +217,18 @@ public class SourceParser {
     for (String id : ini.getPropertyNames("valueset-fixup"))
       definitions.getVsFixups().add(id);
 
-    for (String n : ini.getPropertyNames("removed-resources"))
-      definitions.getDeletedResources().add(n);
-
     for (String n : ini.getPropertyNames("infrastructure"))
-      loadCompositeType(n, definitions.getInfrastructure());
+      loadCompositeType(n, definitions.getInfrastructure(), "5");
 
     for (String n : ini.getPropertyNames("types"))
-      loadCompositeType(n, definitions.getTypes());	
+      loadCompositeType(n, definitions.getTypes(), "5");	
     for (String n : ini.getPropertyNames("structures"))
-      loadCompositeType(n, definitions.getStructures());
+      loadCompositeType(n, definitions.getStructures(), "2");
 
     String[] shared = ini.getPropertyNames("shared"); 
     if(shared != null)
       for (String n : shared )
-        definitions.getShared().add(loadCompositeType(n, definitions.getStructures()));
+        definitions.getShared().add(loadCompositeType(n, definitions.getStructures(), "2"));
 
     String[] logical = ini.getPropertyNames("logical"); 
     if(logical != null)
@@ -277,7 +296,7 @@ public class SourceParser {
     for (ImplementationGuideDefn ig : definitions.getSortedIgs()) {
       if (!Utilities.noString(ig.getSource())) {
         try {
-          new IgParser(page, page.getWorkerContext(), page.getGenDate(), page, definitions.getCommonBindings(), wg(ig.getCommittee()), definitions.getMapTypes(), definitions.getProfileIds(), definitions.getCodeSystems(), registry, page.getConceptMaps(), definitions.getWorkgroups()).load(rootDir, ig, issues, igNames);
+          new IgParser(page, page.getWorkerContext(), page.getGenDate(), page, definitions.getCommonBindings(), wg(ig.getCommittee()), definitions.getMapTypes(), definitions.getProfileIds(), definitions.getCodeSystems(), registry, page.getConceptMaps(), definitions.getWorkgroups(), exceptionIfExcelNotNormalised).load(rootDir, ig, issues, igNames);
           // register what needs registering
           for (ValueSet vs : ig.getValueSets()) {
             definitions.getExtraValuesets().put(vs.getId(), vs);
@@ -301,12 +320,79 @@ public class SourceParser {
     closeTemplates();
   }
 
-  private WorkGroup wg(String committee) {
-    return definitions.getWorkgroups().get(committee);
+  private void loadExternals() throws Exception {
+    String[] externals = ini.getPropertyNames("externals");
+
+    tryNetwork = true;
+    if (externals != null) {
+      for (String n : externals) {
+        loadExternal(n);        
+      }
+    }
+  }
+
+
+  private void loadExternal(String n) throws Exception {
+    File file = new File(Utilities.path(rootDir, "vscache", "externals", Integer.toString(n.hashCode())+".xml"));
+    if (!file.exists()) {
+      logger.log("Fetch "+n, LogMessageType.Process);
+      if (n.startsWith("ftp:")) {
+        byte[] source = ftpFetch(n);
+        TextFile.bytesToFile(source, file.getAbsolutePath());
+      } else if (n.startsWith("http:") || n.startsWith("https:"))
+        throw new Exception("HTTP externals are not yet supported: "+n);
+      else 
+        throw new Exception("Unknown protocol for externals: "+n);
+    }
+    String stated = ini.getStringProperty("externals", n);
+    if (Utilities.noString(stated))
+      stated = n;
+    Resource res = new XmlParser().parse(new FileInputStream(file));
+    if (res instanceof MetadataResource) {
+      res.setUserData("external.url", stated);
+      context.cacheResource(res);
+      externals.addEntry().setFullUrl("http://hl7.org/fhir/"+res.fhirType()+"/"+res.getId()).setResource(res).addLink().setRelation("via").setUrl(stated);
+    } else
+      throw new Exception("Unsupported external resource type "+res.fhirType());  
   }
 
 
 
+
+  private byte[] ftpFetch(String n) throws Exception {
+    URI url = new URI(n);
+    String server = url.getHost();
+    int port = 21;
+
+    FTPClient ftpClient = new FTPClient();
+    ftpClient.connect(server, port);
+    ftpClient.login("anonymous", "anonymous");
+    ftpClient.enterLocalPassiveMode();
+    ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
+
+    // APPROACH #1: using retrieveFile(String, OutputStream)
+    String remoteFile1 = url.getPath();
+    ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+    boolean success = ftpClient.retrieveFile(remoteFile1, bytes);
+    bytes.close();
+
+    if (!success) 
+      throw new Exception("Unable to retrieve "+n);
+    return bytes.toByteArray();
+  }
+
+
+
+
+  private void loadNormativePackages() {
+    for (String s : ini.getPropertyNames("normative-packages")) {
+      page.getNormativePackages().put(s, new HashMap<String, PageInfo>());
+    }
+  }
+
+  private WorkGroup wg(String committee) {
+    return definitions.getWorkgroups().get(committee);
+  }
 
   private void loadCommonSearchParameters() throws FHIRFormatError, FileNotFoundException, IOException {
     Bundle bnd = (Bundle) new XmlParser().parse(new CSFileInputStream(Utilities.path(srcDir, "searchparameter", "common-search-parameters.xml")));
@@ -328,18 +414,19 @@ public class SourceParser {
   }
 
   private void closeTemplate(ElementDefn element, String title, int level) throws Exception {
+    String titles = Utilities.pluralize(title, 2);
     if (element.getShortDefn() != null)
-      element.setShortDefn(element.getShortDefn().replace("{{title}}", title));
+      element.setShortDefn(element.getShortDefn().replace("{{title}}", title).replace("{{titles}}", titles));
     if (element.getDefinition() != null)
-      element.setDefinition(element.getDefinition().replace("{{title}}", title));
+      element.setDefinition(element.getDefinition().replace("{{title}}", title).replace("{{titles}}", titles));
     if (element.getComments() != null)
-      element.setComments(element.getComments().replace("{{title}}", title));
+      element.setComments(element.getComments().replace("{{title}}", title).replace("{{titles}}", titles));
     if (element.getCommitteeNotes() != null)
-      element.setCommitteeNotes(element.getCommitteeNotes().replace("{{title}}", title));
+      element.setCommitteeNotes(element.getCommitteeNotes().replace("{{title}}", title).replace("{{titles}}", titles));
     if (element.getRequirements() != null)
-      element.setRequirements(element.getRequirements().replace("{{title}}", title));
+      element.setRequirements(element.getRequirements().replace("{{title}}", title).replace("{{titles}}", titles));
     if (element.getTodo() != null)
-      element.setTodo(element.getTodo().replace("{{title}}", title));
+      element.setTodo(element.getTodo().replace("{{title}}", title).replace("{{titles}}", titles));
     if (level == 0) {
       // we're preparing this for code generation now; we want to ditch any labelled as 'no-gen'
       List<ElementDefn> delete = new ArrayList<ElementDefn>();
@@ -369,12 +456,20 @@ public class SourceParser {
 
   private LogicalModel loadLogicalModel(String n) throws Exception {
     File spreadsheet = new CSFile(Utilities.path(srcDir, n, n+"-spreadsheet.xml"));    
-    SpreadsheetParser sparser = new SpreadsheetParser(n, new CSFileInputStream(spreadsheet), spreadsheet.getName(), definitions, srcDir, logger, registry, version, context, genDate, false, page, false, ini, wg("fhir"), definitions.getProfileIds(), fpUsages, page.getConceptMaps());
+    SpreadsheetParser sparser = new SpreadsheetParser(n, new CSFileInputStream(spreadsheet), spreadsheet.getName(), spreadsheet.getAbsolutePath(), definitions, srcDir, logger, registry, version, context, genDate, false, page, false, ini, wg("fhir"), definitions.getProfileIds(), fpUsages, page.getConceptMaps(), exceptionIfExcelNotNormalised);
     sparser.setFolder(Utilities.getDirectoryForFile(spreadsheet.getAbsolutePath()));
     LogicalModel lm = sparser.parseLogicalModel();
     lm.setId(n);
     lm.setSource(spreadsheet.getAbsolutePath());
     lm.getResource().setName(lm.getId());
+    lm.getResource().setFmmLevel(ini.getStringProperty("fmm", n.toLowerCase()));
+    if (lm.getResource().getFmmLevel() == null)
+      lm.getResource().setFmmLevel("1");
+    lm.getResource().setStatus(StandardsStatus.INFORMATIVE);
+    errors.addAll(sparser.getErrors());
+    File f = new File(Utilities.path(srcDir, n, n+".svg"));
+    if (f.exists()) 
+      parseSvgFile(f, lm.getLayout(), f.getName());
     return lm;
   }
 
@@ -391,37 +486,68 @@ public class SourceParser {
   private void processSearchExpressions(ResourceDefn rd) throws Exception {
     for (SearchParameterDefn sp : rd.getSearchParams().values())
       if (Utilities.noString(sp.getExpression()))
-        sp.setExpression(convertToExpression(rd, sp.getPaths()));    
+        sp.setExpression(convertToExpression(rd, sp.getPaths(), sp.getWorkingTargets(), sp));
   }
 
-  private String convertToExpression(ResourceDefn rd, List<String> pn) throws Exception {
+  private String convertToExpression(ResourceDefn rd, List<String> pn, Set<String> targets, SearchParameterDefn sp) throws Exception {
     StringBuilder b = new StringBuilder();
+    
     boolean first = true;
     for (String p : pn) {
+      StringBuilder bp = new StringBuilder();
+      
       ElementDefn ed;
+      List<ElementDefn> trace = new ArrayList<ElementDefn>();
       if (p.startsWith(rd.getName()+"."))
-        ed = rd.getRoot().getElementByName(p, true, definitions, "search parameter generation", true);
+        ed = rd.getRoot().getElementByName(p, true, definitions, "search parameter generation", true, trace);
       else
         throw new Exception("huh?");
       if (ed == null)
         throw new Exception("not found: "+p);
       
+      for (ElementDefn t : trace) {
+        if (t.getStandardsStatus() != null && t.getStandardsStatus().isLowerThan(sp.getStandardsStatus()))
+          sp.setStandardsStatus(t.getStandardsStatus());
+        try {
+        TypeDefn tt = definitions.getElementDefn(t.typeCode());
+        if (tt.getStandardsStatus() != null && tt.getStandardsStatus().isLowerThan(sp.getStandardsStatus()))
+          sp.setStandardsStatus(tt.getStandardsStatus());
+        } catch (Exception e) {
+          // nothing
+        }
+        
+      }
+      
       if (ed.getName().endsWith("[x]"))
         if (p.endsWith("[x]"))
-          p = p.substring(0, p.length()-3);
+          bp.append(p.substring(0, p.length()-3));
         else {
           int lp = p.lastIndexOf(".")+ed.getName().length()-2;
-          p = p.substring(0, lp)+".as("+p.substring(lp)+")";
+          String tn = p.substring(lp);
+          if (definitions.hasPrimitiveType(Utilities.uncapitalize(tn)))
+            bp.append("("+p.substring(0, lp)+" as "+Utilities.uncapitalize(tn)+")");
+          else
+            bp.append("("+p.substring(0, lp)+" as "+tn+")");
         }
+      else
+        bp.append(p);
+      if (!targets.isEmpty()) {
+        bp.append(".where(");
+        boolean innerFirst = true;
+        for (String t : targets) {
+          if (innerFirst) innerFirst = false; else bp.append(" or ");
+          bp.append("resolve() is "+t);
+        }
+        bp.append(")");
+      }
       if (first)
         first = false;
       else
         b.append(" | ");
-      b.append(p);
+      b.append(bp.toString());
     }
     return b.toString();
   }
-
 
 
   private void processContainerExamples() throws Exception {
@@ -553,7 +679,7 @@ public class SourceParser {
     if (new File(Utilities.path(srcDir, "w5.ini")).exists()) {
       IniFile w5 = new IniFile(Utilities.path(srcDir, "w5.ini"));
       for (String n : w5.getPropertyNames("names")) {
-        W5Entry w5o = new W5Entry(n, w5.getStringProperty("names", n), w5.getBooleanProperty("display", n), w5.getStringProperty("subclasses", n));
+        W5Entry w5o = new W5Entry(n, w5.getStringProperty("names", n), w5.getBooleanProperty("display", n), w5.getStringProperty("subclasses", n), w5.getStringProperty("fivews", n));
         definitions.getW5list().add(w5o);
         definitions.getW5s().put(n, w5o);
       }
@@ -600,7 +726,8 @@ public class SourceParser {
       Element e = XMLUtil.getFirstChild(doc.getDocumentElement());
       while (e != null) {
         MappingSpace m = new MappingSpace(XMLUtil.getNamedChild(e, "columnName").getTextContent(), XMLUtil.getNamedChild(e, "title").getTextContent(), 
-            XMLUtil.getNamedChild(e, "id").getTextContent(), Integer.parseInt(XMLUtil.getNamedChild(e, "sort").getTextContent()), isTrue(XMLUtil.getNamedChild(e, "publish")));
+            XMLUtil.getNamedChild(e, "id").getTextContent(), Integer.parseInt(XMLUtil.getNamedChild(e, "sort").getTextContent()), 
+            isTrue(XMLUtil.getNamedChild(e, "publish")), isTrue(XMLUtil.getNamedChild(e, "sparse")), isTrue(XMLUtil.getNamedChild(e, "pattern")), XMLUtil.getNamedChild(e, "link") != null ? XMLUtil.getNamedChild(e, "link").getTextContent() : XMLUtil.getNamedChild(e, "url").getTextContent());
         definitions.getMapTypes().put(XMLUtil.getNamedChild(e, "url").getTextContent(), m);
         Element p = XMLUtil.getNamedChild(e, "preamble");
         if (p != null)
@@ -620,6 +747,7 @@ public class SourceParser {
 
   private void loadStatusCodes() throws FileNotFoundException, Exception {
     XLSXmlParser xml = new XLSXmlParser(new CSFileInputStream(srcDir+"status-codes.xml"), "Status Codes");
+    new XLSXmlNormaliser(srcDir+"status-codes.xml", exceptionIfExcelNotNormalised).go();
     Sheet sheet = xml.getSheets().get("Status Codes");
     for (int row = 0; row < sheet.rows.size(); row++) {
       String path = sheet.getColumn(row, "Path");
@@ -636,6 +764,7 @@ public class SourceParser {
 
   private void loadCompartments() throws FileNotFoundException, Exception {
     XLSXmlParser xml = new XLSXmlParser(new CSFileInputStream(srcDir+"compartments.xml"), "compartments.xml");
+    new XLSXmlNormaliser(srcDir+"compartments.xml", exceptionIfExcelNotNormalised).go();
     Sheet sheet = xml.getSheets().get("compartments");
     for (int row = 0; row < sheet.rows.size(); row++) {
       Compartment c = new Compartment();
@@ -652,7 +781,7 @@ public class SourceParser {
     sheet = xml.getSheets().get("resources");
     for (int row = 0; row < sheet.rows.size(); row++) {
       String mn = sheet.getColumn(row, "Resource");
-      if (!mn.startsWith("!")) {
+      if (!Utilities.noString(mn) && !mn.startsWith("!")) {
         ResourceDefn r = definitions.getResourceByName(mn);
         for (Compartment c : definitions.getCompartments()) {
           c.getResources().put(r,  sheet.getColumn(row, c.getName()));
@@ -666,6 +795,8 @@ public class SourceParser {
     CodeSystem cs = (CodeSystem) xml.parse(new CSFileInputStream(srcDir+ini.getStringProperty("codesystems", n).replace('\\', File.separatorChar)));
     if (!cs.hasId())  
       cs.setId(FormatUtilities.makeId(n));
+    if (cs.getUrl().startsWith("http://hl7.org/fhir"))
+      cs.setVersion(Constants.VERSION);
     cs.setUserData("path", "codesystem-"+cs.getId()+".html");
     cs.setUserData("filename", "codesystem-"+cs.getId());
     definitions.getCodeSystems().put(cs.getUrl(), cs);
@@ -678,6 +809,9 @@ public class SourceParser {
     new CodeSystemConvertor(definitions.getCodeSystems()).convert(xml, vs, srcDir+ini.getStringProperty("valuesets", n).replace('\\', File.separatorChar));
     vs.setId(FormatUtilities.makeId(n));
     vs.setUrl("http://hl7.org/fhir/ValueSet/"+vs.getId());
+    if (!vs.hasVersion() || vs.getUrl().startsWith("http://hl7.org/fhir"))
+      vs.setVersion(version.toCode());
+
     vs.setUserData("path", "valueset-"+vs.getId()+".html");
     vs.setUserData("filename", "valueset-"+vs.getId());
     definitions.getExtraValuesets().put(n, vs);
@@ -687,9 +821,9 @@ public class SourceParser {
   private void loadConformancePackages(String n, List<ValidationMessage> issues) throws Exception {
     String usage = "core";
     String[] v = ini.getStringProperty("profiles", n).split("\\:");
-    File spreadsheet = new CSFile(rootDir+v[1]);
+    File spreadsheet = new CSFile(Utilities.path(rootDir, v[1]));
     if (TextFile.fileToString(spreadsheet.getAbsolutePath()).contains("urn:schemas-microsoft-com:office:spreadsheet")) {
-      SpreadsheetParser sparser = new SpreadsheetParser(n, new CSFileInputStream(spreadsheet), spreadsheet.getName(), definitions, srcDir, logger, registry, version, context, genDate, false, page, false, ini, wg(v[0]), definitions.getProfileIds(), fpUsages, page.getConceptMaps());
+      SpreadsheetParser sparser = new SpreadsheetParser(n, new CSFileInputStream(spreadsheet), spreadsheet.getName(), spreadsheet.getAbsolutePath(), definitions, srcDir, logger, registry, version, context, genDate, false, page, false, ini, wg(v[0]), definitions.getProfileIds(), fpUsages, page.getConceptMaps(), exceptionIfExcelNotNormalised);
       try {
         Profile pack = new Profile(usage);
         pack.setTitle(n);
@@ -700,6 +834,7 @@ public class SourceParser {
         definitions.getPackList().add(pack);
         definitions.getPackMap().put(n, pack);
         sparser.parseConformancePackage(pack, definitions, Utilities.getDirectoryForFile(spreadsheet.getAbsolutePath()), pack.getCategory(), issues, null);
+        errors.addAll(sparser.getErrors());
       } catch (Exception e) {
         throw new Exception("Error Parsing StructureDefinition: '"+n+"': "+e.getMessage(), e);
       }
@@ -728,8 +863,8 @@ public class SourceParser {
           pack.loadFromComposition((Composition) ae.getResource(), file.getAbsolutePath());
         else if (ae.getResource() instanceof StructureDefinition && !((StructureDefinition) ae.getResource()).getType().equals("Extension")) {
           StructureDefinition ed = (StructureDefinition) ae.getResource();
-          for (StringType s : ed.getContext())
-            definitions.checkContextValid(ed.getContextType(), s.getValue(), file.getName());
+          for (StructureDefinitionContextComponent s : ed.getContext())
+            definitions.checkContextValid(s, file.getName(), this.context);
           ToolResourceUtilities.updateUsage(ed, pack.getCategory());
           pack.getProfiles().add(new ConstraintStructure(ed, definitions.getUsageIG(usage, "Parsing "+file.getAbsolutePath()), wg == null ? wg(ed) : wg, fmm(ed), ed.getExperimental()));
         } else if (ae.getResource() instanceof StructureDefinition) {
@@ -768,19 +903,30 @@ public class SourceParser {
 
   private void loadConformancePackage(Profile ap, List<ValidationMessage> issues, WorkGroup wg) throws FileNotFoundException, IOException, Exception {
     if (ap.getSourceType() == ConformancePackageSourceType.Spreadsheet) {
-      SpreadsheetParser sparser = new SpreadsheetParser(ap.getCategory(), new CSFileInputStream(ap.getSource()), Utilities.noString(ap.getId()) ? ap.getSource() : ap.getId(), definitions, srcDir, logger, registry, version, context, genDate, false, page, false, ini, wg, definitions.getProfileIds(), fpUsages, page.getConceptMaps());
+      SpreadsheetParser sparser = new SpreadsheetParser(ap.getCategory(), new CSFileInputStream(ap.getSource()), Utilities.noString(ap.getId()) ? ap.getSource() : ap.getId(), ap.getSource(), definitions, srcDir, logger, registry, version, context, genDate, false, page, false, ini, wg, definitions.getProfileIds(), fpUsages, page.getConceptMaps(), exceptionIfExcelNotNormalised);
       sparser.setFolder(Utilities.getDirectoryForFile(ap.getSource()));
       sparser.parseConformancePackage(ap, definitions, Utilities.getDirectoryForFile(ap.getSource()), ap.getCategory(), issues, wg);
+      errors.addAll(sparser.getErrors());
     } else if (ap.getSourceType() == ConformancePackageSourceType.StructureDefinition) {
-      Resource rf = new XmlParser().parse(new CSFileInputStream(ap.getSource()));
+      Resource rf;
+      try {
+        rf = new XmlParser().parse(new CSFileInputStream(ap.getSource()));
+      } catch (Exception e) {
+        throw new Exception("Error parsing "+ap.getSource()+": "+e.getMessage(), e);
+      }
       if (!(rf instanceof StructureDefinition)) 
         throw new Exception("Error parsing Profile: not a structure definition");
       StructureDefinition sd = (StructureDefinition) rf;
+      sd.setVersion(Constants.VERSION);
       ap.putMetadata("id", sd.getId()+"-pack");
       ap.putMetadata("date", sd.getDateElement().asStringValue());
       ap.putMetadata("title", sd.getTitle());
       ap.putMetadata("status", sd.getStatus().toCode());
-      ap.putMetadata("description", new XhtmlComposer().compose(sd.getText().getDiv()));
+      ap.putMetadata("description", new XhtmlComposer(XhtmlComposer.HTML).compose(sd.getText().getDiv()));
+      if (ToolingExtensions.hasExtension(sd, "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg")) {
+        wg = definitions.getWorkgroups().get(ToolingExtensions.readStringExtension(sd, "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"));
+        ap.putMetadata("workgroup", wg.getCode());
+      }
       ap.setTitle(sd.getTitle());
       new ProfileUtilities(page.getWorkerContext(), null, null).setIds(sd, false);
       ap.getProfiles().add(new ConstraintStructure(sd, definitions.getUsageIG(ap.getCategory(), "Parsing "+ap.getSource()), wg == null ? wg(sd) : wg, fmm(sd), sd.getExperimental()));
@@ -791,8 +937,8 @@ public class SourceParser {
   private void loadGlobalBindings() throws Exception {
     logger.log("Load Common Bindings", LogMessageType.Process);
 
-    BindingsParser parser = new BindingsParser(new CSFileInputStream(new CSFile(termDir + "bindings.xml")), termDir + "bindings.xml", srcDir, registry, version, 
-        definitions.getCodeSystems(), page.getConceptMaps(), genDate);
+    BindingsParser parser = new BindingsParser(new CSFileInputStream(new CSFile(termDir + "bindings.xml")), termDir + "bindings.xml", srcDir, registry, version.toCode(), 
+        definitions.getCodeSystems(), page.getConceptMaps(), genDate, exceptionIfExcelNotNormalised);
     List<BindingSpecification> cds = parser.parse();
 
     for (BindingSpecification cd : cds) {
@@ -815,8 +961,8 @@ public class SourceParser {
   }
 
   private void loadPrimitives() throws Exception {
-    XLSXmlParser xls = new XLSXmlParser(new CSFileInputStream(dtDir
-        + "primitives.xml"), "primitives");
+    XLSXmlParser xls = new XLSXmlParser(new CSFileInputStream(dtDir+ "primitives.xml"), "primitives");
+    new XLSXmlNormaliser(dtDir+ "primitives.xml", exceptionIfExcelNotNormalised).go();
     Sheet sheet = xls.getSheets().get("Imports");
     for (int row = 0; row < sheet.rows.size(); row++) {
       processImport(sheet, row);
@@ -861,11 +1007,11 @@ public class SourceParser {
   private void genTypeProfile(org.hl7.fhir.definitions.model.TypeDefn t) throws Exception {
     StructureDefinition profile;
     try {
-      profile = new ProfileGenerator(definitions, context, page, genDate, version, null, fpUsages).generate(t);
+      profile = new ProfileGenerator(definitions, context, page, genDate, version.toCode(), null, fpUsages, page.getFolders().rootDir).generate(t);
       t.setProfile(profile);
       DataTypeTableGenerator dtg = new DataTypeTableGenerator(dstDir, page, t.getName(), true);
       t.getProfile().getText().setDiv(new XhtmlNode(NodeType.Element, "div"));
-      t.getProfile().getText().getDiv().getChildNodes().add(dtg.generate(t));
+      t.getProfile().getText().getDiv().getChildNodes().add(dtg.generate(t, null));
       if (context.hasResource(StructureDefinition.class, t.getProfile().getUrl()))
         throw new Exception("Duplicate Profile "+t.getProfile().getUrl());
       context.cacheResource(t.getProfile());
@@ -874,27 +1020,33 @@ public class SourceParser {
     }
   }
 
-  private String loadCompositeType(String n, Map<String, org.hl7.fhir.definitions.model.TypeDefn> map) throws Exception {
+  private String loadCompositeType(String n, Map<String, org.hl7.fhir.definitions.model.TypeDefn> map, String fmm) throws Exception {
     TypeParser tp = new TypeParser();
     List<TypeRef> ts = tp.parse(n, false, null, context, true);
     definitions.getKnownTypes().addAll(ts);
 
+    StandardsStatus status = loadStatus(n);
+    
     try {
       TypeRef t = ts.get(0);
       File csv = new CSFile(dtDir + t.getName().toLowerCase() + ".xml");
       if (csv.exists()) {
-        SpreadsheetParser p = new SpreadsheetParser("core", new CSFileInputStream(csv), csv.getName(), definitions, srcDir, logger, registry, version, context, genDate, false, page, true, ini, wg("fhir"), definitions.getProfileIds(), fpUsages, page.getConceptMaps());
+        SpreadsheetParser p = new SpreadsheetParser("core", new CSFileInputStream(csv), csv.getName(), csv.getAbsolutePath(), definitions, srcDir, logger, registry, version, context, genDate, false, page, true, ini, wg("fhir"), definitions.getProfileIds(), fpUsages, page.getConceptMaps(), exceptionIfExcelNotNormalised);
         org.hl7.fhir.definitions.model.TypeDefn el = p.parseCompositeType();
+        el.setFmmLevel(fmm);
+        el.setStandardsStatus(status);
         map.put(t.getName(), el);
         genTypeProfile(el);
+        errors.addAll(p.getErrors());
         return el.getName();
       } else {
         String p = ini.getStringProperty("types", n);
         csv = new CSFile(dtDir + p.toLowerCase() + ".xml");
         if (!csv.exists())
           throw new Exception("unable to find a definition for " + n + " in " + p);
-        XLSXmlParser xls = new XLSXmlParser(new CSFileInputStream(csv),
-            csv.getAbsolutePath());
+        XLSXmlParser xls = new XLSXmlParser(new CSFileInputStream(csv), csv.getAbsolutePath());
+        new XLSXmlNormaliser(csv.getAbsolutePath(), exceptionIfExcelNotNormalised).go();
+
         Sheet sheet = xls.getSheets().get("Restrictions");
         boolean found = false;
         for (int i = 0; i < sheet.rows.size(); i++) {
@@ -906,6 +1058,7 @@ public class SourceParser {
             inv.setOcl(sheet.getColumn(i, "OCL"));
             inv.setXpath(sheet.getColumn(i, "XPath"));
             inv.setExpression(sheet.getColumn(i, "Expression"));
+            inv.setExplanation(sheet.getColumn(i, "Explanation"));
             inv.setTurtle(sheet.getColumn(i, "RDF"));
             ProfiledType pt = new ProfiledType();
             pt.setDefinition(sheet.getColumn(i, "Definition"));
@@ -933,6 +1086,16 @@ public class SourceParser {
     }
   }
 
+  private StandardsStatus loadStatus(String n) throws FHIRException {
+    String ns = ini.getStringProperty("standards-status", n);
+    if (Utilities.noString(ns))
+      throw new FHIRException("Data types must be registered in the [standards-status] section of fhir.ini ("+n+")");
+    return StandardsStatus.fromCode(ns);
+  }
+
+
+
+
   private ResourceDefn loadResource(String n, Map<String, ResourceDefn> map, boolean isAbstract, boolean isTemplate) throws Exception {
     String folder = n;
     File spreadsheet = new CSFile((srcDir) + folder + File.separatorChar + n + "-spreadsheet.xml");
@@ -943,23 +1106,28 @@ public class SourceParser {
       throw new Exception("No Workgroup found for resource "+n+": '"+ini.getStringProperty("workgroups", n)+"'");
     
     SpreadsheetParser sparser = new SpreadsheetParser("core", new CSFileInputStream(
-        spreadsheet), spreadsheet.getName(), definitions, srcDir, logger, registry, version, context, genDate, isAbstract, page, false, ini, wg, definitions.getProfileIds(), fpUsages, page.getConceptMaps());
+        spreadsheet), spreadsheet.getName(), spreadsheet.getAbsolutePath(), definitions, srcDir, logger, registry, version, context, genDate, isAbstract, page, false, ini, wg, definitions.getProfileIds(), fpUsages, page.getConceptMaps(), exceptionIfExcelNotNormalised);
     ResourceDefn root;
     try {
       root = sparser.parseResource(isTemplate);
     } catch (Exception e) {
       throw new Exception("Error Parsing Resource "+n+": "+e.getMessage(), e);
     }
+    errors.addAll(sparser.getErrors());
     root.setWg(wg);
     root.setFmmLevel(ini.getStringProperty("fmm", n.toLowerCase()));
+    root.setNormativePackage(ini.getStringProperty("normative", root.getName()));
+    root.setApproval(FMGApproval.fromCode(ini.getStringProperty("fmg-approval", root.getName())));
+    String sc = ini.getStringProperty("security-categorization", root.getName().toLowerCase());
+    if (sc != null)
+      root.setSecurityCategorization(SecurityCategorization.fromCode(sc));
+    else if (!Utilities.existsInList(root.getName(), "Resource", "DomainResource", "MetadataResource"))
+      throw new Exception("Must have an entry in the security-categorization section of fhir.ini for the resource "+root.getName());
 
     for (EventDefn e : sparser.getEvents())
       processEvent(e, root.getRoot());
 
-    if (ini.getBooleanProperty("draft-resources", root.getName()))
-      root.setStatus(StandardsStatus.DRAFT);
-    else if (ini.getBooleanProperty("normative-resources", root.getName()))
-      root.setStatus(StandardsStatus.NORMATIVE);
+ 
     
     if (map != null) {
       map.put(root.getName(), root);
@@ -968,8 +1136,59 @@ public class SourceParser {
       definitions.getKnownResources().put(root.getName(), new DefinedCode(root.getName(), root.getRoot().getDefinition(), n));
       context.getResourceNames().add(root.getName());
     }
+    if (root.getNormativePackage() != null)
+      root.setStatus(StandardsStatus.NORMATIVE);
+    File f = new File(Utilities.path(srcDir, folder, n+".svg"));
+    if (f.exists()) 
+      parseSvgFile(f, root.getLayout(), f.getName());
     return root;
   }
+
+  private void parseSvgFile(File f, Map<String, PointSpec> layout, String name) throws FileNotFoundException, FHIRException {
+    Document svg = parseXml(new FileInputStream(f), name);
+    readElement(svg.getDocumentElement(), null, layout);
+  }
+
+  private void readElement(Element e, Element p, Map<String, PointSpec> layout) {
+    if (e.getNodeName().equals("rect")) {
+      String id = e.getAttribute("id");
+      if (!Utilities.noString(id) && Character.isUpperCase(id.charAt(0))) {
+        double x = Double.valueOf(e.getAttribute("x"));
+        double y = Double.valueOf(e.getAttribute("y"));
+        if (p.hasAttribute("transform")) {
+          String s = p.getAttribute("transform");
+          if (s.startsWith("translate(")) {
+            String[] sp = s.substring(10, s.length()-1).split("\\,");
+            double tx = Double.valueOf(sp[0]);
+            double ty = sp.length > 1 ? Double.valueOf(sp[1]) : 0;
+            x = x + tx;
+            y = y + ty;
+          }
+        }
+        layout.put(id, new PointSpec(x, y));
+      }
+    }
+    Element c = XMLUtil.getFirstChild(e);
+    while (c != null) {
+      readElement(c, e, layout);
+      c = XMLUtil.getNextSibling(c);
+    }
+  }
+
+
+
+
+  private Document parseXml(InputStream in, String name) throws FHIRException  {
+    try {
+      DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+      factory.setNamespaceAware(true);
+      DocumentBuilder builder = factory.newDocumentBuilder();
+      return builder.parse(in);
+    } catch (Exception e) {
+      throw new FHIRException("Error processing "+name+": "+e.getMessage(), e);
+    }
+  }
+
 
   private void processEvent(EventDefn defn, ElementDefn root)
       throws Exception {
@@ -997,7 +1216,7 @@ public class SourceParser {
       return false;
     } else  {
       long d = f.lastModified();
-      if (!file.endsWith(".sheet.txt") && (!dates.containsKey(category) || d > dates.get(category)))
+      if (!f.getAbsolutePath().endsWith(".gen.svg") && !f.getName().contains("please-close-this-in-excel-and-return-the-build-prior-to-committing") && (!dates.containsKey(category) || d > dates.get(category)))
         dates.put(category, d);
       return true;
     }
@@ -1063,6 +1282,21 @@ public class SourceParser {
 
   public IniFile getIni() {
     return ini;
+  }
+
+
+
+
+  public void setExternals(Bundle externals) {
+    this.externals = externals;
+    
+  }
+
+
+
+
+  public List<String> getErrors() {
+    return errors;
   }
   
   

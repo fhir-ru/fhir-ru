@@ -3,7 +3,7 @@
 <!--
 SNOMED CT is a poly-versioned code system for which multiple 
 releases exist. This CodeSystem resource describes 'all of SCT'.
-For the relevent elements, there are notes about how they would 
+For the relevant elements, there are notes about how they would 
 change to describe specific editions, or specific versions.
 
 In addition to this general canonical SNOMED CT definition, 
@@ -160,7 +160,7 @@ support a particular edition/version
  
   <!-- 
     SCT attribute relationships also surface as properties. That is, any relationship where the type 
-    is a descendent of 410662002|Concept model attribute|. 
+    is a descendant of 410662002|Concept model attribute|. 
   -->
   <property>
     <code value="Due to"/>

@@ -44,7 +44,6 @@ import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ProfiledType;
 import org.hl7.fhir.definitions.model.ResourceDefn;
-import org.hl7.fhir.r4.model.Enumerations.BindingStrength;
 import org.hl7.fhir.igtools.spreadsheets.TypeRef;
 import org.hl7.fhir.utilities.Utilities;
 
@@ -104,19 +103,19 @@ public class JavaParserXmlGenerator extends JavaBaseGenerator {
       regn.append("    if (xpp.getName().equals(prefix+\""+n.getName()+"\"))\r\n      return true;\r\n");
     }
 
-    for (ProfiledType n : definitions.getConstraints().values()) {
-      generateConstraint(n);
-      regt.append("    else if (xpp.getName().equals(prefix+\""+n.getName()+"\"))\r\n      return parse"+n.getName()+"(xpp);\r\n");
-      regt2.append("    else if (type.equals(\""+n.getName()+"\"))\r\n      return parse"+n.getName()+"(xpp);\r\n");
-      regf.append("    else if (type.equals(\""+n.getName()+"\"))\r\n      return parse"+n.getName()+"(xpp);\r\n");
-      regn.append("    if (xpp.getName().equals(prefix+\""+n.getName()+"\"))\r\n      return true;\r\n");
-    }
+//    for (ProfiledType n : definitions.getConstraints().values()) {
+//      generateConstraint(n);
+//      regt.append("    else if (xpp.getName().equals(prefix+\""+n.getName()+"\"))\r\n      return parse"+n.getName()+"(xpp);\r\n");
+//      regt2.append("    else if (type.equals(\""+n.getName()+"\"))\r\n      return parse"+n.getName()+"(xpp);\r\n");
+//      regf.append("    else if (type.equals(\""+n.getName()+"\"))\r\n      return parse"+n.getName()+"(xpp);\r\n");
+//      regn.append("    if (xpp.getName().equals(prefix+\""+n.getName()+"\"))\r\n      return true;\r\n");
+//    }
     for (ElementDefn n : definitions.getStructures().values()) {
       generate(n, JavaGenClass.Structure);
-      regt.append("    else if (xpp.getName().equals(prefix+\""+n.getName()+"\"))\r\n      return parse"+n.getName()+"(xpp);\r\n");
-      regt2.append("    else if (type.equals(\""+n.getName()+"\"))\r\n      return parse"+n.getName()+"(xpp);\r\n");
-      regf.append("    else if (type.equals(\""+n.getName()+"\"))\r\n      return parse"+n.getName()+"(xpp);\r\n");
-      regn.append("    if (xpp.getName().equals(prefix+\""+n.getName()+"\"))\r\n      return true;\r\n");
+//      regt.append("    else if (xpp.getName().equals(prefix+\""+n.getName()+"\"))\r\n      return parse"+n.getName()+"(xpp);\r\n");
+//      regt2.append("    else if (type.equals(\""+n.getName()+"\"))\r\n      return parse"+n.getName()+"(xpp);\r\n");
+//      regf.append("    else if (type.equals(\""+n.getName()+"\"))\r\n      return parse"+n.getName()+"(xpp);\r\n");
+//      regn.append("    if (xpp.getName().equals(prefix+\""+n.getName()+"\"))\r\n      return true;\r\n");
     }
     
     for (String s : definitions.getBaseResources().keySet()) {
@@ -162,7 +161,16 @@ public class JavaParserXmlGenerator extends JavaBaseGenerator {
     write("    return true;\r\n");    
     write("  }\r\n");
     write("\r\n");
-    write("  protected boolean parseBackboneContent(int eventType, XmlPullParser xpp, BackboneElement res) throws XmlPullParserException, IOException, FHIRFormatError {\r\n");
+    write("  protected boolean parseBackboneElementContent(int eventType, XmlPullParser xpp, BackboneElement res) throws XmlPullParserException, IOException, FHIRFormatError {\r\n");
+    write("    if (eventType == XmlPullParser.START_TAG && xpp.getName().equals(\"modifierExtension\")) \r\n");
+    write("      res.getModifierExtension().add(parseExtension(xpp));\r\n");
+    write("    else\r\n");
+    write("      return parseElementContent(eventType, xpp, res);\r\n");
+    write("      \r\n");
+    write("    return true;\r\n");    
+    write("  }\r\n");
+    write("\r\n");
+    write("  protected boolean parseBackboneElementContent(int eventType, XmlPullParser xpp, BackboneType res) throws XmlPullParserException, IOException, FHIRFormatError {\r\n");
     write("    if (eventType == XmlPullParser.START_TAG && xpp.getName().equals(\"modifierExtension\")) \r\n");
     write("      res.getModifierExtension().add(parseExtension(xpp));\r\n");
     write("    else\r\n");
@@ -191,7 +199,7 @@ public class JavaParserXmlGenerator extends JavaBaseGenerator {
 //    write("      };\r\n");
 //    write("      nextNoWhitespace(xpp);\r\n");
 //    write("    } else\r\n");
-//    write("      return parseBackboneContent(eventType, xpp, res);\r\n");
+//    write("      return parseBackboneElementContent(eventType, xpp, res);\r\n");
 //    write("      \r\n");
 //    write("    return true;\r\n");    
 //    write("  }\r\n");
@@ -280,6 +288,8 @@ public class JavaParserXmlGenerator extends JavaBaseGenerator {
 
 
   private void generate(ElementDefn n, JavaGenClass clss) throws Exception {
+    if (n.getName().equals("SimpleQuantity"))
+      return;
     typeNames.clear();
     typeNameStrings.clear();
     enums.clear();
@@ -310,6 +320,8 @@ public class JavaParserXmlGenerator extends JavaBaseGenerator {
   }
 
   private void generateConstraint(ProfiledType cd) throws Exception {
+    if (cd.getName().equals("SimpleQuantity"))
+      return;
     typeNames.clear();
     typeNameStrings.clear();
     enums.clear();
@@ -394,9 +406,9 @@ public class JavaParserXmlGenerator extends JavaBaseGenerator {
       write("      ");
     if (clss == JavaGenClass.Resource)
       write("if (!parse"+n.typeCode()+"Content(eventType, xpp, res))\r\n");
-    else if (clss == JavaGenClass.BackboneElement)
-        write("if (!parseBackboneContent(eventType, xpp, res))\r\n");
-    else if (Utilities.noString(n.typeCode()) || n.typeCode().equals("Type") || n.typeCode().equals("Structure") )
+    else if (clss == JavaGenClass.BackboneElement || n.typeCode().equals("Structure") )
+        write("if (!parseBackboneElementContent(eventType, xpp, res))\r\n");
+    else if (Utilities.noString(n.typeCode()) || n.typeCode().equals("Type"))
       write("if (!parseElementContent(eventType, xpp, res))\r\n");
     else
       write("if (!parse"+n.typeCode()+"Content(eventType, xpp, res))\r\n");
@@ -466,7 +478,7 @@ public class JavaParserXmlGenerator extends JavaBaseGenerator {
           en = "Enumerations."+e.getBinding().getValueSet().getName();
         prsr = "parseEnumeration(xpp, "+en+".NULL, new "+en.substring(0, en.indexOf("."))+"."+en.substring(en.indexOf(".")+1)+"EnumFactory())"; // en+".fromCode(parseString(xpp))";
         // parseEnumeration(xpp, Narrative.NarrativeStatus.additional, new Narrative.NarrativeStatusEnumFactory())
-      } else if (e.typeCode().equals("code") && cd != null && cd.getBinding() == BindingSpecification.BindingMethod.ValueSet && cd.getStrength() == BindingStrength.REQUIRED) {
+      } else if (e.typeCode().equals("code") && cd != null && isEnum(cd)) {
         String en = typeNames.get(e); // getCodeListType(cd.getBinding());
         if (e.getBinding().isShared())
           en = "Enumerations."+e.getBinding().getName();
@@ -482,6 +494,8 @@ public class JavaParserXmlGenerator extends JavaBaseGenerator {
           tn = "xhtml";
         if (tn.contains("Reference("))
           prsr = "parseReference(xpp)";
+        else if (tn.contains("canonical("))
+          prsr = "parseCanonical(xpp)";
         else if (tn.contains("("))
           prsr = "parse"+tn+"(xpp)";
         else if (tn.startsWith(context) && !tn.equals(context) && !definitions.hasType(tn)) {
@@ -519,7 +533,7 @@ public class JavaParserXmlGenerator extends JavaBaseGenerator {
         write("        res.get"+upFirst(getElementName(name, false))+"().add("+prsr+");\r\n");
       } else {
         write("      "+(!first ? "} else " : "")+"if (eventType == XmlPullParser.START_TAG && xpp.getName().equals(\""+name+"\")) {\r\n");
-        write("        res.set"+upFirst(getElementName(name, false))+(isJavaPrimitive(e) ? "Element" : "")+"("+prsr+");\r\n");
+        write("        res.set"+upFirst(getElementName(name, false))+(isJavaPrimitive(e) || e.typeCode().startsWith("canonical(") ? "Element" : "")+"("+prsr+");\r\n");
       }
     }
   }
@@ -533,7 +547,9 @@ public class JavaParserXmlGenerator extends JavaBaseGenerator {
         return root.getName();      
     } else if (elem.getTypes().size() == 0) {
         return typeNames.get(elem);
-    } else if (typeNames.containsKey(elem))
+    } else if (t.equals("SimpleQuantity"))
+      return "Quantity";
+    else if (typeNames.containsKey(elem))
       return typeNames.get(elem);
     else
       return upFirst(t);
@@ -564,8 +580,17 @@ public class JavaParserXmlGenerator extends JavaBaseGenerator {
     write("  private boolean nameIsTypeName(XmlPullParser xpp, String prefix) {\r\n");
     write("    "+regn.toString());
     write("    return false;\r\n");
-    write("  }\r\n");
+    write("  }\r\n\r\n");
     
+    write("  @Override\r\n");
+    write("    protected Type parseAnyType(XmlPullParser xpp, String type) throws XmlPullParserException, IOException, FHIRFormatError {\r\n");
+    write("      if (type.equals(\"ElementDefinition\"))\r\n");
+    write("        return parseElementDefinition(xpp);\r\n");
+    write("      else if (type.equals(\"DataRequirement\"))\r\n");
+    write("        return parseDataRequirement(xpp);\r\n");
+    write("      else\r\n");
+    write("        return parseType(xpp, type);\r\n");
+    write("  }\r\n\r\n");    
   }
 
   private String getCodeListType(String binding) {
@@ -596,7 +621,7 @@ public class JavaParserXmlGenerator extends JavaBaseGenerator {
         }
         typeNames.put(e,  rootOf(path)+"."+upFirst(tn));
       }
-      if (cd != null && cd.getBinding() == BindingSpecification.BindingMethod.ValueSet && cd.getStrength() == BindingStrength.REQUIRED) {
+      if (cd != null && isEnum(cd)) {
         tn = getCodeListType(cd.getName());
         if (!enumNames.contains(tn)) {
           enumNames.add(tn);
@@ -660,7 +685,7 @@ public class JavaParserXmlGenerator extends JavaBaseGenerator {
         }
         typeNames.put(e,  rootOf(path)+"."+tn);
       }
-      if (cd != null && cd.getBinding() == BindingSpecification.BindingMethod.ValueSet && cd.getStrength() == BindingStrength.REQUIRED) {
+      if (cd != null && isEnum(cd)) {
         tn = getCodeListType(cd.getName());
         if (!enumNames.contains(tn)) {
           enumNames.add(tn);
@@ -790,14 +815,14 @@ public class JavaParserXmlGenerator extends JavaBaseGenerator {
       //        regn.append("    if (xpp.getName().equals(prefix+\""+n.getName()+"\"))\r\n      return true;\r\n");
     }
 
-    for (ProfiledType n : definitions.getConstraints().values()) {
-      generateConstraintComposer(n);
-      regtp.append("    else if (type instanceof "+n.getName()+")\r\n       compose"+n.getName()+"(prefix+\""+n.getName()+"\", ("+n.getName()+") type);\r\n");
-//      regn.append("    if (xpp.getName().equals(prefix+\""+n.getCode()+"\"))\r\n      return true;\r\n");
-    }
+//    for (ProfiledType n : definitions.getConstraints().values()) {
+//      generateConstraintComposer(n);
+//      regtp.append("    else if (type instanceof "+n.getName()+")\r\n       compose"+n.getName()+"(prefix+\""+n.getName()+"\", ("+n.getName()+") type);\r\n");
+////      regn.append("    if (xpp.getName().equals(prefix+\""+n.getCode()+"\"))\r\n      return true;\r\n");
+//    }
     for (ElementDefn n : definitions.getStructures().values()) {
         generateComposer(n, JavaGenClass.Structure);
-        regtn.append("    else if (type instanceof "+n.getName()+")\r\n       compose"+n.getName()+"(prefix+\""+n.getName()+"\", ("+n.getName()+") type);\r\n");
+//        regtn.append("    else if (type instanceof "+n.getName()+")\r\n       compose"+n.getName()+"(prefix+\""+n.getName()+"\", ("+n.getName()+") type);\r\n");
         //      regn.append("    if (xpp.getName().equals(prefix+\""+n.getName()+"\"))\r\n      return true;\r\n");
     }
 
@@ -846,7 +871,14 @@ public class JavaParserXmlGenerator extends JavaBaseGenerator {
     write("    }\r\n");
     write("  }\r\n");
     write("\r\n");
-    write("  protected void composeBackboneElements(BackboneElement element) throws IOException {\r\n");
+    write("  protected void composeBackboneElementElements(BackboneElement element) throws IOException {\r\n");
+    write("    composeElementElements(element);\r\n");    
+    write("    for (Extension e : element.getModifierExtension()) {\r\n");
+    write("      composeExtension(\"modifierExtension\", e);\r\n");
+    write("    }\r\n");
+    write("  }\r\n");
+    write("\r\n");
+    write("  protected void composeBackboneElementElements(BackboneType element) throws IOException {\r\n");
     write("    composeElementElements(element);\r\n");    
     write("    for (Extension e : element.getModifierExtension()) {\r\n");
     write("      composeExtension(\"modifierExtension\", e);\r\n");
@@ -917,6 +949,8 @@ public class JavaParserXmlGenerator extends JavaBaseGenerator {
 //  }
 
   private void generateComposer(ElementDefn n, JavaGenClass type) throws Exception {
+    if (n.getName().equals("SimpleQuantity"))
+      return;
     typeNames.clear();
     typeNameStrings.clear();
     enums.clear();
@@ -941,6 +975,8 @@ public class JavaParserXmlGenerator extends JavaBaseGenerator {
   }
 
   private void generateConstraintComposer(ProfiledType cd) throws Exception {
+    if (cd.getName().equals("SimpleQuantity"))
+      return;
     typeNames.clear();
     typeNameStrings.clear();
     enums.clear();
@@ -996,9 +1032,9 @@ public class JavaParserXmlGenerator extends JavaBaseGenerator {
     write("  protected void compose"+upFirst(tn).replace(".", "")+"Elements("+tn+" element) throws IOException {\r\n");
     if (type == JavaGenClass.Resource) 
       write("      compose"+n.typeCode()+"Elements(element);\r\n");
-    else if (type == JavaGenClass.BackboneElement) 
-      write("      composeBackboneElements(element);\r\n");
-    else if (Utilities.noString(n.typeCode()) || n.typeCode().equals("Structure") || n.typeCode().equals("Type") )
+    else if (type == JavaGenClass.BackboneElement || n.typeCode().equals("Structure")) 
+      write("      composeBackboneElementElements(element);\r\n");
+    else if (Utilities.noString(n.typeCode()) || n.typeCode().equals("Type") )
       write("      composeElementElements(element);\r\n");
     else
       write("      compose"+n.typeCode()+"Elements(element);\r\n");
@@ -1058,7 +1094,7 @@ public class JavaParserXmlGenerator extends JavaBaseGenerator {
       if (e.typeCode().equals("code") && cd != null && cd.getBinding() == BindingSpecification.BindingMethod.CodeList) {
         en = typeNames.get(e); // getCodeListType(cd.getBinding());
         comp = null;
-      } if (e.typeCode().equals("code") && cd != null && cd.getBinding() == BindingSpecification.BindingMethod.ValueSet && cd.getStrength() == BindingStrength.REQUIRED) {
+      } if (e.typeCode().equals("code") && cd != null && isEnum(cd)) {
           en = typeNames.get(e); // getCodeListType(cd.getBinding());
           comp = null;
       } else {   
@@ -1076,6 +1112,12 @@ public class JavaParserXmlGenerator extends JavaBaseGenerator {
         if (tn.contains("Reference(")) {
           comp = "composeReference";
           tn = "Reference";
+        } else if (tn.equals("SimpleQuantity")) {
+          comp = "composeQuantity";
+          tn = "Quantity";
+        } else if (tn.contains("canonical(")) {
+          comp = "composeCanonical";
+          tn = "CanonicalType";
         } else if (tn.contains("("))
           comp = "compose"+tn;
         else if (tn.startsWith(context) && !tn.equals(context)) {
@@ -1093,11 +1135,19 @@ public class JavaParserXmlGenerator extends JavaBaseGenerator {
         if (tn.contains("Reference(")) {
           comp = "composeReference";
           tn = "Reference";
+        } else if (tn.contains("canonical(")) {
+          comp = "composeCanonical";
+          tn = "CanonicalType";
         };
+
         if (en == null) {
           if (tn.equalsIgnoreCase("string"))
             tn = "StringType";
+          if (tn.equalsIgnoreCase("SimpleQuantity"))
+            tn = "Quantity";
           if (definitions.hasPrimitiveType(tn))
+            tn = upFirst(tn)+"Type";
+          if (tn.equals("DateTime"))
             tn = upFirst(tn)+"Type";
 
           write("      if (element.has"+upFirst(getElementName(name, false))+"()) { \r\n");
@@ -1125,7 +1175,7 @@ public class JavaParserXmlGenerator extends JavaBaseGenerator {
         else
           write("        composeEnumeration(\""+name+"\", element.get"+upFirst(getElementName(name, false))+"Element(), new "+mainName+"."+upFirst(en.substring(en.indexOf(".")+1))+"EnumFactory());\r\n");
 //        write("        composeString(\""+name+"\", element.get"+upFirst(getElementName(name, false))+"().toCode());\r\n");        
-      } else if (isJavaPrimitive(e)) {
+      } else if (isJavaPrimitive(e) || e.typeCode().startsWith("canonical(")) {
         write("      if (element.has"+upFirst(getElementName(name, false))+"Element()) {\r\n");
         write("        "+comp+"(\""+name+"\", element.get"+upFirst(getElementName(name, false))+"Element());\r\n");
         write("      }\r\n");

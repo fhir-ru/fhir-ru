@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hl7.fhir.utilities.FileNotifier;
+import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.validation.ValidationMessage;
 import org.hl7.fhir.utilities.validation.ValidationMessage.IssueSeverity;
@@ -37,6 +38,7 @@ public class HTMLLinkChecker implements FileNotifier {
   public static final String BIN_TYPE = "application/octet-stream";
   public static final String SVG_TYPE = "application/avg";
   public static final boolean WANT_CHECK = true;
+  private static final Object NORMATIVE_MARKER_TEXT = "!ns!";
 
   private class Entry {
     private String filename;
@@ -124,6 +126,7 @@ public class HTMLLinkChecker implements FileNotifier {
   private void check(Entry e) throws Exception {
     if (new File(Utilities.path(page.getFolders().dstDir, e.filename)).exists()) { 
       e.checked = true;
+      checkNormativeStatus(e.filename);
       XhtmlDocument doc;
       try {
         doc = new XhtmlParser().parse(new FileInputStream(Utilities.path(page.getFolders().dstDir, e.filename)), "html");
@@ -131,7 +134,7 @@ public class HTMLLinkChecker implements FileNotifier {
         checkLinks(doc, e);
         stripDivs(doc);
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        new XhtmlComposer().compose(stream, doc);
+        new XhtmlComposer(XhtmlComposer.HTML).compose(stream, doc);
         e.bytes = stream.toByteArray();
         if (e.bytes == null || e.bytes.length == 0)
           throw new Exception("File is empty");
@@ -140,6 +143,22 @@ public class HTMLLinkChecker implements FileNotifier {
       }
     } else {
       reportError(e.filename, "Unable to find file "+e.filename);
+    }
+  }
+
+  private void checkNormativeStatus(String filename) {
+    String src;
+    try {
+      src = TextFile.fileToString(Utilities.path(page.getFolders().dstDir, filename));
+      if (!src.contains("<!--!ns!-->") && !src.contains("<!-- !ns! -->"))
+        reportError(filename, "File "+filename+" has no normative marker");
+      if ((src.contains("may not") || src.contains("May not")) && !(src.contains("Apache") || src.contains("TemplateStatusCode"))) // those words appear in the Apache license
+        if (!filename.contains("v2"+File.separator) && !filename.contains("v3"+File.separator) && !filename.contains("dicom") && !src.contains("http://terminology.hl7.org/CodeSystem/v3-") && !Utilities.existsInList(filename, "terminologies-valuesets.html"))
+          reportError(filename, "File "+filename+" contains the prohibited words 'may not' - use 'might not' or 'SHALL not', or if the content is external, talk to the FHIR product Director");
+//      if (src.contains("should"))
+//        reportError(filename, "File "+filename+" contains the word 'should'. Make it uppercase, or if the content is external, talk to FHIR product Director");
+    } catch (Exception e) {
+      reportError(filename, "File "+filename+" has no normative marker (Exception = "+e.getMessage()+")");
     }
   }
 
@@ -171,10 +190,6 @@ public class HTMLLinkChecker implements FileNotifier {
     if ("a".equals(node.getName())) {
       if (node.getAttributes().containsKey("name")) {
         e.anchors.add(node.getAttribute("name"));
-        if (Utilities.noString(node.allText())) { 
-          String msg = "Invalid \"a\" link in "+e.filename+" - name "+node.getAttribute("name")+" has no text)";
-          reportError(e.filename, msg);      
-        }
       }
       else if (node.getAttributes().containsKey("href") || node.getAttributes().containsKey("xlink:href") ) {
       }
@@ -259,7 +274,7 @@ public class HTMLLinkChecker implements FileNotifier {
         if (e == null) {
           if (href.startsWith("v2/") || href.startsWith("v3/")) // we can't check those links
             return;
-          if (target.endsWith(".zip") || target.endsWith(".ttl") || target.endsWith(".jar") || target.endsWith(".cfm"))
+          if (target.endsWith(".zip") || target.endsWith(".ttl") || target.endsWith(".jar") || target.endsWith(".cfm") || target.endsWith(".tgz"))
             return;
           reportError(base, "Broken Link (2) in "+base+": '"+href+"' not found at \""+target+"\"("+node.allText()+")");
           return;

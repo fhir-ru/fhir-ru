@@ -12,6 +12,7 @@ import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.r4.context.IWorkerContext;
 import org.hl7.fhir.r4.context.IWorkerContext.ILoggingService;
 import org.hl7.fhir.r4.formats.FormatUtilities;
+import org.hl7.fhir.r4.model.CanonicalType;
 import org.hl7.fhir.r4.model.Reference;
 import org.hl7.fhir.r4.model.StructureDefinition;
 import org.hl7.fhir.r4.model.Type;
@@ -139,8 +140,8 @@ public class SimpleFetcher implements IFetchFile {
 
   @Override
   public FetchedFile fetch(Type source, FetchedFile src) throws Exception {
-    if (source instanceof Reference) {
-      String s = ((Reference)source).getReference();
+    if (source instanceof Reference || source instanceof CanonicalType) {
+      String s = source instanceof CanonicalType ? source.primitiveValue() : ((Reference)source).getReference();
       if (!s.contains("/"))
         throw new Exception("Bad Source Reference '"+s+"' - should have the format [Type]/[id]");
       String type = s.substring(0,  s.indexOf("/"));
@@ -157,6 +158,8 @@ public class SimpleFetcher implements IFetchFile {
       if (Utilities.noString(fn)) {
         // no source in the json file.
         fn = findFile(dirs, type.toLowerCase()+"-"+id+".xml");
+        if (fn == null) // Added to support Forge's file naming convention
+          fn = findFile(dirs, id+"."+type.toLowerCase()+".xml");
         if (fn == null)
           fn = findFile(dirs, type.toLowerCase()+"-"+id+".json");
         if (fn == null)
@@ -168,10 +171,10 @@ public class SimpleFetcher implements IFetchFile {
         if (fn == null)
           fn = findFile(dirs, id+".json");
         if (fn == null)
-          throw new Exception("Unable to find the source file for "+type+"/"+id+": not specified, so tried "+type.toLowerCase()+"-"+id+".xml, "+type.toLowerCase()+"-"+id+".json, "+type.toLowerCase()+"/"+id+".xml, "+type.toLowerCase()+"/"+id+".json, "+id+".xml, and "+id+".json in dirs "+dirs.toString());
+          throw new Exception("Unable to find the source file for "+type+"/"+id+": not specified, so tried "+type.toLowerCase()+"-"+id+".xml, "+id+"."+type.toLowerCase()+".xml, "+type.toLowerCase()+"-"+id+".json, "+type.toLowerCase()+"/"+id+".xml, "+type.toLowerCase()+"/"+id+".json, "+id+".xml, and "+id+".json in dirs "+dirs.toString());
       } else {
         fn = findFile(dirs, fn);
-        if (!exists(fn))
+        if (fn == null || !exists(fn))
           throw new Exception("Unable to find the source file for "+type+"/"+id+" at "+fn);
       }
       return fetch(fn); 
@@ -210,39 +213,42 @@ public class SimpleFetcher implements IFetchFile {
     List<FetchedFile> res = new ArrayList<>();
     for (String s : sources) {
       int count = 0;
-      for (File f : new File(s).listFiles()) {
-        if (!f.isDirectory()) {
-          String fn = f.getCanonicalPath();
-          String ext = Utilities.getFileExtension(fn);
-          if (!Utilities.existsInList(ext, "md", "txt")) {
-            boolean ok = false;
-            if (!Utilities.existsInList(ext, "json", "ttl", "html", "txt"))
-              try {
-                org.hl7.fhir.r4.elementmodel.Element e = new org.hl7.fhir.r4.elementmodel.XmlParser(context).parse(new FileInputStream(f));
-                addFile(res, f, "application/fhir+xml");
-                count++;
-                ok = true;
-              } catch (Exception e) {
-                log.logMessage(e.getMessage() +" loading "+f);
+      File file = new File(s);
+      if (file.exists()) {
+        for (File f : file.listFiles()) {
+          if (!f.isDirectory()) {
+            String fn = f.getCanonicalPath();
+            String ext = Utilities.getFileExtension(fn);
+            if (!Utilities.existsInList(ext, "md", "txt") && !fn.endsWith(".gitignore")) {
+              boolean ok = false;
+              if (!Utilities.existsInList(ext, "json", "ttl", "html", "txt"))
+                try {
+                  org.hl7.fhir.r4.elementmodel.Element e = new org.hl7.fhir.r4.elementmodel.XmlParser(context).parse(new FileInputStream(f));
+                  addFile(res, f, "application/fhir+xml");
+                  count++;
+                  ok = true;
+                } catch (Exception e) {
+                  log.logMessage(e.getMessage() +" loading "+f);
+                }
+              if (!ok && !Utilities.existsInList(ext, "xml", "ttl", "html", "txt")) {
+                try {
+                  org.hl7.fhir.r4.elementmodel.Element e = new org.hl7.fhir.r4.elementmodel.JsonParser(context).parse(new FileInputStream(fn));
+                  addFile(res, f, "application/fhir+json");
+                  count++;
+                  ok = true;
+                } catch (Exception e) {
+                  log.logMessage(e.getMessage() +" loading "+f);
+                }
               }
-            if (!ok && !Utilities.existsInList(ext, "xml", "ttl", "html", "txt")) {
-              try {
-                org.hl7.fhir.r4.elementmodel.Element e = new org.hl7.fhir.r4.elementmodel.JsonParser(context).parse(new FileInputStream(fn));
-                addFile(res, f, "application/fhir+json");
-                count++;
-                ok = true;
-              } catch (Exception e) {
-                log.logMessage(e.getMessage() +" loading "+f);
-              }
-            }
-            if (!ok && !Utilities.existsInList(ext, "json", "xml", "html", "txt")) {
-              try {
-                org.hl7.fhir.r4.elementmodel.Element e = new org.hl7.fhir.r4.elementmodel.TurtleParser(context).parse(new FileInputStream(fn));
-                addFile(res, f, "text/turtle");
-                count++;
-                ok = true;
-              } catch (Exception e) {
-                log.logMessage(e.getMessage() +" loading "+f);
+              if (!ok && !Utilities.existsInList(ext, "json", "xml", "html", "txt")) {
+                try {
+                  org.hl7.fhir.r4.elementmodel.Element e = new org.hl7.fhir.r4.elementmodel.TurtleParser(context).parse(new FileInputStream(fn));
+                  addFile(res, f, "application/fhir+turtle");
+                  count++;
+                  ok = true;
+                } catch (Exception e) {
+                  log.logMessage(e.getMessage() +" loading "+f);
+                }
               }
             }
           }

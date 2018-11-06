@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Fri, Aug 11, 2017 07:23+1000 for FHIR v3.1.0
+// Generated on Mon, Nov 5, 2018 09:03+1100 for FHIR v3.6.0
 
 import java.util.*;
 
@@ -46,8 +46,8 @@ import org.hl7.fhir.exceptions.FHIRException;
 /**
  * A curated namespace that issues unique symbols within that namespace for the identification of concepts, people, devices, etc.  Represents a "System" used within the Identifier and Coding data types.
  */
-@ResourceDef(name="NamingSystem", profile="http://hl7.org/fhir/Profile/NamingSystem")
-@ChildOrder(names={"name", "status", "kind", "date", "publisher", "contact", "responsible", "type", "description", "useContext", "jurisdiction", "usage", "uniqueId", "replacedBy"})
+@ResourceDef(name="NamingSystem", profile="http://hl7.org/fhir/StructureDefinition/NamingSystem")
+@ChildOrder(names={"name", "status", "kind", "date", "publisher", "contact", "responsible", "type", "description", "useContext", "jurisdiction", "usage", "uniqueId"})
 public class NamingSystem extends MetadataResource {
 
     public enum NamingSystemType {
@@ -287,7 +287,7 @@ public class NamingSystem extends MetadataResource {
         /**
          * Identifies the unique identifier scheme used for this particular identifier.
          */
-        @Child(name = "type", type = {CodeType.class}, order=1, min=1, max=1, modifier=false, summary=false)
+        @Child(name = "type", type = {CodeType.class}, order=1, min=1, max=1, modifier=false, summary=true)
         @Description(shortDefinition="oid | uuid | uri | other", formalDefinition="Identifies the unique identifier scheme used for this particular identifier." )
         @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/namingsystem-identifier-type")
         protected Enumeration<NamingSystemIdentifierType> type;
@@ -295,7 +295,7 @@ public class NamingSystem extends MetadataResource {
         /**
          * The string that should be sent over the wire to identify the code system or identifier system.
          */
-        @Child(name = "value", type = {StringType.class}, order=2, min=1, max=1, modifier=false, summary=false)
+        @Child(name = "value", type = {StringType.class}, order=2, min=1, max=1, modifier=false, summary=true)
         @Description(shortDefinition="The unique identifier", formalDefinition="The string that should be sent over the wire to identify the code system or identifier system." )
         protected StringType value;
 
@@ -683,23 +683,23 @@ public class NamingSystem extends MetadataResource {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof NamingSystemUniqueIdComponent))
+        if (!(other_ instanceof NamingSystemUniqueIdComponent))
           return false;
-        NamingSystemUniqueIdComponent o = (NamingSystemUniqueIdComponent) other;
+        NamingSystemUniqueIdComponent o = (NamingSystemUniqueIdComponent) other_;
         return compareDeep(type, o.type, true) && compareDeep(value, o.value, true) && compareDeep(preferred, o.preferred, true)
            && compareDeep(comment, o.comment, true) && compareDeep(period, o.period, true);
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof NamingSystemUniqueIdComponent))
+        if (!(other_ instanceof NamingSystemUniqueIdComponent))
           return false;
-        NamingSystemUniqueIdComponent o = (NamingSystemUniqueIdComponent) other;
+        NamingSystemUniqueIdComponent o = (NamingSystemUniqueIdComponent) other_;
         return compareValues(type, o.type, true) && compareValues(value, o.value, true) && compareValues(preferred, o.preferred, true)
            && compareValues(comment, o.comment, true);
       }
@@ -719,7 +719,7 @@ public class NamingSystem extends MetadataResource {
     /**
      * Indicates the purpose for the naming system - what kinds of things does it make unique?
      */
-    @Child(name = "kind", type = {CodeType.class}, order=0, min=1, max=1, modifier=false, summary=false)
+    @Child(name = "kind", type = {CodeType.class}, order=0, min=1, max=1, modifier=false, summary=true)
     @Description(shortDefinition="codesystem | identifier | root", formalDefinition="Indicates the purpose for the naming system - what kinds of things does it make unique?" )
     @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/namingsystem-type")
     protected Enumeration<NamingSystemType> kind;
@@ -749,23 +749,11 @@ public class NamingSystem extends MetadataResource {
     /**
      * Indicates how the system may be identified when referenced in electronic exchange.
      */
-    @Child(name = "uniqueId", type = {}, order=4, min=1, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "uniqueId", type = {}, order=4, min=1, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="Unique identifiers used for system", formalDefinition="Indicates how the system may be identified when referenced in electronic exchange." )
     protected List<NamingSystemUniqueIdComponent> uniqueId;
 
-    /**
-     * For naming systems that are retired, indicates the naming system that should be used in their place (if any).
-     */
-    @Child(name = "replacedBy", type = {NamingSystem.class}, order=5, min=0, max=1, modifier=false, summary=false)
-    @Description(shortDefinition="Use this instead", formalDefinition="For naming systems that are retired, indicates the naming system that should be used in their place (if any)." )
-    protected Reference replacedBy;
-
-    /**
-     * The actual object that is the target of the reference (For naming systems that are retired, indicates the naming system that should be used in their place (if any).)
-     */
-    protected NamingSystem replacedByTarget;
-
-    private static final long serialVersionUID = -743416513L;
+    private static final long serialVersionUID = 1686086580L;
 
   /**
    * Constructor
@@ -921,7 +909,7 @@ public class NamingSystem extends MetadataResource {
     }
 
     /**
-     * @return {@link #date} (The date  (and optionally time) when the naming system was published. The date must change if and when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the naming system changes.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
+     * @return {@link #date} (The date  (and optionally time) when the naming system was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the naming system changes.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
      */
     public DateTimeType getDateElement() { 
       if (this.date == null)
@@ -941,7 +929,7 @@ public class NamingSystem extends MetadataResource {
     }
 
     /**
-     * @param value {@link #date} (The date  (and optionally time) when the naming system was published. The date must change if and when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the naming system changes.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
+     * @param value {@link #date} (The date  (and optionally time) when the naming system was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the naming system changes.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
      */
     public NamingSystem setDateElement(DateTimeType value) { 
       this.date = value;
@@ -949,14 +937,14 @@ public class NamingSystem extends MetadataResource {
     }
 
     /**
-     * @return The date  (and optionally time) when the naming system was published. The date must change if and when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the naming system changes.
+     * @return The date  (and optionally time) when the naming system was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the naming system changes.
      */
     public Date getDate() { 
       return this.date == null ? null : this.date.getValue();
     }
 
     /**
-     * @param value The date  (and optionally time) when the naming system was published. The date must change if and when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the naming system changes.
+     * @param value The date  (and optionally time) when the naming system was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the naming system changes.
      */
     public NamingSystem setDate(Date value) { 
         if (this.date == null)
@@ -966,7 +954,7 @@ public class NamingSystem extends MetadataResource {
     }
 
     /**
-     * @return {@link #publisher} (The name of the individual or organization that published the naming system.). This is the underlying object with id, value and extensions. The accessor "getPublisher" gives direct access to the value
+     * @return {@link #publisher} (The name of the organization or individual that published the naming system.). This is the underlying object with id, value and extensions. The accessor "getPublisher" gives direct access to the value
      */
     public StringType getPublisherElement() { 
       if (this.publisher == null)
@@ -986,7 +974,7 @@ public class NamingSystem extends MetadataResource {
     }
 
     /**
-     * @param value {@link #publisher} (The name of the individual or organization that published the naming system.). This is the underlying object with id, value and extensions. The accessor "getPublisher" gives direct access to the value
+     * @param value {@link #publisher} (The name of the organization or individual that published the naming system.). This is the underlying object with id, value and extensions. The accessor "getPublisher" gives direct access to the value
      */
     public NamingSystem setPublisherElement(StringType value) { 
       this.publisher = value;
@@ -994,14 +982,14 @@ public class NamingSystem extends MetadataResource {
     }
 
     /**
-     * @return The name of the individual or organization that published the naming system.
+     * @return The name of the organization or individual that published the naming system.
      */
     public String getPublisher() { 
       return this.publisher == null ? null : this.publisher.getValue();
     }
 
     /**
-     * @param value The name of the individual or organization that published the naming system.
+     * @param value The name of the organization or individual that published the naming system.
      */
     public NamingSystem setPublisher(String value) { 
       if (Utilities.noString(value))
@@ -1190,7 +1178,7 @@ public class NamingSystem extends MetadataResource {
     }
 
     /**
-     * @return {@link #useContext} (The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching for appropriate naming system instances.)
+     * @return {@link #useContext} (The content was developed with a focus and intent of supporting the contexts that are listed. These contexts may be general categories (gender, age, ...) or may be references to specific programs (insurance plans, studies, ...) and may be used to assist with indexing and searching for appropriate naming system instances.)
      */
     public List<UsageContext> getUseContext() { 
       if (this.useContext == null)
@@ -1397,66 +1385,21 @@ public class NamingSystem extends MetadataResource {
       return getUniqueId().get(0);
     }
 
-    /**
-     * @return {@link #replacedBy} (For naming systems that are retired, indicates the naming system that should be used in their place (if any).)
-     */
-    public Reference getReplacedBy() { 
-      if (this.replacedBy == null)
-        if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create NamingSystem.replacedBy");
-        else if (Configuration.doAutoCreate())
-          this.replacedBy = new Reference(); // cc
-      return this.replacedBy;
-    }
-
-    public boolean hasReplacedBy() { 
-      return this.replacedBy != null && !this.replacedBy.isEmpty();
-    }
-
-    /**
-     * @param value {@link #replacedBy} (For naming systems that are retired, indicates the naming system that should be used in their place (if any).)
-     */
-    public NamingSystem setReplacedBy(Reference value) { 
-      this.replacedBy = value;
-      return this;
-    }
-
-    /**
-     * @return {@link #replacedBy} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (For naming systems that are retired, indicates the naming system that should be used in their place (if any).)
-     */
-    public NamingSystem getReplacedByTarget() { 
-      if (this.replacedByTarget == null)
-        if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create NamingSystem.replacedBy");
-        else if (Configuration.doAutoCreate())
-          this.replacedByTarget = new NamingSystem(); // aa
-      return this.replacedByTarget;
-    }
-
-    /**
-     * @param value {@link #replacedBy} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (For naming systems that are retired, indicates the naming system that should be used in their place (if any).)
-     */
-    public NamingSystem setReplacedByTarget(NamingSystem value) { 
-      this.replacedByTarget = value;
-      return this;
-    }
-
       protected void listChildren(List<Property> children) {
         super.listChildren(children);
         children.add(new Property("name", "string", "A natural language name identifying the naming system. This name should be usable as an identifier for the module by machine processing applications such as code generation.", 0, 1, name));
         children.add(new Property("status", "code", "The status of this naming system. Enables tracking the life-cycle of the content.", 0, 1, status));
         children.add(new Property("kind", "code", "Indicates the purpose for the naming system - what kinds of things does it make unique?", 0, 1, kind));
-        children.add(new Property("date", "dateTime", "The date  (and optionally time) when the naming system was published. The date must change if and when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the naming system changes.", 0, 1, date));
-        children.add(new Property("publisher", "string", "The name of the individual or organization that published the naming system.", 0, 1, publisher));
+        children.add(new Property("date", "dateTime", "The date  (and optionally time) when the naming system was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the naming system changes.", 0, 1, date));
+        children.add(new Property("publisher", "string", "The name of the organization or individual that published the naming system.", 0, 1, publisher));
         children.add(new Property("contact", "ContactDetail", "Contact details to assist a user in finding and communicating with the publisher.", 0, java.lang.Integer.MAX_VALUE, contact));
         children.add(new Property("responsible", "string", "The name of the organization that is responsible for issuing identifiers or codes for this namespace and ensuring their non-collision.", 0, 1, responsible));
         children.add(new Property("type", "CodeableConcept", "Categorizes a naming system for easier search by grouping related naming systems.", 0, 1, type));
         children.add(new Property("description", "markdown", "A free text natural language description of the naming system from a consumer's perspective. Details about what the namespace identifies including scope, granularity, version labeling, etc.", 0, 1, description));
-        children.add(new Property("useContext", "UsageContext", "The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching for appropriate naming system instances.", 0, java.lang.Integer.MAX_VALUE, useContext));
+        children.add(new Property("useContext", "UsageContext", "The content was developed with a focus and intent of supporting the contexts that are listed. These contexts may be general categories (gender, age, ...) or may be references to specific programs (insurance plans, studies, ...) and may be used to assist with indexing and searching for appropriate naming system instances.", 0, java.lang.Integer.MAX_VALUE, useContext));
         children.add(new Property("jurisdiction", "CodeableConcept", "A legal or geographic region in which the naming system is intended to be used.", 0, java.lang.Integer.MAX_VALUE, jurisdiction));
         children.add(new Property("usage", "string", "Provides guidance on the use of the namespace, including the handling of formatting characters, use of upper vs. lower case, etc.", 0, 1, usage));
         children.add(new Property("uniqueId", "", "Indicates how the system may be identified when referenced in electronic exchange.", 0, java.lang.Integer.MAX_VALUE, uniqueId));
-        children.add(new Property("replacedBy", "Reference(NamingSystem)", "For naming systems that are retired, indicates the naming system that should be used in their place (if any).", 0, 1, replacedBy));
       }
 
       @Override
@@ -1465,17 +1408,16 @@ public class NamingSystem extends MetadataResource {
         case 3373707: /*name*/  return new Property("name", "string", "A natural language name identifying the naming system. This name should be usable as an identifier for the module by machine processing applications such as code generation.", 0, 1, name);
         case -892481550: /*status*/  return new Property("status", "code", "The status of this naming system. Enables tracking the life-cycle of the content.", 0, 1, status);
         case 3292052: /*kind*/  return new Property("kind", "code", "Indicates the purpose for the naming system - what kinds of things does it make unique?", 0, 1, kind);
-        case 3076014: /*date*/  return new Property("date", "dateTime", "The date  (and optionally time) when the naming system was published. The date must change if and when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the naming system changes.", 0, 1, date);
-        case 1447404028: /*publisher*/  return new Property("publisher", "string", "The name of the individual or organization that published the naming system.", 0, 1, publisher);
+        case 3076014: /*date*/  return new Property("date", "dateTime", "The date  (and optionally time) when the naming system was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the naming system changes.", 0, 1, date);
+        case 1447404028: /*publisher*/  return new Property("publisher", "string", "The name of the organization or individual that published the naming system.", 0, 1, publisher);
         case 951526432: /*contact*/  return new Property("contact", "ContactDetail", "Contact details to assist a user in finding and communicating with the publisher.", 0, java.lang.Integer.MAX_VALUE, contact);
         case 1847674614: /*responsible*/  return new Property("responsible", "string", "The name of the organization that is responsible for issuing identifiers or codes for this namespace and ensuring their non-collision.", 0, 1, responsible);
         case 3575610: /*type*/  return new Property("type", "CodeableConcept", "Categorizes a naming system for easier search by grouping related naming systems.", 0, 1, type);
         case -1724546052: /*description*/  return new Property("description", "markdown", "A free text natural language description of the naming system from a consumer's perspective. Details about what the namespace identifies including scope, granularity, version labeling, etc.", 0, 1, description);
-        case -669707736: /*useContext*/  return new Property("useContext", "UsageContext", "The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching for appropriate naming system instances.", 0, java.lang.Integer.MAX_VALUE, useContext);
+        case -669707736: /*useContext*/  return new Property("useContext", "UsageContext", "The content was developed with a focus and intent of supporting the contexts that are listed. These contexts may be general categories (gender, age, ...) or may be references to specific programs (insurance plans, studies, ...) and may be used to assist with indexing and searching for appropriate naming system instances.", 0, java.lang.Integer.MAX_VALUE, useContext);
         case -507075711: /*jurisdiction*/  return new Property("jurisdiction", "CodeableConcept", "A legal or geographic region in which the naming system is intended to be used.", 0, java.lang.Integer.MAX_VALUE, jurisdiction);
         case 111574433: /*usage*/  return new Property("usage", "string", "Provides guidance on the use of the namespace, including the handling of formatting characters, use of upper vs. lower case, etc.", 0, 1, usage);
         case -294460212: /*uniqueId*/  return new Property("uniqueId", "", "Indicates how the system may be identified when referenced in electronic exchange.", 0, java.lang.Integer.MAX_VALUE, uniqueId);
-        case -1233035097: /*replacedBy*/  return new Property("replacedBy", "Reference(NamingSystem)", "For naming systems that are retired, indicates the naming system that should be used in their place (if any).", 0, 1, replacedBy);
         default: return super.getNamedProperty(_hash, _name, _checkValid);
         }
 
@@ -1497,7 +1439,6 @@ public class NamingSystem extends MetadataResource {
         case -507075711: /*jurisdiction*/ return this.jurisdiction == null ? new Base[0] : this.jurisdiction.toArray(new Base[this.jurisdiction.size()]); // CodeableConcept
         case 111574433: /*usage*/ return this.usage == null ? new Base[0] : new Base[] {this.usage}; // StringType
         case -294460212: /*uniqueId*/ return this.uniqueId == null ? new Base[0] : this.uniqueId.toArray(new Base[this.uniqueId.size()]); // NamingSystemUniqueIdComponent
-        case -1233035097: /*replacedBy*/ return this.replacedBy == null ? new Base[0] : new Base[] {this.replacedBy}; // Reference
         default: return super.getProperty(hash, name, checkValid);
         }
 
@@ -1547,9 +1488,6 @@ public class NamingSystem extends MetadataResource {
         case -294460212: // uniqueId
           this.getUniqueId().add((NamingSystemUniqueIdComponent) value); // NamingSystemUniqueIdComponent
           return value;
-        case -1233035097: // replacedBy
-          this.replacedBy = castToReference(value); // Reference
-          return value;
         default: return super.setProperty(hash, name, value);
         }
 
@@ -1585,8 +1523,6 @@ public class NamingSystem extends MetadataResource {
           this.usage = castToString(value); // StringType
         } else if (name.equals("uniqueId")) {
           this.getUniqueId().add((NamingSystemUniqueIdComponent) value);
-        } else if (name.equals("replacedBy")) {
-          this.replacedBy = castToReference(value); // Reference
         } else
           return super.setProperty(name, value);
         return value;
@@ -1608,7 +1544,6 @@ public class NamingSystem extends MetadataResource {
         case -507075711:  return addJurisdiction(); 
         case 111574433:  return getUsageElement();
         case -294460212:  return addUniqueId(); 
-        case -1233035097:  return getReplacedBy(); 
         default: return super.makeProperty(hash, name);
         }
 
@@ -1630,7 +1565,6 @@ public class NamingSystem extends MetadataResource {
         case -507075711: /*jurisdiction*/ return new String[] {"CodeableConcept"};
         case 111574433: /*usage*/ return new String[] {"string"};
         case -294460212: /*uniqueId*/ return new String[] {};
-        case -1233035097: /*replacedBy*/ return new String[] {"Reference"};
         default: return super.getTypesForProperty(hash, name);
         }
 
@@ -1678,10 +1612,6 @@ public class NamingSystem extends MetadataResource {
         else if (name.equals("uniqueId")) {
           return addUniqueId();
         }
-        else if (name.equals("replacedBy")) {
-          this.replacedBy = new Reference();
-          return this.replacedBy;
-        }
         else
           return super.addChild(name);
       }
@@ -1723,7 +1653,6 @@ public class NamingSystem extends MetadataResource {
           for (NamingSystemUniqueIdComponent i : uniqueId)
             dst.uniqueId.add(i.copy());
         };
-        dst.replacedBy = replacedBy == null ? null : replacedBy.copy();
         return dst;
       }
 
@@ -1732,31 +1661,30 @@ public class NamingSystem extends MetadataResource {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof NamingSystem))
+        if (!(other_ instanceof NamingSystem))
           return false;
-        NamingSystem o = (NamingSystem) other;
+        NamingSystem o = (NamingSystem) other_;
         return compareDeep(kind, o.kind, true) && compareDeep(responsible, o.responsible, true) && compareDeep(type, o.type, true)
-           && compareDeep(usage, o.usage, true) && compareDeep(uniqueId, o.uniqueId, true) && compareDeep(replacedBy, o.replacedBy, true)
-          ;
+           && compareDeep(usage, o.usage, true) && compareDeep(uniqueId, o.uniqueId, true);
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof NamingSystem))
+        if (!(other_ instanceof NamingSystem))
           return false;
-        NamingSystem o = (NamingSystem) other;
+        NamingSystem o = (NamingSystem) other_;
         return compareValues(kind, o.kind, true) && compareValues(responsible, o.responsible, true) && compareValues(usage, o.usage, true)
           ;
       }
 
       public boolean isEmpty() {
         return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(kind, responsible, type
-          , usage, uniqueId, replacedBy);
+          , usage, uniqueId);
       }
 
   @Override
@@ -1803,6 +1731,26 @@ public class NamingSystem extends MetadataResource {
    * </p>
    */
   public static final ca.uhn.fhir.rest.gclient.DateClientParam PERIOD = new ca.uhn.fhir.rest.gclient.DateClientParam(SP_PERIOD);
+
+ /**
+   * Search parameter: <b>context-type-value</b>
+   * <p>
+   * Description: <b>A use context type and value assigned to the naming system</b><br>
+   * Type: <b>composite</b><br>
+   * Path: <b></b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="context-type-value", path="NamingSystem.useContext", description="A use context type and value assigned to the naming system", type="composite", compositeOf={"context-type", "context"} )
+  public static final String SP_CONTEXT_TYPE_VALUE = "context-type-value";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>context-type-value</b>
+   * <p>
+   * Description: <b>A use context type and value assigned to the naming system</b><br>
+   * Type: <b>composite</b><br>
+   * Path: <b></b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.TokenClientParam> CONTEXT_TYPE_VALUE = new ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.TokenClientParam>(SP_CONTEXT_TYPE_VALUE);
 
  /**
    * Search parameter: <b>kind</b>
@@ -1865,6 +1813,26 @@ public class NamingSystem extends MetadataResource {
   public static final ca.uhn.fhir.rest.gclient.StringClientParam DESCRIPTION = new ca.uhn.fhir.rest.gclient.StringClientParam(SP_DESCRIPTION);
 
  /**
+   * Search parameter: <b>context-type</b>
+   * <p>
+   * Description: <b>A type of use context assigned to the naming system</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>NamingSystem.useContext.code</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="context-type", path="NamingSystem.useContext.code", description="A type of use context assigned to the naming system", type="token" )
+  public static final String SP_CONTEXT_TYPE = "context-type";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>context-type</b>
+   * <p>
+   * Description: <b>A type of use context assigned to the naming system</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>NamingSystem.useContext.code</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.TokenClientParam CONTEXT_TYPE = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_CONTEXT_TYPE);
+
+ /**
    * Search parameter: <b>type</b>
    * <p>
    * Description: <b>e.g. driver,  provider,  patient, bank etc.</b><br>
@@ -1903,6 +1871,26 @@ public class NamingSystem extends MetadataResource {
    * </p>
    */
   public static final ca.uhn.fhir.rest.gclient.TokenClientParam ID_TYPE = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_ID_TYPE);
+
+ /**
+   * Search parameter: <b>context-quantity</b>
+   * <p>
+   * Description: <b>A quantity- or range-valued use context assigned to the naming system</b><br>
+   * Type: <b>quantity</b><br>
+   * Path: <b>NamingSystem.useContext.valueQuantity, NamingSystem.useContext.valueRange</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="context-quantity", path="(NamingSystem.useContext.value as Quantity) | (NamingSystem.useContext.value as Range)", description="A quantity- or range-valued use context assigned to the naming system", type="quantity" )
+  public static final String SP_CONTEXT_QUANTITY = "context-quantity";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>context-quantity</b>
+   * <p>
+   * Description: <b>A quantity- or range-valued use context assigned to the naming system</b><br>
+   * Type: <b>quantity</b><br>
+   * Path: <b>NamingSystem.useContext.valueQuantity, NamingSystem.useContext.valueRange</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.QuantityClientParam CONTEXT_QUANTITY = new ca.uhn.fhir.rest.gclient.QuantityClientParam(SP_CONTEXT_QUANTITY);
 
  /**
    * Search parameter: <b>responsible</b>
@@ -1965,6 +1953,26 @@ public class NamingSystem extends MetadataResource {
   public static final ca.uhn.fhir.rest.gclient.StringClientParam NAME = new ca.uhn.fhir.rest.gclient.StringClientParam(SP_NAME);
 
  /**
+   * Search parameter: <b>context</b>
+   * <p>
+   * Description: <b>A use context assigned to the naming system</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>NamingSystem.useContext.valueCodeableConcept</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="context", path="(NamingSystem.useContext.value as CodeableConcept)", description="A use context assigned to the naming system", type="token" )
+  public static final String SP_CONTEXT = "context";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>context</b>
+   * <p>
+   * Description: <b>A use context assigned to the naming system</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>NamingSystem.useContext.valueCodeableConcept</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.TokenClientParam CONTEXT = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_CONTEXT);
+
+ /**
    * Search parameter: <b>publisher</b>
    * <p>
    * Description: <b>Name of the publisher of the naming system</b><br>
@@ -2025,30 +2033,24 @@ public class NamingSystem extends MetadataResource {
   public static final ca.uhn.fhir.rest.gclient.StringClientParam VALUE = new ca.uhn.fhir.rest.gclient.StringClientParam(SP_VALUE);
 
  /**
-   * Search parameter: <b>replaced-by</b>
+   * Search parameter: <b>context-type-quantity</b>
    * <p>
-   * Description: <b>Use this instead</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>NamingSystem.replacedBy</b><br>
+   * Description: <b>A use context type and quantity- or range-based value assigned to the naming system</b><br>
+   * Type: <b>composite</b><br>
+   * Path: <b></b><br>
    * </p>
    */
-  @SearchParamDefinition(name="replaced-by", path="NamingSystem.replacedBy", description="Use this instead", type="reference", target={NamingSystem.class } )
-  public static final String SP_REPLACED_BY = "replaced-by";
+  @SearchParamDefinition(name="context-type-quantity", path="NamingSystem.useContext", description="A use context type and quantity- or range-based value assigned to the naming system", type="composite", compositeOf={"context-type", "context-quantity"} )
+  public static final String SP_CONTEXT_TYPE_QUANTITY = "context-type-quantity";
  /**
-   * <b>Fluent Client</b> search parameter constant for <b>replaced-by</b>
+   * <b>Fluent Client</b> search parameter constant for <b>context-type-quantity</b>
    * <p>
-   * Description: <b>Use this instead</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>NamingSystem.replacedBy</b><br>
+   * Description: <b>A use context type and quantity- or range-based value assigned to the naming system</b><br>
+   * Type: <b>composite</b><br>
+   * Path: <b></b><br>
    * </p>
    */
-  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam REPLACED_BY = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_REPLACED_BY);
-
-/**
-   * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>NamingSystem:replaced-by</b>".
-   */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_REPLACED_BY = new ca.uhn.fhir.model.api.Include("NamingSystem:replaced-by").toLocked();
+  public static final ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.QuantityClientParam> CONTEXT_TYPE_QUANTITY = new ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.QuantityClientParam>(SP_CONTEXT_TYPE_QUANTITY);
 
  /**
    * Search parameter: <b>status</b>

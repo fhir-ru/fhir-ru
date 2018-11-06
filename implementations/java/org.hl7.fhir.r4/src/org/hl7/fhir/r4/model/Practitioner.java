@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Fri, Aug 11, 2017 07:23+1000 for FHIR v3.1.0
+// Generated on Mon, Nov 5, 2018 09:03+1100 for FHIR v3.6.0
 
 import java.util.*;
 
@@ -46,7 +46,7 @@ import org.hl7.fhir.exceptions.FHIRException;
 /**
  * A person who is directly or indirectly involved in the provisioning of healthcare.
  */
-@ResourceDef(name="Practitioner", profile="http://hl7.org/fhir/Profile/Practitioner")
+@ResourceDef(name="Practitioner", profile="http://hl7.org/fhir/StructureDefinition/Practitioner")
 public class Practitioner extends DomainResource {
 
     @Block()
@@ -63,7 +63,7 @@ public class Practitioner extends DomainResource {
          */
         @Child(name = "code", type = {CodeableConcept.class}, order=2, min=1, max=1, modifier=false, summary=false)
         @Description(shortDefinition="Coded representation of the qualification", formalDefinition="Coded representation of the qualification." )
-        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/v2-2.7-0360")
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://terminology.hl7.org/ValueSet/v2-2.7-0360")
         protected CodeableConcept code;
 
         /**
@@ -374,23 +374,23 @@ public class Practitioner extends DomainResource {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof PractitionerQualificationComponent))
+        if (!(other_ instanceof PractitionerQualificationComponent))
           return false;
-        PractitionerQualificationComponent o = (PractitionerQualificationComponent) other;
+        PractitionerQualificationComponent o = (PractitionerQualificationComponent) other_;
         return compareDeep(identifier, o.identifier, true) && compareDeep(code, o.code, true) && compareDeep(period, o.period, true)
            && compareDeep(issuer, o.issuer, true);
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof PractitionerQualificationComponent))
+        if (!(other_ instanceof PractitionerQualificationComponent))
           return false;
-        PractitionerQualificationComponent o = (PractitionerQualificationComponent) other;
+        PractitionerQualificationComponent o = (PractitionerQualificationComponent) other_;
         return true;
       }
 
@@ -410,7 +410,7 @@ public class Practitioner extends DomainResource {
      * An identifier that applies to this person in this role.
      */
     @Child(name = "identifier", type = {Identifier.class}, order=0, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
-    @Description(shortDefinition="A identifier for the person as this agent", formalDefinition="An identifier that applies to this person in this role." )
+    @Description(shortDefinition="An identifier for the person as this agent", formalDefinition="An identifier that applies to this person in this role." )
     protected List<Identifier> identifier;
 
     /**
@@ -464,17 +464,17 @@ public class Practitioner extends DomainResource {
     protected List<Attachment> photo;
 
     /**
-     * Qualifications obtained by training and certification.
+     * The official certifications, training, and licenses that authorize or otherwise pertain to the provision of care by the practitioner.  For example, a medical license issued by a medical board authorizing the practitioner to practice medicine within a certian locality.
      */
     @Child(name = "qualification", type = {}, order=8, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
-    @Description(shortDefinition="Qualifications obtained by training and certification", formalDefinition="Qualifications obtained by training and certification." )
+    @Description(shortDefinition="Certification, licenses, or training pertaining to the provision of care", formalDefinition="The official certifications, training, and licenses that authorize or otherwise pertain to the provision of care by the practitioner.  For example, a medical license issued by a medical board authorizing the practitioner to practice medicine within a certian locality." )
     protected List<PractitionerQualificationComponent> qualification;
 
     /**
-     * A language the practitioner is able to use in patient communication.
+     * A language the practitioner can use in patient communication.
      */
     @Child(name = "communication", type = {CodeableConcept.class}, order=9, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
-    @Description(shortDefinition="A language the practitioner is able to use in patient communication", formalDefinition="A language the practitioner is able to use in patient communication." )
+    @Description(shortDefinition="A language the practitioner can use in patient communication", formalDefinition="A language the practitioner can use in patient communication." )
     @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/languages")
     protected List<CodeableConcept> communication;
 
@@ -896,7 +896,7 @@ public class Practitioner extends DomainResource {
     }
 
     /**
-     * @return {@link #qualification} (Qualifications obtained by training and certification.)
+     * @return {@link #qualification} (The official certifications, training, and licenses that authorize or otherwise pertain to the provision of care by the practitioner.  For example, a medical license issued by a medical board authorizing the practitioner to practice medicine within a certian locality.)
      */
     public List<PractitionerQualificationComponent> getQualification() { 
       if (this.qualification == null)
@@ -949,7 +949,7 @@ public class Practitioner extends DomainResource {
     }
 
     /**
-     * @return {@link #communication} (A language the practitioner is able to use in patient communication.)
+     * @return {@link #communication} (A language the practitioner can use in patient communication.)
      */
     public List<CodeableConcept> getCommunication() { 
       if (this.communication == null)
@@ -1011,8 +1011,8 @@ public class Practitioner extends DomainResource {
         children.add(new Property("gender", "code", "Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.", 0, 1, gender));
         children.add(new Property("birthDate", "date", "The date of birth for the practitioner.", 0, 1, birthDate));
         children.add(new Property("photo", "Attachment", "Image of the person.", 0, java.lang.Integer.MAX_VALUE, photo));
-        children.add(new Property("qualification", "", "Qualifications obtained by training and certification.", 0, java.lang.Integer.MAX_VALUE, qualification));
-        children.add(new Property("communication", "CodeableConcept", "A language the practitioner is able to use in patient communication.", 0, java.lang.Integer.MAX_VALUE, communication));
+        children.add(new Property("qualification", "", "The official certifications, training, and licenses that authorize or otherwise pertain to the provision of care by the practitioner.  For example, a medical license issued by a medical board authorizing the practitioner to practice medicine within a certian locality.", 0, java.lang.Integer.MAX_VALUE, qualification));
+        children.add(new Property("communication", "CodeableConcept", "A language the practitioner can use in patient communication.", 0, java.lang.Integer.MAX_VALUE, communication));
       }
 
       @Override
@@ -1026,8 +1026,8 @@ public class Practitioner extends DomainResource {
         case -1249512767: /*gender*/  return new Property("gender", "code", "Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.", 0, 1, gender);
         case -1210031859: /*birthDate*/  return new Property("birthDate", "date", "The date of birth for the practitioner.", 0, 1, birthDate);
         case 106642994: /*photo*/  return new Property("photo", "Attachment", "Image of the person.", 0, java.lang.Integer.MAX_VALUE, photo);
-        case -631333393: /*qualification*/  return new Property("qualification", "", "Qualifications obtained by training and certification.", 0, java.lang.Integer.MAX_VALUE, qualification);
-        case -1035284522: /*communication*/  return new Property("communication", "CodeableConcept", "A language the practitioner is able to use in patient communication.", 0, java.lang.Integer.MAX_VALUE, communication);
+        case -631333393: /*qualification*/  return new Property("qualification", "", "The official certifications, training, and licenses that authorize or otherwise pertain to the provision of care by the practitioner.  For example, a medical license issued by a medical board authorizing the practitioner to practice medicine within a certian locality.", 0, java.lang.Integer.MAX_VALUE, qualification);
+        case -1035284522: /*communication*/  return new Property("communication", "CodeableConcept", "A language the practitioner can use in patient communication.", 0, java.lang.Integer.MAX_VALUE, communication);
         default: return super.getNamedProperty(_hash, _name, _checkValid);
         }
 
@@ -1244,12 +1244,12 @@ public class Practitioner extends DomainResource {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof Practitioner))
+        if (!(other_ instanceof Practitioner))
           return false;
-        Practitioner o = (Practitioner) other;
+        Practitioner o = (Practitioner) other_;
         return compareDeep(identifier, o.identifier, true) && compareDeep(active, o.active, true) && compareDeep(name, o.name, true)
            && compareDeep(telecom, o.telecom, true) && compareDeep(address, o.address, true) && compareDeep(gender, o.gender, true)
            && compareDeep(birthDate, o.birthDate, true) && compareDeep(photo, o.photo, true) && compareDeep(qualification, o.qualification, true)
@@ -1257,12 +1257,12 @@ public class Practitioner extends DomainResource {
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof Practitioner))
+        if (!(other_ instanceof Practitioner))
           return false;
-        Practitioner o = (Practitioner) other;
+        Practitioner o = (Practitioner) other_;
         return compareValues(active, o.active, true) && compareValues(gender, o.gender, true) && compareValues(birthDate, o.birthDate, true)
           ;
       }
@@ -1320,17 +1320,17 @@ public class Practitioner extends DomainResource {
  /**
    * Search parameter: <b>address</b>
    * <p>
-   * Description: <b>A server defined search that may match any of the string fields in the Address, including line, city, state, country, postalCode, and/or text</b><br>
+   * Description: <b>A server defined search that may match any of the string fields in the Address, including line, city, district, state, country, postalCode, and/or text</b><br>
    * Type: <b>string</b><br>
    * Path: <b>Practitioner.address</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="address", path="Practitioner.address", description="A server defined search that may match any of the string fields in the Address, including line, city, state, country, postalCode, and/or text", type="string" )
+  @SearchParamDefinition(name="address", path="Practitioner.address", description="A server defined search that may match any of the string fields in the Address, including line, city, district, state, country, postalCode, and/or text", type="string" )
   public static final String SP_ADDRESS = "address";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>address</b>
    * <p>
-   * Description: <b>A server defined search that may match any of the string fields in the Address, including line, city, state, country, postalCode, and/or text</b><br>
+   * Description: <b>A server defined search that may match any of the string fields in the Address, including line, city, district, state, country, postalCode, and/or text</b><br>
    * Type: <b>string</b><br>
    * Path: <b>Practitioner.address</b><br>
    * </p>

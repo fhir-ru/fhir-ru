@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Fri, Aug 11, 2017 07:23+1000 for FHIR v3.1.0
+// Generated on Mon, Nov 5, 2018 09:03+1100 for FHIR v3.6.0
 
 import java.util.*;
 
@@ -46,28 +46,28 @@ import org.hl7.fhir.exceptions.FHIRException;
 /**
  * A summary of information based on the results of executing a TestScript.
  */
-@ResourceDef(name="TestReport", profile="http://hl7.org/fhir/Profile/TestReport")
+@ResourceDef(name="TestReport", profile="http://hl7.org/fhir/StructureDefinition/TestReport")
 public class TestReport extends DomainResource {
 
     public enum TestReportStatus {
         /**
-         * All test operations have completed
+         * All test operations have completed.
          */
         COMPLETED, 
         /**
-         * A test operations is currently executing
+         * A test operations is currently executing.
          */
         INPROGRESS, 
         /**
-         * A test operation is waiting for an external client request
+         * A test operation is waiting for an external client request.
          */
         WAITING, 
         /**
-         * The test script execution was manually stopped
+         * The test script execution was manually stopped.
          */
         STOPPED, 
         /**
-         * This test report was entered or created in error
+         * This test report was entered or created in error.
          */
         ENTEREDINERROR, 
         /**
@@ -114,11 +114,11 @@ public class TestReport extends DomainResource {
         }
         public String getDefinition() {
           switch (this) {
-            case COMPLETED: return "All test operations have completed";
-            case INPROGRESS: return "A test operations is currently executing";
-            case WAITING: return "A test operation is waiting for an external client request";
-            case STOPPED: return "The test script execution was manually stopped";
-            case ENTEREDINERROR: return "This test report was entered or created in error";
+            case COMPLETED: return "All test operations have completed.";
+            case INPROGRESS: return "A test operations is currently executing.";
+            case WAITING: return "A test operation is waiting for an external client request.";
+            case STOPPED: return "The test script execution was manually stopped.";
+            case ENTEREDINERROR: return "This test report was entered or created in error.";
             default: return "?";
           }
         }
@@ -191,15 +191,15 @@ public class TestReport extends DomainResource {
 
     public enum TestReportResult {
         /**
-         * All test operations successfully passed all asserts
+         * All test operations successfully passed all asserts.
          */
         PASS, 
         /**
-         * One or more test operations failed one or more asserts
+         * One or more test operations failed one or more asserts.
          */
         FAIL, 
         /**
-         * One or more test operations is pending execution completion
+         * One or more test operations is pending execution completion.
          */
         PENDING, 
         /**
@@ -238,9 +238,9 @@ public class TestReport extends DomainResource {
         }
         public String getDefinition() {
           switch (this) {
-            case PASS: return "All test operations successfully passed all asserts";
-            case FAIL: return "One or more test operations failed one or more asserts";
-            case PENDING: return "One or more test operations is pending execution completion";
+            case PASS: return "All test operations successfully passed all asserts.";
+            case FAIL: return "One or more test operations failed one or more asserts.";
+            case PENDING: return "One or more test operations is pending execution completion.";
             default: return "?";
           }
         }
@@ -303,11 +303,11 @@ public class TestReport extends DomainResource {
          */
         TESTENGINE, 
         /**
-         * A FHIR Client
+         * A FHIR Client.
          */
         CLIENT, 
         /**
-         * A FHIR Server
+         * A FHIR Server.
          */
         SERVER, 
         /**
@@ -347,8 +347,8 @@ public class TestReport extends DomainResource {
         public String getDefinition() {
           switch (this) {
             case TESTENGINE: return "The test execution engine.";
-            case CLIENT: return "A FHIR Client";
-            case SERVER: return "A FHIR Server";
+            case CLIENT: return "A FHIR Client.";
+            case SERVER: return "A FHIR Server.";
             default: return "?";
           }
         }
@@ -834,23 +834,23 @@ public class TestReport extends DomainResource {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof TestReportParticipantComponent))
+        if (!(other_ instanceof TestReportParticipantComponent))
           return false;
-        TestReportParticipantComponent o = (TestReportParticipantComponent) other;
+        TestReportParticipantComponent o = (TestReportParticipantComponent) other_;
         return compareDeep(type, o.type, true) && compareDeep(uri, o.uri, true) && compareDeep(display, o.display, true)
           ;
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof TestReportParticipantComponent))
+        if (!(other_ instanceof TestReportParticipantComponent))
           return false;
-        TestReportParticipantComponent o = (TestReportParticipantComponent) other;
+        TestReportParticipantComponent o = (TestReportParticipantComponent) other_;
         return compareValues(type, o.type, true) && compareValues(uri, o.uri, true) && compareValues(display, o.display, true)
           ;
       }
@@ -1019,22 +1019,22 @@ public class TestReport extends DomainResource {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof TestReportSetupComponent))
+        if (!(other_ instanceof TestReportSetupComponent))
           return false;
-        TestReportSetupComponent o = (TestReportSetupComponent) other;
+        TestReportSetupComponent o = (TestReportSetupComponent) other_;
         return compareDeep(action, o.action, true);
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof TestReportSetupComponent))
+        if (!(other_ instanceof TestReportSetupComponent))
           return false;
-        TestReportSetupComponent o = (TestReportSetupComponent) other;
+        TestReportSetupComponent o = (TestReportSetupComponent) other_;
         return true;
       }
 
@@ -1216,22 +1216,22 @@ public class TestReport extends DomainResource {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof SetupActionComponent))
+        if (!(other_ instanceof SetupActionComponent))
           return false;
-        SetupActionComponent o = (SetupActionComponent) other;
+        SetupActionComponent o = (SetupActionComponent) other_;
         return compareDeep(operation, o.operation, true) && compareDeep(assert_, o.assert_, true);
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof SetupActionComponent))
+        if (!(other_ instanceof SetupActionComponent))
           return false;
-        SetupActionComponent o = (SetupActionComponent) other;
+        SetupActionComponent o = (SetupActionComponent) other_;
         return true;
       }
 
@@ -1538,23 +1538,23 @@ public class TestReport extends DomainResource {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof SetupActionOperationComponent))
+        if (!(other_ instanceof SetupActionOperationComponent))
           return false;
-        SetupActionOperationComponent o = (SetupActionOperationComponent) other;
+        SetupActionOperationComponent o = (SetupActionOperationComponent) other_;
         return compareDeep(result, o.result, true) && compareDeep(message, o.message, true) && compareDeep(detail, o.detail, true)
           ;
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof SetupActionOperationComponent))
+        if (!(other_ instanceof SetupActionOperationComponent))
           return false;
-        SetupActionOperationComponent o = (SetupActionOperationComponent) other;
+        SetupActionOperationComponent o = (SetupActionOperationComponent) other_;
         return compareValues(result, o.result, true) && compareValues(message, o.message, true) && compareValues(detail, o.detail, true)
           ;
       }
@@ -1863,23 +1863,23 @@ public class TestReport extends DomainResource {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof SetupActionAssertComponent))
+        if (!(other_ instanceof SetupActionAssertComponent))
           return false;
-        SetupActionAssertComponent o = (SetupActionAssertComponent) other;
+        SetupActionAssertComponent o = (SetupActionAssertComponent) other_;
         return compareDeep(result, o.result, true) && compareDeep(message, o.message, true) && compareDeep(detail, o.detail, true)
           ;
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof SetupActionAssertComponent))
+        if (!(other_ instanceof SetupActionAssertComponent))
           return false;
-        SetupActionAssertComponent o = (SetupActionAssertComponent) other;
+        SetupActionAssertComponent o = (SetupActionAssertComponent) other_;
         return compareValues(result, o.result, true) && compareValues(message, o.message, true) && compareValues(detail, o.detail, true)
           ;
       }
@@ -2189,23 +2189,23 @@ public class TestReport extends DomainResource {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof TestReportTestComponent))
+        if (!(other_ instanceof TestReportTestComponent))
           return false;
-        TestReportTestComponent o = (TestReportTestComponent) other;
+        TestReportTestComponent o = (TestReportTestComponent) other_;
         return compareDeep(name, o.name, true) && compareDeep(description, o.description, true) && compareDeep(action, o.action, true)
           ;
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof TestReportTestComponent))
+        if (!(other_ instanceof TestReportTestComponent))
           return false;
-        TestReportTestComponent o = (TestReportTestComponent) other;
+        TestReportTestComponent o = (TestReportTestComponent) other_;
         return compareValues(name, o.name, true) && compareValues(description, o.description, true);
       }
 
@@ -2388,22 +2388,22 @@ public class TestReport extends DomainResource {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof TestActionComponent))
+        if (!(other_ instanceof TestActionComponent))
           return false;
-        TestActionComponent o = (TestActionComponent) other;
+        TestActionComponent o = (TestActionComponent) other_;
         return compareDeep(operation, o.operation, true) && compareDeep(assert_, o.assert_, true);
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof TestActionComponent))
+        if (!(other_ instanceof TestActionComponent))
           return false;
-        TestActionComponent o = (TestActionComponent) other;
+        TestActionComponent o = (TestActionComponent) other_;
         return true;
       }
 
@@ -2571,22 +2571,22 @@ public class TestReport extends DomainResource {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof TestReportTeardownComponent))
+        if (!(other_ instanceof TestReportTeardownComponent))
           return false;
-        TestReportTeardownComponent o = (TestReportTeardownComponent) other;
+        TestReportTeardownComponent o = (TestReportTeardownComponent) other_;
         return compareDeep(action, o.action, true);
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof TestReportTeardownComponent))
+        if (!(other_ instanceof TestReportTeardownComponent))
           return false;
-        TestReportTeardownComponent o = (TestReportTeardownComponent) other;
+        TestReportTeardownComponent o = (TestReportTeardownComponent) other_;
         return true;
       }
 
@@ -2730,22 +2730,22 @@ public class TestReport extends DomainResource {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof TeardownActionComponent))
+        if (!(other_ instanceof TeardownActionComponent))
           return false;
-        TeardownActionComponent o = (TeardownActionComponent) other;
+        TeardownActionComponent o = (TeardownActionComponent) other_;
         return compareDeep(operation, o.operation, true);
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof TeardownActionComponent))
+        if (!(other_ instanceof TeardownActionComponent))
           return false;
-        TeardownActionComponent o = (TeardownActionComponent) other;
+        TeardownActionComponent o = (TeardownActionComponent) other_;
         return true;
       }
 
@@ -2845,10 +2845,10 @@ public class TestReport extends DomainResource {
     protected List<TestReportTestComponent> test;
 
     /**
-     * The results of the series of operations required to clean up after the all the tests were executed (successfully or otherwise).
+     * The results of the series of operations required to clean up after all the tests were executed (successfully or otherwise).
      */
     @Child(name = "teardown", type = {}, order=11, min=0, max=1, modifier=false, summary=false)
-    @Description(shortDefinition="The results of running the series of required clean up steps", formalDefinition="The results of the series of operations required to clean up after the all the tests were executed (successfully or otherwise)." )
+    @Description(shortDefinition="The results of running the series of required clean up steps", formalDefinition="The results of the series of operations required to clean up after all the tests were executed (successfully or otherwise)." )
     protected TestReportTeardownComponent teardown;
 
     private static final long serialVersionUID = 79474516L;
@@ -3373,7 +3373,7 @@ public class TestReport extends DomainResource {
     }
 
     /**
-     * @return {@link #teardown} (The results of the series of operations required to clean up after the all the tests were executed (successfully or otherwise).)
+     * @return {@link #teardown} (The results of the series of operations required to clean up after all the tests were executed (successfully or otherwise).)
      */
     public TestReportTeardownComponent getTeardown() { 
       if (this.teardown == null)
@@ -3389,7 +3389,7 @@ public class TestReport extends DomainResource {
     }
 
     /**
-     * @param value {@link #teardown} (The results of the series of operations required to clean up after the all the tests were executed (successfully or otherwise).)
+     * @param value {@link #teardown} (The results of the series of operations required to clean up after all the tests were executed (successfully or otherwise).)
      */
     public TestReport setTeardown(TestReportTeardownComponent value) { 
       this.teardown = value;
@@ -3409,7 +3409,7 @@ public class TestReport extends DomainResource {
         children.add(new Property("participant", "", "A participant in the test execution, either the execution engine, a client, or a server.", 0, java.lang.Integer.MAX_VALUE, participant));
         children.add(new Property("setup", "", "The results of the series of required setup operations before the tests were executed.", 0, 1, setup));
         children.add(new Property("test", "", "A test executed from the test script.", 0, java.lang.Integer.MAX_VALUE, test));
-        children.add(new Property("teardown", "", "The results of the series of operations required to clean up after the all the tests were executed (successfully or otherwise).", 0, 1, teardown));
+        children.add(new Property("teardown", "", "The results of the series of operations required to clean up after all the tests were executed (successfully or otherwise).", 0, 1, teardown));
       }
 
       @Override
@@ -3426,7 +3426,7 @@ public class TestReport extends DomainResource {
         case 767422259: /*participant*/  return new Property("participant", "", "A participant in the test execution, either the execution engine, a client, or a server.", 0, java.lang.Integer.MAX_VALUE, participant);
         case 109329021: /*setup*/  return new Property("setup", "", "The results of the series of required setup operations before the tests were executed.", 0, 1, setup);
         case 3556498: /*test*/  return new Property("test", "", "A test executed from the test script.", 0, java.lang.Integer.MAX_VALUE, test);
-        case -1663474172: /*teardown*/  return new Property("teardown", "", "The results of the series of operations required to clean up after the all the tests were executed (successfully or otherwise).", 0, 1, teardown);
+        case -1663474172: /*teardown*/  return new Property("teardown", "", "The results of the series of operations required to clean up after all the tests were executed (successfully or otherwise).", 0, 1, teardown);
         default: return super.getNamedProperty(_hash, _name, _checkValid);
         }
 
@@ -3653,12 +3653,12 @@ public class TestReport extends DomainResource {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof TestReport))
+        if (!(other_ instanceof TestReport))
           return false;
-        TestReport o = (TestReport) other;
+        TestReport o = (TestReport) other_;
         return compareDeep(identifier, o.identifier, true) && compareDeep(name, o.name, true) && compareDeep(status, o.status, true)
            && compareDeep(testScript, o.testScript, true) && compareDeep(result, o.result, true) && compareDeep(score, o.score, true)
            && compareDeep(tester, o.tester, true) && compareDeep(issued, o.issued, true) && compareDeep(participant, o.participant, true)
@@ -3667,12 +3667,12 @@ public class TestReport extends DomainResource {
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof TestReport))
+        if (!(other_ instanceof TestReport))
           return false;
-        TestReport o = (TestReport) other;
+        TestReport o = (TestReport) other_;
         return compareValues(name, o.name, true) && compareValues(status, o.status, true) && compareValues(result, o.result, true)
            && compareValues(score, o.score, true) && compareValues(tester, o.tester, true) && compareValues(issued, o.issued, true)
           ;

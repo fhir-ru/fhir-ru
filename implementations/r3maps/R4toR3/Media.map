@@ -1,0 +1,32 @@
+﻿map "http://hl7.org/fhir/StructureMap/Media4to3" = "R4 to R3 Conversion for Media"
+
+uses "http://hl7.org/fhir/StructureDefinition/Media" alias Media as source
+uses "http://hl7.org/fhir/3.0/StructureDefinition/Media" alias MediaR3 as target
+
+imports "http://hl7.org/fhir/StructureMap/*4to3"
+
+group Media(source src : MediaR3, target tgt : Media) extends DomainResource <<type+>> {
+  src.identifier -> tgt.identifier;
+  src.basedOn -> tgt.basedOn;
+  src.partOf -> tgt.partOf;
+  src.status -> tgt.status;
+  src.type -> tgt.type;
+  src.modality -> tgt.modality;
+  src.view -> tgt.view;
+  src.subject -> tgt.subject;
+  src.context -> tgt.context;
+  src.created -> tgt.created;
+  src.issued -> tgt.issued;
+  src.operator -> tgt.operator;
+  src.reasonCode -> tgt.reasonCode;
+  src.bodySite -> tgt.bodySite;
+  src.deviceName -> tgt.deviceName;
+  src.device -> tgt.device;
+  src.height -> tgt.height;
+  src.width -> tgt.width;
+  src.frames -> tgt.frames;
+  src.duration -> tgt.duration;
+  src.content -> tgt.content;
+  src.note -> tgt.note;
+}
+

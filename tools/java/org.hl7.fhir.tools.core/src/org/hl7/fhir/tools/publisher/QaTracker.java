@@ -12,7 +12,6 @@ import java.util.Map;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ResourceDefn;
-import org.hl7.fhir.utilities.IniFile;
 import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.validation.ValidationMessage;
@@ -52,7 +51,7 @@ public class QaTracker {
     for (ElementDefn e : definitions.getInfrastructure().values())
       countPaths(e);
     
-    current.valuesets = definitions.getValuesets().size();
+    current.valuesets = definitions.getValueSetCount();
   }
 
   private void countPaths(ElementDefn e) {

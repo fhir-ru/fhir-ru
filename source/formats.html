@@ -14,18 +14,20 @@
 
 <%fmtheader base%>
 
-<a name="root"> </a>
+<a name="root"></a>
 <h1>Resource Formats</h1>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 5</td><td id="ballot"><a href="versions.html#levels">Ballot Status</a>: <a href="versions.html#std-process">Trial Use</a></td></tr></table>
+<table class="colsn"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 5</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Normative</a></td></tr></table>
+[%normative page infrastructure%]
 <p>
 
 This page documents how the content of the resources are described.
 In actual exchange, resources can be represented in the following
 formats: <a href="xml.html">XML</a>, <a href="json.html">JSON</a> and <a href="rdf.html">Turtle</a>.
-Other representations are allowed, but are not described by this specification.
+Additional <a href="#bulk">Bulk Data Formats</a> are also undergoing exploration. 
+Other representations are allowed, but are not described by this specification (though see link below .
 </p>
 
-<a name="defn"> </a>
+<a name="defn"></a>
 <h2>Resource Definition</h2>
 <p>
 The resources are described in several different ways:
@@ -41,7 +43,7 @@ The resources are described in several different ways:
 In addition to this descriptive syntax, other definitional forms are available, including W3C schema and Schematron, and the <a href="structuredefinition.html">StructureDefinition</a> syntax defined internally.
 </p>
 
-<a name="table"> </a>
+<a name="table"></a>
 <h3>Logical table</h3>
 <p>
 The Logical View shows the resources as a tree structure with the following columns:
@@ -54,7 +56,8 @@ The Logical View shows the resources as a tree structure with the following colu
  <tr> <td>Type</td> <td>The type of the element (hyperlinked to the definition of the type). Note that the type of the element has one of two meanings,
    depending on whether the element has defined children. If the element has children, then the element has an anonymous type that specializes the given type. If the element has no children, then
    the element has properties and children as specified by the nominated type</td> </tr>
- <tr> <td>Description &amp; Constraints</td> <td>A description of the element, and details about constraints that are applied to it. Particularly, for coded elements, information about which codes can be used</td> </tr>
+ <tr> <td>Description &amp; Constraints</td> <td>A description of the element, and details about constraints that are applied to it. Particularly, for coded elements, information about which codes can be used. 
+   The description comes from <a href="elementdefinition-definitions.html#ElementDefinition.short">ElementDefinition.short</a></td> </tr>
 </table>
 <p>
 Here's an example:
@@ -78,7 +81,7 @@ Here's an example:
  <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)" class="hierarchy"><img alt="." class="hierarchy" src="tbl_spacer.png"/><img alt="." class="hierarchy" src="tbl_vjoin.png"/><img title="Data Type" style="background-color: white;" alt="." class="hierarchy" src="icon_datatype.gif"/> <a title="Definition" href="#">nameA</a></td>
  <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="hierarchy"><span title="This element is included in summaries">Σ</span></td>
  <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="hierarchy">1..1</td>
- <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="hierarchy"><a href="#">type</a></td>
+ <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="hierarchy"><a href="#">TypeA</a></td>
  <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="hierarchy">description of content</td>
 </tr>
 <tr style="border: 0px; padding:0px; vertical-align: top; background-color: white;">
@@ -92,14 +95,14 @@ Here's an example:
  <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck110.png)" class="hierarchy"><img alt="." class="hierarchy" src="tbl_spacer.png"/><img alt="." class="hierarchy" src="tbl_vline.png"/><img alt="." class="hierarchy" src="tbl_vjoin.png"/><img title="Primitive Data Type" style="background-color: white;" alt="." class="hierarchy" src="icon_primitive.png"/> <span title="Value of &quot;true&quot; or &quot;false&quot;">nameBType1</span></td>
  <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="hierarchy"></td>
  <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="hierarchy">0..1</td>
- <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="hierarchy"><a href="#">type1</a></td>
+ <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="hierarchy"><a href="#">TypeB</a></td>
  <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="hierarchy"></td>
 </tr>
 <tr style="border: 0px; padding:0px; vertical-align: top; background-color: white;">
  <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck110.png)" class="hierarchy"><img alt="." class="hierarchy" src="tbl_spacer.png"/><img alt="." class="hierarchy" src="tbl_vline.png"/><img alt="." class="hierarchy" src="tbl_vjoin_end.png"/><img title="Primitive Data Type" style="background-color: white;" alt="." class="hierarchy" src="icon_primitive.png"/> <span title="Value of &quot;true&quot; or &quot;false&quot;">nameBType2</span></td>
  <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="hierarchy"><span title="This element has or is affected by some invariants">I</span></td>
  <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="hierarchy">0..1</td>
- <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="hierarchy"><a href="#">type2</a></td>
+ <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="hierarchy"><a href="#">typeC</a></td>
  <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="hierarchy"></td>
 </tr>
 <tr style="border: 0px; padding:0px; vertical-align: top; background-color: white;">
@@ -113,20 +116,20 @@ Here's an example:
 <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck110.png)" class="hierarchy"><img alt="." class="hierarchy" src="tbl_spacer.png"/><img alt="." class="hierarchy" src="tbl_blank.png"/><img alt="." class="hierarchy" src="tbl_vjoin_end.png"/><img title="Data Type" style="background-color: white;" alt="." class="hierarchy" src="icon_datatype.gif"/> <a title="Definition" href="#">nameD</a></td>
 <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="hierarchy"></td>
 <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="hierarchy">1..1</td>
-<td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="hierarchy"><a href="#">type</a></td>
+<td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="hierarchy"><a href="#">TypeD</a></td>
 <td style="vertical-align: top; text-align : left; padding:0px 4px 0px 4px" class="hierarchy">Relevant Records</td>
 </tr>
 </tbody>
 </table>
 
-<a name="legend"> </a>
+<a name="legend"></a>
 <p>Key to Type Icons and Flags</p>
 <ul>
  <li><img title="Resource" style="background-color: white;" alt="." class="hierarchy" src="icon_resource.png"/>: The base element for a resource (see <a href="resource.html">Resources</a>)</li>
  <li><img title="Element" style="background-color: white;" alt="." class="hierarchy" src="icon_element.gif"/>: An element that is part of the resource and has elements within it defined in the same resource or profile</li>
  <li><img title="Choice of Types" style="background-color: white;" alt="." class="hierarchy" src="icon_choice.gif"/>: An element which can have one of several different types (see below)</li>
- <li><img title="Primitive Data Type" style="background-color: white;" alt="." class="hierarchy" src="icon_primitive.png"/>: An element of a data type which describes an element that has a <code>value</code> attribute/property</li>
- <li><img title="Data Type" style="background-color: white;" alt="." class="hierarchy" src="icon_datatype.gif"/>: An element of a data type which describes an element that has other elements</li>
+ <li><img title="Primitive Data Type" style="background-color: white;" alt="." class="hierarchy" src="icon_primitive.png"/>: An element of a data type which describes an element that has a <code>value</code> attribute/property. These are also known as primitive types. All primitive type names start with a lower case letter</li>
+ <li><img title="Data Type" style="background-color: white;" alt="." class="hierarchy" src="icon_datatype.gif"/>: An element of a data type which describes an element that has other elements. These are known as complex types. All complex type names defined in this specification start with an uppwer case letter </li>
  <li><img title="Reference to another Resource" style="background-color: white;" alt="." class="hierarchy" src="icon_reference.png"/>: An element that contains a reference to another resource (see <a href="references.html">references</a>)</li>
  <li><img title="Reference to another Element" style="background-color: white;" alt="." class="hierarchy" src="icon_reuse.png"/>: This element has the same content as another element defined within this resource or profile</li>
  <li><img title="Slice Definition" style="background-color: white;" alt="." class="hierarchy" src="icon_slice.png"/>: Introduction of a set of slices (see <a href="profiling.html#slicing">Slicing</a>)</li>
@@ -142,6 +145,9 @@ Here's an example:
  <li><code>Σ</code>: This element is an element that is part of the summary set - see <a href="search.html#summary">Summary Searches</a></li>
  <li><code>I</code>: This element defines or is affected by constraints - see <a href="conformance-rules.html#constraints">Constraints</a></li>
  <li><code>NE</code>: This element cannot have extensions (some infrastructural elements only)</li>
+ <li><a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #ffe6e6" href="versions.html#std-process">TU</a>: This element has a <a href="versions.html#std-process">standards status of Trial Use</a> (for discussion about mixing ballot status in a resource, see <a href="ballot-intro.html#mixed">Mixed Normative content</a>)</li>
+ <li><a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #e6ffe6" href="versions.html#std-process">N</a>: This element has a <a href="versions.html#std-process">standards status of Normative</a></li>
+ <li><a style="padding-left: 3px; padding-right: 3px; border: 1px grey solid; font-weight: bold; color: black; background-color: #efefef" href="versions.html#std-process">D</a>: This element has a <a href="versions.html#std-process">standards status of Draft</a></li>
 </ul>
 <p>
 Notes:
@@ -155,12 +161,12 @@ Notes:
  <li>Element reuse: Some data types that have children have the same set of children as some other element defined in the resource. In that case, the type of that element has a "see [name]" where [name] is the name of the element that has the defined children</li>
  <li>Each element name is also a hyperlink to the formal definition of the element in the data dictionary that underlies the exchange formats. </li>
  <li>Any of the elements may have an <code>id</code> attribute to serve as <a href="references.html#id">the target of an internal reference</a>. The <code>id</code> attribute is not shown in this format. Extensions are not always shown, but may appear except where the flag <code>NE</code> appears</li>
- <a name="element-rules"> </a>
+ <a name="element-rules"></a>
  <li>FHIR elements can never be empty. If an element is present in the resource, it SHALL have either a value, child elements as defined for its type, or 1 or more <a href="extensibility.html">extensions</a></li>
  <li>Infrastructural elements that are common to all resources are not shown in the logical representation. These are described in the common base classes <a href="resource.html">Resource</a>, and <a href="domainresource.html">DomainResource</a></li>
 </ul>
 
-<a name="choice"> </a>
+<a name="choice"></a>
 <h3>Choice of Data Types</h3>
 <p>
 A few elements have a choice of more than one data type for their content. All such elements have a name that
@@ -178,9 +184,14 @@ However this is not necessary and the correct implementation varies according to
 of the language. In XML schema, these become an xs:choice of element.
 </p>
 
+<p>
+The following elements have a choice of types:
+</p>
+<ul style="-moz-column-count: 3; -moz-column-gap: 10px; -webkit-column-count: 3; -webkit-column-gap: 10px; column-count: 3; column-gap: 10px">
+  [%choice-elements%]
+</ul>
 
-
-<a name="uml"> </a>
+<a name="uml"></a>
 <h3>UML</h3>
 <p>
 The UML diagrams represent the same content as a series of classes that represent
@@ -234,7 +245,7 @@ the elements of a resource.
 The elements and the data types are hyperlinks to the formal definitions of the parts. The UML diagrams also show the
 vocabulary bindings.  These are hyperlinks to the value set details.
 </p>
-<a name="umlchoice"> </a>
+<a name="umlchoice"></a>
 <p>
 Where an element can have a choice of data types, or is a <a href="references.html">Reference</a> these are
 represented by showing the common type (<code>Reference</code> or <code>Type</code>), and then showing the applicable data type names or
@@ -244,7 +255,7 @@ this specification, but is a super type of all the data types.
 <p>
 The actual order of the elements in XML cannot be determined from the diagram, nor whether a UML property becomes an element or an attribute in the XML representation.
 </p>
-<a name="binding"> </a>
+<a name="binding"></a>
 <p>
 Bindings to value sets are indicated by a stereotype on the element. The stereotype has 2 parts: the value
 set name, and a symbol that denotes the strength of the binding:
@@ -256,27 +267,55 @@ set name, and a symbol that denotes the strength of the binding:
  <li>!: <a href="terminologies.html#example">Required</a> Binding</li>
 </ul>
 
-<a name="wire"> </a>
+<a name="wire"></a>
 <h3>Serialization Format Representations</h3>
 
 <p>
 This specification defines the following ways to represent resources when they are exchanged:
 </p>
 <ul>
- <li><a href="xml.html">XML</a></li>
  <li><a href="json.html">JSON</a></li>
+ <li><a href="xml.html">XML</a></li>
  <li><a href="rdf.html">RDF (Turtle)</a></li>
 </ul>
 
 <p>
-Clients and servers can choose what syntax(s) to implement. In
-the interests of interoperability, servers SHOULD support all formats (though support for RDF
-should best wait until it is more fully developed).
 Systems SHALL declare which format(s) they support in their <a href="capabilitystatement.html">Capability Statement</a>.
 If a server receives a request for its Capability Statement in
-a format it does not otherwise support, it SHALL return a <code>415</code> Unsupported Media Type.
+a format it does not otherwise support, it SHALL return a <code>406 Not Acceptable</code>. Note: 
+<code>406</code> is the appropriate response when the <code>Accept</code> header requests a format that the server
+does not support, and <code>415 Unsupported Media Type</code> when the client posts a format that is not supported 
+to the server.
+</p>
+<p>
+Clients and servers can choose what syntax(s) to implement. In the interests of interoperability, 
+servers SHOULD support both the XML and JSON formats, which have the same functionality, for 
+different technical stacks. The RDF format has quite different benefits - primarily around data
+analysis rather than exchange.  
 </p>
 
+<div class="draft-content">
+
+<a name="bulk"></a>
+<h4>Bulk Data Formats</h4>
+<p style="background-color: #ffcccc; border:1px solid grey; padding: 5px; max-width: 790px;">
+Unlike this rest of this page, the bulk use formats are draft until 
+further experience is gained with their use. Their status will be reviewed in a future version of FHIR.
+</p>
+<p>
+The XML and JSON formats are designed to support typical system process
+based data exchange uses. FHIR is also used to exchange large amounts 
+of data- 1000s of records, or more (up to billions). The formats above
+can be used for this, but more suitable formats exist. This specification
+documents the following formats:
+</p>
+<ul>
+ <li><a href="nd-json.html">ND-Json</a> (New line delimited JSON)</li>
+ <li>Google Protobuf (under consideration)</li>
+ <li>Apache Parquet/Avro (bulk data formats under consideration)</li>
+</ul> 
+
+</div>
 </div>
 
 [%file newfooter%]

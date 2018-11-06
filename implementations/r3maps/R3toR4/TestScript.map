@@ -1,0 +1,62 @@
+﻿map "http://hl7.org/fhir/StructureMap/TestScript3to4" = "R3 to R4 Conversions for TestScript"
+
+uses "http://hl7.org/fhir/3.0/StructureDefinition/TestScript" alias TestScriptR3 as source
+uses "http://hl7.org/fhir/StructureDefinition/TestScript" alias TestScript as target
+
+imports "http://hl7.org/fhir/StructureMap/*3to4"
+
+group TestScript(source src : TestScriptR3, target tgt : TestScript) extends DomainResource <<type+>> {
+  src.url -> tgt.url;
+  src.identifier -> tgt.identifier;
+  src.version -> tgt.version;
+  src.name -> tgt.name;
+  src.title -> tgt.title;
+  src.status -> tgt.status;
+  src.experimental -> tgt.experimental;
+  src.date -> tgt.date;
+  src.publisher -> tgt.publisher;
+  src.contact -> tgt.contact;
+  src.description -> tgt.description;
+  src.useContext -> tgt.useContext;
+  src.jurisdiction -> tgt.jurisdiction;
+  src.purpose -> tgt.purpose;
+  src.copyright -> tgt.copyright;
+  src.origin as vs0 -> tgt.origin as vt0 then {
+    vs0.index -> vt0.index;
+    vs0.profile -> vt0.profile;
+  };
+  src.destination as vs0 -> tgt.destination as vt0 then {
+    vs0.index -> vt0.index;
+    vs0.profile -> vt0.profile;
+  };
+  src.metadata -> tgt.metadata;
+  src.fixture as vs0 -> tgt.fixture as vt0 then {
+    vs0.autocreate -> vt0.autocreate;
+    vs0.autodelete -> vt0.autodelete;
+    vs0.resource -> vt0.resource;
+  };
+  src.profile -> tgt.profile;
+  src.variable as vs0 -> tgt.variable as vt0 then {
+    vs0.name -> vt0.name;
+    vs0.defaultValue -> vt0.defaultValue;
+    vs0.description -> vt0.description;
+    vs0.expression -> vt0.expression;
+    vs0.headerField -> vt0.headerField;
+    vs0.hint -> vt0.hint;
+    vs0.path -> vt0.path;
+    vs0.sourceId -> vt0.sourceId;
+  };
+  src.rule as vs0 -> tgt.rule as vt0 then {
+    vs0.resource -> vt0.resource;
+  };
+  src.ruleset as vs0 -> tgt.ruleset as vt0 then {
+    vs0.resource -> vt0.resource;
+  };
+  src.setup -> tgt.setup;
+  src.test as vs0 -> tgt.test as vt0 then {
+    vs0.name -> vt0.name;
+    vs0.description -> vt0.description;
+  };
+  src.teardown -> tgt.teardown;
+}
+

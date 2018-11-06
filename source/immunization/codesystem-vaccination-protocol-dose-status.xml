@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <CodeSystem xmlns="http://hl7.org/fhir">
-  <url value="http://hl7.org/fhir/vaccination-protocol-dose-status"/>
+  <url value="http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status"/>
   <name value="Vaccination Protocol Dose Status codes"/>
   <status value="draft"/>
   <experimental value="false"/>
@@ -9,13 +9,13 @@
   <caseSensitive value="true"/>
   <content value="complete"/>
   <concept>
-    <code value="count"/>
-    <display value="Counts"/>
+    <code value="valid"/>
+    <display value="Valid"/>
     <definition value="The dose counts toward fulfilling a path to immunity for a patient, providing protection against the target disease."/>
   </concept>
   <concept>
-    <code value="nocount"/>
-    <display value="Does not Count"/>
+    <code value="notvalid"/>
+    <display value="Not Valid"/>
     <definition value="The dose does not count toward fulfilling a path to immunity for a patient."/>
   </concept>
 </CodeSystem>

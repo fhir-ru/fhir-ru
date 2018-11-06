@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <CapabilityStatement xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/fhir-single.xsd">
 	<id value="messagedefinition"/>
 	<status value="draft"/>
@@ -17,18 +17,20 @@
 	<software>
 		<name value="EHR"/>
 	</software>
+  <implementation>
+    <description value="Acme Message endpoint"/>
+    <url value="http://acem.com/fhir/message-drop"/>
+  </implementation>
 	<!--  while the FHIR infrastructure is turning over prior to development, a version is 
-    required. Note that this may be rescinded later?  -->
-	<fhirVersion value="1.0.0"/>
-	<!--  this system accepts unknown content in the resources  -->
-	<acceptUnknown value="both"/>
+    required.   -->
+	<fhirVersion value="3.6.0"/>
 	<!--  this system can do either xml or json. (Listing both implies full support for either, with interconversion)  -->
 	<format value="xml"/>
 	<format value="json"/>
 	<messaging>
 		<endpoint>
 			<protocol>
-				<system value="http://hl7.org/fhir/message-transport"/>
+				<system value="http://terminology.hl7.org/CodeSystem/message-transport"/>
 				<code value="mllp"/>
 			</protocol>
 			<!-- LLP server at 10.1.1.10 on port 9234 -->
@@ -38,9 +40,7 @@
 		<documentation value="ADT A08 equivalent for external system notifications"/>
 		<supportedMessage>
       <mode value="receiver"/>
-      <definition>
-        <reference value="MessageDefinition/example"/>
-      </definition>
+      <definition value="MessageDefinition/example"/>
     </supportedMessage>
 	</messaging>
 </CapabilityStatement>

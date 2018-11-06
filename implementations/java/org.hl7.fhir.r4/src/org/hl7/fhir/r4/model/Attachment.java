@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Fri, Aug 11, 2017 07:23+1000 for FHIR v3.1.0
+// Generated on Mon, Nov 5, 2018 09:03+1100 for FHIR v3.6.0
 
 import java.util.*;
 
@@ -53,6 +53,7 @@ public class Attachment extends Type implements ICompositeType {
      */
     @Child(name = "contentType", type = {CodeType.class}, order=0, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Mime type of the content, with charset etc.", formalDefinition="Identifies the type of the data in the attachment and allows a method to be chosen to interpret or render the data. Includes mime type parameters such as charset where appropriate." )
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/mimetypes")
     protected CodeType contentType;
 
     /**
@@ -64,18 +65,18 @@ public class Attachment extends Type implements ICompositeType {
     protected CodeType language;
 
     /**
-     * The actual data of the attachment - a sequence of bytes. In XML, represented using base64.
+     * The actual data of the attachment - a sequence of bytes, base64 encoded.
      */
     @Child(name = "data", type = {Base64BinaryType.class}, order=2, min=0, max=1, modifier=false, summary=false)
-    @Description(shortDefinition="Data inline, base64ed", formalDefinition="The actual data of the attachment - a sequence of bytes. In XML, represented using base64." )
+    @Description(shortDefinition="Data inline, base64ed", formalDefinition="The actual data of the attachment - a sequence of bytes, base64 encoded." )
     protected Base64BinaryType data;
 
     /**
-     * An alternative location where the data can be accessed.
+     * A location where the data can be accessed.
      */
-    @Child(name = "url", type = {UriType.class}, order=3, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Uri where the data can be found", formalDefinition="An alternative location where the data can be accessed." )
-    protected UriType url;
+    @Child(name = "url", type = {UrlType.class}, order=3, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Uri where the data can be found", formalDefinition="A location where the data can be accessed." )
+    protected UrlType url;
 
     /**
      * The number of bytes of data that make up this attachment (before base64 encoding, if that is done).
@@ -105,7 +106,7 @@ public class Attachment extends Type implements ICompositeType {
     @Description(shortDefinition="Date attachment was first created", formalDefinition="The date that the attachment was first created." )
     protected DateTimeType creation;
 
-    private static final long serialVersionUID = 581007080L;
+    private static final long serialVersionUID = -564352571L;
 
   /**
    * Constructor
@@ -213,7 +214,7 @@ public class Attachment extends Type implements ICompositeType {
     }
 
     /**
-     * @return {@link #data} (The actual data of the attachment - a sequence of bytes. In XML, represented using base64.). This is the underlying object with id, value and extensions. The accessor "getData" gives direct access to the value
+     * @return {@link #data} (The actual data of the attachment - a sequence of bytes, base64 encoded.). This is the underlying object with id, value and extensions. The accessor "getData" gives direct access to the value
      */
     public Base64BinaryType getDataElement() { 
       if (this.data == null)
@@ -233,7 +234,7 @@ public class Attachment extends Type implements ICompositeType {
     }
 
     /**
-     * @param value {@link #data} (The actual data of the attachment - a sequence of bytes. In XML, represented using base64.). This is the underlying object with id, value and extensions. The accessor "getData" gives direct access to the value
+     * @param value {@link #data} (The actual data of the attachment - a sequence of bytes, base64 encoded.). This is the underlying object with id, value and extensions. The accessor "getData" gives direct access to the value
      */
     public Attachment setDataElement(Base64BinaryType value) { 
       this.data = value;
@@ -241,14 +242,14 @@ public class Attachment extends Type implements ICompositeType {
     }
 
     /**
-     * @return The actual data of the attachment - a sequence of bytes. In XML, represented using base64.
+     * @return The actual data of the attachment - a sequence of bytes, base64 encoded.
      */
     public byte[] getData() { 
       return this.data == null ? null : this.data.getValue();
     }
 
     /**
-     * @param value The actual data of the attachment - a sequence of bytes. In XML, represented using base64.
+     * @param value The actual data of the attachment - a sequence of bytes, base64 encoded.
      */
     public Attachment setData(byte[] value) { 
       if (value == null)
@@ -262,14 +263,14 @@ public class Attachment extends Type implements ICompositeType {
     }
 
     /**
-     * @return {@link #url} (An alternative location where the data can be accessed.). This is the underlying object with id, value and extensions. The accessor "getUrl" gives direct access to the value
+     * @return {@link #url} (A location where the data can be accessed.). This is the underlying object with id, value and extensions. The accessor "getUrl" gives direct access to the value
      */
-    public UriType getUrlElement() { 
+    public UrlType getUrlElement() { 
       if (this.url == null)
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create Attachment.url");
         else if (Configuration.doAutoCreate())
-          this.url = new UriType(); // bb
+          this.url = new UrlType(); // bb
       return this.url;
     }
 
@@ -282,29 +283,29 @@ public class Attachment extends Type implements ICompositeType {
     }
 
     /**
-     * @param value {@link #url} (An alternative location where the data can be accessed.). This is the underlying object with id, value and extensions. The accessor "getUrl" gives direct access to the value
+     * @param value {@link #url} (A location where the data can be accessed.). This is the underlying object with id, value and extensions. The accessor "getUrl" gives direct access to the value
      */
-    public Attachment setUrlElement(UriType value) { 
+    public Attachment setUrlElement(UrlType value) { 
       this.url = value;
       return this;
     }
 
     /**
-     * @return An alternative location where the data can be accessed.
+     * @return A location where the data can be accessed.
      */
     public String getUrl() { 
       return this.url == null ? null : this.url.getValue();
     }
 
     /**
-     * @param value An alternative location where the data can be accessed.
+     * @param value A location where the data can be accessed.
      */
     public Attachment setUrl(String value) { 
       if (Utilities.noString(value))
         this.url = null;
       else {
         if (this.url == null)
-          this.url = new UriType();
+          this.url = new UrlType();
         this.url.setValue(value);
       }
       return this;
@@ -506,8 +507,8 @@ public class Attachment extends Type implements ICompositeType {
         super.listChildren(children);
         children.add(new Property("contentType", "code", "Identifies the type of the data in the attachment and allows a method to be chosen to interpret or render the data. Includes mime type parameters such as charset where appropriate.", 0, 1, contentType));
         children.add(new Property("language", "code", "The human language of the content. The value can be any valid value according to BCP 47.", 0, 1, language));
-        children.add(new Property("data", "base64Binary", "The actual data of the attachment - a sequence of bytes. In XML, represented using base64.", 0, 1, data));
-        children.add(new Property("url", "uri", "An alternative location where the data can be accessed.", 0, 1, url));
+        children.add(new Property("data", "base64Binary", "The actual data of the attachment - a sequence of bytes, base64 encoded.", 0, 1, data));
+        children.add(new Property("url", "url", "A location where the data can be accessed.", 0, 1, url));
         children.add(new Property("size", "unsignedInt", "The number of bytes of data that make up this attachment (before base64 encoding, if that is done).", 0, 1, size));
         children.add(new Property("hash", "base64Binary", "The calculated hash of the data using SHA-1. Represented using base64.", 0, 1, hash));
         children.add(new Property("title", "string", "A label or set of text to display in place of the data.", 0, 1, title));
@@ -519,8 +520,8 @@ public class Attachment extends Type implements ICompositeType {
         switch (_hash) {
         case -389131437: /*contentType*/  return new Property("contentType", "code", "Identifies the type of the data in the attachment and allows a method to be chosen to interpret or render the data. Includes mime type parameters such as charset where appropriate.", 0, 1, contentType);
         case -1613589672: /*language*/  return new Property("language", "code", "The human language of the content. The value can be any valid value according to BCP 47.", 0, 1, language);
-        case 3076010: /*data*/  return new Property("data", "base64Binary", "The actual data of the attachment - a sequence of bytes. In XML, represented using base64.", 0, 1, data);
-        case 116079: /*url*/  return new Property("url", "uri", "An alternative location where the data can be accessed.", 0, 1, url);
+        case 3076010: /*data*/  return new Property("data", "base64Binary", "The actual data of the attachment - a sequence of bytes, base64 encoded.", 0, 1, data);
+        case 116079: /*url*/  return new Property("url", "url", "A location where the data can be accessed.", 0, 1, url);
         case 3530753: /*size*/  return new Property("size", "unsignedInt", "The number of bytes of data that make up this attachment (before base64 encoding, if that is done).", 0, 1, size);
         case 3195150: /*hash*/  return new Property("hash", "base64Binary", "The calculated hash of the data using SHA-1. Represented using base64.", 0, 1, hash);
         case 110371416: /*title*/  return new Property("title", "string", "A label or set of text to display in place of the data.", 0, 1, title);
@@ -536,7 +537,7 @@ public class Attachment extends Type implements ICompositeType {
         case -389131437: /*contentType*/ return this.contentType == null ? new Base[0] : new Base[] {this.contentType}; // CodeType
         case -1613589672: /*language*/ return this.language == null ? new Base[0] : new Base[] {this.language}; // CodeType
         case 3076010: /*data*/ return this.data == null ? new Base[0] : new Base[] {this.data}; // Base64BinaryType
-        case 116079: /*url*/ return this.url == null ? new Base[0] : new Base[] {this.url}; // UriType
+        case 116079: /*url*/ return this.url == null ? new Base[0] : new Base[] {this.url}; // UrlType
         case 3530753: /*size*/ return this.size == null ? new Base[0] : new Base[] {this.size}; // UnsignedIntType
         case 3195150: /*hash*/ return this.hash == null ? new Base[0] : new Base[] {this.hash}; // Base64BinaryType
         case 110371416: /*title*/ return this.title == null ? new Base[0] : new Base[] {this.title}; // StringType
@@ -559,7 +560,7 @@ public class Attachment extends Type implements ICompositeType {
           this.data = castToBase64Binary(value); // Base64BinaryType
           return value;
         case 116079: // url
-          this.url = castToUri(value); // UriType
+          this.url = castToUrl(value); // UrlType
           return value;
         case 3530753: // size
           this.size = castToUnsignedInt(value); // UnsignedIntType
@@ -587,7 +588,7 @@ public class Attachment extends Type implements ICompositeType {
         } else if (name.equals("data")) {
           this.data = castToBase64Binary(value); // Base64BinaryType
         } else if (name.equals("url")) {
-          this.url = castToUri(value); // UriType
+          this.url = castToUrl(value); // UrlType
         } else if (name.equals("size")) {
           this.size = castToUnsignedInt(value); // UnsignedIntType
         } else if (name.equals("hash")) {
@@ -623,7 +624,7 @@ public class Attachment extends Type implements ICompositeType {
         case -389131437: /*contentType*/ return new String[] {"code"};
         case -1613589672: /*language*/ return new String[] {"code"};
         case 3076010: /*data*/ return new String[] {"base64Binary"};
-        case 116079: /*url*/ return new String[] {"uri"};
+        case 116079: /*url*/ return new String[] {"url"};
         case 3530753: /*size*/ return new String[] {"unsignedInt"};
         case 3195150: /*hash*/ return new String[] {"base64Binary"};
         case 110371416: /*title*/ return new String[] {"string"};
@@ -687,12 +688,12 @@ public class Attachment extends Type implements ICompositeType {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof Attachment))
+        if (!(other_ instanceof Attachment))
           return false;
-        Attachment o = (Attachment) other;
+        Attachment o = (Attachment) other_;
         return compareDeep(contentType, o.contentType, true) && compareDeep(language, o.language, true)
            && compareDeep(data, o.data, true) && compareDeep(url, o.url, true) && compareDeep(size, o.size, true)
            && compareDeep(hash, o.hash, true) && compareDeep(title, o.title, true) && compareDeep(creation, o.creation, true)
@@ -700,12 +701,12 @@ public class Attachment extends Type implements ICompositeType {
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof Attachment))
+        if (!(other_ instanceof Attachment))
           return false;
-        Attachment o = (Attachment) other;
+        Attachment o = (Attachment) other_;
         return compareValues(contentType, o.contentType, true) && compareValues(language, o.language, true)
            && compareValues(data, o.data, true) && compareValues(url, o.url, true) && compareValues(size, o.size, true)
            && compareValues(hash, o.hash, true) && compareValues(title, o.title, true) && compareValues(creation, o.creation, true)

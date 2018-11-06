@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- NOTE: This example will soon be revised and moved to the Genomics Reporting implementation guide - current version at http://hl7.org/fhir/uv/genomics-reporting -->
 
 <Observation xmlns="http://hl7.org/fhir">
   <id value="example-genetics-1"/>
@@ -19,7 +20,7 @@
 <Observation xmlns="http://hl7.org/fhir">
   <id value="ob-genetics-6-1"/>
   <contained>
-      <Sequence>
+      <MolecularSequence>
           <id value="g-1"/>
           <type value="DNA"/>
           <variationID>
@@ -40,7 +41,7 @@
           </coordinate>
           <observedAllele value="G"/>
           <referenceAllele value="T"/>
-      </Sequence>
+      </MolecularSequence>
   </contained>
   <extension url="http://hl7.org/fhir/StructureDefinition/observation-geneticsSequence">
       <valueReference>

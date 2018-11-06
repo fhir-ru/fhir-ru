@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Fri, Aug 11, 2017 07:23+1000 for FHIR v3.1.0
+// Generated on Mon, Nov 5, 2018 09:03+1100 for FHIR v3.6.0
 
 import java.util.*;
 
@@ -46,8 +46,8 @@ import org.hl7.fhir.exceptions.FHIRException;
 /**
  * The EventDefinition resource provides a reusable description of when a particular event can occur.
  */
-@ResourceDef(name="EventDefinition", profile="http://hl7.org/fhir/Profile/EventDefinition")
-@ChildOrder(names={"url", "identifier", "version", "name", "title", "status", "experimental", "date", "publisher", "description", "purpose", "usage", "approvalDate", "lastReviewDate", "effectivePeriod", "useContext", "jurisdiction", "topic", "contributor", "contact", "copyright", "relatedArtifact", "trigger"})
+@ResourceDef(name="EventDefinition", profile="http://hl7.org/fhir/StructureDefinition/EventDefinition")
+@ChildOrder(names={"url", "identifier", "version", "name", "title", "subtitle", "status", "experimental", "subject[x]", "date", "publisher", "contact", "description", "useContext", "jurisdiction", "purpose", "usage", "copyright", "approvalDate", "lastReviewDate", "effectivePeriod", "topic", "author", "editor", "reviewer", "endorser", "relatedArtifact", "trigger"})
 public class EventDefinition extends MetadataResource {
 
     /**
@@ -58,77 +58,113 @@ public class EventDefinition extends MetadataResource {
     protected List<Identifier> identifier;
 
     /**
-     * Explaination of why this event definition is needed and why it has been designed as it has.
+     * An explanatory or alternate title for the event definition giving additional information about its content.
      */
-    @Child(name = "purpose", type = {MarkdownType.class}, order=1, min=0, max=1, modifier=false, summary=false)
-    @Description(shortDefinition="Why this event definition is defined", formalDefinition="Explaination of why this event definition is needed and why it has been designed as it has." )
+    @Child(name = "subtitle", type = {StringType.class}, order=1, min=0, max=1, modifier=false, summary=false)
+    @Description(shortDefinition="Subordinate title of the event definition", formalDefinition="An explanatory or alternate title for the event definition giving additional information about its content." )
+    protected StringType subtitle;
+
+    /**
+     * A code or group definition that describes the intended subject of the event definition.
+     */
+    @Child(name = "subject", type = {CodeableConcept.class, Group.class}, order=2, min=0, max=1, modifier=false, summary=false)
+    @Description(shortDefinition="Type of individual the event definition is focused on", formalDefinition="A code or group definition that describes the intended subject of the event definition." )
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/subject-type")
+    protected Type subject;
+
+    /**
+     * Explanation of why this event definition is needed and why it has been designed as it has.
+     */
+    @Child(name = "purpose", type = {MarkdownType.class}, order=3, min=0, max=1, modifier=false, summary=false)
+    @Description(shortDefinition="Why this event definition is defined", formalDefinition="Explanation of why this event definition is needed and why it has been designed as it has." )
     protected MarkdownType purpose;
 
     /**
      * A detailed description of how the event definition is used from a clinical perspective.
      */
-    @Child(name = "usage", type = {StringType.class}, order=2, min=0, max=1, modifier=false, summary=false)
+    @Child(name = "usage", type = {StringType.class}, order=4, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Describes the clinical usage of the event definition", formalDefinition="A detailed description of how the event definition is used from a clinical perspective." )
     protected StringType usage;
 
     /**
+     * A copyright statement relating to the event definition and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the event definition.
+     */
+    @Child(name = "copyright", type = {MarkdownType.class}, order=5, min=0, max=1, modifier=false, summary=false)
+    @Description(shortDefinition="Use and/or publishing restrictions", formalDefinition="A copyright statement relating to the event definition and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the event definition." )
+    protected MarkdownType copyright;
+
+    /**
      * The date on which the resource content was approved by the publisher. Approval happens once when the content is officially approved for usage.
      */
-    @Child(name = "approvalDate", type = {DateType.class}, order=3, min=0, max=1, modifier=false, summary=false)
+    @Child(name = "approvalDate", type = {DateType.class}, order=6, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="When the event definition was approved by publisher", formalDefinition="The date on which the resource content was approved by the publisher. Approval happens once when the content is officially approved for usage." )
     protected DateType approvalDate;
 
     /**
-     * The date on which the resource content was last reviewed. Review happens periodically after approval, but doesn't change the original approval date.
+     * The date on which the resource content was last reviewed. Review happens periodically after approval but does not change the original approval date.
      */
-    @Child(name = "lastReviewDate", type = {DateType.class}, order=4, min=0, max=1, modifier=false, summary=false)
-    @Description(shortDefinition="When the event definition was last reviewed", formalDefinition="The date on which the resource content was last reviewed. Review happens periodically after approval, but doesn't change the original approval date." )
+    @Child(name = "lastReviewDate", type = {DateType.class}, order=7, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="When the event definition was last reviewed", formalDefinition="The date on which the resource content was last reviewed. Review happens periodically after approval but does not change the original approval date." )
     protected DateType lastReviewDate;
 
     /**
      * The period during which the event definition content was or is planned to be in active use.
      */
-    @Child(name = "effectivePeriod", type = {Period.class}, order=5, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "effectivePeriod", type = {Period.class}, order=8, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="When the event definition is expected to be used", formalDefinition="The period during which the event definition content was or is planned to be in active use." )
     protected Period effectivePeriod;
 
     /**
      * Descriptive topics related to the module. Topics provide a high-level categorization of the module that can be useful for filtering and searching.
      */
-    @Child(name = "topic", type = {CodeableConcept.class}, order=6, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
-    @Description(shortDefinition="E.g. Education, Treatment, Assessment, etc", formalDefinition="Descriptive topics related to the module. Topics provide a high-level categorization of the module that can be useful for filtering and searching." )
+    @Child(name = "topic", type = {CodeableConcept.class}, order=9, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Description(shortDefinition="E.g. Education, Treatment, Assessment, etc.", formalDefinition="Descriptive topics related to the module. Topics provide a high-level categorization of the module that can be useful for filtering and searching." )
     @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/definition-topic")
     protected List<CodeableConcept> topic;
 
     /**
-     * A contributor to the content of the module, including authors, editors, reviewers, and endorsers.
+     * An individiual or organization primarily involved in the creation and maintenance of the content.
      */
-    @Child(name = "contributor", type = {Contributor.class}, order=7, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
-    @Description(shortDefinition="A content contributor", formalDefinition="A contributor to the content of the module, including authors, editors, reviewers, and endorsers." )
-    protected List<Contributor> contributor;
+    @Child(name = "author", type = {ContactDetail.class}, order=10, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Description(shortDefinition="Who authored the content", formalDefinition="An individiual or organization primarily involved in the creation and maintenance of the content." )
+    protected List<ContactDetail> author;
 
     /**
-     * A copyright statement relating to the event definition and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the event definition.
+     * An individual or organization primarily responsible for internal coherence of the content.
      */
-    @Child(name = "copyright", type = {MarkdownType.class}, order=8, min=0, max=1, modifier=false, summary=false)
-    @Description(shortDefinition="Use and/or publishing restrictions", formalDefinition="A copyright statement relating to the event definition and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the event definition." )
-    protected MarkdownType copyright;
+    @Child(name = "editor", type = {ContactDetail.class}, order=11, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Description(shortDefinition="Who edited the content", formalDefinition="An individual or organization primarily responsible for internal coherence of the content." )
+    protected List<ContactDetail> editor;
+
+    /**
+     * An individual or organization primarily responsible for review of some aspect of the content.
+     */
+    @Child(name = "reviewer", type = {ContactDetail.class}, order=12, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Description(shortDefinition="Who reviewed the content", formalDefinition="An individual or organization primarily responsible for review of some aspect of the content." )
+    protected List<ContactDetail> reviewer;
+
+    /**
+     * An individual or organization responsible for officially endorsing the content for use in some setting.
+     */
+    @Child(name = "endorser", type = {ContactDetail.class}, order=13, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Description(shortDefinition="Who endorsed the content", formalDefinition="An individual or organization responsible for officially endorsing the content for use in some setting." )
+    protected List<ContactDetail> endorser;
 
     /**
      * Related resources such as additional documentation, justification, or bibliographic references.
      */
-    @Child(name = "relatedArtifact", type = {RelatedArtifact.class}, order=9, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
-    @Description(shortDefinition="Additional documentation, citations, etc", formalDefinition="Related resources such as additional documentation, justification, or bibliographic references." )
+    @Child(name = "relatedArtifact", type = {RelatedArtifact.class}, order=14, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Description(shortDefinition="Additional documentation, citations, etc.", formalDefinition="Related resources such as additional documentation, justification, or bibliographic references." )
     protected List<RelatedArtifact> relatedArtifact;
 
     /**
-     * The trigger element defines when the event occurs.
+     * The trigger element defines when the event occurs. If more than one trigger condition is specified, the event fires whenever any one of the trigger conditions is met.
      */
-    @Child(name = "trigger", type = {TriggerDefinition.class}, order=10, min=1, max=1, modifier=false, summary=false)
-    @Description(shortDefinition="\"when\" the event occurs", formalDefinition="The trigger element defines when the event occurs." )
-    protected TriggerDefinition trigger;
+    @Child(name = "trigger", type = {TriggerDefinition.class}, order=15, min=1, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Description(shortDefinition="\"when\" the event occurs (multiple = 'or')", formalDefinition="The trigger element defines when the event occurs. If more than one trigger condition is specified, the event fires whenever any one of the trigger conditions is met." )
+    protected List<TriggerDefinition> trigger;
 
-    private static final long serialVersionUID = 1396769290L;
+    private static final long serialVersionUID = 1022506246L;
 
   /**
    * Constructor
@@ -140,14 +176,13 @@ public class EventDefinition extends MetadataResource {
   /**
    * Constructor
    */
-    public EventDefinition(Enumeration<PublicationStatus> status, TriggerDefinition trigger) {
+    public EventDefinition(Enumeration<PublicationStatus> status) {
       super();
       this.status = status;
-      this.trigger = trigger;
     }
 
     /**
-     * @return {@link #url} (An absolute URI that is used to identify this event definition when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this event definition is (or will be) published. The URL SHOULD include the major version of the event definition. For more information see [Technical and Business Versions](resource.html#versions).). This is the underlying object with id, value and extensions. The accessor "getUrl" gives direct access to the value
+     * @return {@link #url} (An absolute URI that is used to identify this event definition when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which at which an authoritative instance of this event definition is (or will be) published. This URL can be the target of a canonical reference. It SHALL remain the same when the event definition is stored on different servers.). This is the underlying object with id, value and extensions. The accessor "getUrl" gives direct access to the value
      */
     public UriType getUrlElement() { 
       if (this.url == null)
@@ -167,7 +202,7 @@ public class EventDefinition extends MetadataResource {
     }
 
     /**
-     * @param value {@link #url} (An absolute URI that is used to identify this event definition when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this event definition is (or will be) published. The URL SHOULD include the major version of the event definition. For more information see [Technical and Business Versions](resource.html#versions).). This is the underlying object with id, value and extensions. The accessor "getUrl" gives direct access to the value
+     * @param value {@link #url} (An absolute URI that is used to identify this event definition when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which at which an authoritative instance of this event definition is (or will be) published. This URL can be the target of a canonical reference. It SHALL remain the same when the event definition is stored on different servers.). This is the underlying object with id, value and extensions. The accessor "getUrl" gives direct access to the value
      */
     public EventDefinition setUrlElement(UriType value) { 
       this.url = value;
@@ -175,14 +210,14 @@ public class EventDefinition extends MetadataResource {
     }
 
     /**
-     * @return An absolute URI that is used to identify this event definition when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this event definition is (or will be) published. The URL SHOULD include the major version of the event definition. For more information see [Technical and Business Versions](resource.html#versions).
+     * @return An absolute URI that is used to identify this event definition when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which at which an authoritative instance of this event definition is (or will be) published. This URL can be the target of a canonical reference. It SHALL remain the same when the event definition is stored on different servers.
      */
     public String getUrl() { 
       return this.url == null ? null : this.url.getValue();
     }
 
     /**
-     * @param value An absolute URI that is used to identify this event definition when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this event definition is (or will be) published. The URL SHOULD include the major version of the event definition. For more information see [Technical and Business Versions](resource.html#versions).
+     * @param value An absolute URI that is used to identify this event definition when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which at which an authoritative instance of this event definition is (or will be) published. This URL can be the target of a canonical reference. It SHALL remain the same when the event definition is stored on different servers.
      */
     public EventDefinition setUrl(String value) { 
       if (Utilities.noString(value))
@@ -396,6 +431,55 @@ public class EventDefinition extends MetadataResource {
     }
 
     /**
+     * @return {@link #subtitle} (An explanatory or alternate title for the event definition giving additional information about its content.). This is the underlying object with id, value and extensions. The accessor "getSubtitle" gives direct access to the value
+     */
+    public StringType getSubtitleElement() { 
+      if (this.subtitle == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create EventDefinition.subtitle");
+        else if (Configuration.doAutoCreate())
+          this.subtitle = new StringType(); // bb
+      return this.subtitle;
+    }
+
+    public boolean hasSubtitleElement() { 
+      return this.subtitle != null && !this.subtitle.isEmpty();
+    }
+
+    public boolean hasSubtitle() { 
+      return this.subtitle != null && !this.subtitle.isEmpty();
+    }
+
+    /**
+     * @param value {@link #subtitle} (An explanatory or alternate title for the event definition giving additional information about its content.). This is the underlying object with id, value and extensions. The accessor "getSubtitle" gives direct access to the value
+     */
+    public EventDefinition setSubtitleElement(StringType value) { 
+      this.subtitle = value;
+      return this;
+    }
+
+    /**
+     * @return An explanatory or alternate title for the event definition giving additional information about its content.
+     */
+    public String getSubtitle() { 
+      return this.subtitle == null ? null : this.subtitle.getValue();
+    }
+
+    /**
+     * @param value An explanatory or alternate title for the event definition giving additional information about its content.
+     */
+    public EventDefinition setSubtitle(String value) { 
+      if (Utilities.noString(value))
+        this.subtitle = null;
+      else {
+        if (this.subtitle == null)
+          this.subtitle = new StringType();
+        this.subtitle.setValue(value);
+      }
+      return this;
+    }
+
+    /**
      * @return {@link #status} (The status of this event definition. Enables tracking the life-cycle of the content.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
      */
     public Enumeration<PublicationStatus> getStatusElement() { 
@@ -441,7 +525,7 @@ public class EventDefinition extends MetadataResource {
     }
 
     /**
-     * @return {@link #experimental} (A boolean value to indicate that this event definition is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.). This is the underlying object with id, value and extensions. The accessor "getExperimental" gives direct access to the value
+     * @return {@link #experimental} (A Boolean value to indicate that this event definition is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.). This is the underlying object with id, value and extensions. The accessor "getExperimental" gives direct access to the value
      */
     public BooleanType getExperimentalElement() { 
       if (this.experimental == null)
@@ -461,7 +545,7 @@ public class EventDefinition extends MetadataResource {
     }
 
     /**
-     * @param value {@link #experimental} (A boolean value to indicate that this event definition is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.). This is the underlying object with id, value and extensions. The accessor "getExperimental" gives direct access to the value
+     * @param value {@link #experimental} (A Boolean value to indicate that this event definition is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.). This is the underlying object with id, value and extensions. The accessor "getExperimental" gives direct access to the value
      */
     public EventDefinition setExperimentalElement(BooleanType value) { 
       this.experimental = value;
@@ -469,14 +553,14 @@ public class EventDefinition extends MetadataResource {
     }
 
     /**
-     * @return A boolean value to indicate that this event definition is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
+     * @return A Boolean value to indicate that this event definition is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.
      */
     public boolean getExperimental() { 
       return this.experimental == null || this.experimental.isEmpty() ? false : this.experimental.getValue();
     }
 
     /**
-     * @param value A boolean value to indicate that this event definition is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
+     * @param value A Boolean value to indicate that this event definition is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.
      */
     public EventDefinition setExperimental(boolean value) { 
         if (this.experimental == null)
@@ -486,7 +570,58 @@ public class EventDefinition extends MetadataResource {
     }
 
     /**
-     * @return {@link #date} (The date  (and optionally time) when the event definition was published. The date must change if and when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the event definition changes.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
+     * @return {@link #subject} (A code or group definition that describes the intended subject of the event definition.)
+     */
+    public Type getSubject() { 
+      return this.subject;
+    }
+
+    /**
+     * @return {@link #subject} (A code or group definition that describes the intended subject of the event definition.)
+     */
+    public CodeableConcept getSubjectCodeableConcept() throws FHIRException { 
+      if (this.subject == null)
+        this.subject = new CodeableConcept();
+      if (!(this.subject instanceof CodeableConcept))
+        throw new FHIRException("Type mismatch: the type CodeableConcept was expected, but "+this.subject.getClass().getName()+" was encountered");
+      return (CodeableConcept) this.subject;
+    }
+
+    public boolean hasSubjectCodeableConcept() { 
+      return this != null && this.subject instanceof CodeableConcept;
+    }
+
+    /**
+     * @return {@link #subject} (A code or group definition that describes the intended subject of the event definition.)
+     */
+    public Reference getSubjectReference() throws FHIRException { 
+      if (this.subject == null)
+        this.subject = new Reference();
+      if (!(this.subject instanceof Reference))
+        throw new FHIRException("Type mismatch: the type Reference was expected, but "+this.subject.getClass().getName()+" was encountered");
+      return (Reference) this.subject;
+    }
+
+    public boolean hasSubjectReference() { 
+      return this != null && this.subject instanceof Reference;
+    }
+
+    public boolean hasSubject() { 
+      return this.subject != null && !this.subject.isEmpty();
+    }
+
+    /**
+     * @param value {@link #subject} (A code or group definition that describes the intended subject of the event definition.)
+     */
+    public EventDefinition setSubject(Type value) { 
+      if (value != null && !(value instanceof CodeableConcept || value instanceof Reference))
+        throw new Error("Not the right type for EventDefinition.subject[x]: "+value.fhirType());
+      this.subject = value;
+      return this;
+    }
+
+    /**
+     * @return {@link #date} (The date  (and optionally time) when the event definition was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the event definition changes.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
      */
     public DateTimeType getDateElement() { 
       if (this.date == null)
@@ -506,7 +641,7 @@ public class EventDefinition extends MetadataResource {
     }
 
     /**
-     * @param value {@link #date} (The date  (and optionally time) when the event definition was published. The date must change if and when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the event definition changes.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
+     * @param value {@link #date} (The date  (and optionally time) when the event definition was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the event definition changes.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
      */
     public EventDefinition setDateElement(DateTimeType value) { 
       this.date = value;
@@ -514,14 +649,14 @@ public class EventDefinition extends MetadataResource {
     }
 
     /**
-     * @return The date  (and optionally time) when the event definition was published. The date must change if and when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the event definition changes.
+     * @return The date  (and optionally time) when the event definition was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the event definition changes.
      */
     public Date getDate() { 
       return this.date == null ? null : this.date.getValue();
     }
 
     /**
-     * @param value The date  (and optionally time) when the event definition was published. The date must change if and when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the event definition changes.
+     * @param value The date  (and optionally time) when the event definition was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the event definition changes.
      */
     public EventDefinition setDate(Date value) { 
       if (value == null)
@@ -535,7 +670,7 @@ public class EventDefinition extends MetadataResource {
     }
 
     /**
-     * @return {@link #publisher} (The name of the individual or organization that published the event definition.). This is the underlying object with id, value and extensions. The accessor "getPublisher" gives direct access to the value
+     * @return {@link #publisher} (The name of the organization or individual that published the event definition.). This is the underlying object with id, value and extensions. The accessor "getPublisher" gives direct access to the value
      */
     public StringType getPublisherElement() { 
       if (this.publisher == null)
@@ -555,7 +690,7 @@ public class EventDefinition extends MetadataResource {
     }
 
     /**
-     * @param value {@link #publisher} (The name of the individual or organization that published the event definition.). This is the underlying object with id, value and extensions. The accessor "getPublisher" gives direct access to the value
+     * @param value {@link #publisher} (The name of the organization or individual that published the event definition.). This is the underlying object with id, value and extensions. The accessor "getPublisher" gives direct access to the value
      */
     public EventDefinition setPublisherElement(StringType value) { 
       this.publisher = value;
@@ -563,14 +698,14 @@ public class EventDefinition extends MetadataResource {
     }
 
     /**
-     * @return The name of the individual or organization that published the event definition.
+     * @return The name of the organization or individual that published the event definition.
      */
     public String getPublisher() { 
       return this.publisher == null ? null : this.publisher.getValue();
     }
 
     /**
-     * @param value The name of the individual or organization that published the event definition.
+     * @param value The name of the organization or individual that published the event definition.
      */
     public EventDefinition setPublisher(String value) { 
       if (Utilities.noString(value))
@@ -581,6 +716,59 @@ public class EventDefinition extends MetadataResource {
         this.publisher.setValue(value);
       }
       return this;
+    }
+
+    /**
+     * @return {@link #contact} (Contact details to assist a user in finding and communicating with the publisher.)
+     */
+    public List<ContactDetail> getContact() { 
+      if (this.contact == null)
+        this.contact = new ArrayList<ContactDetail>();
+      return this.contact;
+    }
+
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public EventDefinition setContact(List<ContactDetail> theContact) { 
+      this.contact = theContact;
+      return this;
+    }
+
+    public boolean hasContact() { 
+      if (this.contact == null)
+        return false;
+      for (ContactDetail item : this.contact)
+        if (!item.isEmpty())
+          return true;
+      return false;
+    }
+
+    public ContactDetail addContact() { //3
+      ContactDetail t = new ContactDetail();
+      if (this.contact == null)
+        this.contact = new ArrayList<ContactDetail>();
+      this.contact.add(t);
+      return t;
+    }
+
+    public EventDefinition addContact(ContactDetail t) { //3
+      if (t == null)
+        return this;
+      if (this.contact == null)
+        this.contact = new ArrayList<ContactDetail>();
+      this.contact.add(t);
+      return this;
+    }
+
+    /**
+     * @return The first repetition of repeating field {@link #contact}, creating it if it does not already exist
+     */
+    public ContactDetail getContactFirstRep() { 
+      if (getContact().isEmpty()) {
+        addContact();
+      }
+      return getContact().get(0);
     }
 
     /**
@@ -633,227 +821,7 @@ public class EventDefinition extends MetadataResource {
     }
 
     /**
-     * @return {@link #purpose} (Explaination of why this event definition is needed and why it has been designed as it has.). This is the underlying object with id, value and extensions. The accessor "getPurpose" gives direct access to the value
-     */
-    public MarkdownType getPurposeElement() { 
-      if (this.purpose == null)
-        if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create EventDefinition.purpose");
-        else if (Configuration.doAutoCreate())
-          this.purpose = new MarkdownType(); // bb
-      return this.purpose;
-    }
-
-    public boolean hasPurposeElement() { 
-      return this.purpose != null && !this.purpose.isEmpty();
-    }
-
-    public boolean hasPurpose() { 
-      return this.purpose != null && !this.purpose.isEmpty();
-    }
-
-    /**
-     * @param value {@link #purpose} (Explaination of why this event definition is needed and why it has been designed as it has.). This is the underlying object with id, value and extensions. The accessor "getPurpose" gives direct access to the value
-     */
-    public EventDefinition setPurposeElement(MarkdownType value) { 
-      this.purpose = value;
-      return this;
-    }
-
-    /**
-     * @return Explaination of why this event definition is needed and why it has been designed as it has.
-     */
-    public String getPurpose() { 
-      return this.purpose == null ? null : this.purpose.getValue();
-    }
-
-    /**
-     * @param value Explaination of why this event definition is needed and why it has been designed as it has.
-     */
-    public EventDefinition setPurpose(String value) { 
-      if (value == null)
-        this.purpose = null;
-      else {
-        if (this.purpose == null)
-          this.purpose = new MarkdownType();
-        this.purpose.setValue(value);
-      }
-      return this;
-    }
-
-    /**
-     * @return {@link #usage} (A detailed description of how the event definition is used from a clinical perspective.). This is the underlying object with id, value and extensions. The accessor "getUsage" gives direct access to the value
-     */
-    public StringType getUsageElement() { 
-      if (this.usage == null)
-        if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create EventDefinition.usage");
-        else if (Configuration.doAutoCreate())
-          this.usage = new StringType(); // bb
-      return this.usage;
-    }
-
-    public boolean hasUsageElement() { 
-      return this.usage != null && !this.usage.isEmpty();
-    }
-
-    public boolean hasUsage() { 
-      return this.usage != null && !this.usage.isEmpty();
-    }
-
-    /**
-     * @param value {@link #usage} (A detailed description of how the event definition is used from a clinical perspective.). This is the underlying object with id, value and extensions. The accessor "getUsage" gives direct access to the value
-     */
-    public EventDefinition setUsageElement(StringType value) { 
-      this.usage = value;
-      return this;
-    }
-
-    /**
-     * @return A detailed description of how the event definition is used from a clinical perspective.
-     */
-    public String getUsage() { 
-      return this.usage == null ? null : this.usage.getValue();
-    }
-
-    /**
-     * @param value A detailed description of how the event definition is used from a clinical perspective.
-     */
-    public EventDefinition setUsage(String value) { 
-      if (Utilities.noString(value))
-        this.usage = null;
-      else {
-        if (this.usage == null)
-          this.usage = new StringType();
-        this.usage.setValue(value);
-      }
-      return this;
-    }
-
-    /**
-     * @return {@link #approvalDate} (The date on which the resource content was approved by the publisher. Approval happens once when the content is officially approved for usage.). This is the underlying object with id, value and extensions. The accessor "getApprovalDate" gives direct access to the value
-     */
-    public DateType getApprovalDateElement() { 
-      if (this.approvalDate == null)
-        if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create EventDefinition.approvalDate");
-        else if (Configuration.doAutoCreate())
-          this.approvalDate = new DateType(); // bb
-      return this.approvalDate;
-    }
-
-    public boolean hasApprovalDateElement() { 
-      return this.approvalDate != null && !this.approvalDate.isEmpty();
-    }
-
-    public boolean hasApprovalDate() { 
-      return this.approvalDate != null && !this.approvalDate.isEmpty();
-    }
-
-    /**
-     * @param value {@link #approvalDate} (The date on which the resource content was approved by the publisher. Approval happens once when the content is officially approved for usage.). This is the underlying object with id, value and extensions. The accessor "getApprovalDate" gives direct access to the value
-     */
-    public EventDefinition setApprovalDateElement(DateType value) { 
-      this.approvalDate = value;
-      return this;
-    }
-
-    /**
-     * @return The date on which the resource content was approved by the publisher. Approval happens once when the content is officially approved for usage.
-     */
-    public Date getApprovalDate() { 
-      return this.approvalDate == null ? null : this.approvalDate.getValue();
-    }
-
-    /**
-     * @param value The date on which the resource content was approved by the publisher. Approval happens once when the content is officially approved for usage.
-     */
-    public EventDefinition setApprovalDate(Date value) { 
-      if (value == null)
-        this.approvalDate = null;
-      else {
-        if (this.approvalDate == null)
-          this.approvalDate = new DateType();
-        this.approvalDate.setValue(value);
-      }
-      return this;
-    }
-
-    /**
-     * @return {@link #lastReviewDate} (The date on which the resource content was last reviewed. Review happens periodically after approval, but doesn't change the original approval date.). This is the underlying object with id, value and extensions. The accessor "getLastReviewDate" gives direct access to the value
-     */
-    public DateType getLastReviewDateElement() { 
-      if (this.lastReviewDate == null)
-        if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create EventDefinition.lastReviewDate");
-        else if (Configuration.doAutoCreate())
-          this.lastReviewDate = new DateType(); // bb
-      return this.lastReviewDate;
-    }
-
-    public boolean hasLastReviewDateElement() { 
-      return this.lastReviewDate != null && !this.lastReviewDate.isEmpty();
-    }
-
-    public boolean hasLastReviewDate() { 
-      return this.lastReviewDate != null && !this.lastReviewDate.isEmpty();
-    }
-
-    /**
-     * @param value {@link #lastReviewDate} (The date on which the resource content was last reviewed. Review happens periodically after approval, but doesn't change the original approval date.). This is the underlying object with id, value and extensions. The accessor "getLastReviewDate" gives direct access to the value
-     */
-    public EventDefinition setLastReviewDateElement(DateType value) { 
-      this.lastReviewDate = value;
-      return this;
-    }
-
-    /**
-     * @return The date on which the resource content was last reviewed. Review happens periodically after approval, but doesn't change the original approval date.
-     */
-    public Date getLastReviewDate() { 
-      return this.lastReviewDate == null ? null : this.lastReviewDate.getValue();
-    }
-
-    /**
-     * @param value The date on which the resource content was last reviewed. Review happens periodically after approval, but doesn't change the original approval date.
-     */
-    public EventDefinition setLastReviewDate(Date value) { 
-      if (value == null)
-        this.lastReviewDate = null;
-      else {
-        if (this.lastReviewDate == null)
-          this.lastReviewDate = new DateType();
-        this.lastReviewDate.setValue(value);
-      }
-      return this;
-    }
-
-    /**
-     * @return {@link #effectivePeriod} (The period during which the event definition content was or is planned to be in active use.)
-     */
-    public Period getEffectivePeriod() { 
-      if (this.effectivePeriod == null)
-        if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create EventDefinition.effectivePeriod");
-        else if (Configuration.doAutoCreate())
-          this.effectivePeriod = new Period(); // cc
-      return this.effectivePeriod;
-    }
-
-    public boolean hasEffectivePeriod() { 
-      return this.effectivePeriod != null && !this.effectivePeriod.isEmpty();
-    }
-
-    /**
-     * @param value {@link #effectivePeriod} (The period during which the event definition content was or is planned to be in active use.)
-     */
-    public EventDefinition setEffectivePeriod(Period value) { 
-      this.effectivePeriod = value;
-      return this;
-    }
-
-    /**
-     * @return {@link #useContext} (The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching for appropriate event definition instances.)
+     * @return {@link #useContext} (The content was developed with a focus and intent of supporting the contexts that are listed. These contexts may be general categories (gender, age, ...) or may be references to specific programs (insurance plans, studies, ...) and may be used to assist with indexing and searching for appropriate event definition instances.)
      */
     public List<UsageContext> getUseContext() { 
       if (this.useContext == null)
@@ -959,6 +927,275 @@ public class EventDefinition extends MetadataResource {
     }
 
     /**
+     * @return {@link #purpose} (Explanation of why this event definition is needed and why it has been designed as it has.). This is the underlying object with id, value and extensions. The accessor "getPurpose" gives direct access to the value
+     */
+    public MarkdownType getPurposeElement() { 
+      if (this.purpose == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create EventDefinition.purpose");
+        else if (Configuration.doAutoCreate())
+          this.purpose = new MarkdownType(); // bb
+      return this.purpose;
+    }
+
+    public boolean hasPurposeElement() { 
+      return this.purpose != null && !this.purpose.isEmpty();
+    }
+
+    public boolean hasPurpose() { 
+      return this.purpose != null && !this.purpose.isEmpty();
+    }
+
+    /**
+     * @param value {@link #purpose} (Explanation of why this event definition is needed and why it has been designed as it has.). This is the underlying object with id, value and extensions. The accessor "getPurpose" gives direct access to the value
+     */
+    public EventDefinition setPurposeElement(MarkdownType value) { 
+      this.purpose = value;
+      return this;
+    }
+
+    /**
+     * @return Explanation of why this event definition is needed and why it has been designed as it has.
+     */
+    public String getPurpose() { 
+      return this.purpose == null ? null : this.purpose.getValue();
+    }
+
+    /**
+     * @param value Explanation of why this event definition is needed and why it has been designed as it has.
+     */
+    public EventDefinition setPurpose(String value) { 
+      if (value == null)
+        this.purpose = null;
+      else {
+        if (this.purpose == null)
+          this.purpose = new MarkdownType();
+        this.purpose.setValue(value);
+      }
+      return this;
+    }
+
+    /**
+     * @return {@link #usage} (A detailed description of how the event definition is used from a clinical perspective.). This is the underlying object with id, value and extensions. The accessor "getUsage" gives direct access to the value
+     */
+    public StringType getUsageElement() { 
+      if (this.usage == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create EventDefinition.usage");
+        else if (Configuration.doAutoCreate())
+          this.usage = new StringType(); // bb
+      return this.usage;
+    }
+
+    public boolean hasUsageElement() { 
+      return this.usage != null && !this.usage.isEmpty();
+    }
+
+    public boolean hasUsage() { 
+      return this.usage != null && !this.usage.isEmpty();
+    }
+
+    /**
+     * @param value {@link #usage} (A detailed description of how the event definition is used from a clinical perspective.). This is the underlying object with id, value and extensions. The accessor "getUsage" gives direct access to the value
+     */
+    public EventDefinition setUsageElement(StringType value) { 
+      this.usage = value;
+      return this;
+    }
+
+    /**
+     * @return A detailed description of how the event definition is used from a clinical perspective.
+     */
+    public String getUsage() { 
+      return this.usage == null ? null : this.usage.getValue();
+    }
+
+    /**
+     * @param value A detailed description of how the event definition is used from a clinical perspective.
+     */
+    public EventDefinition setUsage(String value) { 
+      if (Utilities.noString(value))
+        this.usage = null;
+      else {
+        if (this.usage == null)
+          this.usage = new StringType();
+        this.usage.setValue(value);
+      }
+      return this;
+    }
+
+    /**
+     * @return {@link #copyright} (A copyright statement relating to the event definition and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the event definition.). This is the underlying object with id, value and extensions. The accessor "getCopyright" gives direct access to the value
+     */
+    public MarkdownType getCopyrightElement() { 
+      if (this.copyright == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create EventDefinition.copyright");
+        else if (Configuration.doAutoCreate())
+          this.copyright = new MarkdownType(); // bb
+      return this.copyright;
+    }
+
+    public boolean hasCopyrightElement() { 
+      return this.copyright != null && !this.copyright.isEmpty();
+    }
+
+    public boolean hasCopyright() { 
+      return this.copyright != null && !this.copyright.isEmpty();
+    }
+
+    /**
+     * @param value {@link #copyright} (A copyright statement relating to the event definition and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the event definition.). This is the underlying object with id, value and extensions. The accessor "getCopyright" gives direct access to the value
+     */
+    public EventDefinition setCopyrightElement(MarkdownType value) { 
+      this.copyright = value;
+      return this;
+    }
+
+    /**
+     * @return A copyright statement relating to the event definition and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the event definition.
+     */
+    public String getCopyright() { 
+      return this.copyright == null ? null : this.copyright.getValue();
+    }
+
+    /**
+     * @param value A copyright statement relating to the event definition and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the event definition.
+     */
+    public EventDefinition setCopyright(String value) { 
+      if (value == null)
+        this.copyright = null;
+      else {
+        if (this.copyright == null)
+          this.copyright = new MarkdownType();
+        this.copyright.setValue(value);
+      }
+      return this;
+    }
+
+    /**
+     * @return {@link #approvalDate} (The date on which the resource content was approved by the publisher. Approval happens once when the content is officially approved for usage.). This is the underlying object with id, value and extensions. The accessor "getApprovalDate" gives direct access to the value
+     */
+    public DateType getApprovalDateElement() { 
+      if (this.approvalDate == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create EventDefinition.approvalDate");
+        else if (Configuration.doAutoCreate())
+          this.approvalDate = new DateType(); // bb
+      return this.approvalDate;
+    }
+
+    public boolean hasApprovalDateElement() { 
+      return this.approvalDate != null && !this.approvalDate.isEmpty();
+    }
+
+    public boolean hasApprovalDate() { 
+      return this.approvalDate != null && !this.approvalDate.isEmpty();
+    }
+
+    /**
+     * @param value {@link #approvalDate} (The date on which the resource content was approved by the publisher. Approval happens once when the content is officially approved for usage.). This is the underlying object with id, value and extensions. The accessor "getApprovalDate" gives direct access to the value
+     */
+    public EventDefinition setApprovalDateElement(DateType value) { 
+      this.approvalDate = value;
+      return this;
+    }
+
+    /**
+     * @return The date on which the resource content was approved by the publisher. Approval happens once when the content is officially approved for usage.
+     */
+    public Date getApprovalDate() { 
+      return this.approvalDate == null ? null : this.approvalDate.getValue();
+    }
+
+    /**
+     * @param value The date on which the resource content was approved by the publisher. Approval happens once when the content is officially approved for usage.
+     */
+    public EventDefinition setApprovalDate(Date value) { 
+      if (value == null)
+        this.approvalDate = null;
+      else {
+        if (this.approvalDate == null)
+          this.approvalDate = new DateType();
+        this.approvalDate.setValue(value);
+      }
+      return this;
+    }
+
+    /**
+     * @return {@link #lastReviewDate} (The date on which the resource content was last reviewed. Review happens periodically after approval but does not change the original approval date.). This is the underlying object with id, value and extensions. The accessor "getLastReviewDate" gives direct access to the value
+     */
+    public DateType getLastReviewDateElement() { 
+      if (this.lastReviewDate == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create EventDefinition.lastReviewDate");
+        else if (Configuration.doAutoCreate())
+          this.lastReviewDate = new DateType(); // bb
+      return this.lastReviewDate;
+    }
+
+    public boolean hasLastReviewDateElement() { 
+      return this.lastReviewDate != null && !this.lastReviewDate.isEmpty();
+    }
+
+    public boolean hasLastReviewDate() { 
+      return this.lastReviewDate != null && !this.lastReviewDate.isEmpty();
+    }
+
+    /**
+     * @param value {@link #lastReviewDate} (The date on which the resource content was last reviewed. Review happens periodically after approval but does not change the original approval date.). This is the underlying object with id, value and extensions. The accessor "getLastReviewDate" gives direct access to the value
+     */
+    public EventDefinition setLastReviewDateElement(DateType value) { 
+      this.lastReviewDate = value;
+      return this;
+    }
+
+    /**
+     * @return The date on which the resource content was last reviewed. Review happens periodically after approval but does not change the original approval date.
+     */
+    public Date getLastReviewDate() { 
+      return this.lastReviewDate == null ? null : this.lastReviewDate.getValue();
+    }
+
+    /**
+     * @param value The date on which the resource content was last reviewed. Review happens periodically after approval but does not change the original approval date.
+     */
+    public EventDefinition setLastReviewDate(Date value) { 
+      if (value == null)
+        this.lastReviewDate = null;
+      else {
+        if (this.lastReviewDate == null)
+          this.lastReviewDate = new DateType();
+        this.lastReviewDate.setValue(value);
+      }
+      return this;
+    }
+
+    /**
+     * @return {@link #effectivePeriod} (The period during which the event definition content was or is planned to be in active use.)
+     */
+    public Period getEffectivePeriod() { 
+      if (this.effectivePeriod == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create EventDefinition.effectivePeriod");
+        else if (Configuration.doAutoCreate())
+          this.effectivePeriod = new Period(); // cc
+      return this.effectivePeriod;
+    }
+
+    public boolean hasEffectivePeriod() { 
+      return this.effectivePeriod != null && !this.effectivePeriod.isEmpty();
+    }
+
+    /**
+     * @param value {@link #effectivePeriod} (The period during which the event definition content was or is planned to be in active use.)
+     */
+    public EventDefinition setEffectivePeriod(Period value) { 
+      this.effectivePeriod = value;
+      return this;
+    }
+
+    /**
      * @return {@link #topic} (Descriptive topics related to the module. Topics provide a high-level categorization of the module that can be useful for filtering and searching.)
      */
     public List<CodeableConcept> getTopic() { 
@@ -1012,158 +1249,215 @@ public class EventDefinition extends MetadataResource {
     }
 
     /**
-     * @return {@link #contributor} (A contributor to the content of the module, including authors, editors, reviewers, and endorsers.)
+     * @return {@link #author} (An individiual or organization primarily involved in the creation and maintenance of the content.)
      */
-    public List<Contributor> getContributor() { 
-      if (this.contributor == null)
-        this.contributor = new ArrayList<Contributor>();
-      return this.contributor;
+    public List<ContactDetail> getAuthor() { 
+      if (this.author == null)
+        this.author = new ArrayList<ContactDetail>();
+      return this.author;
     }
 
     /**
      * @return Returns a reference to <code>this</code> for easy method chaining
      */
-    public EventDefinition setContributor(List<Contributor> theContributor) { 
-      this.contributor = theContributor;
+    public EventDefinition setAuthor(List<ContactDetail> theAuthor) { 
+      this.author = theAuthor;
       return this;
     }
 
-    public boolean hasContributor() { 
-      if (this.contributor == null)
+    public boolean hasAuthor() { 
+      if (this.author == null)
         return false;
-      for (Contributor item : this.contributor)
+      for (ContactDetail item : this.author)
         if (!item.isEmpty())
           return true;
       return false;
     }
 
-    public Contributor addContributor() { //3
-      Contributor t = new Contributor();
-      if (this.contributor == null)
-        this.contributor = new ArrayList<Contributor>();
-      this.contributor.add(t);
-      return t;
-    }
-
-    public EventDefinition addContributor(Contributor t) { //3
-      if (t == null)
-        return this;
-      if (this.contributor == null)
-        this.contributor = new ArrayList<Contributor>();
-      this.contributor.add(t);
-      return this;
-    }
-
-    /**
-     * @return The first repetition of repeating field {@link #contributor}, creating it if it does not already exist
-     */
-    public Contributor getContributorFirstRep() { 
-      if (getContributor().isEmpty()) {
-        addContributor();
-      }
-      return getContributor().get(0);
-    }
-
-    /**
-     * @return {@link #contact} (Contact details to assist a user in finding and communicating with the publisher.)
-     */
-    public List<ContactDetail> getContact() { 
-      if (this.contact == null)
-        this.contact = new ArrayList<ContactDetail>();
-      return this.contact;
-    }
-
-    /**
-     * @return Returns a reference to <code>this</code> for easy method chaining
-     */
-    public EventDefinition setContact(List<ContactDetail> theContact) { 
-      this.contact = theContact;
-      return this;
-    }
-
-    public boolean hasContact() { 
-      if (this.contact == null)
-        return false;
-      for (ContactDetail item : this.contact)
-        if (!item.isEmpty())
-          return true;
-      return false;
-    }
-
-    public ContactDetail addContact() { //3
+    public ContactDetail addAuthor() { //3
       ContactDetail t = new ContactDetail();
-      if (this.contact == null)
-        this.contact = new ArrayList<ContactDetail>();
-      this.contact.add(t);
+      if (this.author == null)
+        this.author = new ArrayList<ContactDetail>();
+      this.author.add(t);
       return t;
     }
 
-    public EventDefinition addContact(ContactDetail t) { //3
+    public EventDefinition addAuthor(ContactDetail t) { //3
       if (t == null)
         return this;
-      if (this.contact == null)
-        this.contact = new ArrayList<ContactDetail>();
-      this.contact.add(t);
+      if (this.author == null)
+        this.author = new ArrayList<ContactDetail>();
+      this.author.add(t);
       return this;
     }
 
     /**
-     * @return The first repetition of repeating field {@link #contact}, creating it if it does not already exist
+     * @return The first repetition of repeating field {@link #author}, creating it if it does not already exist
      */
-    public ContactDetail getContactFirstRep() { 
-      if (getContact().isEmpty()) {
-        addContact();
+    public ContactDetail getAuthorFirstRep() { 
+      if (getAuthor().isEmpty()) {
+        addAuthor();
       }
-      return getContact().get(0);
+      return getAuthor().get(0);
     }
 
     /**
-     * @return {@link #copyright} (A copyright statement relating to the event definition and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the event definition.). This is the underlying object with id, value and extensions. The accessor "getCopyright" gives direct access to the value
+     * @return {@link #editor} (An individual or organization primarily responsible for internal coherence of the content.)
      */
-    public MarkdownType getCopyrightElement() { 
-      if (this.copyright == null)
-        if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create EventDefinition.copyright");
-        else if (Configuration.doAutoCreate())
-          this.copyright = new MarkdownType(); // bb
-      return this.copyright;
-    }
-
-    public boolean hasCopyrightElement() { 
-      return this.copyright != null && !this.copyright.isEmpty();
-    }
-
-    public boolean hasCopyright() { 
-      return this.copyright != null && !this.copyright.isEmpty();
+    public List<ContactDetail> getEditor() { 
+      if (this.editor == null)
+        this.editor = new ArrayList<ContactDetail>();
+      return this.editor;
     }
 
     /**
-     * @param value {@link #copyright} (A copyright statement relating to the event definition and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the event definition.). This is the underlying object with id, value and extensions. The accessor "getCopyright" gives direct access to the value
+     * @return Returns a reference to <code>this</code> for easy method chaining
      */
-    public EventDefinition setCopyrightElement(MarkdownType value) { 
-      this.copyright = value;
+    public EventDefinition setEditor(List<ContactDetail> theEditor) { 
+      this.editor = theEditor;
+      return this;
+    }
+
+    public boolean hasEditor() { 
+      if (this.editor == null)
+        return false;
+      for (ContactDetail item : this.editor)
+        if (!item.isEmpty())
+          return true;
+      return false;
+    }
+
+    public ContactDetail addEditor() { //3
+      ContactDetail t = new ContactDetail();
+      if (this.editor == null)
+        this.editor = new ArrayList<ContactDetail>();
+      this.editor.add(t);
+      return t;
+    }
+
+    public EventDefinition addEditor(ContactDetail t) { //3
+      if (t == null)
+        return this;
+      if (this.editor == null)
+        this.editor = new ArrayList<ContactDetail>();
+      this.editor.add(t);
       return this;
     }
 
     /**
-     * @return A copyright statement relating to the event definition and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the event definition.
+     * @return The first repetition of repeating field {@link #editor}, creating it if it does not already exist
      */
-    public String getCopyright() { 
-      return this.copyright == null ? null : this.copyright.getValue();
-    }
-
-    /**
-     * @param value A copyright statement relating to the event definition and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the event definition.
-     */
-    public EventDefinition setCopyright(String value) { 
-      if (value == null)
-        this.copyright = null;
-      else {
-        if (this.copyright == null)
-          this.copyright = new MarkdownType();
-        this.copyright.setValue(value);
+    public ContactDetail getEditorFirstRep() { 
+      if (getEditor().isEmpty()) {
+        addEditor();
       }
+      return getEditor().get(0);
+    }
+
+    /**
+     * @return {@link #reviewer} (An individual or organization primarily responsible for review of some aspect of the content.)
+     */
+    public List<ContactDetail> getReviewer() { 
+      if (this.reviewer == null)
+        this.reviewer = new ArrayList<ContactDetail>();
+      return this.reviewer;
+    }
+
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public EventDefinition setReviewer(List<ContactDetail> theReviewer) { 
+      this.reviewer = theReviewer;
       return this;
+    }
+
+    public boolean hasReviewer() { 
+      if (this.reviewer == null)
+        return false;
+      for (ContactDetail item : this.reviewer)
+        if (!item.isEmpty())
+          return true;
+      return false;
+    }
+
+    public ContactDetail addReviewer() { //3
+      ContactDetail t = new ContactDetail();
+      if (this.reviewer == null)
+        this.reviewer = new ArrayList<ContactDetail>();
+      this.reviewer.add(t);
+      return t;
+    }
+
+    public EventDefinition addReviewer(ContactDetail t) { //3
+      if (t == null)
+        return this;
+      if (this.reviewer == null)
+        this.reviewer = new ArrayList<ContactDetail>();
+      this.reviewer.add(t);
+      return this;
+    }
+
+    /**
+     * @return The first repetition of repeating field {@link #reviewer}, creating it if it does not already exist
+     */
+    public ContactDetail getReviewerFirstRep() { 
+      if (getReviewer().isEmpty()) {
+        addReviewer();
+      }
+      return getReviewer().get(0);
+    }
+
+    /**
+     * @return {@link #endorser} (An individual or organization responsible for officially endorsing the content for use in some setting.)
+     */
+    public List<ContactDetail> getEndorser() { 
+      if (this.endorser == null)
+        this.endorser = new ArrayList<ContactDetail>();
+      return this.endorser;
+    }
+
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public EventDefinition setEndorser(List<ContactDetail> theEndorser) { 
+      this.endorser = theEndorser;
+      return this;
+    }
+
+    public boolean hasEndorser() { 
+      if (this.endorser == null)
+        return false;
+      for (ContactDetail item : this.endorser)
+        if (!item.isEmpty())
+          return true;
+      return false;
+    }
+
+    public ContactDetail addEndorser() { //3
+      ContactDetail t = new ContactDetail();
+      if (this.endorser == null)
+        this.endorser = new ArrayList<ContactDetail>();
+      this.endorser.add(t);
+      return t;
+    }
+
+    public EventDefinition addEndorser(ContactDetail t) { //3
+      if (t == null)
+        return this;
+      if (this.endorser == null)
+        this.endorser = new ArrayList<ContactDetail>();
+      this.endorser.add(t);
+      return this;
+    }
+
+    /**
+     * @return The first repetition of repeating field {@link #endorser}, creating it if it does not already exist
+     */
+    public ContactDetail getEndorserFirstRep() { 
+      if (getEndorser().isEmpty()) {
+        addEndorser();
+      }
+      return getEndorser().get(0);
     }
 
     /**
@@ -1220,82 +1514,124 @@ public class EventDefinition extends MetadataResource {
     }
 
     /**
-     * @return {@link #trigger} (The trigger element defines when the event occurs.)
+     * @return {@link #trigger} (The trigger element defines when the event occurs. If more than one trigger condition is specified, the event fires whenever any one of the trigger conditions is met.)
      */
-    public TriggerDefinition getTrigger() { 
+    public List<TriggerDefinition> getTrigger() { 
       if (this.trigger == null)
-        if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create EventDefinition.trigger");
-        else if (Configuration.doAutoCreate())
-          this.trigger = new TriggerDefinition(); // cc
+        this.trigger = new ArrayList<TriggerDefinition>();
       return this.trigger;
     }
 
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public EventDefinition setTrigger(List<TriggerDefinition> theTrigger) { 
+      this.trigger = theTrigger;
+      return this;
+    }
+
     public boolean hasTrigger() { 
-      return this.trigger != null && !this.trigger.isEmpty();
+      if (this.trigger == null)
+        return false;
+      for (TriggerDefinition item : this.trigger)
+        if (!item.isEmpty())
+          return true;
+      return false;
+    }
+
+    public TriggerDefinition addTrigger() { //3
+      TriggerDefinition t = new TriggerDefinition();
+      if (this.trigger == null)
+        this.trigger = new ArrayList<TriggerDefinition>();
+      this.trigger.add(t);
+      return t;
+    }
+
+    public EventDefinition addTrigger(TriggerDefinition t) { //3
+      if (t == null)
+        return this;
+      if (this.trigger == null)
+        this.trigger = new ArrayList<TriggerDefinition>();
+      this.trigger.add(t);
+      return this;
     }
 
     /**
-     * @param value {@link #trigger} (The trigger element defines when the event occurs.)
+     * @return The first repetition of repeating field {@link #trigger}, creating it if it does not already exist
      */
-    public EventDefinition setTrigger(TriggerDefinition value) { 
-      this.trigger = value;
-      return this;
+    public TriggerDefinition getTriggerFirstRep() { 
+      if (getTrigger().isEmpty()) {
+        addTrigger();
+      }
+      return getTrigger().get(0);
     }
 
       protected void listChildren(List<Property> children) {
         super.listChildren(children);
-        children.add(new Property("url", "uri", "An absolute URI that is used to identify this event definition when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this event definition is (or will be) published. The URL SHOULD include the major version of the event definition. For more information see [Technical and Business Versions](resource.html#versions).", 0, 1, url));
+        children.add(new Property("url", "uri", "An absolute URI that is used to identify this event definition when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which at which an authoritative instance of this event definition is (or will be) published. This URL can be the target of a canonical reference. It SHALL remain the same when the event definition is stored on different servers.", 0, 1, url));
         children.add(new Property("identifier", "Identifier", "A formal identifier that is used to identify this event definition when it is represented in other formats, or referenced in a specification, model, design or an instance.", 0, java.lang.Integer.MAX_VALUE, identifier));
         children.add(new Property("version", "string", "The identifier that is used to identify this version of the event definition when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the event definition author and is not expected to be globally unique. For example, it might be a timestamp (e.g. yyyymmdd) if a managed version is not available. There is also no expectation that versions can be placed in a lexicographical sequence.", 0, 1, version));
         children.add(new Property("name", "string", "A natural language name identifying the event definition. This name should be usable as an identifier for the module by machine processing applications such as code generation.", 0, 1, name));
         children.add(new Property("title", "string", "A short, descriptive, user-friendly title for the event definition.", 0, 1, title));
+        children.add(new Property("subtitle", "string", "An explanatory or alternate title for the event definition giving additional information about its content.", 0, 1, subtitle));
         children.add(new Property("status", "code", "The status of this event definition. Enables tracking the life-cycle of the content.", 0, 1, status));
-        children.add(new Property("experimental", "boolean", "A boolean value to indicate that this event definition is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.", 0, 1, experimental));
-        children.add(new Property("date", "dateTime", "The date  (and optionally time) when the event definition was published. The date must change if and when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the event definition changes.", 0, 1, date));
-        children.add(new Property("publisher", "string", "The name of the individual or organization that published the event definition.", 0, 1, publisher));
-        children.add(new Property("description", "markdown", "A free text natural language description of the event definition from a consumer's perspective.", 0, 1, description));
-        children.add(new Property("purpose", "markdown", "Explaination of why this event definition is needed and why it has been designed as it has.", 0, 1, purpose));
-        children.add(new Property("usage", "string", "A detailed description of how the event definition is used from a clinical perspective.", 0, 1, usage));
-        children.add(new Property("approvalDate", "date", "The date on which the resource content was approved by the publisher. Approval happens once when the content is officially approved for usage.", 0, 1, approvalDate));
-        children.add(new Property("lastReviewDate", "date", "The date on which the resource content was last reviewed. Review happens periodically after approval, but doesn't change the original approval date.", 0, 1, lastReviewDate));
-        children.add(new Property("effectivePeriod", "Period", "The period during which the event definition content was or is planned to be in active use.", 0, 1, effectivePeriod));
-        children.add(new Property("useContext", "UsageContext", "The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching for appropriate event definition instances.", 0, java.lang.Integer.MAX_VALUE, useContext));
-        children.add(new Property("jurisdiction", "CodeableConcept", "A legal or geographic region in which the event definition is intended to be used.", 0, java.lang.Integer.MAX_VALUE, jurisdiction));
-        children.add(new Property("topic", "CodeableConcept", "Descriptive topics related to the module. Topics provide a high-level categorization of the module that can be useful for filtering and searching.", 0, java.lang.Integer.MAX_VALUE, topic));
-        children.add(new Property("contributor", "Contributor", "A contributor to the content of the module, including authors, editors, reviewers, and endorsers.", 0, java.lang.Integer.MAX_VALUE, contributor));
+        children.add(new Property("experimental", "boolean", "A Boolean value to indicate that this event definition is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.", 0, 1, experimental));
+        children.add(new Property("subject[x]", "CodeableConcept|Reference(Group)", "A code or group definition that describes the intended subject of the event definition.", 0, 1, subject));
+        children.add(new Property("date", "dateTime", "The date  (and optionally time) when the event definition was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the event definition changes.", 0, 1, date));
+        children.add(new Property("publisher", "string", "The name of the organization or individual that published the event definition.", 0, 1, publisher));
         children.add(new Property("contact", "ContactDetail", "Contact details to assist a user in finding and communicating with the publisher.", 0, java.lang.Integer.MAX_VALUE, contact));
+        children.add(new Property("description", "markdown", "A free text natural language description of the event definition from a consumer's perspective.", 0, 1, description));
+        children.add(new Property("useContext", "UsageContext", "The content was developed with a focus and intent of supporting the contexts that are listed. These contexts may be general categories (gender, age, ...) or may be references to specific programs (insurance plans, studies, ...) and may be used to assist with indexing and searching for appropriate event definition instances.", 0, java.lang.Integer.MAX_VALUE, useContext));
+        children.add(new Property("jurisdiction", "CodeableConcept", "A legal or geographic region in which the event definition is intended to be used.", 0, java.lang.Integer.MAX_VALUE, jurisdiction));
+        children.add(new Property("purpose", "markdown", "Explanation of why this event definition is needed and why it has been designed as it has.", 0, 1, purpose));
+        children.add(new Property("usage", "string", "A detailed description of how the event definition is used from a clinical perspective.", 0, 1, usage));
         children.add(new Property("copyright", "markdown", "A copyright statement relating to the event definition and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the event definition.", 0, 1, copyright));
+        children.add(new Property("approvalDate", "date", "The date on which the resource content was approved by the publisher. Approval happens once when the content is officially approved for usage.", 0, 1, approvalDate));
+        children.add(new Property("lastReviewDate", "date", "The date on which the resource content was last reviewed. Review happens periodically after approval but does not change the original approval date.", 0, 1, lastReviewDate));
+        children.add(new Property("effectivePeriod", "Period", "The period during which the event definition content was or is planned to be in active use.", 0, 1, effectivePeriod));
+        children.add(new Property("topic", "CodeableConcept", "Descriptive topics related to the module. Topics provide a high-level categorization of the module that can be useful for filtering and searching.", 0, java.lang.Integer.MAX_VALUE, topic));
+        children.add(new Property("author", "ContactDetail", "An individiual or organization primarily involved in the creation and maintenance of the content.", 0, java.lang.Integer.MAX_VALUE, author));
+        children.add(new Property("editor", "ContactDetail", "An individual or organization primarily responsible for internal coherence of the content.", 0, java.lang.Integer.MAX_VALUE, editor));
+        children.add(new Property("reviewer", "ContactDetail", "An individual or organization primarily responsible for review of some aspect of the content.", 0, java.lang.Integer.MAX_VALUE, reviewer));
+        children.add(new Property("endorser", "ContactDetail", "An individual or organization responsible for officially endorsing the content for use in some setting.", 0, java.lang.Integer.MAX_VALUE, endorser));
         children.add(new Property("relatedArtifact", "RelatedArtifact", "Related resources such as additional documentation, justification, or bibliographic references.", 0, java.lang.Integer.MAX_VALUE, relatedArtifact));
-        children.add(new Property("trigger", "TriggerDefinition", "The trigger element defines when the event occurs.", 0, 1, trigger));
+        children.add(new Property("trigger", "TriggerDefinition", "The trigger element defines when the event occurs. If more than one trigger condition is specified, the event fires whenever any one of the trigger conditions is met.", 0, java.lang.Integer.MAX_VALUE, trigger));
       }
 
       @Override
       public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
         switch (_hash) {
-        case 116079: /*url*/  return new Property("url", "uri", "An absolute URI that is used to identify this event definition when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this event definition is (or will be) published. The URL SHOULD include the major version of the event definition. For more information see [Technical and Business Versions](resource.html#versions).", 0, 1, url);
+        case 116079: /*url*/  return new Property("url", "uri", "An absolute URI that is used to identify this event definition when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which at which an authoritative instance of this event definition is (or will be) published. This URL can be the target of a canonical reference. It SHALL remain the same when the event definition is stored on different servers.", 0, 1, url);
         case -1618432855: /*identifier*/  return new Property("identifier", "Identifier", "A formal identifier that is used to identify this event definition when it is represented in other formats, or referenced in a specification, model, design or an instance.", 0, java.lang.Integer.MAX_VALUE, identifier);
         case 351608024: /*version*/  return new Property("version", "string", "The identifier that is used to identify this version of the event definition when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the event definition author and is not expected to be globally unique. For example, it might be a timestamp (e.g. yyyymmdd) if a managed version is not available. There is also no expectation that versions can be placed in a lexicographical sequence.", 0, 1, version);
         case 3373707: /*name*/  return new Property("name", "string", "A natural language name identifying the event definition. This name should be usable as an identifier for the module by machine processing applications such as code generation.", 0, 1, name);
         case 110371416: /*title*/  return new Property("title", "string", "A short, descriptive, user-friendly title for the event definition.", 0, 1, title);
+        case -2060497896: /*subtitle*/  return new Property("subtitle", "string", "An explanatory or alternate title for the event definition giving additional information about its content.", 0, 1, subtitle);
         case -892481550: /*status*/  return new Property("status", "code", "The status of this event definition. Enables tracking the life-cycle of the content.", 0, 1, status);
-        case -404562712: /*experimental*/  return new Property("experimental", "boolean", "A boolean value to indicate that this event definition is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.", 0, 1, experimental);
-        case 3076014: /*date*/  return new Property("date", "dateTime", "The date  (and optionally time) when the event definition was published. The date must change if and when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the event definition changes.", 0, 1, date);
-        case 1447404028: /*publisher*/  return new Property("publisher", "string", "The name of the individual or organization that published the event definition.", 0, 1, publisher);
-        case -1724546052: /*description*/  return new Property("description", "markdown", "A free text natural language description of the event definition from a consumer's perspective.", 0, 1, description);
-        case -220463842: /*purpose*/  return new Property("purpose", "markdown", "Explaination of why this event definition is needed and why it has been designed as it has.", 0, 1, purpose);
-        case 111574433: /*usage*/  return new Property("usage", "string", "A detailed description of how the event definition is used from a clinical perspective.", 0, 1, usage);
-        case 223539345: /*approvalDate*/  return new Property("approvalDate", "date", "The date on which the resource content was approved by the publisher. Approval happens once when the content is officially approved for usage.", 0, 1, approvalDate);
-        case -1687512484: /*lastReviewDate*/  return new Property("lastReviewDate", "date", "The date on which the resource content was last reviewed. Review happens periodically after approval, but doesn't change the original approval date.", 0, 1, lastReviewDate);
-        case -403934648: /*effectivePeriod*/  return new Property("effectivePeriod", "Period", "The period during which the event definition content was or is planned to be in active use.", 0, 1, effectivePeriod);
-        case -669707736: /*useContext*/  return new Property("useContext", "UsageContext", "The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching for appropriate event definition instances.", 0, java.lang.Integer.MAX_VALUE, useContext);
-        case -507075711: /*jurisdiction*/  return new Property("jurisdiction", "CodeableConcept", "A legal or geographic region in which the event definition is intended to be used.", 0, java.lang.Integer.MAX_VALUE, jurisdiction);
-        case 110546223: /*topic*/  return new Property("topic", "CodeableConcept", "Descriptive topics related to the module. Topics provide a high-level categorization of the module that can be useful for filtering and searching.", 0, java.lang.Integer.MAX_VALUE, topic);
-        case -1895276325: /*contributor*/  return new Property("contributor", "Contributor", "A contributor to the content of the module, including authors, editors, reviewers, and endorsers.", 0, java.lang.Integer.MAX_VALUE, contributor);
+        case -404562712: /*experimental*/  return new Property("experimental", "boolean", "A Boolean value to indicate that this event definition is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.", 0, 1, experimental);
+        case -573640748: /*subject[x]*/  return new Property("subject[x]", "CodeableConcept|Reference(Group)", "A code or group definition that describes the intended subject of the event definition.", 0, 1, subject);
+        case -1867885268: /*subject*/  return new Property("subject[x]", "CodeableConcept|Reference(Group)", "A code or group definition that describes the intended subject of the event definition.", 0, 1, subject);
+        case -1257122603: /*subjectCodeableConcept*/  return new Property("subject[x]", "CodeableConcept|Reference(Group)", "A code or group definition that describes the intended subject of the event definition.", 0, 1, subject);
+        case 772938623: /*subjectReference*/  return new Property("subject[x]", "CodeableConcept|Reference(Group)", "A code or group definition that describes the intended subject of the event definition.", 0, 1, subject);
+        case 3076014: /*date*/  return new Property("date", "dateTime", "The date  (and optionally time) when the event definition was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the event definition changes.", 0, 1, date);
+        case 1447404028: /*publisher*/  return new Property("publisher", "string", "The name of the organization or individual that published the event definition.", 0, 1, publisher);
         case 951526432: /*contact*/  return new Property("contact", "ContactDetail", "Contact details to assist a user in finding and communicating with the publisher.", 0, java.lang.Integer.MAX_VALUE, contact);
+        case -1724546052: /*description*/  return new Property("description", "markdown", "A free text natural language description of the event definition from a consumer's perspective.", 0, 1, description);
+        case -669707736: /*useContext*/  return new Property("useContext", "UsageContext", "The content was developed with a focus and intent of supporting the contexts that are listed. These contexts may be general categories (gender, age, ...) or may be references to specific programs (insurance plans, studies, ...) and may be used to assist with indexing and searching for appropriate event definition instances.", 0, java.lang.Integer.MAX_VALUE, useContext);
+        case -507075711: /*jurisdiction*/  return new Property("jurisdiction", "CodeableConcept", "A legal or geographic region in which the event definition is intended to be used.", 0, java.lang.Integer.MAX_VALUE, jurisdiction);
+        case -220463842: /*purpose*/  return new Property("purpose", "markdown", "Explanation of why this event definition is needed and why it has been designed as it has.", 0, 1, purpose);
+        case 111574433: /*usage*/  return new Property("usage", "string", "A detailed description of how the event definition is used from a clinical perspective.", 0, 1, usage);
         case 1522889671: /*copyright*/  return new Property("copyright", "markdown", "A copyright statement relating to the event definition and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the event definition.", 0, 1, copyright);
+        case 223539345: /*approvalDate*/  return new Property("approvalDate", "date", "The date on which the resource content was approved by the publisher. Approval happens once when the content is officially approved for usage.", 0, 1, approvalDate);
+        case -1687512484: /*lastReviewDate*/  return new Property("lastReviewDate", "date", "The date on which the resource content was last reviewed. Review happens periodically after approval but does not change the original approval date.", 0, 1, lastReviewDate);
+        case -403934648: /*effectivePeriod*/  return new Property("effectivePeriod", "Period", "The period during which the event definition content was or is planned to be in active use.", 0, 1, effectivePeriod);
+        case 110546223: /*topic*/  return new Property("topic", "CodeableConcept", "Descriptive topics related to the module. Topics provide a high-level categorization of the module that can be useful for filtering and searching.", 0, java.lang.Integer.MAX_VALUE, topic);
+        case -1406328437: /*author*/  return new Property("author", "ContactDetail", "An individiual or organization primarily involved in the creation and maintenance of the content.", 0, java.lang.Integer.MAX_VALUE, author);
+        case -1307827859: /*editor*/  return new Property("editor", "ContactDetail", "An individual or organization primarily responsible for internal coherence of the content.", 0, java.lang.Integer.MAX_VALUE, editor);
+        case -261190139: /*reviewer*/  return new Property("reviewer", "ContactDetail", "An individual or organization primarily responsible for review of some aspect of the content.", 0, java.lang.Integer.MAX_VALUE, reviewer);
+        case 1740277666: /*endorser*/  return new Property("endorser", "ContactDetail", "An individual or organization responsible for officially endorsing the content for use in some setting.", 0, java.lang.Integer.MAX_VALUE, endorser);
         case 666807069: /*relatedArtifact*/  return new Property("relatedArtifact", "RelatedArtifact", "Related resources such as additional documentation, justification, or bibliographic references.", 0, java.lang.Integer.MAX_VALUE, relatedArtifact);
-        case -1059891784: /*trigger*/  return new Property("trigger", "TriggerDefinition", "The trigger element defines when the event occurs.", 0, 1, trigger);
+        case -1059891784: /*trigger*/  return new Property("trigger", "TriggerDefinition", "The trigger element defines when the event occurs. If more than one trigger condition is specified, the event fires whenever any one of the trigger conditions is met.", 0, java.lang.Integer.MAX_VALUE, trigger);
         default: return super.getNamedProperty(_hash, _name, _checkValid);
         }
 
@@ -1309,24 +1645,29 @@ public class EventDefinition extends MetadataResource {
         case 351608024: /*version*/ return this.version == null ? new Base[0] : new Base[] {this.version}; // StringType
         case 3373707: /*name*/ return this.name == null ? new Base[0] : new Base[] {this.name}; // StringType
         case 110371416: /*title*/ return this.title == null ? new Base[0] : new Base[] {this.title}; // StringType
+        case -2060497896: /*subtitle*/ return this.subtitle == null ? new Base[0] : new Base[] {this.subtitle}; // StringType
         case -892481550: /*status*/ return this.status == null ? new Base[0] : new Base[] {this.status}; // Enumeration<PublicationStatus>
         case -404562712: /*experimental*/ return this.experimental == null ? new Base[0] : new Base[] {this.experimental}; // BooleanType
+        case -1867885268: /*subject*/ return this.subject == null ? new Base[0] : new Base[] {this.subject}; // Type
         case 3076014: /*date*/ return this.date == null ? new Base[0] : new Base[] {this.date}; // DateTimeType
         case 1447404028: /*publisher*/ return this.publisher == null ? new Base[0] : new Base[] {this.publisher}; // StringType
+        case 951526432: /*contact*/ return this.contact == null ? new Base[0] : this.contact.toArray(new Base[this.contact.size()]); // ContactDetail
         case -1724546052: /*description*/ return this.description == null ? new Base[0] : new Base[] {this.description}; // MarkdownType
+        case -669707736: /*useContext*/ return this.useContext == null ? new Base[0] : this.useContext.toArray(new Base[this.useContext.size()]); // UsageContext
+        case -507075711: /*jurisdiction*/ return this.jurisdiction == null ? new Base[0] : this.jurisdiction.toArray(new Base[this.jurisdiction.size()]); // CodeableConcept
         case -220463842: /*purpose*/ return this.purpose == null ? new Base[0] : new Base[] {this.purpose}; // MarkdownType
         case 111574433: /*usage*/ return this.usage == null ? new Base[0] : new Base[] {this.usage}; // StringType
+        case 1522889671: /*copyright*/ return this.copyright == null ? new Base[0] : new Base[] {this.copyright}; // MarkdownType
         case 223539345: /*approvalDate*/ return this.approvalDate == null ? new Base[0] : new Base[] {this.approvalDate}; // DateType
         case -1687512484: /*lastReviewDate*/ return this.lastReviewDate == null ? new Base[0] : new Base[] {this.lastReviewDate}; // DateType
         case -403934648: /*effectivePeriod*/ return this.effectivePeriod == null ? new Base[0] : new Base[] {this.effectivePeriod}; // Period
-        case -669707736: /*useContext*/ return this.useContext == null ? new Base[0] : this.useContext.toArray(new Base[this.useContext.size()]); // UsageContext
-        case -507075711: /*jurisdiction*/ return this.jurisdiction == null ? new Base[0] : this.jurisdiction.toArray(new Base[this.jurisdiction.size()]); // CodeableConcept
         case 110546223: /*topic*/ return this.topic == null ? new Base[0] : this.topic.toArray(new Base[this.topic.size()]); // CodeableConcept
-        case -1895276325: /*contributor*/ return this.contributor == null ? new Base[0] : this.contributor.toArray(new Base[this.contributor.size()]); // Contributor
-        case 951526432: /*contact*/ return this.contact == null ? new Base[0] : this.contact.toArray(new Base[this.contact.size()]); // ContactDetail
-        case 1522889671: /*copyright*/ return this.copyright == null ? new Base[0] : new Base[] {this.copyright}; // MarkdownType
+        case -1406328437: /*author*/ return this.author == null ? new Base[0] : this.author.toArray(new Base[this.author.size()]); // ContactDetail
+        case -1307827859: /*editor*/ return this.editor == null ? new Base[0] : this.editor.toArray(new Base[this.editor.size()]); // ContactDetail
+        case -261190139: /*reviewer*/ return this.reviewer == null ? new Base[0] : this.reviewer.toArray(new Base[this.reviewer.size()]); // ContactDetail
+        case 1740277666: /*endorser*/ return this.endorser == null ? new Base[0] : this.endorser.toArray(new Base[this.endorser.size()]); // ContactDetail
         case 666807069: /*relatedArtifact*/ return this.relatedArtifact == null ? new Base[0] : this.relatedArtifact.toArray(new Base[this.relatedArtifact.size()]); // RelatedArtifact
-        case -1059891784: /*trigger*/ return this.trigger == null ? new Base[0] : new Base[] {this.trigger}; // TriggerDefinition
+        case -1059891784: /*trigger*/ return this.trigger == null ? new Base[0] : this.trigger.toArray(new Base[this.trigger.size()]); // TriggerDefinition
         default: return super.getProperty(hash, name, checkValid);
         }
 
@@ -1350,6 +1691,9 @@ public class EventDefinition extends MetadataResource {
         case 110371416: // title
           this.title = castToString(value); // StringType
           return value;
+        case -2060497896: // subtitle
+          this.subtitle = castToString(value); // StringType
+          return value;
         case -892481550: // status
           value = new PublicationStatusEnumFactory().fromType(castToCode(value));
           this.status = (Enumeration) value; // Enumeration<PublicationStatus>
@@ -1357,20 +1701,35 @@ public class EventDefinition extends MetadataResource {
         case -404562712: // experimental
           this.experimental = castToBoolean(value); // BooleanType
           return value;
+        case -1867885268: // subject
+          this.subject = castToType(value); // Type
+          return value;
         case 3076014: // date
           this.date = castToDateTime(value); // DateTimeType
           return value;
         case 1447404028: // publisher
           this.publisher = castToString(value); // StringType
           return value;
+        case 951526432: // contact
+          this.getContact().add(castToContactDetail(value)); // ContactDetail
+          return value;
         case -1724546052: // description
           this.description = castToMarkdown(value); // MarkdownType
+          return value;
+        case -669707736: // useContext
+          this.getUseContext().add(castToUsageContext(value)); // UsageContext
+          return value;
+        case -507075711: // jurisdiction
+          this.getJurisdiction().add(castToCodeableConcept(value)); // CodeableConcept
           return value;
         case -220463842: // purpose
           this.purpose = castToMarkdown(value); // MarkdownType
           return value;
         case 111574433: // usage
           this.usage = castToString(value); // StringType
+          return value;
+        case 1522889671: // copyright
+          this.copyright = castToMarkdown(value); // MarkdownType
           return value;
         case 223539345: // approvalDate
           this.approvalDate = castToDate(value); // DateType
@@ -1381,29 +1740,26 @@ public class EventDefinition extends MetadataResource {
         case -403934648: // effectivePeriod
           this.effectivePeriod = castToPeriod(value); // Period
           return value;
-        case -669707736: // useContext
-          this.getUseContext().add(castToUsageContext(value)); // UsageContext
-          return value;
-        case -507075711: // jurisdiction
-          this.getJurisdiction().add(castToCodeableConcept(value)); // CodeableConcept
-          return value;
         case 110546223: // topic
           this.getTopic().add(castToCodeableConcept(value)); // CodeableConcept
           return value;
-        case -1895276325: // contributor
-          this.getContributor().add(castToContributor(value)); // Contributor
+        case -1406328437: // author
+          this.getAuthor().add(castToContactDetail(value)); // ContactDetail
           return value;
-        case 951526432: // contact
-          this.getContact().add(castToContactDetail(value)); // ContactDetail
+        case -1307827859: // editor
+          this.getEditor().add(castToContactDetail(value)); // ContactDetail
           return value;
-        case 1522889671: // copyright
-          this.copyright = castToMarkdown(value); // MarkdownType
+        case -261190139: // reviewer
+          this.getReviewer().add(castToContactDetail(value)); // ContactDetail
+          return value;
+        case 1740277666: // endorser
+          this.getEndorser().add(castToContactDetail(value)); // ContactDetail
           return value;
         case 666807069: // relatedArtifact
           this.getRelatedArtifact().add(castToRelatedArtifact(value)); // RelatedArtifact
           return value;
         case -1059891784: // trigger
-          this.trigger = castToTriggerDefinition(value); // TriggerDefinition
+          this.getTrigger().add(castToTriggerDefinition(value)); // TriggerDefinition
           return value;
         default: return super.setProperty(hash, name, value);
         }
@@ -1422,43 +1778,53 @@ public class EventDefinition extends MetadataResource {
           this.name = castToString(value); // StringType
         } else if (name.equals("title")) {
           this.title = castToString(value); // StringType
+        } else if (name.equals("subtitle")) {
+          this.subtitle = castToString(value); // StringType
         } else if (name.equals("status")) {
           value = new PublicationStatusEnumFactory().fromType(castToCode(value));
           this.status = (Enumeration) value; // Enumeration<PublicationStatus>
         } else if (name.equals("experimental")) {
           this.experimental = castToBoolean(value); // BooleanType
+        } else if (name.equals("subject[x]")) {
+          this.subject = castToType(value); // Type
         } else if (name.equals("date")) {
           this.date = castToDateTime(value); // DateTimeType
         } else if (name.equals("publisher")) {
           this.publisher = castToString(value); // StringType
+        } else if (name.equals("contact")) {
+          this.getContact().add(castToContactDetail(value));
         } else if (name.equals("description")) {
           this.description = castToMarkdown(value); // MarkdownType
+        } else if (name.equals("useContext")) {
+          this.getUseContext().add(castToUsageContext(value));
+        } else if (name.equals("jurisdiction")) {
+          this.getJurisdiction().add(castToCodeableConcept(value));
         } else if (name.equals("purpose")) {
           this.purpose = castToMarkdown(value); // MarkdownType
         } else if (name.equals("usage")) {
           this.usage = castToString(value); // StringType
+        } else if (name.equals("copyright")) {
+          this.copyright = castToMarkdown(value); // MarkdownType
         } else if (name.equals("approvalDate")) {
           this.approvalDate = castToDate(value); // DateType
         } else if (name.equals("lastReviewDate")) {
           this.lastReviewDate = castToDate(value); // DateType
         } else if (name.equals("effectivePeriod")) {
           this.effectivePeriod = castToPeriod(value); // Period
-        } else if (name.equals("useContext")) {
-          this.getUseContext().add(castToUsageContext(value));
-        } else if (name.equals("jurisdiction")) {
-          this.getJurisdiction().add(castToCodeableConcept(value));
         } else if (name.equals("topic")) {
           this.getTopic().add(castToCodeableConcept(value));
-        } else if (name.equals("contributor")) {
-          this.getContributor().add(castToContributor(value));
-        } else if (name.equals("contact")) {
-          this.getContact().add(castToContactDetail(value));
-        } else if (name.equals("copyright")) {
-          this.copyright = castToMarkdown(value); // MarkdownType
+        } else if (name.equals("author")) {
+          this.getAuthor().add(castToContactDetail(value));
+        } else if (name.equals("editor")) {
+          this.getEditor().add(castToContactDetail(value));
+        } else if (name.equals("reviewer")) {
+          this.getReviewer().add(castToContactDetail(value));
+        } else if (name.equals("endorser")) {
+          this.getEndorser().add(castToContactDetail(value));
         } else if (name.equals("relatedArtifact")) {
           this.getRelatedArtifact().add(castToRelatedArtifact(value));
         } else if (name.equals("trigger")) {
-          this.trigger = castToTriggerDefinition(value); // TriggerDefinition
+          this.getTrigger().add(castToTriggerDefinition(value));
         } else
           return super.setProperty(name, value);
         return value;
@@ -1472,24 +1838,30 @@ public class EventDefinition extends MetadataResource {
         case 351608024:  return getVersionElement();
         case 3373707:  return getNameElement();
         case 110371416:  return getTitleElement();
+        case -2060497896:  return getSubtitleElement();
         case -892481550:  return getStatusElement();
         case -404562712:  return getExperimentalElement();
+        case -573640748:  return getSubject(); 
+        case -1867885268:  return getSubject(); 
         case 3076014:  return getDateElement();
         case 1447404028:  return getPublisherElement();
+        case 951526432:  return addContact(); 
         case -1724546052:  return getDescriptionElement();
+        case -669707736:  return addUseContext(); 
+        case -507075711:  return addJurisdiction(); 
         case -220463842:  return getPurposeElement();
         case 111574433:  return getUsageElement();
+        case 1522889671:  return getCopyrightElement();
         case 223539345:  return getApprovalDateElement();
         case -1687512484:  return getLastReviewDateElement();
         case -403934648:  return getEffectivePeriod(); 
-        case -669707736:  return addUseContext(); 
-        case -507075711:  return addJurisdiction(); 
         case 110546223:  return addTopic(); 
-        case -1895276325:  return addContributor(); 
-        case 951526432:  return addContact(); 
-        case 1522889671:  return getCopyrightElement();
+        case -1406328437:  return addAuthor(); 
+        case -1307827859:  return addEditor(); 
+        case -261190139:  return addReviewer(); 
+        case 1740277666:  return addEndorser(); 
         case 666807069:  return addRelatedArtifact(); 
-        case -1059891784:  return getTrigger(); 
+        case -1059891784:  return addTrigger(); 
         default: return super.makeProperty(hash, name);
         }
 
@@ -1503,22 +1875,27 @@ public class EventDefinition extends MetadataResource {
         case 351608024: /*version*/ return new String[] {"string"};
         case 3373707: /*name*/ return new String[] {"string"};
         case 110371416: /*title*/ return new String[] {"string"};
+        case -2060497896: /*subtitle*/ return new String[] {"string"};
         case -892481550: /*status*/ return new String[] {"code"};
         case -404562712: /*experimental*/ return new String[] {"boolean"};
+        case -1867885268: /*subject*/ return new String[] {"CodeableConcept", "Reference"};
         case 3076014: /*date*/ return new String[] {"dateTime"};
         case 1447404028: /*publisher*/ return new String[] {"string"};
+        case 951526432: /*contact*/ return new String[] {"ContactDetail"};
         case -1724546052: /*description*/ return new String[] {"markdown"};
+        case -669707736: /*useContext*/ return new String[] {"UsageContext"};
+        case -507075711: /*jurisdiction*/ return new String[] {"CodeableConcept"};
         case -220463842: /*purpose*/ return new String[] {"markdown"};
         case 111574433: /*usage*/ return new String[] {"string"};
+        case 1522889671: /*copyright*/ return new String[] {"markdown"};
         case 223539345: /*approvalDate*/ return new String[] {"date"};
         case -1687512484: /*lastReviewDate*/ return new String[] {"date"};
         case -403934648: /*effectivePeriod*/ return new String[] {"Period"};
-        case -669707736: /*useContext*/ return new String[] {"UsageContext"};
-        case -507075711: /*jurisdiction*/ return new String[] {"CodeableConcept"};
         case 110546223: /*topic*/ return new String[] {"CodeableConcept"};
-        case -1895276325: /*contributor*/ return new String[] {"Contributor"};
-        case 951526432: /*contact*/ return new String[] {"ContactDetail"};
-        case 1522889671: /*copyright*/ return new String[] {"markdown"};
+        case -1406328437: /*author*/ return new String[] {"ContactDetail"};
+        case -1307827859: /*editor*/ return new String[] {"ContactDetail"};
+        case -261190139: /*reviewer*/ return new String[] {"ContactDetail"};
+        case 1740277666: /*endorser*/ return new String[] {"ContactDetail"};
         case 666807069: /*relatedArtifact*/ return new String[] {"RelatedArtifact"};
         case -1059891784: /*trigger*/ return new String[] {"TriggerDefinition"};
         default: return super.getTypesForProperty(hash, name);
@@ -1543,11 +1920,22 @@ public class EventDefinition extends MetadataResource {
         else if (name.equals("title")) {
           throw new FHIRException("Cannot call addChild on a primitive type EventDefinition.title");
         }
+        else if (name.equals("subtitle")) {
+          throw new FHIRException("Cannot call addChild on a primitive type EventDefinition.subtitle");
+        }
         else if (name.equals("status")) {
           throw new FHIRException("Cannot call addChild on a primitive type EventDefinition.status");
         }
         else if (name.equals("experimental")) {
           throw new FHIRException("Cannot call addChild on a primitive type EventDefinition.experimental");
+        }
+        else if (name.equals("subjectCodeableConcept")) {
+          this.subject = new CodeableConcept();
+          return this.subject;
+        }
+        else if (name.equals("subjectReference")) {
+          this.subject = new Reference();
+          return this.subject;
         }
         else if (name.equals("date")) {
           throw new FHIRException("Cannot call addChild on a primitive type EventDefinition.date");
@@ -1555,14 +1943,26 @@ public class EventDefinition extends MetadataResource {
         else if (name.equals("publisher")) {
           throw new FHIRException("Cannot call addChild on a primitive type EventDefinition.publisher");
         }
+        else if (name.equals("contact")) {
+          return addContact();
+        }
         else if (name.equals("description")) {
           throw new FHIRException("Cannot call addChild on a primitive type EventDefinition.description");
+        }
+        else if (name.equals("useContext")) {
+          return addUseContext();
+        }
+        else if (name.equals("jurisdiction")) {
+          return addJurisdiction();
         }
         else if (name.equals("purpose")) {
           throw new FHIRException("Cannot call addChild on a primitive type EventDefinition.purpose");
         }
         else if (name.equals("usage")) {
           throw new FHIRException("Cannot call addChild on a primitive type EventDefinition.usage");
+        }
+        else if (name.equals("copyright")) {
+          throw new FHIRException("Cannot call addChild on a primitive type EventDefinition.copyright");
         }
         else if (name.equals("approvalDate")) {
           throw new FHIRException("Cannot call addChild on a primitive type EventDefinition.approvalDate");
@@ -1574,30 +1974,26 @@ public class EventDefinition extends MetadataResource {
           this.effectivePeriod = new Period();
           return this.effectivePeriod;
         }
-        else if (name.equals("useContext")) {
-          return addUseContext();
-        }
-        else if (name.equals("jurisdiction")) {
-          return addJurisdiction();
-        }
         else if (name.equals("topic")) {
           return addTopic();
         }
-        else if (name.equals("contributor")) {
-          return addContributor();
+        else if (name.equals("author")) {
+          return addAuthor();
         }
-        else if (name.equals("contact")) {
-          return addContact();
+        else if (name.equals("editor")) {
+          return addEditor();
         }
-        else if (name.equals("copyright")) {
-          throw new FHIRException("Cannot call addChild on a primitive type EventDefinition.copyright");
+        else if (name.equals("reviewer")) {
+          return addReviewer();
+        }
+        else if (name.equals("endorser")) {
+          return addEndorser();
         }
         else if (name.equals("relatedArtifact")) {
           return addRelatedArtifact();
         }
         else if (name.equals("trigger")) {
-          this.trigger = new TriggerDefinition();
-          return this.trigger;
+          return addTrigger();
         }
         else
           return super.addChild(name);
@@ -1620,16 +2016,18 @@ public class EventDefinition extends MetadataResource {
         dst.version = version == null ? null : version.copy();
         dst.name = name == null ? null : name.copy();
         dst.title = title == null ? null : title.copy();
+        dst.subtitle = subtitle == null ? null : subtitle.copy();
         dst.status = status == null ? null : status.copy();
         dst.experimental = experimental == null ? null : experimental.copy();
+        dst.subject = subject == null ? null : subject.copy();
         dst.date = date == null ? null : date.copy();
         dst.publisher = publisher == null ? null : publisher.copy();
+        if (contact != null) {
+          dst.contact = new ArrayList<ContactDetail>();
+          for (ContactDetail i : contact)
+            dst.contact.add(i.copy());
+        };
         dst.description = description == null ? null : description.copy();
-        dst.purpose = purpose == null ? null : purpose.copy();
-        dst.usage = usage == null ? null : usage.copy();
-        dst.approvalDate = approvalDate == null ? null : approvalDate.copy();
-        dst.lastReviewDate = lastReviewDate == null ? null : lastReviewDate.copy();
-        dst.effectivePeriod = effectivePeriod == null ? null : effectivePeriod.copy();
         if (useContext != null) {
           dst.useContext = new ArrayList<UsageContext>();
           for (UsageContext i : useContext)
@@ -1640,28 +2038,47 @@ public class EventDefinition extends MetadataResource {
           for (CodeableConcept i : jurisdiction)
             dst.jurisdiction.add(i.copy());
         };
+        dst.purpose = purpose == null ? null : purpose.copy();
+        dst.usage = usage == null ? null : usage.copy();
+        dst.copyright = copyright == null ? null : copyright.copy();
+        dst.approvalDate = approvalDate == null ? null : approvalDate.copy();
+        dst.lastReviewDate = lastReviewDate == null ? null : lastReviewDate.copy();
+        dst.effectivePeriod = effectivePeriod == null ? null : effectivePeriod.copy();
         if (topic != null) {
           dst.topic = new ArrayList<CodeableConcept>();
           for (CodeableConcept i : topic)
             dst.topic.add(i.copy());
         };
-        if (contributor != null) {
-          dst.contributor = new ArrayList<Contributor>();
-          for (Contributor i : contributor)
-            dst.contributor.add(i.copy());
+        if (author != null) {
+          dst.author = new ArrayList<ContactDetail>();
+          for (ContactDetail i : author)
+            dst.author.add(i.copy());
         };
-        if (contact != null) {
-          dst.contact = new ArrayList<ContactDetail>();
-          for (ContactDetail i : contact)
-            dst.contact.add(i.copy());
+        if (editor != null) {
+          dst.editor = new ArrayList<ContactDetail>();
+          for (ContactDetail i : editor)
+            dst.editor.add(i.copy());
         };
-        dst.copyright = copyright == null ? null : copyright.copy();
+        if (reviewer != null) {
+          dst.reviewer = new ArrayList<ContactDetail>();
+          for (ContactDetail i : reviewer)
+            dst.reviewer.add(i.copy());
+        };
+        if (endorser != null) {
+          dst.endorser = new ArrayList<ContactDetail>();
+          for (ContactDetail i : endorser)
+            dst.endorser.add(i.copy());
+        };
         if (relatedArtifact != null) {
           dst.relatedArtifact = new ArrayList<RelatedArtifact>();
           for (RelatedArtifact i : relatedArtifact)
             dst.relatedArtifact.add(i.copy());
         };
-        dst.trigger = trigger == null ? null : trigger.copy();
+        if (trigger != null) {
+          dst.trigger = new ArrayList<TriggerDefinition>();
+          for (TriggerDefinition i : trigger)
+            dst.trigger.add(i.copy());
+        };
         return dst;
       }
 
@@ -1670,35 +2087,37 @@ public class EventDefinition extends MetadataResource {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof EventDefinition))
+        if (!(other_ instanceof EventDefinition))
           return false;
-        EventDefinition o = (EventDefinition) other;
-        return compareDeep(identifier, o.identifier, true) && compareDeep(purpose, o.purpose, true) && compareDeep(usage, o.usage, true)
+        EventDefinition o = (EventDefinition) other_;
+        return compareDeep(identifier, o.identifier, true) && compareDeep(subtitle, o.subtitle, true) && compareDeep(subject, o.subject, true)
+           && compareDeep(purpose, o.purpose, true) && compareDeep(usage, o.usage, true) && compareDeep(copyright, o.copyright, true)
            && compareDeep(approvalDate, o.approvalDate, true) && compareDeep(lastReviewDate, o.lastReviewDate, true)
-           && compareDeep(effectivePeriod, o.effectivePeriod, true) && compareDeep(topic, o.topic, true) && compareDeep(contributor, o.contributor, true)
-           && compareDeep(copyright, o.copyright, true) && compareDeep(relatedArtifact, o.relatedArtifact, true)
-           && compareDeep(trigger, o.trigger, true);
-      }
-
-      @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
-          return false;
-        if (!(other instanceof EventDefinition))
-          return false;
-        EventDefinition o = (EventDefinition) other;
-        return compareValues(purpose, o.purpose, true) && compareValues(usage, o.usage, true) && compareValues(approvalDate, o.approvalDate, true)
-           && compareValues(lastReviewDate, o.lastReviewDate, true) && compareValues(copyright, o.copyright, true)
+           && compareDeep(effectivePeriod, o.effectivePeriod, true) && compareDeep(topic, o.topic, true) && compareDeep(author, o.author, true)
+           && compareDeep(editor, o.editor, true) && compareDeep(reviewer, o.reviewer, true) && compareDeep(endorser, o.endorser, true)
+           && compareDeep(relatedArtifact, o.relatedArtifact, true) && compareDeep(trigger, o.trigger, true)
           ;
       }
 
+      @Override
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
+          return false;
+        if (!(other_ instanceof EventDefinition))
+          return false;
+        EventDefinition o = (EventDefinition) other_;
+        return compareValues(subtitle, o.subtitle, true) && compareValues(purpose, o.purpose, true) && compareValues(usage, o.usage, true)
+           && compareValues(copyright, o.copyright, true) && compareValues(approvalDate, o.approvalDate, true)
+           && compareValues(lastReviewDate, o.lastReviewDate, true);
+      }
+
       public boolean isEmpty() {
-        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(identifier, purpose, usage
-          , approvalDate, lastReviewDate, effectivePeriod, topic, contributor, copyright, relatedArtifact
-          , trigger);
+        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(identifier, subtitle, subject
+          , purpose, usage, copyright, approvalDate, lastReviewDate, effectivePeriod, topic
+          , author, editor, reviewer, endorser, relatedArtifact, trigger);
       }
 
   @Override
@@ -1773,6 +2192,26 @@ public class EventDefinition extends MetadataResource {
   public static final ca.uhn.fhir.model.api.Include INCLUDE_SUCCESSOR = new ca.uhn.fhir.model.api.Include("EventDefinition:successor").toLocked();
 
  /**
+   * Search parameter: <b>context-type-value</b>
+   * <p>
+   * Description: <b>A use context type and value assigned to the event definition</b><br>
+   * Type: <b>composite</b><br>
+   * Path: <b></b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="context-type-value", path="EventDefinition.useContext", description="A use context type and value assigned to the event definition", type="composite", compositeOf={"context-type", "context"} )
+  public static final String SP_CONTEXT_TYPE_VALUE = "context-type-value";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>context-type-value</b>
+   * <p>
+   * Description: <b>A use context type and value assigned to the event definition</b><br>
+   * Type: <b>composite</b><br>
+   * Path: <b></b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.TokenClientParam> CONTEXT_TYPE_VALUE = new ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.TokenClientParam>(SP_CONTEXT_TYPE_VALUE);
+
+ /**
    * Search parameter: <b>jurisdiction</b>
    * <p>
    * Description: <b>Intended jurisdiction for the event definition</b><br>
@@ -1837,6 +2276,26 @@ public class EventDefinition extends MetadataResource {
    * the path value of "<b>EventDefinition:derived-from</b>".
    */
   public static final ca.uhn.fhir.model.api.Include INCLUDE_DERIVED_FROM = new ca.uhn.fhir.model.api.Include("EventDefinition:derived-from").toLocked();
+
+ /**
+   * Search parameter: <b>context-type</b>
+   * <p>
+   * Description: <b>A type of use context assigned to the event definition</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>EventDefinition.useContext.code</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="context-type", path="EventDefinition.useContext.code", description="A type of use context assigned to the event definition", type="token" )
+  public static final String SP_CONTEXT_TYPE = "context-type";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>context-type</b>
+   * <p>
+   * Description: <b>A type of use context assigned to the event definition</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>EventDefinition.useContext.code</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.TokenClientParam CONTEXT_TYPE = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_CONTEXT_TYPE);
 
  /**
    * Search parameter: <b>predecessor</b>
@@ -1951,6 +2410,26 @@ public class EventDefinition extends MetadataResource {
   public static final ca.uhn.fhir.rest.gclient.UriClientParam URL = new ca.uhn.fhir.rest.gclient.UriClientParam(SP_URL);
 
  /**
+   * Search parameter: <b>context-quantity</b>
+   * <p>
+   * Description: <b>A quantity- or range-valued use context assigned to the event definition</b><br>
+   * Type: <b>quantity</b><br>
+   * Path: <b>EventDefinition.useContext.valueQuantity, EventDefinition.useContext.valueRange</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="context-quantity", path="(EventDefinition.useContext.value as Quantity) | (EventDefinition.useContext.value as Range)", description="A quantity- or range-valued use context assigned to the event definition", type="quantity" )
+  public static final String SP_CONTEXT_QUANTITY = "context-quantity";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>context-quantity</b>
+   * <p>
+   * Description: <b>A quantity- or range-valued use context assigned to the event definition</b><br>
+   * Type: <b>quantity</b><br>
+   * Path: <b>EventDefinition.useContext.valueQuantity, EventDefinition.useContext.valueRange</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.QuantityClientParam CONTEXT_QUANTITY = new ca.uhn.fhir.rest.gclient.QuantityClientParam(SP_CONTEXT_QUANTITY);
+
+ /**
    * Search parameter: <b>effective</b>
    * <p>
    * Description: <b>The time during which the event definition is intended to be in use</b><br>
@@ -2017,6 +2496,26 @@ public class EventDefinition extends MetadataResource {
   public static final ca.uhn.fhir.rest.gclient.StringClientParam NAME = new ca.uhn.fhir.rest.gclient.StringClientParam(SP_NAME);
 
  /**
+   * Search parameter: <b>context</b>
+   * <p>
+   * Description: <b>A use context assigned to the event definition</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>EventDefinition.useContext.valueCodeableConcept</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="context", path="(EventDefinition.useContext.value as CodeableConcept)", description="A use context assigned to the event definition", type="token" )
+  public static final String SP_CONTEXT = "context";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>context</b>
+   * <p>
+   * Description: <b>A use context assigned to the event definition</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>EventDefinition.useContext.valueCodeableConcept</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.TokenClientParam CONTEXT = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_CONTEXT);
+
+ /**
    * Search parameter: <b>publisher</b>
    * <p>
    * Description: <b>Name of the publisher of the event definition</b><br>
@@ -2055,6 +2554,26 @@ public class EventDefinition extends MetadataResource {
    * </p>
    */
   public static final ca.uhn.fhir.rest.gclient.TokenClientParam TOPIC = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_TOPIC);
+
+ /**
+   * Search parameter: <b>context-type-quantity</b>
+   * <p>
+   * Description: <b>A use context type and quantity- or range-based value assigned to the event definition</b><br>
+   * Type: <b>composite</b><br>
+   * Path: <b></b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="context-type-quantity", path="EventDefinition.useContext", description="A use context type and quantity- or range-based value assigned to the event definition", type="composite", compositeOf={"context-type", "context-quantity"} )
+  public static final String SP_CONTEXT_TYPE_QUANTITY = "context-type-quantity";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>context-type-quantity</b>
+   * <p>
+   * Description: <b>A use context type and quantity- or range-based value assigned to the event definition</b><br>
+   * Type: <b>composite</b><br>
+   * Path: <b></b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.QuantityClientParam> CONTEXT_TYPE_QUANTITY = new ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.QuantityClientParam>(SP_CONTEXT_TYPE_QUANTITY);
 
  /**
    * Search parameter: <b>status</b>

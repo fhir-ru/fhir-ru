@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <ValueSet xmlns="http://hl7.org/fhir">
   <meta>
     <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
   </meta>
-  <name value="Example Claim SubType Codes"/>
+  <name value="ExampleClaimSubTypeCodes"/>
+  <title value="Example Claim SubType Codes"/>
   <status value="draft"/>
   <publisher value="Financial Management"/>
   <contact>
@@ -13,11 +14,11 @@
       <value value="http://hl7.org/fhir"/>
     </telecom>
   </contact>
-  <description value="This value set includes sample Claim SubType codes which are used to distinguish the claim types for example within type institutional there may be subtypes for emergency services, bedstay and transportation."/>
+  <description value="This value set includes sample Claim SubType codes which are used to distinguish the claim types for example within type institutional there may be subtypes for emergency services, bed stay and transportation."/>
   <copyright value="This is an example set."/>
   <compose>
     <include>
-      <system value="http://hl7.org/fhir/ex-claimsubtype"/>
+      <system value="http://terminology.hl7.org/CodeSystem/ex-claimsubtype"/>
     </include>
   </compose>
 </ValueSet>

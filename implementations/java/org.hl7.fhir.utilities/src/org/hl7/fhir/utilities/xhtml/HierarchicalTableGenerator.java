@@ -40,16 +40,18 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.imageio.ImageIO;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.FileUtils;
+import org.commonmark.node.Node;
+import org.commonmark.parser.Parser;
+import org.commonmark.renderer.html.HtmlRenderer;
 import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.utilities.TranslatingUtilities;
 import org.hl7.fhir.utilities.Utilities;
-
-import com.github.rjeschke.txtmark.Processor;
 
 
 public class HierarchicalTableGenerator extends TranslatingUtilities {
@@ -66,6 +68,13 @@ public class HierarchicalTableGenerator extends TranslatingUtilities {
   public static final String TEXT_ICON_PROFILE = "Profile";
   public static final String TEXT_ICON_EXTENSION_COMPLEX = "Complex Extension";
 
+  public static final int NEW_REGULAR = 0;
+  public static final int CONTINUE_REGULAR = 1;
+  public static final int NEW_SLICER = 2;
+  public static final int CONTINUE_SLICER = 3;
+  public static final int NEW_SLICE = 4;
+  public static final int CONTINUE_SLICE = 5;  
+  
   private static Map<String, String> files = new HashMap<String, String>();
 
   public class Piece {
@@ -75,6 +84,7 @@ public class HierarchicalTableGenerator extends TranslatingUtilities {
     private String hint;
     private String style;
     private Map<String, String> attributes;
+    private List<XhtmlNode> children;
     
     public Piece(String tag) {
       super();
@@ -112,8 +122,9 @@ public class HierarchicalTableGenerator extends TranslatingUtilities {
       this.tag = tag;
     }
 
-    public void setText(String text) {
+    public Piece setText(String text) {
       this.text = text;
+      return this;
     }
 
     public void setHint(String hint) {
@@ -139,6 +150,17 @@ public class HierarchicalTableGenerator extends TranslatingUtilities {
       else
         this.hint += (this.hint.endsWith(".") || this.hint.endsWith("?") ? " " : ". ")+text;
     }
+    
+    public boolean hasChildren() {
+      return children != null && !children.isEmpty();
+    }
+
+    public List<XhtmlNode> getChildren() {
+      if (children == null)
+        children = new ArrayList<XhtmlNode>();
+      return children;
+    }
+    
   }
   
   public class Cell {
@@ -164,14 +186,17 @@ public class HierarchicalTableGenerator extends TranslatingUtilities {
     }
     public Cell addMarkdown(String md) {
       try {
-        String html = Processor.process("[$PROFILE$]: extended\n" + md);
+        Parser parser = Parser.builder().build();
+        Node document = parser.parse(md);
+        HtmlRenderer renderer = HtmlRenderer.builder().escapeHtml(true).build();
+        String html = renderer.render(document);  
         pieces.addAll(htmlToParagraphPieces(html));
       } catch (Exception e) {
         e.printStackTrace();
       }
       return this;
     }
-    private List<Piece> htmlToParagraphPieces(String html) {
+    private List<Piece> htmlToParagraphPieces(String html) throws IOException, FHIRException {
       List<Piece> myPieces = new ArrayList<Piece>();
       String[] paragraphs = html.replace("<p>", "").split("<\\/p>|<br  \\/>");
       for (int i=0;i<paragraphs.length;i++) {
@@ -186,12 +211,52 @@ public class HierarchicalTableGenerator extends TranslatingUtilities {
       
       return myPieces;
     }
-    private List<Piece> htmlFormattingToPieces(String html) {
+    private List<Piece> htmlFormattingToPieces(String html) throws IOException, FHIRException {
       List<Piece> myPieces = new ArrayList<Piece>();
-      //Todo: At least handle bold and italics and turn them into formatted spans.  (Will need to handle nesting though)
-      myPieces.add(new Piece(null, html, null));
-      
+      if (html.contains(("<"))) {
+        XhtmlNode node = new XhtmlParser().parseFragment("<p>"+html+"</p>");
+        for (XhtmlNode c : node.getChildNodes()) {
+          addNode(myPieces, c);
+        }
+      } else
+        myPieces.add(new Piece(null, html, null));        
       return myPieces;
+    }
+    private void addNode(List<Piece> list, XhtmlNode c) {
+      if (c.getNodeType() == NodeType.Text)
+        list.add(new Piece(null, c.getContent(), null));
+      else if (c.getNodeType() == NodeType.Element) {
+        if (c.getName().equals("a")) {
+          list.add(new Piece(c.getAttribute("href"), c.allText(), c.getAttribute("title")));                    
+        } else if (c.getName().equals("b") || c.getName().equals("em") || c.getName().equals("strong")) {
+          list.add(new Piece(null, c.allText(), null).setStyle("font-face: bold"));                    
+        } else if (c.getName().equals("code")) {
+          list.add(new Piece(null, c.allText(), null).setStyle("padding: 2px 4px; color: #005c00; background-color: #f9f2f4; white-space: nowrap; border-radius: 4px"));                    
+        } else if (c.getName().equals("i")) {
+          list.add(new Piece(null, c.allText(), null).setStyle("font-style: italic"));
+        } else if (c.getName().equals("pre")) {
+          Piece p = new Piece(c.getName()).setStyle("white-space: pre; font-family: courier");
+          list.add(p);
+          p.getChildren().addAll(c.getChildNodes());
+        } else if (c.getName().equals("ul") || c.getName().equals("ol")) {
+          Piece p = new Piece(c.getName());
+          list.add(p);
+          p.getChildren().addAll(c.getChildNodes());
+        } else if (c.getName().equals("i")) {
+          list.add(new Piece(null, c.allText(), null).setStyle("font-style: italic"));                    
+        } else if (c.getName().equals("h1")||c.getName().equals("h2")||c.getName().equals("h3")||c.getName().equals("h4")) {
+          Piece p = new Piece(c.getName());
+          list.add(p);
+          p.getChildren().addAll(c.getChildNodes());
+        } else if (c.getName().equals("br")) {
+          list.add(new Piece(c.getName()));
+        } else {
+          
+          throw new Error("Not handled yet: "+c.getName());
+        }
+      } else
+        throw new Error("Unhandled type "+c.getNodeType().toString());
+
     }
     public void addStyle(String style) {
       for (Piece p : pieces)
@@ -201,21 +266,23 @@ public class HierarchicalTableGenerator extends TranslatingUtilities {
       for (Piece p : pieces)
         p.addToHint(text);            
     }
-    public Piece addImage(String src, String hint, String alt, String fgColor, String bgColor) {
-//      Piece img = new Piece("img");
-      Piece img = new Piece(null, alt, hint);
-      img.addStyle("padding: 3px");
-      if (fgColor != null) {
-        img.addStyle("color: "+fgColor);
-        img.addStyle("background-color: "+bgColor);
+    public Piece addStyledText(String hint, String alt, String fgColor, String bgColor, String link, boolean border) {
+      Piece p = new Piece(link, alt, hint);
+      p.addStyle("padding-left: 3px");
+      p.addStyle("padding-right: 3px");
+      if (border) {
+        p.addStyle("border: 1px grey solid");
+        p.addStyle("font-weight: bold");
       }
-        
-//      img.attributes = new HashMap<String, String>();
-//      img.attributes.put("src", src);
-//      img.attributes.put("alt", alt);
-//      img.hint = hint;
-      pieces.add(img);
-      return img;
+      if (fgColor != null) {
+        p.addStyle("color: "+fgColor);
+        p.addStyle("background-color: "+bgColor);
+      } else {
+        p.addStyle("color: black");
+        p.addStyle("background-color: white");       
+      }
+      pieces.add(p);
+      return p;
     }
     public String text() {
       StringBuilder b = new StringBuilder();
@@ -247,6 +314,7 @@ public class HierarchicalTableGenerator extends TranslatingUtilities {
     private String anchor;
     private String hint;
     private String color;
+    private int lineColor;
     
     public List<Row> getSubRows() {
       return subRows;
@@ -275,6 +343,14 @@ public class HierarchicalTableGenerator extends TranslatingUtilities {
     }
     public void setColor(String color) {
       this.color = color;
+    }
+    public int getLineColor() {
+      return lineColor;
+    }
+    public void setLineColor(int lineColor) {
+      assert lineColor >= 0;
+      assert lineColor <= 2;
+      this.lineColor = lineColor;
     }
     
     
@@ -308,6 +384,7 @@ public class HierarchicalTableGenerator extends TranslatingUtilities {
 
 
   private String dest;
+  private boolean makeTargets;
   
   /**
    * There are circumstances where the table has to present in the absence of a stable supporting infrastructure.
@@ -326,6 +403,14 @@ public class HierarchicalTableGenerator extends TranslatingUtilities {
     super();
     this.dest = dest;
     this.inLineGraphics = inlineGraphics;
+    this.makeTargets = true;
+  }
+
+  public HierarchicalTableGenerator(String dest, boolean inlineGraphics, boolean makeTargets) {
+    super();
+    this.dest = dest;
+    this.inLineGraphics = inlineGraphics;
+    this.makeTargets = makeTargets;
   }
 
   public TableModel initNormalTable(String prefix, boolean isLogical) {
@@ -355,7 +440,7 @@ public class HierarchicalTableGenerator extends TranslatingUtilities {
     return model;
   }
 
-  public XhtmlNode generate(TableModel model, String imagePath, int border) throws IOException, FHIRException  {
+  public XhtmlNode generate(TableModel model, String imagePath, int border, Set<String> outputTracker) throws IOException, FHIRException  {
     checkModel(model);
     XhtmlNode table = new XhtmlNode(NodeType.Element, "table").setAttribute("border", Integer.toString(border)).setAttribute("cellspacing", "0").setAttribute("cellpadding", "0");
     table.setAttribute("style", "border: " + border + "px #F0F0F0 solid; font-size: 11px; font-family: verdana; vertical-align: top;");
@@ -363,7 +448,7 @@ public class HierarchicalTableGenerator extends TranslatingUtilities {
     tr.setAttribute("style", "border: " + Integer.toString(1 + border) + "px #F0F0F0 solid; font-size: 11px; font-family: verdana; vertical-align: top;");
     XhtmlNode tc = null;
     for (Title t : model.getTitles()) {
-      tc = renderCell(tr, t, "th", null, null, null, false, null, "white", imagePath, border);
+      tc = renderCell(tr, t, "th", null, null, null, false, null, "white", 0, imagePath, border, outputTracker);
       if (t.width != 0)
         tc.setAttribute("style", "width: "+Integer.toString(t.width)+"px");
     }
@@ -371,7 +456,7 @@ public class HierarchicalTableGenerator extends TranslatingUtilities {
       tc.addTag("span").setAttribute("style", "float: right").addTag("a").setAttribute("title", "Legend for this format").setAttribute("href", model.getDocoRef()).addTag("img").setAttribute("alt", "doco").setAttribute("style", "background-color: inherit").setAttribute("src", model.getDocoImg());
       
     for (Row r : model.getRows()) {
-      renderRow(table, r, 0, new ArrayList<Boolean>(), imagePath, border);
+      renderRow(table, r, 0, new ArrayList<Integer>(), imagePath, border, outputTracker);
     }
     if (model.getDocoRef() != null) {
       tr = table.addTag("tr");
@@ -388,7 +473,7 @@ a.addText(" "+translate("sd.doco", "Документация по этому ф�
   }
 
 
-  private void renderRow(XhtmlNode table, Row r, int indent, List<Boolean> indents, String imagePath, int border) throws IOException  {
+  private void renderRow(XhtmlNode table, Row r, int indent, List<Integer> indents, String imagePath, int border, Set<String> outputTracker) throws IOException  {
     XhtmlNode tr = table.addTag("tr");
     String color = "white";
     if (r.getColor() != null)
@@ -396,41 +481,74 @@ a.addText(" "+translate("sd.doco", "Документация по этому ф�
     tr.setAttribute("style", "border: " + border + "px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: "+color+";");
     boolean first = true;
     for (Cell t : r.getCells()) {
-      renderCell(tr, t, "td", first ? r.getIcon() : null, first ? r.getHint() : null, first ? indents : null, !r.getSubRows().isEmpty(), first ? r.getAnchor() : null, color, imagePath, border);
+      renderCell(tr, t, "td", first ? r.getIcon() : null, first ? r.getHint() : null, first ? indents : null, !r.getSubRows().isEmpty(), first ? r.getAnchor() : null, color, r.getLineColor(), imagePath, border, outputTracker);
       first = false;
     }
     table.addText("\r\n");
     
     for (int i = 0; i < r.getSubRows().size(); i++) {
       Row c = r.getSubRows().get(i);
-      List<Boolean> ind = new ArrayList<Boolean>();
+      List<Integer> ind = new ArrayList<Integer>();
       ind.addAll(indents);
-      if (i == r.getSubRows().size() - 1)
-        ind.add(true);
-      else
-        ind.add(false);
-      renderRow(table, c, indent+1, ind, imagePath, border);
+      if (i == r.getSubRows().size() - 1) {
+        ind.add(r.getLineColor()*2);
+      } else {
+        ind.add(r.getLineColor()*2+1);
+      }
+      renderRow(table, c, indent+1, ind, imagePath, border, outputTracker);
     }
   }
 
 
-  private XhtmlNode renderCell(XhtmlNode tr, Cell c, String name, String icon, String hint, List<Boolean> indents, boolean hasChildren, String anchor, String color, String imagePath, int border) throws IOException  {
+  private XhtmlNode renderCell(XhtmlNode tr, Cell c, String name, String icon, String hint, List<Integer> indents, boolean hasChildren, String anchor, String color, int lineColor, String imagePath, int border, Set<String> outputTracker) throws IOException  {
     XhtmlNode tc = tr.addTag(name);
     tc.setAttribute("class", "hierarchy");
     if (indents != null) {
       tc.addTag("img").setAttribute("src", srcFor(imagePath, "tbl_spacer.png")).setAttribute("style", "background-color: inherit").setAttribute("class", "hierarchy").setAttribute("alt", ".");
-      tc.setAttribute("style", "vertical-align: top; text-align : left; background-color: "+color+"; border: "+ border +"px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url("+imagePath+checkExists(indents, hasChildren)+")");
-      for (int i = 0; i < indents.size()-1; i++) { 
-        if (indents.get(i))
-          tc.addTag("img").setAttribute("src", srcFor(imagePath, "tbl_blank.png")).setAttribute("style", "background-color: inherit").setAttribute("class", "hierarchy").setAttribute("alt", ".");
-        else
-          tc.addTag("img").setAttribute("src", srcFor(imagePath, "tbl_vline.png")).setAttribute("style", "background-color: inherit").setAttribute("class", "hierarchy").setAttribute("alt", ".");
+      tc.setAttribute("style", "vertical-align: top; text-align : left; background-color: "+color+"; border: "+ border +"px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url("+imagePath+checkExists(indents, hasChildren, lineColor, outputTracker)+")");
+      for (int i = 0; i < indents.size()-1; i++) {
+        switch (indents.get(i)) {
+          case NEW_REGULAR:
+          case NEW_SLICER:
+          case NEW_SLICE:
+            tc.addTag("img").setAttribute("src", srcFor(imagePath, "tbl_blank.png")).setAttribute("style", "background-color: inherit").setAttribute("class", "hierarchy").setAttribute("alt", ".");
+            break;
+          case CONTINUE_REGULAR:
+            tc.addTag("img").setAttribute("src", srcFor(imagePath, "tbl_vline.png")).setAttribute("style", "background-color: inherit").setAttribute("class", "hierarchy").setAttribute("alt", ".");
+            break;
+          case CONTINUE_SLICER:
+            tc.addTag("img").setAttribute("src", srcFor(imagePath, "tbl_vline_slicer.png")).setAttribute("style", "background-color: inherit").setAttribute("class", "hierarchy").setAttribute("alt", ".");
+            break;
+          case CONTINUE_SLICE:
+            tc.addTag("img").setAttribute("src", srcFor(imagePath, "tbl_vline_slice.png")).setAttribute("style", "background-color: inherit").setAttribute("class", "hierarchy").setAttribute("alt", ".");
+            break;
+          default:
+            throw new Error("Unrecognized indent level: " + indents.get(i));
+        }
       }
       if (!indents.isEmpty())
-        if (indents.get(indents.size()-1))
+        switch (indents.get(indents.size()-1)) {
+        case NEW_REGULAR:
           tc.addTag("img").setAttribute("src", srcFor(imagePath, "tbl_vjoin_end.png")).setAttribute("style", "background-color: inherit").setAttribute("class", "hierarchy").setAttribute("alt", ".");
-        else
+          break;
+        case NEW_SLICER:
+          tc.addTag("img").setAttribute("src", srcFor(imagePath, "tbl_vjoin_end_slicer.png")).setAttribute("style", "background-color: inherit").setAttribute("class", "hierarchy").setAttribute("alt", ".");
+          break;
+        case NEW_SLICE:
+          tc.addTag("img").setAttribute("src", srcFor(imagePath, "tbl_vjoin_end_slice.png")).setAttribute("style", "background-color: inherit").setAttribute("class", "hierarchy").setAttribute("alt", ".");
+          break;
+        case CONTINUE_REGULAR:
           tc.addTag("img").setAttribute("src", srcFor(imagePath, "tbl_vjoin.png")).setAttribute("style", "background-color: inherit").setAttribute("class", "hierarchy").setAttribute("alt", ".");
+          break;
+        case CONTINUE_SLICER:
+          tc.addTag("img").setAttribute("src", srcFor(imagePath, "tbl_vjoin_slicer.png")).setAttribute("style", "background-color: inherit").setAttribute("class", "hierarchy").setAttribute("alt", ".");
+          break;
+        case CONTINUE_SLICE:
+          tc.addTag("img").setAttribute("src", srcFor(imagePath, "tbl_vjoin_slice.png")).setAttribute("style", "background-color: inherit").setAttribute("class", "hierarchy").setAttribute("alt", ".");
+          break;
+        default:
+          throw new Error("Unrecognized indent level: " + indents.get(indents.size()-1));
+        }
     }
     else
       tc.setAttribute("style", "vertical-align: top; text-align : left; background-color: "+color+"; border: "+ border +"px #F0F0F0 solid; padding:0px 4px 0px 4px");
@@ -449,6 +567,8 @@ a.addText(" "+translate("sd.doco", "Документация по этому ф�
         if (p.getHint() != null)
           tag.setAttribute("title", p.getHint());
         addStyle(tag, p);
+        if (p.hasChildren())
+          tag.getChildNodes().addAll(p.getChildren());
       } else if (!Utilities.noString(p.getReference())) {
         XhtmlNode a = addStyle(tc.addTag("a"), p);
         a.setAttribute("href", p.getReference());
@@ -468,7 +588,7 @@ a.addText(" "+translate("sd.doco", "Документация по этому ф�
           tc.addText(p.getText());
       }
     }
-    if (!Utilities.noString(anchor))
+    if (makeTargets && !Utilities.noString(anchor))
       tc.addTag("a").setAttribute("name", nmTokenize(anchor)).addText(" ");
     return tc;
   }
@@ -536,7 +656,7 @@ a.addText(" "+translate("sd.doco", "Документация по этому ф�
   }
 
 
-  private String checkExists(List<Boolean> indents, boolean hasChildren) throws IOException  {
+  private String checkExists(List<Integer> indents, boolean hasChildren, int lineColor, Set<String> outputTracker) throws IOException  {
     String filename = makeName(indents);
     
     StringBuilder b = new StringBuilder();
@@ -544,7 +664,7 @@ a.addText(" "+translate("sd.doco", "Документация по этому ф�
       if (files.containsKey(filename))
         return files.get(filename);
       ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-      genImage(indents, hasChildren, bytes);
+      genImage(indents, hasChildren, lineColor, bytes);
       b.append("data: image/png;base64,");
       byte[] encodeBase64 = Base64.encodeBase64(bytes.toByteArray());
       b.append(new String(encodeBase64));
@@ -552,24 +672,24 @@ a.addText(" "+translate("sd.doco", "Документация по этому ф�
       return b.toString();
     } else {
       b.append("tbl_bck");
-      for (Boolean i : indents)
-        b.append(i ? "0" : "1");
-      if (hasChildren)
-        b.append("1");
-      else
-        b.append("0");
+      for (Integer i : indents)
+        b.append(Integer.toString(i));
+      int indent = lineColor*2 + (hasChildren?1:0);
+      b.append(Integer.toString(indent));
       b.append(".png");
       String file = Utilities.path(dest, b.toString());
       if (!new File(file).exists()) {
         FileOutputStream stream = new FileOutputStream(file);
-        genImage(indents, hasChildren, stream);
+        genImage(indents, hasChildren, lineColor, stream);
+        if (outputTracker!=null)
+          outputTracker.add(file);
       }
       return b.toString();
     }
   }
 
 
-  private void genImage(List<Boolean> indents, boolean hasChildren, OutputStream stream) throws IOException {
+  private void genImage(List<Integer> indents, boolean hasChildren, int lineColor, OutputStream stream) throws IOException {
     BufferedImage bi = new BufferedImage(800, 2, BufferedImage.TYPE_INT_ARGB);
     // i have no idea why this works to make these pixels transparent. It defies logic. 
     // But this combination of INT_ARGB and filling with grey magically worked when nothing else did. So it stays as is.
@@ -579,20 +699,33 @@ a.addText(" "+translate("sd.doco", "Документация по этому ф�
       bi.setRGB(i, 1, grey.getRGB());
     }
     Color black = new Color(0, 0, 0);
+    Color green = new Color(14,209,69);
+    Color gold = new Color(212,168,21);
     for (int i = 0; i < indents.size(); i++) {
-      if (!indents.get(i))
+      int indent = indents.get(i).intValue();
+      if (indent == CONTINUE_REGULAR)
         bi.setRGB(12+(i*16), 0, black.getRGB());
+      else if (indent == CONTINUE_SLICER)
+        bi.setRGB(12+(i*16), 0, green.getRGB());
+      else if (indent == CONTINUE_SLICE)
+        bi.setRGB(12+(i*16), 0, gold.getRGB());
     }
-    if (hasChildren)
-      bi.setRGB(12+(indents.size()*16), 0, black.getRGB());
+    if (hasChildren) {
+      if (lineColor==0)
+        bi.setRGB(12+(indents.size()*16), 0, black.getRGB());
+      else if (lineColor==1)
+        bi.setRGB(12+(indents.size()*16), 0, green.getRGB());
+      else if (lineColor==2)
+        bi.setRGB(12+(indents.size()*16), 0, gold.getRGB());
+    }
     ImageIO.write(bi, "PNG", stream);
   }
 
-  private String makeName(List<Boolean> indents) {
+  private String makeName(List<Integer> indents) {
     StringBuilder b = new StringBuilder();
     b.append("indents:");
-    for (Boolean i : indents)
-      b.append(i ? "1" : "0");
+    for (Integer i : indents)
+      b.append(Integer.toString(i));
     return b.toString();
   }
 

@@ -1,0 +1,30 @@
+﻿map "http://hl7.org/fhir/StructureMap/DiagnosticReport4to3" = "R4 to R3 Conversion for DiagnosticReport"
+
+uses "http://hl7.org/fhir/StructureDefinition/DiagnosticReport" alias DiagnosticReport as source
+uses "http://hl7.org/fhir/3.0/StructureDefinition/DiagnosticReport" alias DiagnosticReportR3 as target
+
+imports "http://hl7.org/fhir/StructureMap/*4to3"
+
+group DiagnosticReport(source src : DiagnosticReport, target tgt : DiagnosticReportR3) extends DomainResource <<type+>> {
+  src.identifier -> tgt.identifier;
+  src.basedOn -> tgt.basedOn;
+  src.status -> tgt.status;
+  src.category -> tgt.category;
+  src.code -> tgt.code;
+  src.subject -> tgt.subject;
+  src.context -> tgt.context;
+  src.effective : dateTime as vs -> tgt.effective = create("dateTime") as vt then dateTime(vs, vt);
+  src.effective : Period as vs -> tgt.effective = create("Period") as vt then Period(vs, vt);
+  src.issued -> tgt.issued;
+  src.specimen -> tgt.specimen;
+  src.result -> tgt.result;
+  src.imagingStudy -> tgt.imagingStudy;
+  src.media as vs0 -> tgt.image as vt0 then {
+    vs0.comment -> vt0.comment;
+    vs0.link -> vt0.link;
+  } "image";
+  src.conclusion -> tgt.conclusion;
+  src.conclusionCode -> tgt.codedDiagnosis;
+  src.presentedForm -> tgt.presentedForm;
+}
+

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!-- 
+﻿<?xml version="1.0" encoding="UTF-8"?><!-- 
  This is an example of a multi-select values/answers as a single observatio using components to group  the multiple answers 
  --><Observation xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir file:///C:/Users/Eric/Documents/HL7/FHIR/BUILD_EDIT_FILES/fhir-all-xsd/valueset.xsd">
 	<id value="alcohol-type"/><!--  the mandatory quality flags:  --><status value="final"/><!-- 
@@ -9,7 +9,7 @@
 	In this example there is only local codes
    --><category>
 		<coding>
-			<system value="http://hl7.org/fhir/observation-category"/>
+			<system value="http://terminology.hl7.org/CodeSystem/observation-category"/>
 			<code value="social-history"/>
 			<display value="Social History"/>
 		</coding>
@@ -26,7 +26,7 @@
 		<reference value="Patient/example"/>
 		<display value="Peter James Chalmers"/>
 	</subject>
-	<effectiveDateTime value="2014-12-11T04:44:16Z"/><!--  When the code is the same as component.code the the value element must be empty per invariant obs-7
+	<effectiveDateTime value="2014-12-11T04:44:16Z"/><!--  When the code is the same as component.code the value element must be empty per invariant obs-7
     --><!-- Using components since multi-select values/answers share the same attributes (such as id, performer, effective date, status, comment.. --><!-- answer 1 --><component><!-- component.code is same as code --><code><!--  Local - unable to identify a proper LOINC code  --><coding>
 				<system value="http://acme-rehab.org"/>
 				<code value="alcohol-type"/>

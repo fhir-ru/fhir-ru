@@ -537,18 +537,54 @@ public class Element extends Base {
   }
 
 
-//  @Override
-//  public boolean equalsDeep(Base other) {
-//    if (!super.equalsDeep(other))
-//      return false;
-//    
-//  }
-//
-//  @Override
-//  public boolean equalsShallow(Base other) {
-//    if (!super.equalsShallow(other))
-//      return false;
-//  }
+  @Override
+  public boolean equalsDeep(Base other) {
+    if (!super.equalsDeep(other))
+      return false;
+    if (isPrimitive() && other.isPrimitive())
+      return primitiveValue().equals(other.primitiveValue());
+    if (isPrimitive() || other.isPrimitive())
+      return false;
+    Set<String> processed  = new HashSet<String>();
+    for (org.hl7.fhir.dstu3.model.Property p : children()) {
+      String name = p.getName();
+      processed.add(name);
+      org.hl7.fhir.dstu3.model.Property o = other.getChildByName(name);
+      if (!equalsDeep(p, o))
+        return false;
+    }
+    for (org.hl7.fhir.dstu3.model.Property p : children()) {
+      String name = p.getName();
+      if (!processed.contains(name)) {
+        org.hl7.fhir.dstu3.model.Property o = other.getChildByName(name);
+        if (!equalsDeep(p, o))
+          return false;
+      }
+    }
+    return true;
+  }
+
+  private boolean equalsDeep(org.hl7.fhir.dstu3.model.Property p, org.hl7.fhir.dstu3.model.Property o) {
+    if (o == null || p == null)
+      return false;
+    if (p.getValues().size() != o.getValues().size())
+      return false;
+    for (int i = 0; i < p.getValues().size(); i++)
+      if (!Base.compareDeep(p.getValues().get(i), o.getValues().get(i), true))
+        return false;
+    return true;
+  }
+
+  @Override
+  public boolean equalsShallow(Base other) {
+    if (!super.equalsShallow(other))
+      return false;
+    if (isPrimitive() && other.isPrimitive())
+      return primitiveValue().equals(other.primitiveValue());
+    if (isPrimitive() || other.isPrimitive())
+      return false;
+    return true; //?
+  }
 
   public Type asType() throws FHIRException {
     return new ObjectConverter(property.getContext()).convertToType(this);
@@ -597,7 +633,7 @@ public class Element extends Base {
     private List<ElementDefinition> children;
     public ElementSortComparator(Element e, Property property) {
       String tn = e.getType();
-      StructureDefinition sd = property.getContext().fetchResource(StructureDefinition.class, "http://hl7.org/fhir/StructureDefinition/"+tn);
+      StructureDefinition sd = property.getContext().fetchTypeDefinition(tn);
       if (sd != null && !sd.getAbstract())
         children = sd.getSnapshot().getElement();
       else

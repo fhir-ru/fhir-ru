@@ -1,7 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<a name="scope"> </a>
+<a name="scope"></a>
 <h2>Scope and Usage</h2>
 <p> 
 A patient encounter is further characterized by the setting in which it takes place. Amongst them are ambulatory,
@@ -61,7 +61,7 @@ Statuses of "arrived", "triaged" or "in progress" could be considered the start 
 presence of the hospitalization sub-component entered.
 </p>
 <p>
-The "on leave" status may or may not be a part of the admission, for example if the patient 
+The "on leave" status might or might not be a part of the admission, for example if the patient 
 was permitted to go home for a weekend or some other form of external event.<br/>
 The location is also likely to be filled in with a location status of "present".<br/>
 For other examples such as an outpatient visit (day procedure - colonoscopy), the patient could also be 
@@ -71,7 +71,7 @@ At a minimum, we do believe that a patient IS admitted when the status is in-pro
 </div>
 
 <div>
-<a name="bnr"> </a>
+<a name="bnr"></a>
 <h2>Boundaries and Relationships</h2>
 <p> 
 The Encounter resource is not to be used to store appointment information, the Appointment resource is intended to be used for that.

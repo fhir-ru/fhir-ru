@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- NOTE: This example will soon be revised and moved to the Genomics Reporting implementation guide - current version at http://hl7.org/fhir/uv/genomics-reporting -->
 <Bundle xmlns="http://hl7.org/fhir">
 	<id value="dg1"/>
 	<type value="collection"/>
@@ -39,7 +40,7 @@
 						<display value="Laboratory test"/>
 					</coding>
 					<coding>
-						<system value="http://hl7.org/fhir/v2/0074"/>
+						<system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
 						<code value="LAB"/>
 					</coding>
 				</category>
@@ -91,7 +92,7 @@
 				<verificationStatus value="provisional"/>
 				<category>
 					<coding>
-						<system value="http://hl7.org/fhir/condition-category"/>
+						<system value="http://terminology.hl7.org/CodeSystem/condition-category"/>
 						<code value="finding"/>
 						<display value="Finding"/>
 					</coding>
@@ -116,7 +117,7 @@
 				<id value="od-1"/>
 				<extension url="http://hl7.org/fhir/StructureDefinition/observation-geneticsSequence">
 					<valueReference>
-						<reference value="Sequence/seq2-1"/>
+						<reference value="MolecularSequence/seq2-1"/>
 					</valueReference>
 				</extension>
 				<extension url="http://hl7.org/fhir/StructureDefinition/observation-geneticsVariationHGVS">
@@ -155,7 +156,7 @@
 				</code>
 				<interpretation>
 					<coding>
-						<system value="http://hl7.org/fhir/v2/0078"/>
+						<system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
 						<code value="POS"/>
 					</coding>
 					<text value="positive"/>
@@ -185,7 +186,7 @@
 				<id value="od-2"/>
 				<extension url="http://hl7.org/fhir/StructureDefinition/observation-geneticsSequence">
 					<valueReference>
-						<reference value="Sequence/seq2-2"/>
+						<reference value="MolecularSequence/seq2-2"/>
 					</valueReference>
 				</extension>
 				<extension url="http://hl7.org/fhir/StructureDefinition/observation-geneticsVariationHGVS">
@@ -224,7 +225,7 @@
 				</code>
 				<interpretation>
 					<coding>
-						<system value="http://hl7.org/fhir/v2/0078"/>
+						<system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
 						<code value="POS"/>
 					</coding>
 					<text value="positive"/>
@@ -254,7 +255,7 @@
 				<id value="od-3"/>
 				<extension url="http://hl7.org/fhir/StructureDefinition/observation-geneticsSequence">
 					<valueReference>
-						<reference value="Sequence/seq2-3"/>
+						<reference value="MolecularSequence/seq2-3"/>
 					</valueReference>
 				</extension>
 				<extension url="http://hl7.org/fhir/StructureDefinition/observation-geneticsVariationHGVS">
@@ -293,7 +294,7 @@
 				</code>
 				<interpretation>
 					<coding>
-						<system value="http://hl7.org/fhir/v2/0078"/>
+						<system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
 						<code value="POS"/>
 					</coding>
 					<text value="positive"/>
@@ -323,7 +324,7 @@
 				<id value="od-4"/>
 				<extension url="http://hl7.org/fhir/StructureDefinition/observation-geneticsSequence">
 					<valueReference>
-						<reference value="Sequence/seq2-4"/>
+						<reference value="MolecularSequence/seq2-4"/>
 					</valueReference>
 				</extension>
 				<extension url="http://hl7.org/fhir/StructureDefinition/observation-geneticsVariationHGVS">
@@ -362,7 +363,7 @@
 				</code>
 				<interpretation>
 					<coding>
-						<system value="http://hl7.org/fhir/v2/0078"/>
+						<system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
 						<code value="POS"/>
 					</coding>
 					<text value="positive"/>

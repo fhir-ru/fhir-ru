@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Procedure xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/procedure.xsd">
   <id value="f201"/>
+  <instantiatesCanonical value = "PlanDefinition/KDN5"/>
   <status value="completed"/>
   <code>
     <!--The procedure is TPF-based chemotherapy-->
@@ -15,22 +16,22 @@
     <reference value="Patient/f201"/>
     <display value="Roel"/>
   </subject>
-  <context>
+  <encounter>
     <reference value="Encounter/f202"/>
     <display value="Roel's encounter on January 28th, 2013"/>
-  </context>
+  </encounter>
   <performedPeriod>
     <start value="2013-01-28T13:31:00+01:00"/>
     <end value="2013-01-28T14:27:00+01:00"/>
   </performedPeriod>
   <performer>
-    <role>
+    <function>
       <coding>
         <system value="http://snomed.info/sct"/>
         <code value="310512001"/>
         <display value="Medical oncologist"/>
       </coding>
-    </role>
+    </function>
 	<actor>
       <reference value="Practitioner/f201"/>
       <display value="Dokter Bronsig"/>

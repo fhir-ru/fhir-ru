@@ -1,11 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <ValueSet xmlns="http://hl7.org/fhir">
   <meta>
     <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
   </meta>
   <url value="http://hl7.org/fhir/ValueSet/flag-category"/>
-  <name value="Flag Category"/>
+  <name value="FlagCategory"/>
+  <title value="Flag Category"/>
   <status value="draft"/>
   <publisher value="HL7 International - Patient Care WG"/>
   <contact>
@@ -17,7 +18,7 @@
   <description value="Example list of general categories for flagged issues. (Not complete or necessarily appropriate.)"/>
   <compose>
     <include>
-      <system value="http://hl7.org/fhir/flag-category"/>
+      <system value="http://terminology.hl7.org/CodeSystem/flag-category"/>
     </include>
   </compose>
 </ValueSet>

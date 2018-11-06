@@ -1,6 +1,15 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
-  <a name="statemachine"> </a>
+  <a name="extensions"> </a>
+  <h2>Extensions</h2>
+  <p>
+    Not all resources that follow the 'Request' pattern will necessarily include all of the above elements.  A set of standard extensions have been defined
+    for use with resources where an element might be "applicable" but is not commonly supported.  A list of these can be found on the 
+    <a href="request-extensions.html">Request Extensions</a>(request-specific) and <a href="workflow-extensions.html">Workflow Extensions</a>(shared by events
+    and requests).
+  </p>
+
+  <a name="statemachine"></a>
   <h2>State Machine</h2>
   <p>
     The following diagram shows the "typical" state machine diagram for resources following the Request
@@ -17,19 +26,19 @@
     <a href="task.html">Task</a> resource.
   </p>
 
-  <a name="fulfillment"> </a>
+  <a name="fulfillment"></a>
   <h2>Fulfillment/Execution information</h2>
   <p>
-    Request resources describe what activity is desired/authorized.  They don't describe what activity has actually
-    occurred against the request.  I.e. The request resource will not indicate actual performer, actual performance
+    Request resources describe what activity is desired/authorized.  Requests do not track the execution/fulfillment 
+    of the plan, proposal or order.  I.e. the request resource will not indicate actual performer, actual performance
     time, actual action performed, etc.  Information about what action (if any) has occurred against the request is
     tracked using the corresponding <a href="event.html">Event</a> resource(s).  Events that are associated with
     the request should have a <code>basedOn</code> link referencing the request.  In addition, a linkage can be
-    established (and information about progress in execution) may be found in <a href="task.html">Task</a> resources
+    established (and information about progress of execution) may be found in <a href="task.html">Task</a> resources
     that have a focus of this request.
   </p>
 
-  <a name="updating"> </a>
+  <a name="updating"></a>
   <h2>Updating requests</h2>
   <p>
     FHIR does not impose any business rules on what sorts of changes may be made to a request.  A generic FHIR server
@@ -40,7 +49,7 @@
     <a href="operationoutcome.html">OperationOutcome</a> responses detailing constraints if those rules are violated.
   </p>
   
-  <a name="compound"> </a>
+  <a name="compound"></a>
   <h2>Compound Requests</h2>
   <p>
     There are three different ways to define "compound" requests in FHIR:
@@ -51,7 +60,7 @@
     <li>RequestGroup</li>
   </ul>
   
-  <a name="requisitionid"> </a>
+  <a name="requisitionid"></a>
   <h3>Shared requisition id</h3>
   <p>
     The <code>Request.requisitionId</code> element allows multiple requests to be linked as having been created as part 
@@ -71,14 +80,14 @@
     "simultaneous/requisition-based ordering" such as payment rules to know that the requests were ordered at the same time.
   </p>
 
-  <a name="basedon"> </a>
+  <a name="basedon"></a>
   <h3>"Based on" chain</h3>
   <p>
     In this case "components" of a parent request are not treated as components, but rather as separate orders that are
     executed as part of the fulfillment process for the parent order.  For example, a lab order might spawn child orders
     to draw the specimen, treat the specimen, run several tests and to create the report.  Each "child" Request would use 
     <code>Request.basedOn</code> to reference the original Request.  In this case, there's a relationship between the
-    statuses of the base Request and the fulfilling Requests, but they transition separately and may not transition in
+    statuses of the base Request and the fulfilling Requests, but they transition separately and might not transition in
     the same manner.  For example, if the original lab order were updated to "suspended", the initial blood draw request might
     be complete.  The other requests might change to either "suspended" or even "aborted" and a subsequent update of the
     lab order back to active might require spawning additional fulfilling orders, perhaps to draw a new specimen.
@@ -90,7 +99,7 @@
     "completed" or "cancelled" or some other terminal state.
   </p>
 
-  <a name="requestgroup"> </a>
+  <a name="requestgroup"></a>
   <h3>RequestGroup</h3>
   <p>
     This approach makes use of the <a href="requestgroup.html">RequestGroup</a> resource which allows the assertion of complex

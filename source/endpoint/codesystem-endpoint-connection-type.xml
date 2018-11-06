@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <CodeSystem xmlns="http://hl7.org/fhir">
-	<url value="http://hl7.org/fhir/endpoint-connection-type" />
+	<url value="http://terminology.hl7.org/CodeSystem/endpoint-connection-type" />
 	<name value="EndpointConnectionType" />
 	<status value="draft" />
 	<experimental value="false" />
@@ -55,7 +55,7 @@
 	<concept>
 		<code value="hl7-fhir-rest" />
 		<display value="HL7 FHIR" />
-    <definition value="Interact with the server interface using FHIR's RESTful interface. For details on its version/capabilities you should connect the the value in Endpoint.address and retrieve the FHIR CapabilityStatement." />
+    <definition value="Interact with the server interface using FHIR's RESTful interface. For details on its version/capabilities you should connect the value in Endpoint.address and retrieve the FHIR CapabilityStatement." />
 	</concept>
 	<concept>
 		<code value="hl7-fhir-msg" />

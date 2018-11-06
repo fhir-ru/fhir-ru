@@ -1,7 +1,7 @@
 ﻿<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<a name="scope"> </a>
+<a name="scope"></a>
 <h2>Scope and Usage</h2>
 
 <p>
@@ -20,7 +20,7 @@ with containing context. In FHIR this is referred to as "bundling" the resources
 </div>
 
 <div>
-<a name="bnr"> </a>
+<a name="bnr"></a>
 <h2>Boundaries and Relationships</h2>
 <p>
 There are two ways to collect resources together for transport and persistence purposes - <a href="references.html#contained">contained resources</a>, and
@@ -28,11 +28,12 @@ bundles. There is an important difference between the two:
 </p>
 <ul>
  <li>Contained resources are "in" the container resource - they can only ever be interpreted and/or changed in the context of the container</li>
- <li>A bundle is a collection of resources that have an independent existence - for example, they can also be accessed directly using the <a href="http.html">RESTful API</a></li>
+ <li>A bundle is a collection of resources that can have an independent existence - for example, they might also be accessed directly using the <a href="http.html">RESTful API</a></li>
 </ul>
 
 <p>
-In addition to these two technical mechanisms, there are three administrative and infrastructure resources which also support grouping of content:
+In addition to these two technical mechanisms, there are three administrative and infrastructure resources which also support grouping of content. 
+These resources do not contain resources directly, but instead use [Reference] to point to the grouped resources:
 </p>
 <ul>
 <li>
@@ -52,10 +53,15 @@ defining a test subject pool) and similar purposes.
 The <a href="composition.html">Composition</a> resource – Defines a set of healthcare-related information that is assembled 
 together into a single logical document that provides a single coherent statement of meaning, establishes its own context and 
 that has clinical attestation with regard to who is making the statement. The composition resource provides the basic structure 
-of a FHIR <a href="documents.html">document</a>.  The full content of the document is expressed using a bundle.  Compositions will 
+of a FHIR <a href="documents.html">document</a>.  The full content of the document is expressed using a Bundle.  Compositions will 
 often reference Lists as the focus of particular sections.
 </li>
 </ul>
+<p>
+These three resources represent meaningful groupings of the resources they refer to (e.g. a discharge medication List, a Group of 
+participants for a clinical trial, a set of resources that form a signed document), while a Bundle is merely is a container for 
+resources used for transfer and storage. This list is not exhaustive; other resources also provde grouping functionality.
+</p>
 
 </div>
 </div>

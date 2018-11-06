@@ -32,31 +32,94 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.hl7.fhir.definitions.model.ResourceDefn.StandardsStatus;
+import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.r4.model.StructureDefinition;
+import org.hl7.fhir.utilities.StandardsStatus;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.xml.XMLUtil;
 import org.w3c.dom.Element;
 
 public class ResourceDefn  {
-  public enum StandardsStatus {
-    DRAFT, TRIAL_USE, NORMATIVE, INFORMATIVE, EXTERNAL;
+
+  public enum SecurityCategorization {
+    ANONYMOUS, BUSINESS, INDIVIDUAL, PATIENT, NOT_CLASSIFIED;
+    
+    public String toCode() {
+      switch (this) {
+      case ANONYMOUS: return "anonymous";
+      case BUSINESS: return "business";
+      case INDIVIDUAL: return "individual";
+      case NOT_CLASSIFIED: return "not-classified";
+      case PATIENT: return "patient";
+      }
+      return null;
+    }
 
     public String toDisplay() {
       switch (this) {
-      case DRAFT : 
-        return "Draft";  
-      case NORMATIVE  : 
-        return "Normative";
-      case TRIAL_USE : 
-        return "Trial Use";  
-      case INFORMATIVE:
-        return "Informative";
-      case EXTERNAL:
-        return "External";
+      case ANONYMOUS: return "Anonymous";
+      case BUSINESS: return "Business";
+      case INDIVIDUAL: return "Individual";
+      case NOT_CLASSIFIED: return "Not Classified";
+      case PATIENT: return "Patient";
       }
-      return "?";
+      return null;
     }
+
+    public static SecurityCategorization fromCode(String sc) throws FHIRException {
+      if ("anonymous".equals(sc)) return ANONYMOUS;
+      if ("business".equals(sc)) return BUSINESS;
+      if ("individual".equals(sc)) return INDIVIDUAL;
+      if ("not-classified".equals(sc)) return NOT_CLASSIFIED;
+      if ("patient".equals(sc)) return PATIENT;
+      if ("n/a".equals(sc)) return null;
+      throw new FHIRException("unknown SecurityCategorization code "+sc);
+    }
+
+    public String toIndex() {
+      switch (this) {
+      case ANONYMOUS: return "0";
+      case BUSINESS: return "1";
+      case INDIVIDUAL: return "2";
+      case PATIENT: return "3";
+      case NOT_CLASSIFIED: return "4";
+      }
+      return null;
+    }
+  }
+  
+  public enum FMGApproval { 
+    APPROVED, PENDING, NOPROPOSAL, NOTRELEVANT;
+    
+    public static FMGApproval fromCode(String s) {
+      if (Utilities.noString(s))
+        return NOPROPOSAL;
+      if (s.equals("approved"))
+        return FMGApproval.APPROVED;
+      if (s.equals("pending"))
+        return FMGApproval.PENDING;
+      if (s.equals("n/a"))
+        return FMGApproval.NOTRELEVANT;
+      return NOPROPOSAL;
+    }
+
+  }
+
+  public static class PointSpec {
+    private double x;
+    private double y;
+     public PointSpec(double x, double y) {
+      super();
+      this.x = x;
+      this.y = y;
+    }
+    public double getX() {
+      return x;
+    }
+    public double getY() {
+      return y;
+    }
+    
   }
 
   public class StringPair {
@@ -85,8 +148,12 @@ public class ResourceDefn  {
   private String proposedOrder;
   private String display;
   private ElementDefn template;
+  private List<String> hints = new ArrayList<String>();
+  private Map<String, PointSpec> layout = new HashMap<String, PointSpec>();
+  private SecurityCategorization securityCategorization;
   
   private List<InheritedMapping> inheritedMappings = new ArrayList<InheritedMapping>();
+  public FMGApproval approval;
 
   public String getName()
   {
@@ -144,6 +211,7 @@ public class ResourceDefn  {
   private boolean forFutureUse = false;
   private String requirements;
   private boolean publishedInProfile;
+  private String normativePackage;
 
   public boolean isForFutureUse()
   {
@@ -320,6 +388,53 @@ public class ResourceDefn  {
 
   public void setTemplate(ElementDefn template) {
     this.template = template;
+  }
+
+  
+  public String getNormativePackage() {
+    return normativePackage;
+  }
+
+  public void setNormativePackage(String value) {
+    this.normativePackage = value; 
+  }
+
+  public void addHints(List<String> hints) {
+    this.hints.addAll(hints);
+    
+  }
+
+  public List<String> getHints() {
+    return hints;
+  }
+
+  public Map<String, PointSpec> getLayout() {
+    return layout;
+  }
+
+  public Operation getOperationByName(String name) {
+    for (Operation t : getOperations()) {
+      if (t.getName().equals(name)) {
+        return t;
+      }
+    }
+    return null;
+  }
+
+  public FMGApproval getApproval() {
+    return approval;
+  }
+
+  public void setApproval(FMGApproval approval) {
+    this.approval = approval;
+  }
+
+  public SecurityCategorization getSecurityCategorization() {
+    return securityCategorization;
+  }
+
+  public void setSecurityCategorization(SecurityCategorization securityCategorization) {
+    this.securityCategorization = securityCategorization;
   }
   
   

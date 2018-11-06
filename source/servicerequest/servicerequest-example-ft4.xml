@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <ServiceRequest xmlns="http://hl7.org/fhir">
 	<id value="ft4"/>
 	<status value="active"/>
@@ -16,8 +16,6 @@
 	</subject>
 	<occurrenceDateTime value="2015-08-27T09:33:27+07:00"/>
 	<requester>
-		<agent>
 			<reference value="Practitioner/example"/>
-		</agent>
 	</requester>
 </ServiceRequest>

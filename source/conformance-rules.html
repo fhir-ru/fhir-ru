@@ -10,19 +10,20 @@
 <body>
 [%file newnavbar%]
 
-<div class="col-9">
+<div class="col-12">
 
-<a name="conformance"> </a>
+<a name="conformance"></a>
 <h2>Conformance</h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 5</td><td id="ballot"><a href="versions.html#levels">Ballot Status</a>: <a href="versions.html#std-process">Trial Use</a></td></tr></table>
+<table class="colsn"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 5</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Normative</a><!--!ns!--></td></tr></table>
+[%normative page infrastructure%]
 
 <p>
-The FHIR specification describes a set of <a href="resource.html">resources</a>,
+The FHIR specification describes a set of <a href="resource.html">resources</a>
 and several different frameworks for exchanging resources between different systems.
 Because of its general nature and wide applicability, the rules made in this
-specification are generally fairly loose. As a consequence, this specification
-allows that different applications may not be able to interoperate because of
-how they use optional features. As a consequence, applications claiming
+specification are fairly loose. As a consequence, this specification
+allows that different applications might not be able to interoperate because of
+how they use optional features. Applications claiming
 conformance to this specification make the claim in respect of a specific
 exchange framework, and in regard to specific details about their usage of
 those frameworks and resource contents.
@@ -38,20 +39,28 @@ frameworks:
 </ul>
 <p>
 To provide details about specific usage of the frameworks and resource
-contents, FHIR provides a <a href="profiling.html">conformance layer</a> that implementers and
-national/regional programs can use to provide a computable statement about
+contents, FHIR provides a <a href="profiling.html">conformance layer</a> that implementers,
+national/regional programs, and other profiling organizations such as IHE, can use to provide a computable statement about
 how the resources and their exchange paradigms are used to solve particular use cases.
 The conformance layer itself is implemented using the following key resources:
 </p>
 <table class="grid">
  <tr> <td><a href="valueset.html">Value Set</a></td> <td>Defines a set of coded values (see "<a href="terminologies.html">Using Codes</a>" for more details)</td>  </tr>
- <tr> <td><a href="structuredefinition.html">StructureDefinition</a></td> <td>Makes rules about how a resource (or type) and its data elements are used in a particular context. A structure definition references value sets for the coded elements in a resource</td>  </tr>
+ <tr> <td><a href="structuredefinition.html">StructureDefinition</a></td> <td>Makes rules about how a resource (or type) and its data elements are used in a particular context, including defining how extensions are used. A structure definition references value sets for the coded elements in a resource</td>  </tr>
  <tr> <td><a href="capabilitystatement.html">CapabilityStatement</a></td> <td>A statement of the kinds of resources and operations provided and/or consumed by an application. The Capability Statement references profiles to describe specific use of resources by the application</td>  </tr>
- <tr> <td><a href="implementationguide.html">Implementation Guide</a></td> <td>A single coherent collection of capability statements, profiles, value set, and documentation describing a set of interoperable applications</td>  </tr>
+ <tr> <td><a href="implementationguide.html">Implementation Guide</a></td> <td>A single coherent collection of capability statements, profiles, extensions, value sets, and documentation describing a set of interoperable applications</td>  </tr>
 </table>
 <p>
 The specification also <a href="validation.html">provides a number of tools that can assist with enforcing technical conformance</a>
-to this base specification and profiles on it.
+to this base specification.
+</p>
+<p>
+FHIR is a <i>closed</i> specification. The specification defines what is possible and required for those portions 
+of an API or exchange framework that wish to declare themselves as FHIR conformant, and that includes exchange 
+resources that conform to the documented requirements of this specification. Systems may choose to 
+support capabilities beyond those defined by FHIR (e.g. by adding additional end points/services with other 
+names), but those portions of their interfaces that extend beyond what FHIR explicitly allows cannot be 
+considered or described as "FHIR conformant".
 </p>
 <p>
 Conformance with this specification does not provide any guarantee of patient or data safety.
@@ -63,13 +72,12 @@ two ways:
  <li>FHIR-like solutions (based on FHIR, but not conformant) may set expectations by trading partners which are not met due to the non-conformance of the system and these un-met expectations may also result in risk</li>
 </ul>
 <p>
-Any assertion of conformance to FHIR that does not reference a <a href="capabilitystatement.html">CapabilityStatement</a>
-instance has limited utility.  System capabilities that cannot be described by a CapabilityStatement cannot be considered FHIR conformant.
+Systems can only claim FHIR Conformance for functionality described in the applicable <a href="capabilitystatement.html">CapabilityStatement</a>.
 </p>
 
-<a name="conflang"> </a>
+<a name="conflang"></a>
 <h3>Conformance Language</h3>
-<p>This specification uses the conformance verbs SHALL, SHOULD, and MAY as defined in RFC 2119 . Unlike RFC 2119, however, this specification allows that different applications may not be able to interoperate because of how they use optional features. In particular:</p>
+<p>This specification uses the conformance verbs SHALL, SHOULD, and MAY as defined in RFC 2119. Unlike RFC 2119, however, this specification allows that different applications might not be able to interoperate because of how they use optional features. In particular:</p>
 
 <ol><li>SHALL: an absolute requirement for all implementations</li>
 <li>SHALL NOT: an absolute prohibition against inclusion for all implementations</li>
@@ -77,7 +85,7 @@ instance has limited utility.  System capabilities that cannot be described by a
 <li>MAY: This is truly optional language for an implementation; can be included or omitted as the implementer decides with no implications</li>
 </ol>
 
-<a name="baseconf"> </a>
+<a name="baseconf"></a>
 <h3>Base Conformance Rules</h3>
 <p>
 The contents of a resource and the formats used to represent resources SHALL
@@ -92,7 +100,7 @@ directly related to conformance: Cardinality, Is-Modifier, and Must-Support.
 These interact to place conformance requirements on implementations.
 </p>
 
-<a name="cardinality"> </a>
+<a name="cardinality"></a>
 <h3>Cardinality</h3>
 <p>
 All attributes defined in FHIR have cardinality as part of their definition - a minimum number
@@ -117,18 +125,18 @@ are necessary to any understanding of the resource or element that contains them
 The minimum cardinalities should not be taken as a guide to what elements
 are expected to be present in any particular use of the resource, including their normal/primary usage purpose.
 In some cases, this specification publishes additional profiles that define which elements are required in
-particular situations. Similar profiles are published by jurisdictions, vendors, or projects.
+particular situations. Similar profiles are published by jurisdictions, vendors, profiling organizations, or projects.
 </p>
 <p>
 For elements that have cardinality &gt; 1, the order in which they appear may have meaning.
 Unless the element definition (either in this specification or the extension) defines a meaning
-to the order explicitly (using <a href="elementdefinition.html">ElementDefinition.orderMeaning</a>,
+to the order explicitly (using <a href="elementdefinition.html">ElementDefinition.orderMeaning</a>),
 the meaning of the order is not defined, and implementations are allowed to reorder the elements.
 Note that it is not possible to define a meaning for the order of the elements in
 a <a href="profiling.html">profile</a> using a <a href="structuredefinition.html">StructureDefinition</a>.
 When there is no definition of the meaning of the order, implementations that need to choose a
 single element from a list of elements for some use SHALL do so based on the semantics
-of the content of the elements that repeats. Profiles and Implementation guides may often make
+of the content of the element that repeats. Profiles and Implementation guides may often make
 rules about this selection process.
 </p>
 <p>
@@ -139,18 +147,60 @@ ordering, and strip off unknown profiles (since they might require maintenance o
 </p>
 
 
-<a name="mustUnderstand"> </a>
-<a name="ismodifier"> </a>
-<a name="isModifier"> </a>
+<a name="mustUnderstand"></a>
+<a name="ismodifier"></a>
+<a name="isModifier"></a>
 <h3>Is-modifier</h3>
 <p>
 Is-Modifier is a boolean property that is assigned when an element is defined, either as part of
 the base resource contents in this specification, or when <a href="structuredefinition.html">extensions are defined</a>.
-An element is labeled "Is-Modifier = true" if the value it contains may change the
-interpretation of the element that contains it (including if the element is the resource as a whole). Typical examples of
-elements that are labeled "Is-Modifier" are elements such as "status", "active", "refuted", or "certainty".
+</p>
+<p>
+An element is a modifier if and only if it cannot be safely ignored because its value, or its <a href="elementdefinition.html#missing">meaning if missing</a>, may 
+cause the interpretation of the containing element or one of its descendants to no longer conform to the stated 
+definition for the element. Typical examples of elements that are labeled "Is-Modifier" are elements such as 
+"status", "active", "refuted", or "certainty" that invert or negate the meaning of the resource (or element) 
+that contains them.
+</p>
+<p>
+Modifier is not an indication of the degree of importance for a particular piece of information or whether 
+the element ought to be ignored when the resource is used for common use-cases.  It is expected that if you 
+ignore an element you may miss an important piece of computable meaning.
+</p>
+<p>
+For example, consider Observation:
+</p>
+<ul>
+ <li><code>Observation.status</code> allows the <code>entered-in-error</code> code, which indicates 
+that no actual Observation occurred at all. The definition of Observation indicates that it is a measurement that has 
+been made - and doesn't allow for the possibility of a measurement that wasn't made.  As a result, if the status 
+element were ignored and an Observation were interpreted at face value based on its definition, a system or user 
+would infer that an Observation had occurred, which would be false</li>
+ <li>If an application ignores the <code>Observation.subject</code> element, it wouldn't know who or what was observed, which 
+would make the remaining information largely useless for most usage.  
+However, any system that ignores the subject would not have a false understanding of the Observation as it's 
+defined. The system would understand what type of observation was made, when and what was found, just not who it was about</li>
+<li>
+Even something as critical as <code>Observation.code</code> is not a modifier element.  While the Observation would have 
+little utility without the code, the understanding when ignoring the element that “some” Observation had been 
+made on the specified subject at the specified date and time would still be true when the element was 
+reintroduced.  The only exception would be if a value expressed in the Observation.code element could 
+somehow convey that the Observation had not occurred or otherwise cause the instance to diverge from 
+the defined meaning of Observation when ignoring the element</li>
+</ul>
+
+<p>
+The definition of <code>is-modifier</code> has a corollary: any element that meets the requirement that it could 
+cause the interpretation of the containing element or its descendants to diverge from their definition 
+SHALL explicitly declare how such divergence could occur and must be marked as a modifier element.  
+Any element not marked <code>is-modifier</code> and without that explanation SHALL NOT be used by an implementer in such a 
+manner as to make the element behave as a modifier. For example, using a special "name" on a patient 
+to indicate that the subject isn’t a real patient, but is instead an artificial structure used for 
+non-patient tests would be non-conformant with FHIR because Patient.name is not a modifier element
+</p>
+<p>
 Whether an element is a modifier cannot be changed when element usage is described in a
-profile (i.e. a constraining <a href="structuredefinition.html">Structure Definition</a>).
+ constraining <a href="structuredefinition.html">Structure Definition</a>.
 When an element is labeled as Is-Modifier, the documentation must be clear about why
 it is a modifier.
 </p>
@@ -158,31 +208,34 @@ it is a modifier.
 A typical example of a modifier element is one that negates the element that contains it. For
 instance, in the following fragment of a resource definition:
 </p>
-<table style="border: 0px; font-size: 11px; font-family: verdana; vertical-align: top;" cellpadding="0" border="0" cellspacing="0"><tbody><tr style="border: 1px #F0F0F0 solid; font-size: 11px; font-family: verdana; vertical-align: top;"><th style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy"><a title="The logical name of the element" href="formats.html#table">Name</a></th><th style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy"><a title="Information about the use of the element" href="formats.html#table">Flags</a></th><th style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy"><a title="Minimum and Maximum # of times the element can appear in the instance" href="formats.html#table">Card.</a></th><th style="width: 100px" class="hierarchy"><a title="Reference to the type of the element" href="formats.html#table">Type</a></th><th style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy"><a title="Additional information about the element" href="formats.html#table">Description &amp; Constraints</a><span style="float: right"><a title="Legend for this format" href="formats.html#table"><img style="background-color: inherit" alt="doco" src="help16.png"/></a></span></th></tr><tr style="border: 0px; padding:0px; vertical-align: top; background-color: white;"><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck1.png)" class="hierarchy"><img style="background-color: inherit" alt="." class="hierarchy" src="tbl_spacer.png"/><img title="Resource" style="background-color: white; background-color: inherit" alt="." class="hierarchy" src="icon_resource.png"/> <a title="AllergyIntolerance : Risk of harmful or undesirable, physiological response which is unique to an individual and associated with exposure to a substance." href="allergyintolerance-definitions.html#AllergyIntolerance">AllergyIntolerance</a><a name="AllergyIntolerance"> </a></td><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy"></td><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy"></td><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy"><a href="domainresource.html">DomainResource</a></td><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy">Allergy or Intolerance (generally: Risk Of Adverse reaction to a substance)</td></tr>
-<tr style="border: 0px; padding:0px; vertical-align: top; background-color: white;"><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)" class="hierarchy"><img style="background-color: inherit" alt="." class="hierarchy" src="tbl_spacer.png"/><img style="background-color: inherit" alt="." class="hierarchy" src="tbl_vjoin.png"/><img title="Primitive Data Type" style="background-color: white; background-color: inherit" alt="." class="hierarchy" src="icon_primitive.png"/> <a title="AllergyIntolerance.onset : Record of the date and/or time of the onset of the Allergy or Intolerance." href="allergyintolerance-definitions.html#AllergyIntolerance.onset_x_">onset</a><a name="AllergyIntolerance.onset_x_"> </a></td><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy"><span title="This element is included in summaries">Σ</span></td><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy">0..1</td><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy"><a href="datatypes.html#dateTime">dateTime</a></td><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy">Date(/time) when manifestations showed</td></tr>
-<tr style="border: 0px; padding:0px; vertical-align: top; background-color: white;"><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)" class="hierarchy"><img style="background-color: inherit" alt="." class="hierarchy" src="tbl_spacer.png"/><img style="background-color: inherit" alt="." class="hierarchy" src="tbl_vjoin.png"/><img title="Reference to another Resource" style="background-color: white; background-color: inherit" alt="." class="hierarchy" src="icon_reference.png"/> <a title="AllergyIntolerance.patient : The patient who has the allergy or intolerance." href="allergyintolerance-definitions.html#AllergyIntolerance.patient">patient</a><a name="AllergyIntolerance.patient"> </a></td><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy"><span title="This element is included in summaries">Σ</span></td><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy">1..1</td><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy"><a href="references.html">Reference</a>(<a href="patient.html">Patient</a>)</td><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy">Who the sensitivity is for</td></tr>
-<tr style="border: 0px; padding:0px; vertical-align: top; background-color: white;"><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)" class="hierarchy"><img style="background-color: inherit" alt="." class="hierarchy" src="tbl_spacer.png"/><img style="background-color: inherit" alt="." class="hierarchy" src="tbl_vjoin.png"/><img title="Primitive Data Type" style="background-color: white; background-color: inherit" alt="." class="hierarchy" src="icon_primitive.png"/> <a title="AllergyIntolerance.verificationStatus : Assertion about certainty associated with the propensity, or potential risk, of a reaction to the identified Substance." href="allergyintolerance-definitions.html#AllergyIntolerance.verificationStatus">verificationStatus</a><a name="AllergyIntolerance.verificationStatus"> </a></td><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy"><span title="This element is a modifier element">?! </span><span title="This element is included in summaries">Σ</span></td><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy">0..1</td><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy"><a href="datatypes.html#code">code</a></td><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy">unconfirmed | confirmed | refuted | entered-in-error<br/><a title="Assertion about certainty associated with a propensity, or potential risk, of a reaction to the identified Substance" href="valueset-allergy-verification-status.html">AllergyIntoleranceVerificationStatus</a> (<a title="To be conformant, codes in this element SHALL be from the specified value set" href="terminologies.html#required">Required</a>)</td></tr>
-<tr style="border: 0px; padding:0px; vertical-align: top; background-color: white;"><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)" class="hierarchy"><img style="background-color: inherit" alt="." class="hierarchy" src="tbl_spacer.png"/><img style="background-color: inherit" alt="." class="hierarchy" src="tbl_vjoin.png"/><img title="Primitive Data Type" style="background-color: white; background-color: inherit" alt="." class="hierarchy" src="icon_primitive.png"/> <a title="AllergyIntolerance.criticality : Estimate of the potential clinical harm, or seriousness, of the reaction to the identified Substance." href="allergyintolerance-definitions.html#AllergyIntolerance.criticality">criticality</a><a name="AllergyIntolerance.criticality"> </a></td><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy"><span title="This element is included in summaries">Σ</span></td><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy">0..1</td><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy"><a href="datatypes.html#code">code</a></td><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy">CRITL | CRITH | CRITU<br/><a title="Estimate of the potential clinical harm, or seriousness, of a reaction to an identified Substance" href="valueset-allergy-intolerance-criticality.html">AllergyIntoleranceCriticality</a> (<a title="To be conformant, codes in this element SHALL be from the specified value set" href="terminologies.html#required">Required</a>)</td></tr>
+<table style="border: 0px; font-size: 11px; font-family: verdana; vertical-align: top;" cellpadding="0" border="0" cellspacing="0"><tbody><tr style="border: 1px #F0F0F0 solid; font-size: 11px; font-family: verdana; vertical-align: top;"><th style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy"><a title="The logical name of the element" href="formats.html#table">Name</a></th><th style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy"><a title="Information about the use of the element" href="formats.html#table">Flags</a></th><th style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy"><a title="Minimum and Maximum # of times the element can appear in the instance" href="formats.html#table">Card.</a></th><th style="width: 100px" class="hierarchy"><a title="Reference to the type of the element" href="formats.html#table">Type</a></th><th style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy"><a title="Additional information about the element" href="formats.html#table">Description &amp; Constraints</a><span style="float: right"><a title="Legend for this format" href="formats.html#table"><img style="background-color: inherit" alt="doco" src="help16.png"/></a></span></th></tr><tr style="border: 0px; padding:0px; vertical-align: top; background-color: white;"><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck1.png)" class="hierarchy"><img style="background-color: inherit" alt="." class="hierarchy" src="tbl_spacer.png"/><img title="Resource" style="background-color: white; background-color: inherit" alt="." class="hierarchy" src="icon_resource.png"/> <a title="AllergyIntolerance : Risk of harmful or undesirable, physiological response which is unique to an individual and associated with exposure to a substance." href="allergyintolerance-definitions.html#AllergyIntolerance">AllergyIntolerance</a><a name="AllergyIntolerance"></a></td><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy"></td><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy"></td><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy"><a href="domainresource.html">DomainResource</a></td><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy">Allergy or Intolerance (generally: Risk of Adverse reaction to a substance)</td></tr>
+<tr style="border: 0px; padding:0px; vertical-align: top; background-color: white;"><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)" class="hierarchy"><img style="background-color: inherit" alt="." class="hierarchy" src="tbl_spacer.png"/><img style="background-color: inherit" alt="." class="hierarchy" src="tbl_vjoin.png"/><img title="Primitive Data Type" style="background-color: white; background-color: inherit" alt="." class="hierarchy" src="icon_primitive.png"/> <a title="AllergyIntolerance.onset : Record of the date and/or time of the onset of the Allergy or Intolerance." href="allergyintolerance-definitions.html#AllergyIntolerance.onset_x_">onset</a><a name="AllergyIntolerance.onset_x_"></a></td><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy"><span title="This element is included in summaries">Σ</span></td><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy">0..1</td><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy"><a href="datatypes.html#dateTime">dateTime</a></td><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy">Date(/time) when manifestations showed</td></tr>
+<tr style="border: 0px; padding:0px; vertical-align: top; background-color: white;"><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)" class="hierarchy"><img style="background-color: inherit" alt="." class="hierarchy" src="tbl_spacer.png"/><img style="background-color: inherit" alt="." class="hierarchy" src="tbl_vjoin.png"/><img title="Reference to another Resource" style="background-color: white; background-color: inherit" alt="." class="hierarchy" src="icon_reference.png"/> <a title="AllergyIntolerance.patient : The patient who has the allergy or intolerance." href="allergyintolerance-definitions.html#AllergyIntolerance.patient">patient</a><a name="AllergyIntolerance.patient"></a></td><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy"><span title="This element is included in summaries">Σ</span></td><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy">1..1</td><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy"><a href="references.html">Reference</a>(<a href="patient.html">Patient</a>)</td><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy">Who the sensitivity is for</td></tr>
+<tr style="border: 0px; padding:0px; vertical-align: top; background-color: white;"><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)" class="hierarchy"><img style="background-color: inherit" alt="." class="hierarchy" src="tbl_spacer.png"/><img style="background-color: inherit" alt="." class="hierarchy" src="tbl_vjoin.png"/><img title="Primitive Data Type" style="background-color: white; background-color: inherit" alt="." class="hierarchy" src="icon_primitive.png"/> <a title="AllergyIntolerance.verificationStatus : Assertion about certainty associated with the propensity, or potential risk, of a reaction to the identified Substance." href="allergyintolerance-definitions.html#AllergyIntolerance.verificationStatus">verificationStatus</a><a name="AllergyIntolerance.verificationStatus"></a></td><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy"><span title="This element is a modifier element">?! </span><span title="This element is included in summaries">Σ</span></td><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy">0..1</td><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy"><a href="datatypes.html#CodeableConcept">CodeableConcept</a></td><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy">unconfirmed | confirmed | refuted | entered-in-error<br/><a title="Assertion about certainty associated with a propensity, or potential risk, of a reaction to the identified Substance" href="valueset-allergyintolerance-verification.html">AllergyIntoleranceVerificationStatus</a> (<a title="To be conformant, codes in this element SHALL be from the specified value set" href="terminologies.html#required">Required</a>)</td></tr>
+<tr style="border: 0px; padding:0px; vertical-align: top; background-color: white;"><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)" class="hierarchy"><img style="background-color: inherit" alt="." class="hierarchy" src="tbl_spacer.png"/><img style="background-color: inherit" alt="." class="hierarchy" src="tbl_vjoin.png"/><img title="Primitive Data Type" style="background-color: white; background-color: inherit" alt="." class="hierarchy" src="icon_primitive.png"/> <a title="AllergyIntolerance.criticality : Estimate of the potential clinical harm, or seriousness, of the reaction to the identified Substance." href="allergyintolerance-definitions.html#AllergyIntolerance.criticality">criticality</a><a name="AllergyIntolerance.criticality"></a></td><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy"><span title="This element is included in summaries">Σ</span></td><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy">0..1</td><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy"><a href="datatypes.html#code">code</a></td><td style="vertical-align: top; text-align : left; background-color: white; padding:0px 4px 0px 4px" class="hierarchy">CRITL | CRITH | CRITU<br/><a title="Estimate of the potential clinical harm, or seriousness, of a reaction to an identified Substance" href="valueset-allergy-intolerance-criticality.html">AllergyIntoleranceCriticality</a> (<a title="To be conformant, codes in this element SHALL be from the specified value set" href="terminologies.html#required">Required</a>)</td></tr>
 </tbody></table>
 
 <p>
-The value of the 'verificationStatus' element affects the entire meaning of the resource - if it is set to refuted, the
-entire resource must be understood differently, and so it is not safe for implementations to ignore it.
-As a consequence, it is labeled as 'is modifier = true'. In this tabular representation of the resource,
+The definition of an AllergyIntolerance is that it contains information about "Risk of harmful or undesirable, 
+physiological response which is unique to an individual and associated with exposure to a substance".
+If the value of the 'verificationStatus' element is set to <code>entered-in-error</code>, the
+entire resource does not actually contain valid information about any risk of exposure, and 
+it is not safe for applications to ignore this element. As a consequence, it is labeled as 'is modifier = true'. In this tabular representation of the resource,
 this shows as the flag '?!'. The <a href="json.html">JSON</a> and <a href="xml.html">XML</a> representations
 of a resource definition have their own representation of 'is modifier = true' status, and
 it is defined directly in a <a href="elementdefinition-definitions.html#ElementDefinition.isModifier">ElementDefinition</a>.
 </p>
 <p>
-Is-Modifier elements SHALL be represented in the narrative summary of the resource.
+If a narrative summary is present, and the status is <code>generated</code>, Is-Modifier elements SHALL be represented in the narrative summary of the resource.
+If Narrative is present with some other status Is-modifier elements SHOULD be represented.
 </p>
 <p>
 If the value of a modifier element is not explicit in the instance, or known by the context,
-the resource may not be able to be safely understood. Wherever possible, elements labeled
-"Is-Modifier = true" also have a minimum cardinality of 1, or a default value, in order to
-introduce certainty in their handling. However, sometimes this is not possible - much legacy
-data is not well described. Implementations producing resources SHOULD ensure that
-appropriate values for isModifier elements are provided at all times.
+the resource might not be able to be safely understood. Wherever possible, elements labeled
+"Is-Modifier = true" also have a minimum cardinality of 1, in order to introduce certainty in 
+their handling. However, sometimes this is not possible - much legacy data is not well 
+described. Implementations producing resources SHOULD ensure that appropriate values for 
+isModifier elements are provided at all times.
 </p>
 <p>
 Implementations processing the data in resources SHALL understand the impact of the element when using the data.
@@ -196,7 +249,7 @@ will never occur. However applications SHOULD always check the value irrespectiv
 Note that processing the data of a resource typically means
 copying or filtering data out of a resource for use in another
 context (display to a human, decision support, exchange in another
-format where not all information is included, or storing it for this kind of use).
+format where not all information is included or storing it for this kind of use).
 Servers and background processes that simply move whole resources around unchanged
 are not "processing the data of the resource", and therefore these applications
 are not required to check Is-Modifier elements.
@@ -204,43 +257,21 @@ are not required to check Is-Modifier elements.
 <p>
 Every element in the base resource has a value of "true" or "false" for the Is-Modifier flag.
 The value of the flag cannot be changed by profiles on the resource, in either direction.
-When a profile defines an extension, it labels the extension with the Is-Modifier flag,
+When a StructureDefinition defines an extension, it labels the extension with the Is-Modifier flag,
 and this cannot be changed in other profiles. Note that extensions that have is-Modifier = true
 are represented differently in resource instances ("modifierExtension" instead of "extension"),
 and there are <a href="extensibility.html#modifierExtension">additional rules about how they are handled</a>.
 </p>
 <p>
-Here is a list of all the modifier elements defined in the specification:
+Most <code>status</code> elements are marked as modifiers because of the presence of the <code>entered-in-error</code> status.
+Other modifiers are defined:
 </p>
-<ul>
- <li>The <code>status</code> and <code>experimental</code> elements on the resources
-<a href="activitydefinition-definitions.html#ActivityDefinition">ActivityDefinition</a>,
-<a href="capabilitystatement-definitions.html#CapabilityStatement">CapabilityStatement</a>,
-<a href="codesystem-definitions.html#CodeSystem">CodeSystem</a>,
-<a href="compartmentdefinition-definitions.html#CompartmentDefinition">CompartmentDefinition</a>,
-<a href="conceptmap-definitions.html#ConceptMap">ConceptMap</a>,
-<a href="expansionprofile-definitions.html#ExpansionProfile">ExpansionProfile</a>,
-<a href="graphdefinition-definitions.html#GraphDefinition">GraphDefinition</a>,
-<a href="implementationguide-definitions.html#ImplementationGuide">ImplementationGuide</a>,
-<a href="library-definitions.html#Library">Library</a>,
-<a href="measure-definitions.html#Measure">Measure</a>,
-<a href="messagedefinition-definitions.html#MessageDefinition">MessageDefinition</a>,
-<a href="operationdefinition-definitions.html#OperationDefinition">OperationDefinition</a>,
-<a href="plandefinition-definitions.html#PlanDefinition">PlanDefinition</a>,
-<a href="questionnaire-definitions.html#Questionnaire">Questionnaire</a>,
-<a href="searchparameter-definitions.html#SearchParameter">SearchParameter</a>,
-<a href="servicedefinition-definitions.html#ServiceDefinition">ServiceDefinition</a>,
-<a href="structuredefinition-definitions.html#StructureDefinition">StructureDefinition</a>,
-<a href="structuremap-definitions.html#StructureMap">StructureMap</a>,
-<a href="testscript-definitions.html#TestScript">TestScript</a> and
-<a href="valueset-definitions.html#ValueSet">ValueSet</a></li>
-</ul>
 
 <ul style="-moz-column-count: 3; -moz-column-gap: 10px; -webkit-column-count: 3; -webkit-column-gap: 10px; column-count: 3; column-gap: 10px">
 <%modifier-list%>
 </ul>
 
-<a name="mustSupport"> </a>
+<a name="mustSupport"></a>
 <h3>Must-Support</h3>
 <p>
 Labeling an element Must-Support means that implementations that produce or consume resources SHALL
@@ -250,9 +281,11 @@ part of the base specification. This flag is intended for use in profiles that h
 </p>
 <p>
 For this reason, the specification itself never labels any elements as must-support.
-This is done in <a href="profiling.html#mustsupport">Resource Profiles</a>, where the profile
+This is done in <a href="profiling.html#mustsupport">StructureDefinitions</a>, where the profile
 labels an element as mustSupport=true. When a profile does this, it SHALL also make clear
-exactly what kind of "support" is required, as this can mean many things.
+exactly what kind of "support" is required, as this could involve expectations around what 
+a system must store, display, allow data capture of, include in decision logic, pass on to 
+other data consumers, etc.
 </p>
 
 <p>
@@ -261,7 +294,7 @@ the important elements to make use of the resource), nor is it automatically mus
 of these things are more likely to be true for IsModifier elements than for other elements.
 </p>
 
-<a name="constraints"> </a>
+<a name="constraints"></a>
 <h3>Constraints</h3>
 <p>
 All elements may have constraints attached to them (also known as 'invariants').
@@ -270,9 +303,9 @@ Constraints defined on an element have the following properties:
 <table class="grid">
  <tr><td><b>Key</b></td><td>Identifies the constraint uniquely amongst all the constraints in the context - typically, this is used to refer to the constraint in an error message</td></tr>
  <tr><td><b>Requirements</b></td><td>An explanation of why the constraint has been applied - what harmful conditions are being avoided</td></tr>
- <tr><td><b>Severity</b></td><td>Whether the constraint is an error, or a warning. The exact difference in meaning of these depends on context, but an error is associated with "SHALL" and systems rejecting content, whereas a warning might not be</td></tr>
- <tr><td><b>Human Description</b></td><td>A human description of the rule intended to be show as the explanation for a message when the constraint is not met</td></tr>
- <tr><td><b>Expression</b></td><td>An <a href="http://hl7.org/fluentpath">FHIRPath</a> expression that must evaluate to true when run on the element</td></tr>
+ <tr><td><b>Severity</b></td><td>The severity of the invariant - see below</td></tr>
+ <tr><td><b>Human Description</b></td><td>A human description of the rule intended to be shown as the explanation for a message when the constraint is not met</td></tr>
+ <tr><td><b>Expression</b></td><td>A <a href="fhirpath.html">FHIRPath</a> expression that must evaluate to true when run on the element</td></tr>
  <tr><td><b>XPath</b></td><td>An XPath expression that must evaluate to true when run on the element in the XML representation</td></tr>
 </table>
 <p>
@@ -282,6 +315,17 @@ to resources. Systems are not required to evaluate the constraints, just as they
 are not required to check for conformance, or schema validity. However, systems
 SHOULD always ensure that all resources are valid against all applicable constraints.
 </p>
+<p>
+Constraints have a severity level:
+</p>
+<a name="best-practice"> </a><a name="rule"> </a><a name="warning"> </a>
+<table>
+ <tr> <td><b>Error (rule)</b></td>  <td>A rule that all resources must conform to. Validators should report it as an error if the rule is violated, and applications processing the content can reject it as an invalid resource</td> </tr>
+ <tr> <td><b>Warning</b></td>  <td>Report this as a warning that there may be a problem with the resource, but it is considered valid and can be processed normally</td> </tr>
+ <tr> <td><b>Guideline</b></td>  <td>A warning marked with an extension (<a href="extension-elementdefinition-bestpractice.html">http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice</a>)
+   that indicates that it should be a treated as an error if the implementation context asks a validator to enforce best practice rules. See <a href="best-practices.html">Best Practices</a> for a full list</td> </tr>
+</table>
+
 <p>
 Elements can also be explicitly associated with constraints defined elsewhere. This is
 a notification to implementers that the element is affected by the constraint. It has no meaning when the constraints are evaluated.
@@ -293,21 +337,21 @@ applied.
 </p>
 
 
-<a name="summary"> </a>
-<a name="default"> </a>
-<a name="meaning-when-missing"> </a>
+<a name="summary"></a>
+<a name="default"></a>
+<a name="meaning-when-missing"></a>
 <h3>Other Metadata</h3>
 <p>
-In addition to the conformance metadata, each element has other metadata properties:
+In addition to the conformance metadata, each element has other metadata properties defined in the <a href="elementdefinition.html">ElementDefinition</a>:
 </p>
 <ul>
  <li><b>isSummary</b> - How the element behaves in <a href="search.html#summary">Summary Searches</a></li>
- <li><b>defaultValue / meaningWhenMissing</b> - What it <a href="elementdefinition.html#missing">means when an element is missing</a></li>
+ <li><b>meaningWhenMissing</b> - What it <a href="elementdefinition.html#missing">means when an element is missing</a></li>
  <li><b>maxLength</b> - How long the representation of the primitive value is allowed to be (not including XML or JSON escaping)</li>
 </ul>
 
 
-<a name="examples"> </a>
+<a name="examples"></a>
 <h3>Examples and Reference Implementations</h3>
 <p>
 This specification includes many examples. While every effort has been made to ensure that the examples

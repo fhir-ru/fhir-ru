@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <Claim xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xsi:schemaLocation="http://hl7.org/fhir ../../schema/claim.xsd">
 	<id value="100156"/>
@@ -23,7 +23,7 @@
 			<subject>
 				<reference value="Patient/1"/>
 			</subject>
-			<!-- rest of the resource ommitted for brevity -->
+			<!-- rest of the resource omitted for brevity -->
 		</ServiceRequest>
 	</contained>
 
@@ -36,12 +36,12 @@
 
 	<type>
 		<coding>
-			<system value="http://hl7.org/fhir/ex-claimtype"/>
+			<system value="http://terminology.hl7.org/CodeSystem/claim-type"/>
 			<code value="oral"/>
 		</coding>
 	</type>
 
-	<use value="complete"/>
+	<use value="claim"/>
 
 	<patient>
 		<reference value="Patient/1"/>
@@ -53,9 +53,9 @@
 		<reference value="Organization/2"/>
 	</insurer>
 
-	<organization>
+	<provider>
 		<reference value="Organization/1"/>
-	</organization>
+	</provider>
 
 	<priority>
 		<coding>
@@ -69,7 +69,7 @@
 		</claim>
 		<relationship>
 			<coding>
-				<system value="http://hl7.org/fhir/ex-relatedclaimrelationship"/>
+				<system value="http://terminology.hl7.org/CodeSystem/ex-relatedclaimrelationship"/>
 				<code value="associated"/>
 			</coding>
 		</relationship>
@@ -81,13 +81,10 @@
 	<payee>
 		<type>
 			<coding>
-				<system value="http://hl7.org/fhir/payeetype"/>
+				<system value="http://terminology.hl7.org/CodeSystem/payeetype"/>
 				<code value="other"/>
 			</coding>
 		</type>
-		<resource>
-			<code value="relatedperson"/>
-		</resource>
 		<party>
 			<reference value="RelatedPerson/peter"/>
 		</party>
@@ -104,11 +101,11 @@
 		</provider>
 	</careTeam>
 
-	<information>
+	<supportingInfo>
 		<sequence value="1"/>
 		<category>
 			<coding>
-				<system value="http://hl7.org/fhir/claiminformationcategory"/>
+				<system value="http://terminology.hl7.org/CodeSystem/claiminformationcategory"/>
 				<code value="prosthesis"/>
 			</coding>
 		</category>
@@ -120,7 +117,7 @@
 			</coding>
 		</code>
 		<timingDate value="2001-04-07"/> <!-- original placement -->
-	</information>
+	</supportingInfo>
 
 	<procedure>
 		<sequence value="1"/>   
@@ -140,32 +137,30 @@
 
 	<item>
 		<sequence value="1"/>
-		<careTeamLinkId value="1"/>
-		<informationLinkId value="1"/>
-		<service>
+		<careTeamSequence value="1"/>
+		<informationSequence value="1"/>
+		<productOrService>
 			<coding>
 				<system value="http://example.org/fhir/oralservicecodes"/>
 				<code value="67221"/>
 				<display value="Maryland Bridge"/>
 			</coding>
-		</service>
+		</productOrService>
 		<servicedDate value="2014-08-16"/>
 		<locationCodeableConcept>
 			<coding>
-				<system value="http://hl7.org/fhir/ex-serviceplace"/>
+				<system value="http://terminology.hl7.org/CodeSystem/ex-serviceplace"/>
 				<code value="11"/>
 			</coding>
 		</locationCodeableConcept>
 		<unitPrice>
 			<value value="1400.00"/>
-			<system value="urn:iso:std:iso:4217"/>
-			<code value="USD"/> 
+			<currency value="USD"/> 
 		</unitPrice> 
 		<factor value="0.75"/> <!-- student discount -->
 		<net>
 			<value value="1050.00"/>
-			<system value="urn:iso:std:iso:4217"/>
-			<code value="USD"/> 
+			<currency value="USD"/> 
 		</net> 
 		<udi>
 			<reference value="#device-bridge"/>
@@ -180,29 +175,27 @@
 
 	<item>
 		<sequence value="2"/>
-		<careTeamLinkId value="1"/>
-		<service>
+		<careTeamSequence value="1"/>
+		<productOrService>
 			<coding>
 				<system value="http://example.org/fhir/oralservicecodes"/>
 				<code value="21211"/>
 			</coding>
-		</service>
+		</productOrService>
 		<servicedDate value="2014-08-16"/>
 		<locationCodeableConcept>
 			<coding>
-				<system value="http://hl7.org/fhir/ex-serviceplace"/>
+				<system value="http://terminology.hl7.org/CodeSystem/ex-serviceplace"/>
 				<code value="11"/>
 			</coding>
 		</locationCodeableConcept>
 		<unitPrice>
 			<value value="105.00"/>
-			<system value="urn:iso:std:iso:4217"/>
-			<code value="USD"/> 
+			<currency value="USD"/> 
 		</unitPrice> 
 		<net>
 			<value value="105.00"/>
-			<system value="urn:iso:std:iso:4217"/>
-			<code value="USD"/> 
+			<currency value="USD"/> 
 		</net> 
 		<bodySite>
 			<coding>
@@ -220,30 +213,28 @@
 
 	<item>
 		<sequence value="3"/>
-		<careTeamLinkId value="1"/>
-		<procedureLinkId value="1"/>
-		<service>
+		<careTeamSequence value="1"/>
+		<procedureSequence value="1"/>
+		<productOrService>
 			<coding>
 				<system value="http://example.org/fhir/oralservicecodes"/>
 				<code value="27211"/>
 			</coding>
-		</service>
+		</productOrService>
 		<servicedDate value="2014-08-16"/>
 		<locationCodeableConcept>
 			<coding>
-				<system value="http://hl7.org/fhir/ex-serviceplace"/>
+				<system value="http://terminology.hl7.org/CodeSystem/ex-serviceplace"/>
 				<code value="11"/>
 			</coding>
 		</locationCodeableConcept>
 		<unitPrice>
 			<value value="1100.00"/>
-			<system value="urn:iso:std:iso:4217"/>
-			<code value="USD"/> 
+			<currency value="USD"/> 
 		</unitPrice> 
 		<net>
 			<value value="1100.00"/>
-			<system value="urn:iso:std:iso:4217"/>
-			<code value="USD"/> 
+			<currency value="USD"/> 
 		</net> 
 		<bodySite>
 			<coding>
@@ -254,49 +245,44 @@
 
 		<detail>
 			<sequence value="1"/>
-			<service>
+			<productOrService>
 				<coding>
 					<system value="http://example.org/fhir/oralservicecodes"/>
 					<code value="27211"/>
 				</coding>
-			</service>
+			</productOrService>
 			<unitPrice>
 				<value value="1000.00"/>
-				<system value="urn:iso:std:iso:4217"/>
-				<code value="USD"/> 
+				<currency value="USD"/> 
 			</unitPrice> 
 			<factor value="0.75"/> <!-- Student discount -->
 			<net>
 				<value value="750.00"/>
-				<system value="urn:iso:std:iso:4217"/>
-				<code value="USD"/> 
+				<currency value="USD"/> 
 			</net> 
 		</detail>
 
 		<detail>
 			<sequence value="2"/>
-			<service>
+			<productOrService>
 				<coding>
 					<system value="http://example.org/fhir/oralservicecodes"/>
 					<code value="lab"/>
 				</coding>
-			</service>
+			</productOrService>
 			<unitPrice>
 				<value value="350.00"/>
-				<system value="urn:iso:std:iso:4217"/>
-				<code value="USD"/> 
+				<currency value="USD"/> 
 			</unitPrice> 
 			<net>
 				<value value="350.00"/>
-				<system value="urn:iso:std:iso:4217"/>
-				<code value="USD"/> 
+				<currency value="USD"/> 
 			</net> 
 		</detail>
 	</item>
 	<total>
 		<value value="2255.00"/>
-		<system value="urn:iso:std:iso:4217"/>
-		<code value="USD"/> 
+		<currency value="USD"/> 
 	</total> 
 
 </Claim>

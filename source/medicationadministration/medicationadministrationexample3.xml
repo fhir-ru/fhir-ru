@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <MedicationAdministration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://hl7.org/fhir ../../schema/medicationadministration.xsd"
  xmlns="http://hl7.org/fhir"> 
@@ -15,7 +15,14 @@
       </code>
     </Medication>
   </contained>
-  <status value="on-hold" />
+  <status value="on-hold"/>
+  <statusReason>
+    <coding>
+      <system value="http://snomed.info/sct"/>
+      <code value="373147003"/>
+      <display value="Administration of medication not done due to a contraindication (situation)"/>
+    </coding>
+  </statusReason>
   <medicationReference>
     <reference value="#med0303"/> 
   </medicationReference>
@@ -33,13 +40,7 @@
   <start value="2015-01-15T14:30:00+01:00"/>
   <end value="2015-01-15T14:30:00+01:00"/>
 </effectivePeriod>
-  <statusReason>
-    <coding>
-      <system value="http://snomed.info/sct"/>
-      <code value="373147003"/>
-      <display value="Administration of medication not done due to a contraindication (situation)"/>
-    </coding>
-  </statusReason>
+
   <request>
     <reference value="MedicationRequest/medrx0317"/>
   </request>

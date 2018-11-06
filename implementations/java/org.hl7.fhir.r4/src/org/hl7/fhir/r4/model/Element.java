@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Fri, Aug 11, 2017 07:23+1000 for FHIR v3.1.0
+// Generated on Mon, Nov 5, 2018 09:03+1100 for FHIR v3.6.0
 
 import java.util.*;
 
@@ -47,17 +47,17 @@ import org.hl7.fhir.exceptions.FHIRException;
 public abstract class Element extends Base implements IBaseHasExtensions, IBaseElement {
 
     /**
-     * unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
      */
     @Child(name = "id", type = {StringType.class}, order=0, min=0, max=1, modifier=false, summary=false)
-    @Description(shortDefinition="xml:id (or equivalent in JSON)", formalDefinition="unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." )
+    @Description(shortDefinition="xml:id (or equivalent in JSON)", formalDefinition="Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." )
     protected StringType id;
 
     /**
-     * May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
      */
     @Child(name = "extension", type = {Extension.class}, order=1, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
-    @Description(shortDefinition="Additional Content defined by implementations", formalDefinition="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." )
+    @Description(shortDefinition="Additional content defined by implementations", formalDefinition="May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." )
     protected List<Extension> extension;
 
     private static final long serialVersionUID = -1452745816L;
@@ -70,7 +70,7 @@ public abstract class Element extends Base implements IBaseHasExtensions, IBaseE
     }
 
     /**
-     * @return {@link #id} (unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.). This is the underlying object with id, value and extensions. The accessor "getId" gives direct access to the value
+     * @return {@link #id} (Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.). This is the underlying object with id, value and extensions. The accessor "getId" gives direct access to the value
      */
     public StringType getIdElement() { 
       if (this.id == null)
@@ -90,7 +90,7 @@ public abstract class Element extends Base implements IBaseHasExtensions, IBaseE
     }
 
     /**
-     * @param value {@link #id} (unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.). This is the underlying object with id, value and extensions. The accessor "getId" gives direct access to the value
+     * @param value {@link #id} (Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.). This is the underlying object with id, value and extensions. The accessor "getId" gives direct access to the value
      */
     public Element setIdElement(StringType value) { 
       this.id = value;
@@ -98,14 +98,14 @@ public abstract class Element extends Base implements IBaseHasExtensions, IBaseE
     }
 
     /**
-     * @return unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     * @return Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
      */
     public String getId() { 
       return this.id == null ? null : this.id.getValue();
     }
 
     /**
-     * @param value unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     * @param value Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
      */
     public Element setId(String value) { 
       if (Utilities.noString(value))
@@ -119,7 +119,7 @@ public abstract class Element extends Base implements IBaseHasExtensions, IBaseE
     }
 
     /**
-     * @return {@link #extension} (May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.)
+     * @return {@link #extension} (May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.)
      */
     public List<Extension> getExtension() { 
       if (this.extension == null)
@@ -205,15 +205,15 @@ public abstract class Element extends Base implements IBaseHasExtensions, IBaseE
   }
 
       protected void listChildren(List<Property> children) {
-        children.add(new Property("id", "string", "unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.", 0, 1, id));
-        children.add(new Property("extension", "Extension", "May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.", 0, java.lang.Integer.MAX_VALUE, extension));
+        children.add(new Property("id", "string", "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.", 0, 1, id));
+        children.add(new Property("extension", "Extension", "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.", 0, java.lang.Integer.MAX_VALUE, extension));
       }
 
       @Override
       public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
         switch (_hash) {
-        case 3355: /*id*/  return new Property("id", "string", "unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.", 0, 1, id);
-        case -612557761: /*extension*/  return new Property("extension", "Extension", "May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.", 0, java.lang.Integer.MAX_VALUE, extension);
+        case 3355: /*id*/  return new Property("id", "string", "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.", 0, 1, id);
+        case -612557761: /*extension*/  return new Property("extension", "Extension", "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.", 0, java.lang.Integer.MAX_VALUE, extension);
         default: return super.getNamedProperty(_hash, _name, _checkValid);
         }
 
@@ -303,22 +303,22 @@ public abstract class Element extends Base implements IBaseHasExtensions, IBaseE
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof Element))
+        if (!(other_ instanceof Element))
           return false;
-        Element o = (Element) other;
+        Element o = (Element) other_;
         return compareDeep(id, o.id, true) && compareDeep(extension, o.extension, true);
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof Element))
+        if (!(other_ instanceof Element))
           return false;
-        Element o = (Element) other;
+        Element o = (Element) other_;
         return compareValues(id, o.id, true);
       }
 
@@ -337,12 +337,58 @@ public abstract class Element extends Base implements IBaseHasExtensions, IBaseE
   }
 // added from java-adornments.txt:
   public void addExtension(String url, Type value) {
+    if (disallowExtensions)
+      throw new Error("Extensions are not allowed in this context");
     Extension ex = new Extension();
     ex.setUrl(url);
     ex.setValue(value);
     getExtension().add(ex);    
   }
 
+
+   public Extension getExtensionByUrl(String theUrl) {
+     org.apache.commons.lang3.Validate.notBlank(theUrl, "theUrl must not be blank or null");
+     ArrayList<Extension> retVal = new ArrayList<Extension>();
+     for (Extension next : getExtension()) {
+       if (theUrl.equals(next.getUrl())) {
+         retVal.add(next);
+       }
+     }
+     if (retVal.size() == 0)
+       return null;
+     else {
+       org.apache.commons.lang3.Validate.isTrue(retVal.size() == 1, "Url "+theUrl+" must have only one match");
+       return retVal.get(0);
+     }
+   }
+  
+   public void removeExtension(String theUrl) {
+     for (int i = getExtension().size()-1; i >= 0; i--) {
+       if (theUrl.equals(getExtension().get(i).getUrl()))
+         getExtension().remove(i);
+     }
+   }
+   
+   /**
+    * This is used in the FHIRPath engine to record that no extensions are allowed for this item in the context in which it is used.
+    * todo: enforce this....
+    */
+  private boolean disallowExtensions;
+
+  public boolean isDisallowExtensions() {
+    return disallowExtensions;
+  }
+
+  public Element setDisallowExtensions(boolean disallowExtensions) {
+    this.disallowExtensions = disallowExtensions;
+    return this;
+  }
+
+  public Element noExtensions() {
+    this.disallowExtensions = true;
+    return this;
+  }
+  
 
 // end addition
 

@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Fri, Aug 11, 2017 07:23+1000 for FHIR v3.1.0
+// Generated on Mon, Nov 5, 2018 09:03+1100 for FHIR v3.6.0
 
 import java.util.*;
 
@@ -43,9 +43,9 @@ import ca.uhn.fhir.model.api.annotation.Block;
 import org.hl7.fhir.instance.model.api.*;
 import org.hl7.fhir.exceptions.FHIRException;
 /**
- * A set of healthcare-related information that is assembled together into a single logical document that provides a single coherent statement of meaning, establishes its own context and that has clinical attestation with regard to who is making the statement. While a Composition defines the structure, it does not actually contain the content: rather the full content of a document is contained in a Bundle, of which the Composition is the first resource contained.
+ * A set of healthcare-related information that is assembled together into a single logical package that provides a single coherent statement of meaning, establishes its own context and that has clinical attestation with regard to who is making the statement. A Composition defines the structure and narrative content necessary for a document. However, a Composition alone does not constitute a document. Rather, the Composition must be the first entry in a Bundle where Bundle.type=document, and any other resources referenced from Composition must be included as subsequent entries in the Bundle (for example Patient, Practitioner, Encounter, etc.).
  */
-@ResourceDef(name="Composition", profile="http://hl7.org/fhir/Profile/Composition")
+@ResourceDef(name="Composition", profile="http://hl7.org/fhir/StructureDefinition/Composition")
 public class Composition extends DomainResource {
 
     public enum CompositionStatus {
@@ -234,12 +234,12 @@ public class Composition extends DomainResource {
         }
         public String getSystem() {
           switch (this) {
-            case U: return "http://hl7.org/fhir/v3/Confidentiality";
-            case L: return "http://hl7.org/fhir/v3/Confidentiality";
-            case M: return "http://hl7.org/fhir/v3/Confidentiality";
-            case N: return "http://hl7.org/fhir/v3/Confidentiality";
-            case R: return "http://hl7.org/fhir/v3/Confidentiality";
-            case V: return "http://hl7.org/fhir/v3/Confidentiality";
+            case U: return "http://terminology.hl7.org/CodeSystem/v3-Confidentiality";
+            case L: return "http://terminology.hl7.org/CodeSystem/v3-Confidentiality";
+            case M: return "http://terminology.hl7.org/CodeSystem/v3-Confidentiality";
+            case N: return "http://terminology.hl7.org/CodeSystem/v3-Confidentiality";
+            case R: return "http://terminology.hl7.org/CodeSystem/v3-Confidentiality";
+            case V: return "http://terminology.hl7.org/CodeSystem/v3-Confidentiality";
             default: return "?";
           }
         }
@@ -578,15 +578,15 @@ public class Composition extends DomainResource {
 
     public enum SectionMode {
         /**
-         * This list is the master list, maintained in an ongoing fashion with regular updates as the real world list it is tracking changes
+         * This list is the master list, maintained in an ongoing fashion with regular updates as the real world list it is tracking changes.
          */
         WORKING, 
         /**
-         * This list was prepared as a snapshot. It should not be assumed to be current
+         * This list was prepared as a snapshot. It should not be assumed to be current.
          */
         SNAPSHOT, 
         /**
-         * A list that indicates where changes have been made or recommended
+         * A point-in-time list that shows what changes have been made or recommended.  E.g. a discharge medication list showing what was added and removed during an encounter.
          */
         CHANGES, 
         /**
@@ -625,9 +625,9 @@ public class Composition extends DomainResource {
         }
         public String getDefinition() {
           switch (this) {
-            case WORKING: return "This list is the master list, maintained in an ongoing fashion with regular updates as the real world list it is tracking changes";
-            case SNAPSHOT: return "This list was prepared as a snapshot. It should not be assumed to be current";
-            case CHANGES: return "A list that indicates where changes have been made or recommended";
+            case WORKING: return "This list is the master list, maintained in an ongoing fashion with regular updates as the real world list it is tracking changes.";
+            case SNAPSHOT: return "This list was prepared as a snapshot. It should not be assumed to be current.";
+            case CHANGES: return "A point-in-time list that shows what changes have been made or recommended.  E.g. a discharge medication list showing what was added and removed during an encounter.";
             default: return "?";
           }
         }
@@ -689,22 +689,22 @@ public class Composition extends DomainResource {
         /**
          * The type of attestation the authenticator offers.
          */
-        @Child(name = "mode", type = {CodeType.class}, order=1, min=1, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+        @Child(name = "mode", type = {CodeType.class}, order=1, min=1, max=1, modifier=false, summary=false)
         @Description(shortDefinition="personal | professional | legal | official", formalDefinition="The type of attestation the authenticator offers." )
         @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/composition-attestation-mode")
-        protected List<Enumeration<CompositionAttestationMode>> mode;
+        protected Enumeration<CompositionAttestationMode> mode;
 
         /**
          * When the composition was attested by the party.
          */
-        @Child(name = "time", type = {DateTimeType.class}, order=2, min=0, max=1, modifier=false, summary=true)
+        @Child(name = "time", type = {DateTimeType.class}, order=2, min=0, max=1, modifier=false, summary=false)
         @Description(shortDefinition="When the composition was attested", formalDefinition="When the composition was attested by the party." )
         protected DateTimeType time;
 
         /**
          * Who attested the composition in the specified way.
          */
-        @Child(name = "party", type = {Patient.class, Practitioner.class, PractitionerRole.class, Organization.class}, order=3, min=0, max=1, modifier=false, summary=true)
+        @Child(name = "party", type = {Patient.class, RelatedPerson.class, Practitioner.class, PractitionerRole.class, Organization.class}, order=3, min=0, max=1, modifier=false, summary=false)
         @Description(shortDefinition="Who attested the composition", formalDefinition="Who attested the composition in the specified way." )
         protected Reference party;
 
@@ -713,7 +713,7 @@ public class Composition extends DomainResource {
          */
         protected Resource partyTarget;
 
-        private static final long serialVersionUID = -436604745L;
+        private static final long serialVersionUID = -1917768205L;
 
     /**
      * Constructor
@@ -722,65 +722,57 @@ public class Composition extends DomainResource {
         super();
       }
 
+    /**
+     * Constructor
+     */
+      public CompositionAttesterComponent(Enumeration<CompositionAttestationMode> mode) {
+        super();
+        this.mode = mode;
+      }
+
         /**
-         * @return {@link #mode} (The type of attestation the authenticator offers.)
+         * @return {@link #mode} (The type of attestation the authenticator offers.). This is the underlying object with id, value and extensions. The accessor "getMode" gives direct access to the value
          */
-        public List<Enumeration<CompositionAttestationMode>> getMode() { 
+        public Enumeration<CompositionAttestationMode> getModeElement() { 
           if (this.mode == null)
-            this.mode = new ArrayList<Enumeration<CompositionAttestationMode>>();
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create CompositionAttesterComponent.mode");
+            else if (Configuration.doAutoCreate())
+              this.mode = new Enumeration<CompositionAttestationMode>(new CompositionAttestationModeEnumFactory()); // bb
           return this.mode;
         }
 
-        /**
-         * @return Returns a reference to <code>this</code> for easy method chaining
-         */
-        public CompositionAttesterComponent setMode(List<Enumeration<CompositionAttestationMode>> theMode) { 
-          this.mode = theMode;
-          return this;
+        public boolean hasModeElement() { 
+          return this.mode != null && !this.mode.isEmpty();
         }
 
         public boolean hasMode() { 
-          if (this.mode == null)
-            return false;
-          for (Enumeration<CompositionAttestationMode> item : this.mode)
-            if (!item.isEmpty())
-              return true;
-          return false;
+          return this.mode != null && !this.mode.isEmpty();
         }
 
         /**
-         * @return {@link #mode} (The type of attestation the authenticator offers.)
+         * @param value {@link #mode} (The type of attestation the authenticator offers.). This is the underlying object with id, value and extensions. The accessor "getMode" gives direct access to the value
          */
-        public Enumeration<CompositionAttestationMode> addModeElement() {//2 
-          Enumeration<CompositionAttestationMode> t = new Enumeration<CompositionAttestationMode>(new CompositionAttestationModeEnumFactory());
-          if (this.mode == null)
-            this.mode = new ArrayList<Enumeration<CompositionAttestationMode>>();
-          this.mode.add(t);
-          return t;
-        }
-
-        /**
-         * @param value {@link #mode} (The type of attestation the authenticator offers.)
-         */
-        public CompositionAttesterComponent addMode(CompositionAttestationMode value) { //1
-          Enumeration<CompositionAttestationMode> t = new Enumeration<CompositionAttestationMode>(new CompositionAttestationModeEnumFactory());
-          t.setValue(value);
-          if (this.mode == null)
-            this.mode = new ArrayList<Enumeration<CompositionAttestationMode>>();
-          this.mode.add(t);
+        public CompositionAttesterComponent setModeElement(Enumeration<CompositionAttestationMode> value) { 
+          this.mode = value;
           return this;
         }
 
         /**
-         * @param value {@link #mode} (The type of attestation the authenticator offers.)
+         * @return The type of attestation the authenticator offers.
          */
-        public boolean hasMode(CompositionAttestationMode value) { 
-          if (this.mode == null)
-            return false;
-          for (Enumeration<CompositionAttestationMode> v : this.mode)
-            if (v.getValue().equals(value)) // code
-              return true;
-          return false;
+        public CompositionAttestationMode getMode() { 
+          return this.mode == null ? null : this.mode.getValue();
+        }
+
+        /**
+         * @param value The type of attestation the authenticator offers.
+         */
+        public CompositionAttesterComponent setMode(CompositionAttestationMode value) { 
+            if (this.mode == null)
+              this.mode = new Enumeration<CompositionAttestationMode>(new CompositionAttestationModeEnumFactory());
+            this.mode.setValue(value);
+          return this;
         }
 
         /**
@@ -873,17 +865,17 @@ public class Composition extends DomainResource {
 
         protected void listChildren(List<Property> children) {
           super.listChildren(children);
-          children.add(new Property("mode", "code", "The type of attestation the authenticator offers.", 0, java.lang.Integer.MAX_VALUE, mode));
+          children.add(new Property("mode", "code", "The type of attestation the authenticator offers.", 0, 1, mode));
           children.add(new Property("time", "dateTime", "When the composition was attested by the party.", 0, 1, time));
-          children.add(new Property("party", "Reference(Patient|Practitioner|PractitionerRole|Organization)", "Who attested the composition in the specified way.", 0, 1, party));
+          children.add(new Property("party", "Reference(Patient|RelatedPerson|Practitioner|PractitionerRole|Organization)", "Who attested the composition in the specified way.", 0, 1, party));
         }
 
         @Override
         public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
           switch (_hash) {
-          case 3357091: /*mode*/  return new Property("mode", "code", "The type of attestation the authenticator offers.", 0, java.lang.Integer.MAX_VALUE, mode);
+          case 3357091: /*mode*/  return new Property("mode", "code", "The type of attestation the authenticator offers.", 0, 1, mode);
           case 3560141: /*time*/  return new Property("time", "dateTime", "When the composition was attested by the party.", 0, 1, time);
-          case 106437350: /*party*/  return new Property("party", "Reference(Patient|Practitioner|PractitionerRole|Organization)", "Who attested the composition in the specified way.", 0, 1, party);
+          case 106437350: /*party*/  return new Property("party", "Reference(Patient|RelatedPerson|Practitioner|PractitionerRole|Organization)", "Who attested the composition in the specified way.", 0, 1, party);
           default: return super.getNamedProperty(_hash, _name, _checkValid);
           }
 
@@ -892,7 +884,7 @@ public class Composition extends DomainResource {
       @Override
       public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
         switch (hash) {
-        case 3357091: /*mode*/ return this.mode == null ? new Base[0] : this.mode.toArray(new Base[this.mode.size()]); // Enumeration<CompositionAttestationMode>
+        case 3357091: /*mode*/ return this.mode == null ? new Base[0] : new Base[] {this.mode}; // Enumeration<CompositionAttestationMode>
         case 3560141: /*time*/ return this.time == null ? new Base[0] : new Base[] {this.time}; // DateTimeType
         case 106437350: /*party*/ return this.party == null ? new Base[0] : new Base[] {this.party}; // Reference
         default: return super.getProperty(hash, name, checkValid);
@@ -905,7 +897,7 @@ public class Composition extends DomainResource {
         switch (hash) {
         case 3357091: // mode
           value = new CompositionAttestationModeEnumFactory().fromType(castToCode(value));
-          this.getMode().add((Enumeration) value); // Enumeration<CompositionAttestationMode>
+          this.mode = (Enumeration) value; // Enumeration<CompositionAttestationMode>
           return value;
         case 3560141: // time
           this.time = castToDateTime(value); // DateTimeType
@@ -922,7 +914,7 @@ public class Composition extends DomainResource {
       public Base setProperty(String name, Base value) throws FHIRException {
         if (name.equals("mode")) {
           value = new CompositionAttestationModeEnumFactory().fromType(castToCode(value));
-          this.getMode().add((Enumeration) value);
+          this.mode = (Enumeration) value; // Enumeration<CompositionAttestationMode>
         } else if (name.equals("time")) {
           this.time = castToDateTime(value); // DateTimeType
         } else if (name.equals("party")) {
@@ -935,7 +927,7 @@ public class Composition extends DomainResource {
       @Override
       public Base makeProperty(int hash, String name) throws FHIRException {
         switch (hash) {
-        case 3357091:  return addModeElement();
+        case 3357091:  return getModeElement();
         case 3560141:  return getTimeElement();
         case 106437350:  return getParty(); 
         default: return super.makeProperty(hash, name);
@@ -973,34 +965,30 @@ public class Composition extends DomainResource {
       public CompositionAttesterComponent copy() {
         CompositionAttesterComponent dst = new CompositionAttesterComponent();
         copyValues(dst);
-        if (mode != null) {
-          dst.mode = new ArrayList<Enumeration<CompositionAttestationMode>>();
-          for (Enumeration<CompositionAttestationMode> i : mode)
-            dst.mode.add(i.copy());
-        };
+        dst.mode = mode == null ? null : mode.copy();
         dst.time = time == null ? null : time.copy();
         dst.party = party == null ? null : party.copy();
         return dst;
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof CompositionAttesterComponent))
+        if (!(other_ instanceof CompositionAttesterComponent))
           return false;
-        CompositionAttesterComponent o = (CompositionAttesterComponent) other;
+        CompositionAttesterComponent o = (CompositionAttesterComponent) other_;
         return compareDeep(mode, o.mode, true) && compareDeep(time, o.time, true) && compareDeep(party, o.party, true)
           ;
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof CompositionAttesterComponent))
+        if (!(other_ instanceof CompositionAttesterComponent))
           return false;
-        CompositionAttesterComponent o = (CompositionAttesterComponent) other;
+        CompositionAttesterComponent o = (CompositionAttesterComponent) other_;
         return compareValues(mode, o.mode, true) && compareValues(time, o.time, true);
       }
 
@@ -1020,7 +1008,7 @@ public class Composition extends DomainResource {
         /**
          * The type of relationship that this composition has with anther composition or document.
          */
-        @Child(name = "code", type = {CodeType.class}, order=1, min=1, max=1, modifier=false, summary=true)
+        @Child(name = "code", type = {CodeType.class}, order=1, min=1, max=1, modifier=false, summary=false)
         @Description(shortDefinition="replaces | transforms | signs | appends", formalDefinition="The type of relationship that this composition has with anther composition or document." )
         @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/document-relationship-type")
         protected Enumeration<DocumentRelationshipType> code;
@@ -1028,7 +1016,7 @@ public class Composition extends DomainResource {
         /**
          * The target composition/document of this relationship.
          */
-        @Child(name = "target", type = {Identifier.class, Composition.class}, order=2, min=1, max=1, modifier=false, summary=true)
+        @Child(name = "target", type = {Identifier.class, Composition.class}, order=2, min=1, max=1, modifier=false, summary=false)
         @Description(shortDefinition="Target of the relationship", formalDefinition="The target composition/document of this relationship." )
         protected Type target;
 
@@ -1106,26 +1094,30 @@ public class Composition extends DomainResource {
          * @return {@link #target} (The target composition/document of this relationship.)
          */
         public Identifier getTargetIdentifier() throws FHIRException { 
+          if (this.target == null)
+            this.target = new Identifier();
           if (!(this.target instanceof Identifier))
             throw new FHIRException("Type mismatch: the type Identifier was expected, but "+this.target.getClass().getName()+" was encountered");
           return (Identifier) this.target;
         }
 
         public boolean hasTargetIdentifier() { 
-          return this.target instanceof Identifier;
+          return this != null && this.target instanceof Identifier;
         }
 
         /**
          * @return {@link #target} (The target composition/document of this relationship.)
          */
         public Reference getTargetReference() throws FHIRException { 
+          if (this.target == null)
+            this.target = new Reference();
           if (!(this.target instanceof Reference))
             throw new FHIRException("Type mismatch: the type Reference was expected, but "+this.target.getClass().getName()+" was encountered");
           return (Reference) this.target;
         }
 
         public boolean hasTargetReference() { 
-          return this.target instanceof Reference;
+          return this != null && this.target instanceof Reference;
         }
 
         public boolean hasTarget() { 
@@ -1136,6 +1128,8 @@ public class Composition extends DomainResource {
          * @param value {@link #target} (The target composition/document of this relationship.)
          */
         public CompositionRelatesToComponent setTarget(Type value) { 
+          if (value != null && !(value instanceof Identifier || value instanceof Reference))
+            throw new Error("Not the right type for Composition.relatesTo.target[x]: "+value.fhirType());
           this.target = value;
           return this;
         }
@@ -1243,22 +1237,22 @@ public class Composition extends DomainResource {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof CompositionRelatesToComponent))
+        if (!(other_ instanceof CompositionRelatesToComponent))
           return false;
-        CompositionRelatesToComponent o = (CompositionRelatesToComponent) other;
+        CompositionRelatesToComponent o = (CompositionRelatesToComponent) other_;
         return compareDeep(code, o.code, true) && compareDeep(target, o.target, true);
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof CompositionRelatesToComponent))
+        if (!(other_ instanceof CompositionRelatesToComponent))
           return false;
-        CompositionRelatesToComponent o = (CompositionRelatesToComponent) other;
+        CompositionRelatesToComponent o = (CompositionRelatesToComponent) other_;
         return compareValues(code, o.code, true);
       }
 
@@ -1280,7 +1274,7 @@ public class Composition extends DomainResource {
          */
         @Child(name = "code", type = {CodeableConcept.class}, order=1, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
         @Description(shortDefinition="Code(s) that apply to the event being documented", formalDefinition="This list of codes represents the main clinical acts, such as a colonoscopy or an appendectomy, being documented. In some cases, the event is inherent in the typeCode, such as a \"History and Physical Report\" in which the procedure being documented is necessarily a \"History and Physical\" act." )
-        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/v3-ActCode")
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://terminology.hl7.org/ValueSet/v3-ActCode")
         protected List<CodeableConcept> code;
 
         /**
@@ -1566,23 +1560,23 @@ public class Composition extends DomainResource {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof CompositionEventComponent))
+        if (!(other_ instanceof CompositionEventComponent))
           return false;
-        CompositionEventComponent o = (CompositionEventComponent) other;
+        CompositionEventComponent o = (CompositionEventComponent) other_;
         return compareDeep(code, o.code, true) && compareDeep(period, o.period, true) && compareDeep(detail, o.detail, true)
           ;
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof CompositionEventComponent))
+        if (!(other_ instanceof CompositionEventComponent))
           return false;
-        CompositionEventComponent o = (CompositionEventComponent) other;
+        CompositionEventComponent o = (CompositionEventComponent) other_;
         return true;
       }
 
@@ -1615,16 +1609,40 @@ public class Composition extends DomainResource {
         protected CodeableConcept code;
 
         /**
+         * Identifies who is responsible for the information in this section, not necessarily who typed it in.
+         */
+        @Child(name = "author", type = {Practitioner.class, PractitionerRole.class, Device.class, Patient.class, RelatedPerson.class, Organization.class}, order=3, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+        @Description(shortDefinition="Who and/or what authored the section", formalDefinition="Identifies who is responsible for the information in this section, not necessarily who typed it in." )
+        protected List<Reference> author;
+        /**
+         * The actual objects that are the target of the reference (Identifies who is responsible for the information in this section, not necessarily who typed it in.)
+         */
+        protected List<Resource> authorTarget;
+
+
+        /**
+         * The actual focus of the section when it is not the subject of the composition, but instead represents something or someone associated with the subject such as (for a patient subject) a spouse, parent, fetus, or donor. If not focus is specified, the focus is assumed to be focus of the parent section, or, for a section in the Composition itself, the subject of the composition. Sections with a focus SHALL only include resources where the logical subject (patient, subject, focus, etc.) matches the section focus, or the resources have no logical subject (few resources).
+         */
+        @Child(name = "focus", type = {Reference.class}, order=4, min=0, max=1, modifier=false, summary=false)
+        @Description(shortDefinition="Who/what the section is about, when it is not about the subject of composition", formalDefinition="The actual focus of the section when it is not the subject of the composition, but instead represents something or someone associated with the subject such as (for a patient subject) a spouse, parent, fetus, or donor. If not focus is specified, the focus is assumed to be focus of the parent section, or, for a section in the Composition itself, the subject of the composition. Sections with a focus SHALL only include resources where the logical subject (patient, subject, focus, etc.) matches the section focus, or the resources have no logical subject (few resources)." )
+        protected Reference focus;
+
+        /**
+         * The actual object that is the target of the reference (The actual focus of the section when it is not the subject of the composition, but instead represents something or someone associated with the subject such as (for a patient subject) a spouse, parent, fetus, or donor. If not focus is specified, the focus is assumed to be focus of the parent section, or, for a section in the Composition itself, the subject of the composition. Sections with a focus SHALL only include resources where the logical subject (patient, subject, focus, etc.) matches the section focus, or the resources have no logical subject (few resources).)
+         */
+        protected Resource focusTarget;
+
+        /**
          * A human-readable narrative that contains the attested content of the section, used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it "clinically safe" for a human to just read the narrative.
          */
-        @Child(name = "text", type = {Narrative.class}, order=3, min=0, max=1, modifier=false, summary=false)
+        @Child(name = "text", type = {Narrative.class}, order=5, min=0, max=1, modifier=false, summary=false)
         @Description(shortDefinition="Text summary of the section, for human interpretation", formalDefinition="A human-readable narrative that contains the attested content of the section, used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it \"clinically safe\" for a human to just read the narrative." )
         protected Narrative text;
 
         /**
          * How the entry list was prepared - whether it is a working list that is suitable for being maintained on an ongoing basis, or if it represents a snapshot of a list of items from another source, or whether it is a prepared list where items may be marked as added, modified or deleted.
          */
-        @Child(name = "mode", type = {CodeType.class}, order=4, min=0, max=1, modifier=true, summary=true)
+        @Child(name = "mode", type = {CodeType.class}, order=6, min=0, max=1, modifier=false, summary=false)
         @Description(shortDefinition="working | snapshot | changes", formalDefinition="How the entry list was prepared - whether it is a working list that is suitable for being maintained on an ongoing basis, or if it represents a snapshot of a list of items from another source, or whether it is a prepared list where items may be marked as added, modified or deleted." )
         @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/list-mode")
         protected Enumeration<SectionMode> mode;
@@ -1632,7 +1650,7 @@ public class Composition extends DomainResource {
         /**
          * Specifies the order applied to the items in the section entries.
          */
-        @Child(name = "orderedBy", type = {CodeableConcept.class}, order=5, min=0, max=1, modifier=false, summary=false)
+        @Child(name = "orderedBy", type = {CodeableConcept.class}, order=7, min=0, max=1, modifier=false, summary=false)
         @Description(shortDefinition="Order of section entries", formalDefinition="Specifies the order applied to the items in the section entries." )
         @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/list-order")
         protected CodeableConcept orderedBy;
@@ -1640,7 +1658,7 @@ public class Composition extends DomainResource {
         /**
          * A reference to the actual resource from which the narrative in the section is derived.
          */
-        @Child(name = "entry", type = {Reference.class}, order=6, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+        @Child(name = "entry", type = {Reference.class}, order=8, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
         @Description(shortDefinition="A reference to data that supports this section", formalDefinition="A reference to the actual resource from which the narrative in the section is derived." )
         protected List<Reference> entry;
         /**
@@ -1652,7 +1670,7 @@ public class Composition extends DomainResource {
         /**
          * If the section is empty, why the list is empty. An empty section typically has some text explaining the empty reason.
          */
-        @Child(name = "emptyReason", type = {CodeableConcept.class}, order=7, min=0, max=1, modifier=false, summary=false)
+        @Child(name = "emptyReason", type = {CodeableConcept.class}, order=9, min=0, max=1, modifier=false, summary=false)
         @Description(shortDefinition="Why the section is empty", formalDefinition="If the section is empty, why the list is empty. An empty section typically has some text explaining the empty reason." )
         @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/list-empty-reason")
         protected CodeableConcept emptyReason;
@@ -1660,11 +1678,11 @@ public class Composition extends DomainResource {
         /**
          * A nested sub-section within this section.
          */
-        @Child(name = "section", type = {SectionComponent.class}, order=8, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+        @Child(name = "section", type = {SectionComponent.class}, order=10, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
         @Description(shortDefinition="Nested Section", formalDefinition="A nested sub-section within this section." )
         protected List<SectionComponent> section;
 
-        private static final long serialVersionUID = -128426142L;
+        private static final long serialVersionUID = -797396954L;
 
     /**
      * Constructor
@@ -1743,6 +1761,108 @@ public class Composition extends DomainResource {
          */
         public SectionComponent setCode(CodeableConcept value) { 
           this.code = value;
+          return this;
+        }
+
+        /**
+         * @return {@link #author} (Identifies who is responsible for the information in this section, not necessarily who typed it in.)
+         */
+        public List<Reference> getAuthor() { 
+          if (this.author == null)
+            this.author = new ArrayList<Reference>();
+          return this.author;
+        }
+
+        /**
+         * @return Returns a reference to <code>this</code> for easy method chaining
+         */
+        public SectionComponent setAuthor(List<Reference> theAuthor) { 
+          this.author = theAuthor;
+          return this;
+        }
+
+        public boolean hasAuthor() { 
+          if (this.author == null)
+            return false;
+          for (Reference item : this.author)
+            if (!item.isEmpty())
+              return true;
+          return false;
+        }
+
+        public Reference addAuthor() { //3
+          Reference t = new Reference();
+          if (this.author == null)
+            this.author = new ArrayList<Reference>();
+          this.author.add(t);
+          return t;
+        }
+
+        public SectionComponent addAuthor(Reference t) { //3
+          if (t == null)
+            return this;
+          if (this.author == null)
+            this.author = new ArrayList<Reference>();
+          this.author.add(t);
+          return this;
+        }
+
+        /**
+         * @return The first repetition of repeating field {@link #author}, creating it if it does not already exist
+         */
+        public Reference getAuthorFirstRep() { 
+          if (getAuthor().isEmpty()) {
+            addAuthor();
+          }
+          return getAuthor().get(0);
+        }
+
+        /**
+         * @deprecated Use Reference#setResource(IBaseResource) instead
+         */
+        @Deprecated
+        public List<Resource> getAuthorTarget() { 
+          if (this.authorTarget == null)
+            this.authorTarget = new ArrayList<Resource>();
+          return this.authorTarget;
+        }
+
+        /**
+         * @return {@link #focus} (The actual focus of the section when it is not the subject of the composition, but instead represents something or someone associated with the subject such as (for a patient subject) a spouse, parent, fetus, or donor. If not focus is specified, the focus is assumed to be focus of the parent section, or, for a section in the Composition itself, the subject of the composition. Sections with a focus SHALL only include resources where the logical subject (patient, subject, focus, etc.) matches the section focus, or the resources have no logical subject (few resources).)
+         */
+        public Reference getFocus() { 
+          if (this.focus == null)
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create SectionComponent.focus");
+            else if (Configuration.doAutoCreate())
+              this.focus = new Reference(); // cc
+          return this.focus;
+        }
+
+        public boolean hasFocus() { 
+          return this.focus != null && !this.focus.isEmpty();
+        }
+
+        /**
+         * @param value {@link #focus} (The actual focus of the section when it is not the subject of the composition, but instead represents something or someone associated with the subject such as (for a patient subject) a spouse, parent, fetus, or donor. If not focus is specified, the focus is assumed to be focus of the parent section, or, for a section in the Composition itself, the subject of the composition. Sections with a focus SHALL only include resources where the logical subject (patient, subject, focus, etc.) matches the section focus, or the resources have no logical subject (few resources).)
+         */
+        public SectionComponent setFocus(Reference value) { 
+          this.focus = value;
+          return this;
+        }
+
+        /**
+         * @return {@link #focus} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The actual focus of the section when it is not the subject of the composition, but instead represents something or someone associated with the subject such as (for a patient subject) a spouse, parent, fetus, or donor. If not focus is specified, the focus is assumed to be focus of the parent section, or, for a section in the Composition itself, the subject of the composition. Sections with a focus SHALL only include resources where the logical subject (patient, subject, focus, etc.) matches the section focus, or the resources have no logical subject (few resources).)
+         */
+        public Resource getFocusTarget() { 
+          return this.focusTarget;
+        }
+
+        /**
+         * @param value {@link #focus} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The actual focus of the section when it is not the subject of the composition, but instead represents something or someone associated with the subject such as (for a patient subject) a spouse, parent, fetus, or donor. If not focus is specified, the focus is assumed to be focus of the parent section, or, for a section in the Composition itself, the subject of the composition. Sections with a focus SHALL only include resources where the logical subject (patient, subject, focus, etc.) matches the section focus, or the resources have no logical subject (few resources).)
+         */
+        public SectionComponent setFocusTarget(Resource value) { 
+          this.focusTarget = value;
           return this;
         }
 
@@ -1987,6 +2107,8 @@ public class Composition extends DomainResource {
           super.listChildren(children);
           children.add(new Property("title", "string", "The label for this particular section.  This will be part of the rendered content for the document, and is often used to build a table of contents.", 0, 1, title));
           children.add(new Property("code", "CodeableConcept", "A code identifying the kind of content contained within the section. This must be consistent with the section title.", 0, 1, code));
+          children.add(new Property("author", "Reference(Practitioner|PractitionerRole|Device|Patient|RelatedPerson|Organization)", "Identifies who is responsible for the information in this section, not necessarily who typed it in.", 0, java.lang.Integer.MAX_VALUE, author));
+          children.add(new Property("focus", "Reference(Any)", "The actual focus of the section when it is not the subject of the composition, but instead represents something or someone associated with the subject such as (for a patient subject) a spouse, parent, fetus, or donor. If not focus is specified, the focus is assumed to be focus of the parent section, or, for a section in the Composition itself, the subject of the composition. Sections with a focus SHALL only include resources where the logical subject (patient, subject, focus, etc.) matches the section focus, or the resources have no logical subject (few resources).", 0, 1, focus));
           children.add(new Property("text", "Narrative", "A human-readable narrative that contains the attested content of the section, used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it \"clinically safe\" for a human to just read the narrative.", 0, 1, text));
           children.add(new Property("mode", "code", "How the entry list was prepared - whether it is a working list that is suitable for being maintained on an ongoing basis, or if it represents a snapshot of a list of items from another source, or whether it is a prepared list where items may be marked as added, modified or deleted.", 0, 1, mode));
           children.add(new Property("orderedBy", "CodeableConcept", "Specifies the order applied to the items in the section entries.", 0, 1, orderedBy));
@@ -2000,6 +2122,8 @@ public class Composition extends DomainResource {
           switch (_hash) {
           case 110371416: /*title*/  return new Property("title", "string", "The label for this particular section.  This will be part of the rendered content for the document, and is often used to build a table of contents.", 0, 1, title);
           case 3059181: /*code*/  return new Property("code", "CodeableConcept", "A code identifying the kind of content contained within the section. This must be consistent with the section title.", 0, 1, code);
+          case -1406328437: /*author*/  return new Property("author", "Reference(Practitioner|PractitionerRole|Device|Patient|RelatedPerson|Organization)", "Identifies who is responsible for the information in this section, not necessarily who typed it in.", 0, java.lang.Integer.MAX_VALUE, author);
+          case 97604824: /*focus*/  return new Property("focus", "Reference(Any)", "The actual focus of the section when it is not the subject of the composition, but instead represents something or someone associated with the subject such as (for a patient subject) a spouse, parent, fetus, or donor. If not focus is specified, the focus is assumed to be focus of the parent section, or, for a section in the Composition itself, the subject of the composition. Sections with a focus SHALL only include resources where the logical subject (patient, subject, focus, etc.) matches the section focus, or the resources have no logical subject (few resources).", 0, 1, focus);
           case 3556653: /*text*/  return new Property("text", "Narrative", "A human-readable narrative that contains the attested content of the section, used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it \"clinically safe\" for a human to just read the narrative.", 0, 1, text);
           case 3357091: /*mode*/  return new Property("mode", "code", "How the entry list was prepared - whether it is a working list that is suitable for being maintained on an ongoing basis, or if it represents a snapshot of a list of items from another source, or whether it is a prepared list where items may be marked as added, modified or deleted.", 0, 1, mode);
           case -391079516: /*orderedBy*/  return new Property("orderedBy", "CodeableConcept", "Specifies the order applied to the items in the section entries.", 0, 1, orderedBy);
@@ -2016,6 +2140,8 @@ public class Composition extends DomainResource {
         switch (hash) {
         case 110371416: /*title*/ return this.title == null ? new Base[0] : new Base[] {this.title}; // StringType
         case 3059181: /*code*/ return this.code == null ? new Base[0] : new Base[] {this.code}; // CodeableConcept
+        case -1406328437: /*author*/ return this.author == null ? new Base[0] : this.author.toArray(new Base[this.author.size()]); // Reference
+        case 97604824: /*focus*/ return this.focus == null ? new Base[0] : new Base[] {this.focus}; // Reference
         case 3556653: /*text*/ return this.text == null ? new Base[0] : new Base[] {this.text}; // Narrative
         case 3357091: /*mode*/ return this.mode == null ? new Base[0] : new Base[] {this.mode}; // Enumeration<SectionMode>
         case -391079516: /*orderedBy*/ return this.orderedBy == null ? new Base[0] : new Base[] {this.orderedBy}; // CodeableConcept
@@ -2035,6 +2161,12 @@ public class Composition extends DomainResource {
           return value;
         case 3059181: // code
           this.code = castToCodeableConcept(value); // CodeableConcept
+          return value;
+        case -1406328437: // author
+          this.getAuthor().add(castToReference(value)); // Reference
+          return value;
+        case 97604824: // focus
+          this.focus = castToReference(value); // Reference
           return value;
         case 3556653: // text
           this.text = castToNarrative(value); // Narrative
@@ -2066,6 +2198,10 @@ public class Composition extends DomainResource {
           this.title = castToString(value); // StringType
         } else if (name.equals("code")) {
           this.code = castToCodeableConcept(value); // CodeableConcept
+        } else if (name.equals("author")) {
+          this.getAuthor().add(castToReference(value));
+        } else if (name.equals("focus")) {
+          this.focus = castToReference(value); // Reference
         } else if (name.equals("text")) {
           this.text = castToNarrative(value); // Narrative
         } else if (name.equals("mode")) {
@@ -2089,6 +2225,8 @@ public class Composition extends DomainResource {
         switch (hash) {
         case 110371416:  return getTitleElement();
         case 3059181:  return getCode(); 
+        case -1406328437:  return addAuthor(); 
+        case 97604824:  return getFocus(); 
         case 3556653:  return getText(); 
         case 3357091:  return getModeElement();
         case -391079516:  return getOrderedBy(); 
@@ -2105,6 +2243,8 @@ public class Composition extends DomainResource {
         switch (hash) {
         case 110371416: /*title*/ return new String[] {"string"};
         case 3059181: /*code*/ return new String[] {"CodeableConcept"};
+        case -1406328437: /*author*/ return new String[] {"Reference"};
+        case 97604824: /*focus*/ return new String[] {"Reference"};
         case 3556653: /*text*/ return new String[] {"Narrative"};
         case 3357091: /*mode*/ return new String[] {"code"};
         case -391079516: /*orderedBy*/ return new String[] {"CodeableConcept"};
@@ -2124,6 +2264,13 @@ public class Composition extends DomainResource {
         else if (name.equals("code")) {
           this.code = new CodeableConcept();
           return this.code;
+        }
+        else if (name.equals("author")) {
+          return addAuthor();
+        }
+        else if (name.equals("focus")) {
+          this.focus = new Reference();
+          return this.focus;
         }
         else if (name.equals("text")) {
           this.text = new Narrative();
@@ -2155,6 +2302,12 @@ public class Composition extends DomainResource {
         copyValues(dst);
         dst.title = title == null ? null : title.copy();
         dst.code = code == null ? null : code.copy();
+        if (author != null) {
+          dst.author = new ArrayList<Reference>();
+          for (Reference i : author)
+            dst.author.add(i.copy());
+        };
+        dst.focus = focus == null ? null : focus.copy();
         dst.text = text == null ? null : text.copy();
         dst.mode = mode == null ? null : mode.copy();
         dst.orderedBy = orderedBy == null ? null : orderedBy.copy();
@@ -2173,30 +2326,31 @@ public class Composition extends DomainResource {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof SectionComponent))
+        if (!(other_ instanceof SectionComponent))
           return false;
-        SectionComponent o = (SectionComponent) other;
-        return compareDeep(title, o.title, true) && compareDeep(code, o.code, true) && compareDeep(text, o.text, true)
-           && compareDeep(mode, o.mode, true) && compareDeep(orderedBy, o.orderedBy, true) && compareDeep(entry, o.entry, true)
-           && compareDeep(emptyReason, o.emptyReason, true) && compareDeep(section, o.section, true);
+        SectionComponent o = (SectionComponent) other_;
+        return compareDeep(title, o.title, true) && compareDeep(code, o.code, true) && compareDeep(author, o.author, true)
+           && compareDeep(focus, o.focus, true) && compareDeep(text, o.text, true) && compareDeep(mode, o.mode, true)
+           && compareDeep(orderedBy, o.orderedBy, true) && compareDeep(entry, o.entry, true) && compareDeep(emptyReason, o.emptyReason, true)
+           && compareDeep(section, o.section, true);
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof SectionComponent))
+        if (!(other_ instanceof SectionComponent))
           return false;
-        SectionComponent o = (SectionComponent) other;
+        SectionComponent o = (SectionComponent) other_;
         return compareValues(title, o.title, true) && compareValues(mode, o.mode, true);
       }
 
       public boolean isEmpty() {
-        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(title, code, text, mode
-          , orderedBy, entry, emptyReason, section);
+        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(title, code, author, focus
+          , text, mode, orderedBy, entry, emptyReason, section);
       }
 
   public String fhirType() {
@@ -2207,10 +2361,10 @@ public class Composition extends DomainResource {
   }
 
     /**
-     * Logical identifier for the composition, assigned when created. This identifier stays constant as the composition is changed over time.
+     * A version-independent identifier for the Composition. This identifier stays constant as the composition is changed over time.
      */
     @Child(name = "identifier", type = {Identifier.class}, order=0, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Logical identifier of composition (version-independent)", formalDefinition="Logical identifier for the composition, assigned when created. This identifier stays constant as the composition is changed over time." )
+    @Description(shortDefinition="Version-independent identifier for the Composition", formalDefinition="A version-independent identifier for the Composition. This identifier stays constant as the composition is changed over time." )
     protected Identifier identifier;
 
     /**
@@ -2232,15 +2386,15 @@ public class Composition extends DomainResource {
     /**
      * A categorization for the type of the composition - helps for indexing and searching. This may be implied by or derived from the code specified in the Composition Type.
      */
-    @Child(name = "class", type = {CodeableConcept.class}, order=3, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "category", type = {CodeableConcept.class}, order=3, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="Categorization of Composition", formalDefinition="A categorization for the type of the composition - helps for indexing and searching. This may be implied by or derived from the code specified in the Composition Type." )
-    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/doc-classcodes")
-    protected CodeableConcept class_;
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/document-classcodes")
+    protected List<CodeableConcept> category;
 
     /**
      * Who or what the composition is about. The composition can be about a person, (patient or healthcare practitioner), a device (e.g. a machine) or even a group of subjects (such as a document about a herd of livestock, or a set of patients that share a common exposure).
      */
-    @Child(name = "subject", type = {Reference.class}, order=4, min=1, max=1, modifier=false, summary=true)
+    @Child(name = "subject", type = {Reference.class}, order=4, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Who and/or what the composition is about", formalDefinition="Who or what the composition is about. The composition can be about a person, (patient or healthcare practitioner), a device (e.g. a machine) or even a group of subjects (such as a document about a herd of livestock, or a set of patients that share a common exposure)." )
     protected Reference subject;
 
@@ -2271,7 +2425,7 @@ public class Composition extends DomainResource {
     /**
      * Identifies who is responsible for the information in the composition, not necessarily who typed it in.
      */
-    @Child(name = "author", type = {Practitioner.class, PractitionerRole.class, Device.class, Patient.class, RelatedPerson.class}, order=7, min=1, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Child(name = "author", type = {Practitioner.class, PractitionerRole.class, Device.class, Patient.class, RelatedPerson.class, Organization.class}, order=7, min=1, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="Who and/or what authored the composition", formalDefinition="Identifies who is responsible for the information in the composition, not necessarily who typed it in." )
     protected List<Reference> author;
     /**
@@ -2290,15 +2444,15 @@ public class Composition extends DomainResource {
     /**
      * The code specifying the level of confidentiality of the Composition.
      */
-    @Child(name = "confidentiality", type = {CodeType.class}, order=9, min=0, max=1, modifier=true, summary=true)
+    @Child(name = "confidentiality", type = {CodeType.class}, order=9, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="As defined by affinity domain", formalDefinition="The code specifying the level of confidentiality of the Composition." )
-    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/v3-ConfidentialityClassification")
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://terminology.hl7.org/ValueSet/v3-ConfidentialityClassification")
     protected Enumeration<DocumentConfidentiality> confidentiality;
 
     /**
      * A participant who has attested to the accuracy of the composition/document.
      */
-    @Child(name = "attester", type = {}, order=10, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Child(name = "attester", type = {}, order=10, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Attests to accuracy of composition", formalDefinition="A participant who has attested to the accuracy of the composition/document." )
     protected List<CompositionAttesterComponent> attester;
 
@@ -2317,7 +2471,7 @@ public class Composition extends DomainResource {
     /**
      * Relationships that this composition has with other compositions or documents that already exist.
      */
-    @Child(name = "relatesTo", type = {}, order=12, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Child(name = "relatesTo", type = {}, order=12, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Relationships to other compositions/documents", formalDefinition="Relationships that this composition has with other compositions or documents that already exist." )
     protected List<CompositionRelatesToComponent> relatesTo;
 
@@ -2335,7 +2489,7 @@ public class Composition extends DomainResource {
     @Description(shortDefinition="Composition is broken into sections", formalDefinition="The root of the sections that make up the composition." )
     protected List<SectionComponent> section;
 
-    private static final long serialVersionUID = -1422555114L;
+    private static final long serialVersionUID = -1490206663L;
 
   /**
    * Constructor
@@ -2347,17 +2501,16 @@ public class Composition extends DomainResource {
   /**
    * Constructor
    */
-    public Composition(Enumeration<CompositionStatus> status, CodeableConcept type, Reference subject, DateTimeType date, StringType title) {
+    public Composition(Enumeration<CompositionStatus> status, CodeableConcept type, DateTimeType date, StringType title) {
       super();
       this.status = status;
       this.type = type;
-      this.subject = subject;
       this.date = date;
       this.title = title;
     }
 
     /**
-     * @return {@link #identifier} (Logical identifier for the composition, assigned when created. This identifier stays constant as the composition is changed over time.)
+     * @return {@link #identifier} (A version-independent identifier for the Composition. This identifier stays constant as the composition is changed over time.)
      */
     public Identifier getIdentifier() { 
       if (this.identifier == null)
@@ -2373,7 +2526,7 @@ public class Composition extends DomainResource {
     }
 
     /**
-     * @param value {@link #identifier} (Logical identifier for the composition, assigned when created. This identifier stays constant as the composition is changed over time.)
+     * @param value {@link #identifier} (A version-independent identifier for the Composition. This identifier stays constant as the composition is changed over time.)
      */
     public Composition setIdentifier(Identifier value) { 
       this.identifier = value;
@@ -2450,27 +2603,56 @@ public class Composition extends DomainResource {
     }
 
     /**
-     * @return {@link #class_} (A categorization for the type of the composition - helps for indexing and searching. This may be implied by or derived from the code specified in the Composition Type.)
+     * @return {@link #category} (A categorization for the type of the composition - helps for indexing and searching. This may be implied by or derived from the code specified in the Composition Type.)
      */
-    public CodeableConcept getClass_() { 
-      if (this.class_ == null)
-        if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create Composition.class_");
-        else if (Configuration.doAutoCreate())
-          this.class_ = new CodeableConcept(); // cc
-      return this.class_;
-    }
-
-    public boolean hasClass_() { 
-      return this.class_ != null && !this.class_.isEmpty();
+    public List<CodeableConcept> getCategory() { 
+      if (this.category == null)
+        this.category = new ArrayList<CodeableConcept>();
+      return this.category;
     }
 
     /**
-     * @param value {@link #class_} (A categorization for the type of the composition - helps for indexing and searching. This may be implied by or derived from the code specified in the Composition Type.)
+     * @return Returns a reference to <code>this</code> for easy method chaining
      */
-    public Composition setClass_(CodeableConcept value) { 
-      this.class_ = value;
+    public Composition setCategory(List<CodeableConcept> theCategory) { 
+      this.category = theCategory;
       return this;
+    }
+
+    public boolean hasCategory() { 
+      if (this.category == null)
+        return false;
+      for (CodeableConcept item : this.category)
+        if (!item.isEmpty())
+          return true;
+      return false;
+    }
+
+    public CodeableConcept addCategory() { //3
+      CodeableConcept t = new CodeableConcept();
+      if (this.category == null)
+        this.category = new ArrayList<CodeableConcept>();
+      this.category.add(t);
+      return t;
+    }
+
+    public Composition addCategory(CodeableConcept t) { //3
+      if (t == null)
+        return this;
+      if (this.category == null)
+        this.category = new ArrayList<CodeableConcept>();
+      this.category.add(t);
+      return this;
+    }
+
+    /**
+     * @return The first repetition of repeating field {@link #category}, creating it if it does not already exist
+     */
+    public CodeableConcept getCategoryFirstRep() { 
+      if (getCategory().isEmpty()) {
+        addCategory();
+      }
+      return getCategory().get(0);
     }
 
     /**
@@ -3016,14 +3198,14 @@ public class Composition extends DomainResource {
 
       protected void listChildren(List<Property> children) {
         super.listChildren(children);
-        children.add(new Property("identifier", "Identifier", "Logical identifier for the composition, assigned when created. This identifier stays constant as the composition is changed over time.", 0, 1, identifier));
+        children.add(new Property("identifier", "Identifier", "A version-independent identifier for the Composition. This identifier stays constant as the composition is changed over time.", 0, 1, identifier));
         children.add(new Property("status", "code", "The workflow/clinical status of this composition. The status is a marker for the clinical standing of the document.", 0, 1, status));
         children.add(new Property("type", "CodeableConcept", "Specifies the particular kind of composition (e.g. History and Physical, Discharge Summary, Progress Note). This usually equates to the purpose of making the composition.", 0, 1, type));
-        children.add(new Property("class", "CodeableConcept", "A categorization for the type of the composition - helps for indexing and searching. This may be implied by or derived from the code specified in the Composition Type.", 0, 1, class_));
+        children.add(new Property("category", "CodeableConcept", "A categorization for the type of the composition - helps for indexing and searching. This may be implied by or derived from the code specified in the Composition Type.", 0, java.lang.Integer.MAX_VALUE, category));
         children.add(new Property("subject", "Reference(Any)", "Who or what the composition is about. The composition can be about a person, (patient or healthcare practitioner), a device (e.g. a machine) or even a group of subjects (such as a document about a herd of livestock, or a set of patients that share a common exposure).", 0, 1, subject));
         children.add(new Property("encounter", "Reference(Encounter)", "Describes the clinical encounter or type of care this documentation is associated with.", 0, 1, encounter));
         children.add(new Property("date", "dateTime", "The composition editing time, when the composition was last logically changed by the author.", 0, 1, date));
-        children.add(new Property("author", "Reference(Practitioner|PractitionerRole|Device|Patient|RelatedPerson)", "Identifies who is responsible for the information in the composition, not necessarily who typed it in.", 0, java.lang.Integer.MAX_VALUE, author));
+        children.add(new Property("author", "Reference(Practitioner|PractitionerRole|Device|Patient|RelatedPerson|Organization)", "Identifies who is responsible for the information in the composition, not necessarily who typed it in.", 0, java.lang.Integer.MAX_VALUE, author));
         children.add(new Property("title", "string", "Official human-readable label for the composition.", 0, 1, title));
         children.add(new Property("confidentiality", "code", "The code specifying the level of confidentiality of the Composition.", 0, 1, confidentiality));
         children.add(new Property("attester", "", "A participant who has attested to the accuracy of the composition/document.", 0, java.lang.Integer.MAX_VALUE, attester));
@@ -3036,14 +3218,14 @@ public class Composition extends DomainResource {
       @Override
       public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
         switch (_hash) {
-        case -1618432855: /*identifier*/  return new Property("identifier", "Identifier", "Logical identifier for the composition, assigned when created. This identifier stays constant as the composition is changed over time.", 0, 1, identifier);
+        case -1618432855: /*identifier*/  return new Property("identifier", "Identifier", "A version-independent identifier for the Composition. This identifier stays constant as the composition is changed over time.", 0, 1, identifier);
         case -892481550: /*status*/  return new Property("status", "code", "The workflow/clinical status of this composition. The status is a marker for the clinical standing of the document.", 0, 1, status);
         case 3575610: /*type*/  return new Property("type", "CodeableConcept", "Specifies the particular kind of composition (e.g. History and Physical, Discharge Summary, Progress Note). This usually equates to the purpose of making the composition.", 0, 1, type);
-        case 94742904: /*class*/  return new Property("class", "CodeableConcept", "A categorization for the type of the composition - helps for indexing and searching. This may be implied by or derived from the code specified in the Composition Type.", 0, 1, class_);
+        case 50511102: /*category*/  return new Property("category", "CodeableConcept", "A categorization for the type of the composition - helps for indexing and searching. This may be implied by or derived from the code specified in the Composition Type.", 0, java.lang.Integer.MAX_VALUE, category);
         case -1867885268: /*subject*/  return new Property("subject", "Reference(Any)", "Who or what the composition is about. The composition can be about a person, (patient or healthcare practitioner), a device (e.g. a machine) or even a group of subjects (such as a document about a herd of livestock, or a set of patients that share a common exposure).", 0, 1, subject);
         case 1524132147: /*encounter*/  return new Property("encounter", "Reference(Encounter)", "Describes the clinical encounter or type of care this documentation is associated with.", 0, 1, encounter);
         case 3076014: /*date*/  return new Property("date", "dateTime", "The composition editing time, when the composition was last logically changed by the author.", 0, 1, date);
-        case -1406328437: /*author*/  return new Property("author", "Reference(Practitioner|PractitionerRole|Device|Patient|RelatedPerson)", "Identifies who is responsible for the information in the composition, not necessarily who typed it in.", 0, java.lang.Integer.MAX_VALUE, author);
+        case -1406328437: /*author*/  return new Property("author", "Reference(Practitioner|PractitionerRole|Device|Patient|RelatedPerson|Organization)", "Identifies who is responsible for the information in the composition, not necessarily who typed it in.", 0, java.lang.Integer.MAX_VALUE, author);
         case 110371416: /*title*/  return new Property("title", "string", "Official human-readable label for the composition.", 0, 1, title);
         case -1923018202: /*confidentiality*/  return new Property("confidentiality", "code", "The code specifying the level of confidentiality of the Composition.", 0, 1, confidentiality);
         case 542920370: /*attester*/  return new Property("attester", "", "A participant who has attested to the accuracy of the composition/document.", 0, java.lang.Integer.MAX_VALUE, attester);
@@ -3062,7 +3244,7 @@ public class Composition extends DomainResource {
         case -1618432855: /*identifier*/ return this.identifier == null ? new Base[0] : new Base[] {this.identifier}; // Identifier
         case -892481550: /*status*/ return this.status == null ? new Base[0] : new Base[] {this.status}; // Enumeration<CompositionStatus>
         case 3575610: /*type*/ return this.type == null ? new Base[0] : new Base[] {this.type}; // CodeableConcept
-        case 94742904: /*class*/ return this.class_ == null ? new Base[0] : new Base[] {this.class_}; // CodeableConcept
+        case 50511102: /*category*/ return this.category == null ? new Base[0] : this.category.toArray(new Base[this.category.size()]); // CodeableConcept
         case -1867885268: /*subject*/ return this.subject == null ? new Base[0] : new Base[] {this.subject}; // Reference
         case 1524132147: /*encounter*/ return this.encounter == null ? new Base[0] : new Base[] {this.encounter}; // Reference
         case 3076014: /*date*/ return this.date == null ? new Base[0] : new Base[] {this.date}; // DateTimeType
@@ -3092,8 +3274,8 @@ public class Composition extends DomainResource {
         case 3575610: // type
           this.type = castToCodeableConcept(value); // CodeableConcept
           return value;
-        case 94742904: // class
-          this.class_ = castToCodeableConcept(value); // CodeableConcept
+        case 50511102: // category
+          this.getCategory().add(castToCodeableConcept(value)); // CodeableConcept
           return value;
         case -1867885268: // subject
           this.subject = castToReference(value); // Reference
@@ -3143,8 +3325,8 @@ public class Composition extends DomainResource {
           this.status = (Enumeration) value; // Enumeration<CompositionStatus>
         } else if (name.equals("type")) {
           this.type = castToCodeableConcept(value); // CodeableConcept
-        } else if (name.equals("class")) {
-          this.class_ = castToCodeableConcept(value); // CodeableConcept
+        } else if (name.equals("category")) {
+          this.getCategory().add(castToCodeableConcept(value));
         } else if (name.equals("subject")) {
           this.subject = castToReference(value); // Reference
         } else if (name.equals("encounter")) {
@@ -3179,7 +3361,7 @@ public class Composition extends DomainResource {
         case -1618432855:  return getIdentifier(); 
         case -892481550:  return getStatusElement();
         case 3575610:  return getType(); 
-        case 94742904:  return getClass_(); 
+        case 50511102:  return addCategory(); 
         case -1867885268:  return getSubject(); 
         case 1524132147:  return getEncounter(); 
         case 3076014:  return getDateElement();
@@ -3202,7 +3384,7 @@ public class Composition extends DomainResource {
         case -1618432855: /*identifier*/ return new String[] {"Identifier"};
         case -892481550: /*status*/ return new String[] {"code"};
         case 3575610: /*type*/ return new String[] {"CodeableConcept"};
-        case 94742904: /*class*/ return new String[] {"CodeableConcept"};
+        case 50511102: /*category*/ return new String[] {"CodeableConcept"};
         case -1867885268: /*subject*/ return new String[] {"Reference"};
         case 1524132147: /*encounter*/ return new String[] {"Reference"};
         case 3076014: /*date*/ return new String[] {"dateTime"};
@@ -3232,9 +3414,8 @@ public class Composition extends DomainResource {
           this.type = new CodeableConcept();
           return this.type;
         }
-        else if (name.equals("class")) {
-          this.class_ = new CodeableConcept();
-          return this.class_;
+        else if (name.equals("category")) {
+          return addCategory();
         }
         else if (name.equals("subject")) {
           this.subject = new Reference();
@@ -3287,7 +3468,11 @@ public class Composition extends DomainResource {
         dst.identifier = identifier == null ? null : identifier.copy();
         dst.status = status == null ? null : status.copy();
         dst.type = type == null ? null : type.copy();
-        dst.class_ = class_ == null ? null : class_.copy();
+        if (category != null) {
+          dst.category = new ArrayList<CodeableConcept>();
+          for (CodeableConcept i : category)
+            dst.category.add(i.copy());
+        };
         dst.subject = subject == null ? null : subject.copy();
         dst.encounter = encounter == null ? null : encounter.copy();
         dst.date = date == null ? null : date.copy();
@@ -3327,14 +3512,14 @@ public class Composition extends DomainResource {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof Composition))
+        if (!(other_ instanceof Composition))
           return false;
-        Composition o = (Composition) other;
+        Composition o = (Composition) other_;
         return compareDeep(identifier, o.identifier, true) && compareDeep(status, o.status, true) && compareDeep(type, o.type, true)
-           && compareDeep(class_, o.class_, true) && compareDeep(subject, o.subject, true) && compareDeep(encounter, o.encounter, true)
+           && compareDeep(category, o.category, true) && compareDeep(subject, o.subject, true) && compareDeep(encounter, o.encounter, true)
            && compareDeep(date, o.date, true) && compareDeep(author, o.author, true) && compareDeep(title, o.title, true)
            && compareDeep(confidentiality, o.confidentiality, true) && compareDeep(attester, o.attester, true)
            && compareDeep(custodian, o.custodian, true) && compareDeep(relatesTo, o.relatesTo, true) && compareDeep(event, o.event, true)
@@ -3342,19 +3527,19 @@ public class Composition extends DomainResource {
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof Composition))
+        if (!(other_ instanceof Composition))
           return false;
-        Composition o = (Composition) other;
+        Composition o = (Composition) other_;
         return compareValues(status, o.status, true) && compareValues(date, o.date, true) && compareValues(title, o.title, true)
            && compareValues(confidentiality, o.confidentiality, true);
       }
 
       public boolean isEmpty() {
         return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(identifier, status, type
-          , class_, subject, encounter, date, author, title, confidentiality, attester
+          , category, subject, encounter, date, author, title, confidentiality, attester
           , custodian, relatesTo, event, section);
       }
 
@@ -3386,17 +3571,17 @@ public class Composition extends DomainResource {
  /**
    * Search parameter: <b>identifier</b>
    * <p>
-   * Description: <b>Logical identifier of composition (version-independent)</b><br>
+   * Description: <b>Version-independent identifier for the Composition</b><br>
    * Type: <b>token</b><br>
    * Path: <b>Composition.identifier</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="identifier", path="Composition.identifier", description="Logical identifier of composition (version-independent)", type="token" )
+  @SearchParamDefinition(name="identifier", path="Composition.identifier", description="Version-independent identifier for the Composition", type="token" )
   public static final String SP_IDENTIFIER = "identifier";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>identifier</b>
    * <p>
-   * Description: <b>Logical identifier of composition (version-independent)</b><br>
+   * Description: <b>Version-independent identifier for the Composition</b><br>
    * Type: <b>token</b><br>
    * Path: <b>Composition.identifier</b><br>
    * </p>
@@ -3431,7 +3616,7 @@ public class Composition extends DomainResource {
    * Path: <b>Composition.relatesTo.targetIdentifier</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="related-id", path="Composition.relatesTo.target.as(Identifier)", description="Target of the relationship", type="token" )
+  @SearchParamDefinition(name="related-id", path="(Composition.relatesTo.target as Identifier)", description="Target of the relationship", type="token" )
   public static final String SP_RELATED_ID = "related-id";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>related-id</b>
@@ -3477,7 +3662,7 @@ public class Composition extends DomainResource {
    * Path: <b>Composition.author</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="author", path="Composition.author", description="Who and/or what authored the composition", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Device"), @ca.uhn.fhir.model.api.annotation.Compartment(name="Patient"), @ca.uhn.fhir.model.api.annotation.Compartment(name="Practitioner"), @ca.uhn.fhir.model.api.annotation.Compartment(name="RelatedPerson") }, target={Device.class, Patient.class, Practitioner.class, PractitionerRole.class, RelatedPerson.class } )
+  @SearchParamDefinition(name="author", path="Composition.author", description="Who and/or what authored the composition", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Device"), @ca.uhn.fhir.model.api.annotation.Compartment(name="Patient"), @ca.uhn.fhir.model.api.annotation.Compartment(name="Practitioner"), @ca.uhn.fhir.model.api.annotation.Compartment(name="RelatedPerson") }, target={Device.class, Organization.class, Patient.class, Practitioner.class, PractitionerRole.class, RelatedPerson.class } )
   public static final String SP_AUTHOR = "author";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>author</b>
@@ -3609,7 +3794,7 @@ public class Composition extends DomainResource {
    * Path: <b>Composition.attester.party</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="attester", path="Composition.attester.party", description="Who attested the composition", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Patient"), @ca.uhn.fhir.model.api.annotation.Compartment(name="Practitioner") }, target={Organization.class, Patient.class, Practitioner.class, PractitionerRole.class } )
+  @SearchParamDefinition(name="attester", path="Composition.attester.party", description="Who attested the composition", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Patient"), @ca.uhn.fhir.model.api.annotation.Compartment(name="Practitioner") }, target={Organization.class, Patient.class, Practitioner.class, PractitionerRole.class, RelatedPerson.class } )
   public static final String SP_ATTESTER = "attester";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>attester</b>
@@ -3661,7 +3846,7 @@ public class Composition extends DomainResource {
    * Path: <b>Composition.relatesTo.targetReference</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="related-ref", path="Composition.relatesTo.target.as(Reference)", description="Target of the relationship", type="reference", target={Composition.class } )
+  @SearchParamDefinition(name="related-ref", path="(Composition.relatesTo.target as Reference)", description="Target of the relationship", type="reference", target={Composition.class } )
   public static final String SP_RELATED_REF = "related-ref";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>related-ref</b>
@@ -3687,7 +3872,7 @@ public class Composition extends DomainResource {
    * Path: <b>Composition.subject</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="patient", path="Composition.subject", description="Who and/or what the composition is about", type="reference", target={Patient.class } )
+  @SearchParamDefinition(name="patient", path="Composition.subject.where(resolve() is Patient)", description="Who and/or what the composition is about", type="reference", target={Patient.class } )
   public static final String SP_PATIENT = "patient";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>patient</b>
@@ -3726,24 +3911,24 @@ public class Composition extends DomainResource {
   public static final ca.uhn.fhir.rest.gclient.TokenClientParam CONTEXT = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_CONTEXT);
 
  /**
-   * Search parameter: <b>class</b>
+   * Search parameter: <b>category</b>
    * <p>
    * Description: <b>Categorization of Composition</b><br>
    * Type: <b>token</b><br>
-   * Path: <b>Composition.class</b><br>
+   * Path: <b>Composition.category</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="class", path="Composition.class", description="Categorization of Composition", type="token" )
-  public static final String SP_CLASS = "class";
+  @SearchParamDefinition(name="category", path="Composition.category", description="Categorization of Composition", type="token" )
+  public static final String SP_CATEGORY = "category";
  /**
-   * <b>Fluent Client</b> search parameter constant for <b>class</b>
+   * <b>Fluent Client</b> search parameter constant for <b>category</b>
    * <p>
    * Description: <b>Categorization of Composition</b><br>
    * Type: <b>token</b><br>
-   * Path: <b>Composition.class</b><br>
+   * Path: <b>Composition.category</b><br>
    * </p>
    */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam CLASS = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_CLASS);
+  public static final ca.uhn.fhir.rest.gclient.TokenClientParam CATEGORY = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_CATEGORY);
 
  /**
    * Search parameter: <b>status</b>

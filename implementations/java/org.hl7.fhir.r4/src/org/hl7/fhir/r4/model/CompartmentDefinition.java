@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Fri, Aug 11, 2017 07:23+1000 for FHIR v3.1.0
+// Generated on Mon, Nov 5, 2018 09:03+1100 for FHIR v3.6.0
 
 import java.util.*;
 
@@ -46,29 +46,29 @@ import org.hl7.fhir.exceptions.FHIRException;
 /**
  * A compartment definition that defines how resources are accessed on a server.
  */
-@ResourceDef(name="CompartmentDefinition", profile="http://hl7.org/fhir/Profile/CompartmentDefinition")
-@ChildOrder(names={"url", "name", "title", "status", "experimental", "date", "publisher", "contact", "description", "purpose", "useContext", "jurisdiction", "code", "search", "resource"})
+@ResourceDef(name="CompartmentDefinition", profile="http://hl7.org/fhir/StructureDefinition/CompartmentDefinition")
+@ChildOrder(names={"url", "version", "name", "status", "experimental", "date", "publisher", "contact", "description", "useContext", "purpose", "code", "search", "resource"})
 public class CompartmentDefinition extends MetadataResource {
 
     public enum CompartmentType {
         /**
-         * The compartment definition is for the patient compartment
+         * The compartment definition is for the patient compartment.
          */
         PATIENT, 
         /**
-         * The compartment definition is for the encounter compartment
+         * The compartment definition is for the encounter compartment.
          */
         ENCOUNTER, 
         /**
-         * The compartment definition is for the related-person compartment
+         * The compartment definition is for the related-person compartment.
          */
         RELATEDPERSON, 
         /**
-         * The compartment definition is for the practitioner compartment
+         * The compartment definition is for the practitioner compartment.
          */
         PRACTITIONER, 
         /**
-         * The compartment definition is for the device compartment
+         * The compartment definition is for the device compartment.
          */
         DEVICE, 
         /**
@@ -115,11 +115,11 @@ public class CompartmentDefinition extends MetadataResource {
         }
         public String getDefinition() {
           switch (this) {
-            case PATIENT: return "The compartment definition is for the patient compartment";
-            case ENCOUNTER: return "The compartment definition is for the encounter compartment";
-            case RELATEDPERSON: return "The compartment definition is for the related-person compartment";
-            case PRACTITIONER: return "The compartment definition is for the practitioner compartment";
-            case DEVICE: return "The compartment definition is for the device compartment";
+            case PATIENT: return "The compartment definition is for the patient compartment.";
+            case ENCOUNTER: return "The compartment definition is for the encounter compartment.";
+            case RELATEDPERSON: return "The compartment definition is for the related-person compartment.";
+            case PRACTITIONER: return "The compartment definition is for the practitioner compartment.";
+            case DEVICE: return "The compartment definition is for the device compartment.";
             default: return "?";
           }
         }
@@ -332,7 +332,7 @@ public class CompartmentDefinition extends MetadataResource {
           if (this.param == null)
             return false;
           for (StringType v : this.param)
-            if (v.equals(value)) // string
+            if (v.getValue().equals(value)) // string
               return true;
           return false;
         }
@@ -496,23 +496,23 @@ public class CompartmentDefinition extends MetadataResource {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof CompartmentDefinitionResourceComponent))
+        if (!(other_ instanceof CompartmentDefinitionResourceComponent))
           return false;
-        CompartmentDefinitionResourceComponent o = (CompartmentDefinitionResourceComponent) other;
+        CompartmentDefinitionResourceComponent o = (CompartmentDefinitionResourceComponent) other_;
         return compareDeep(code, o.code, true) && compareDeep(param, o.param, true) && compareDeep(documentation, o.documentation, true)
           ;
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof CompartmentDefinitionResourceComponent))
+        if (!(other_ instanceof CompartmentDefinitionResourceComponent))
           return false;
-        CompartmentDefinitionResourceComponent o = (CompartmentDefinitionResourceComponent) other;
+        CompartmentDefinitionResourceComponent o = (CompartmentDefinitionResourceComponent) other_;
         return compareValues(code, o.code, true) && compareValues(param, o.param, true) && compareValues(documentation, o.documentation, true)
           ;
       }
@@ -530,10 +530,10 @@ public class CompartmentDefinition extends MetadataResource {
   }
 
     /**
-     * Explaination of why this compartment definition is needed and why it has been designed as it has.
+     * Explanation of why this compartment definition is needed and why it has been designed as it has.
      */
     @Child(name = "purpose", type = {MarkdownType.class}, order=0, min=0, max=1, modifier=false, summary=false)
-    @Description(shortDefinition="Why this compartment definition is defined", formalDefinition="Explaination of why this compartment definition is needed and why it has been designed as it has." )
+    @Description(shortDefinition="Why this compartment definition is defined", formalDefinition="Explanation of why this compartment definition is needed and why it has been designed as it has." )
     protected MarkdownType purpose;
 
     /**
@@ -580,7 +580,7 @@ public class CompartmentDefinition extends MetadataResource {
     }
 
     /**
-     * @return {@link #url} (An absolute URI that is used to identify this compartment definition when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this compartment definition is (or will be) published. The URL SHOULD include the major version of the compartment definition. For more information see [Technical and Business Versions](resource.html#versions).). This is the underlying object with id, value and extensions. The accessor "getUrl" gives direct access to the value
+     * @return {@link #url} (An absolute URI that is used to identify this compartment definition when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which at which an authoritative instance of this compartment definition is (or will be) published. This URL can be the target of a canonical reference. It SHALL remain the same when the compartment definition is stored on different servers.). This is the underlying object with id, value and extensions. The accessor "getUrl" gives direct access to the value
      */
     public UriType getUrlElement() { 
       if (this.url == null)
@@ -600,7 +600,7 @@ public class CompartmentDefinition extends MetadataResource {
     }
 
     /**
-     * @param value {@link #url} (An absolute URI that is used to identify this compartment definition when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this compartment definition is (or will be) published. The URL SHOULD include the major version of the compartment definition. For more information see [Technical and Business Versions](resource.html#versions).). This is the underlying object with id, value and extensions. The accessor "getUrl" gives direct access to the value
+     * @param value {@link #url} (An absolute URI that is used to identify this compartment definition when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which at which an authoritative instance of this compartment definition is (or will be) published. This URL can be the target of a canonical reference. It SHALL remain the same when the compartment definition is stored on different servers.). This is the underlying object with id, value and extensions. The accessor "getUrl" gives direct access to the value
      */
     public CompartmentDefinition setUrlElement(UriType value) { 
       this.url = value;
@@ -608,19 +608,68 @@ public class CompartmentDefinition extends MetadataResource {
     }
 
     /**
-     * @return An absolute URI that is used to identify this compartment definition when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this compartment definition is (or will be) published. The URL SHOULD include the major version of the compartment definition. For more information see [Technical and Business Versions](resource.html#versions).
+     * @return An absolute URI that is used to identify this compartment definition when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which at which an authoritative instance of this compartment definition is (or will be) published. This URL can be the target of a canonical reference. It SHALL remain the same when the compartment definition is stored on different servers.
      */
     public String getUrl() { 
       return this.url == null ? null : this.url.getValue();
     }
 
     /**
-     * @param value An absolute URI that is used to identify this compartment definition when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this compartment definition is (or will be) published. The URL SHOULD include the major version of the compartment definition. For more information see [Technical and Business Versions](resource.html#versions).
+     * @param value An absolute URI that is used to identify this compartment definition when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which at which an authoritative instance of this compartment definition is (or will be) published. This URL can be the target of a canonical reference. It SHALL remain the same when the compartment definition is stored on different servers.
      */
     public CompartmentDefinition setUrl(String value) { 
         if (this.url == null)
           this.url = new UriType();
         this.url.setValue(value);
+      return this;
+    }
+
+    /**
+     * @return {@link #version} (The identifier that is used to identify this version of the compartment definition when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the compartment definition author and is not expected to be globally unique. For example, it might be a timestamp (e.g. yyyymmdd) if a managed version is not available. There is also no expectation that versions can be placed in a lexicographical sequence.). This is the underlying object with id, value and extensions. The accessor "getVersion" gives direct access to the value
+     */
+    public StringType getVersionElement() { 
+      if (this.version == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create CompartmentDefinition.version");
+        else if (Configuration.doAutoCreate())
+          this.version = new StringType(); // bb
+      return this.version;
+    }
+
+    public boolean hasVersionElement() { 
+      return this.version != null && !this.version.isEmpty();
+    }
+
+    public boolean hasVersion() { 
+      return this.version != null && !this.version.isEmpty();
+    }
+
+    /**
+     * @param value {@link #version} (The identifier that is used to identify this version of the compartment definition when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the compartment definition author and is not expected to be globally unique. For example, it might be a timestamp (e.g. yyyymmdd) if a managed version is not available. There is also no expectation that versions can be placed in a lexicographical sequence.). This is the underlying object with id, value and extensions. The accessor "getVersion" gives direct access to the value
+     */
+    public CompartmentDefinition setVersionElement(StringType value) { 
+      this.version = value;
+      return this;
+    }
+
+    /**
+     * @return The identifier that is used to identify this version of the compartment definition when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the compartment definition author and is not expected to be globally unique. For example, it might be a timestamp (e.g. yyyymmdd) if a managed version is not available. There is also no expectation that versions can be placed in a lexicographical sequence.
+     */
+    public String getVersion() { 
+      return this.version == null ? null : this.version.getValue();
+    }
+
+    /**
+     * @param value The identifier that is used to identify this version of the compartment definition when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the compartment definition author and is not expected to be globally unique. For example, it might be a timestamp (e.g. yyyymmdd) if a managed version is not available. There is also no expectation that versions can be placed in a lexicographical sequence.
+     */
+    public CompartmentDefinition setVersion(String value) { 
+      if (Utilities.noString(value))
+        this.version = null;
+      else {
+        if (this.version == null)
+          this.version = new StringType();
+        this.version.setValue(value);
+      }
       return this;
     }
 
@@ -670,55 +719,6 @@ public class CompartmentDefinition extends MetadataResource {
     }
 
     /**
-     * @return {@link #title} (A short, descriptive, user-friendly title for the compartment definition.). This is the underlying object with id, value and extensions. The accessor "getTitle" gives direct access to the value
-     */
-    public StringType getTitleElement() { 
-      if (this.title == null)
-        if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create CompartmentDefinition.title");
-        else if (Configuration.doAutoCreate())
-          this.title = new StringType(); // bb
-      return this.title;
-    }
-
-    public boolean hasTitleElement() { 
-      return this.title != null && !this.title.isEmpty();
-    }
-
-    public boolean hasTitle() { 
-      return this.title != null && !this.title.isEmpty();
-    }
-
-    /**
-     * @param value {@link #title} (A short, descriptive, user-friendly title for the compartment definition.). This is the underlying object with id, value and extensions. The accessor "getTitle" gives direct access to the value
-     */
-    public CompartmentDefinition setTitleElement(StringType value) { 
-      this.title = value;
-      return this;
-    }
-
-    /**
-     * @return A short, descriptive, user-friendly title for the compartment definition.
-     */
-    public String getTitle() { 
-      return this.title == null ? null : this.title.getValue();
-    }
-
-    /**
-     * @param value A short, descriptive, user-friendly title for the compartment definition.
-     */
-    public CompartmentDefinition setTitle(String value) { 
-      if (Utilities.noString(value))
-        this.title = null;
-      else {
-        if (this.title == null)
-          this.title = new StringType();
-        this.title.setValue(value);
-      }
-      return this;
-    }
-
-    /**
      * @return {@link #status} (The status of this compartment definition. Enables tracking the life-cycle of the content.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
      */
     public Enumeration<PublicationStatus> getStatusElement() { 
@@ -764,7 +764,7 @@ public class CompartmentDefinition extends MetadataResource {
     }
 
     /**
-     * @return {@link #experimental} (A boolean value to indicate that this compartment definition is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.). This is the underlying object with id, value and extensions. The accessor "getExperimental" gives direct access to the value
+     * @return {@link #experimental} (A Boolean value to indicate that this compartment definition is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.). This is the underlying object with id, value and extensions. The accessor "getExperimental" gives direct access to the value
      */
     public BooleanType getExperimentalElement() { 
       if (this.experimental == null)
@@ -784,7 +784,7 @@ public class CompartmentDefinition extends MetadataResource {
     }
 
     /**
-     * @param value {@link #experimental} (A boolean value to indicate that this compartment definition is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.). This is the underlying object with id, value and extensions. The accessor "getExperimental" gives direct access to the value
+     * @param value {@link #experimental} (A Boolean value to indicate that this compartment definition is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.). This is the underlying object with id, value and extensions. The accessor "getExperimental" gives direct access to the value
      */
     public CompartmentDefinition setExperimentalElement(BooleanType value) { 
       this.experimental = value;
@@ -792,14 +792,14 @@ public class CompartmentDefinition extends MetadataResource {
     }
 
     /**
-     * @return A boolean value to indicate that this compartment definition is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
+     * @return A Boolean value to indicate that this compartment definition is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.
      */
     public boolean getExperimental() { 
       return this.experimental == null || this.experimental.isEmpty() ? false : this.experimental.getValue();
     }
 
     /**
-     * @param value A boolean value to indicate that this compartment definition is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
+     * @param value A Boolean value to indicate that this compartment definition is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.
      */
     public CompartmentDefinition setExperimental(boolean value) { 
         if (this.experimental == null)
@@ -809,7 +809,7 @@ public class CompartmentDefinition extends MetadataResource {
     }
 
     /**
-     * @return {@link #date} (The date  (and optionally time) when the compartment definition was published. The date must change if and when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the compartment definition changes.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
+     * @return {@link #date} (The date  (and optionally time) when the compartment definition was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the compartment definition changes.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
      */
     public DateTimeType getDateElement() { 
       if (this.date == null)
@@ -829,7 +829,7 @@ public class CompartmentDefinition extends MetadataResource {
     }
 
     /**
-     * @param value {@link #date} (The date  (and optionally time) when the compartment definition was published. The date must change if and when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the compartment definition changes.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
+     * @param value {@link #date} (The date  (and optionally time) when the compartment definition was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the compartment definition changes.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
      */
     public CompartmentDefinition setDateElement(DateTimeType value) { 
       this.date = value;
@@ -837,14 +837,14 @@ public class CompartmentDefinition extends MetadataResource {
     }
 
     /**
-     * @return The date  (and optionally time) when the compartment definition was published. The date must change if and when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the compartment definition changes.
+     * @return The date  (and optionally time) when the compartment definition was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the compartment definition changes.
      */
     public Date getDate() { 
       return this.date == null ? null : this.date.getValue();
     }
 
     /**
-     * @param value The date  (and optionally time) when the compartment definition was published. The date must change if and when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the compartment definition changes.
+     * @param value The date  (and optionally time) when the compartment definition was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the compartment definition changes.
      */
     public CompartmentDefinition setDate(Date value) { 
       if (value == null)
@@ -858,7 +858,7 @@ public class CompartmentDefinition extends MetadataResource {
     }
 
     /**
-     * @return {@link #publisher} (The name of the individual or organization that published the compartment definition.). This is the underlying object with id, value and extensions. The accessor "getPublisher" gives direct access to the value
+     * @return {@link #publisher} (The name of the organization or individual that published the compartment definition.). This is the underlying object with id, value and extensions. The accessor "getPublisher" gives direct access to the value
      */
     public StringType getPublisherElement() { 
       if (this.publisher == null)
@@ -878,7 +878,7 @@ public class CompartmentDefinition extends MetadataResource {
     }
 
     /**
-     * @param value {@link #publisher} (The name of the individual or organization that published the compartment definition.). This is the underlying object with id, value and extensions. The accessor "getPublisher" gives direct access to the value
+     * @param value {@link #publisher} (The name of the organization or individual that published the compartment definition.). This is the underlying object with id, value and extensions. The accessor "getPublisher" gives direct access to the value
      */
     public CompartmentDefinition setPublisherElement(StringType value) { 
       this.publisher = value;
@@ -886,14 +886,14 @@ public class CompartmentDefinition extends MetadataResource {
     }
 
     /**
-     * @return The name of the individual or organization that published the compartment definition.
+     * @return The name of the organization or individual that published the compartment definition.
      */
     public String getPublisher() { 
       return this.publisher == null ? null : this.publisher.getValue();
     }
 
     /**
-     * @param value The name of the individual or organization that published the compartment definition.
+     * @param value The name of the organization or individual that published the compartment definition.
      */
     public CompartmentDefinition setPublisher(String value) { 
       if (Utilities.noString(value))
@@ -1009,56 +1009,7 @@ public class CompartmentDefinition extends MetadataResource {
     }
 
     /**
-     * @return {@link #purpose} (Explaination of why this compartment definition is needed and why it has been designed as it has.). This is the underlying object with id, value and extensions. The accessor "getPurpose" gives direct access to the value
-     */
-    public MarkdownType getPurposeElement() { 
-      if (this.purpose == null)
-        if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create CompartmentDefinition.purpose");
-        else if (Configuration.doAutoCreate())
-          this.purpose = new MarkdownType(); // bb
-      return this.purpose;
-    }
-
-    public boolean hasPurposeElement() { 
-      return this.purpose != null && !this.purpose.isEmpty();
-    }
-
-    public boolean hasPurpose() { 
-      return this.purpose != null && !this.purpose.isEmpty();
-    }
-
-    /**
-     * @param value {@link #purpose} (Explaination of why this compartment definition is needed and why it has been designed as it has.). This is the underlying object with id, value and extensions. The accessor "getPurpose" gives direct access to the value
-     */
-    public CompartmentDefinition setPurposeElement(MarkdownType value) { 
-      this.purpose = value;
-      return this;
-    }
-
-    /**
-     * @return Explaination of why this compartment definition is needed and why it has been designed as it has.
-     */
-    public String getPurpose() { 
-      return this.purpose == null ? null : this.purpose.getValue();
-    }
-
-    /**
-     * @param value Explaination of why this compartment definition is needed and why it has been designed as it has.
-     */
-    public CompartmentDefinition setPurpose(String value) { 
-      if (value == null)
-        this.purpose = null;
-      else {
-        if (this.purpose == null)
-          this.purpose = new MarkdownType();
-        this.purpose.setValue(value);
-      }
-      return this;
-    }
-
-    /**
-     * @return {@link #useContext} (The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching for appropriate compartment definition instances.)
+     * @return {@link #useContext} (The content was developed with a focus and intent of supporting the contexts that are listed. These contexts may be general categories (gender, age, ...) or may be references to specific programs (insurance plans, studies, ...) and may be used to assist with indexing and searching for appropriate compartment definition instances.)
      */
     public List<UsageContext> getUseContext() { 
       if (this.useContext == null)
@@ -1111,56 +1062,52 @@ public class CompartmentDefinition extends MetadataResource {
     }
 
     /**
-     * @return {@link #jurisdiction} (A legal or geographic region in which the compartment definition is intended to be used.)
+     * @return {@link #purpose} (Explanation of why this compartment definition is needed and why it has been designed as it has.). This is the underlying object with id, value and extensions. The accessor "getPurpose" gives direct access to the value
      */
-    public List<CodeableConcept> getJurisdiction() { 
-      if (this.jurisdiction == null)
-        this.jurisdiction = new ArrayList<CodeableConcept>();
-      return this.jurisdiction;
+    public MarkdownType getPurposeElement() { 
+      if (this.purpose == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create CompartmentDefinition.purpose");
+        else if (Configuration.doAutoCreate())
+          this.purpose = new MarkdownType(); // bb
+      return this.purpose;
+    }
+
+    public boolean hasPurposeElement() { 
+      return this.purpose != null && !this.purpose.isEmpty();
+    }
+
+    public boolean hasPurpose() { 
+      return this.purpose != null && !this.purpose.isEmpty();
     }
 
     /**
-     * @return Returns a reference to <code>this</code> for easy method chaining
+     * @param value {@link #purpose} (Explanation of why this compartment definition is needed and why it has been designed as it has.). This is the underlying object with id, value and extensions. The accessor "getPurpose" gives direct access to the value
      */
-    public CompartmentDefinition setJurisdiction(List<CodeableConcept> theJurisdiction) { 
-      this.jurisdiction = theJurisdiction;
-      return this;
-    }
-
-    public boolean hasJurisdiction() { 
-      if (this.jurisdiction == null)
-        return false;
-      for (CodeableConcept item : this.jurisdiction)
-        if (!item.isEmpty())
-          return true;
-      return false;
-    }
-
-    public CodeableConcept addJurisdiction() { //3
-      CodeableConcept t = new CodeableConcept();
-      if (this.jurisdiction == null)
-        this.jurisdiction = new ArrayList<CodeableConcept>();
-      this.jurisdiction.add(t);
-      return t;
-    }
-
-    public CompartmentDefinition addJurisdiction(CodeableConcept t) { //3
-      if (t == null)
-        return this;
-      if (this.jurisdiction == null)
-        this.jurisdiction = new ArrayList<CodeableConcept>();
-      this.jurisdiction.add(t);
+    public CompartmentDefinition setPurposeElement(MarkdownType value) { 
+      this.purpose = value;
       return this;
     }
 
     /**
-     * @return The first repetition of repeating field {@link #jurisdiction}, creating it if it does not already exist
+     * @return Explanation of why this compartment definition is needed and why it has been designed as it has.
      */
-    public CodeableConcept getJurisdictionFirstRep() { 
-      if (getJurisdiction().isEmpty()) {
-        addJurisdiction();
+    public String getPurpose() { 
+      return this.purpose == null ? null : this.purpose.getValue();
+    }
+
+    /**
+     * @param value Explanation of why this compartment definition is needed and why it has been designed as it has.
+     */
+    public CompartmentDefinition setPurpose(String value) { 
+      if (value == null)
+        this.purpose = null;
+      else {
+        if (this.purpose == null)
+          this.purpose = new MarkdownType();
+        this.purpose.setValue(value);
       }
-      return getJurisdiction().get(0);
+      return this;
     }
 
     /**
@@ -1308,18 +1255,17 @@ public class CompartmentDefinition extends MetadataResource {
 
       protected void listChildren(List<Property> children) {
         super.listChildren(children);
-        children.add(new Property("url", "uri", "An absolute URI that is used to identify this compartment definition when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this compartment definition is (or will be) published. The URL SHOULD include the major version of the compartment definition. For more information see [Technical and Business Versions](resource.html#versions).", 0, 1, url));
+        children.add(new Property("url", "uri", "An absolute URI that is used to identify this compartment definition when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which at which an authoritative instance of this compartment definition is (or will be) published. This URL can be the target of a canonical reference. It SHALL remain the same when the compartment definition is stored on different servers.", 0, 1, url));
+        children.add(new Property("version", "string", "The identifier that is used to identify this version of the compartment definition when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the compartment definition author and is not expected to be globally unique. For example, it might be a timestamp (e.g. yyyymmdd) if a managed version is not available. There is also no expectation that versions can be placed in a lexicographical sequence.", 0, 1, version));
         children.add(new Property("name", "string", "A natural language name identifying the compartment definition. This name should be usable as an identifier for the module by machine processing applications such as code generation.", 0, 1, name));
-        children.add(new Property("title", "string", "A short, descriptive, user-friendly title for the compartment definition.", 0, 1, title));
         children.add(new Property("status", "code", "The status of this compartment definition. Enables tracking the life-cycle of the content.", 0, 1, status));
-        children.add(new Property("experimental", "boolean", "A boolean value to indicate that this compartment definition is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.", 0, 1, experimental));
-        children.add(new Property("date", "dateTime", "The date  (and optionally time) when the compartment definition was published. The date must change if and when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the compartment definition changes.", 0, 1, date));
-        children.add(new Property("publisher", "string", "The name of the individual or organization that published the compartment definition.", 0, 1, publisher));
+        children.add(new Property("experimental", "boolean", "A Boolean value to indicate that this compartment definition is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.", 0, 1, experimental));
+        children.add(new Property("date", "dateTime", "The date  (and optionally time) when the compartment definition was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the compartment definition changes.", 0, 1, date));
+        children.add(new Property("publisher", "string", "The name of the organization or individual that published the compartment definition.", 0, 1, publisher));
         children.add(new Property("contact", "ContactDetail", "Contact details to assist a user in finding and communicating with the publisher.", 0, java.lang.Integer.MAX_VALUE, contact));
         children.add(new Property("description", "markdown", "A free text natural language description of the compartment definition from a consumer's perspective.", 0, 1, description));
-        children.add(new Property("purpose", "markdown", "Explaination of why this compartment definition is needed and why it has been designed as it has.", 0, 1, purpose));
-        children.add(new Property("useContext", "UsageContext", "The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching for appropriate compartment definition instances.", 0, java.lang.Integer.MAX_VALUE, useContext));
-        children.add(new Property("jurisdiction", "CodeableConcept", "A legal or geographic region in which the compartment definition is intended to be used.", 0, java.lang.Integer.MAX_VALUE, jurisdiction));
+        children.add(new Property("useContext", "UsageContext", "The content was developed with a focus and intent of supporting the contexts that are listed. These contexts may be general categories (gender, age, ...) or may be references to specific programs (insurance plans, studies, ...) and may be used to assist with indexing and searching for appropriate compartment definition instances.", 0, java.lang.Integer.MAX_VALUE, useContext));
+        children.add(new Property("purpose", "markdown", "Explanation of why this compartment definition is needed and why it has been designed as it has.", 0, 1, purpose));
         children.add(new Property("code", "code", "Which compartment this definition describes.", 0, 1, code));
         children.add(new Property("search", "boolean", "Whether the search syntax is supported,.", 0, 1, search));
         children.add(new Property("resource", "", "Information about how a resource is related to the compartment.", 0, java.lang.Integer.MAX_VALUE, resource));
@@ -1328,18 +1274,17 @@ public class CompartmentDefinition extends MetadataResource {
       @Override
       public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
         switch (_hash) {
-        case 116079: /*url*/  return new Property("url", "uri", "An absolute URI that is used to identify this compartment definition when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this compartment definition is (or will be) published. The URL SHOULD include the major version of the compartment definition. For more information see [Technical and Business Versions](resource.html#versions).", 0, 1, url);
+        case 116079: /*url*/  return new Property("url", "uri", "An absolute URI that is used to identify this compartment definition when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which at which an authoritative instance of this compartment definition is (or will be) published. This URL can be the target of a canonical reference. It SHALL remain the same when the compartment definition is stored on different servers.", 0, 1, url);
+        case 351608024: /*version*/  return new Property("version", "string", "The identifier that is used to identify this version of the compartment definition when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the compartment definition author and is not expected to be globally unique. For example, it might be a timestamp (e.g. yyyymmdd) if a managed version is not available. There is also no expectation that versions can be placed in a lexicographical sequence.", 0, 1, version);
         case 3373707: /*name*/  return new Property("name", "string", "A natural language name identifying the compartment definition. This name should be usable as an identifier for the module by machine processing applications such as code generation.", 0, 1, name);
-        case 110371416: /*title*/  return new Property("title", "string", "A short, descriptive, user-friendly title for the compartment definition.", 0, 1, title);
         case -892481550: /*status*/  return new Property("status", "code", "The status of this compartment definition. Enables tracking the life-cycle of the content.", 0, 1, status);
-        case -404562712: /*experimental*/  return new Property("experimental", "boolean", "A boolean value to indicate that this compartment definition is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.", 0, 1, experimental);
-        case 3076014: /*date*/  return new Property("date", "dateTime", "The date  (and optionally time) when the compartment definition was published. The date must change if and when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the compartment definition changes.", 0, 1, date);
-        case 1447404028: /*publisher*/  return new Property("publisher", "string", "The name of the individual or organization that published the compartment definition.", 0, 1, publisher);
+        case -404562712: /*experimental*/  return new Property("experimental", "boolean", "A Boolean value to indicate that this compartment definition is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.", 0, 1, experimental);
+        case 3076014: /*date*/  return new Property("date", "dateTime", "The date  (and optionally time) when the compartment definition was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the compartment definition changes.", 0, 1, date);
+        case 1447404028: /*publisher*/  return new Property("publisher", "string", "The name of the organization or individual that published the compartment definition.", 0, 1, publisher);
         case 951526432: /*contact*/  return new Property("contact", "ContactDetail", "Contact details to assist a user in finding and communicating with the publisher.", 0, java.lang.Integer.MAX_VALUE, contact);
         case -1724546052: /*description*/  return new Property("description", "markdown", "A free text natural language description of the compartment definition from a consumer's perspective.", 0, 1, description);
-        case -220463842: /*purpose*/  return new Property("purpose", "markdown", "Explaination of why this compartment definition is needed and why it has been designed as it has.", 0, 1, purpose);
-        case -669707736: /*useContext*/  return new Property("useContext", "UsageContext", "The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching for appropriate compartment definition instances.", 0, java.lang.Integer.MAX_VALUE, useContext);
-        case -507075711: /*jurisdiction*/  return new Property("jurisdiction", "CodeableConcept", "A legal or geographic region in which the compartment definition is intended to be used.", 0, java.lang.Integer.MAX_VALUE, jurisdiction);
+        case -669707736: /*useContext*/  return new Property("useContext", "UsageContext", "The content was developed with a focus and intent of supporting the contexts that are listed. These contexts may be general categories (gender, age, ...) or may be references to specific programs (insurance plans, studies, ...) and may be used to assist with indexing and searching for appropriate compartment definition instances.", 0, java.lang.Integer.MAX_VALUE, useContext);
+        case -220463842: /*purpose*/  return new Property("purpose", "markdown", "Explanation of why this compartment definition is needed and why it has been designed as it has.", 0, 1, purpose);
         case 3059181: /*code*/  return new Property("code", "code", "Which compartment this definition describes.", 0, 1, code);
         case -906336856: /*search*/  return new Property("search", "boolean", "Whether the search syntax is supported,.", 0, 1, search);
         case -341064690: /*resource*/  return new Property("resource", "", "Information about how a resource is related to the compartment.", 0, java.lang.Integer.MAX_VALUE, resource);
@@ -1352,17 +1297,16 @@ public class CompartmentDefinition extends MetadataResource {
       public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
         switch (hash) {
         case 116079: /*url*/ return this.url == null ? new Base[0] : new Base[] {this.url}; // UriType
+        case 351608024: /*version*/ return this.version == null ? new Base[0] : new Base[] {this.version}; // StringType
         case 3373707: /*name*/ return this.name == null ? new Base[0] : new Base[] {this.name}; // StringType
-        case 110371416: /*title*/ return this.title == null ? new Base[0] : new Base[] {this.title}; // StringType
         case -892481550: /*status*/ return this.status == null ? new Base[0] : new Base[] {this.status}; // Enumeration<PublicationStatus>
         case -404562712: /*experimental*/ return this.experimental == null ? new Base[0] : new Base[] {this.experimental}; // BooleanType
         case 3076014: /*date*/ return this.date == null ? new Base[0] : new Base[] {this.date}; // DateTimeType
         case 1447404028: /*publisher*/ return this.publisher == null ? new Base[0] : new Base[] {this.publisher}; // StringType
         case 951526432: /*contact*/ return this.contact == null ? new Base[0] : this.contact.toArray(new Base[this.contact.size()]); // ContactDetail
         case -1724546052: /*description*/ return this.description == null ? new Base[0] : new Base[] {this.description}; // MarkdownType
-        case -220463842: /*purpose*/ return this.purpose == null ? new Base[0] : new Base[] {this.purpose}; // MarkdownType
         case -669707736: /*useContext*/ return this.useContext == null ? new Base[0] : this.useContext.toArray(new Base[this.useContext.size()]); // UsageContext
-        case -507075711: /*jurisdiction*/ return this.jurisdiction == null ? new Base[0] : this.jurisdiction.toArray(new Base[this.jurisdiction.size()]); // CodeableConcept
+        case -220463842: /*purpose*/ return this.purpose == null ? new Base[0] : new Base[] {this.purpose}; // MarkdownType
         case 3059181: /*code*/ return this.code == null ? new Base[0] : new Base[] {this.code}; // Enumeration<CompartmentType>
         case -906336856: /*search*/ return this.search == null ? new Base[0] : new Base[] {this.search}; // BooleanType
         case -341064690: /*resource*/ return this.resource == null ? new Base[0] : this.resource.toArray(new Base[this.resource.size()]); // CompartmentDefinitionResourceComponent
@@ -1377,11 +1321,11 @@ public class CompartmentDefinition extends MetadataResource {
         case 116079: // url
           this.url = castToUri(value); // UriType
           return value;
+        case 351608024: // version
+          this.version = castToString(value); // StringType
+          return value;
         case 3373707: // name
           this.name = castToString(value); // StringType
-          return value;
-        case 110371416: // title
-          this.title = castToString(value); // StringType
           return value;
         case -892481550: // status
           value = new PublicationStatusEnumFactory().fromType(castToCode(value));
@@ -1402,14 +1346,11 @@ public class CompartmentDefinition extends MetadataResource {
         case -1724546052: // description
           this.description = castToMarkdown(value); // MarkdownType
           return value;
-        case -220463842: // purpose
-          this.purpose = castToMarkdown(value); // MarkdownType
-          return value;
         case -669707736: // useContext
           this.getUseContext().add(castToUsageContext(value)); // UsageContext
           return value;
-        case -507075711: // jurisdiction
-          this.getJurisdiction().add(castToCodeableConcept(value)); // CodeableConcept
+        case -220463842: // purpose
+          this.purpose = castToMarkdown(value); // MarkdownType
           return value;
         case 3059181: // code
           value = new CompartmentTypeEnumFactory().fromType(castToCode(value));
@@ -1430,10 +1371,10 @@ public class CompartmentDefinition extends MetadataResource {
       public Base setProperty(String name, Base value) throws FHIRException {
         if (name.equals("url")) {
           this.url = castToUri(value); // UriType
+        } else if (name.equals("version")) {
+          this.version = castToString(value); // StringType
         } else if (name.equals("name")) {
           this.name = castToString(value); // StringType
-        } else if (name.equals("title")) {
-          this.title = castToString(value); // StringType
         } else if (name.equals("status")) {
           value = new PublicationStatusEnumFactory().fromType(castToCode(value));
           this.status = (Enumeration) value; // Enumeration<PublicationStatus>
@@ -1447,12 +1388,10 @@ public class CompartmentDefinition extends MetadataResource {
           this.getContact().add(castToContactDetail(value));
         } else if (name.equals("description")) {
           this.description = castToMarkdown(value); // MarkdownType
-        } else if (name.equals("purpose")) {
-          this.purpose = castToMarkdown(value); // MarkdownType
         } else if (name.equals("useContext")) {
           this.getUseContext().add(castToUsageContext(value));
-        } else if (name.equals("jurisdiction")) {
-          this.getJurisdiction().add(castToCodeableConcept(value));
+        } else if (name.equals("purpose")) {
+          this.purpose = castToMarkdown(value); // MarkdownType
         } else if (name.equals("code")) {
           value = new CompartmentTypeEnumFactory().fromType(castToCode(value));
           this.code = (Enumeration) value; // Enumeration<CompartmentType>
@@ -1469,17 +1408,16 @@ public class CompartmentDefinition extends MetadataResource {
       public Base makeProperty(int hash, String name) throws FHIRException {
         switch (hash) {
         case 116079:  return getUrlElement();
+        case 351608024:  return getVersionElement();
         case 3373707:  return getNameElement();
-        case 110371416:  return getTitleElement();
         case -892481550:  return getStatusElement();
         case -404562712:  return getExperimentalElement();
         case 3076014:  return getDateElement();
         case 1447404028:  return getPublisherElement();
         case 951526432:  return addContact(); 
         case -1724546052:  return getDescriptionElement();
-        case -220463842:  return getPurposeElement();
         case -669707736:  return addUseContext(); 
-        case -507075711:  return addJurisdiction(); 
+        case -220463842:  return getPurposeElement();
         case 3059181:  return getCodeElement();
         case -906336856:  return getSearchElement();
         case -341064690:  return addResource(); 
@@ -1492,17 +1430,16 @@ public class CompartmentDefinition extends MetadataResource {
       public String[] getTypesForProperty(int hash, String name) throws FHIRException {
         switch (hash) {
         case 116079: /*url*/ return new String[] {"uri"};
+        case 351608024: /*version*/ return new String[] {"string"};
         case 3373707: /*name*/ return new String[] {"string"};
-        case 110371416: /*title*/ return new String[] {"string"};
         case -892481550: /*status*/ return new String[] {"code"};
         case -404562712: /*experimental*/ return new String[] {"boolean"};
         case 3076014: /*date*/ return new String[] {"dateTime"};
         case 1447404028: /*publisher*/ return new String[] {"string"};
         case 951526432: /*contact*/ return new String[] {"ContactDetail"};
         case -1724546052: /*description*/ return new String[] {"markdown"};
-        case -220463842: /*purpose*/ return new String[] {"markdown"};
         case -669707736: /*useContext*/ return new String[] {"UsageContext"};
-        case -507075711: /*jurisdiction*/ return new String[] {"CodeableConcept"};
+        case -220463842: /*purpose*/ return new String[] {"markdown"};
         case 3059181: /*code*/ return new String[] {"code"};
         case -906336856: /*search*/ return new String[] {"boolean"};
         case -341064690: /*resource*/ return new String[] {};
@@ -1516,11 +1453,11 @@ public class CompartmentDefinition extends MetadataResource {
         if (name.equals("url")) {
           throw new FHIRException("Cannot call addChild on a primitive type CompartmentDefinition.url");
         }
+        else if (name.equals("version")) {
+          throw new FHIRException("Cannot call addChild on a primitive type CompartmentDefinition.version");
+        }
         else if (name.equals("name")) {
           throw new FHIRException("Cannot call addChild on a primitive type CompartmentDefinition.name");
-        }
-        else if (name.equals("title")) {
-          throw new FHIRException("Cannot call addChild on a primitive type CompartmentDefinition.title");
         }
         else if (name.equals("status")) {
           throw new FHIRException("Cannot call addChild on a primitive type CompartmentDefinition.status");
@@ -1540,14 +1477,11 @@ public class CompartmentDefinition extends MetadataResource {
         else if (name.equals("description")) {
           throw new FHIRException("Cannot call addChild on a primitive type CompartmentDefinition.description");
         }
-        else if (name.equals("purpose")) {
-          throw new FHIRException("Cannot call addChild on a primitive type CompartmentDefinition.purpose");
-        }
         else if (name.equals("useContext")) {
           return addUseContext();
         }
-        else if (name.equals("jurisdiction")) {
-          return addJurisdiction();
+        else if (name.equals("purpose")) {
+          throw new FHIRException("Cannot call addChild on a primitive type CompartmentDefinition.purpose");
         }
         else if (name.equals("code")) {
           throw new FHIRException("Cannot call addChild on a primitive type CompartmentDefinition.code");
@@ -1571,8 +1505,8 @@ public class CompartmentDefinition extends MetadataResource {
         CompartmentDefinition dst = new CompartmentDefinition();
         copyValues(dst);
         dst.url = url == null ? null : url.copy();
+        dst.version = version == null ? null : version.copy();
         dst.name = name == null ? null : name.copy();
-        dst.title = title == null ? null : title.copy();
         dst.status = status == null ? null : status.copy();
         dst.experimental = experimental == null ? null : experimental.copy();
         dst.date = date == null ? null : date.copy();
@@ -1583,17 +1517,12 @@ public class CompartmentDefinition extends MetadataResource {
             dst.contact.add(i.copy());
         };
         dst.description = description == null ? null : description.copy();
-        dst.purpose = purpose == null ? null : purpose.copy();
         if (useContext != null) {
           dst.useContext = new ArrayList<UsageContext>();
           for (UsageContext i : useContext)
             dst.useContext.add(i.copy());
         };
-        if (jurisdiction != null) {
-          dst.jurisdiction = new ArrayList<CodeableConcept>();
-          for (CodeableConcept i : jurisdiction)
-            dst.jurisdiction.add(i.copy());
-        };
+        dst.purpose = purpose == null ? null : purpose.copy();
         dst.code = code == null ? null : code.copy();
         dst.search = search == null ? null : search.copy();
         if (resource != null) {
@@ -1609,23 +1538,23 @@ public class CompartmentDefinition extends MetadataResource {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof CompartmentDefinition))
+        if (!(other_ instanceof CompartmentDefinition))
           return false;
-        CompartmentDefinition o = (CompartmentDefinition) other;
+        CompartmentDefinition o = (CompartmentDefinition) other_;
         return compareDeep(purpose, o.purpose, true) && compareDeep(code, o.code, true) && compareDeep(search, o.search, true)
            && compareDeep(resource, o.resource, true);
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof CompartmentDefinition))
+        if (!(other_ instanceof CompartmentDefinition))
           return false;
-        CompartmentDefinition o = (CompartmentDefinition) other;
+        CompartmentDefinition o = (CompartmentDefinition) other_;
         return compareValues(purpose, o.purpose, true) && compareValues(code, o.code, true) && compareValues(search, o.search, true)
           ;
       }
@@ -1681,6 +1610,26 @@ public class CompartmentDefinition extends MetadataResource {
   public static final ca.uhn.fhir.rest.gclient.TokenClientParam CODE = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_CODE);
 
  /**
+   * Search parameter: <b>context-type-value</b>
+   * <p>
+   * Description: <b>A use context type and value assigned to the compartment definition</b><br>
+   * Type: <b>composite</b><br>
+   * Path: <b></b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="context-type-value", path="CompartmentDefinition.useContext", description="A use context type and value assigned to the compartment definition", type="composite", compositeOf={"context-type", "context"} )
+  public static final String SP_CONTEXT_TYPE_VALUE = "context-type-value";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>context-type-value</b>
+   * <p>
+   * Description: <b>A use context type and value assigned to the compartment definition</b><br>
+   * Type: <b>composite</b><br>
+   * Path: <b></b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.TokenClientParam> CONTEXT_TYPE_VALUE = new ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.TokenClientParam>(SP_CONTEXT_TYPE_VALUE);
+
+ /**
    * Search parameter: <b>resource</b>
    * <p>
    * Description: <b>Name of resource type</b><br>
@@ -1699,46 +1648,6 @@ public class CompartmentDefinition extends MetadataResource {
    * </p>
    */
   public static final ca.uhn.fhir.rest.gclient.TokenClientParam RESOURCE = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_RESOURCE);
-
- /**
-   * Search parameter: <b>jurisdiction</b>
-   * <p>
-   * Description: <b>Intended jurisdiction for the compartment definition</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>CompartmentDefinition.jurisdiction</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="jurisdiction", path="CompartmentDefinition.jurisdiction", description="Intended jurisdiction for the compartment definition", type="token" )
-  public static final String SP_JURISDICTION = "jurisdiction";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>jurisdiction</b>
-   * <p>
-   * Description: <b>Intended jurisdiction for the compartment definition</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>CompartmentDefinition.jurisdiction</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam JURISDICTION = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_JURISDICTION);
-
- /**
-   * Search parameter: <b>name</b>
-   * <p>
-   * Description: <b>Computationally friendly name of the compartment definition</b><br>
-   * Type: <b>string</b><br>
-   * Path: <b>CompartmentDefinition.name</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="name", path="CompartmentDefinition.name", description="Computationally friendly name of the compartment definition", type="string" )
-  public static final String SP_NAME = "name";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>name</b>
-   * <p>
-   * Description: <b>Computationally friendly name of the compartment definition</b><br>
-   * Type: <b>string</b><br>
-   * Path: <b>CompartmentDefinition.name</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.StringClientParam NAME = new ca.uhn.fhir.rest.gclient.StringClientParam(SP_NAME);
 
  /**
    * Search parameter: <b>description</b>
@@ -1761,44 +1670,44 @@ public class CompartmentDefinition extends MetadataResource {
   public static final ca.uhn.fhir.rest.gclient.StringClientParam DESCRIPTION = new ca.uhn.fhir.rest.gclient.StringClientParam(SP_DESCRIPTION);
 
  /**
-   * Search parameter: <b>publisher</b>
+   * Search parameter: <b>context-type</b>
    * <p>
-   * Description: <b>Name of the publisher of the compartment definition</b><br>
-   * Type: <b>string</b><br>
-   * Path: <b>CompartmentDefinition.publisher</b><br>
+   * Description: <b>A type of use context assigned to the compartment definition</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>CompartmentDefinition.useContext.code</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="publisher", path="CompartmentDefinition.publisher", description="Name of the publisher of the compartment definition", type="string" )
-  public static final String SP_PUBLISHER = "publisher";
+  @SearchParamDefinition(name="context-type", path="CompartmentDefinition.useContext.code", description="A type of use context assigned to the compartment definition", type="token" )
+  public static final String SP_CONTEXT_TYPE = "context-type";
  /**
-   * <b>Fluent Client</b> search parameter constant for <b>publisher</b>
+   * <b>Fluent Client</b> search parameter constant for <b>context-type</b>
    * <p>
-   * Description: <b>Name of the publisher of the compartment definition</b><br>
-   * Type: <b>string</b><br>
-   * Path: <b>CompartmentDefinition.publisher</b><br>
+   * Description: <b>A type of use context assigned to the compartment definition</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>CompartmentDefinition.useContext.code</b><br>
    * </p>
    */
-  public static final ca.uhn.fhir.rest.gclient.StringClientParam PUBLISHER = new ca.uhn.fhir.rest.gclient.StringClientParam(SP_PUBLISHER);
+  public static final ca.uhn.fhir.rest.gclient.TokenClientParam CONTEXT_TYPE = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_CONTEXT_TYPE);
 
  /**
-   * Search parameter: <b>title</b>
+   * Search parameter: <b>version</b>
    * <p>
-   * Description: <b>The human-friendly name of the compartment definition</b><br>
-   * Type: <b>string</b><br>
-   * Path: <b>CompartmentDefinition.title</b><br>
+   * Description: <b>The business version of the compartment definition</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>CompartmentDefinition.version</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="title", path="CompartmentDefinition.title", description="The human-friendly name of the compartment definition", type="string" )
-  public static final String SP_TITLE = "title";
+  @SearchParamDefinition(name="version", path="CompartmentDefinition.version", description="The business version of the compartment definition", type="token" )
+  public static final String SP_VERSION = "version";
  /**
-   * <b>Fluent Client</b> search parameter constant for <b>title</b>
+   * <b>Fluent Client</b> search parameter constant for <b>version</b>
    * <p>
-   * Description: <b>The human-friendly name of the compartment definition</b><br>
-   * Type: <b>string</b><br>
-   * Path: <b>CompartmentDefinition.title</b><br>
+   * Description: <b>The business version of the compartment definition</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>CompartmentDefinition.version</b><br>
    * </p>
    */
-  public static final ca.uhn.fhir.rest.gclient.StringClientParam TITLE = new ca.uhn.fhir.rest.gclient.StringClientParam(SP_TITLE);
+  public static final ca.uhn.fhir.rest.gclient.TokenClientParam VERSION = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_VERSION);
 
  /**
    * Search parameter: <b>url</b>
@@ -1819,6 +1728,106 @@ public class CompartmentDefinition extends MetadataResource {
    * </p>
    */
   public static final ca.uhn.fhir.rest.gclient.UriClientParam URL = new ca.uhn.fhir.rest.gclient.UriClientParam(SP_URL);
+
+ /**
+   * Search parameter: <b>context-quantity</b>
+   * <p>
+   * Description: <b>A quantity- or range-valued use context assigned to the compartment definition</b><br>
+   * Type: <b>quantity</b><br>
+   * Path: <b>CompartmentDefinition.useContext.valueQuantity, CompartmentDefinition.useContext.valueRange</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="context-quantity", path="(CompartmentDefinition.useContext.value as Quantity) | (CompartmentDefinition.useContext.value as Range)", description="A quantity- or range-valued use context assigned to the compartment definition", type="quantity" )
+  public static final String SP_CONTEXT_QUANTITY = "context-quantity";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>context-quantity</b>
+   * <p>
+   * Description: <b>A quantity- or range-valued use context assigned to the compartment definition</b><br>
+   * Type: <b>quantity</b><br>
+   * Path: <b>CompartmentDefinition.useContext.valueQuantity, CompartmentDefinition.useContext.valueRange</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.QuantityClientParam CONTEXT_QUANTITY = new ca.uhn.fhir.rest.gclient.QuantityClientParam(SP_CONTEXT_QUANTITY);
+
+ /**
+   * Search parameter: <b>name</b>
+   * <p>
+   * Description: <b>Computationally friendly name of the compartment definition</b><br>
+   * Type: <b>string</b><br>
+   * Path: <b>CompartmentDefinition.name</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="name", path="CompartmentDefinition.name", description="Computationally friendly name of the compartment definition", type="string" )
+  public static final String SP_NAME = "name";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>name</b>
+   * <p>
+   * Description: <b>Computationally friendly name of the compartment definition</b><br>
+   * Type: <b>string</b><br>
+   * Path: <b>CompartmentDefinition.name</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.StringClientParam NAME = new ca.uhn.fhir.rest.gclient.StringClientParam(SP_NAME);
+
+ /**
+   * Search parameter: <b>context</b>
+   * <p>
+   * Description: <b>A use context assigned to the compartment definition</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>CompartmentDefinition.useContext.valueCodeableConcept</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="context", path="(CompartmentDefinition.useContext.value as CodeableConcept)", description="A use context assigned to the compartment definition", type="token" )
+  public static final String SP_CONTEXT = "context";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>context</b>
+   * <p>
+   * Description: <b>A use context assigned to the compartment definition</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>CompartmentDefinition.useContext.valueCodeableConcept</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.TokenClientParam CONTEXT = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_CONTEXT);
+
+ /**
+   * Search parameter: <b>publisher</b>
+   * <p>
+   * Description: <b>Name of the publisher of the compartment definition</b><br>
+   * Type: <b>string</b><br>
+   * Path: <b>CompartmentDefinition.publisher</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="publisher", path="CompartmentDefinition.publisher", description="Name of the publisher of the compartment definition", type="string" )
+  public static final String SP_PUBLISHER = "publisher";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>publisher</b>
+   * <p>
+   * Description: <b>Name of the publisher of the compartment definition</b><br>
+   * Type: <b>string</b><br>
+   * Path: <b>CompartmentDefinition.publisher</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.StringClientParam PUBLISHER = new ca.uhn.fhir.rest.gclient.StringClientParam(SP_PUBLISHER);
+
+ /**
+   * Search parameter: <b>context-type-quantity</b>
+   * <p>
+   * Description: <b>A use context type and quantity- or range-based value assigned to the compartment definition</b><br>
+   * Type: <b>composite</b><br>
+   * Path: <b></b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="context-type-quantity", path="CompartmentDefinition.useContext", description="A use context type and quantity- or range-based value assigned to the compartment definition", type="composite", compositeOf={"context-type", "context-quantity"} )
+  public static final String SP_CONTEXT_TYPE_QUANTITY = "context-type-quantity";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>context-type-quantity</b>
+   * <p>
+   * Description: <b>A use context type and quantity- or range-based value assigned to the compartment definition</b><br>
+   * Type: <b>composite</b><br>
+   * Path: <b></b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.QuantityClientParam> CONTEXT_TYPE_QUANTITY = new ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.QuantityClientParam>(SP_CONTEXT_TYPE_QUANTITY);
 
  /**
    * Search parameter: <b>status</b>

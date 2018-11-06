@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <ValueSet xmlns="http://hl7.org/fhir">
   <meta>
@@ -11,15 +11,18 @@
 	  This value set includes sample Contract Signer Type codes.
     </div>
   </text>
-  <name value="Contract Signer Type Codes"/>
+	<extension url="http://hl7.org/fhir/StructureDefinition/valueset-extensible">
+	  <valueBoolean value="true"/>
+	</extension>
+  <name value="ContractSignerTypeCodes"/>
+  <title value="Contract Signer Type Codes"/>
   <status value="draft"/>
   <publisher value="Financial Management"/>
   <description value="This value set includes sample Contract Signer Type codes."/>
   <copyright value="This is an example set based on ASTM Standard, E1762-95 (2013) HL7 RoleClass OID 2.16.840.1.113883.5.110, HL7 Role Code 2.16.840.1.113883.5.111, HL7 ParticipationType OID: 2.16.840.1.113883.5.90, HL7 ParticipationFunction codes at OID: 2.16.840.1.113883.5.88, and HL7 Security and Privacy Domain Analysis Model roles classes."/>
-  <extensible value="true"/>
   <compose>
     <include>
-      <system value="http://www.hl7.org/fhir/contractsignertypecodes"/>
+      <system value="http://terminology.hl7.org/CodeSystem/contractsignertypecodes"/>
     </include>
   </compose>
 </ValueSet>

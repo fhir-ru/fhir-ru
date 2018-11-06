@@ -3,16 +3,12 @@ package org.hl7.fhir.tools.publisher;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import javax.xml.namespace.NamespaceContext;
 import javax.xml.parsers.ParserConfigurationException;
@@ -21,23 +17,18 @@ import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
 
-import org.apache.jena.graph.Triple;
+import org.apache.commons.lang3.NotImplementedException;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
-import org.apache.jena.rdf.model.ResIterator;
-import org.apache.jena.rdf.model.Resource;
-import org.apache.jena.rdf.model.Statement;
-import org.apache.jena.rdf.model.StmtIterator;
-import org.apache.jena.riot.Lang;
 import org.apache.jena.riot.RDFDataMgr;
-import org.apache.jena.riot.RDFFormat;
-import org.apache.jena.sparql.util.Context;
-import org.apache.jena.sparql.util.IsoMatcher;
+import org.everit.json.schema.ValidationException;
 import org.everit.json.schema.loader.SchemaLoader;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.Example;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.SearchParameterDefn;
+import org.hl7.fhir.exceptions.FHIRException;
+import org.hl7.fhir.exceptions.PathEngineException;
 import org.hl7.fhir.r4.context.IWorkerContext;
 import org.hl7.fhir.r4.elementmodel.Element;
 import org.hl7.fhir.r4.elementmodel.Manager;
@@ -45,8 +36,8 @@ import org.hl7.fhir.r4.elementmodel.Manager.FhirFormat;
 import org.hl7.fhir.r4.elementmodel.ObjectConverter;
 import org.hl7.fhir.r4.formats.XmlParser;
 import org.hl7.fhir.r4.model.Base;
-import org.hl7.fhir.r4.model.Bundle.BundleEntryComponent;
 import org.hl7.fhir.r4.model.CodeSystem;
+import org.hl7.fhir.r4.model.Constants;
 import org.hl7.fhir.r4.model.OperationDefinition;
 import org.hl7.fhir.r4.model.SearchParameter;
 import org.hl7.fhir.r4.model.StructureDefinition;
@@ -54,21 +45,17 @@ import org.hl7.fhir.r4.model.TypeDetails;
 import org.hl7.fhir.r4.model.ValueSet;
 import org.hl7.fhir.r4.utils.FHIRPathEngine;
 import org.hl7.fhir.r4.utils.FHIRPathEngine.IEvaluationContext;
+import org.hl7.fhir.r4.utils.IResourceValidator;
 import org.hl7.fhir.r4.utils.IResourceValidator.BestPracticeWarningLevel;
 import org.hl7.fhir.r4.utils.IResourceValidator.IValidatorResourceFetcher;
 import org.hl7.fhir.r4.utils.IResourceValidator.IdStatus;
 import org.hl7.fhir.r4.utils.IResourceValidator.ReferenceValidationPolicy;
 import org.hl7.fhir.r4.validation.InstanceValidator;
 import org.hl7.fhir.r4.validation.XmlValidator;
-import org.hl7.fhir.exceptions.DefinitionException;
-import org.hl7.fhir.exceptions.FHIRException;
-import org.hl7.fhir.exceptions.FHIRFormatError;
-import org.hl7.fhir.exceptions.PathEngineException;
 import org.hl7.fhir.rdf.ModelComparer;
 import org.hl7.fhir.rdf.ShExValidator;
 import org.hl7.fhir.utilities.CSFileInputStream;
 import org.hl7.fhir.utilities.Logger;
-import org.hl7.fhir.utilities.SchemaInputSource;
 import org.hl7.fhir.utilities.Logger.LogMessageType;
 import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
@@ -82,7 +69,6 @@ import org.json.JSONTokener;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import com.github.jsonldjava.utils.JsonUtils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
@@ -100,7 +86,7 @@ public class ExampleInspector implements IValidatorResourceFetcher {
   private class ExampleHostServices implements IEvaluationContext {
 
     @Override
-    public Base resolveConstant(Object appContext, String name) throws PathEngineException {
+    public Base resolveConstant(Object appContext, String name, boolean beforeContext) throws PathEngineException {
       return null;
     }
 
@@ -147,11 +133,25 @@ public class ExampleInspector implements IValidatorResourceFetcher {
       }
     }
 
+    @Override
+    public boolean conformsToProfile(Object appContext, Base item, String url) throws FHIRException {
+      IResourceValidator val = context.newValidator();
+      List<ValidationMessage> valerrors = new ArrayList<ValidationMessage>();
+      if (item instanceof org.hl7.fhir.r4.model.Resource) {
+        val.validate(appContext, valerrors, (org.hl7.fhir.r4.model.Resource) item, url);
+        boolean ok = true;
+        for (ValidationMessage v : valerrors)
+          ok = ok && v.getLevel().isError();
+        return ok;
+      }
+      throw new NotImplementedException("Not done yet (IGPublisherHostServices.conformsToProfile), when item is element");
+    }
   }
+  
   private static final boolean VALIDATE_CONFORMANCE_REFERENCES = true;
   private static final boolean VALIDATE_BY_PROFILE = true;
   private static final boolean VALIDATE_BY_SCHEMATRON = false;
-  private static final boolean VALIDATE_BY_JSON_SCHEMA = true;
+  private static final boolean VALIDATE_BY_JSON_SCHEMA = false;
   private static final boolean VALIDATE_RDF = false;
   
   private IWorkerContext context;
@@ -196,7 +196,7 @@ public class ExampleInspector implements IValidatorResourceFetcher {
     validator.setSuppressLoincSnomedMessages(true);
     validator.setResourceIdRule(IdStatus.REQUIRED);
     validator.setBestPracticeWarningLevel(BestPracticeWarningLevel.Warning);
-    validator.getExtensionDomains().add("http://hl7.org/fhir/StructureDefinition/us-core-");
+    validator.getExtensionDomains().add("http://hl7.org/fhir/us");
     validator.setFetcher(this);
 
     xml = new XmlValidator(errorsInt, loadSchemas(), loadTransforms());
@@ -297,7 +297,7 @@ public class ExampleInspector implements IValidatorResourceFetcher {
       org.w3c.dom.Element xe = validateXml(Utilities.path(rootDir, n+".xml"), profile == null ? null : profile.getId());
 
       validateLogical(Utilities.path(rootDir, n+".json"), profile, FhirFormat.JSON);
-      validateJson(Utilities.path(rootDir, n+".xml"), profile == null ? null : profile.getId());
+      validateJson(Utilities.path(rootDir, n+".json"), profile == null ? null : profile.getId());
       validateRDF(Utilities.path(rootDir, n+".ttl"), Utilities.path(rootDir, n+".jsonld"), rt);
       
       checkSearchParameters(xe, e);
@@ -319,6 +319,7 @@ public class ExampleInspector implements IValidatorResourceFetcher {
       else
         errorCount++;
     }
+    Runtime.getRuntime().gc();
   }
  
   private Element validateLogical(String f, StructureDefinition profile, FhirFormat fmt) throws Exception {
@@ -345,7 +346,16 @@ public class ExampleInspector implements IValidatorResourceFetcher {
 
   private void validateJson(String f, String profile) throws FileNotFoundException, IOException {
     if (VALIDATE_BY_JSON_SCHEMA) {
-      jschema.validate(new CSFileInputStream(f));
+      JSONObject jo = new JSONObject(new JSONTokener(new CSFileInputStream(f)));
+      try {
+        jschema.validate(jo);
+      } catch (ValidationException e) {
+        System.out.println(e.getMessage());
+//        e.getCausingExceptions().stream()
+//            .map(ValidationException::getMessage)
+//            .forEach(System.out::println);
+        throw e;
+      }
     }
   }
 
@@ -507,6 +517,14 @@ public class ExampleInspector implements IValidatorResourceFetcher {
       for (Example e : r.getExamples()) {
         if (e.getElement() == null && e.hasXml()) {
           e.setElement(new org.hl7.fhir.r4.elementmodel.XmlParser(context).parse(e.getXml()));
+          if (e.getElement().getProperty().getStructure().getBaseDefinition().contains("MetadataResource")) {
+            String urle = e.getElement().getChildValue("url");
+            String v = e.getElement().getChildValue("url");
+            if (urle.startsWith("http://hl7.org/fhir") && !Constants.VERSION.equals(v)) {
+              e.getElement().setChildValue("version", Constants.VERSION);
+              
+            }
+          }
         }
         if (e.getElement() != null) {
           if (e.getElement().fhirType().equals("Bundle")) {
@@ -524,15 +542,15 @@ public class ExampleInspector implements IValidatorResourceFetcher {
         }
       }
       try {
-        if (parts[0].equals("StructureDefinition")) //, "CodeSystem", "OperationDefinition", "SearchParameter", "ValueSet"))
+        if (parts[0].equals("StructureDefinition"))  
           return new ObjectConverter(context).convert(context.fetchResourceWithException(StructureDefinition.class, "http://hl7.org/fhir/"+parts[0]+"/"+parts[1]));
-        if (parts[0].equals("OperationDefinition")) //, "CodeSystem", "OperationDefinition", "SearchParameter", "ValueSet"))
+        if (parts[0].equals("OperationDefinition")) 
           return new ObjectConverter(context).convert(context.fetchResourceWithException(OperationDefinition.class, "http://hl7.org/fhir/"+parts[0]+"/"+parts[1]));
-        if (parts[0].equals("SearchParameter")) //, "CodeSystem", "OperationDefinition", "SearchParameter", "ValueSet"))
+        if (parts[0].equals("SearchParameter")) 
           return new ObjectConverter(context).convert(context.fetchResourceWithException(SearchParameter.class, "http://hl7.org/fhir/"+parts[0]+"/"+parts[1]));
-        if (parts[0].equals("ValueSet")) //, "CodeSystem", "OperationDefinition", "SearchParameter", "ValueSet"))
+        if (parts[0].equals("ValueSet"))
           return new ObjectConverter(context).convert(context.fetchResourceWithException(ValueSet.class, "http://hl7.org/fhir/"+parts[0]+"/"+parts[1]));
-        if (parts[0].equals("CodeSystem")) //, "CodeSystem", "OperationDefinition", "SearchParameter", "ValueSet"))
+        if (parts[0].equals("CodeSystem"))
           return new ObjectConverter(context).convert(context.fetchResourceWithException(CodeSystem.class, "http://hl7.org/fhir/"+parts[0]+"/"+parts[1]));
       } catch (Exception e) {
         return null;

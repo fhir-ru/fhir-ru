@@ -42,6 +42,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.hl7.fhir.r4.formats.IParser.OutputStyle;
 import org.hl7.fhir.r4.formats.JsonParser;
 import org.hl7.fhir.r4.formats.XmlParser;
+import org.hl7.fhir.r4.model.CanonicalType;
 import org.hl7.fhir.r4.model.Coding;
 import org.hl7.fhir.r4.model.ElementDefinition;
 import org.hl7.fhir.r4.model.ElementDefinition.ElementDefinitionConstraintComponent;
@@ -198,10 +199,8 @@ public class XLSXWriter  extends TextStreamWriter  {
       addCell(row, i++, ed.getBinding().getDescription());
       if (ed.getBinding().getValueSet()==null)
         addCell(row, i++, "");
-      else if (ed.getBinding().getValueSet() instanceof Reference)
-        addCell(row, i++, ed.getBinding().getValueSetReference().getReference());
       else
-        addCell(row, i++, ed.getBinding().getValueSetUriType().getValue());
+        addCell(row, i++, ed.getBinding().getValueSet());
     } else {
       addCell(row, i++, "");
       addCell(row, i++, "");
@@ -334,7 +333,7 @@ public class XLSXWriter  extends TextStreamWriter  {
     sheet.createFreezePane(2,1);
     
     SheetConditionalFormatting sheetCF = sheet.getSheetConditionalFormatting();
-    String address = "A2:AI" + Integer.valueOf(sheet.getLastRowNum());
+    String address = "A2:AI" + Math.max(Integer.valueOf(sheet.getLastRowNum()), 2);
     CellRangeAddress[] regions = {
         CellRangeAddress.valueOf(address)
     };

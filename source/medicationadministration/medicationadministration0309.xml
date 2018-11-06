@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <MedicationAdministration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://hl7.org/fhir ../../schema/medicationadministration.xsd"
  xmlns="http://hl7.org/fhir"> 
@@ -45,7 +45,7 @@
     </batch>    
   </Medication>
   </contained>
-  <status value="completed" />
+  <status value="completed"/>
   <medicationReference>
     <reference value="#med0318"/>
   </medicationReference>
@@ -58,7 +58,13 @@
    <end value="2015-01-16T02:03:00+01:00"/>
 </effectivePeriod>
   <performer>
-    <function></function>
+    <function>
+      <coding>
+        <system value="http://terminology.hl7.org/CodeSystem/med-admin-perform-function"/>
+        <code value="performer"/>
+        <display value="Performer"/>
+      </coding>
+    </function>
     <actor>
       <reference value="Practitioner/f007"/>
       <display value="Patrick Pump"/>

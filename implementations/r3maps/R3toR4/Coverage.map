@@ -1,0 +1,37 @@
+﻿map "http://hl7.org/fhir/StructureMap/Coverage3to4" = "R3 to R4 Conversions for Coverage"
+
+uses "http://hl7.org/fhir/3.0/StructureDefinition/Coverage" alias CoverageR3 as source
+uses "http://hl7.org/fhir/StructureDefinition/Coverage" alias Coverage as target
+
+imports "http://hl7.org/fhir/StructureMap/*3to4"
+
+group Coverage(source src : CoverageR3, target tgt : Coverage) extends DomainResource <<type+>> {
+  src.identifier -> tgt.identifier;
+  src.status -> tgt.status;
+  src.type -> tgt.type;
+  src.policyHolder -> tgt.policyHolder;
+  src.subscriber -> tgt.subscriber;
+  src.subscriberId -> tgt.subscriberId;
+  src.beneficiary -> tgt.beneficiary;
+  src.dependent -> tgt.dependent;
+  src.relationship -> tgt.relationship;
+  src.period -> tgt.period;
+  src.payor -> tgt.payor;
+  src.class as s -> tgt.class as t then CoverageClass(s, t);
+  src.order -> tgt.order;
+  src.network -> tgt.network;
+  src.copay as s -> tgt.copay as t then CoverageCopay(s, t);
+  src.contract -> tgt.contract;
+}
+
+group CoverageClass(source src : CoverageR3, target tgt : Coverage) extends BackboneElement <<type+>> {
+  src.type -> tgt.type;
+  src.value -> tgt.value;
+  src.name -> tgt.name;
+}
+
+group CoverageCopay(source src : CoverageR3, target tgt : Coverage) extends BackboneElement <<type+>> {
+  src.type -> tgt.type;
+  src.value -> tgt.value;
+}
+

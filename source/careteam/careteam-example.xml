@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <CareTeam xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/CareTeam.xsd">
   <id value="example"/>
 
@@ -22,8 +22,9 @@
   <status value="active"/>
   <category>
      <coding>
-       <system value="http://hl7.org/fhir/care-team-category"/>
-       <code value="encounter"/>
+       <system value="http://loinc.org"/>
+       <code value="LA27976-2"/>
+	   <display value="Encounter-focused care team"/>
      </coding>
   </category>
   <name value="Peter James Charlmers Care Plan for Inpatient Encounter"/>
@@ -31,9 +32,9 @@
     <reference value="Patient/example"/>
     <display value="Peter James Chalmers"/>
   </subject>
-  <context>
+  <encounter>
 	<reference value="Encounter/example"/>
-  </context>
+  </encounter>
   <period>
     <end value="2013-01-01"/>
   </period>

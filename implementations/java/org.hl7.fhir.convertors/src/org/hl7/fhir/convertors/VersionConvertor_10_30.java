@@ -5,24 +5,21 @@ import java.util.List;
 
 import org.apache.commons.codec.binary.Base64;
 import org.hl7.fhir.dstu2.model.CodeableConcept;
-import org.hl7.fhir.dstu2.model.Reference;
 import org.hl7.fhir.dstu2.utils.ToolingExtensions;
 import org.hl7.fhir.dstu3.conformance.ProfileUtilities;
 import org.hl7.fhir.dstu3.model.Annotation;
 import org.hl7.fhir.dstu3.model.CapabilityStatement.SystemRestfulInteraction;
 import org.hl7.fhir.dstu3.model.CodeSystem;
-import org.hl7.fhir.dstu3.model.Coding;
 import org.hl7.fhir.dstu3.model.CodeSystem.CodeSystemContentMode;
 import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionComponent;
 import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionDesignationComponent;
-import org.hl7.fhir.dstu3.model.CommunicationRequest.CommunicationPriority;
+import org.hl7.fhir.dstu3.model.Coding;
 import org.hl7.fhir.dstu3.model.ConceptMap;
-import org.hl7.fhir.dstu3.model.ContactDetail;
 import org.hl7.fhir.dstu3.model.ConceptMap.ConceptMapGroupComponent;
 import org.hl7.fhir.dstu3.model.ConceptMap.SourceElementComponent;
+import org.hl7.fhir.dstu3.model.ContactDetail;
 import org.hl7.fhir.dstu3.model.DocumentReference.ReferredDocumentStatus;
 import org.hl7.fhir.dstu3.model.Dosage;
-import org.hl7.fhir.dstu3.model.ElementDefinition;
 import org.hl7.fhir.dstu3.model.ElementDefinition.ElementDefinitionSlicingDiscriminatorComponent;
 import org.hl7.fhir.dstu3.model.Enumeration;
 import org.hl7.fhir.dstu3.model.Immunization.ImmunizationPractitionerComponent;
@@ -160,37 +157,37 @@ public class VersionConvertor_10_30 {
   }
 
   public org.hl7.fhir.dstu3.model.DateType convertDate(org.hl7.fhir.dstu2.model.DateType src) throws FHIRException {
-    org.hl7.fhir.dstu3.model.DateType tgt = new org.hl7.fhir.dstu3.model.DateType(src.getValue());
+    org.hl7.fhir.dstu3.model.DateType tgt = new org.hl7.fhir.dstu3.model.DateType(src.getValueAsString());
     copyElement(src, tgt);
     return tgt;
   }
 
   public org.hl7.fhir.dstu3.model.DateType convertDate(org.hl7.fhir.dstu2.model.DateTimeType src) throws FHIRException {
-    org.hl7.fhir.dstu3.model.DateType tgt = new org.hl7.fhir.dstu3.model.DateType(src.getValue());
+    org.hl7.fhir.dstu3.model.DateType tgt = new org.hl7.fhir.dstu3.model.DateType(src.getValueAsString());
     copyElement(src, tgt);
     return tgt;
   }
 
   public org.hl7.fhir.dstu2.model.DateType convertDate(org.hl7.fhir.dstu3.model.DateType src) throws FHIRException {
-    org.hl7.fhir.dstu2.model.DateType tgt = new org.hl7.fhir.dstu2.model.DateType(src.getValue());
+    org.hl7.fhir.dstu2.model.DateType tgt = new org.hl7.fhir.dstu2.model.DateType(src.getValueAsString());
     copyElement(src, tgt);
     return tgt;
   }
 
   public org.hl7.fhir.dstu2.model.DateType convertDate(org.hl7.fhir.dstu3.model.DateTimeType src) throws FHIRException {
-    org.hl7.fhir.dstu2.model.DateType tgt = new org.hl7.fhir.dstu2.model.DateType(src.getValue());
+    org.hl7.fhir.dstu2.model.DateType tgt = new org.hl7.fhir.dstu2.model.DateType(src.getValueAsString());
     copyElement(src, tgt);
     return tgt;
   }
 
   public org.hl7.fhir.dstu3.model.DateTimeType convertDateTime(org.hl7.fhir.dstu2.model.DateTimeType src) throws FHIRException {
-    org.hl7.fhir.dstu3.model.DateTimeType tgt = new org.hl7.fhir.dstu3.model.DateTimeType(src.getValue());
+    org.hl7.fhir.dstu3.model.DateTimeType tgt = new org.hl7.fhir.dstu3.model.DateTimeType(src.getValueAsString());
     copyElement(src, tgt);
     return tgt;
   }
 
   public org.hl7.fhir.dstu2.model.DateTimeType convertDateTime(org.hl7.fhir.dstu3.model.DateTimeType src) throws FHIRException {
-    org.hl7.fhir.dstu2.model.DateTimeType tgt = new org.hl7.fhir.dstu2.model.DateTimeType(src.getValue());
+    org.hl7.fhir.dstu2.model.DateTimeType tgt = new org.hl7.fhir.dstu2.model.DateTimeType(src.getValueAsString());
     copyElement(src, tgt);
     return tgt;
   }
@@ -220,13 +217,13 @@ public class VersionConvertor_10_30 {
   }
 
   public org.hl7.fhir.dstu3.model.InstantType convertInstant(org.hl7.fhir.dstu2.model.InstantType src) throws FHIRException {
-    org.hl7.fhir.dstu3.model.InstantType tgt = new org.hl7.fhir.dstu3.model.InstantType(src.getValue());
+    org.hl7.fhir.dstu3.model.InstantType tgt = new org.hl7.fhir.dstu3.model.InstantType(src.getValueAsString());
     copyElement(src, tgt);
     return tgt;
   }
 
   public org.hl7.fhir.dstu2.model.InstantType convertInstant(org.hl7.fhir.dstu3.model.InstantType src) throws FHIRException {
-    org.hl7.fhir.dstu2.model.InstantType tgt = new org.hl7.fhir.dstu2.model.InstantType(src.getValue());
+    org.hl7.fhir.dstu2.model.InstantType tgt = new org.hl7.fhir.dstu2.model.InstantType(src.getValueAsString());
     copyElement(src, tgt);
     return tgt;
   }
@@ -1140,7 +1137,7 @@ public class VersionConvertor_10_30 {
     copyElement(src, tgt);
     tgt.setCodeElement(convertCodeToUri(src.getCodeElement()));
     for (org.hl7.fhir.dstu2.model.UriType t : src.getProfile())
-      if (src.hasCode() && "Reference".equals(src.getCode()))
+      if (src.hasTarget())
         tgt.setTargetProfile(t.getValueAsString());
       else
         tgt.setProfile(t.getValue());
@@ -1155,7 +1152,7 @@ public class VersionConvertor_10_30 {
     org.hl7.fhir.dstu2.model.ElementDefinition.TypeRefComponent tgt = new org.hl7.fhir.dstu2.model.ElementDefinition.TypeRefComponent();
     copyElement(src, tgt);
     tgt.setCodeElement(convertUriToCode(src.getCodeElement()));
-    if (src.hasCode() && "Reference".equals(src.getCode())) {
+    if (src.hasTarget()) {
       if (src.hasTargetProfile())
         tgt.addProfile(src.getTargetProfile());
     } else if (src.hasProfile())
@@ -1786,7 +1783,7 @@ public class VersionConvertor_10_30 {
       return convertMoney((org.hl7.fhir.dstu2.model.Money) src);
     if (src instanceof org.hl7.fhir.dstu2.model.SimpleQuantity)
       return convertSimpleQuantity((org.hl7.fhir.dstu2.model.SimpleQuantity) src);
-    throw new Error("Unknown type "+src.fhirType());
+    throw new FHIRException("Unknown type "+src.fhirType());
   }
 
   public org.hl7.fhir.dstu2.model.Type convertType(org.hl7.fhir.dstu3.model.Type src) throws FHIRException {
@@ -1878,7 +1875,7 @@ public class VersionConvertor_10_30 {
       return convertMoney((org.hl7.fhir.dstu3.model.Money) src);
     if (src instanceof org.hl7.fhir.dstu3.model.SimpleQuantity)
       return convertSimpleQuantity((org.hl7.fhir.dstu3.model.SimpleQuantity) src);
-    throw new Error("Unknown type "+src.fhirType());
+    throw new FHIRException("Unknown type "+src.fhirType());
   }
 
   public void copyDomainResource(org.hl7.fhir.dstu2.model.DomainResource src, org.hl7.fhir.dstu3.model.DomainResource tgt) throws FHIRException {
@@ -11194,7 +11191,7 @@ public class VersionConvertor_10_30 {
       return null;
     switch (src) {
     case DATATYPE:
-      if (Utilities.existsInList(dtName, "boolean", "integer", "decimal", "base64Binary", "instant", "string", "uri", "date", "dateTime", "time", "code", "oid", "uuid", "id", "unsignedInt", "positiveInt", "markdown", "xhtml"))
+      if (Utilities.existsInList(dtName, "boolean", "integer", "decimal", "base64Binary", "instant", "string", "uri", "date", "dateTime", "time", "code", "oid", "uuid", "id", "unsignedInt", "positiveInt", "markdown", "xhtml", "url", "canonical"))
         return org.hl7.fhir.dstu3.model.StructureDefinition.StructureDefinitionKind.PRIMITIVETYPE;
       else
         return org.hl7.fhir.dstu3.model.StructureDefinition.StructureDefinitionKind.COMPLEXTYPE;
@@ -12948,7 +12945,7 @@ public org.hl7.fhir.dstu2.model.ValueSet.ConceptDefinitionDesignationComponent c
       return convertTestScript((org.hl7.fhir.dstu2.model.TestScript) src);
     if (src instanceof org.hl7.fhir.dstu2.model.ValueSet)
       return convertValueSet((org.hl7.fhir.dstu2.model.ValueSet) src);
-    throw new Error("Unknown resource "+src.fhirType());
+    throw new FHIRException("Unknown resource "+src.fhirType());
   }
 
   public org.hl7.fhir.dstu2.model.Resource convertResource(org.hl7.fhir.dstu3.model.Resource src) throws FHIRException {
@@ -13096,7 +13093,16 @@ public org.hl7.fhir.dstu2.model.ValueSet.ConceptDefinitionDesignationComponent c
       return convertTestScript((org.hl7.fhir.dstu3.model.TestScript) src);
     if (src instanceof org.hl7.fhir.dstu3.model.ValueSet)
       return convertValueSet((org.hl7.fhir.dstu3.model.ValueSet) src);
-    throw new Error("Unknown resource "+src.fhirType());
+    throw new FHIRException("Unknown resource "+src.fhirType());
+  }
+
+  public static boolean convertsResource(String rt) {
+    return Utilities.existsInList(rt, "Parameters", "Appointment", "AppointmentResponse", "AuditEvent", "Basic", "Binary", "Bundle", "CarePlan", "ClinicalImpression", "Communication", "CommunicationRequest", "Composition",
+        "ConceptMap", "Condition", "CapabilityStatement", "Contract", "DataElement", "DetectedIssue", "Device", "DeviceComponent", "DeviceMetric", "DeviceUseStatement", "DiagnosticReport", "DocumentManifest", "DocumentReference",
+        "Encounter", "EnrollmentRequest", "EnrollmentResponse", "EpisodeOfCare", "FamilyMemberHistory", "Flag", "Group", "HealthcareService", "ImagingStudy", "Immunization", "ImmunizationRecommendation", "ImplementationGuide",
+        "ListResource", "Location", "Media", "Medication", "MedicationDispense", "MedicationStatement", "MessageHeader", "NamingSystem", "Observation", "OperationDefinition", "OperationOutcome", "Organization", "Patient",
+        "Person", "Practitioner", "Procedure", "ProcedureRequest", "Provenance", "Questionnaire", "QuestionnaireResponse", "ReferralRequest", "RelatedPerson", "RiskAssessment", "Schedule", "SearchParameter", "Slot",
+        "StructureDefinition", "Subscription", "Substance", "SupplyDelivery", "SupplyRequest", "TestScript", "ValueSet");
   }
 
 }

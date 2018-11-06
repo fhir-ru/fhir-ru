@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <ValueSet xmlns="http://hl7.org/fhir">
-  <name value="Encounter Reason Codes"/>
+  <name value="EncounterReasonCodes"/>
+  <title value="Encounter Reason Codes"/>
   <status value="draft"/>
   <publisher value="FHIR Project team"/>
   <contact>
@@ -27,6 +28,22 @@
         <property value="concept"/>
         <op value="is-a"/>
         <value value="71388002"/>
+      </filter>
+    </include>
+	<include>
+      <system value="http://snomed.info/sct"/>
+      <filter>
+        <property value="concept"/>
+        <op value="is-a"/>
+        <value value="243796009"/>
+      </filter>
+    </include>
+	<include>
+      <system value="http://snomed.info/sct"/>
+      <filter>
+        <property value="concept"/>
+        <op value="is-a"/>
+        <value value="272379006"/>
       </filter>
     </include>
   </compose>

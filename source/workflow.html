@@ -16,9 +16,16 @@ in order to support consistent definitions for schema and UML derived code.
     [%file newnavbar%]
 
     <div class="col-12">
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 2</td><td id="ballot"><a href="versions.html#levels">Ballot Status</a>: <a href="versions.html#std-process">Trial Use</a></td></tr></table>
+        <table class="colstu">
+            <tr>
+                <td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td>
+                <td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 2</td>
+                <td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:
+                    <!--!ns!--><a href="versions.html#std-process">Trial Use</a></td>
+            </tr>
+        </table>
 
-    <!-- Tabs for navigation -->
+        <!-- Tabs for navigation -->
         <ul class="nav nav-tabs">
             <li class="active"><a href="#">Overview</a></li>
             <li><a href="workflow-communications.html">Communication Patterns</a></li>
@@ -27,7 +34,7 @@ in order to support consistent definitions for schema and UML derived code.
             <li><a href="workflow-examples.html">Examples</a></li>
         </ul>
 
-        <a name="root"> </a>
+        <a name="root"></a>
         <h2>Workflow Description</h2>
 
         <p>
@@ -36,16 +43,16 @@ in order to support consistent definitions for schema and UML derived code.
         </p>
         <p><b>Workflow state &amp; relationships</b></p>
         <p>
-            FHIR does not need to be used for the execution of workflow. Orders, care plans, lab results, hospital admissions, claim payments and other records can all be shared using FHIR resources without the process to solicit fulfillment of those orders
-            or requesting payment of those claims being driven by a FHIR transaction. Interoperable support for workflow execution is a more advanced FHIR activity because it requires a higher degree of standardization. Rather than merely standardizing
-            the data to exchange, interoperable workflow execution requires standardization of the processes, roles and activities across the different systems. However, even without using FHIR for workflow execution, there's still a need to standardize the
-            data elements related to workflow: how does an event or a result point to the order that authorized it? How do parent steps and child steps get linked together? How does a care plan identify what protocol it's adhering to?
+            FHIR does not need to be used for the execution of workflow. Orders, care plans, lab results, hospital admissions, claim payments and other records can all be shared using FHIR resources without the process to solicit fulfillment of those orders or requesting
+            payment of those claims being driven by a FHIR transaction. Interoperable support for workflow execution is a more advanced FHIR activity because it requires a higher degree of standardization. Rather than merely standardizing the data to
+            exchange, interoperable workflow execution requires standardization of the processes, roles and activities across the different systems. However, even without using FHIR for workflow execution, there's still a need to standardize the data
+            elements related to workflow: how does an event or a result point to the order that authorized it? How do parent steps and child steps get linked together? How does a care plan identify what protocol it's adhering to?
         </p>
         <p>
             FHIR defines three categories of resources that are involved in activities - <a href="#request">requests</a>, <a href="#event">events</a> and
-            <a href="#definition">definitions</a>. Each of these categories has a "pattern" associated with it.  Resources that fall into that category are encouraged to adhere to their respective pattern. These patterns provide standard elements that
-            are typical for most resources of each category. Strict adherence is not required as work groups are expected to align with typical domain behavior and requirements as more authoritative than "desired" architectural patterns. In some cases, capabilities
-            might be supported with extensions rather than core elements where a pattern capability is deemed to be "not common, but still relevant" for a given resource.
+            <a href="#definition">definitions</a>. Each of these categories has a "pattern" associated with it. Resources that fall into that category are encouraged to adhere to their respective pattern. These patterns provide standard elements that
+            are typical for most resources of each category. Strict adherence is not required as work groups are expected to align with typical domain behavior and requirements as more authoritative than "desired" architectural patterns. In some cases,
+            capabilities might be supported with extensions rather than core elements where a pattern capability is deemed to be "not common, but still relevant" for a given resource.
         </p>
         <p>
             A full description of the patterns and their interrelationships can be found in the <a href="#respatterns">Workflow Resource Patterns</a> section of this page.
@@ -57,8 +64,8 @@ in order to support consistent definitions for schema and UML derived code.
             <a href="messaging.html">Messaging</a> and <a href="services.html">Services</a>) provide support for driving workflow execution. (The <a href="documents.html">Document</a> paradigm does not directly support driving behavior, though it can
             be combined with one of the other patterns to do so.) In addition, several of these paradigms allow multiple approaches to supporting workflow, depending on the context and needs of the workflow process.
         </p>
-        <p>The <a href="workflow-communications.html">Workflow Execution and Communication Patterns</a> section describes many options for workflow execution, summarizes their respective pros and cons and makes recommendations for the circumstances
-            in which they might best be used.</p>
+        <p>The <a href="workflow-communications.html">Workflow Execution and Communication Patterns</a> section describes many options for workflow execution, summarizes their respective pros and cons and makes recommendations for the circumstances in which
+            they might best be used.</p>
         <p><b>Workflow definition</b></p>
         <p>
             The definition of protocols, order sets, guidelines and other structures that define what sorts of activities should occur, what order they should occur on, what dependencies they have, in what circumstances they should start or end, etc. is handled by
@@ -69,18 +76,18 @@ in order to support consistent definitions for schema and UML derived code.
             <li><a href="activitydefinition.html">ActivityDefinition</a> defines an activity to be performed as a single step</li>
         </ul>
         <p>
-            The use of these two artifacts is discussed <a href="cqif/cqif-topics-definitional-resources.html">here</a>.
+            The use of these two artifacts is discussed <a href="clinicalreasoning-topics-definitional-resources.html">here</a>.
         </p>
 
-        <a name="respatterns"> </a>
+        <a name="respatterns"></a>
         <h3>Workflow Resource Patterns</h3>
         <p>Not all resources in FHIR are related to workflow - many are used to describe entities and roles (patients, medications, etc.) or infrastructure (structure definitions, value sets, etc.). However, a large proportion of the FHIR resources are devoted
             to the description of activities in one fashion or another and almost all of these fall into the realm of workflow - they describe things that can be done (definitions), are desired to be done (requests) or that have been done (events). The
             table below summarizes the list of workflow-relevant resources:</p>
 
-        <a name="list"> </a>
+        <a name="list"></a>
         <h4>Workflow resources</h4>
-        <table style="grid">
+        <table calss="grid">
             <tbody>
                 <tr>
                     <th><a href="definition.html">Definitions</a></th>
@@ -126,8 +133,8 @@ in order to support consistent definitions for schema and UML derived code.
                     <td>
                         <ul>
                             <li><a href="contract.html">Contract</a></li>
+                            <li><a href="coverageeligibilityrequest.html">CoverageEligibilityRequest</a></li>
                             <li><a href="devicerequest.html">DeviceRequest</a></li>
-                            <li><a href="eligibilityrequest.html">EligibilityRequest</a></li>
                             <li><a href="enrollmentrequest.html">EnrollmentRequest</a></li>
                         </ul>
                     </td>
@@ -141,7 +148,6 @@ in order to support consistent definitions for schema and UML derived code.
                     </td>
                     <td>
                         <ul>
-                            <li><a href="processrequest.html">ProcessRequest</a><sup><a href="#listnotes">&#8224;</a></sup></li>
                             <li><a href="task.html">Task</a><sup><a href="#listnotes">&#8225;</a></sup></li>
                             <li><a href="supplyrequest.html">SupplyRequest</a></li>
                             <li><a href="visionprescription.html">VisionPrescription</a></li>
@@ -163,6 +169,7 @@ in order to support consistent definitions for schema and UML derived code.
                             <li><a href="condition.html">Condition (aka Problem)</a></li>
                             <li><a href="consent.html">Consent</a></li>
                             <li><a href="coverage.html">Coverage</a></li>
+                            <li><a href="coverageeligibilityresponse.html">CoverageEligibilityResponse</a></li>
                             <li><a href="deviceusestatement.html">DeviceUseStatement</a></li>
                         </ul>
                     </td>
@@ -171,7 +178,6 @@ in order to support consistent definitions for schema and UML derived code.
                             <li><a href="diagnosticreport.html">DiagnosticReport</a></li>
                             <li><a href="documentmanifest.html">DocumentManifest</a></li>
                             <li><a href="documentreference.html">DocumentReference</a></li>
-                            <li><a href="eligibilityresponse.html">EligibilityResponse</a></li>
                             <li><a href="encounter.html">Encounter</a></li>
                             <li><a href="enrollmentresponse.html">EnrollmentResponse</a></li>
                             <li><a href="episodeofcare.html">EpisodeOfCare</a></li>
@@ -197,7 +203,6 @@ in order to support consistent definitions for schema and UML derived code.
                             <li><a href="paymentnotice.html">PaymentNotice</a></li>
                             <li><a href="paymentreconciliation.html">PaymentReconciliation</a></li>
                             <li><a href="procedure.html">Procedure</a></li>
-                            <li><a href="processresponse.html">ProcessResponse</a><sup><a href="#listnotes">&#8224;</a></sup></li>
                             <li><a href="questionnaireresponse.html">QuestionnaireResponse</a></li>
                             <li><a href="riskassessment.html">RiskAssessment</a></li>
                             <li><a href="supplydelivery.html">SupplyDelivery</a></li>
@@ -208,18 +213,13 @@ in order to support consistent definitions for schema and UML derived code.
             </tbody>
         </table>
 
-        <a name="listnotes"> </a>
+        <a name="listnotes"></a>
         <table>
             <tbody>
                 <tr>
                     <td><sup>*</sup></td>
                     <td>The <a href="appointment.html">Appointment</a> and <a href="appointmentresponse.html">AppointmentResponse</a> resources do not follow the same sort of request/response pattern as the other resources. Their design is based on iCal conventions,
-                        so their model won't reflect the same alignment as most other resources. They are included here for completeness.</td>
-                </tr>
-                <tr>
-                    <td><sup>&#8224;</sup></td>
-                    <td><a href="processrequest.html">ProcessRequest</a> and <a href="processresponse.html">ProcessResponse</a> are candidates for retirement with their function subsumed by
-                        <a href="task.html">Task</a></td>
+                        so their model won't align with the pattern as strictly as most other resources. They are included here for completeness.</td>
                 </tr>
                 <tr>
                     <td><sup>&#8225;</sup></td>
@@ -231,12 +231,13 @@ in order to support consistent definitions for schema and UML derived code.
         <p>
             Note that requests, events and definitions don't exist in a 1:1:1 relationship. Some requests and events have obvious pairings. For example, a
             <a href="supplyrequest.html">SupplyRequest</a> will generally always pair with a <a href="supplydelivery.html">SupplyDelivery</a>. The same goes for
-            <a href="enrollmentrequest.html">EnrollmentRequest</a>/<a href="enrollmentresponse.html">EnrollmentResponse</a>, etc. On the other hand, for other resources there isn't a strict pairing.  A <a href="servicerequest.html">ServiceRequest</a>            might be responded to by an <a href="encounter.html">Encounter</a>,
-            <a href="diagnosticreport.html">DiagnosticReport</a>, <a href="procedure.html">Procedure</a>, <a href="riskassessment.html">RiskAssessment</a>, etc. Similarly, a <a href="procedure.html">Procedure</a> might be triggered by a <a href="servicerequest.html">ServiceRequest</a>. The set of common linkages should be asserted in their respective resources. The specific types of responses for a given request will
-            be governed by the Request.code, any workflow definitions/protocols referenced and local convention.
+            <a href="enrollmentrequest.html">EnrollmentRequest</a>/<a href="enrollmentresponse.html">EnrollmentResponse</a>, etc. On the other hand, for other resources there isn't a strict pairing. A <a href="servicerequest.html">ServiceRequest</a> might
+            be responded to by an <a href="encounter.html">Encounter</a>,
+            <a href="diagnosticreport.html">DiagnosticReport</a>, <a href="procedure.html">Procedure</a>, <a href="riskassessment.html">RiskAssessment</a>, etc. Similarly, a <a href="procedure.html">Procedure</a> might be triggered by a <a href="servicerequest.html">ServiceRequest</a>.
+            The set of common linkages should be asserted in their respective resources. The specific types of responses for a given request will be governed by the Request.code, any workflow definitions/protocols referenced and local convention.
         </p>
 
-        <a name="relationships"> </a>
+        <a name="relationships"></a>
         <h4>Workflow Resource Relationships</h4>
         <p>
             These three patterns of resources have a standard set of relationships, both with themselves, as well as with each other.
@@ -255,15 +256,16 @@ in order to support consistent definitions for schema and UML derived code.
             This list of relationships is not exhaustive, but covers those that are "standardized" as part of the patterns. Further description and guidance on these relationships can be found in the <a href="request.html">Request</a>, <a href="event.html">Event</a>            and <a href="definition.html">Definition</a> logical patterns.
         </p>
 
-        <a name="request"> </a>
+        <a name="request"></a>
         <h4>Request Resource Pattern</h4>
         <p>
             Requests are resources that represent the proposal, plan or order for an activity to occur. A <a href="request.html">Request pattern</a> defines the common elements typically present on all request resources.
         </p>
         <p>
-            The amount of information needed for a Request to be actionable can vary by circumstance. Some request instances may not be "fully specified" - additional information from protocol, patient preference and/or professional decision-making may be necessary
-            before the authorized action can occur. For example, a <a href="medicationrequest.html">MedicationRequest</a> might be specified without indicating a strength or route in situations where the pharmacy (or even nursing station) has the authority to determine those parameters.
-            A <a href="visionprescription.html">VisionPrescription</a> might not be actionable until frames have been chosen and the necessary measurements of the patient's face have been taken to allow the lenses to be positioned appropriately within the frames.
+            The amount of information needed for a Request to be actionable can vary by circumstance. Some request instances might not be "fully specified" - additional information from protocol, patient preference and/or professional decision-making may be necessary
+            before the authorized action can occur. For example, a <a href="medicationrequest.html">MedicationRequest</a> might be specified without indicating a strength or route in situations where the pharmacy (or even nursing station)
+            has the authority to determine those parameters. A <a href="visionprescription.html">VisionPrescription</a> might not be actionable until frames have been chosen and the necessary measurements of the patient's face have been taken to allow
+            the lenses to be positioned appropriately within the frames.
         </p>
         <p>
             All requests with an intent of "order" authorize something. Whether what is authorized is sufficient to be immediately actionable depends on who is fulfilling the order and the context in which the fulfillment request is made. The determination of whether
@@ -274,21 +276,21 @@ in order to support consistent definitions for schema and UML derived code.
             practitioners may need to capture additional information prior to executing the fulfillment.
         </p>
 
-        <a name="event"> </a>
+        <a name="event"></a>
         <h4>Event Resource Pattern</h4>
         <p>
             Events are resources that represent the ongoing or completed execution of some activity or observation. For example, a clinical procedure, a financial transaction, the recording of a diagnosis, etc. An <a href="event.html">Event pattern</a>            defines the common elements typically present on all event resources.
         </p>
 
-        <a name="definition"> </a>
+        <a name="definition"></a>
         <h4>Definition Resource Pattern</h4>
         <p>
             Definitions are resources that represent activities that could be performed in a time and subject-independent manner such as a protocol, order set, clinical guideline, etc. A <a href="definition.html">Definition pattern</a> defines the common
-            elements typically present on all event resources.
+            elements typically present on all definition resources.
         </p>
 
 
-        <a name="issues"> </a>
+        <a name="issues"></a>
         <h3>Open Issues</h3>
         <blockquote class="stu-note">
             <p>
@@ -303,9 +305,9 @@ in order to support consistent definitions for schema and UML derived code.
                     resources?
                 </li>
             </ul>
-<p>
-Feedback is welcome <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(STU_3)">here</a>.
-</p>
+            <p>
+                Feedback is welcome <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(STU_3)">here</a>.
+            </p>
         </blockquote>
 
     </div>

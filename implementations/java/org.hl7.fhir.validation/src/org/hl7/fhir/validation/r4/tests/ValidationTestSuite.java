@@ -11,6 +11,7 @@ import java.util.Map.Entry;
 
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.apache.commons.lang3.NotImplementedException;
 import org.hl7.fhir.convertors.VersionConvertor_10_40;
 import org.hl7.fhir.convertors.VersionConvertor_14_40;
 import org.hl7.fhir.convertors.VersionConvertor_30_40;
@@ -19,20 +20,24 @@ import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.exceptions.FHIRFormatError;
 import org.hl7.fhir.exceptions.PathEngineException;
 import org.hl7.fhir.r4.conformance.ProfileUtilities;
-import org.hl7.fhir.r4.context.SimpleWorkerContext;
 import org.hl7.fhir.r4.elementmodel.Element;
 import org.hl7.fhir.r4.elementmodel.Manager.FhirFormat;
+import org.hl7.fhir.r4.elementmodel.ObjectConverter;
 import org.hl7.fhir.r4.formats.XmlParser;
 import org.hl7.fhir.r4.model.Base;
 import org.hl7.fhir.r4.model.Constants;
-import org.hl7.fhir.r4.model.ExpansionProfile;
+import org.hl7.fhir.r4.model.FhirPublication;
+import org.hl7.fhir.r4.model.Patient;
+import org.hl7.fhir.r4.model.Resource;
 import org.hl7.fhir.r4.model.StructureDefinition;
 import org.hl7.fhir.r4.model.TypeDetails;
 import org.hl7.fhir.r4.test.support.TestingUtilities;
 import org.hl7.fhir.r4.utils.FHIRPathEngine.IEvaluationContext;
+import org.hl7.fhir.r4.utils.IResourceValidator;
 import org.hl7.fhir.r4.utils.IResourceValidator.IValidatorResourceFetcher;
 import org.hl7.fhir.r4.utils.IResourceValidator.ReferenceValidationPolicy;
 import org.hl7.fhir.r4.validation.InstanceValidator;
+import org.hl7.fhir.r4.validation.ValidationEngine;
 import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.validation.ValidationMessage;
@@ -82,28 +87,30 @@ public class ValidationTestSuite implements IEvaluationContext, IValidatorResour
     this.content = content;
   }
 
+  private static final String DEF_TX = "http://tx.fhir.org";
+  private static final String DBG_TX = "http://local.fhir.org:960";
+  private static ValidationEngine ve;
+  
   @SuppressWarnings("deprecation")
   @Test
   public void test() throws Exception {
-    if (TestingUtilities.context == null) {
-      SimpleWorkerContext ctxt = SimpleWorkerContext.fromPack(Utilities.path(TestingUtilities.home(), "publish", "definitions.xml.zip"));
-      TestingUtilities.context = ctxt;
-      ctxt.setExpansionProfile(makeExpProfile());
-      try {
-        ctxt.connectToTSServer("http://tx.fhir.org/r3");
-      } catch (Exception e) {
-        ctxt.setCanRunWithoutTerminology(true);
-      }
+    if (ve == null) {
+      ve = new ValidationEngine(TestingUtilities.content(), DEF_TX, null, FhirPublication.R4);
+      ve.getContext().setCanRunWithoutTerminology(true);
+      TestingUtilities.context = ve.getContext();
     }
 
     if (content.has("use-test") && !content.get("use-test").getAsBoolean())
       return;
     
     String path = Utilities.path(TestingUtilities.home(), "tests", "validation-examples", name.substring(name.indexOf(".")+1));
-    InstanceValidator val = new InstanceValidator(TestingUtilities.context, this);
+    InstanceValidator val = ve.getValidator();
     if (content.has("allowed-extension-domain")) 
       val.getExtensionDomains().add(content.get("allowed-extension-domain").getAsString());
     val.setFetcher(this);
+    if (content.has("questionnaire")) {
+      ve.getContext().cacheResource(new XmlParser().parse(new FileInputStream(Utilities.path(TestingUtilities.home(), "tests", "validation-examples", content.get("questionnaire").getAsString()))));
+    }
     if (content.has("profile")) {
       List<ValidationMessage> errors = new ArrayList<ValidationMessage>();
       JsonObject profile = content.getAsJsonObject("profile");
@@ -113,7 +120,7 @@ public class ValidationTestSuite implements IEvaluationContext, IValidatorResour
       if (Constants.VERSION.equals(v))
         sd = (StructureDefinition) new XmlParser().parse(new FileInputStream(filename));
       else if (org.hl7.fhir.dstu3.model.Constants.VERSION.equals(v))
-        sd = (StructureDefinition) VersionConvertor_30_40.convertResource(new org.hl7.fhir.dstu3.formats.XmlParser().parse(new FileInputStream(filename)));
+        sd = (StructureDefinition) VersionConvertor_30_40.convertResource(new org.hl7.fhir.dstu3.formats.XmlParser().parse(new FileInputStream(filename)), false);
       else if (org.hl7.fhir.dstu2016may.model.Constants.VERSION.equals(v))
         sd = (StructureDefinition) VersionConvertor_14_40.convertResource(new org.hl7.fhir.dstu2016may.formats.XmlParser().parse(new FileInputStream(filename)));
       else if (org.hl7.fhir.dstu2.model.Constants.VERSION.equals(v))
@@ -146,8 +153,10 @@ public class ValidationTestSuite implements IEvaluationContext, IValidatorResour
         ec++;
         System.out.println(vm.getDisplay());
       }
-      if (vm.getLevel() == IssueSeverity.WARNING) 
+      if (vm.getLevel() == IssueSeverity.WARNING) { 
         wc++;
+        System.out.println("warning: "+vm.getDisplay());
+      }
     }
     if (TestingUtilities.context.isNoTerminologyServer() || !focus.has("tx-dependent")) {
       Assert.assertEquals("Expected "+Integer.toString(focus.get("errorCount").getAsInt())+" errors, but found "+Integer.toString(ec)+".", focus.get("errorCount").getAsInt(), ec);
@@ -156,16 +165,15 @@ public class ValidationTestSuite implements IEvaluationContext, IValidatorResour
     }
   }
 
-  private ExpansionProfile makeExpProfile() {
-    ExpansionProfile ep  = new ExpansionProfile();
-    ep.setId("dc8fd4bc-091a-424a-8a3b-6198ef146891"); // change this to blow the cache
-    ep.setUrl("http://hl7.org/fhir/ExpansionProfile/"+ep.getId());
+  private org.hl7.fhir.r4.model.Parameters makeExpProfile() {
+    org.hl7.fhir.r4.model.Parameters ep  = new org.hl7.fhir.r4.model.Parameters();
+    ep.addParameter("profile-url", "http://hl7.org/fhir/ExpansionProfile/dc8fd4bc-091a-424a-8a3b-6198ef146891"); // change this to blow the cache
     // all defaults....
     return ep;
   }
 
   @Override
-  public Base resolveConstant(Object appContext, String name) throws PathEngineException {
+  public Base resolveConstant(Object appContext, String name, boolean beforeContext) throws PathEngineException {
     return null;
   }
 
@@ -196,22 +204,43 @@ public class ValidationTestSuite implements IEvaluationContext, IValidatorResour
 
   @Override
   public Base resolveReference(Object appContext, String url) {
+    if (url.equals("Patient/test"))
+      return new Patient();
     return null;
   }
 
   @Override
   public Element fetch(Object appContext, String url) throws FHIRFormatError, DefinitionException, IOException, FHIRException {
+    if (url.equals("Patient/test"))
+      return new ObjectConverter(TestingUtilities.context).convert(new Patient());
     return null;
   }
 
   @Override
   public ReferenceValidationPolicy validationPolicy(Object appContext, String path, String url) {
-    return ReferenceValidationPolicy.IGNORE;
+    if (content.has("validate"))
+      return ReferenceValidationPolicy.valueOf(content.get("validate").getAsString());
+    else
+      return ReferenceValidationPolicy.IGNORE;
   }
 
   @Override
   public boolean resolveURL(Object appContext, String path, String url) throws IOException, FHIRException {
     return true;
+  }
+
+  @Override
+  public boolean conformsToProfile(Object appContext, Base item, String url) throws FHIRException {
+    IResourceValidator val = TestingUtilities.context.newValidator();
+    List<ValidationMessage> valerrors = new ArrayList<ValidationMessage>();
+    if (item instanceof Resource) {
+      val.validate(appContext, valerrors, (Resource) item, url);
+      boolean ok = true;
+      for (ValidationMessage v : valerrors)
+        ok = ok && v.getLevel().isError();
+      return ok;
+    }
+    throw new NotImplementedException("Not done yet (IGPublisherHostServices.conformsToProfile), when item is element");
   }
 
 }

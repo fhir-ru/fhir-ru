@@ -7,13 +7,13 @@ import org.hl7.fhir.convertors.VersionConvertorAdvisor40;
 import org.hl7.fhir.convertors.VersionConvertor_10_40;
 import org.hl7.fhir.dstu2.formats.IParser.OutputStyle;
 import org.hl7.fhir.dstu2.model.Resource;
+import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.r4.formats.XmlParser;
 import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.Bundle.BundleEntryComponent;
 import org.hl7.fhir.r4.model.CodeSystem;
 import org.hl7.fhir.r4.model.CompartmentDefinition;
 import org.hl7.fhir.r4.model.ValueSet;
-import org.hl7.fhir.exceptions.FHIRException;
 
 public class DSTU2ValidationConvertor implements VersionConvertorAdvisor40 {
 
@@ -73,6 +73,11 @@ public class DSTU2ValidationConvertor implements VersionConvertorAdvisor40 {
   }
 
   @Override
+  public org.hl7.fhir.dstu2016may.model.Resource convertR2016May(org.hl7.fhir.r4.model.Resource resource) throws FHIRException {
+    return null;
+  }
+
+  @Override
   public org.hl7.fhir.dstu3.model.Resource convertR3(org.hl7.fhir.r4.model.Resource resource) throws FHIRException {
     return null;
   }
@@ -99,6 +104,5 @@ public class DSTU2ValidationConvertor implements VersionConvertorAdvisor40 {
   public CodeSystem getCodeSystem(ValueSet src) {
     return null;
   }
-
 
 }

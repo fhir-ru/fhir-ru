@@ -38,6 +38,7 @@ import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.ResourceDefn.StringPair;
+import org.hl7.fhir.igtools.spreadsheets.MappingSpace;
 import org.hl7.fhir.r4.model.ElementDefinition;
 import org.hl7.fhir.r4.model.ElementDefinition.ElementDefinitionMappingComponent;
 import org.hl7.fhir.r4.model.StructureDefinition;
@@ -89,7 +90,7 @@ public class MappingsGenerator {
         else if (definitions.getMapTypes().containsKey(map.getUri())) {   
           XhtmlNode pre = definitions.getMapTypes().get(map.getUri()).getPreamble();
           if (pre != null)
-            s.append(new XhtmlComposer().compose(pre));
+            s.append(new XhtmlComposer(XhtmlComposer.HTML).compose(pre));
         }
 
         s.append("<table class=\"grid\">\r\n");
@@ -124,7 +125,7 @@ public class MappingsGenerator {
         else if (definitions.getMapTypes().containsKey(map.getUri())) {  
           XhtmlNode pre = definitions.getMapTypes().get(map.getUri()).getPreamble();
           if (pre != null)
-            s.append(new XhtmlComposer().compose(pre));
+            s.append(new XhtmlComposer(XhtmlComposer.HTML).compose(pre));
         }
 
         s.append("<table class=\"grid\">\r\n");
@@ -192,17 +193,23 @@ public class MappingsGenerator {
 		Collections.sort(maps, new Sorter());
 		StringBuilder list = new StringBuilder();
 		for (String m : maps) {
-			list.append("|"+definitions.getMapTypes().get(m).getTitle() + "#"+definitions.getMapTypes().get(m).getId());
+			MappingSpace ms = definitions.getMapTypes().get(m);
+      list.append("|"+ms.getTitle() + "#"+ms.getId());
 
-			s.append("<a name=\""+m+"\"> </a><a name=\""+definitions.getMapTypes().get(m).getId()+"\"> </a><h3>Mappings for "+definitions.getMapTypes().get(m).getTitle()+" ("+m+")</h3>");
+			s.append("<a name=\""+m+"\"> </a><a name=\""+ms.getId()+"\"> </a>");
+
+			if (!Utilities.noString(ms.getLink()))
+		    s.append("<h3>Mappings for "+ms.getTitle()+" (<a href=\""+ms.getLink()+"\">"+m+"</a>)</h3>");
+			else
+			  s.append("<h3>Mappings for "+ms.getTitle()+" ("+m+")</h3>");
 			
-			XhtmlNode pre = definitions.getMapTypes().get(m).getPreamble();
+			XhtmlNode pre = ms.getPreamble();
 			if (pre != null)
-			  s.append(new XhtmlComposer().compose(pre));
+			  s.append(new XhtmlComposer(XhtmlComposer.HTML).compose(pre));
 			s.append("<table class=\"grid\">\r\n");
-      genElement(s, 0, resource.getRoot(), m, ROOT_ONLY, true);
+      genElement(s, 0, resource.getRoot(), m, ROOT_ONLY, true, ms.isSparse());
 			genInherited(s, resource, m);
-			genElement(s, 0, resource.getRoot(), m, CHILDREN_ONLY, true);
+			genElement(s, 0, resource.getRoot(), m, CHILDREN_ONLY, true, ms.isSparse());
 			s.append("</table>\r\n");
 		}
 	  mappings = s.toString();
@@ -235,7 +242,7 @@ public class MappingsGenerator {
 			s.append("<table class=\"grid\">\r\n");
 			for (ElementDefn e : elements) 
 				if (elementHasMapping(e, m)) {
-				  genElement(s, 0, e, m, ALL, true);
+				  genElement(s, 0, e, m, ALL, true, definitions.getMapTypes().get(m).isSparse());
 				}
 			s.append("</table>\r\n");
 		}
@@ -258,35 +265,42 @@ public class MappingsGenerator {
 		return false;
 	}
 
-	private void genElement(StringBuilder s, int indent, ElementDefn elem, String m, int children, boolean isRoot) {
-	  if (children == ROOT_ONLY || children == ALL) {
-		s.append(" <tr><td>");
-		if (indent == 0) {
-      s.append("<a name=\""+elem.getName()+"\"> </a>");
-      s.append("<a name=\""+elem.getName().toLowerCase()+"\"> </a>");
-		}
-		for (int i = 0; i < indent; i++) {
-			s.append("&nbsp;");
-			s.append("&nbsp;");
-			s.append("&nbsp;");
-			s.append("&nbsp;");
-		}
-		if (indent == 0) 
-  		   s.append("<b>"+elem.getName()+"</b>");
-		else
-		  s.append(elem.getName());
-		s.append("</td><td>"+Utilities.escapeXml(elem.getMappings().get(m)).replace("\n", "<br/>\n")+"</td></tr>\r\n");
+	private void genElement(StringBuilder s, int indent, ElementDefn elem, String m, int children, boolean isRoot, boolean sparse) {
+	  if ((children == ROOT_ONLY || children == ALL)) {
+	    if (isRoot || !sparse || hasMapping(elem, m)) {
+	      s.append(" <tr><td>");
+	      if (indent == 0) {
+	        s.append("<a name=\""+elem.getName()+"\"> </a>");
+	        s.append("<a name=\""+elem.getName().toLowerCase()+"\"> </a>");
+	      }
+	      for (int i = 0; i < indent; i++) {
+	        s.append("&nbsp;");
+	        s.append("&nbsp;");
+	        s.append("&nbsp;");
+	        s.append("&nbsp;");
+	      }
+	      if (indent == 0) 
+	        s.append("<b>"+elem.getName()+"</b>");
+	      else
+	        s.append(elem.getName());
+	      s.append("</td><td>"+Utilities.escapeXml(elem.getMappings().get(m)).replace("\n", "<br/>\n")+"</td></tr>\r\n");
+	    }
 	  }
 	  if (!isRoot || !"N/A".equalsIgnoreCase(elem.getMappings().get(m))) {	    
 	    if (children == CHILDREN_ONLY || children == ALL) {
-	      for (ElementDefn child :elem.getElements()) {
-	        genElement(s, indent+1, child, m, ALL, false);
+	      for (ElementDefn child : elem.getElements()) {
+	        genElement(s, indent+1, child, m, ALL, false, sparse);
 	      }
 	    }
 	  }
 	}
 
-	private void listKnownMappings(ElementDefn e, List<String> maps) {
+	private boolean hasMapping(ElementDefn elem, String m) {
+    return !Utilities.noString(elem.getMappings().get(m));
+  }
+
+
+  private void listKnownMappings(ElementDefn e, List<String> maps) {
 		for (String s : e.getMappings().keySet())
 			if (!maps.contains(s) && definitions.getMapTypes().get(s).isPublish())
 				maps.add(s);

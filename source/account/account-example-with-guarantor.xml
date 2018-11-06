@@ -13,7 +13,7 @@
   <status value="active"/>
   <type>
     <coding>
-      <system value="http://hl7.org/fhir/v3/ActCode"/>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
       <code value="PBILLACCT"/>
       <display value="patient billing account"/>
     </coding>
@@ -24,20 +24,10 @@
     <reference value="Patient/example"/>
     <display value="Peter James Chalmers"/>
   </subject>
-  <period>
+  <servicePeriod>
     <start value="2016-01-01"/>
     <end value="2016-06-30"/>
-  </period>
-  <active>
-    <start value="2016-01-01"/>
-    <end value="2016-06-30"/>
-  </active>
-  <balance>
-    <value value="-1200"/>
-    <unit value="USD"/>
-    <system value="urn:iso:std:iso:4217"/>
-    <code value="USD"/>
-  </balance>
+  </servicePeriod>
     <coverage>
       <coverage>
         <reference value="Coverage/9876B1"/>

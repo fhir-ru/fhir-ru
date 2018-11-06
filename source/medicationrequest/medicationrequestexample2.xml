@@ -10,8 +10,7 @@
 		<value value="12345"/>
 	</identifier>
 	<status value="active"/>
-	<intent value="order">
-	</intent>
+	<intent value="order"/>
 	<medicationReference>
 		<!-- Linked to a RESOURCE Medication -->
 		<reference value="Medication/med0316"/>
@@ -22,11 +21,11 @@
 		<reference value="Patient/pat1"/>
 		<display value="Donald Duck"/>   
 	</subject>
-	<context>
+	<encounter>
 		<!-- Linked to a resource Encounter between patient and practitioner-->
 		<reference value="Encounter/f001"/>
 		<display value="encounter that leads to this prescription"/>
-	</context>
+	</encounter>
 	<authoredOn value="2015-03-01"/>
 	<requester>
 		<reference value="Practitioner/f007"/>

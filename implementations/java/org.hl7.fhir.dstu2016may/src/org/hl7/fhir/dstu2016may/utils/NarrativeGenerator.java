@@ -124,6 +124,8 @@ import org.hl7.fhir.exceptions.DefinitionException;
 import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.exceptions.FHIRFormatError;
 import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
+import org.hl7.fhir.utilities.MarkDownProcessor;
+import org.hl7.fhir.utilities.MarkDownProcessor.Dialect;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.xhtml.NodeType;
 import org.hl7.fhir.utilities.xhtml.XhtmlComposer;
@@ -132,8 +134,6 @@ import org.hl7.fhir.utilities.xhtml.XhtmlParser;
 import org.hl7.fhir.utilities.xml.XMLUtil;
 import org.hl7.fhir.utilities.xml.XmlGenerator;
 import org.w3c.dom.Element;
-
-import com.github.rjeschke.txtmark.Processor;
 
 public class NarrativeGenerator implements INarrativeGenerator {
 
@@ -318,7 +318,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
         list = new ArrayList<NarrativeGenerator.ResourceWrapper>();
         for (Element e : children) {
           Element c = XMLUtil.getFirstChild(e);
-          list.add(new ResurceWrapperElement(c, context.fetchResource(StructureDefinition.class, "http://hl7.org/fhir/StructureDefinition/"+c.getNodeName())));
+          list.add(new ResurceWrapperElement(c, context.fetchTypeDefinition(c.getNodeName())));
         }
       }
       return list;
@@ -580,7 +580,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
       if (p == null)
         p = context.fetchResource(StructureDefinition.class, r.getResourceType().toString());
       if (p == null)
-        p = context.fetchResource(StructureDefinition.class, "http://hl7.org/fhir/StructureDefinition/"+r.getResourceType().toString().toLowerCase());
+        p = context.fetchTypeDefinition(r.getResourceType().toString().toLowerCase());
       if (p != null)
         generateByProfile(r, p, true);
     }
@@ -615,7 +615,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
       x.addTag("p").addTag("b").setAttribute("style", "color: maroon").addText("Exception generating Narrative: "+e.getMessage());
     }
     inject(er, x,  NarrativeStatus.GENERATED);
-    return new XhtmlComposer().compose(x);
+    return new XhtmlComposer(true, false).compose(x);
   }
 
   private void generateByProfile(Element eres, StructureDefinition profile, Element ee, List<ElementDefinition> allElements, ElementDefinition defn, List<ElementDefinition> children,  XhtmlNode x, String path, boolean showCodeDetails) throws FHIRException, UnsupportedEncodingException, IOException {
@@ -1865,7 +1865,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
     }
     if (div.hasChildNodes())
       div.appendChild(er.getOwnerDocument().createElementNS(FormatUtilities.XHTML_NS, "hr"));
-    new XhtmlComposer().compose(div, x);
+    new XhtmlComposer(true, false).compose(div, x);
   }
 
   private String getDisplay(List<OtherElementComponent> list, String s) {
@@ -2853,7 +2853,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
 	      String[] parts = link.split("\\#");
 	      StructureDefinition p = context.fetchResource(StructureDefinition.class, parts[0]);
 	      if (p == null)
-	        p = context.fetchResource(StructureDefinition.class, "http://hl7.org/fhir/StructureDefinition/"+parts[0]);
+	        p = context.fetchTypeDefinition(parts[0]);
 	      if (p == null)
 	        p = context.fetchResource(StructureDefinition.class, link);
 	      if (p != null) {
@@ -2867,7 +2867,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
 	    }
 
 	    // 2. markdown
-	    String s = Processor.process(Utilities.escapeXml(text));
+	    String s =  new MarkDownProcessor(Dialect.DARING_FIREBALL).process(Utilities.escapeXml(text), "NarrativeGenerator");
 	    XhtmlParser p = new XhtmlParser();
 	    XhtmlNode m;
 		try {

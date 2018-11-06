@@ -1,7 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<a name="scope"> </a>
+<a name="scope"></a>
 <h2>Scope and Usage</h2>
 <p>Condition is one of the <a href="workflow.html#event">event</a> resources in the FHIR <a href="workflow.html">workflow</a> specification.</p>
 
@@ -40,7 +40,7 @@ For example, each of the following conditions could rise to the level of importa
 </div>
 
 <div>
-<a name="bnr"> </a>
+<a name="bnr"></a>
 <h2>Boundaries and Relationships</h2>
 <p>
     The condition resource may be referenced by other resources as "reasons" for an action (e.g. <a href="medicationrequest.html">MedicationRequest</a>,
@@ -48,7 +48,7 @@ For example, each of the following conditions could rise to the level of importa
 </p>
 <p>
 This resource is not typically used to record information about subjective and objective information that might lead to the recording of a Condition resource. Such signs and symptoms are typically captured using the <a href="observation.html">Observation</a> resource;
-although in some cases a persistent symptom, e.g. fever, headache may be captured as a condition before a definitive diagnosis can be discerned by a clinician.
+although in some cases a persistent symptom, e.g. fever, headache may be captured as a condition before a definitive diagnosis can be discerned by a clinician.   By contrast, headache may be captured as an Observation when it contributes to the establishment of a meningitis Condition.
 </p>
 <p>
 Use the <a href="observation.html">Observation</a> resource when a symptom is resolved without long term management, tracking, or when a symptom contributes to the establishment of a condition.

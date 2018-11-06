@@ -8,15 +8,17 @@
 <body>
 [%file newnavbar%]
 
-<div class="col-9">
+<div class="col-12">
 
 <%diheader base%>
 <h1>Dosage</h1>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg phx%]">[%wgt phx%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 3</td><td id="ballot"><a href="versions.html#levels">Ballot Status</a>: <a href="versions.html#std-process">Trial Use</a></td></tr></table>
+<table class="colstu"><tr><td id="wg"><a _target="blank" href="[%wg phx%]">[%wgt phx%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 3</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Trial Use</a></td></tr></table>
 
 <p>The Dosage structure defines general dosage instruction information typically represented in medication requests, medication dispenses and medication statements.</p>
 
-<a name="definition"> </a>
+<p>Note: the Dosage structure allows <a href="extensibility.html#modifier">modifier extensions</a>.</p>
+
+<a name="definition"></a>
 <h2 style="margin-bottom: 1px">
 Content
 </h2>
@@ -33,7 +35,7 @@ Content
 Dosage is used in the following places: [%dtusage Dosage%]
 </p>
 
-<a name="interpretation"> </a>
+<a name="interpretation"></a>
 <h2>Interpretation of Dosage in different contexts</h2>
 
 <!-- TODO -->

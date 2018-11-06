@@ -166,7 +166,6 @@ public abstract class PrimitiveType<T> extends Type implements IPrimitiveType<T>
       return value;
     default: return super.setProperty(hash, name, value);
     }
-
   }
 
   @Override
@@ -179,6 +178,16 @@ public abstract class PrimitiveType<T> extends Type implements IPrimitiveType<T>
   }
 
   @Override
+  public Base makeProperty(int hash, String name) throws FHIRException {
+    if (hash == 111972721) {
+      return this; 
+    } else
+      return super.makeProperty(hash, name);
+
+  }
+
+
+  @Override
   public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
     if (hash == 111972721) {
       Base[] b = new Base[1];
@@ -188,4 +197,19 @@ public abstract class PrimitiveType<T> extends Type implements IPrimitiveType<T>
       return super.getProperty(hash, name, checkValid);
   }
 
+  public String[] getTypesForProperty(int hash, String name) throws FHIRException {
+    if (name.equals("value"))
+      return new String[] {fhirType(), "string"}; 
+    else
+      return super.getTypesForProperty(hash, name);
+
+  }
+
+  /*
+   * this is a work around for representation issues with Bigdecimal. So comments in DecimaType. 
+   * Yes, you can cut yourself with this method... 
+   */
+  protected void forceStringValue(String value) {
+    myStringValue = value;
+  }
 }

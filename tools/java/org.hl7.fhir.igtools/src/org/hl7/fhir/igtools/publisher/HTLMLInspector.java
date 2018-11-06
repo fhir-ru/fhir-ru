@@ -12,10 +12,9 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
+import org.hl7.fhir.exceptions.FHIRFormatError;
 import org.hl7.fhir.r4.context.IWorkerContext.ILoggingService;
 import org.hl7.fhir.r4.context.IWorkerContext.ILoggingService.LogCategory;
-import org.hl7.fhir.exceptions.FHIRFormatError;
-import org.hl7.fhir.igtools.publisher.HTLMLInspector.NodeChangeType;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.validation.ValidationMessage;
 import org.hl7.fhir.utilities.validation.ValidationMessage.IssueSeverity;
@@ -25,7 +24,6 @@ import org.hl7.fhir.utilities.xhtml.NodeType;
 import org.hl7.fhir.utilities.xhtml.XhtmlComposer;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode.Location;
-import org.omg.CosNaming.NamingContextExtOperations;
 import org.hl7.fhir.utilities.xhtml.XhtmlParser;
 
 //import org.owasp.html.Handler;
@@ -71,10 +69,12 @@ public class HTLMLInspector {
   public class StringPair {
     private String source;
     private String link;
-    public StringPair(String source, String link) {
+    private String text;
+    public StringPair(String source, String link, String text) {
       super();
       this.source = source;
       this.link = link;
+      this.text = text;
     }
   }
 
@@ -120,6 +120,7 @@ public class HTLMLInspector {
 
   private boolean strict;
   private String rootFolder;
+  private String altRootFolder;
   private List<SpecMapManager> specs;
   private Map<String, LoadedFile> cache = new HashMap<String, LoadedFile>();
   private int iteration = 0;
@@ -127,13 +128,19 @@ public class HTLMLInspector {
   private int links;
   private List<String> manual = new ArrayList<String>(); // pages that will be provided manually when published, so allowed to be broken links
   private ILoggingService log;
+  private boolean forHL7;
 
-  public HTLMLInspector(String rootFolder, List<SpecMapManager> specs, ILoggingService log) {
+  public HTLMLInspector(String rootFolder, List<SpecMapManager> specs, ILoggingService log, boolean forHL7) {
     this.rootFolder = rootFolder.replace("/", File.separator);
     this.specs = specs;
     this.log = log;
+    this.forHL7 = forHL7;
   }
 
+  public void setAltRootFolder(String altRootFolder) throws IOException {
+    this.altRootFolder = Utilities.path(rootFolder, altRootFolder.replace("/", File.separator));
+  }
+  
   public List<ValidationMessage> check() throws IOException {
     iteration ++;
 
@@ -166,8 +173,7 @@ public class HTLMLInspector {
     log.logDebugMessage(LogCategory.HTML, "Checking Other Links");
     // check other links:
     for (StringPair sp : otherlinks) {
-      sp = sp;
-      checkResolveLink(sp.source, null, null, sp.link, messages, null);
+      checkResolveLink(sp.source, null, null, sp.link, sp.text, messages, null);
     }
     
     log.logDebugMessage(LogCategory.HTML, "Done checking");
@@ -179,7 +185,7 @@ public class HTLMLInspector {
   private void saveFile(LoadedFile lf) throws IOException {
     new File(lf.getFilename()).delete();
     FileOutputStream f = new FileOutputStream(lf.getFilename());
-    new XhtmlComposer().composeDocument(f, lf.getXhtml());
+    new XhtmlComposer(XhtmlComposer.HTML).composeDocument(f, lf.getXhtml());
     f.close();
   }
 
@@ -228,6 +234,9 @@ public class HTLMLInspector {
     if (x != null) {
       checkHtmlStructure(s, x, messages);
       listTargets(x, lf.getTargets());
+      if (forHL7) {
+        checkTemplatePoints(x, messages, s);
+      }
     }
     
     // ok, now check for XSS safety:
@@ -252,6 +261,40 @@ public class HTLMLInspector {
 //    } 
   }
 
+  private void checkTemplatePoints(XhtmlNode x, List<ValidationMessage> messages, String s) {
+    // first, look for the insertion point, which is <!--status-bar-->
+    if (!findStatusBarComment(x))
+      messages.add(new ValidationMessage(Source.Publisher, IssueType.STRUCTURE, s, "The html must include a comment \"<!--status-bar-->\" that marks the insertion point for the status bar", IssueSeverity.ERROR));
+    // now, look for a footer: a div tag with igtool=footer on it 
+    XhtmlNode footer = findFooterDiv(x);
+    if (footer == null) 
+      messages.add(new ValidationMessage(Source.Publisher, IssueType.STRUCTURE, s, "The html must include a div with an attribute igtool=\"footer\" that marks the footer in the template", IssueSeverity.ERROR));
+    else {
+      // look in the footer for: .. nothing yet... 
+    }
+  }
+
+  private XhtmlNode findFooterDiv(XhtmlNode x) {
+    if (x.getNodeType() == NodeType.Element && "footer".equals(x.getAttribute("igtool")))
+      return x;
+    for (XhtmlNode c : x.getChildNodes()) {
+      XhtmlNode n = findFooterDiv(c);
+      if (n != null)
+        return n;
+    }
+    return null;
+  }
+
+  private boolean findStatusBarComment(XhtmlNode x) {
+    if (x.getNodeType() == NodeType.Comment && "status-bar".equals(x.getContent().trim()))
+      return true;
+    for (XhtmlNode c : x.getChildNodes()) {
+      if (findStatusBarComment(c))
+        return true;
+    }
+    return false;
+  }
+
   private void checkHtmlStructure(String s, XhtmlNode x, List<ValidationMessage> messages) {
     if (x.getNodeType() == NodeType.Document)
       x = x.getFirstElement();
@@ -259,6 +302,7 @@ public class HTLMLInspector {
       messages.add(new ValidationMessage(Source.Publisher, IssueType.STRUCTURE, s, "Root node must be 'html' or 'div', but is "+x.getName(), IssueSeverity.ERROR));
     // We support div as well because with HTML 5, referenced files might just start with <div>
     // todo: check secure?
+    
   }
 
   private void listTargets(XhtmlNode x, Set<String> targets) {
@@ -277,7 +321,7 @@ public class HTLMLInspector {
     if ("title".equals(x.getName()) && Utilities.noString(x.allText()))
       x.addText("??");
     if ("a".equals(x.getName()) && x.hasAttribute("href"))
-      changed = checkResolveLink(s, x.getLocation(), path, x.getAttribute("href"), messages, uuid);
+      changed = checkResolveLink(s, x.getLocation(), path, x.getAttribute("href"), x.allText(), messages, uuid);
     if ("img".equals(x.getName()) && x.hasAttribute("src"))
       changed = checkResolveImageLink(s, x.getLocation(), path, x.getAttribute("src"), messages, uuid) || changed;
     if ("link".equals(x.getName()))
@@ -316,14 +360,14 @@ public class HTLMLInspector {
   }
 
   private boolean checkLinkElement(String filename, Location loc, String path, String href, List<ValidationMessage> messages, String uuid) {
-    if (Utilities.isAbsoluteUrl(href) && !href.startsWith("http://hl7.org/")) {
+    if (Utilities.isAbsoluteUrl(href) && !href.startsWith("http://hl7.org/") && !href.startsWith("http://cql.hl7.org/")) {
       messages.add(new ValidationMessage(Source.Publisher, IssueType.NOTFOUND, filename+(loc == null ? "" : " at "+loc.toString()), "The <link> href '"+href+"' is llegal", IssueSeverity.FATAL).setLocationLink(uuid == null ? null : filename+"#"+uuid));
       return true;        
     } else
       return false;
   }
 
-  private boolean checkResolveLink(String filename, Location loc, String path, String ref, List<ValidationMessage> messages, String uuid) throws IOException {
+  private boolean checkResolveLink(String filename, Location loc, String path, String ref, String text, List<ValidationMessage> messages, String uuid) throws IOException {
     links++;
     String rref = ref;
     if ((rref.startsWith("http:") || rref.startsWith("https:") ) && (rref.endsWith(".sch") || rref.endsWith(".xsd") || rref.endsWith(".shex"))) { // work around for the fact that spec.internals does not track all these minor things 
@@ -356,10 +400,13 @@ public class HTLMLInspector {
           page = filename;
         } else if (page.contains("#")) {
           name = page.substring(page.indexOf("#")+1);
-          page = Utilities.path(rootFolder, page.substring(0, page.indexOf("#")).replace("/", File.separator));
+          if (altRootFolder != null && filename.startsWith(altRootFolder))
+            page = Utilities.path(altRootFolder, page.substring(0, page.indexOf("#")).replace("/", File.separator));
+          else
+            page = Utilities.path(rootFolder, page.substring(0, page.indexOf("#")).replace("/", File.separator));
         } else {
           String folder = Utilities.getDirectoryForFile(filename);
-          page = Utilities.path(folder == null ? rootFolder : folder, page.replace("/", File.separator));
+          page = Utilities.path(folder == null ? (altRootFolder != null && filename.startsWith(altRootFolder) ? altRootFolder : rootFolder) : folder, page.replace("/", File.separator));
         }
         LoadedFile f = cache.get(page);
         if (f != null) {
@@ -376,7 +423,7 @@ public class HTLMLInspector {
     if (resolved) {
       return false;
     } else {
-      messages.add(new ValidationMessage(Source.Publisher, IssueType.NOTFOUND, filename+(path == null ? "" : "#"+path+(loc == null ? "" : " at "+loc.toString())), "The link '"+ref+"' cannot be resolved"+tgtList, IssueSeverity.ERROR).setLocationLink(uuid == null ? null : filename+"#"+uuid));
+      messages.add(new ValidationMessage(Source.Publisher, IssueType.NOTFOUND, filename+(path == null ? "" : "#"+path+(loc == null ? "" : " at "+loc.toString())), "The link '"+ref+"' for \""+text+"\" cannot be resolved"+tgtList, IssueSeverity.ERROR).setLocationLink(uuid == null ? null : filename+"#"+uuid));
       return true;
     } 
   }
@@ -385,6 +432,8 @@ public class HTLMLInspector {
     links++;
     String tgtList = "";
     boolean resolved = Utilities.existsInList(ref);
+    if (ref.startsWith("data:"))
+      resolved = true;
     if (!resolved)
       resolved = manual.contains(ref);
     if (!resolved && specs != null){
@@ -416,8 +465,8 @@ public class HTLMLInspector {
     } 
   }
 
-  public void addLinkToCheck(String source, String link) {
-    otherlinks.add(new StringPair(source, link));
+  public void addLinkToCheck(String source, String link, String text) {
+    otherlinks.add(new StringPair(source, link, text));
     
   }
 
@@ -430,7 +479,7 @@ public class HTLMLInspector {
   }
 
   public static void main(String[] args) throws Exception {
-    HTLMLInspector inspector = new HTLMLInspector(args[0], null, null);
+    HTLMLInspector inspector = new HTLMLInspector(args[0], null, null, true);
     inspector.setStrict(false);
     List<ValidationMessage> linkmsgs = inspector.check();
     int bl = 0;

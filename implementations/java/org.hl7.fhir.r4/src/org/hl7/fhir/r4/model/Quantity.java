@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Fri, Aug 11, 2017 07:23+1000 for FHIR v3.1.0
+// Generated on Mon, Nov 5, 2018 09:03+1100 for FHIR v3.6.0
 
 import java.util.*;
 
@@ -676,23 +676,23 @@ public class Quantity extends Type implements ICompositeType, ICoding {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof Quantity))
+        if (!(other_ instanceof Quantity))
           return false;
-        Quantity o = (Quantity) other;
+        Quantity o = (Quantity) other_;
         return compareDeep(value, o.value, true) && compareDeep(comparator, o.comparator, true) && compareDeep(unit, o.unit, true)
            && compareDeep(system, o.system, true) && compareDeep(code, o.code, true);
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof Quantity))
+        if (!(other_ instanceof Quantity))
           return false;
-        Quantity o = (Quantity) other;
+        Quantity o = (Quantity) other_;
         return compareValues(value, o.value, true) && compareValues(comparator, o.comparator, true) && compareValues(unit, o.unit, true)
            && compareValues(system, o.system, true) && compareValues(code, o.code, true);
       }
@@ -733,6 +733,14 @@ public class Quantity extends Type implements ICompositeType, ICoding {
       public boolean supportsDisplay() {
         return false;
       }
+
+   public static Quantity fromUcum(String v, String code) {
+      Quantity res = new Quantity();
+      res.setValue(new BigDecimal(v));
+      res.setSystem("http://unitsofmeasure.org");
+      res.setCode(code);
+      return res;
+    }
 
 
 

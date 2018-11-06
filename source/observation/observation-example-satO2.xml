@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- 
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--
  This example is taken from the v3 data types (SLIST)
  -->
 <Observation xmlns="http://hl7.org/fhir">
@@ -11,10 +11,13 @@
 		<system value="http://goodcare.org/observation/id"/>
 		<value value="o1223435-10"/>
 	</identifier>
+	<partOf>
+		<reference value="Procedure/ob"/>
+	</partOf>
 	<status value="final"/>
 	<category>
 		<coding>
-			<system value="http://hl7.org/fhir/observation-category"/>
+			<system value="http://terminology.hl7.org/CodeSystem/observation-category"/>
 			<code value="vital-signs"/>
 			<display value="Vital Signs"/>
 		</coding>
@@ -24,11 +27,18 @@
 		<coding>
 			<system value="http://loinc.org"/>
 			<!-- LOINC -->
+			<code value="2708-6"/>
+			<display value="Oxygen saturation in Arterial blood"/>
+		</coding>
+		<!-- Example of a translation to a more specific code  to the vitals profile LOINC code -->
+    <coding>
+			<system value="http://loinc.org"/>
+			<!-- LOINC -->
 			<code value="59408-5"/>
 			<display value="Oxygen saturation in Arterial blood by Pulse oximetry"/>
 		</coding>
-		<!-- Example of a translation to a more specific code  to the vitals profile LOINC code -->
-		<coding>
+    <!-- Example of a translation to a more specific code  to the vitals profile LOINC code -->
+    <coding>
 			<system value="urn:iso:std:iso:11073:10101"/>
 			<!--    mdc    -->
 			<code value="150456"/>
@@ -47,7 +57,7 @@
 	</valueQuantity>
 	<interpretation>
 		<coding>
-			<system value="http://hl7.org/fhir/v2/0078"/>
+			<system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
 			<code value="N"/>
 			<display value="Normal"/>
 		</coding>

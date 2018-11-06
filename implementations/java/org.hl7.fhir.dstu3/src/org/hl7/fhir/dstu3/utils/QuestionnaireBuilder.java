@@ -22,7 +22,6 @@ import org.hl7.fhir.dstu3.model.Enumeration;
 import org.hl7.fhir.dstu3.model.Enumerations.BindingStrength;
 import org.hl7.fhir.dstu3.model.Enumerations.PublicationStatus;
 import org.hl7.fhir.dstu3.model.Factory;
-import org.hl7.fhir.dstu3.model.InstantType;
 import org.hl7.fhir.dstu3.model.IntegerType;
 import org.hl7.fhir.dstu3.model.Quantity;
 import org.hl7.fhir.dstu3.model.Questionnaire;
@@ -45,6 +44,7 @@ import org.hl7.fhir.dstu3.model.ValueSet.ValueSetExpansionContainsComponent;
 import org.hl7.fhir.dstu3.terminologies.ValueSetExpander;
 import org.hl7.fhir.exceptions.DefinitionException;
 import org.hl7.fhir.exceptions.FHIRException;
+import org.hl7.fhir.exceptions.FHIRFormatError;
 import org.hl7.fhir.utilities.Utilities;
 
 
@@ -454,7 +454,7 @@ public class QuestionnaireBuilder {
     return vs;
   }
 
-  private void selectTypes(StructureDefinition profile, QuestionnaireItemComponent sub, TypeRefComponent t, List<QuestionnaireResponse.QuestionnaireResponseItemComponent> source, List<QuestionnaireResponse.QuestionnaireResponseItemComponent> dest) {
+  private void selectTypes(StructureDefinition profile, QuestionnaireItemComponent sub, TypeRefComponent t, List<QuestionnaireResponse.QuestionnaireResponseItemComponent> source, List<QuestionnaireResponse.QuestionnaireResponseItemComponent> dest) throws FHIRFormatError {
     List<QuestionnaireResponse.QuestionnaireResponseItemComponent> temp = new ArrayList<QuestionnaireResponse.QuestionnaireResponseItemComponent>();
 
     for (QuestionnaireResponse.QuestionnaireResponseItemComponent g : source)
@@ -674,7 +674,7 @@ public class QuestionnaireBuilder {
 
   private boolean isPrimitive(TypeRefComponent t) {
     String code = t.getCode();
-    StructureDefinition sd = context.fetchResource(StructureDefinition.class, "http://hl7.org/fhir/StructureDefinition/"+code);
+    StructureDefinition sd = context.fetchTypeDefinition(code);
     return sd != null && sd.getKind() == StructureDefinitionKind.PRIMITIVETYPE;
   }
 

@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <CodeSystem xmlns="http://hl7.org/fhir">
-  <url value="http://hl7.org/fhir/policyholder-relationship"/>
-  <name value="Policyholder Relationship Codes"/>
+  <url value="http://terminology.hl7.org/CodeSystem/policyholder-relationship"/>
+  <name value="PolicyholderRelationshipCodes"/>
+  <title value="Policyholder Relationship Codes"/>
   <status value="draft"/>
   <publisher value="Financial Management"/>
   <contact>

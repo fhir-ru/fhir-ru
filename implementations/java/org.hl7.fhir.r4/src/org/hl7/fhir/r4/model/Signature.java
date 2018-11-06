@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Fri, Aug 11, 2017 07:23+1000 for FHIR v3.1.0
+// Generated on Mon, Nov 5, 2018 09:03+1100 for FHIR v3.6.0
 
 import java.util.*;
 
@@ -43,7 +43,7 @@ import ca.uhn.fhir.model.api.annotation.Block;
 import org.hl7.fhir.instance.model.api.*;
 import org.hl7.fhir.exceptions.FHIRException;
 /**
- * A digital signature along with supporting context. The signature may be electronic/cryptographic in nature, or a graphical image representing a hand-written signature, or a signature process. Different signature approaches have different utilities.
+ * A signature along with supporting context. The signature may be a digital signature that is cryptographic in nature, or some other signature acceptable to the domain. This other signature may be as simple as a graphical image representing a hand-written signature, or a signature ceremony Different signature approaches have different utilities.
  */
 @DatatypeDef(name="Signature")
 public class Signature extends Type implements ICompositeType {
@@ -66,32 +66,51 @@ public class Signature extends Type implements ICompositeType {
     /**
      * A reference to an application-usable description of the identity that signed  (e.g. the signature used their private key).
      */
-    @Child(name = "who", type = {UriType.class, Practitioner.class, RelatedPerson.class, Patient.class, Device.class, Organization.class}, order=2, min=1, max=1, modifier=false, summary=true)
+    @Child(name = "who", type = {Practitioner.class, RelatedPerson.class, Patient.class, Device.class, Organization.class}, order=2, min=1, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Who signed", formalDefinition="A reference to an application-usable description of the identity that signed  (e.g. the signature used their private key)." )
-    protected Type who;
+    protected Reference who;
+
+    /**
+     * The actual object that is the target of the reference (A reference to an application-usable description of the identity that signed  (e.g. the signature used their private key).)
+     */
+    protected Resource whoTarget;
 
     /**
      * A reference to an application-usable description of the identity that is represented by the signature.
      */
-    @Child(name = "onBehalfOf", type = {UriType.class, Practitioner.class, RelatedPerson.class, Patient.class, Device.class, Organization.class}, order=3, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "onBehalfOf", type = {Practitioner.class, RelatedPerson.class, Patient.class, Device.class, Organization.class}, order=3, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="The party represented", formalDefinition="A reference to an application-usable description of the identity that is represented by the signature." )
-    protected Type onBehalfOf;
+    protected Reference onBehalfOf;
 
     /**
-     * A mime type that indicates the technical format of the signature. Important mime types are application/signature+xml for X ML DigSig, application/jwt for JWT, and image/* for a graphical image of a signature, etc.
+     * The actual object that is the target of the reference (A reference to an application-usable description of the identity that is represented by the signature.)
      */
-    @Child(name = "contentType", type = {CodeType.class}, order=4, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="The technical format of the signature", formalDefinition="A mime type that indicates the technical format of the signature. Important mime types are application/signature+xml for X ML DigSig, application/jwt for JWT, and image/* for a graphical image of a signature, etc." )
-    protected CodeType contentType;
+    protected Resource onBehalfOfTarget;
+
+    /**
+     * A mime type that indicates the technical format of the target resources signed by the signature.
+     */
+    @Child(name = "targetFormat", type = {CodeType.class}, order=4, min=0, max=1, modifier=false, summary=false)
+    @Description(shortDefinition="The technical format of the signed resources", formalDefinition="A mime type that indicates the technical format of the target resources signed by the signature." )
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/mimetypes")
+    protected CodeType targetFormat;
+
+    /**
+     * A mime type that indicates the technical format of the signature. Important mime types are application/signature+xml for X ML DigSig, application/jose for JWS, and image/* for a graphical image of a signature, etc.
+     */
+    @Child(name = "sigFormat", type = {CodeType.class}, order=5, min=0, max=1, modifier=false, summary=false)
+    @Description(shortDefinition="The technical format of the signature", formalDefinition="A mime type that indicates the technical format of the signature. Important mime types are application/signature+xml for X ML DigSig, application/jose for JWS, and image/* for a graphical image of a signature, etc." )
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/mimetypes")
+    protected CodeType sigFormat;
 
     /**
      * The base64 encoding of the Signature content. When signature is not recorded electronically this element would be empty.
      */
-    @Child(name = "blob", type = {Base64BinaryType.class}, order=5, min=0, max=1, modifier=false, summary=false)
-    @Description(shortDefinition="The actual signature content (XML DigSig. JWT, picture, etc.)", formalDefinition="The base64 encoding of the Signature content. When signature is not recorded electronically this element would be empty." )
-    protected Base64BinaryType blob;
+    @Child(name = "data", type = {Base64BinaryType.class}, order=6, min=0, max=1, modifier=false, summary=false)
+    @Description(shortDefinition="The actual signature content (XML DigSig. JWS, picture, etc.)", formalDefinition="The base64 encoding of the Signature content. When signature is not recorded electronically this element would be empty." )
+    protected Base64BinaryType data;
 
-    private static final long serialVersionUID = 1133697310L;
+    private static final long serialVersionUID = 1587325823L;
 
   /**
    * Constructor
@@ -103,7 +122,7 @@ public class Signature extends Type implements ICompositeType {
   /**
    * Constructor
    */
-    public Signature(InstantType when, Type who) {
+    public Signature(InstantType when, Reference who) {
       super();
       this.when = when;
       this.who = who;
@@ -210,34 +229,13 @@ public class Signature extends Type implements ICompositeType {
     /**
      * @return {@link #who} (A reference to an application-usable description of the identity that signed  (e.g. the signature used their private key).)
      */
-    public Type getWho() { 
+    public Reference getWho() { 
+      if (this.who == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create Signature.who");
+        else if (Configuration.doAutoCreate())
+          this.who = new Reference(); // cc
       return this.who;
-    }
-
-    /**
-     * @return {@link #who} (A reference to an application-usable description of the identity that signed  (e.g. the signature used their private key).)
-     */
-    public UriType getWhoUriType() throws FHIRException { 
-      if (!(this.who instanceof UriType))
-        throw new FHIRException("Type mismatch: the type UriType was expected, but "+this.who.getClass().getName()+" was encountered");
-      return (UriType) this.who;
-    }
-
-    public boolean hasWhoUriType() { 
-      return this.who instanceof UriType;
-    }
-
-    /**
-     * @return {@link #who} (A reference to an application-usable description of the identity that signed  (e.g. the signature used their private key).)
-     */
-    public Reference getWhoReference() throws FHIRException { 
-      if (!(this.who instanceof Reference))
-        throw new FHIRException("Type mismatch: the type Reference was expected, but "+this.who.getClass().getName()+" was encountered");
-      return (Reference) this.who;
-    }
-
-    public boolean hasWhoReference() { 
-      return this.who instanceof Reference;
     }
 
     public boolean hasWho() { 
@@ -247,42 +245,36 @@ public class Signature extends Type implements ICompositeType {
     /**
      * @param value {@link #who} (A reference to an application-usable description of the identity that signed  (e.g. the signature used their private key).)
      */
-    public Signature setWho(Type value) { 
+    public Signature setWho(Reference value) { 
       this.who = value;
+      return this;
+    }
+
+    /**
+     * @return {@link #who} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (A reference to an application-usable description of the identity that signed  (e.g. the signature used their private key).)
+     */
+    public Resource getWhoTarget() { 
+      return this.whoTarget;
+    }
+
+    /**
+     * @param value {@link #who} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (A reference to an application-usable description of the identity that signed  (e.g. the signature used their private key).)
+     */
+    public Signature setWhoTarget(Resource value) { 
+      this.whoTarget = value;
       return this;
     }
 
     /**
      * @return {@link #onBehalfOf} (A reference to an application-usable description of the identity that is represented by the signature.)
      */
-    public Type getOnBehalfOf() { 
+    public Reference getOnBehalfOf() { 
+      if (this.onBehalfOf == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create Signature.onBehalfOf");
+        else if (Configuration.doAutoCreate())
+          this.onBehalfOf = new Reference(); // cc
       return this.onBehalfOf;
-    }
-
-    /**
-     * @return {@link #onBehalfOf} (A reference to an application-usable description of the identity that is represented by the signature.)
-     */
-    public UriType getOnBehalfOfUriType() throws FHIRException { 
-      if (!(this.onBehalfOf instanceof UriType))
-        throw new FHIRException("Type mismatch: the type UriType was expected, but "+this.onBehalfOf.getClass().getName()+" was encountered");
-      return (UriType) this.onBehalfOf;
-    }
-
-    public boolean hasOnBehalfOfUriType() { 
-      return this.onBehalfOf instanceof UriType;
-    }
-
-    /**
-     * @return {@link #onBehalfOf} (A reference to an application-usable description of the identity that is represented by the signature.)
-     */
-    public Reference getOnBehalfOfReference() throws FHIRException { 
-      if (!(this.onBehalfOf instanceof Reference))
-        throw new FHIRException("Type mismatch: the type Reference was expected, but "+this.onBehalfOf.getClass().getName()+" was encountered");
-      return (Reference) this.onBehalfOf;
-    }
-
-    public boolean hasOnBehalfOfReference() { 
-      return this.onBehalfOf instanceof Reference;
     }
 
     public boolean hasOnBehalfOf() { 
@@ -292,105 +284,169 @@ public class Signature extends Type implements ICompositeType {
     /**
      * @param value {@link #onBehalfOf} (A reference to an application-usable description of the identity that is represented by the signature.)
      */
-    public Signature setOnBehalfOf(Type value) { 
+    public Signature setOnBehalfOf(Reference value) { 
       this.onBehalfOf = value;
       return this;
     }
 
     /**
-     * @return {@link #contentType} (A mime type that indicates the technical format of the signature. Important mime types are application/signature+xml for X ML DigSig, application/jwt for JWT, and image/* for a graphical image of a signature, etc.). This is the underlying object with id, value and extensions. The accessor "getContentType" gives direct access to the value
+     * @return {@link #onBehalfOf} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (A reference to an application-usable description of the identity that is represented by the signature.)
      */
-    public CodeType getContentTypeElement() { 
-      if (this.contentType == null)
-        if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create Signature.contentType");
-        else if (Configuration.doAutoCreate())
-          this.contentType = new CodeType(); // bb
-      return this.contentType;
-    }
-
-    public boolean hasContentTypeElement() { 
-      return this.contentType != null && !this.contentType.isEmpty();
-    }
-
-    public boolean hasContentType() { 
-      return this.contentType != null && !this.contentType.isEmpty();
+    public Resource getOnBehalfOfTarget() { 
+      return this.onBehalfOfTarget;
     }
 
     /**
-     * @param value {@link #contentType} (A mime type that indicates the technical format of the signature. Important mime types are application/signature+xml for X ML DigSig, application/jwt for JWT, and image/* for a graphical image of a signature, etc.). This is the underlying object with id, value and extensions. The accessor "getContentType" gives direct access to the value
+     * @param value {@link #onBehalfOf} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (A reference to an application-usable description of the identity that is represented by the signature.)
      */
-    public Signature setContentTypeElement(CodeType value) { 
-      this.contentType = value;
+    public Signature setOnBehalfOfTarget(Resource value) { 
+      this.onBehalfOfTarget = value;
       return this;
     }
 
     /**
-     * @return A mime type that indicates the technical format of the signature. Important mime types are application/signature+xml for X ML DigSig, application/jwt for JWT, and image/* for a graphical image of a signature, etc.
+     * @return {@link #targetFormat} (A mime type that indicates the technical format of the target resources signed by the signature.). This is the underlying object with id, value and extensions. The accessor "getTargetFormat" gives direct access to the value
      */
-    public String getContentType() { 
-      return this.contentType == null ? null : this.contentType.getValue();
+    public CodeType getTargetFormatElement() { 
+      if (this.targetFormat == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create Signature.targetFormat");
+        else if (Configuration.doAutoCreate())
+          this.targetFormat = new CodeType(); // bb
+      return this.targetFormat;
+    }
+
+    public boolean hasTargetFormatElement() { 
+      return this.targetFormat != null && !this.targetFormat.isEmpty();
+    }
+
+    public boolean hasTargetFormat() { 
+      return this.targetFormat != null && !this.targetFormat.isEmpty();
     }
 
     /**
-     * @param value A mime type that indicates the technical format of the signature. Important mime types are application/signature+xml for X ML DigSig, application/jwt for JWT, and image/* for a graphical image of a signature, etc.
+     * @param value {@link #targetFormat} (A mime type that indicates the technical format of the target resources signed by the signature.). This is the underlying object with id, value and extensions. The accessor "getTargetFormat" gives direct access to the value
      */
-    public Signature setContentType(String value) { 
+    public Signature setTargetFormatElement(CodeType value) { 
+      this.targetFormat = value;
+      return this;
+    }
+
+    /**
+     * @return A mime type that indicates the technical format of the target resources signed by the signature.
+     */
+    public String getTargetFormat() { 
+      return this.targetFormat == null ? null : this.targetFormat.getValue();
+    }
+
+    /**
+     * @param value A mime type that indicates the technical format of the target resources signed by the signature.
+     */
+    public Signature setTargetFormat(String value) { 
       if (Utilities.noString(value))
-        this.contentType = null;
+        this.targetFormat = null;
       else {
-        if (this.contentType == null)
-          this.contentType = new CodeType();
-        this.contentType.setValue(value);
+        if (this.targetFormat == null)
+          this.targetFormat = new CodeType();
+        this.targetFormat.setValue(value);
       }
       return this;
     }
 
     /**
-     * @return {@link #blob} (The base64 encoding of the Signature content. When signature is not recorded electronically this element would be empty.). This is the underlying object with id, value and extensions. The accessor "getBlob" gives direct access to the value
+     * @return {@link #sigFormat} (A mime type that indicates the technical format of the signature. Important mime types are application/signature+xml for X ML DigSig, application/jose for JWS, and image/* for a graphical image of a signature, etc.). This is the underlying object with id, value and extensions. The accessor "getSigFormat" gives direct access to the value
      */
-    public Base64BinaryType getBlobElement() { 
-      if (this.blob == null)
+    public CodeType getSigFormatElement() { 
+      if (this.sigFormat == null)
         if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create Signature.blob");
+          throw new Error("Attempt to auto-create Signature.sigFormat");
         else if (Configuration.doAutoCreate())
-          this.blob = new Base64BinaryType(); // bb
-      return this.blob;
+          this.sigFormat = new CodeType(); // bb
+      return this.sigFormat;
     }
 
-    public boolean hasBlobElement() { 
-      return this.blob != null && !this.blob.isEmpty();
+    public boolean hasSigFormatElement() { 
+      return this.sigFormat != null && !this.sigFormat.isEmpty();
     }
 
-    public boolean hasBlob() { 
-      return this.blob != null && !this.blob.isEmpty();
+    public boolean hasSigFormat() { 
+      return this.sigFormat != null && !this.sigFormat.isEmpty();
     }
 
     /**
-     * @param value {@link #blob} (The base64 encoding of the Signature content. When signature is not recorded electronically this element would be empty.). This is the underlying object with id, value and extensions. The accessor "getBlob" gives direct access to the value
+     * @param value {@link #sigFormat} (A mime type that indicates the technical format of the signature. Important mime types are application/signature+xml for X ML DigSig, application/jose for JWS, and image/* for a graphical image of a signature, etc.). This is the underlying object with id, value and extensions. The accessor "getSigFormat" gives direct access to the value
      */
-    public Signature setBlobElement(Base64BinaryType value) { 
-      this.blob = value;
+    public Signature setSigFormatElement(CodeType value) { 
+      this.sigFormat = value;
+      return this;
+    }
+
+    /**
+     * @return A mime type that indicates the technical format of the signature. Important mime types are application/signature+xml for X ML DigSig, application/jose for JWS, and image/* for a graphical image of a signature, etc.
+     */
+    public String getSigFormat() { 
+      return this.sigFormat == null ? null : this.sigFormat.getValue();
+    }
+
+    /**
+     * @param value A mime type that indicates the technical format of the signature. Important mime types are application/signature+xml for X ML DigSig, application/jose for JWS, and image/* for a graphical image of a signature, etc.
+     */
+    public Signature setSigFormat(String value) { 
+      if (Utilities.noString(value))
+        this.sigFormat = null;
+      else {
+        if (this.sigFormat == null)
+          this.sigFormat = new CodeType();
+        this.sigFormat.setValue(value);
+      }
+      return this;
+    }
+
+    /**
+     * @return {@link #data} (The base64 encoding of the Signature content. When signature is not recorded electronically this element would be empty.). This is the underlying object with id, value and extensions. The accessor "getData" gives direct access to the value
+     */
+    public Base64BinaryType getDataElement() { 
+      if (this.data == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create Signature.data");
+        else if (Configuration.doAutoCreate())
+          this.data = new Base64BinaryType(); // bb
+      return this.data;
+    }
+
+    public boolean hasDataElement() { 
+      return this.data != null && !this.data.isEmpty();
+    }
+
+    public boolean hasData() { 
+      return this.data != null && !this.data.isEmpty();
+    }
+
+    /**
+     * @param value {@link #data} (The base64 encoding of the Signature content. When signature is not recorded electronically this element would be empty.). This is the underlying object with id, value and extensions. The accessor "getData" gives direct access to the value
+     */
+    public Signature setDataElement(Base64BinaryType value) { 
+      this.data = value;
       return this;
     }
 
     /**
      * @return The base64 encoding of the Signature content. When signature is not recorded electronically this element would be empty.
      */
-    public byte[] getBlob() { 
-      return this.blob == null ? null : this.blob.getValue();
+    public byte[] getData() { 
+      return this.data == null ? null : this.data.getValue();
     }
 
     /**
      * @param value The base64 encoding of the Signature content. When signature is not recorded electronically this element would be empty.
      */
-    public Signature setBlob(byte[] value) { 
+    public Signature setData(byte[] value) { 
       if (value == null)
-        this.blob = null;
+        this.data = null;
       else {
-        if (this.blob == null)
-          this.blob = new Base64BinaryType();
-        this.blob.setValue(value);
+        if (this.data == null)
+          this.data = new Base64BinaryType();
+        this.data.setValue(value);
       }
       return this;
     }
@@ -399,10 +455,11 @@ public class Signature extends Type implements ICompositeType {
         super.listChildren(children);
         children.add(new Property("type", "Coding", "An indication of the reason that the entity signed this document. This may be explicitly included as part of the signature information and can be used when determining accountability for various actions concerning the document.", 0, java.lang.Integer.MAX_VALUE, type));
         children.add(new Property("when", "instant", "When the digital signature was signed.", 0, 1, when));
-        children.add(new Property("who[x]", "uri|Reference(Practitioner|RelatedPerson|Patient|Device|Organization)", "A reference to an application-usable description of the identity that signed  (e.g. the signature used their private key).", 0, 1, who));
-        children.add(new Property("onBehalfOf[x]", "uri|Reference(Practitioner|RelatedPerson|Patient|Device|Organization)", "A reference to an application-usable description of the identity that is represented by the signature.", 0, 1, onBehalfOf));
-        children.add(new Property("contentType", "code", "A mime type that indicates the technical format of the signature. Important mime types are application/signature+xml for X ML DigSig, application/jwt for JWT, and image/* for a graphical image of a signature, etc.", 0, 1, contentType));
-        children.add(new Property("blob", "base64Binary", "The base64 encoding of the Signature content. When signature is not recorded electronically this element would be empty.", 0, 1, blob));
+        children.add(new Property("who", "Reference(Practitioner|RelatedPerson|Patient|Device|Organization)", "A reference to an application-usable description of the identity that signed  (e.g. the signature used their private key).", 0, 1, who));
+        children.add(new Property("onBehalfOf", "Reference(Practitioner|RelatedPerson|Patient|Device|Organization)", "A reference to an application-usable description of the identity that is represented by the signature.", 0, 1, onBehalfOf));
+        children.add(new Property("targetFormat", "code", "A mime type that indicates the technical format of the target resources signed by the signature.", 0, 1, targetFormat));
+        children.add(new Property("sigFormat", "code", "A mime type that indicates the technical format of the signature. Important mime types are application/signature+xml for X ML DigSig, application/jose for JWS, and image/* for a graphical image of a signature, etc.", 0, 1, sigFormat));
+        children.add(new Property("data", "base64Binary", "The base64 encoding of the Signature content. When signature is not recorded electronically this element would be empty.", 0, 1, data));
       }
 
       @Override
@@ -410,16 +467,11 @@ public class Signature extends Type implements ICompositeType {
         switch (_hash) {
         case 3575610: /*type*/  return new Property("type", "Coding", "An indication of the reason that the entity signed this document. This may be explicitly included as part of the signature information and can be used when determining accountability for various actions concerning the document.", 0, java.lang.Integer.MAX_VALUE, type);
         case 3648314: /*when*/  return new Property("when", "instant", "When the digital signature was signed.", 0, 1, when);
-        case -788654078: /*who[x]*/  return new Property("who[x]", "uri|Reference(Practitioner|RelatedPerson|Patient|Device|Organization)", "A reference to an application-usable description of the identity that signed  (e.g. the signature used their private key).", 0, 1, who);
-        case 117694: /*who*/  return new Property("who[x]", "uri|Reference(Practitioner|RelatedPerson|Patient|Device|Organization)", "A reference to an application-usable description of the identity that signed  (e.g. the signature used their private key).", 0, 1, who);
-        case -788660018: /*whoUri*/  return new Property("who[x]", "uri|Reference(Practitioner|RelatedPerson|Patient|Device|Organization)", "A reference to an application-usable description of the identity that signed  (e.g. the signature used their private key).", 0, 1, who);
-        case 1017243949: /*whoReference*/  return new Property("who[x]", "uri|Reference(Practitioner|RelatedPerson|Patient|Device|Organization)", "A reference to an application-usable description of the identity that signed  (e.g. the signature used their private key).", 0, 1, who);
-        case 418120340: /*onBehalfOf[x]*/  return new Property("onBehalfOf[x]", "uri|Reference(Practitioner|RelatedPerson|Patient|Device|Organization)", "A reference to an application-usable description of the identity that is represented by the signature.", 0, 1, onBehalfOf);
-        case -14402964: /*onBehalfOf*/  return new Property("onBehalfOf[x]", "uri|Reference(Practitioner|RelatedPerson|Patient|Device|Organization)", "A reference to an application-usable description of the identity that is represented by the signature.", 0, 1, onBehalfOf);
-        case 418114400: /*onBehalfOfUri*/  return new Property("onBehalfOf[x]", "uri|Reference(Practitioner|RelatedPerson|Patient|Device|Organization)", "A reference to an application-usable description of the identity that is represented by the signature.", 0, 1, onBehalfOf);
-        case -1136255425: /*onBehalfOfReference*/  return new Property("onBehalfOf[x]", "uri|Reference(Practitioner|RelatedPerson|Patient|Device|Organization)", "A reference to an application-usable description of the identity that is represented by the signature.", 0, 1, onBehalfOf);
-        case -389131437: /*contentType*/  return new Property("contentType", "code", "A mime type that indicates the technical format of the signature. Important mime types are application/signature+xml for X ML DigSig, application/jwt for JWT, and image/* for a graphical image of a signature, etc.", 0, 1, contentType);
-        case 3026845: /*blob*/  return new Property("blob", "base64Binary", "The base64 encoding of the Signature content. When signature is not recorded electronically this element would be empty.", 0, 1, blob);
+        case 117694: /*who*/  return new Property("who", "Reference(Practitioner|RelatedPerson|Patient|Device|Organization)", "A reference to an application-usable description of the identity that signed  (e.g. the signature used their private key).", 0, 1, who);
+        case -14402964: /*onBehalfOf*/  return new Property("onBehalfOf", "Reference(Practitioner|RelatedPerson|Patient|Device|Organization)", "A reference to an application-usable description of the identity that is represented by the signature.", 0, 1, onBehalfOf);
+        case -917363480: /*targetFormat*/  return new Property("targetFormat", "code", "A mime type that indicates the technical format of the target resources signed by the signature.", 0, 1, targetFormat);
+        case -58720216: /*sigFormat*/  return new Property("sigFormat", "code", "A mime type that indicates the technical format of the signature. Important mime types are application/signature+xml for X ML DigSig, application/jose for JWS, and image/* for a graphical image of a signature, etc.", 0, 1, sigFormat);
+        case 3076010: /*data*/  return new Property("data", "base64Binary", "The base64 encoding of the Signature content. When signature is not recorded electronically this element would be empty.", 0, 1, data);
         default: return super.getNamedProperty(_hash, _name, _checkValid);
         }
 
@@ -430,10 +482,11 @@ public class Signature extends Type implements ICompositeType {
         switch (hash) {
         case 3575610: /*type*/ return this.type == null ? new Base[0] : this.type.toArray(new Base[this.type.size()]); // Coding
         case 3648314: /*when*/ return this.when == null ? new Base[0] : new Base[] {this.when}; // InstantType
-        case 117694: /*who*/ return this.who == null ? new Base[0] : new Base[] {this.who}; // Type
-        case -14402964: /*onBehalfOf*/ return this.onBehalfOf == null ? new Base[0] : new Base[] {this.onBehalfOf}; // Type
-        case -389131437: /*contentType*/ return this.contentType == null ? new Base[0] : new Base[] {this.contentType}; // CodeType
-        case 3026845: /*blob*/ return this.blob == null ? new Base[0] : new Base[] {this.blob}; // Base64BinaryType
+        case 117694: /*who*/ return this.who == null ? new Base[0] : new Base[] {this.who}; // Reference
+        case -14402964: /*onBehalfOf*/ return this.onBehalfOf == null ? new Base[0] : new Base[] {this.onBehalfOf}; // Reference
+        case -917363480: /*targetFormat*/ return this.targetFormat == null ? new Base[0] : new Base[] {this.targetFormat}; // CodeType
+        case -58720216: /*sigFormat*/ return this.sigFormat == null ? new Base[0] : new Base[] {this.sigFormat}; // CodeType
+        case 3076010: /*data*/ return this.data == null ? new Base[0] : new Base[] {this.data}; // Base64BinaryType
         default: return super.getProperty(hash, name, checkValid);
         }
 
@@ -449,16 +502,19 @@ public class Signature extends Type implements ICompositeType {
           this.when = castToInstant(value); // InstantType
           return value;
         case 117694: // who
-          this.who = castToType(value); // Type
+          this.who = castToReference(value); // Reference
           return value;
         case -14402964: // onBehalfOf
-          this.onBehalfOf = castToType(value); // Type
+          this.onBehalfOf = castToReference(value); // Reference
           return value;
-        case -389131437: // contentType
-          this.contentType = castToCode(value); // CodeType
+        case -917363480: // targetFormat
+          this.targetFormat = castToCode(value); // CodeType
           return value;
-        case 3026845: // blob
-          this.blob = castToBase64Binary(value); // Base64BinaryType
+        case -58720216: // sigFormat
+          this.sigFormat = castToCode(value); // CodeType
+          return value;
+        case 3076010: // data
+          this.data = castToBase64Binary(value); // Base64BinaryType
           return value;
         default: return super.setProperty(hash, name, value);
         }
@@ -471,14 +527,16 @@ public class Signature extends Type implements ICompositeType {
           this.getType().add(castToCoding(value));
         } else if (name.equals("when")) {
           this.when = castToInstant(value); // InstantType
-        } else if (name.equals("who[x]")) {
-          this.who = castToType(value); // Type
-        } else if (name.equals("onBehalfOf[x]")) {
-          this.onBehalfOf = castToType(value); // Type
-        } else if (name.equals("contentType")) {
-          this.contentType = castToCode(value); // CodeType
-        } else if (name.equals("blob")) {
-          this.blob = castToBase64Binary(value); // Base64BinaryType
+        } else if (name.equals("who")) {
+          this.who = castToReference(value); // Reference
+        } else if (name.equals("onBehalfOf")) {
+          this.onBehalfOf = castToReference(value); // Reference
+        } else if (name.equals("targetFormat")) {
+          this.targetFormat = castToCode(value); // CodeType
+        } else if (name.equals("sigFormat")) {
+          this.sigFormat = castToCode(value); // CodeType
+        } else if (name.equals("data")) {
+          this.data = castToBase64Binary(value); // Base64BinaryType
         } else
           return super.setProperty(name, value);
         return value;
@@ -489,12 +547,11 @@ public class Signature extends Type implements ICompositeType {
         switch (hash) {
         case 3575610:  return addType(); 
         case 3648314:  return getWhenElement();
-        case -788654078:  return getWho(); 
         case 117694:  return getWho(); 
-        case 418120340:  return getOnBehalfOf(); 
         case -14402964:  return getOnBehalfOf(); 
-        case -389131437:  return getContentTypeElement();
-        case 3026845:  return getBlobElement();
+        case -917363480:  return getTargetFormatElement();
+        case -58720216:  return getSigFormatElement();
+        case 3076010:  return getDataElement();
         default: return super.makeProperty(hash, name);
         }
 
@@ -505,10 +562,11 @@ public class Signature extends Type implements ICompositeType {
         switch (hash) {
         case 3575610: /*type*/ return new String[] {"Coding"};
         case 3648314: /*when*/ return new String[] {"instant"};
-        case 117694: /*who*/ return new String[] {"uri", "Reference"};
-        case -14402964: /*onBehalfOf*/ return new String[] {"uri", "Reference"};
-        case -389131437: /*contentType*/ return new String[] {"code"};
-        case 3026845: /*blob*/ return new String[] {"base64Binary"};
+        case 117694: /*who*/ return new String[] {"Reference"};
+        case -14402964: /*onBehalfOf*/ return new String[] {"Reference"};
+        case -917363480: /*targetFormat*/ return new String[] {"code"};
+        case -58720216: /*sigFormat*/ return new String[] {"code"};
+        case 3076010: /*data*/ return new String[] {"base64Binary"};
         default: return super.getTypesForProperty(hash, name);
         }
 
@@ -522,27 +580,22 @@ public class Signature extends Type implements ICompositeType {
         else if (name.equals("when")) {
           throw new FHIRException("Cannot call addChild on a primitive type Signature.when");
         }
-        else if (name.equals("whoUri")) {
-          this.who = new UriType();
-          return this.who;
-        }
-        else if (name.equals("whoReference")) {
+        else if (name.equals("who")) {
           this.who = new Reference();
           return this.who;
         }
-        else if (name.equals("onBehalfOfUri")) {
-          this.onBehalfOf = new UriType();
-          return this.onBehalfOf;
-        }
-        else if (name.equals("onBehalfOfReference")) {
+        else if (name.equals("onBehalfOf")) {
           this.onBehalfOf = new Reference();
           return this.onBehalfOf;
         }
-        else if (name.equals("contentType")) {
-          throw new FHIRException("Cannot call addChild on a primitive type Signature.contentType");
+        else if (name.equals("targetFormat")) {
+          throw new FHIRException("Cannot call addChild on a primitive type Signature.targetFormat");
         }
-        else if (name.equals("blob")) {
-          throw new FHIRException("Cannot call addChild on a primitive type Signature.blob");
+        else if (name.equals("sigFormat")) {
+          throw new FHIRException("Cannot call addChild on a primitive type Signature.sigFormat");
+        }
+        else if (name.equals("data")) {
+          throw new FHIRException("Cannot call addChild on a primitive type Signature.data");
         }
         else
           return super.addChild(name);
@@ -564,8 +617,9 @@ public class Signature extends Type implements ICompositeType {
         dst.when = when == null ? null : when.copy();
         dst.who = who == null ? null : who.copy();
         dst.onBehalfOf = onBehalfOf == null ? null : onBehalfOf.copy();
-        dst.contentType = contentType == null ? null : contentType.copy();
-        dst.blob = blob == null ? null : blob.copy();
+        dst.targetFormat = targetFormat == null ? null : targetFormat.copy();
+        dst.sigFormat = sigFormat == null ? null : sigFormat.copy();
+        dst.data = data == null ? null : data.copy();
         return dst;
       }
 
@@ -574,31 +628,31 @@ public class Signature extends Type implements ICompositeType {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof Signature))
+        if (!(other_ instanceof Signature))
           return false;
-        Signature o = (Signature) other;
+        Signature o = (Signature) other_;
         return compareDeep(type, o.type, true) && compareDeep(when, o.when, true) && compareDeep(who, o.who, true)
-           && compareDeep(onBehalfOf, o.onBehalfOf, true) && compareDeep(contentType, o.contentType, true)
-           && compareDeep(blob, o.blob, true);
+           && compareDeep(onBehalfOf, o.onBehalfOf, true) && compareDeep(targetFormat, o.targetFormat, true)
+           && compareDeep(sigFormat, o.sigFormat, true) && compareDeep(data, o.data, true);
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof Signature))
+        if (!(other_ instanceof Signature))
           return false;
-        Signature o = (Signature) other;
-        return compareValues(when, o.when, true) && compareValues(contentType, o.contentType, true) && compareValues(blob, o.blob, true)
-          ;
+        Signature o = (Signature) other_;
+        return compareValues(when, o.when, true) && compareValues(targetFormat, o.targetFormat, true) && compareValues(sigFormat, o.sigFormat, true)
+           && compareValues(data, o.data, true);
       }
 
       public boolean isEmpty() {
         return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(type, when, who, onBehalfOf
-          , contentType, blob);
+          , targetFormat, sigFormat, data);
       }
 
 

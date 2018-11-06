@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <ValueSet xmlns="http://hl7.org/fhir">
-  <name value="Immunization Route Codes"/>
+  <name value="ImmunizationRouteCodes"/>
+  <title value="Immunization Route Codes"/>
+
   <status value="draft"/>
   <publisher value="FHIR Project team"/>
   <contact>
@@ -13,15 +15,34 @@
   <description value="The value set to instantiate this attribute should be drawn from a terminologically robust code system that consists of or contains concepts to support describing the administrative routes used during vaccination. This value set is provided as a suggestive example."/>
   <compose>
     <include>
-      <system value="http://hl7.org/fhir/v3/RouteOfAdministration"/>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration"/>
+      <concept>
+        <code value="IDINJ"/>
+		<display value="Injection, intradermal"/>
+      </concept>
       <concept>
         <code value="IM"/>
+		<display value="Injection, intramuscular"/>
+      </concept>
+      <concept>
+        <code value="NASINHLC"/>
+		<display value="Inhalation, nasal"/>
+      </concept>
+      <concept>
+        <code value="IVINJ"/>
+		<display value="Injection, intravenous"/>
       </concept>
       <concept>
         <code value="PO"/>
+		<display value="Swallow, oral"/>
       </concept>
       <concept>
-        <code value="NASINHL"/>
+        <code value="SQ"/>
+		<display value="Injection, subcutaneous"/>
+      </concept>
+      <concept>
+        <code value="TRNSDERM"/>
+		<display value="Transdermal"/>
       </concept>
     </include>
   </compose>

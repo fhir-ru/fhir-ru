@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <Device xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/device.xsd">
 	<id value="ihe-pcd"/>
 	<text>
@@ -10,7 +10,7 @@
 	<identifier>
       <type>
         <coding>
-          <system value="http://hl7.org/fhir/identifier-type"/>
+          <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
           <code value="SNO"/>
         </coding>
         <text value="Serial Number"/>

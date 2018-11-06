@@ -11,10 +11,11 @@ import org.hl7.fhir.r4.model.CodeableConcept;
 import org.hl7.fhir.r4.model.Coding;
 import org.hl7.fhir.r4.model.ConceptMap;
 import org.hl7.fhir.r4.model.ElementDefinition.ElementDefinitionBindingComponent;
-import org.hl7.fhir.r4.model.ExpansionProfile;
 import org.hl7.fhir.r4.model.MetadataResource;
+import org.hl7.fhir.r4.model.Parameters;
 import org.hl7.fhir.r4.model.Resource;
 import org.hl7.fhir.r4.model.StructureDefinition;
+import org.hl7.fhir.r4.model.StructureMap;
 import org.hl7.fhir.r4.model.ValueSet;
 import org.hl7.fhir.r4.model.ValueSet.ConceptSetComponent;
 import org.hl7.fhir.r4.model.ValueSet.ValueSetExpansionComponent;
@@ -22,8 +23,11 @@ import org.hl7.fhir.r4.terminologies.ValueSetExpander.TerminologyServiceErrorCla
 import org.hl7.fhir.r4.terminologies.ValueSetExpander.ValueSetExpansionOutcome;
 import org.hl7.fhir.r4.utils.INarrativeGenerator;
 import org.hl7.fhir.r4.utils.IResourceValidator;
+import org.fhir.ucum.UcumEssenceService;
+import org.fhir.ucum.UcumService;
 import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.exceptions.TerminologyServiceException;
+import org.hl7.fhir.utilities.TranslationServices;
 import org.hl7.fhir.utilities.validation.ValidationMessage.IssueSeverity;
 
 
@@ -53,6 +57,9 @@ public interface IWorkerContext {
    * @return
    */
   public String getVersion();
+  
+  // get the UCUM service (might not be available)
+  public UcumService getUcumService();
   
   // -- Parsers (read and write instances) ----------------------------------------
 
@@ -188,8 +195,8 @@ public interface IWorkerContext {
   
   // -- Terminology services ------------------------------------------------------
 
-  public ExpansionProfile getExpansionProfile();
-  public void setExpansionProfile(ExpansionProfile expProfile);
+  public Parameters getExpansionParameters();
+  public void setExpansionProfile(Parameters expParameters);
 
   // these are the terminology services used internally by the tools
   /**
@@ -221,8 +228,9 @@ public interface IWorkerContext {
    * find concept maps for a source
    * @param url
    * @return
+   * @throws FHIRException 
    */
-  public List<ConceptMap> findMapsForSource(String url);  
+  public List<ConceptMap> findMapsForSource(String url) throws FHIRException;  
 
   /**
    * ValueSet Expansion - see $expand
@@ -249,13 +257,14 @@ public interface IWorkerContext {
    * @return
    * @throws FHIRException 
    */
-  public ValueSetExpansionComponent expandVS(ConceptSetComponent inc, boolean heirarchical) throws TerminologyServiceException;
+  public ValueSetExpansionOutcome expandVS(ConceptSetComponent inc, boolean heirarchical) throws TerminologyServiceException;
   
   public class ValidationResult {
     private ConceptDefinitionComponent definition;
     private IssueSeverity severity;
     private String message;
     private TerminologyServiceErrorClass errorClass;
+    private String txLink;
     
     public ValidationResult(IssueSeverity severity, String message) {
       this.severity = severity;
@@ -279,7 +288,7 @@ public interface IWorkerContext {
     }
 
     public boolean isOk() {
-      return definition != null;
+      return severity == null || severity == IssueSeverity.INFORMATION || severity == IssueSeverity.WARNING;
     }
 
     public String getDisplay() {
@@ -306,6 +315,25 @@ public interface IWorkerContext {
 
     public TerminologyServiceErrorClass getErrorClass() {
       return errorClass;
+    }
+
+    public ValidationResult setSeverity(IssueSeverity severity) {
+      this.severity = severity;
+      return this;
+    }
+
+    public ValidationResult setMessage(String message) {
+      this.message = message;
+      return this;
+    }
+
+    public String getTxLink() {
+      return txLink;
+    }
+
+    public ValidationResult setTxLink(String txLink) {
+      this.txLink = txLink;
+      return this;
     }
     
     
@@ -341,6 +369,7 @@ public interface IWorkerContext {
    * @return
    */
   public ValidationResult validateCode(String system, String code, String display, ValueSet vs);
+  public ValidationResult validateCode(String code, ValueSet vs);
   public ValidationResult validateCode(Coding code, ValueSet vs);
   public ValidationResult validateCode(CodeableConcept code, ValueSet vs);
   
@@ -384,7 +413,18 @@ public interface IWorkerContext {
   }
 
   public void setLogger(ILoggingService logger);
+  public ILoggingService getLogger();
 
   public boolean isNoTerminologyServer();
 
+  public TranslationServices translator();
+  public List<StructureMap> listTransforms();
+  public StructureMap getTransform(String url);
+
+  public String getOverrideVersionNs();
+  public void setOverrideVersionNs(String value);
+
+  public StructureDefinition fetchTypeDefinition(String typeName);
+
+  public void setUcumService(UcumService ucumService);
 }

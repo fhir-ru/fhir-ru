@@ -23,6 +23,7 @@ import org.hl7.fhir.dstu2016may.model.Parameters;
 import org.hl7.fhir.dstu2016may.model.Parameters.ParametersParameterComponent;
 import org.hl7.fhir.dstu2016may.model.Reference;
 import org.hl7.fhir.dstu2016may.model.StringType;
+import org.hl7.fhir.dstu2016may.model.StructureDefinition;
 import org.hl7.fhir.dstu2016may.model.ValueSet;
 import org.hl7.fhir.dstu2016may.model.ValueSet.ConceptSetComponent;
 import org.hl7.fhir.dstu2016may.model.ValueSet.ValueSetComposeComponent;
@@ -412,6 +413,11 @@ public abstract class BaseWorkerContext implements IWorkerContext {
 
   public Set<String> getNonSupportedCodeSystems() {
     return nonSupportedCodeSystems;
+  }
+
+  @Override
+  public StructureDefinition fetchTypeDefinition(String typeName) {
+    return fetchResource(StructureDefinition.class, "http://hl7.org/fhir/StructureDefinition/"+typeName);
   }
 
   

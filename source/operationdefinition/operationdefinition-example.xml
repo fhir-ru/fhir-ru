@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <OperationDefinition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir file:///C:/Users/lloyd/Documents/SVN/FHIR/build/schema/fhir-single.xsd">
 	<id value="example"/>
 	<url value="http://h7.org/fhir/OperationDefinition/example"/>
@@ -15,7 +15,7 @@
 			<value value="beep@coyote.acme.com"/>
 		</telecom>
 	</contact>
-	<description value="Limited implementation of the Populate Questionnaire implemenation"/>
+	<description value="Limited implementation of the Populate Questionnaire implementation"/>
 	<useContext>
     <code>
       <system value="http://build.fhir.org/codesystem-usage-context-type"/>
@@ -24,7 +24,7 @@
     </code>
     <valueCodeableConcept>
       <coding>
-        <system value="http://hl7.org/fhir/v3/ActCode"/>
+        <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
         <code value="IMP"/>
         <display value="inpatient encounter"/>
       </coding>
@@ -39,9 +39,7 @@
 	</jurisdiction>
 	<code value="populate"/>
 	<comment value="Only implemented for Labs and Medications so far"/>
-	<base>
-		<reference value="OperationDefinition/Questionnaire-populate"/>
-	</base>
+	<base value="OperationDefinition/Questionnaire-populate"/>
 	<resource value="Questionnaire"/>
 	<system value="false"/>
 	<type value="false"/>

@@ -1,7 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<a name="scope"> </a>
+<a name="scope"></a>
 <h2>Scope and Usage</h2>
 <p>
 The List resource is a flat, possibly ordered collection of records. List resources are used in many places, 
@@ -29,7 +29,7 @@ produce a larger set of records as it would both be non-curated (potentially con
 duplicate or out-of-date records) and current - generated based on information as of
 "now" rather than the last time a human manually revised the List resource instance. Which
 mechanism is most appropriate for data retrieval will vary by use-case. In some cases, systems
-may not have an appropriate curated List to query.
+might not have an appropriate curated List to query.
 </p>
 <p>
 Note that the presence of an item in a List resource SHALL NOT change the meaning of any information that would be 
@@ -41,7 +41,7 @@ the List by RESTful means or after a document is processed. For example, a List 
 </div>
 
 <div>
-<a name="bnr"> </a>
+<a name="bnr"></a>
 <h2>Boundaries and Relationships</h2>
 <p>
 There are five mechanisms in FHIR for communicating collections of resources:

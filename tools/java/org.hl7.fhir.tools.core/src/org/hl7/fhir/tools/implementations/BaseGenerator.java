@@ -42,5 +42,14 @@ public abstract class BaseGenerator implements PlatformGenerator {
     return true;
   }
 
- 
+  protected String buildId;
+
+  public String getBuildId() {
+    return buildId;
+  }
+
+  public void setBuildId(String buildId) {
+    this.buildId = buildId;
+  }
+
 }

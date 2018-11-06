@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <CodeSystem xmlns="http://hl7.org/fhir">
 	<id value="service-type"/>
-	<url value="http://hl7.org/fhir/service-type"/>
+	<url value="http://terminology.hl7.org/CodeSystem/service-type"/>
 	<name value="ServiceType"/>
 	<status value="draft"/>
 	<experimental value="true"/>
@@ -1300,13 +1300,13 @@
 	</concept>
 	<concept>
 		<code value="259"/>
-		<display value="Behaviour"/>
-		<definition value="Behaviour"/>
+		<display value="Behavior"/>
+		<definition value="Behavior"/>
 	</concept>
 	<concept>
 		<code value="260"/>
-		<display value="Behaviour Interventi"/>
-		<definition value="Behaviour Intervention"/>
+		<display value="Behavior Interventi"/>
+		<definition value="Behavior Intervention"/>
 	</concept>
 	<concept>
 		<code value="261"/>
@@ -2010,8 +2010,8 @@
 	</concept>
 	<concept>
 		<code value="403"/>
-		<display value="Peak Organisations"/>
-		<definition value="Peak Organisations"/>
+		<display value="Peak Organizations"/>
+		<definition value="Peak Organizations"/>
 	</concept>
 	<concept>
 		<code value="404"/>
@@ -2890,8 +2890,8 @@
 	</concept>
 	<concept>
 		<code value="610"/>
-		<display value="Behaviour Support"/>
-		<definition value="Behaviour Support"/>
+		<display value="Behavior Support"/>
+		<definition value="Behavior Support"/>
 	</concept>
 	<concept>
 		<code value="611"/>

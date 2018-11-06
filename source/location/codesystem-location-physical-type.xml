@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <CodeSystem xmlns="http://hl7.org/fhir">
-  <url value="http://hl7.org/fhir/location-physical-type"/>
+  <url value="http://terminology.hl7.org/CodeSystem/location-physical-type"/>
   <name value="LocationType"/>
   <status value="draft"/>
   <experimental value="false"/>
@@ -16,7 +16,7 @@
   <concept>
     <code value="bu"/>
     <display value="Building"/>
-    <definition value="Any Building or structure. This may contain rooms, corridors, wings, etc. It may not have walls, or a roof, but is considered a defined/allocated space."/>
+    <definition value="Any Building or structure. This may contain rooms, corridors, wings, etc. It might not have walls, or a roof, but is considered a defined/allocated space."/>
   </concept>
   <concept>
     <code value="wi"/>

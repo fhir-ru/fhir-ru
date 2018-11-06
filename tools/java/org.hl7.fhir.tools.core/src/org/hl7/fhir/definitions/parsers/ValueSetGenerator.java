@@ -1,16 +1,13 @@
 package org.hl7.fhir.definitions.parsers;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.hl7.fhir.definitions.model.BindingSpecification;
@@ -18,11 +15,15 @@ import org.hl7.fhir.definitions.model.BindingSpecification.BindingMethod;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.EventDefn;
+import org.hl7.fhir.igtools.spreadsheets.CodeSystemConvertor;
+import org.hl7.fhir.igtools.spreadsheets.TypeRef;
 import org.hl7.fhir.r4.model.CodeSystem;
 import org.hl7.fhir.r4.model.CodeSystem.CodeSystemContentMode;
 import org.hl7.fhir.r4.model.CodeSystem.CodeSystemHierarchyMeaning;
 import org.hl7.fhir.r4.model.CodeSystem.ConceptDefinitionComponent;
 import org.hl7.fhir.r4.model.CodeSystem.ConceptDefinitionDesignationComponent;
+import org.hl7.fhir.r4.model.CodeType;
+import org.hl7.fhir.r4.model.Constants;
 import org.hl7.fhir.r4.model.ContactDetail;
 import org.hl7.fhir.r4.model.ContactPoint.ContactPointSystem;
 import org.hl7.fhir.r4.model.Enumerations.PublicationStatus;
@@ -31,31 +32,25 @@ import org.hl7.fhir.r4.model.ValueSet;
 import org.hl7.fhir.r4.model.ValueSet.ValueSetComposeComponent;
 import org.hl7.fhir.r4.terminologies.ValueSetUtilities;
 import org.hl7.fhir.r4.utils.ToolingExtensions;
-import org.hl7.fhir.igtools.spreadsheets.CodeSystemConvertor;
-import org.hl7.fhir.igtools.spreadsheets.TypeRef;
+import org.hl7.fhir.utilities.StandardsStatus;
+import org.hl7.fhir.utilities.TranslationServices;
 import org.hl7.fhir.utilities.Utilities;
-import org.hl7.fhir.utilities.xml.XMLUtil;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
-import org.xmlpull.v1.builder.XmlUnexpandedEntityReference;
 
 public class ValueSetGenerator {
 
   private Definitions definitions;
   private String version;
   private Calendar genDate;
-  private Document translations; 
+  private TranslationServices translator; 
+  
 
-  public ValueSetGenerator(Definitions definitions, String version, Calendar genDate, String folder) throws ParserConfigurationException, SAXException, IOException {
+  public ValueSetGenerator(Definitions definitions, String version, Calendar genDate, TranslationServices translator) throws ParserConfigurationException, SAXException, IOException {
     super();
     this.definitions = definitions;
     this.version = version;
     this.genDate = genDate;
-    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-    factory.setNamespaceAware(false);
-    DocumentBuilder builder = factory.newDocumentBuilder();
-    translations = builder.parse(new File(Utilities.path(folder, "..", "..", "implementations", "translations.xml")));
+    this.translator = translator;
   }
 
   public void check(ValueSet vs) throws Exception {
@@ -81,7 +76,13 @@ public class ValueSetGenerator {
       vs.setCompose(new ValueSetComposeComponent());
     vs.getCompose().addInclude().setSystem("http://hl7.org/fhir/data-types");
     vs.setUserData("filename", "valueset-"+vs.getId());
-    vs.setUserData("committee", "fhir");
+    if (!vs.hasExtension(ToolingExtensions.EXT_WORKGROUP)) {
+      vs.addExtension().setUrl(ToolingExtensions.EXT_WORKGROUP).setValue(new CodeType("fhir"));
+    } else {
+      String ec = ToolingExtensions.readStringExtension(vs, ToolingExtensions.EXT_WORKGROUP);
+      if (!ec.equals("fhir"))
+        System.out.println("ValueSet "+vs.getUrl()+" WG mismatch 6: is "+ec+", want to set to "+"fhir");
+    }     
     vs.setUserData("path", "valueset-"+vs.getId()+".html");
     
     CodeSystem cs = new CodeSystem();
@@ -112,6 +113,27 @@ public class ValueSetGenerator {
       }
     }
     ToolingExtensions.addCSComment(cs.addConcept().setCode("xhtml").setDisplay("XHTML").setDefinition("XHTML format, as defined by W3C, but restricted usage (mainly, no active content)"), "Special case: xhtml can only be used in the narrative Data Type");
+    markSpecialStatus(vs, cs);
+  }
+
+//  private String version() {
+//    return Constants.VERSION.substring(0, Constants.VERSION.lastIndexOf("."));
+//  }
+
+  private static final String SPECIAL_STATUS_NOTE = "This {name} is normative - it is generated based on the information defined in this specification. "+
+    "The definition will remain fixed  across versions, but the actual contents will change from version to version";
+  
+  private void markSpecialStatus(ValueSet vs, CodeSystem cs) {
+    ToolingExtensions.setStringExtension(vs, "http://hl7.org/fhir/StructureDefinition/valueset-special-status", SPECIAL_STATUS_NOTE.replaceAll("\\{name\\}", "Value Set"));
+    ToolingExtensions.setStandardsStatus(vs, StandardsStatus.NORMATIVE);
+    ToolingExtensions.addIntegerExtension(vs, ToolingExtensions.EXT_FMM_LEVEL, 5);
+    ToolingExtensions.setCodeExtension(vs, ToolingExtensions.EXT_WORKGROUP, "fhir");
+    if (cs != null) {
+      ToolingExtensions.setStringExtension(cs, "http://hl7.org/fhir/StructureDefinition/valueset-special-status", SPECIAL_STATUS_NOTE.replaceAll("\\{name\\}", "Code System"));
+      ToolingExtensions.setStandardsStatus(cs, StandardsStatus.NORMATIVE);
+      ToolingExtensions.addIntegerExtension(cs, ToolingExtensions.EXT_FMM_LEVEL, 5);
+      ToolingExtensions.setCodeExtension(cs, ToolingExtensions.EXT_WORKGROUP, "fhir");
+    }    
   }
 
   private void genResourceTypes(ValueSet vs) {
@@ -119,7 +141,13 @@ public class ValueSetGenerator {
       vs.setCompose(new ValueSetComposeComponent());
     vs.getCompose().addInclude().setSystem("http://hl7.org/fhir/resource-types");
     vs.setUserData("filename", "valueset-"+vs.getId());
-    vs.setUserData("committee", "fhir");
+    if (!vs.hasExtension(ToolingExtensions.EXT_WORKGROUP)) {
+      vs.addExtension().setUrl(ToolingExtensions.EXT_WORKGROUP).setValue(new CodeType("fhir"));
+    } else {
+      String ec = ToolingExtensions.readStringExtension(vs, ToolingExtensions.EXT_WORKGROUP);
+      if (!ec.equals("fhir"))
+        System.out.println("ValueSet "+vs.getUrl()+" WG mismatch 7: is "+ec+", want to set to "+"fhir");
+    }     
     vs.setUserData("path", "valueset-"+vs.getId()+".html");
     
     CodeSystem cs = new CodeSystem();
@@ -137,37 +165,25 @@ public class ValueSetGenerator {
     for (String s : codes) {
       DefinedCode rd = definitions.getKnownResources().get(s);
       ConceptDefinitionComponent c = cs.addConcept();
-      Element t;
+      Map<String, String> t;
       if (rd == null) {
-        t = getTranslations(s);
+        t = translator.translations(s);
         c.setCode(s);
         c.setDisplay(definitions.getBaseResources().get(s).getName());
         c.setDefinition((definitions.getBaseResources().get(s).isAbstract() ? "--- Abstract Type! ---" : "")+ definitions.getBaseResources().get(s).getDefinition());
       }  else {
-        t = getTranslations(rd.getCode());
+        t = translator.translations(rd.getCode());
         c.setCode(rd.getCode());
         c.setDisplay(rd.getCode());
         c.setDefinition(rd.getDefinition());
       }
       if (t != null) {
-        Element e = XMLUtil.getFirstChild(t);
-        while (e != null) {
-          c.addDesignation().setLanguage(e.getAttribute("lang")).setValue(e.getTextContent());
-          e = XMLUtil.getNextSibling(e);
-        }
+        for (String l : t.keySet())
+          c.addDesignation().setLanguage(l).setValue(t.get(l)).getUse().setSystem("http://terminology.hl7.org/CodeSystem/designation-usage").setCode("display");
       }
     }
 
-  }
-
-  private Element getTranslations(String code) {
-    Element e = XMLUtil.getFirstChild(translations.getDocumentElement());
-    while (e != null) {
-      if (code.equals(e.getAttribute("id")))
-        return e;
-      e = XMLUtil.getNextSibling(e);
-    }
-    return null;
+    markSpecialStatus(vs, cs);
   }
 
   private void genAbstractTypes(ValueSet vs) {
@@ -175,7 +191,13 @@ public class ValueSetGenerator {
       vs.setCompose(new ValueSetComposeComponent());
     vs.getCompose().addInclude().setSystem("http://hl7.org/fhir/abstract-types");
     vs.setUserData("filename", "valueset-"+vs.getId());
-    vs.setUserData("committee", "fhir");
+    if (!vs.hasExtension(ToolingExtensions.EXT_WORKGROUP)) {
+      vs.addExtension().setUrl(ToolingExtensions.EXT_WORKGROUP).setValue(new CodeType("fhir"));
+    } else {
+      String ec = ToolingExtensions.readStringExtension(vs, ToolingExtensions.EXT_WORKGROUP);
+      if (!ec.equals("fhir"))
+        System.out.println("ValueSet "+vs.getUrl()+" WG mismatch 8: is "+ec+", want to set to "+"fhir");
+    }     
     vs.setUserData("path", "valueset-"+vs.getId()+".html");
     
     CodeSystem cs = new CodeSystem();
@@ -190,6 +212,7 @@ public class ValueSetGenerator {
 
     cs.addConcept().setCode("Type").setDisplay("Type").setDefinition("A place holder that means any kind of data type");
     cs.addConcept().setCode("Any").setDisplay("Any").setDefinition("A place holder that means any kind of resource");
+    markSpecialStatus(vs, cs);
   }
 
   private void genDefinedTypes(ValueSet vs, boolean doAbstract) throws Exception {
@@ -200,8 +223,15 @@ public class ValueSetGenerator {
     if (doAbstract)
       compose.addInclude().setSystem("http://hl7.org/fhir/abstract-types");
     vs.setUserData("filename", "valueset-"+vs.getId());
-    vs.setUserData("committee", "fhir");
+    if (!vs.hasExtension(ToolingExtensions.EXT_WORKGROUP)) {
+      vs.addExtension().setUrl(ToolingExtensions.EXT_WORKGROUP).setValue(new CodeType("fhir"));
+    } else {
+      String ec = ToolingExtensions.readStringExtension(vs, ToolingExtensions.EXT_WORKGROUP);
+      if (!ec.equals("fhir"))
+        System.out.println("ValueSet "+vs.getUrl()+" WG mismatch 9: is "+ec+", want to set to "+"fhir");
+    }     
     vs.setUserData("path", "valueset-"+vs.getId()+".html");
+    markSpecialStatus(vs, null);
   }
 
   private void genMessageEvents(ValueSet vs) {
@@ -209,7 +239,13 @@ public class ValueSetGenerator {
       vs.setCompose(new ValueSetComposeComponent());
     vs.getCompose().addInclude().setSystem("http://hl7.org/fhir/message-events");
     vs.setUserData("filename", "valueset-"+vs.getId());
-    vs.setUserData("committee", "fhir");
+    if (!vs.hasExtension(ToolingExtensions.EXT_WORKGROUP)) {
+      vs.addExtension().setUrl(ToolingExtensions.EXT_WORKGROUP).setValue(new CodeType("fhir"));
+    } else {
+      String ec = ToolingExtensions.readStringExtension(vs, ToolingExtensions.EXT_WORKGROUP);
+      if (!ec.equals("fhir"))
+        System.out.println("ValueSet "+vs.getUrl()+" WG mismatch 10: is "+ec+", want to set to "+"fhir");
+    }     
     vs.setUserData("path", "valueset-"+vs.getId()+".html");
     
     CodeSystem cs = new CodeSystem();
@@ -232,6 +268,7 @@ public class ValueSetGenerator {
       c.setDisplay(transform(e.getCode(), e.getTitle()));
       c.setDefinition(e.getDefinition());
     }
+    markSpecialStatus(vs, cs);
   }
 
   
@@ -253,6 +290,8 @@ public class ValueSetGenerator {
       vs.setExperimental(false);
     if (!vs.hasName())
       vs.setName(bs.getName());
+    if (!vs.hasTitle())
+      vs.setTitle(bs.getName());
     if (!vs.hasPublisher())
       vs.setPublisher("HL7 (FHIR Project)");
     if (!vs.hasContact()) {
@@ -275,8 +314,8 @@ public class ValueSetGenerator {
   }
   
   private String checkV3Mapping(String value) {
-    if (value.startsWith("http://hl7.org/fhir/ValueSet/v3-"))
-      return value.substring("http://hl7.org/fhir/ValueSet/v3-".length());
+    if (value.startsWith("http://terminology.hl7.org/ValueSet/v3-"))
+      return value.substring("http://terminology.hl7.org/ValueSet/v3-".length());
     else
       return value;
   }
@@ -288,11 +327,19 @@ public class ValueSetGenerator {
     cd.setBindingMethod(BindingMethod.ValueSet);
     vs.setId("operation-outcome");
     vs.setUrl("http://hl7.org/fhir/ValueSet/"+vs.getId());
-    vs.setName("Operation Outcome Codes");
+    vs.setName("OperationOutcomeCodes");
+    vs.setTitle("Operation Outcome Codes");
     vs.setPublisher("HL7 (FHIR Project)");
-    
+    vs.setVersion(Constants.VERSION);
+
     vs.setUserData("filename", "valueset-"+vs.getId());
-    vs.setUserData("committee", "fhir");
+    if (!vs.hasExtension(ToolingExtensions.EXT_WORKGROUP)) {
+      vs.addExtension().setUrl(ToolingExtensions.EXT_WORKGROUP).setValue(new CodeType("fhir"));
+    } else {
+      String ec = ToolingExtensions.readStringExtension(vs, ToolingExtensions.EXT_WORKGROUP);
+      if (!ec.equals("fhir"))
+        System.out.println("ValueSet "+vs.getUrl()+" WG mismatch 11: is "+ec+", want to set to "+"fhir");
+    }     
     vs.setUserData("path", "valueset-"+vs.getId()+".html");
     
     ContactDetail c = vs.addContact();
@@ -302,42 +349,39 @@ public class ValueSetGenerator {
     vs.setStatus(PublicationStatus.DRAFT);
     if (!vs.hasCompose())
       vs.setCompose(new ValueSetComposeComponent());
-    vs.getCompose().addInclude().setSystem("http://hl7.org/fhir/operation-outcome");
+    vs.getCompose().addInclude().setSystem("http://terminology.hl7.org/CodeSystem/operation-outcome");
 
     CodeSystem cs = new CodeSystem();
-    Element n = XMLUtil.getFirstChild(translations.getDocumentElement());
     cs.setHierarchyMeaning(CodeSystemHierarchyMeaning.ISA);
-    while (n != null) {
-      if ("true".equals(n.getAttribute("ecode"))) {
-        String code = n.getAttribute("id");
-        Map<String, String> langs = new HashMap<String, String>();
-        Element l = XMLUtil.getFirstChild(n);
-        while (l != null) {
-          langs.put(l.getAttribute("lang"), l.getTextContent());
-          l = XMLUtil.getNextSibling(l);
-        }
-        if (langs.containsKey("en")) {
-          ConceptDefinitionComponent cv = cs.addConcept();
-          cv.setCode(code);
-          cv.setDisplay(langs.get("en"));
-          for (String lang : langs.keySet()) {
-            if (!lang.equals("en")) {
-              String value = langs.get(lang);
-              ConceptDefinitionDesignationComponent dc = cv.addDesignation();
-              dc.setLanguage(lang);
-              dc.setValue(value);
-            }
-          }
+    Set<String> codes = translator.listTranslations("ecode");
+    for (String s : sorted(codes)) {
+      Map<String, String> langs = translator.translations(s);
+      ConceptDefinitionComponent cv = cs.addConcept();
+      cv.setCode(s);
+      cv.setDisplay(langs.get("en"));
+      for (String lang : langs.keySet()) {
+        if (!lang.equals("en")) {
+          String value = langs.get(lang);
+          ConceptDefinitionDesignationComponent dc = cv.addDesignation();
+          dc.setLanguage(lang);
+          dc.setValue(value);
+          dc.getUse().setSystem("http://terminology.hl7.org/CodeSystem/designation-usage").setCode("display");
         }
       }
-      n = XMLUtil.getNextSibling(n);
     }
     CodeSystemConvertor.populate(cs, vs);
-    cs.setUrl("http://hl7.org/fhir/operation-outcome");
+    cs.setUrl("http://terminology.hl7.org/CodeSystem/operation-outcome");
     cs.setVersion(version);
     cs.setCaseSensitive(true);
     cs.setContent(CodeSystemContentMode.COMPLETE);
     definitions.getCodeSystems().put(cs.getUrl(), cs);
+  }
+
+  private List<String> sorted(Set<String> keys) {
+    List<String> sl = new ArrayList<String>();
+    sl.addAll(keys);
+    Collections.sort(sl);
+    return sl;
   }
 
 

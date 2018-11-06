@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <Contract xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xsi:schemaLocation="http://hl7.org/fhir ../../schema/contract.xsd">
    <id value="INS-101"/>
@@ -20,9 +20,13 @@
       <start value="2017-01-01"/>
    </applies>
    
+   <subject>
+      <reference value="Patient/1"/>
+   </subject>
+   
    <type>
       <coding>
-         <system value="http://hl7.org/fhir/contracttypecodes"/>
+         <system value="http://terminology.hl7.org/CodeSystem/contract-type"/>
          <code value="healthinsurance"/>
          <display value="Health Insurance"/>
       </coding>
@@ -33,13 +37,15 @@
          <text value="The benefits, limitations, exclusions and other coverage provisions in this booklet are subject to the terms of our contract with the Group. This booklet is a part of that contract, which is on file in the Group's office."/>
       </offer>
       <asset>
-         <class>
+         <type>
+            <coding>
             <system value="urn:ietf:rfc:3986"/>
             <code value="RicardianContract"/>
-         </class>
-         <code>
-            <display value="sample"/>
-         </code>
+         </coding>
+         </type>
+         <subtype>
+            <text value="sample"/>
+         </subtype>
          <period>
             <start value="2017-06-01"/>
          </period>
@@ -57,15 +63,13 @@
             </quantity>
             <unitPrice>
                <value value="200.00"/>
-               <system value="urn:iso:std:iso:4217"/>
-               <code value="CAD"/>
+               <currency value="CAD"/>
             </unitPrice>
             <factor value="1.0"/>
             <points value="1.0"/>
             <net>
                <value value="200.00"/>
-               <system value="urn:iso:std:iso:4217"/>
-               <code value="CAD"/>
+               <currency value="CAD"/>
             </net>
          </valuedItem>
       </asset>

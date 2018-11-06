@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <ValueSet xmlns="http://hl7.org/fhir">
   <meta>
@@ -16,7 +16,7 @@
   <description value="This value set defines a set of codes that can be used to indicate how an individual participates in an encounter."/>
   <compose>
     <include>
-      <system value="http://hl7.org/fhir/v3/ParticipationType"/>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationType"/>
       <filter>
         <property value="concept"/>
         <op value="is-a"/>
@@ -24,7 +24,7 @@
       </filter>
     </include>
     <include>
-      <system value="http://hl7.org/fhir/v3/ParticipationType"/>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationType"/>
       <concept>
         <code value="SPRF"/>
       </concept>
@@ -36,10 +36,10 @@
       </concept>
     </include>
     <include>
-      <system value="http://hl7.org/fhir/participant-type"/>
+      <system value="http://terminology.hl7.org/CodeSystem/participant-type"/>
     </include>
     <exclude>
-      <system value="http://hl7.org/fhir/v3/ParticipationType"/>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationType"/>
       <concept>
         <code value="_ParticipationAncillary"/>
       </concept>

@@ -8,16 +8,16 @@
 <body>
 [%file newnavbar%]
 
-<div class="col-9">
+<div class="col-12">
 
 <h2>FHIRPath Patch</h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 2</td><td id="ballot"><a href="versions.html#levels">Ballot Status</a>: <a href="versions.html#std-process">Trial Use</a></td></tr></table>
+<table class="colstu"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 2</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Trial Use</a></td></tr></table>
 
 <p>
-This page documents how the <a href="parameters.html">Parameters</a> resource is used to define a set of <a href="http://hl7.org/fhirpath">FHIRPath</a> based patch operations.
+This page documents how the <a href="parameters.html">Parameters</a> resource is used to define a set of <a href="fhirpath.html">FHIRPath</a> based patch operations.
 </p>
 
-<a name="concept"> </a>
+<a name="concept"></a>
 <h3>Conceptual FHIRPath Operations</h3>
 
 <p>
@@ -43,7 +43,7 @@ This table documents the FHIRPath operations that may be used to specify changes
   <td></td>
   <td></td>
   <td></td>
-  <td>The content will be appended to the element identified in the path, using the name specified</td>
+  <td>The content will be appended to the element identified in the path, using the name specified. Add can used for non-repeating elements as long as they do not already exist</td>
  </tr>
  <tr>
   <td>insert</td>
@@ -53,11 +53,12 @@ This table documents the FHIRPath operations that may be used to specify changes
   <td>index at which to insert</td>
   <td></td>
   <td></td>
-  <td>The content will be inserted into the nominated list at the index specified (0 based). The index must be equal or less than the number of elements in the list</td>
+  <td>The content will be inserted into the nominated list at the index specified (0 based). The index is mandatory, and must be equal or less than the number of elements in the list. 
+    Note: <code>add</code> is easier than <code>insert</code> at the end of the list</td>
  </tr>
  <tr>
   <td>delete</td>
-  <td>Path of the element to delete</td>
+  <td>Path of the element to delete (if found)</td>
   <td></td>
   <td></td>
   <td></td>
@@ -90,15 +91,18 @@ This table documents the FHIRPath operations that may be used to specify changes
 There are a few base rules that apply for all operations:
 </p>
 <ul>
- <li>The FHIRPath statement must return elements from the resource being modified.
-     e.g. a FHIRPath could cross resources like <code>Observation.subject.resolve().identifier</code>.
-     Servers SHALL not allow patch operations to alter other resources than the nominated target, and SHOULD return an error if the patch operation tries</li>
+ <li>The FHIRPath statement must return a single element</li> 
+ <li>The FHIRPath statement SHALL NOT cross resources using the <code>resolve()</code> function (e.g. like <code>Observation.subject.resolve().identifier</code>). 
+     <code>resolve()</code> SHALL only be used to refer to contained resource within the resource being patched.
+     Servers SHALL NOT allow patch operations to alter other resources than the nominated target, and SHOULD return an error if the patch operation tries</li>
  <li>The type of the value must be correct for the place at which it will be added/inserted. Servers SHALL return an error if the type is wrong</li>
  <li>Servers SHALL return an error if the outcome of the patch operation is a not a valid resource</li>
+ <li>Except for the delete operation, it is an error if no element matches the specified path</li>
+ <li>Operations are applied in order, with each operation applied to the result of the previous patch operation</li>
 </ul>
 
 
-<a name="format"> </a>
+<a name="format"></a>
 <h3>Parameters Format</h3>
 
 <p>
@@ -115,19 +119,19 @@ The FHIRPath patch operations are encoded in a <a href="parameters.html">Paramet
   <td>Type</td>
  </tr>
  <tr>
-  <td>Type</td>
+  <td>type</td>
   <td>code</td>
  </tr>
  <tr>
-  <td>Path</td>
+  <td>path</td>
   <td>string</td>
  </tr>
  <tr>
-  <td>Name</td>
+  <td>name</td>
   <td>string</td>
  </tr>
  <tr>
-  <td>Value</td>
+  <td>value</td>
   <td><a href="datatypes.html#open">*</a></td>
  </tr>
  <tr>
@@ -173,7 +177,7 @@ Here is an example of adding an element:
 </pre>
 </div>
 
-<a name="anonymous"> </a>
+<a name="anonymous"></a>
 <h4>Anonymous Types</h4>
 <p>
 Only some named data types (see <a href="datatypes.html#open">the list</a>) are allowed to be used

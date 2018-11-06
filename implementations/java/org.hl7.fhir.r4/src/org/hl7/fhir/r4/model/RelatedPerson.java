@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Fri, Aug 11, 2017 07:23+1000 for FHIR v3.1.0
+// Generated on Mon, Nov 5, 2018 09:03+1100 for FHIR v3.6.0
 
 import java.util.*;
 
@@ -46,8 +46,234 @@ import org.hl7.fhir.exceptions.FHIRException;
 /**
  * Information about a person that is involved in the care for a patient, but who is not the target of healthcare, nor has a formal responsibility in the care process.
  */
-@ResourceDef(name="RelatedPerson", profile="http://hl7.org/fhir/Profile/RelatedPerson")
+@ResourceDef(name="RelatedPerson", profile="http://hl7.org/fhir/StructureDefinition/RelatedPerson")
 public class RelatedPerson extends DomainResource {
+
+    @Block()
+    public static class RelatedPersonCommunicationComponent extends BackboneElement implements IBaseBackboneElement {
+        /**
+         * The ISO-639-1 alpha 2 code in lower case for the language, optionally followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in upper case; e.g. "en" for English, or "en-US" for American English versus "en-EN" for England English.
+         */
+        @Child(name = "language", type = {CodeableConcept.class}, order=1, min=1, max=1, modifier=false, summary=false)
+        @Description(shortDefinition="The language which can be used to communicate with the patient about his or her health", formalDefinition="The ISO-639-1 alpha 2 code in lower case for the language, optionally followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in upper case; e.g. \"en\" for English, or \"en-US\" for American English versus \"en-EN\" for England English." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/languages")
+        protected CodeableConcept language;
+
+        /**
+         * Indicates whether or not the patient prefers this language (over other languages he masters up a certain level).
+         */
+        @Child(name = "preferred", type = {BooleanType.class}, order=2, min=0, max=1, modifier=false, summary=false)
+        @Description(shortDefinition="Language preference indicator", formalDefinition="Indicates whether or not the patient prefers this language (over other languages he masters up a certain level)." )
+        protected BooleanType preferred;
+
+        private static final long serialVersionUID = 633792918L;
+
+    /**
+     * Constructor
+     */
+      public RelatedPersonCommunicationComponent() {
+        super();
+      }
+
+    /**
+     * Constructor
+     */
+      public RelatedPersonCommunicationComponent(CodeableConcept language) {
+        super();
+        this.language = language;
+      }
+
+        /**
+         * @return {@link #language} (The ISO-639-1 alpha 2 code in lower case for the language, optionally followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in upper case; e.g. "en" for English, or "en-US" for American English versus "en-EN" for England English.)
+         */
+        public CodeableConcept getLanguage() { 
+          if (this.language == null)
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create RelatedPersonCommunicationComponent.language");
+            else if (Configuration.doAutoCreate())
+              this.language = new CodeableConcept(); // cc
+          return this.language;
+        }
+
+        public boolean hasLanguage() { 
+          return this.language != null && !this.language.isEmpty();
+        }
+
+        /**
+         * @param value {@link #language} (The ISO-639-1 alpha 2 code in lower case for the language, optionally followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in upper case; e.g. "en" for English, or "en-US" for American English versus "en-EN" for England English.)
+         */
+        public RelatedPersonCommunicationComponent setLanguage(CodeableConcept value) { 
+          this.language = value;
+          return this;
+        }
+
+        /**
+         * @return {@link #preferred} (Indicates whether or not the patient prefers this language (over other languages he masters up a certain level).). This is the underlying object with id, value and extensions. The accessor "getPreferred" gives direct access to the value
+         */
+        public BooleanType getPreferredElement() { 
+          if (this.preferred == null)
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create RelatedPersonCommunicationComponent.preferred");
+            else if (Configuration.doAutoCreate())
+              this.preferred = new BooleanType(); // bb
+          return this.preferred;
+        }
+
+        public boolean hasPreferredElement() { 
+          return this.preferred != null && !this.preferred.isEmpty();
+        }
+
+        public boolean hasPreferred() { 
+          return this.preferred != null && !this.preferred.isEmpty();
+        }
+
+        /**
+         * @param value {@link #preferred} (Indicates whether or not the patient prefers this language (over other languages he masters up a certain level).). This is the underlying object with id, value and extensions. The accessor "getPreferred" gives direct access to the value
+         */
+        public RelatedPersonCommunicationComponent setPreferredElement(BooleanType value) { 
+          this.preferred = value;
+          return this;
+        }
+
+        /**
+         * @return Indicates whether or not the patient prefers this language (over other languages he masters up a certain level).
+         */
+        public boolean getPreferred() { 
+          return this.preferred == null || this.preferred.isEmpty() ? false : this.preferred.getValue();
+        }
+
+        /**
+         * @param value Indicates whether or not the patient prefers this language (over other languages he masters up a certain level).
+         */
+        public RelatedPersonCommunicationComponent setPreferred(boolean value) { 
+            if (this.preferred == null)
+              this.preferred = new BooleanType();
+            this.preferred.setValue(value);
+          return this;
+        }
+
+        protected void listChildren(List<Property> children) {
+          super.listChildren(children);
+          children.add(new Property("language", "CodeableConcept", "The ISO-639-1 alpha 2 code in lower case for the language, optionally followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in upper case; e.g. \"en\" for English, or \"en-US\" for American English versus \"en-EN\" for England English.", 0, 1, language));
+          children.add(new Property("preferred", "boolean", "Indicates whether or not the patient prefers this language (over other languages he masters up a certain level).", 0, 1, preferred));
+        }
+
+        @Override
+        public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
+          switch (_hash) {
+          case -1613589672: /*language*/  return new Property("language", "CodeableConcept", "The ISO-639-1 alpha 2 code in lower case for the language, optionally followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in upper case; e.g. \"en\" for English, or \"en-US\" for American English versus \"en-EN\" for England English.", 0, 1, language);
+          case -1294005119: /*preferred*/  return new Property("preferred", "boolean", "Indicates whether or not the patient prefers this language (over other languages he masters up a certain level).", 0, 1, preferred);
+          default: return super.getNamedProperty(_hash, _name, _checkValid);
+          }
+
+        }
+
+      @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case -1613589672: /*language*/ return this.language == null ? new Base[0] : new Base[] {this.language}; // CodeableConcept
+        case -1294005119: /*preferred*/ return this.preferred == null ? new Base[0] : new Base[] {this.preferred}; // BooleanType
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public Base setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case -1613589672: // language
+          this.language = castToCodeableConcept(value); // CodeableConcept
+          return value;
+        case -1294005119: // preferred
+          this.preferred = castToBoolean(value); // BooleanType
+          return value;
+        default: return super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
+      public Base setProperty(String name, Base value) throws FHIRException {
+        if (name.equals("language")) {
+          this.language = castToCodeableConcept(value); // CodeableConcept
+        } else if (name.equals("preferred")) {
+          this.preferred = castToBoolean(value); // BooleanType
+        } else
+          return super.setProperty(name, value);
+        return value;
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case -1613589672:  return getLanguage(); 
+        case -1294005119:  return getPreferredElement();
+        default: return super.makeProperty(hash, name);
+        }
+
+      }
+
+      @Override
+      public String[] getTypesForProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case -1613589672: /*language*/ return new String[] {"CodeableConcept"};
+        case -1294005119: /*preferred*/ return new String[] {"boolean"};
+        default: return super.getTypesForProperty(hash, name);
+        }
+
+      }
+
+      @Override
+      public Base addChild(String name) throws FHIRException {
+        if (name.equals("language")) {
+          this.language = new CodeableConcept();
+          return this.language;
+        }
+        else if (name.equals("preferred")) {
+          throw new FHIRException("Cannot call addChild on a primitive type RelatedPerson.preferred");
+        }
+        else
+          return super.addChild(name);
+      }
+
+      public RelatedPersonCommunicationComponent copy() {
+        RelatedPersonCommunicationComponent dst = new RelatedPersonCommunicationComponent();
+        copyValues(dst);
+        dst.language = language == null ? null : language.copy();
+        dst.preferred = preferred == null ? null : preferred.copy();
+        return dst;
+      }
+
+      @Override
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
+          return false;
+        if (!(other_ instanceof RelatedPersonCommunicationComponent))
+          return false;
+        RelatedPersonCommunicationComponent o = (RelatedPersonCommunicationComponent) other_;
+        return compareDeep(language, o.language, true) && compareDeep(preferred, o.preferred, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
+          return false;
+        if (!(other_ instanceof RelatedPersonCommunicationComponent))
+          return false;
+        RelatedPersonCommunicationComponent o = (RelatedPersonCommunicationComponent) other_;
+        return compareValues(preferred, o.preferred, true);
+      }
+
+      public boolean isEmpty() {
+        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(language, preferred);
+      }
+
+  public String fhirType() {
+    return "RelatedPerson.communication";
+
+  }
+
+  }
 
     /**
      * Identifier for a person within a particular scope.
@@ -78,10 +304,10 @@ public class RelatedPerson extends DomainResource {
     /**
      * The nature of the relationship between a patient and the related person.
      */
-    @Child(name = "relationship", type = {CodeableConcept.class}, order=3, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "relationship", type = {CodeableConcept.class}, order=3, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="The nature of the relationship", formalDefinition="The nature of the relationship between a patient and the related person." )
     @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype")
-    protected CodeableConcept relationship;
+    protected List<CodeableConcept> relationship;
 
     /**
      * A name associated with the person.
@@ -127,13 +353,20 @@ public class RelatedPerson extends DomainResource {
     protected List<Attachment> photo;
 
     /**
-     * The period of time that this relationship is considered to be valid. If there are no dates defined, then the interval is unknown.
+     * The period of time during which this relationship is or was active. If there are no dates defined, then the interval is unknown.
      */
     @Child(name = "period", type = {Period.class}, order=10, min=0, max=1, modifier=false, summary=false)
-    @Description(shortDefinition="Period of time that this relationship is considered valid", formalDefinition="The period of time that this relationship is considered to be valid. If there are no dates defined, then the interval is unknown." )
+    @Description(shortDefinition="Period of time that this relationship is considered valid", formalDefinition="The period of time during which this relationship is or was active. If there are no dates defined, then the interval is unknown." )
     protected Period period;
 
-    private static final long serialVersionUID = 1633785157L;
+    /**
+     * A language which may be used to communicate with about the patient's health.
+     */
+    @Child(name = "communication", type = {}, order=11, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Description(shortDefinition="A language which may be used to communicate with about the patient's health", formalDefinition="A language which may be used to communicate with about the patient's health." )
+    protected List<RelatedPersonCommunicationComponent> communication;
+
+    private static final long serialVersionUID = -1396330390L;
 
   /**
    * Constructor
@@ -295,25 +528,54 @@ public class RelatedPerson extends DomainResource {
     /**
      * @return {@link #relationship} (The nature of the relationship between a patient and the related person.)
      */
-    public CodeableConcept getRelationship() { 
+    public List<CodeableConcept> getRelationship() { 
       if (this.relationship == null)
-        if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create RelatedPerson.relationship");
-        else if (Configuration.doAutoCreate())
-          this.relationship = new CodeableConcept(); // cc
+        this.relationship = new ArrayList<CodeableConcept>();
       return this.relationship;
     }
 
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public RelatedPerson setRelationship(List<CodeableConcept> theRelationship) { 
+      this.relationship = theRelationship;
+      return this;
+    }
+
     public boolean hasRelationship() { 
-      return this.relationship != null && !this.relationship.isEmpty();
+      if (this.relationship == null)
+        return false;
+      for (CodeableConcept item : this.relationship)
+        if (!item.isEmpty())
+          return true;
+      return false;
+    }
+
+    public CodeableConcept addRelationship() { //3
+      CodeableConcept t = new CodeableConcept();
+      if (this.relationship == null)
+        this.relationship = new ArrayList<CodeableConcept>();
+      this.relationship.add(t);
+      return t;
+    }
+
+    public RelatedPerson addRelationship(CodeableConcept t) { //3
+      if (t == null)
+        return this;
+      if (this.relationship == null)
+        this.relationship = new ArrayList<CodeableConcept>();
+      this.relationship.add(t);
+      return this;
     }
 
     /**
-     * @param value {@link #relationship} (The nature of the relationship between a patient and the related person.)
+     * @return The first repetition of repeating field {@link #relationship}, creating it if it does not already exist
      */
-    public RelatedPerson setRelationship(CodeableConcept value) { 
-      this.relationship = value;
-      return this;
+    public CodeableConcept getRelationshipFirstRep() { 
+      if (getRelationship().isEmpty()) {
+        addRelationship();
+      }
+      return getRelationship().get(0);
     }
 
     /**
@@ -627,7 +889,7 @@ public class RelatedPerson extends DomainResource {
     }
 
     /**
-     * @return {@link #period} (The period of time that this relationship is considered to be valid. If there are no dates defined, then the interval is unknown.)
+     * @return {@link #period} (The period of time during which this relationship is or was active. If there are no dates defined, then the interval is unknown.)
      */
     public Period getPeriod() { 
       if (this.period == null)
@@ -643,11 +905,64 @@ public class RelatedPerson extends DomainResource {
     }
 
     /**
-     * @param value {@link #period} (The period of time that this relationship is considered to be valid. If there are no dates defined, then the interval is unknown.)
+     * @param value {@link #period} (The period of time during which this relationship is or was active. If there are no dates defined, then the interval is unknown.)
      */
     public RelatedPerson setPeriod(Period value) { 
       this.period = value;
       return this;
+    }
+
+    /**
+     * @return {@link #communication} (A language which may be used to communicate with about the patient's health.)
+     */
+    public List<RelatedPersonCommunicationComponent> getCommunication() { 
+      if (this.communication == null)
+        this.communication = new ArrayList<RelatedPersonCommunicationComponent>();
+      return this.communication;
+    }
+
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public RelatedPerson setCommunication(List<RelatedPersonCommunicationComponent> theCommunication) { 
+      this.communication = theCommunication;
+      return this;
+    }
+
+    public boolean hasCommunication() { 
+      if (this.communication == null)
+        return false;
+      for (RelatedPersonCommunicationComponent item : this.communication)
+        if (!item.isEmpty())
+          return true;
+      return false;
+    }
+
+    public RelatedPersonCommunicationComponent addCommunication() { //3
+      RelatedPersonCommunicationComponent t = new RelatedPersonCommunicationComponent();
+      if (this.communication == null)
+        this.communication = new ArrayList<RelatedPersonCommunicationComponent>();
+      this.communication.add(t);
+      return t;
+    }
+
+    public RelatedPerson addCommunication(RelatedPersonCommunicationComponent t) { //3
+      if (t == null)
+        return this;
+      if (this.communication == null)
+        this.communication = new ArrayList<RelatedPersonCommunicationComponent>();
+      this.communication.add(t);
+      return this;
+    }
+
+    /**
+     * @return The first repetition of repeating field {@link #communication}, creating it if it does not already exist
+     */
+    public RelatedPersonCommunicationComponent getCommunicationFirstRep() { 
+      if (getCommunication().isEmpty()) {
+        addCommunication();
+      }
+      return getCommunication().get(0);
     }
 
       protected void listChildren(List<Property> children) {
@@ -655,14 +970,15 @@ public class RelatedPerson extends DomainResource {
         children.add(new Property("identifier", "Identifier", "Identifier for a person within a particular scope.", 0, java.lang.Integer.MAX_VALUE, identifier));
         children.add(new Property("active", "boolean", "Whether this related person record is in active use.", 0, 1, active));
         children.add(new Property("patient", "Reference(Patient)", "The patient this person is related to.", 0, 1, patient));
-        children.add(new Property("relationship", "CodeableConcept", "The nature of the relationship between a patient and the related person.", 0, 1, relationship));
+        children.add(new Property("relationship", "CodeableConcept", "The nature of the relationship between a patient and the related person.", 0, java.lang.Integer.MAX_VALUE, relationship));
         children.add(new Property("name", "HumanName", "A name associated with the person.", 0, java.lang.Integer.MAX_VALUE, name));
         children.add(new Property("telecom", "ContactPoint", "A contact detail for the person, e.g. a telephone number or an email address.", 0, java.lang.Integer.MAX_VALUE, telecom));
         children.add(new Property("gender", "code", "Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.", 0, 1, gender));
         children.add(new Property("birthDate", "date", "The date on which the related person was born.", 0, 1, birthDate));
         children.add(new Property("address", "Address", "Address where the related person can be contacted or visited.", 0, java.lang.Integer.MAX_VALUE, address));
         children.add(new Property("photo", "Attachment", "Image of the person.", 0, java.lang.Integer.MAX_VALUE, photo));
-        children.add(new Property("period", "Period", "The period of time that this relationship is considered to be valid. If there are no dates defined, then the interval is unknown.", 0, 1, period));
+        children.add(new Property("period", "Period", "The period of time during which this relationship is or was active. If there are no dates defined, then the interval is unknown.", 0, 1, period));
+        children.add(new Property("communication", "", "A language which may be used to communicate with about the patient's health.", 0, java.lang.Integer.MAX_VALUE, communication));
       }
 
       @Override
@@ -671,14 +987,15 @@ public class RelatedPerson extends DomainResource {
         case -1618432855: /*identifier*/  return new Property("identifier", "Identifier", "Identifier for a person within a particular scope.", 0, java.lang.Integer.MAX_VALUE, identifier);
         case -1422950650: /*active*/  return new Property("active", "boolean", "Whether this related person record is in active use.", 0, 1, active);
         case -791418107: /*patient*/  return new Property("patient", "Reference(Patient)", "The patient this person is related to.", 0, 1, patient);
-        case -261851592: /*relationship*/  return new Property("relationship", "CodeableConcept", "The nature of the relationship between a patient and the related person.", 0, 1, relationship);
+        case -261851592: /*relationship*/  return new Property("relationship", "CodeableConcept", "The nature of the relationship between a patient and the related person.", 0, java.lang.Integer.MAX_VALUE, relationship);
         case 3373707: /*name*/  return new Property("name", "HumanName", "A name associated with the person.", 0, java.lang.Integer.MAX_VALUE, name);
         case -1429363305: /*telecom*/  return new Property("telecom", "ContactPoint", "A contact detail for the person, e.g. a telephone number or an email address.", 0, java.lang.Integer.MAX_VALUE, telecom);
         case -1249512767: /*gender*/  return new Property("gender", "code", "Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.", 0, 1, gender);
         case -1210031859: /*birthDate*/  return new Property("birthDate", "date", "The date on which the related person was born.", 0, 1, birthDate);
         case -1147692044: /*address*/  return new Property("address", "Address", "Address where the related person can be contacted or visited.", 0, java.lang.Integer.MAX_VALUE, address);
         case 106642994: /*photo*/  return new Property("photo", "Attachment", "Image of the person.", 0, java.lang.Integer.MAX_VALUE, photo);
-        case -991726143: /*period*/  return new Property("period", "Period", "The period of time that this relationship is considered to be valid. If there are no dates defined, then the interval is unknown.", 0, 1, period);
+        case -991726143: /*period*/  return new Property("period", "Period", "The period of time during which this relationship is or was active. If there are no dates defined, then the interval is unknown.", 0, 1, period);
+        case -1035284522: /*communication*/  return new Property("communication", "", "A language which may be used to communicate with about the patient's health.", 0, java.lang.Integer.MAX_VALUE, communication);
         default: return super.getNamedProperty(_hash, _name, _checkValid);
         }
 
@@ -690,7 +1007,7 @@ public class RelatedPerson extends DomainResource {
         case -1618432855: /*identifier*/ return this.identifier == null ? new Base[0] : this.identifier.toArray(new Base[this.identifier.size()]); // Identifier
         case -1422950650: /*active*/ return this.active == null ? new Base[0] : new Base[] {this.active}; // BooleanType
         case -791418107: /*patient*/ return this.patient == null ? new Base[0] : new Base[] {this.patient}; // Reference
-        case -261851592: /*relationship*/ return this.relationship == null ? new Base[0] : new Base[] {this.relationship}; // CodeableConcept
+        case -261851592: /*relationship*/ return this.relationship == null ? new Base[0] : this.relationship.toArray(new Base[this.relationship.size()]); // CodeableConcept
         case 3373707: /*name*/ return this.name == null ? new Base[0] : this.name.toArray(new Base[this.name.size()]); // HumanName
         case -1429363305: /*telecom*/ return this.telecom == null ? new Base[0] : this.telecom.toArray(new Base[this.telecom.size()]); // ContactPoint
         case -1249512767: /*gender*/ return this.gender == null ? new Base[0] : new Base[] {this.gender}; // Enumeration<AdministrativeGender>
@@ -698,6 +1015,7 @@ public class RelatedPerson extends DomainResource {
         case -1147692044: /*address*/ return this.address == null ? new Base[0] : this.address.toArray(new Base[this.address.size()]); // Address
         case 106642994: /*photo*/ return this.photo == null ? new Base[0] : this.photo.toArray(new Base[this.photo.size()]); // Attachment
         case -991726143: /*period*/ return this.period == null ? new Base[0] : new Base[] {this.period}; // Period
+        case -1035284522: /*communication*/ return this.communication == null ? new Base[0] : this.communication.toArray(new Base[this.communication.size()]); // RelatedPersonCommunicationComponent
         default: return super.getProperty(hash, name, checkValid);
         }
 
@@ -716,7 +1034,7 @@ public class RelatedPerson extends DomainResource {
           this.patient = castToReference(value); // Reference
           return value;
         case -261851592: // relationship
-          this.relationship = castToCodeableConcept(value); // CodeableConcept
+          this.getRelationship().add(castToCodeableConcept(value)); // CodeableConcept
           return value;
         case 3373707: // name
           this.getName().add(castToHumanName(value)); // HumanName
@@ -740,6 +1058,9 @@ public class RelatedPerson extends DomainResource {
         case -991726143: // period
           this.period = castToPeriod(value); // Period
           return value;
+        case -1035284522: // communication
+          this.getCommunication().add((RelatedPersonCommunicationComponent) value); // RelatedPersonCommunicationComponent
+          return value;
         default: return super.setProperty(hash, name, value);
         }
 
@@ -754,7 +1075,7 @@ public class RelatedPerson extends DomainResource {
         } else if (name.equals("patient")) {
           this.patient = castToReference(value); // Reference
         } else if (name.equals("relationship")) {
-          this.relationship = castToCodeableConcept(value); // CodeableConcept
+          this.getRelationship().add(castToCodeableConcept(value));
         } else if (name.equals("name")) {
           this.getName().add(castToHumanName(value));
         } else if (name.equals("telecom")) {
@@ -770,6 +1091,8 @@ public class RelatedPerson extends DomainResource {
           this.getPhoto().add(castToAttachment(value));
         } else if (name.equals("period")) {
           this.period = castToPeriod(value); // Period
+        } else if (name.equals("communication")) {
+          this.getCommunication().add((RelatedPersonCommunicationComponent) value);
         } else
           return super.setProperty(name, value);
         return value;
@@ -781,7 +1104,7 @@ public class RelatedPerson extends DomainResource {
         case -1618432855:  return addIdentifier(); 
         case -1422950650:  return getActiveElement();
         case -791418107:  return getPatient(); 
-        case -261851592:  return getRelationship(); 
+        case -261851592:  return addRelationship(); 
         case 3373707:  return addName(); 
         case -1429363305:  return addTelecom(); 
         case -1249512767:  return getGenderElement();
@@ -789,6 +1112,7 @@ public class RelatedPerson extends DomainResource {
         case -1147692044:  return addAddress(); 
         case 106642994:  return addPhoto(); 
         case -991726143:  return getPeriod(); 
+        case -1035284522:  return addCommunication(); 
         default: return super.makeProperty(hash, name);
         }
 
@@ -808,6 +1132,7 @@ public class RelatedPerson extends DomainResource {
         case -1147692044: /*address*/ return new String[] {"Address"};
         case 106642994: /*photo*/ return new String[] {"Attachment"};
         case -991726143: /*period*/ return new String[] {"Period"};
+        case -1035284522: /*communication*/ return new String[] {};
         default: return super.getTypesForProperty(hash, name);
         }
 
@@ -826,8 +1151,7 @@ public class RelatedPerson extends DomainResource {
           return this.patient;
         }
         else if (name.equals("relationship")) {
-          this.relationship = new CodeableConcept();
-          return this.relationship;
+          return addRelationship();
         }
         else if (name.equals("name")) {
           return addName();
@@ -851,6 +1175,9 @@ public class RelatedPerson extends DomainResource {
           this.period = new Period();
           return this.period;
         }
+        else if (name.equals("communication")) {
+          return addCommunication();
+        }
         else
           return super.addChild(name);
       }
@@ -870,7 +1197,11 @@ public class RelatedPerson extends DomainResource {
         };
         dst.active = active == null ? null : active.copy();
         dst.patient = patient == null ? null : patient.copy();
-        dst.relationship = relationship == null ? null : relationship.copy();
+        if (relationship != null) {
+          dst.relationship = new ArrayList<CodeableConcept>();
+          for (CodeableConcept i : relationship)
+            dst.relationship.add(i.copy());
+        };
         if (name != null) {
           dst.name = new ArrayList<HumanName>();
           for (HumanName i : name)
@@ -894,6 +1225,11 @@ public class RelatedPerson extends DomainResource {
             dst.photo.add(i.copy());
         };
         dst.period = period == null ? null : period.copy();
+        if (communication != null) {
+          dst.communication = new ArrayList<RelatedPersonCommunicationComponent>();
+          for (RelatedPersonCommunicationComponent i : communication)
+            dst.communication.add(i.copy());
+        };
         return dst;
       }
 
@@ -902,32 +1238,34 @@ public class RelatedPerson extends DomainResource {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof RelatedPerson))
+        if (!(other_ instanceof RelatedPerson))
           return false;
-        RelatedPerson o = (RelatedPerson) other;
+        RelatedPerson o = (RelatedPerson) other_;
         return compareDeep(identifier, o.identifier, true) && compareDeep(active, o.active, true) && compareDeep(patient, o.patient, true)
            && compareDeep(relationship, o.relationship, true) && compareDeep(name, o.name, true) && compareDeep(telecom, o.telecom, true)
            && compareDeep(gender, o.gender, true) && compareDeep(birthDate, o.birthDate, true) && compareDeep(address, o.address, true)
-           && compareDeep(photo, o.photo, true) && compareDeep(period, o.period, true);
+           && compareDeep(photo, o.photo, true) && compareDeep(period, o.period, true) && compareDeep(communication, o.communication, true)
+          ;
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof RelatedPerson))
+        if (!(other_ instanceof RelatedPerson))
           return false;
-        RelatedPerson o = (RelatedPerson) other;
+        RelatedPerson o = (RelatedPerson) other_;
         return compareValues(active, o.active, true) && compareValues(gender, o.gender, true) && compareValues(birthDate, o.birthDate, true)
           ;
       }
 
       public boolean isEmpty() {
         return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(identifier, active, patient
-          , relationship, name, telecom, gender, birthDate, address, photo, period);
+          , relationship, name, telecom, gender, birthDate, address, photo, period, communication
+          );
       }
 
   @Override
@@ -958,17 +1296,17 @@ public class RelatedPerson extends DomainResource {
  /**
    * Search parameter: <b>address</b>
    * <p>
-   * Description: <b>A server defined search that may match any of the string fields in the Address, including line, city, state, country, postalCode, and/or text</b><br>
+   * Description: <b>A server defined search that may match any of the string fields in the Address, including line, city, district, state, country, postalCode, and/or text</b><br>
    * Type: <b>string</b><br>
    * Path: <b>RelatedPerson.address</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="address", path="RelatedPerson.address", description="A server defined search that may match any of the string fields in the Address, including line, city, state, country, postalCode, and/or text", type="string" )
+  @SearchParamDefinition(name="address", path="RelatedPerson.address", description="A server defined search that may match any of the string fields in the Address, including line, city, district, state, country, postalCode, and/or text", type="string" )
   public static final String SP_ADDRESS = "address";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>address</b>
    * <p>
-   * Description: <b>A server defined search that may match any of the string fields in the Address, including line, city, state, country, postalCode, and/or text</b><br>
+   * Description: <b>A server defined search that may match any of the string fields in the Address, including line, city, district, state, country, postalCode, and/or text</b><br>
    * Type: <b>string</b><br>
    * Path: <b>RelatedPerson.address</b><br>
    * </p>
@@ -1240,6 +1578,26 @@ public class RelatedPerson extends DomainResource {
    * </p>
    */
   public static final ca.uhn.fhir.rest.gclient.StringClientParam ADDRESS_CITY = new ca.uhn.fhir.rest.gclient.StringClientParam(SP_ADDRESS_CITY);
+
+ /**
+   * Search parameter: <b>relationship</b>
+   * <p>
+   * Description: <b>The relationship between the patient and the relatedperson</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>RelatedPerson.relationship</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="relationship", path="RelatedPerson.relationship", description="The relationship between the patient and the relatedperson", type="token" )
+  public static final String SP_RELATIONSHIP = "relationship";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>relationship</b>
+   * <p>
+   * Description: <b>The relationship between the patient and the relatedperson</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>RelatedPerson.relationship</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.TokenClientParam RELATIONSHIP = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_RELATIONSHIP);
 
  /**
    * Search parameter: <b>email</b>

@@ -19,6 +19,7 @@ import org.hl7.fhir.dstu2.model.Parameters;
 import org.hl7.fhir.dstu2.model.Parameters.ParametersParameterComponent;
 import org.hl7.fhir.dstu2.model.Reference;
 import org.hl7.fhir.dstu2.model.StringType;
+import org.hl7.fhir.dstu2.model.StructureDefinition;
 import org.hl7.fhir.dstu2.model.UriType;
 import org.hl7.fhir.dstu2.model.ValueSet;
 import org.hl7.fhir.dstu2.model.ValueSet.ConceptDefinitionComponent;
@@ -79,7 +80,7 @@ public abstract class BaseWorkerContext implements IWorkerContext {
       params.put("_limit", "10000");
       params.put("_incomplete", "true");
       params.put("profile", "http://www.healthintersections.com.au/fhir/expansion/no-details");
-      ValueSet result = txServer.expandValueset(vs, params);
+      ValueSet result = txServer.expandValueset(vs, null, params);
       return new ValueSetExpansionOutcome(result);  
     } catch (Exception e) {
       return new ValueSetExpansionOutcome("Error expanding ValueSet \""+vs.getUrl()+": "+e.getMessage());
@@ -373,6 +374,11 @@ public abstract class BaseWorkerContext implements IWorkerContext {
         return c;
     }
     return null;
+  }
+
+  @Override
+  public StructureDefinition fetchTypeDefinition(String typeName) {
+    return fetchResource(StructureDefinition.class, "http://hl7.org/fhir/StructureDefinition/"+typeName);
   }
 
 }

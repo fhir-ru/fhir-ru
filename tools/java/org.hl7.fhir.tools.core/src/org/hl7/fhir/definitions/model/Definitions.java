@@ -36,15 +36,20 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.hl7.fhir.exceptions.FHIRException;
+import org.hl7.fhir.igtools.spreadsheets.MappingSpace;
+import org.hl7.fhir.igtools.spreadsheets.TypeRef;
+import org.hl7.fhir.r4.context.IWorkerContext;
 import org.hl7.fhir.r4.model.CodeSystem;
 import org.hl7.fhir.r4.model.ConceptMap;
 import org.hl7.fhir.r4.model.NamingSystem;
 import org.hl7.fhir.r4.model.StructureDefinition;
-import org.hl7.fhir.r4.model.StructureDefinition.ExtensionContext;
+import org.hl7.fhir.r4.model.StructureDefinition.ExtensionContextType;
+import org.hl7.fhir.r4.model.StructureDefinition.StructureDefinitionContextComponent;
+import org.hl7.fhir.r4.model.TypeDetails;
 import org.hl7.fhir.r4.model.ValueSet;
-import org.hl7.fhir.exceptions.FHIRException;
-import org.hl7.fhir.igtools.spreadsheets.MappingSpace;
-import org.hl7.fhir.igtools.spreadsheets.TypeRef;
+import org.hl7.fhir.r4.utils.FHIRPathEngine;
+import org.hl7.fhir.utilities.Utilities;
 
 /**
  * This class is the root to all the definitions in FHIR. There are the
@@ -164,7 +169,6 @@ public class Definitions {
   private Set<String> styleExemptions = new HashSet<String>();
 
   // other miscellaineous lists
-  private List<String> deletedResources = new ArrayList<String>();
   private List<String> shared = new ArrayList<String>(); 
   private List<String> aggregationEndpoints = new ArrayList<String>();
   private Map<String, EventDefn> events = new HashMap<String, EventDefn>();
@@ -295,7 +299,7 @@ public class Definitions {
 	}
 
 	public boolean hasResource(String name) {
-		return resources.containsKey(name);
+		return resources.containsKey(name) || baseResources.containsKey(name);
 	}
 	
 	
@@ -360,10 +364,6 @@ public class Definitions {
     }
   }
 
-  public List<String> getDeletedResources() {
-    return deletedResources;
-  }
-
   public Map<String, String> getDiagrams() {
     return diagrams;
   }
@@ -380,13 +380,14 @@ public class Definitions {
     return shared;
   }
 
-  private List<String> sortedNames;
+  private List<String> sortedNames, sortedTypeNames;
   private List<String> vsFixups = new ArrayList<String>();
   private List<NamingSystem> namingSystems = new ArrayList<NamingSystem>();
   private Set<String> structuralPages = new HashSet<String>();
   private Map<String, PageInformation> pageInfo = new HashMap<String, Definitions.PageInformation>();
   private Map<String, ConstraintStructure> profileIds = new HashMap<String, ConstraintStructure>();
   private boolean loaded;
+  private int valueSetCount;
   
   public List<String> sortedResourceNames() {
     if (sortedNames == null) {
@@ -395,6 +396,17 @@ public class Definitions {
       Collections.sort(sortedNames);
     }
     return sortedNames;
+  }
+
+  public List<String> sortedTypeNames() {
+    if (sortedTypeNames == null) {
+      sortedTypeNames = new ArrayList<String>();
+      sortedTypeNames.addAll(getTypes().keySet());
+      sortedTypeNames.addAll(getStructures().keySet());
+      sortedTypeNames.addAll(getInfrastructure().keySet());
+      Collections.sort(sortedTypeNames);
+    }
+    return sortedTypeNames;
   }
 
   public Map<String, ConceptMap> getConceptMaps() {
@@ -536,34 +548,42 @@ public class Definitions {
     return igs.get(usage);
   }
 
-  public void checkContextValid(ExtensionContext contextType, String value, String context) throws Exception {
-    if (contextType == ExtensionContext.DATATYPE) {
-      if (value.equals("*") || value.equals("Any"))
+  public void checkContextValid(StructureDefinitionContextComponent ec, String context, IWorkerContext worker) throws Exception {
+    if (ec.getType() == ExtensionContextType.ELEMENT) {
+      if (ec.getExpression().equals("*")) {
+        ec.setExpression("Element");
+      }
+      if (ec.getExpression().equals("Any")) {
+        ec.setExpression("Resource");
+      }
+
+      if (ec.getExpression().equals("Element")) {
         return;
-      if (primitives.containsKey(value))
+      }
+      if (ec.getExpression().equals("Resource")) {
         return;
-      String[] parts = value.split("\\.");
+      }
+      
+      if (primitives.containsKey(ec.getExpression()))
+        return;
+      String[] parts = ec.getExpression().split("\\.");
       if (hasType(parts[0]) && getElementByPath(parts, "check extension context", true) != null)
         return;
       if (hasResource(parts[0])  && getElementByPath(parts, "check extension context", true) != null)
         return;
-      throw new Error("The data type context '"+value+"' is not valid @ "+context);
-      
-    } else if (contextType == ExtensionContext.RESOURCE) {
-      if (value.startsWith("@"))
-        value = value.substring(1);
-      if (value.equals("*") || value.equals("Any"))
-        return;
-      String[] parts = value.split("\\.");
-      if (sortedResourceNames().contains(value))
-        return;
-      if (getElementByPath(parts, "check extension context", true) != null)
-        return;
-      
-      throw new Error("The resource context '"+value+"' is not valid @ "+context);
+      throw new Error("The element context '"+ec.getExpression()+"' is not valid @ "+context);      
+    } else if (ec.getType() == ExtensionContextType.FHIRPATH) {
+      FHIRPathEngine fpe = new FHIRPathEngine(worker);
+      TypeDetails td = fpe.check(null, null, null, ec.getExpression());
+      if (td.hasNoTypes())
+        throw new Error("The resource context '"+ec.getExpression()+"' is not valid @ "+context);
+      else
+        ec.setUserData("type-details", td);
+    } else if (ec.getType() == ExtensionContextType.EXTENSION) {
+      if (!Utilities.isAbsoluteUrl(ec.getExpression()))
+        throw new Error("The extension context '"+ec.getExpression()+"' is not valid @ "+context);
     } else
-    throw new Error("not checked yet @ "+context);
-    
+      throw new Error("not checked yet @ "+context);    
   }
 
   public ElementDefn getElementByPath(String[] parts, String purpose, boolean followType) throws Exception {
@@ -575,7 +595,7 @@ public class Definitions {
     }
     int i = 1;
     while (e != null && i < parts.length) {
-      if (hasType(e.typeCode()))
+      if (hasType(e.typeCode()) && !"BackboneElement".equals(e.typeCode()))
         e = getElementDefn(e.typeCode());
       e = e.getElementByName(parts[i], true, this, purpose, followType);
       i++;
@@ -754,6 +774,59 @@ public class Definitions {
 
   public Map<String, CommonSearchParameter> getCommonSearchParameters() {
     return commonSearchParameters;
+  }
+
+  public Set<String> getAllTypeNames() {
+    Set<String> res = new HashSet<String>();
+    res.add("Element");
+    res.addAll(types.keySet());
+    res.addAll(structures.keySet());
+    res.addAll(infrastructure.keySet());
+    return res;
+  }
+
+  public void clean() {
+
+    commonBindings = null;
+    boundValueSets = null;
+    unresolvedBindings = null;
+    allBindings = null;
+    constraints = null;
+    resourceTemplates = null;
+
+    packMap = null;
+    dictionaries = null;
+    knownResources = null;
+    statusCodes = null;
+    valueSetCount = valuesets.size();
+    valuesets = null;
+    conceptMaps = null;
+    codeSystems = null;
+    extraValuesets = null;
+    styleExemptions = null;
+
+    aggregationEndpoints = null;
+    events = null;
+    diagrams = null;
+    compartments = null;
+    pastVersions = null;
+    TLAs = null;
+    w5s = null;
+    w5list = null;
+    typePages = null;
+    pageTitles = null;
+    searchRules = null;
+    commonSearchParameters = null;
+    redirectList = null;
+    vsFixups = null;
+    namingSystems = null;
+    structuralPages = null;
+    profileIds = null;
+       
+  }
+
+  public int getValueSetCount() {
+    return valueSetCount;
   }
 
 }

@@ -1,16 +1,16 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<a name="scope"> </a>
+<a name="scope"></a>
 <h2>Scope and Usage</h2>
 <p>
-    This resource covers the supply of medications to  a patient.  Examples include dispensing and pick-up from an out-patient or community pharmacy, dispensing patient-specific medications from in-patient pharmacy to ward, as well as issuing a single dose from ward stock to a patient for consumption. The medication dispense is the result of a pharmacy system responding to a medication order. 
+    This resource covers the supply of medications to  a patient.  Examples include dispensing and pick-up from an outpatient or community pharmacy, dispensing patient-specific medications from inpatient pharmacy to ward, as well as issuing a single dose from ward stock to a patient for consumption. The medication dispense is the result of a pharmacy system responding to a medication order. 
 </p>
     <p>MedicationDispense is an event resource from a FHIR workflow perspective - see <a href="workflow.html#event">Workflow Event</a></p>
 </div>
 
 <div>
-<a name="bnr"> </a>
+<a name="bnr"></a>
 <h2>Boundaries and Relationships</h2>
 <p>
 <b>The Medication domain includes a number of related resources</b>
@@ -26,7 +26,7 @@
     </tr>
     <tr>
         <td><a href="medicationadministration.html">MedicationAdministration</a></td>
-        <td>When a patient actually consumes a medicine, or it is otherwise administered to them</td>
+        <td>When a patient actually consumes a medicine, or the medication is otherwise administered to them</td>
     </tr>
     <tr>
         <td><a href="medicationstatement.html">MedicationStatement</a></td>
@@ -41,10 +41,10 @@ This resource does not deal with the supply or transfer of non-medication relate
 </div>
 
 <div>
-<a name="bnc"> </a>
+<a name="bnc"></a>
 <h2>Background and Context</h2>
 <p>    
-    The supply and the associated administration instructions may not exactly follow the original order (prescription), either because some details were left for completion at this point in the process or because the dispenser exercised their clinical judgment to make some appropriate modification.
+    The supply and the associated administration instructions might not exactly follow the original order (prescription), either because some details were left for completion at this point in the process or because the dispenser exercised their clinical judgment to make some appropriate modification.
 </p>
 </div>
     

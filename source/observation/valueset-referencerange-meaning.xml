@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <ValueSet xmlns="http://hl7.org/fhir">
   <meta>
     <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
   </meta>
-  <name value="Observation Reference Range Meaning Codes"/>
+  <name value="ObservationReferenceRangeMeaningCodes"/>
+  <title value="Observation Reference Range Meaning Codes"/>
   <status value="draft"/>
   <publisher value="FHIR Project team"/>
   <contact>
@@ -17,7 +18,7 @@
   <compose>
 
     <include>
-      <system value="http://hl7.org/fhir/referencerange-meaning"/>
+      <system value="http://terminology.hl7.org/CodeSystem/referencerange-meaning"/>
     </include>
   </compose>
 </ValueSet>

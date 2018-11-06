@@ -1,7 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<a name="scope"> </a>
+<a name="scope"></a>
 <h2>Scope and Usage</h2>
 <p>
 <b>NOTE:</b> This resource is slated to be refactored and reduced in scope as some of its functionality
@@ -17,7 +17,7 @@ provides simple acknowledgement and status information of application level erro
 convey additional processing requirements in a text form.
 </p>
 <p>
-This is the formal response to a ProcessRequest and may be used as a application level response to the PaymentNotice resource.
+This is the formal response to a ProcessRequest and may be used as an application level response to the PaymentNotice resource.
 </p>
 <p>
 <!-- Describes some of the situations/use cases intended to be managed with the resource. May include a child div for "Storyboards" and "Related Specifications". The purpose of this section is to help implementers understand why the resource is needed and how it might be used. -->

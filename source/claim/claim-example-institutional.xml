@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <Claim xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/coverage.xsd">
 	<id value="960150"/>
 
@@ -16,19 +16,19 @@
 
 	<type>
 		<coding>
-			<system value="http://hl7.org/fhir/ex-claimtype"/>
+			<system value="http://terminology.hl7.org/CodeSystem/claim-type"/>
 			<code value="institutional"/>
 		</coding>
 	</type>
 
 	<subType>
 		<coding>
-			<system value="http://hl7.org/fhir/ex-claimsubtype"/>
+			<system value="http://terminology.hl7.org/CodeSystem/ex-claimsubtype"/>
 			<code value="emergency"/>
 		</coding>
 	</subType> 
 
-	<use value="complete"/>
+	<use value="claim"/>
 
 	<patient>
 		<reference value="Patient/1"/>
@@ -47,9 +47,9 @@
 		<reference value="Organization/2"/>
 	</insurer>
 
-	<organization>
+	<provider>
 		<reference value="Organization/1"/>
-	</organization>
+	</provider>
 
 	<priority>
 		<coding>
@@ -98,23 +98,21 @@
 
 	<item>
 		<sequence value="1"/>
-		<careTeamLinkId value="1"/>
-		<service>
+		<careTeamSequence value="1"/>
+		<productOrService>
 			<coding>
 				<system value="http://hl7.org/fhir/ex-serviceproduct"/>
 				<code value="exam"/> 
 			</coding>
-		</service>
+		</productOrService>
 		<servicedDate value="2014-08-16"/>
 		<unitPrice>
 			<value value="125.00"/>
-			<system value="urn:iso:std:iso:4217"/>
-			<code value="USD"/> 
+			<currency value="USD"/> 
 		</unitPrice> 
 		<net>
 			<value value="125.00"/>
-			<system value="urn:iso:std:iso:4217"/>
-			<code value="USD"/> 
+			<currency value="USD"/> 
 		</net> 
 		<encounter>
 			<reference value="Encounter/example"/>
@@ -123,7 +121,6 @@
 
 	<total>
 		<value value="125.00"/>
-		<system value="urn:iso:std:iso:4217"/>
-		<code value="USD"/>  
+		<currency value="USD"/>  
 	</total>
 </Claim>

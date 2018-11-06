@@ -59,9 +59,9 @@ import org.hl7.fhir.dstu2.model.UriType;
 import org.hl7.fhir.dstu2.model.ValueSet;
 import org.hl7.fhir.dstu2.model.ValueSet.ConceptDefinitionComponent;
 import org.hl7.fhir.dstu2.model.ValueSet.ValueSetCodeSystemComponent;
-import org.hl7.fhir.utilities.validation.ValidationMessage.Source;
 import org.hl7.fhir.exceptions.FHIRFormatError;
 import org.hl7.fhir.utilities.Utilities;
+import org.hl7.fhir.utilities.validation.ValidationMessage.Source;
 
 
 public class ToolingExtensions {
@@ -463,4 +463,15 @@ public class ToolingExtensions {
       }
     }
   }
+  
+
+  public static void setStringExtension(Element element, String uri, String value) {
+    Extension ext = getExtension(element, uri);
+    if (ext != null)
+      ext.setValue(new StringType(value));
+    else
+      element.getExtension().add(new Extension(new UriType(uri)).setValue(new StringType(value)));
+  }
+
+
 }

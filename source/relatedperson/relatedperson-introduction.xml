@@ -1,7 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<a name="scope"> </a>
+<a name="scope"></a>
 <h2>Scope and Usage</h2>
 <p>
 RelatedPersons typically have a personal or non-healthcare-specific professional relationship to the patient. A RelatedPerson 
@@ -16,7 +16,7 @@ Example RelatedPersons are:
 <ul>
 <li>A patient's wife or husband</li>
 <li>A patient's relatives or friends</li>
-<li>A neighbour bringing a patient to the hospital</li>
+<li>A neighbor bringing a patient to the hospital</li>
 <li>The owner or trainer of a horse</li>
 <li>A patient's attorney or guardian</li>
 <li>A Guide Dog</li>

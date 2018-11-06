@@ -24,7 +24,7 @@
       
     </Medication>
   </contained>
-  <status value="intended" />
+  <status value="active"/>
   <medicationReference> <!-- Linked to a RESOURCE Medication -->
     <reference value="#med0315"/>
   </medicationReference>

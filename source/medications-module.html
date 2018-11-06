@@ -14,23 +14,24 @@ in order to support consistent definitions for schema and UML derived code.
 [%file newnavbar%]
 
 <div class="col-12">
-<table class="cols"><tr><td id="wg">Work Group <a _target="blank" href="[%wg phx%]">[%wgt phx%]</a> &amp; <a _target="blank" href="[%wg pher%]">[%wgt pher%]</a> </td><td id="ballot"><a href="versions.html#levels">Ballot Status</a>: <a href="versions.html#std-process">Informative</a></td></tr></table>
+<table class="colsi"><tr><td id="wg">Work Group <a _target="blank" href="[%wg phx%]">[%wgt phx%]</a> &amp; <a _target="blank" href="[%wg pher%]">[%wgt pher%]</a> </td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Informative</a></td></tr></table>
 
-<a name="root"> </a>
+<a name="root"></a>
 <h2>Medications Module</h2>
 
-<a name="intro"> </a>
+<a name="intro"></a>
 <h3>Introduction</h3>
 <p>
-This module is concerned with resources and functionality in 2 main domains:
+This module is concerned with resources and functionality in 3 main domains:
 </p>
 
 <ul>
 	<li>The ordering, dispensing, administration of medications and recording statements of medication use.</li>
-	<li>Recording of Immunizations given (or not given), and recommendations for an individual patient at a point in time.</li>
+	<li>Recording of Immunizations given (or not given), evaluation of given immunizations and recommendations for an individual patient at a point in time.</li>
+	<li>The creation or querying for medications as part of drug information or drug knowledge.</li>
 </ul>
 
-    <a name="index"> </a>
+    <a name="index"></a>
     <h3>Index</h3>
     <table width="100%" style="table-layout: fixed">
         <tr>
@@ -45,11 +46,13 @@ This module is concerned with resources and functionality in 2 main domains:
                 <ul>
                     <li><a href="medicationstatement.html">MedicationStatement</a></li>
                     <li><a href="medication.html">Medication</a></li>
+                	<li><a href="medicationknowledge.html">MedicationKnowledge</a></li>
                 </ul>
             </td>
             <td>
                 <ul>
                     <li><a href="immunization.html">Immunization</a></li>
+                    <li><a href="immunizationevaluation.html">ImmunizationEvaluation</a></li>
                     <li><a href="immunizationrecommendation.html">ImmunizationRecommendation</a></li>
                 </ul>
             </td>
@@ -58,7 +61,7 @@ This module is concerned with resources and functionality in 2 main domains:
 
 
 
-<a name="meds"> </a>
+<a name="meds"></a>
 <h4>Medications</h4>
 <table class="bare">
     <tr><td><b>Name</b></td><td><b>Description</b></td></tr>
@@ -106,8 +109,11 @@ This module is concerned with resources and functionality in 2 main domains:
 		it may be desired to indicate more details than the simple drug (such as the packaging, whether it is a generic medication
 			or the active and inactive ingredients)
 		and so the Medication resource can be used for this.</td></tr>
+	<tr bgcolor="#EFEFEF">
+		<td><a href="medicationknowledge.html">MedicationKnowledge</a></td>
+		<td>The MedicationKnowledge resource is draft and is included for comment purposes.  This resource represents information about a medication, for example, details about the medication including interactions, contraindications, cost, regulatory status, administration guidelines, etc.</td></tr>
 </table>
-    <a name="imm"> </a>
+    <a name="imm"></a>
     <h4>Immunizations</h4>
     <table class="bare">
         <tr><td><b>Name</b></td><td><b>Description</b></td></tr>
@@ -121,11 +127,13 @@ This module is concerned with resources and functionality in 2 main domains:
 		<td><a href="immunizationrecommendation.html">ImmunizationRecommendation</a></td>
 		<td>A patient's point-in-time immunization and recommendation (i.e. forecasting a patient's immunization eligibility
 			according to a published schedule) with optional supporting justification</td></tr>
-
+    	<tr>
+    		<td><a href="immunizationevaluation.html">ImmunizationEvaluation</a></td>
+    		<td>The ImmunizationEvaluation resource is intended to cover communicating the results of an evaluation of a vaccine administration event (documented using the Immunization resource) against a set of published recommendations (protocols).</td></tr>
 </table>
 
 
-<a name="uses"> </a>
+<a name="uses"></a>
 <h3>Common Use Cases</h3>
 <ul>
 	<li>Placing a Medication Request (aka Prescription or Order). The MedicationRequest resource represents the details of
@@ -140,7 +148,7 @@ This module is concerned with resources and functionality in 2 main domains:
 		to state that the patient is not currently taking any medications at the time that the list is constructed,
 		or changes that are made at a point in time (sometimes called medication reconciliation). FHIR defines a number of specific
 		<a href="lifecycle.html#lists">functional lists</a> for this purpose, and a specific
-		<a href="list-operations.html#find">operation</a> to retrieve it. Note that FHIR does not describe how the
+		<a href="list-operation-find.html">operation</a> to retrieve it. Note that FHIR does not describe how the
 		list should be maintained by the individual system, as that will vary widely between implementations.
 	</li>
 	<li>Retrieving a list of Immunizations. This can be achieved using a <a href="http.html#search">simple query</a>
@@ -154,8 +162,8 @@ This module is concerned with resources and functionality in 2 main domains:
 		<a href="plandefinition.html">Plan Definition</a>, individual <a href="careplan.html">Care Plan</a> or some other record.
 	</li>
 	<li>Dispensing a medication based on a Medication Request (aka Prescription or Order).  The MedicationDispense resource represents the details of the dispensing event including the actual product provided to the patient and the dosage to be administered or consumed.</li>
-	<li>Retrieving the planned medication therapy for specific patient at a poin in time.  The intended medication therapy may be represented by an individual <a href="careplan.html">Care Plan</a>. </li>
-
+	<li>Retrieving the planned medication therapy for specific patient at a point in time.  The intended medication therapy may be represented by an individual <a href="careplan.html">Care Plan</a>. </li>
+	<li>Retrieving information about a medication either as a stand alone request or as while reviewing a patients' medication list</li>
 
 </ul>
 
@@ -170,7 +178,7 @@ This module is concerned with resources and functionality in 2 main domains:
 
 	</ul>
 
-<a name="secpriv"> </a>
+<a name="secpriv"></a>
 <h3>Security and Privacy</h3>
 <p>
 	As with all clinical data, Medications (in particular) can be sensitive information as specific medications can indicate
@@ -182,14 +190,13 @@ This module is concerned with resources and functionality in 2 main domains:
 <p>For more general considerations, see <a href="secpriv-module.html">the Security and Privacy module</a>.</p>
 
 
-<a name="roadmap"> </a>
+<a name="roadmap"></a>
 <h3>Developmental Roadmap</h3>
 <p>
 	The Pharmacy workgroup has plans to improve all existing resources e.g. adding in features that support detailing
-	our conditional orders in a structured way; evaluating requirements for supporting drug formularies.
+	our conditional orders in a structured way; evaluating requirements for supporting drug formularies and medication knowledge.  This work is expected to include the development and approval of a new resource and may involve updates to the Medication Resource.
 
 </p>
-	<p>Drug formulary work may involve updates to the Medication Resource.</p>
 
 </div>
 

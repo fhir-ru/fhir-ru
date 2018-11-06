@@ -2,33 +2,34 @@ package org.hl7.fhir.igtools.renderers;
 
 import java.util.List;
 
-import org.hl7.fhir.r4.conformance.ProfileUtilities;
-import org.hl7.fhir.r4.context.IWorkerContext;
-import org.hl7.fhir.r4.model.MarkdownType;
-import org.hl7.fhir.r4.model.PrimitiveType;
-import org.hl7.fhir.r4.model.StringType;
-import org.hl7.fhir.r4.model.StructureDefinition;
-import org.hl7.fhir.r4.utils.TranslatingUtilities;
 import org.hl7.fhir.igtools.publisher.IGKnowledgeProvider;
 import org.hl7.fhir.igtools.publisher.SpecMapManager;
+import org.hl7.fhir.r4.conformance.ProfileUtilities;
+import org.hl7.fhir.r4.context.IWorkerContext;
+import org.hl7.fhir.r4.model.PrimitiveType;
+import org.hl7.fhir.r4.model.StructureDefinition;
+import org.hl7.fhir.r4.utils.TranslatingUtilities;
 import org.hl7.fhir.utilities.MarkDownProcessor;
 import org.hl7.fhir.utilities.Utilities;
+import org.hl7.fhir.utilities.cache.NpmPackage;
 
 public class BaseRenderer extends TranslatingUtilities {
   protected IWorkerContext context;
   protected String prefix;
   protected IGKnowledgeProvider igp;
   protected List<SpecMapManager> specmaps;
+  protected NpmPackage packge;
   private MarkDownProcessor markdownEngine;
 
 
-  public BaseRenderer(IWorkerContext context, String prefix, IGKnowledgeProvider igp, List<SpecMapManager> specmaps, MarkDownProcessor markdownEngine) {
+  public BaseRenderer(IWorkerContext context, String prefix, IGKnowledgeProvider igp, List<SpecMapManager> specmaps, MarkDownProcessor markdownEngine, NpmPackage packge) {
     super();
     this.context = context;
     this.prefix = prefix;
     this.igp = igp;
     this.specmaps = specmaps;
     this.markdownEngine = markdownEngine;
+    this.packge = packge; 
   }
 
   @SuppressWarnings("rawtypes")
@@ -81,7 +82,7 @@ public class BaseRenderer extends TranslatingUtilities {
 	      }
 	    }
 	    // 3. markdown
-	    String s = markdownEngine.process(checkEscape(text));
+	    String s = markdownEngine.process(checkEscape(text), location);
 	    return s;
 	  } catch (Throwable e) {
 		  throw new Exception ("Error processing string: " + text, e);

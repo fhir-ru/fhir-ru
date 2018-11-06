@@ -1,0 +1,151 @@
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "urn:ietf:bcp:13",
+  "code" : "application/hl7-cda+xml"
+}, "valueSet" :null}####
+v: {
+  "display" : "application/hl7-cda+xml",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"hierarchical" : false, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "include" : [{
+      "system" : "urn:ietf:bcp:13"
+    }]
+  }
+}}####
+e: {
+  "valueSet" : {
+  "resourceType" : "ValueSet",
+  "expansion" : {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/StructureDefinition/valueset-toocostly",
+      "valueBoolean" : true
+    }],
+    "identifier" : "urn:uuid:1547f0d2-72f9-475d-a062-c3c9b2247663",
+    "timestamp" : "2018-11-03T13:12:35.053Z",
+    "parameter" : [{
+      "name" : "limitedExpansion",
+      "valueString" : "-1"
+    },
+    {
+      "name" : "includeDesignations",
+      "valueString" : "-1"
+    },
+    {
+      "name" : "excludeNested",
+      "valueString" : "-1"
+    }]
+  }
+},
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"hierarchical" : false, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "include" : [{
+      "system" : "urn:ietf:bcp:13",
+      "concept" : [{
+        "code" : "application/hl7-cda+xml",
+        "display" : "CDA Documents"
+      }]
+    }]
+  }
+}}####
+e: {
+  "valueSet" : {
+  "resourceType" : "ValueSet",
+  "expansion" : {
+    "identifier" : "urn:uuid:20a06a45-ef4b-4b0d-bda1-91f50ea50d7a",
+    "timestamp" : "2018-11-03T13:27:22.753Z",
+    "parameter" : [{
+      "name" : "limitedExpansion",
+      "valueString" : "-1"
+    },
+    {
+      "name" : "includeDesignations",
+      "valueString" : "-1"
+    },
+    {
+      "name" : "excludeNested",
+      "valueString" : "-1"
+    }],
+    "contains" : [{
+      "system" : "urn:ietf:bcp:13",
+      "code" : "application/hl7-cda+xml",
+      "display" : "CDA Documents"
+    }]
+  }
+},
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"hierarchical" : true, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "include" : [{
+      "system" : "urn:ietf:bcp:13"
+    }]
+  }
+}}####
+e: {
+  "valueSet" : {
+  "resourceType" : "ValueSet",
+  "expansion" : {
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/StructureDefinition/valueset-toocostly",
+      "valueBoolean" : true
+    }],
+    "identifier" : "urn:uuid:b8636d0a-64b3-4aa3-896b-ecf1eb292049",
+    "timestamp" : "2018-11-03T13:45:30.053Z",
+    "parameter" : [{
+      "name" : "limitedExpansion",
+      "valueString" : "-1"
+    },
+    {
+      "name" : "includeDesignations",
+      "valueString" : "-1"
+    }]
+  }
+},
+  "error" : ""
+}
+-------------------------------------------------------------------------------------
+{"code" : {
+  "system" : "urn:ietf:bcp:13",
+  "code" : "application/hl7-cda+xml"
+}, "valueSet" :{
+  "resourceType" : "ValueSet",
+  "compose" : {
+    "include" : [{
+      "valueSet" : ["http://hl7.org/fhir/ValueSet/formatcodes"]
+    },
+    {
+      "system" : "http://hl7.org/fhir/resource-types"
+    },
+    {
+      "system" : "urn:ietf:rfc:3986",
+      "concept" : [{
+        "code" : "http://hl7.org/fhir/StructureDefinition/lipidprofile",
+        "display" : "Lipid Lab Report"
+      }]
+    },
+    {
+      "system" : "urn:ietf:bcp:13",
+      "concept" : [{
+        "code" : "application/hl7-cda+xml",
+        "display" : "CDA Documents"
+      }]
+    }]
+  }
+}}####
+v: {
+  "display" : "application/hl7-cda+xml",
+  "severity" : null,
+  "error" : ""
+}
+-------------------------------------------------------------------------------------

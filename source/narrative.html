@@ -8,55 +8,62 @@
 <body>
 [%file newnavbar%]
 
-<div class="col-9">
+<div class="col-12">
 
 
 <%narrheader base%>
 
-<a name="root"> </a>
-<a name="Narrative"> </a>
-<a name="narrative"> </a>
-<a name="xhtml"> </a>
+<a name="root"></a>
+<a name="Narrative"></a>
+<a name="narrative"></a>
+<a name="xhtml"></a>
 <h2>Narrative</h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 5</td><td id="ballot"><a href="versions.html#levels">Ballot Status</a>: <a href="versions.html#std-process">Trial Use</a></td></tr></table>
+<table class="colsn"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 5</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Normative</a></td></tr></table>
+[%normative page infrastructure%]
+
 <p>
 Any resource that is a <a href="domainresource.html">DomainResource</a> (almost all types
-of resource) may include a human-readable narrative that contains a summary of the resource,
+of resource) may include a human-readable narrative that contains a summary of the resource
 and may be used to represent the content of the resource to a human.
 </p>
 <p>
 If narrative is present with a status other than 'empty', it SHALL reflect all content
 needed for a human to understand the essential clinical and business information for
-the resource.  In other words, it must be safe to render only the narrative of the resource without
+the resource.  It SHALL be safe to render only the narrative of the resource without
 displaying any of the resource's discrete/encoded information.  Resource definitions and/or
-profiles on resources may define what content should be represented in the narrative to
+profiles on resources MAY define what content should be represented in the narrative to
 ensure clinical safety.
 </p>
 <p>
-The narrative for a resource can contain additional information that is not in
+The narrative for a resource MAY contain additional information that is not in
 the structured data, including human-edited content. Such additional information SHALL be
 in the scope of the definition of the resource, though it is common for the narrative to
 include additional descriptive information extracted from other referenced resources
-when describing references. Narrative for a resource should include summary information
+when describing references. Narrative for a resource SHOULD include summary information
 about any referenced resources that would be required for a consumer of the resource to
 be able to understand the key, essential information about a resource without retrieving
-any additional resources.
+any additional resources. If the <code>Narrative.status</code> = extensions, the narrative 
+SHALL reflect the impact of all modifier extensions that extend elements that are themselves 
+described by the narrative. Narrative MAY <a href="references.html#rendering">include generated 
+content</a> from other resources and still be considered generated.
 </p>
 <p>
 For example, the narrative for a MedicationRequest might include brief summary information
-about the referenced patient, prescriber and medication.  Some resources (e.g. List, Composition)
-may provide specific rules about what content must (or must not) be included in the resource narrative.
-Consideration  should be given to the fact that referenced resources may be updated without updating
+about the referenced patient, prescriber and medication.  Some resources (e.g. List)
+can provide specific rules about what content must (or must not) be included in the resource narrative.
+Consideration would be given to the fact that referenced resources may be updated without updating
 referencing resources, so the proportion of content of a referenced resource included
 in a referencing resource should be limited.
+</p>
+<p>
 Systems MAY choose how narrative is generated, including how much de-referencing to
 perform, but SHALL NOT assume that the resource is rendered in any particular context
 when generating narrative, since resources will be used in multiple contexts.
 </p>
 <p>
-Resources SHOULD always contain narrative to support human-consumption
-as a fallback.  Structured data SHOULD NOT generally contain information of
-importance to human readers that is omitted from the narrative. Creators of FHIR
+Resource instances that permit narrative SHOULD always contain narrative to support 
+human-consumption as a fallback. Structured data SHOULD NOT generally contain information 
+of importance to human readers that is omitted from the narrative. Creators of FHIR
 resources should not assume that systems will render (or that humans will see)
 data that is not in the narrative. However, in strictly managed trading systems
 where all systems share a common data model and additional text is unnecessary or
@@ -69,10 +76,10 @@ resources are much more difficult or tedious if the resources involved do not ha
 their own text.
 </p>
 <p>
-In some cases, a resource may only have text with little or no additional discrete data
-(as long as all minOccurs=1 elements are satisfied).  This may be necessary for data from
+A resource MAY only have text with little or no additional discrete data
+(as long as all minOccurs=1 elements are satisfied).  This can be necessary for data from
 legacy systems where information is captured as a "text blob" or where text is additionally
-entered raw or narrated and encoded in formation is added later.
+entered raw or narrated and encoded information is added later.
 </p>
 <p>
 Note that <a href="references.html#contained">contained</a> Resources SHALL NOT have a narrative
@@ -82,7 +89,7 @@ of their own.
 The narrative is an XHTML fragment with a flag to indicate its relationship to the data:
 </p>
 [%dt Narrative 1%]
-<a name="security"> </a>
+<a name="security"></a><a name="rules"></a>
 <p>
 The contents of the <i>div</i> element are an XHTML fragment that SHALL contain only the basic HTML formatting elements described in
 chapters 7-11 (except section 4 of chapter 9) and 15 of the HTML 4.0 standard, &lt;a&gt; elements (either name or href),
@@ -90,7 +97,8 @@ images and internally contained style attributes.
 The XHTML content SHALL NOT contain
 a <code>head</code>, a <code>body</code> element, external stylesheet references, deprecated elements, scripts, forms, base/link/xlink, frames, iframes, objects or event related attributes (e.g. <code>onClick</code>).
 This is to ensure that the content of the narrative is contained within the resource and that there is no active content.  Such content would introduce
-<a href="security.html#narrative">security issues</a> and potentially safety issues with regard to extracting text from the XHTML.
+security issues and potentially safety issues with regard to extracting text from the XHTML. Note that 
+even with these restrictions, there are still several important <a href="security.html#narrative">security risks</a> associated with displaying the narrative.
 </p>
 <p>
 The div element SHALL have some non-whitespace content (text or an image).
@@ -98,11 +106,13 @@ The div element SHALL have some non-whitespace content (text or an image).
 <div class="example">
 <pre class="xml" fragment="Narrative">
   &lt;narrative&gt;
+    &lt;status value=&quot;additional&quot;/&gt;
     &lt;div xmlns="http://www.w3.org/1999/xhtml"&gt;This is a simple
           example with only plain text&lt;/div&gt;
   &lt;/narrative&gt;
 
-   &lt;narrative&gt;
+  &lt;narrative&gt;
+    &lt;status value=&quot;additional&quot;/&gt;
    &lt;div xmlns="http://www.w3.org/1999/xhtml"&gt;
      &lt;p&gt;
        This is an &lt;i&gt;example&lt;/i&gt; with some &lt;b&gt;xhtml&lt;/b&gt; formatting.
@@ -118,7 +128,7 @@ it SHALL be encoded so that the characters between the first '&gt;' and the last
 '&lt;' delimiters is the content of the <code>&lt;div&gt;</code> element; e.g.
 </p>
 <pre class="json">
-  &quot;div&quot;: &quot;&lt;div&gt;text&lt;/div&gt;&quot;
+  &quot;div&quot;: &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;text&lt;/div&gt;&quot;
 </pre>
 <p>
 is legal, but this is not:
@@ -133,13 +143,33 @@ like <code>&amp;nbsp;</code> or <code>&amp;copy;</code> etc. Unicode characters 
 </p>
 <p>
 The narrative content SHOULD be in the <a href="resource-definitions.html#Resource.language">language of the resource</a>, but
-there is no reason to expect that HTML type tooling would understand the resource <a href="resource.html#content">language</a> element. For this reason,
-a <code>lang</code> attribute on the <code>&lt;div&gt;</code> SHOULD also be used (see
+there is no reason to expect that HTML enabled tooling would understand the resource <a href="resource.html#content">language</a> element. For this reason,
+a <code>lang</code> attribute on the <code>&lt;div&gt;</code> SHOULD also be used if language is declared on the resource (see
 <a href="http://www.w3.org/html/wg/drafts/html/master/dom.html#the-lang-and-xml:lang-attributes">the note in the HTML 5 specification about use of language</a>).
 </p>
 
+<a name="lang"> </a>
+<h3>Multi-language support for Narratives</h3>
+<p>
+A narrative may contain content from multiple languages. This is always possible in that 
+the narrative may contain ad-hoc content in any language, often with inline translation
+provided - this is not unusual in clinical systems when dealing with patients/care providers
+speaking multiple languages. Some resources - specially standing documentation such as 
+preparation notes - will contain the same documentation in several different languages.
+</p>
+<p>
+Resources containing the same information in multiple different languages should 
+use a <code>div</code> element with an XHTML lang attribute in the root div. 
+By default, all languages will be displayed to a user, but multi-language 
+aware applications can filter the content by language and only display the 
+language that ia relevant to or chosend by the patient.
+</p>
+<p>
+See the W3C documentation on <a href="https://www.w3.org/TR/i18n-html-tech-lang/">Language declarations</a> for further information.
+</p>
 
-<a name="id"> </a>
+
+<a name="id"></a>
 <h3>Image References</h3>
 
 <p>
@@ -157,16 +187,20 @@ by its <i>id</i>:
     &lt;/div&gt;
   &lt;/text&gt;
   &lt;contained&gt;
-    &lt;Binary&gt;&lt;id value=&quot;pic1&quot;/&gt;&lt;contentType value=&quot;image/gif&quot;/&gt;&lt;content value=&quot;MEKH....SD/Z&quot;/&gt;&lt;/Binary&gt;
+    &lt;Binary&gt;&lt;id value=&quot;pic1&quot;/&gt;&lt;contentType value=&quot;image/gif&quot;/&gt;&lt;data value=&quot;MEKH....SD/Z&quot;/&gt;&lt;/Binary&gt;
   &lt;/contained&gt;
 &lt;/Patient&gt;
 </pre>
 </div>
+
+<a name="internal"></a>
+<h3>Internal Id References</h3>
 <p>
 References between the narrative and the resource data (in either direction)
 are mediated by the XML <code>id</code>/<code>idref</code> attributes. in JSON, the property "id" is
 used which is equivalent to the XML attribute "id".
 </p>
+
 <p>
 The <code>id</code> attribute SHALL have a unique value <em>within the resource</em>
 with regard to any other id attributes: the uniqueness and resolution
@@ -181,13 +215,13 @@ values of the <code>id</code> attribute may occur between resources.
 This SHALL be managed by applications reading the resources.
 </p>
 <p>
-Since images that are not contained in the resource cannot be guaranteed to be available
-when the resource is presented to a user, the source for any images that are an essential
-part of the narrative SHOULD always be embedded as a <a href="https://tools.ietf.org/html/rfc2397">data: url</a>,
-in an attachment or a contained resource.
+Since images that are not contained in the resource cannot be guaranteed to be available 
+when the resource is presented to a user, the source for any images that are an essential 
+part of the narrative SHOULD always be embedded as a <a href="https://tools.ietf.org/html/rfc2397">data: url</a>, 
+in an attachment or a contained resource
 </p>
 
-<a name="css"> </a>
+<a name="css"></a>
 <h3>Styling the XHTML</h3>
 <p>
 The XHTML fragment in the narrative may be styled using cascading stylesheets with
@@ -196,14 +230,15 @@ and <i>id</i> attributes on the XHTML elements and internal styles are applied u
 a <i>style</i> attribute on the XHTML elements directly.
 </p>
 <p>
-In order to minimise manageability and security issues, authoring systems cannot
-specify the CSS stylesheet to use directly. Instead, the application that displays
+In order to minimize manageability and security issues, authoring systems cannot 
+specify the CSS stylesheet to use directly, unless the stylesheet is included in a FHIR Document. 
+Instead, the application that displays
 the resource provides the stylesheets. This means that the rendering system
 chooses what styles can be used, but the authoring system must use them in advance.
 Authoring systems can use these classes, which SHALL be supported by all rendering systems:
 </p>
 <table>
- <tr> <td>bold</td> <td>Bold</td> <td>{ font-weight: bold }</td> </tr>
+ <tr> <td>bold</td> <td>Bold Text</td> <td>{ font-weight: bold }</td> </tr>
  <tr> <td>italics</td> <td>Italics Text</td> <td>{ font-style: italic }</td> </tr>
  <tr> <td>underline</td> <td>Underlined Text</td> <td>{ text-decoration: underline }</td> </tr>
  <tr> <td>strikethrough</td> <td>Strikethrough Text</td> <td>{ text-decoration: line-through }</td> </tr>
@@ -226,7 +261,7 @@ Authoring systems can use these classes, which SHALL be supported by all renderi
  <tr> <td>unlist</td> <td>List with no bullets</td> <td>{ list-style-type: none }</td> </tr>
 </table>
 <p>
-Note: for testing purposes, there is an <a href="basic-example-narrative.xml.html">example resource</a> that includes
+Note: for testing purposes, there is an <a href="basic-example-narrative.html">example resource</a> that includes
 all of these styles. It is also available <a href="narrative-example.html">as XHTML</a> and a
 <a href="fhir-runtime.css">standard stylesheet</a> that includes all of these styles.  Use of styles
 not on this list will require an arrangement between producing and consuming systems.
@@ -274,12 +309,80 @@ It SHOULD be safe to view the narrative without these additional styling feature
 Note that there are additional rules around styling for <a href="documents.html#css">documents</a> presentation.
 </p>
 
-<a name="safety"> </a>
+<a name="linking"></a>
+<h3>Linking between Data and Narrative</h3>
+<p>
+In some contexts, it is useful to link between the two representations of the same content: structured data, and human readable narrative.
+This can be used to assert that the text is a representation of the data, or specifically that the data is derived from some particular text. 
+This specification defines the extensions <a href="extension-narrativelink.html">narrativeLink</a> and <a href="extension-originaltext.html">originalText</a> 
+to establish these links. Here's an example of using
+originalText:
+</p>
+<pre class="json">
+{
+  "resourceType" : "Condition",
+  "text" : {
+    "div": "&lt;div xmlns=\"http://www.w3.org/1999/xhtml\"&gt;There is a history of &lt;span id=\"a1\"&gt;Asthma&lt;/span&gt;&lt;/div&gt;" 
+  },
+  "code" : {
+    "coding" : {
+      "system" : "http://snomed.info/sct",
+      "code" : "195967001",
+      "display" : "Asthma (disorder)"
+    },
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/StructureDefinition/originalText",
+      "valueUrl" : "#a1"
+    }]
+  }
+}
+</pre>
+<p>
+This indicates that the word "Asthma" in the narrative is the original text from which the SNOMED CT code "asthma"
+was derived by some text processing method. Typically, this method is associated with resources built from 
+CDA documents. The same method can be used to reference across resource boundaries, e.g. between a resource
+and the composition that represents it:
+</p>
+<pre class="xml">
+&lt;Bundle xmlns="http://hl7.org/fhir"&gt;
+  &lt;entry&gt;
+    &lt;fullUrl value="http://example.org/fhir/Composition/abcdefghij"/&gt;
+    &lt;Composition&gt;
+      &lt;id value="c1"/&gt;
+      &lt;text&gt;
+        &lt;div xmlns="http://www.w3.org/1999/xhtml"&gt;
+          ...
+          &lt;p&gt;There is a history of &lt;span id="a1"&gt;Asthma&lt;/span&gt;&lt;/p&gt;
+          ...
+        &lt;/div&gt;
+      &lt;/text&gt;
+    &lt;/Composition&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+    &lt;Condition&gt;
+      &lt;code&gt;
+        &lt;extension url="http://hl7.org/fhir/StructureDefinition/originalText"&gt;
+          &lt;valueUrl value="http://example.org/fhir/Composition/abcdefghij#a1"/&gt;
+        &lt;/extension&gt;
+        &lt;coding&gt;
+          &lt;system value="http://snomed.info/sct"/&gt;
+          &lt;code value="195967001"/&gt;
+          &lt;display value="Asthma (disorder)"/&gt;
+        &lt;/coding&gt;
+      &lt;/code&gt;
+    &lt;/Condition&gt;
+  &lt;/entry&gt;
+&lt;/Bundle&gt;
+</pre>
+
+
+
+<a name="safety"></a>
 <h3>Clinical Safety Concerns</h3>
 <p>
 Health care records are often associated with legislative and business requirements for very long retention
-times (up to a century), and extreme risk aversion with regards to inconsistent display across
-a variety of devices. Although the narrative is allowed to use the standard XHTML and CSS
+times (up to a century) and extreme risk aversion with regards to inconsistent display across
+a variety of devices, rendering engines, and display constraints. Although the narrative is allowed to use the standard XHTML and CSS
 features as described above, implementations are encouraged to show restraint when using the
 features available. Even when trading partner arrangements limit the current requirements
 made on a system, experience shows that these trading arrangements will likely broaden

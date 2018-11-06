@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <VisionPrescription xmlns="http://hl7.org/fhir"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://hl7.org/fhir ../../schema/visionprescription.xsd">
@@ -16,6 +16,8 @@
 
 	<status value="active"/>
 
+	<created value="2014-06-15"/>
+
 	<patient>
 		<reference value="Patient/example"/>
 	</patient>
@@ -30,17 +32,10 @@
 		<reference value="Practitioner/example"/>
 	</prescriber>
 
-	<reasonCodeableConcept>
-		<coding>
-			<system value="http://samplevisionreasoncodes.com"/>
-			<code value="myopia"/>
-		</coding>
-	</reasonCodeableConcept>
-
-	<dispense>
+	<lensSpecification>
 		<product>
 			<coding>
-				<system value="http://hl7.org/fhir/ex-visionprescriptionproduct"/>
+				<system value="http://terminology.hl7.org/CodeSystem/ex-visionprescriptionproduct"/>
 				<code value="contact"/>
 			</coding>
 		</product>
@@ -62,12 +57,12 @@
 		<note>
 			<text value="Shade treatment for extreme light sensitivity"/>
 		</note>
-	</dispense>
+	</lensSpecification>
 
-	<dispense>
+	<lensSpecification>
 		<product>
 			<coding>
-				<system value="http://hl7.org/fhir/ex-visionprescriptionproduct"/>
+				<system value="http://terminology.hl7.org/CodeSystem/ex-visionprescriptionproduct"/>
 				<code value="contact"/>
 			</coding>
 		</product>
@@ -89,6 +84,6 @@
 		<note>
 			<text value="Shade treatment for extreme light sensitivity"/>
 		</note>
-	</dispense>
+	</lensSpecification>
 
 </VisionPrescription>

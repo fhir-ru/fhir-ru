@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <MedicationRequest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://hl7.org/fhir ../../schema/medicationrequest.xsd"
  xmlns="http://hl7.org/fhir">
@@ -9,9 +9,8 @@
         <value value="12345689"/>
     </identifier>
     <status value="completed"/>
-    <intent value="order">
-    </intent>
-    <priority value="routine"></priority>
+    <intent value="order"/>
+    <priority value="routine"/>
     <medicationCodeableConcept>
         <coding>
             <system value="http://snomed.info/sct"/>
@@ -52,12 +51,22 @@
                 <display value="Oral Route (qualifier value)"/>
             </coding>
         </route>
-        <doseQuantity>
-            <value value="75"/>
-            <unit value="mcg"/>
-            <system value="http://unitsofmeasure.org"/>
-            <code value="mcg"/>
-        </doseQuantity>
+        <doseAndRate>
+            <type>
+                <coding>
+                    <system value="http://terminology.hl7.org/CodeSystem/dose-rate-type"/>
+                    <code value="ordered"/>
+                    <display value="Ordered"/>
+                </coding>
+            </type>
+            <doseQuantity>
+                <value value="75"/>
+                <unit value="mcg"/>
+                <system value="http://unitsofmeasure.org"/>
+                <code value="mcg"/>
+            </doseQuantity>
+        </doseAndRate>
+
     </dosageInstruction> 
     <dispenseRequest>
         <validityPeriod>
@@ -67,7 +76,7 @@
         <quantity>
             <value value="100"/>
             <unit value="Tab"/>
-            <system value="http://hl7.org/fhir/v3/orderableDrugForm"/>
+            <system value="http://terminology.hl7.org/CodeSystem/v3-orderableDrugForm"/>
             <code value="Tab"/> 
         </quantity>
         <expectedSupplyDuration>

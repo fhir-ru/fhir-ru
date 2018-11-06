@@ -1,10 +1,10 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<a name="scope"> </a>
+<a name="scope"></a>
 <h2>Scope and Usage</h2>
 <p>
-The ClaimResponse resource provides application level error or application level adjudication results
+The ClaimResponse resource provides application level adjudication results, or an application level error,
  which are the result of processing a submitted Claim resource where that Claim may be which is the functional corollary of 
  a Claim, Pre-Determination or a Pre-Authorization.
  </p>
@@ -18,6 +18,15 @@ The ClaimResponse resource provides application level error or application level
 <p>
 The ClaimResponse resource is the response for the submission of: Claim, Re-adjudication 
 and Reversals.
+</p>
+<p>
+The ClaimResponse may have been created by interpreting the corresponding Claim resource as a request for payment (the oldest sense of a claim), a request for preauthorization or a request for predetermination. These interpretations are described at the Claim resource. It is possible for the consumer of the ClaimResponse resource to know the manner in which the Claim resource was processed by checking the Claim.use code.
+</p>
+<p>
+Where the producer of the ClaimResponse resource interpreted the Claim as a traditional claim, the contents of the ClaimResponse includes information that the producer of the ClaimResponse intends to pay. The actual payment, however, is conveyed separately, perhaps through an eletronic funds transfer protocol outside the domain of FHIR or possibly by a paper check.
+</p>
+<p>
+However, when the producer of the ClaimResponse interpreted the Claim as request for preauthorization or predetermination, the ClaimResponse does not imply that such a payment is pending. Actual payment would only follow the interpretation fo a Claim resource as a traditional claim.
 </p>
 <p>
 <!-- Describes some of the situations/use cases intended to be managed with the resource. May include a child div for "Storyboards" and "Related Specifications". The purpose of this section is to help implementers understand why the resource is needed and how it might be used. -->

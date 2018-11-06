@@ -1,7 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<a name="scope"> </a>
+<a name="scope"></a>
 <h2>Scope and Usage</h2>
 <p><strong>This resource is an <em>event</em> resource from a FHIR workflow perspective - see <a href="workflow.html">Workflow</a>.   It is the intent of the Orders and Observation Workgroup to align this resource with  the workflow pattern for <a href="workflow.html#event"><em>event</em> resources</a>.</strong></p>
 <p>
@@ -11,7 +11,7 @@ and codes. The mix varies depending on the nature of the diagnostic procedure, a
 of the outcomes for a particular investigation.  In FHIR, the report can be conveyed in a variety of ways including a <a href="documents.html">Document</a>, <a href="http.html">RESTful API</a>, or <a href="messaging.html">Messaging </a> framework.  Included within each of these, would be the DiagnosticReport resource itself.
 </p>
 <p>
-The DiagnosticReport resource has information about the diagnostic report itself, and about the subject and, in the case of lab tests, the specimen of the report.  It can also refer to the request details and atomic observations details or image instances.  Report conclusions can be expressed as a simple text blob, structured coded data or as an attached fully formatted report such as a PDF.</p>
+The DiagnosticReport resource has information about the diagnostic report itself, and about the subject and, in the case of laboratory tests, the specimen of the report.  It can also refer to the request details and atomic observations details or image instances.  Report conclusions can be expressed as a simple text blob, structured coded data or as an attached fully formatted report such as a PDF.</p>
 <p>
 The DiagnosticReport resource is suitable for the following kinds of diagnostic reports:
 </p>
@@ -28,7 +28,7 @@ The DiagnosticReport resource does not yet provide full support for detailed str
 </div>
 
 <div>
-<a name="bnc"> </a>
+<a name="bnc"></a>
 <h2>Background and Context</h2>
 <!--p>
 The DiagnosticReport resource has the following aspects:
@@ -40,7 +40,7 @@ The DiagnosticReport resource has the following aspects:
  <li>results: a reference to 0 or more <a href="observation.html">Observation resources</a> which provide
     a hierarchical tree of groups of results</li>
  <li>specimen details: a reference to 0 or more <a href="specimen.html">Specimen resources</a> on which the report is based</li>
- <li>conclusion, codedDiagnosis: support for structured reporting</li>
+ <li>conclusion, conclusionCode: support for structured reporting</li>
  <li>images, representation: image and media representations of the report and supporting images</li>
 </ul-->
 
@@ -62,7 +62,7 @@ The results are assembled in "groups" which are nested structures of Observation
 
 </div>
 <div>
-<a name="bnr"> </a>
+<a name="bnr"></a>
 <h2>Boundaries and Relationships</h2>
 <p>
 Note that many diagnostic processes are procedures that generate observations and diagnostic reports. In many cases, such an observation does not require an explicit representation of the procedure used to create the observation, but where there are details of interest about how the diagnostic procedure was performed, the <a href="procedure.html">Procedure</a> resource is used to describe the activity.
@@ -77,7 +77,7 @@ If you have a highly structured report, then use DiagnosticReport - it has data 
 </p>
 
 <p>
-Image and media representations of the report and supporting images are referenced in the DiagnosticReport resource.  The details and actual image instances can be referenced directly in Diagnostic report using the "imaging" element or by indirect reference through the <a href="imagingmanifest.html">ImagingManifest</a> or <a href="imagingstudy.html">ImagingStudy</a> resources which represent the content produced in a DICOM imaging study or set of DICOM Instances of a patient.
+Image and media representations of the report and supporting images are referenced in the DiagnosticReport resource.  The details and actual image instances can be referenced directly in Diagnostic report using the "imaging" element or by indirect reference through the <a href="imagingstudy.html">ImagingStudy</a> resources which represent the content produced in a DICOM imaging study or set of DICOM Instances for a patient.
 </p>
 
 </div>

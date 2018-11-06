@@ -1,5 +1,6 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
+<a name="using"></a>
 <h3>Using GraphDefinitions</h3>
 <p>
 The GraphDefinition resource can be used to:
@@ -11,7 +12,7 @@ The GraphDefinition resource can be used to:
  <li>Document rules about the relationship between a set of resources e.g. must all resources concern the same patient?</li>
 </ul>
 
-<a name="summary"> </a>
+<a name="summary"></a>
 <h4>Summarize a set of profiles on resources</h4>
 <p>
 FHIR resources are relatively granular. In many/most cases, many resources 
@@ -25,7 +26,7 @@ One way to represent this is to profile each of the resources, creating
 hundreds of profiles, and then leave it to the user to infer the overall pattern
 of the report from the detailed profiles for each observation in the report. 
 But it's not easy to see the forest for the trees. A GraphDefinition can 
-summarise the overall picture and present a summary to the user. 
+summarize the overall picture and present a summary to the user. 
 </p>
 <p>
 Here's <a href="http://fhir.hl7.org.au/fhir/rcpa/pprofiles.html">an example</a> of 
@@ -33,7 +34,7 @@ the kind of summary this represents. (Todo: make this an actual graph definition
 and clone into the main spec)
 </p>
 
-<a name="fetch"> </a>
+<a name="fetch"></a>
 <h4>Fetching a graph of resources</h4>
 <p>
 As another example of using many resources, to completely represent a medication dispense, 
@@ -53,7 +54,7 @@ Then, when it reads the returned resource, it can fetch the referenced resources
   GET [base]/Patient/example
   GET [base]/Practitioner/example
   GET [base]/MedicationRequest/example
-  ... etc
+  ... etc.
 </pre>
 <p>
 This is a very inefficient way to retrieve all the required resources. An alternative 
@@ -67,13 +68,13 @@ approach is to do a search, and _include the required resources:
 <p>
 But scaling this approach to fetch a full package with its dependencies
 becomes increasingly difficult as the package gets deeper. A graph definition
-can be used instead to inform the server what to return as part of the search:
+can be used instead to inform the server what to return with the resource using the <a href="resource-operation-graph.html">$graph operation</a>:
 </p>
 <pre>
   GET [base]/MedicationDispense/example/$graph?graph=med-package
 </pre>
 <p>
-This is a requset to return a graph of resource, using the graph definition 
+This is a request to return a graph of resource, using the graph definition 
 'med-package'. In this case, the graph definition would look approximately 
 like this:
 </p>
@@ -92,16 +93,19 @@ Systems may either provide a pre-defined list of graph definitions that clients 
 from, or allow clients to define their own GraphDefinition resources and then refer to them.
 </p>
 <p>
-Server may also allow clients also pass in their own graph definition using the text representation defined below:
+Server may also allow clients also pass in their own graph definition using a text representation:
 </p>
 <pre>
   GET [base]/MedicationDispense/example/$graph?definition=Patient{managingOrganization:Organization{endpoint:Endpoint}}
 </pre>
+<p>
+See below for further details.
+</p>
 
-<a name="document"> </a>
+<a name="document"></a>
 <h4>Building a document</h4>
 <p>
-A very similar issue applies when building a document using the <a href="composition-operations.html#document">$document operation</a>. 
+A very similar issue applies when building a document using the <a href="composition-operation-document.html">$document operation</a>. 
 A document must include all the resources linked directly from the composition, but 
 whether to include additional linked resources is at the discretion of the document author. How does
 the user inform the $document operation which linked resources to include? One option is a boolean flag
@@ -122,7 +126,7 @@ servers may allow a client to pass in a definition directly (as shown above) usi
 the parameter <code>definition</code>.
 </p>
 
-<a name="rules"> </a>
+<a name="rules"></a>
 <h4>Document Relationship rules</h4>
 <p>
 One important question about the use of resources is cross-resource consistency. 
@@ -161,13 +165,141 @@ can specify one of the following consistencies:
 Todo: how would this be validated? - where is the graph referred to?
 </p>
 
-<a name="text"> </a>
+<a name="examples"></a>
+<h3>Simple Examples</h3>
+
+<p>
+GraphDefinition can walk a graph forward through the links, which is the natural order.
+As an example, consider a profile on composition that wants to specify that the graph
+follows the section entry into a list:
+</p>
+<pre class="xml">
+    &lt;!-- 
+      starting from a Composition...
+    --&gt;
+  &lt;link&gt;
+    &lt;!-- 
+      follow and Composition.section.entry that refers to a list
+    --&gt;
+    &lt;path value=&quot;Composition.section.entry&quot;/&gt;
+    &lt;target&gt;
+      &lt;type value=&quot;List&quot;/&gt;      
+      &lt;!-- and inside this list, follow any items --&gt;
+      &lt;link&gt;
+        &lt;path value=&quot;List.entry.item&quot;/&gt;
+        &lt;target&gt;
+          &lt;type value=&quot;Resource&quot;/&gt; 
+        &lt;/target&gt;
+      &lt;/link&gt;      
+    &lt;/target&gt;
+  &lt;/link&gt;
+</pre>
+
+<p>
+The pattern can be extended to require that the none of the resources 
+in this little graph reference a different patient - that is, it is a 
+requirement when traversing the links that the patient compartment
+remain identical:
+</p>
+<pre class="xml">
+  &lt;link&gt;
+    &lt;path value=&quot;Composition.section.entry&quot;/&gt;
+    &lt;target&gt;
+      &lt;type value=&quot;List&quot;/&gt;      
+        &lt;compartment&gt;
+          &lt;use value=&quot;requirement&quot;/&gt;
+          &lt;code value=&quot;Patient&quot;/&gt;
+          &lt;rule value=&quot;identical&quot;/&gt;
+        &lt;/compartment&gt;
+      &lt;/target&gt;
+      &lt;link&gt;
+        &lt;path value=&quot;List.entry.item&quot;/&gt;
+        &lt;description value=&quot;Include any list entries&quot;/&gt;
+        &lt;target&gt;
+          &lt;type value=&quot;Resource&quot;/&gt; 
+          &lt;compartment&gt;
+            &lt;use value=&quot;requirement&quot;/&gt;
+            &lt;code value=&quot;Patient&quot;/&gt;
+            &lt;rule value=&quot;identical&quot;/&gt;
+          &lt;/compartment&gt;
+        &lt;/target&gt;
+      &lt;/link&gt;      
+    &lt;/target&gt;
+  &lt;/link&gt;
+</pre>
+
+<p>
+Another useful approach is to walk any link * (e.g. wildcard support):
+</p>
+<pre class="xml">
+  &lt;link&gt;
+    &lt;!-- 
+      follow all links that refers to a list
+    --&gt;
+    &lt;path value=&quot;*&quot;/&gt;
+    &lt;target&gt;
+      &lt;type value=&quot;List&quot;/&gt;      
+      &lt;!-- and inside this list, follow any references --&gt;
+      &lt;link&gt;
+        &lt;path value=&quot;*&quot;/&gt;
+        &lt;target&gt;
+          &lt;type value=&quot;Resource&quot;/&gt; 
+        &lt;/target&gt;
+      &lt;/link&gt;      
+    &lt;/target&gt;
+  &lt;/link&gt;
+</pre>
+<p>
+or you can follow any links in any resource:
+</p>
+<pre class="xml">
+  &lt;link&gt;
+    &lt;!-- 
+      follow all links 
+    --&gt;
+    &lt;path value=&quot;*&quot;/&gt;
+    &lt;target&gt;
+      &lt;type value=&quot;Resource&quot;/&gt;      
+      &lt;!-- and inside the target, follow any links --&gt;
+      &lt;link&gt;
+        &lt;path value=&quot;*&quot;/&gt;
+        &lt;target&gt;
+          &lt;type value=&quot;Resource&quot;/&gt; 
+        &lt;/target&gt;
+      &lt;/link&gt;      
+    &lt;/target&gt;
+  &lt;/link&gt;
+</pre>
+
+<p>
+It's also possible to build a graph by walking links in reverse.
+This technique is useful, for example, when including provenance resources in a document:
+</p>
+
+<pre class="xml">
+  &lt;link&gt;
+    &lt;!-- if the path is missing &lt;path value=&quot;&quot;/&gt; --&gt;
+    &lt;target&gt;
+      &lt;!-- 
+        any provenance
+      --&gt;
+      &lt;type value=&quot;Provenance&quot;/&gt;
+      &lt;!--
+        and specify the search parameters to include 
+        all the provenances that refer to this resource
+      --&gt;
+      &lt;params value=&quot;target={ref}&quot;/&gt;      
+    &lt;/target&gt;
+  &lt;/link&gt;
+</pre>
+
+<a name="text"></a>
 <h4>Text Representation</h4>
 <p>
 For convenience, a graph definition may be represented using a text short hand form, loosely based
 on the <a href="graphql.html">graphQL language</a>. A graph definition is introduced by the 
 name of the Resource (<code>GraphDefinition.start</code>, followed by an optional profile
-in parantheses (<code>GraphDefinition.profile</code>, then a group of links, surrounded 
+in parentheses (<code>GraphDefinition.profile</code>, then a group of links, surrounded 
 by <code>{</code> and <code>}</code>:
 </p>
 <pre>
@@ -176,7 +308,7 @@ Patient(http://hl7.org/fhir/us/core/Patient) {
 </pre>
 <p>
 Between the brackets are one or more links (<code>GraphDefinition.link</code>), separated by commas. 
-Links statements can either be path based look ups, or a search to preform a reverse lookup:
+Links statements can either be path-based look ups, or a search to perform a reverse lookup:
 </p>
 <pre>
 Patient { 
@@ -186,7 +318,7 @@ Patient {
 }
 </pre>
 <p>
-The format for a path based look up is:
+The format for a path-based look up is:
 </p>
 <pre>
   [path] cardinality [min]..[max] '[description]' : [ResoureType rules]
@@ -235,8 +367,9 @@ where:
  <li>description is optional, and = <code>GraphDefinition.link.description</code> </li>
 </ul>
 <p>
-In this format, the amount of whitespace, and it's form, is irrelevant. For the purposes
-of clarity, the content is laid ot on different lines, but this is not required.
+In this format, the amount of whitespace, and its form, is irrelevant. For the purposes
+of clarity, the examples here are laid out on different lines, but this is not required.
+When a GraphDefinition is used as a parameter in a url, no whitespace is used.
 </p>
 
 <p>

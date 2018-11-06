@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <MedicationAdministration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://hl7.org/fhir ../../schema/medicationadministration.xsd"
  xmlns="http://hl7.org/fhir"> 
@@ -39,7 +39,7 @@
     <dose>
       <value value="1"/>
       <unit value="TAB"/>
-      <system value="http://hl7.org/fhir/v3/orderableDrugForm"/>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-orderableDrugForm"/>
       <code value="TAB"/>
     </dose>
   </dosage>

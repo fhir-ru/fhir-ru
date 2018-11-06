@@ -1,4 +1,4 @@
-<ClaimResponse xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/claimresponse.xsd">
+﻿<ClaimResponse xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/claimresponse.xsd">
 
 	<id value="R3503"/>
 
@@ -14,6 +14,15 @@
 
 	<status value="active"/>
 
+	<type>
+		<coding>
+			<system value="http://terminology.hl7.org/CodeSystem/claim-type"/>
+			<code value="oral"/>
+		</coding>
+	</type>
+
+	<use value="claim"/>
+
 	<patient>
 		<reference value="Patient/1"/>
 	</patient>
@@ -27,13 +36,9 @@
 		</identifier>
 	</insurer>
 
-	<requestProvider>
-		<reference value="Practitioner/1"/>
-	</requestProvider>
-
-	<requestOrganization>
+	<requestor>
 		<reference value="Organization/1"/>
-	</requestOrganization>
+	</requestor>
 
 	<request>
 		<identifier>
@@ -48,7 +53,7 @@
 
 	<payeeType>
 		<coding>
-			<system value="http://hl7.org/fhir/payeetype"/>
+			<system value="http://terminology.hl7.org/CodeSystem/payeetype"/>
 			<code value="provider"/>
 		</coding>
 	</payeeType>
@@ -57,7 +62,7 @@
 
 	<item> <!-- Pays for a claim package code with two actual codes with adjudication details -->
 
-		<sequenceLinkId value="1"/> 
+		<itemSequence value="1"/> 
 
 		<adjudication>
 			<category>
@@ -67,8 +72,7 @@
 			</category>
 			<amount>
 				<value value="0.00"/>
-				<system value="urn:iso:std:iso:4217"/>
-				<code value="USD"/>
+				<currency value="USD"/>
 			</amount>
 		</adjudication>
 		<adjudication>
@@ -79,15 +83,14 @@
 			</category>
 			<amount>
 				<value value="0.00"/>
-				<system value="urn:iso:std:iso:4217"/>
-				<code value="USD"/>
+				<currency value="USD"/>
 			</amount>	
 		</adjudication>
 
 	</item>
 
 	<item>
-		<sequenceLinkId value="2"/> 
+		<itemSequence value="2"/> 
 
 		<adjudication>
 			<category>
@@ -97,8 +100,7 @@
 			</category>
 			<amount>
 				<value value="105.00"/>
-				<system value="urn:iso:std:iso:4217"/>
-				<code value="USD"/>
+				<currency value="USD"/>
 			</amount>
 		</adjudication>
 
@@ -119,15 +121,14 @@
 			</category>
 			<amount>
 				<value value="84.00"/>
-				<system value="urn:iso:std:iso:4217"/>
-				<code value="USD"/>
+				<currency value="USD"/>
 			</amount>	
 		</adjudication>
 
 	</item>
 
 	<item>
-		<sequenceLinkId value="3"/> 
+		<itemSequence value="3"/> 
 
 		<adjudication>
 			<category>
@@ -137,8 +138,7 @@
 			</category>
 			<amount>
 				<value value="750.00"/>
-				<system value="urn:iso:std:iso:4217"/>
-				<code value="USD"/>
+				<currency value="USD"/>
 			</amount>
 		</adjudication>
 
@@ -159,13 +159,12 @@
 			</category>
 			<amount>
 				<value value="600.00"/>
-				<system value="urn:iso:std:iso:4217"/>
-				<code value="USD"/>
+				<currency value="USD"/>
 			</amount>	
 		</adjudication>
 
 		<detail>
-			<sequenceLinkId value="1"/> 
+			<detailSequence value="1"/> 
 
 			<adjudication>
 				<category>
@@ -175,8 +174,7 @@
 				</category>
 				<amount>
 					<value value="750.00"/>
-					<system value="urn:iso:std:iso:4217"/>
-					<code value="USD"/>
+					<currency value="USD"/>
 				</amount>
 			</adjudication>
 
@@ -197,14 +195,13 @@
 				</category>
 				<amount>
 					<value value="600.00"/>
-					<system value="urn:iso:std:iso:4217"/>
-					<code value="USD"/>
+					<currency value="USD"/>
 				</amount>	
 			</adjudication>
 
 		</detail>
 		<detail>  <!-- See the addItem.detail below -->
-			<sequenceLinkId value="2"/> 
+			<detailSequence value="2"/> 
 
 			<adjudication>
 				<category>
@@ -214,8 +211,7 @@
 				</category>
 				<amount>
 					<value value="0.00"/>
-					<system value="urn:iso:std:iso:4217"/>
-					<code value="USD"/>
+					<currency value="USD"/>
 				</amount>
 			</adjudication>
 
@@ -227,8 +223,7 @@
 				</category>
 				<amount>
 					<value value="0.00"/>
-					<system value="urn:iso:std:iso:4217"/>
-					<code value="USD"/>
+					<currency value="USD"/>
 				</amount>	
 			</adjudication>
 
@@ -238,13 +233,13 @@
 
 	<!-- Pays for a claim package code (1200) with two actual codes (1101, 2141) with adjudication details -->
 	<addItem>
-		<sequenceLinkId value="1"/> 
-		<service>
+		<itemSequence value="1"/> 
+		<productOrService>
 			<coding>
 				<system value="http://example.org/fhir/oralservicecodes"/>
 				<code value="1101"/>
 			</coding>
-		</service>
+		</productOrService>
 		<modifier>
 			<coding>
 				<system value="http://example.org/fhir/modifiers"/>
@@ -252,11 +247,10 @@
 				<display value="None"/>
 			</coding>
 		</modifier>
-		<fee>
+		<net>
 			<value value="135.57"/>
-			<system value="urn:iso:std:iso:4217"/>
-			<code value="USD"/>
-		</fee>
+			<currency value="USD"/>
+		</net>
 		<noteNumber value="101"/>
 		<adjudication>
 			<category>
@@ -266,8 +260,7 @@
 			</category>
 			<amount>
 				<value value="100.00"/>
-				<system value="urn:iso:std:iso:4217"/>
-				<code value="USD"/>
+				<currency value="USD"/>
 			</amount>
 		</adjudication>
 
@@ -279,8 +272,7 @@
 			</category>
 			<amount>
 				<value value="10.00"/>
-				<system value="urn:iso:std:iso:4217"/>
-				<code value="USD"/>
+				<currency value="USD"/>
 			</amount>  
 		</adjudication>
 
@@ -300,7 +292,7 @@
 			</category>
 			<reason>
 				<coding>
-					<system value="http://hl7.org/fhir/adjudication-reason"/>
+					<system value="http://terminology.hl7.org/CodeSystem/adjudication-reason"/>
 					<code value="ar002"/>
 					<display value="Plan Limit Reached"/>
 					<!-- should have paid 100.47 -->
@@ -308,26 +300,24 @@
 			</reason>
 			<amount>
 				<value value="72.00"/>
-				<system value="urn:iso:std:iso:4217"/>
-				<code value="USD"/>
+				<currency value="USD"/>
 			</amount>	
 		</adjudication>
 
 	</addItem>
 	<addItem>
-		<sequenceLinkId value="1"/> 
-		<service>
+		<itemSequence value="1"/> 
+		<productOrService>
 			<coding>
 				<system value="http://example.org/fhir/oralservicecodes"/>
 				<code value="2141"/>
 				<display value="Radiograph, bytewing"/>
 			</coding>
-		</service>
-		<fee>
+		</productOrService>
+		<net>
 			<value value="35.57"/>
-			<system value="urn:iso:std:iso:4217"/>
-			<code value="USD"/>
-		</fee>
+			<currency value="USD"/>
+		</net>
 		<adjudication>
 			<category>
 				<coding>
@@ -336,8 +326,7 @@
 			</category>
 			<amount>
 				<value value="35.57"/>
-				<system value="urn:iso:std:iso:4217"/>
-				<code value="USD"/>
+				<currency value="USD"/>
 			</amount>
 		</adjudication>
 
@@ -357,22 +346,21 @@
 			</category>
 			<amount>
 				<value value="28.47"/>
-				<system value="urn:iso:std:iso:4217"/>
-				<code value="USD"/>
+				<currency value="USD"/>
 			</amount>	
 		</adjudication>
 	</addItem>
 
 	<!-- Pays for a claim package code (1200) with two actual codes (1101, 2141) with adjudication details -->
 	<addItem>
-		<sequenceLinkId value="3"/> 
-		<detailSequenceLinkId value="2"/>
-		<service>
+		<itemSequence value="3"/> 
+		<detailSequence value="2"/>
+		<productOrService>
 			<coding>
 				<system value="http://example.org/fhir/oralservicecodes"/>
 				<code value="expense"/>
 			</coding>
-		</service>
+		</productOrService>
 		<modifier>
 			<coding>
 				<system value="http://example.org/fhir/modifiers"/>
@@ -380,11 +368,10 @@
 				<display value="None"/>
 			</coding>
 		</modifier>
-		<fee>
+		<net>
 			<value value="350.00"/>
-			<system value="urn:iso:std:iso:4217"/>
-			<code value="USD"/>
-		</fee>
+			<currency value="USD"/>
+		</net>
 		<noteNumber value="101"/>
 		<adjudication>
 			<category>
@@ -394,8 +381,7 @@
 			</category>
 			<amount>
 				<value value="350.00"/>
-				<system value="urn:iso:std:iso:4217"/>
-				<code value="USD"/>
+				<currency value="USD"/>
 			</amount>
 		</adjudication>
 
@@ -415,37 +401,41 @@
 			</category>
 			<amount>
 				<value value="270.00"/>
-				<system value="urn:iso:std:iso:4217"/>
-				<code value="USD"/>
+				<currency value="USD"/>
 			</amount>	
 		</adjudication>
 
 	</addItem>
 
-
-	<totalCost>
-		<value value="1340.57"/>
-		<system value="urn:iso:std:iso:4217"/>
-		<code value="USD"/>
-	</totalCost>	
-
-	<unallocDeductable>
-		<value value="0.00"/>
-		<system value="urn:iso:std:iso:4217"/>
-		<code value="USD"/>
-	</unallocDeductable>
-
-	<totalBenefit>
-		<value value="1054.47"/>
-		<system value="urn:iso:std:iso:4217"/>
-		<code value="USD"/>
-	</totalBenefit>
+	<total>
+		<category>
+			<coding>
+				<code value="submitted"/>
+			</coding>
+		</category>
+		<amount>
+			<value value="1340.57"/>
+			<currency value="USD"/> 
+		</amount> 
+	</total>
+	
+	<total>
+		<category>
+			<coding>
+				<code value="benefit"/>
+			</coding>
+		</category>
+		<amount>
+			<value value="1054.47"/>
+			<currency value="USD"/> 
+		</amount> 
+	</total>
 
 	<!-- Payment details -->
 	<payment>
 		<type>
 			<coding>
-				<system value="http://hl7.org/fhir/ex-paymenttype"/>
+				<system value="http://terminology.hl7.org/CodeSystem/ex-paymenttype"/>
 				<code value="complete"/>
 			</coding>
 		</type>	
@@ -454,8 +444,7 @@
 
 		<amount>
 			<value value="100.47"/>
-			<system value="urn:iso:std:iso:4217"/>
-			<code value="USD"/>
+			<currency value="USD"/>
 		</amount>	
 
 		<identifier>

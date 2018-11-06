@@ -1,15 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <ValueSet xmlns="http://hl7.org/fhir">
   <id value="valueset-ucum-Vitals-common"/>
+	<extension url="http://hl7.org/fhir/StructureDefinition/valueset-extensible">
+	  <valueBoolean value="true"/>
+	</extension>
 
   <url value="http://hl7.org/fhir/ValueSet/ucum-common"/>
-  <name value="Vital Signs Units"/>
+  <name value="VitalSignsUnits"/>
+  <title value="Vital Signs Units"/>
   <status value="draft"/>
   <publisher value="FHIR Project"/>
   <description value="Common UCUM units for recording Vital Signs"/>
   <copyright value="UCUM is Copyright © 1999-2013 Regenstrief Institute, Inc. and The UCUM Organization, Indianapolis, IN. All rights reserved. See http://unitsofmeasure.org/trac//wiki/TermsOfUse for details"/>
-  <extensible value="true"/>
   <compose>
     <include>
       <system value="http://unitsofmeasure.org"/>

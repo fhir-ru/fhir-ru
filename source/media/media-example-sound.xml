@@ -7,17 +7,19 @@
     <div xmlns="http://www.w3.org/1999/xhtml">Sound recording of speech example for Patient Henry Levin (MRN 12345):<br/><img alt="diagram" src="#11"/></div>
   </text>
 
-  <type value="video"/>
-  
+<status value="completed"/>
+
+
+
   <subject>
     <reference value="Patient/xcda"/>
   </subject>
   <operator>
     <reference value="Practitioner/xcda-author"/>
   </operator>
-  
+
   <duration value="65"/>
-  
+
   <content id="a1">
     <contentType value="audio/mpeg"/>
     <!-- too big too include the whole -->

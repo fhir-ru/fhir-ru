@@ -1,6 +1,7 @@
 HTTP/1.1 200 OK
 [headers]
 
+<?xml version="1.0" encoding="UTF-8"?>
 <ClaimResponse xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/claimresponse.xsd">
 
 	<id value="R3500"/>
@@ -16,6 +17,15 @@ HTTP/1.1 200 OK
 	</identifier>
 
 	<status value="active"/>
+	
+	<type>
+		<coding>
+			<system value="http://hl7.org/fhir/claim-type"/>
+			<code value="oral"/>
+		</coding>	
+	</type>
+	
+	<use value="claim"/>
 
 	<patient>
 		<reference value="Patient/1"/>
@@ -67,7 +77,6 @@ HTTP/1.1 200 OK
 			</category>
 			<amount>
 				<value value="135.57"/>
-				<system value="urn:iso:std:iso:4217"/>
 				<code value="USD"/>
 			</amount>
 		</adjudication>
@@ -80,7 +89,6 @@ HTTP/1.1 200 OK
 			</category>
 			<amount>
 				<value value="10.00"/>
-				<system value="urn:iso:std:iso:4217"/>
 				<code value="USD"/>
 			</amount>  
 		</adjudication>
@@ -109,7 +117,6 @@ HTTP/1.1 200 OK
 			</reason>
 			<amount>
 				<value value="90.47"/>
-				<system value="urn:iso:std:iso:4217"/>
 				<code value="USD"/>
 			</amount>	
 		</adjudication>
@@ -118,13 +125,11 @@ HTTP/1.1 200 OK
 
 	<totalCost>
 		<value value="135.57"/>
-		<system value="urn:iso:std:iso:4217"/>
 		<code value="USD"/>
 	</totalCost>	
 
 	<totalBenefit>
 		<value value="90.47"/>
-		<system value="urn:iso:std:iso:4217"/>
 		<code value="USD"/>
 	</totalBenefit>
 
@@ -141,7 +146,6 @@ HTTP/1.1 200 OK
 
 		<amount>
 			<value value="100.47"/>
-			<system value="urn:iso:std:iso:4217"/>
 			<code value="USD"/>
 		</amount>	
 

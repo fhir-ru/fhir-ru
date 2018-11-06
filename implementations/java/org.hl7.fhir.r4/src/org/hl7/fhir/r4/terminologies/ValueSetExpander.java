@@ -3,7 +3,7 @@ package org.hl7.fhir.r4.terminologies;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import org.hl7.fhir.r4.model.ExpansionProfile;
+import org.hl7.fhir.r4.model.Parameters;
 import org.hl7.fhir.r4.model.ValueSet;
 
 public interface ValueSetExpander {
@@ -31,47 +31,47 @@ public interface ValueSetExpander {
    */
   public class ValueSetExpansionOutcome {
     private ValueSet valueset;
-    private ValueSetChecker service;
     private String error;
     private TerminologyServiceErrorClass errorClass;
+    private String txLink;
     
     public ValueSetExpansionOutcome(ValueSet valueset) {
       super();
       this.valueset = valueset;
-      this.service = null;
       this.error = null;
     }
     public ValueSetExpansionOutcome(ValueSet valueset, String error, TerminologyServiceErrorClass errorClass) {
       super();
       this.valueset = valueset;
-      this.service = null;
       this.error = error;
       this.errorClass = errorClass;
     }
     public ValueSetExpansionOutcome(ValueSetChecker service, String error, TerminologyServiceErrorClass errorClass) {
       super();
       this.valueset = null;
-      this.service = service;
       this.error = error;
       this.errorClass = errorClass;
     }
     public ValueSetExpansionOutcome(String error, TerminologyServiceErrorClass errorClass) {
       this.valueset = null;
-      this.service = null;
       this.error = error;
       this.errorClass = errorClass;
     }
     public ValueSet getValueset() {
       return valueset;
     }
-    public ValueSetChecker getService() {
-      return service;
-    }
     public String getError() {
       return error;
     }
     public TerminologyServiceErrorClass getErrorClass() {
       return errorClass;
+    }
+    public String getTxLink() {
+      return txLink;
+    }
+    public ValueSetExpansionOutcome setTxLink(String txLink) {
+      this.txLink = txLink;
+      return this;
     }
 
 
@@ -86,5 +86,5 @@ public interface ValueSetExpander {
  * @throws FileNotFoundException
  * @throws IOException
  */
-  public ValueSetExpansionOutcome expand(ValueSet source, ExpansionProfile profile) throws ETooCostly, FileNotFoundException, IOException;
+  public ValueSetExpansionOutcome expand(ValueSet source, Parameters parameters) throws ETooCostly, FileNotFoundException, IOException;
 }

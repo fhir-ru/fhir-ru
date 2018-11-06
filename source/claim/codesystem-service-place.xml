@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <CodeSystem xmlns="http://hl7.org/fhir">
-  <url value="http://hl7.org/fhir/ex-serviceplace"/>
-  <name value="Example Service Place Codes"/>
+  <url value="http://terminology.hl7.org/CodeSystem/ex-serviceplace"/>
+  <name value="ExampleServicePlaceCodes"/>
+  <title value="Example Service Place Codes"/>
   <status value="draft"/>
   <experimental value="false"/>
   <description value="This value set includes a smattering of Service Place codes."/>
@@ -77,7 +78,7 @@
   <concept>
     <code value="19"/>
     <display value="Off Campus-Outpatient Hospital"/>
-    <definition value="portion of an off-campus hospital provider based department which provides diagnostic, therapeutic (both surgical and nonsurgical), and rehabilitation services to sick or injured persons who do not require hospitalization or institutionalization."/>
+    <definition value="portion of an off-campus hospital provider-based department which provides diagnostic, therapeutic (both surgical and nonsurgical), and rehabilitation services to sick or injured persons who do not require hospitalization or institutionalization."/>
   </concept>
   <concept>
     <code value="20"/>

@@ -12,8 +12,11 @@
 	<patient>
 		<reference value="Patient/example"/>
 	</patient>
+	<date value="2015-02-09T11:04:15.817-05:00"/>
+	<authority>
+		<reference value="Organization/hl7"/>
+	</authority>
 	<recommendation>
-		<date value="2015-02-09T11:04:15.817-05:00"/>
 		<vaccineCode>
 			<coding>
 				<system value="http://snomed.info/sct"/>
@@ -21,14 +24,13 @@
 				<display value="Hepatitis A vaccine"/>
 			</coding>
 		</vaccineCode>
-		<doseNumber value="1"/>
 		<forecastStatus>
 			<text value="Not Complete"/>
 		</forecastStatus>
 		<dateCriterion>
 			<code>
 				<coding>
-					<system value="http://hl7.org/fhir/immunization-recommendation-date-criterion"/>
+					<system value="http://example.org/fhir/CodeSystem/immunization-recommendation-date-criterion"/>
 					<code value="earliest"/>
 					<display value="Earliest Date"/>
 				</coding>
@@ -38,7 +40,7 @@
 		<dateCriterion>
 			<code>
 				<coding>
-					<system value="http://hl7.org/fhir/immunization-recommendation-date-criterion"/>
+					<system value="http://example.org/fhir/CodeSystem/immunization-recommendation-date-criterion"/>
 					<code value="recommended"/>
 					<display value="Recommended"/>
 				</coding>
@@ -48,21 +50,17 @@
 		<dateCriterion>
 			<code>
 				<coding>
-					<system value="http://hl7.org/fhir/immunization-recommendation-date-criterion"/>
+					<system value="http://example.org/fhir/CodeSystem/immunization-recommendation-date-criterion"/>
 					<code value="overdue"/>
 					<display value="Past Due Date"/>
 				</coding>
 			</code>
 			<value value="2016-12-28T00:00:00-05:00"/>
 		</dateCriterion>
-		<protocol>
-			<doseSequence value="1"/>
-			<description value="First sequence in protocol"/>
-			<authority>
-				<reference value="Organization/hl7"/>
-			</authority>
-			<series value="Vaccination Series 1"/>
-		</protocol>
+		<description value="First sequence in protocol"/>
+		<series value="Vaccination Series 1"/>
+		<doseNumberPositiveInt value="1"/>
+		<seriesDosesPositiveInt value="3"/>
 		<supportingImmunization>
 			<reference value="Immunization/example"/>
 		</supportingImmunization>

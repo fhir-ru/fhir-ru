@@ -1,0 +1,34 @@
+﻿map "http://hl7.org/fhir/StructureMap/RiskAssessment3to4" = "R3 to R4 Conversions for RiskAssessment"
+
+uses "http://hl7.org/fhir/3.0/StructureDefinition/RiskAssessment" alias RiskAssessmentR3 as source
+uses "http://hl7.org/fhir/StructureDefinition/RiskAssessment" alias RiskAssessment as target
+
+imports "http://hl7.org/fhir/StructureMap/*3to4"
+
+group RiskAssessment(source src : RiskAssessmentR3, target tgt : RiskAssessment) extends DomainResource <<type+>> {
+  src.identifier -> tgt.identifier;
+  src.basedOn -> tgt.basedOn;
+  src.parent -> tgt.parent;
+  src.status -> tgt.status;
+  src.method -> tgt.method;
+  src.code -> tgt.code;
+  src.subject -> tgt.subject;
+  src.context -> tgt.context;
+  src.occurrence : dateTime as vs -> tgt.occurrence = create("dateTime") as vt then dateTime(vs, vt);
+  src.occurrence : Period as vs -> tgt.occurrence = create("Period") as vt then Period(vs, vt);
+  src.condition -> tgt.condition;
+  src.performer -> tgt.performer;
+  src.basis -> tgt.basis;
+  src.prediction as vs0 -> tgt.prediction as vt0 then {
+    vs0.outcome -> vt0.outcome;
+    vs0.probability : decimal as vs -> vt0.probability = create("decimal") as vt then decimal(vs, vt);
+    vs0.probability : Range as vs -> vt0.probability = create("Range") as vt then Range(vs, vt);
+    vs0.qualitativeRisk -> vt0.qualitativeRisk;
+    vs0.relativeRisk -> vt0.relativeRisk;
+    vs0.when : Period as vs -> vt0.when = create("Period") as vt then Period(vs, vt);
+    vs0.when : Range as vs -> vt0.when = create("Range") as vt then Range(vs, vt);
+    vs0.rationale -> vt0.rationale;
+  };
+  src.mitigation -> tgt.mitigation;
+}
+

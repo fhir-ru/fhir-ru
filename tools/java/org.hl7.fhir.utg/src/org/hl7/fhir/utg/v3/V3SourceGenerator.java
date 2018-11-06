@@ -21,6 +21,7 @@ import org.hl7.fhir.exceptions.FHIRFormatError;
 import org.hl7.fhir.r4.formats.XmlParser;
 import org.hl7.fhir.r4.formats.IParser.OutputStyle;
 import org.hl7.fhir.r4.model.BooleanType;
+import org.hl7.fhir.r4.model.CanonicalType;
 import org.hl7.fhir.r4.model.CodeSystem;
 import org.hl7.fhir.r4.model.CodeType;
 import org.hl7.fhir.r4.model.Coding;
@@ -166,7 +167,7 @@ public class V3SourceGenerator extends BaseGenerator {
     knownCS.add(cs.getUrl());
     cs.setName(item.getAttribute("name"));
     cs.setTitle(item.getAttribute("title"));
-    cs.getIdentifier().setSystem("urn:ietf:rfc:3986").setValue("urn:oid:"+item.getAttribute("codeSystemId"));
+    cs.getIdentifierFirstRep().setSystem("urn:ietf:rfc:3986").setValue("urn:oid:"+item.getAttribute("codeSystemId"));
     cs.setUserData("oid", item.getAttribute("codeSystemId"));
     cs.setStatus(PublicationStatus.ACTIVE);
     Element child = XMLUtil.getFirstChild(item);
@@ -599,7 +600,7 @@ public class V3SourceGenerator extends BaseGenerator {
   }
 
   private void processPrintName(Element item, ConceptDefinitionComponent cd, CodeSystem cs) throws Exception {
-    if (!"false".equals(item.getAttribute("preferredForLanguage")))
+    if (!"true".equals(item.getAttribute("preferredForLanguage")))
       cd.addDesignation().setUse(new Coding().setSystem("http://something...?").setCode("deprecated alias")).setValue(item.getAttribute("text"));
     else if (Utilities.noString(item.getAttribute("language")) || item.getAttribute("language").equals(cs.getLanguage()))
       cd.setDisplay(item.getAttribute("text"));
@@ -615,9 +616,11 @@ public class V3SourceGenerator extends BaseGenerator {
     if (!"active".equals(item.getAttribute("status"))&& !"retired".equals(item.getAttribute("status")))
       throw new Exception("Unexpected value for attribute status "+item.getAttribute("status"));
     if (cd.hasCode())
+      // change this to an extension once the build defines the extension to use 
       cd.addDesignation().setUse(new Coding().setSystem("http://something...?").setCode("synonym")).setValue(item.getAttribute("code"));
     else
       cd.setCode(item.getAttribute("code"));
+    cd.addProperty().setCode("status").setValue(new CodeType(item.getAttribute("status")));
     Element child = XMLUtil.getFirstChild(item);
     if (child != null) {
       throw new Exception("Unprocessed element "+child.getNodeName());
@@ -657,8 +660,6 @@ public class V3SourceGenerator extends BaseGenerator {
           throw new Exception("Unprocessed element "+child.getNodeName());
         child = XMLUtil.getNextSibling(child);
       }    
-      
-
     } else
       throw new Exception("Unexpected value for attribute relationshipName "+item.getAttribute("relationshipName"));
   }
@@ -711,6 +712,8 @@ public class V3SourceGenerator extends BaseGenerator {
     vs.addIdentifier().setSystem("urn:ietf:rfc:3986").setValue("urn:oid:"+item.getAttribute("id"));
     vs.setUserData("oid", item.getAttribute("id"));
     vs.setStatus(PublicationStatus.ACTIVE);
+    if ("true".equals(item.getAttribute("isImmutable")))
+      vs.setImmutable(true);
     Element child = XMLUtil.getFirstChild(item);
     while (child != null) {
       if (child.getNodeName().equals("header"))
@@ -933,7 +936,7 @@ public class V3SourceGenerator extends BaseGenerator {
         processCombinedContent(child, vs, url);
       } else if (child.getNodeName().equals("valueSetRef")) {
         ConceptSetComponent vset = include ? vs.getCompose().addInclude() : vs.getCompose().addExclude() ;
-        UriType vsref = new UriType();
+        CanonicalType vsref = new CanonicalType();
         vset.getValueSet().add(vsref);
         vsref.setUserData("vsref", child.getAttribute("id"));
         vsref.setUserData("vsname", child.getAttribute("name"));

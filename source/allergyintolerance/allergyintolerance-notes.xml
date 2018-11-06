@@ -8,7 +8,7 @@ relevant to the document); or asserting that allergies were not reviewed and are
 
 <p>Allergies with the verificationStatus "entered-in-error" indicates that the allergy or intolerance statement is entered by mistake and hence invalid.</p>
 <p>Allergies with the verificationStatus "refuted" must be displayed to indicate that a reaction to a substance has been ruled out
-with the high level of clinical certainty (e.g. additional testing, rechallenging). </p>
+with the high level of clinical certainty (e.g. additional testing, re-challenging). </p>
 <p>Prior to adding a new allergy/intolerance, a list of existing negated and refuted reactions should be reviewed
 and reconciled.</p>
   
@@ -31,17 +31,14 @@ and reconciled.</p>
 The substanceExposureRisk extension is also available for use as a more completely structured and flexible alternative to the 'code' element for representing positive and negative allergy and intolerance statements (either the 'code' element or the substanceExposureRisk extension may be used, but not both).
 </p>
 
-<blockquote class="stu-note">
-<a name="dstu"> </a>
-<p>
-<b>STU Note:</b>There are two primary ways of reporting "no known allergies" in the current specification: using the CodeableConcept,
+<a name="dstu"></a>
+[%stu-note%]
+There are two primary ways of reporting "no known allergies" in the current specification: using the CodeableConcept,
 as described above, or using the <a href="list.html">List</a> resource with emptyReason. The third available option is using the substanceExposureRisk extension.  During the STU period, it is not recommended to use the <a href="list.html">List</a> resource for "no known allergies" reporting purposes. The principal reason for this is to allow all allergy or intolerance data to be found and to be consistently queryable from the single location of the AllergyIntolerance resource.
 </p>
 <p>
 Provide feedback <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(STU_3)">here</a>.
-</p>
-
-</blockquote>
+[%end-note%]
 
 <div class="example">
   <p>No Known Allergies, using <a href="list.html">List</a>.emptyReason (discouraged)</p>

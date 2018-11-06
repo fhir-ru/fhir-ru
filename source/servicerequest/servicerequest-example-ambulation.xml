@@ -5,9 +5,6 @@
 	<identifier>
 		<value value="45678"/>
 	</identifier>
-	<definition>
-		<display value="Protocol for hypertension during pregnancy"/>
-	</definition>
 	<basedOn>
 		<reference value="CarePlan/preg"/>
 		<display value="Maternity care plan"/>
@@ -27,10 +24,10 @@
 	</subject>
 	<authoredOn value="2017-03-05"/>
 	<requester>
-		<agent>
+
 			<reference value="Practitioner/3ad0687e-f477-468c-afd5-fcc2bf897809"/>
 			<display value="Dr. Beverly Crusher"/>
-		</agent>
+
 	</requester>
 	<reasonReference>
 		<reference value="Observation/blood-pressure"/>

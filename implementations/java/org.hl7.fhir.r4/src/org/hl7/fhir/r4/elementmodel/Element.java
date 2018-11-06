@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.*;
 
 import org.apache.commons.lang3.Validate;
+import org.hl7.fhir.r4.conformance.ProfileUtilities;
 import org.hl7.fhir.r4.elementmodel.Element.ElementSortComparator;
 import org.hl7.fhir.r4.elementmodel.Element.ICodingImpl;
 import org.hl7.fhir.r4.model.Base;
@@ -20,6 +21,8 @@ import org.hl7.fhir.r4.model.Type;
 import org.hl7.fhir.r4.model.ValueSet.ValueSetExpansionContainsComponent;
 import org.hl7.fhir.r4.terminologies.ValueSetExpander.ValueSetExpansionOutcome;
 import org.hl7.fhir.exceptions.FHIRException;
+import org.hl7.fhir.utilities.ElementDecoration;
+import org.hl7.fhir.utilities.ElementDecoration.DecorationType;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.xhtml.XhtmlComposer;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
@@ -293,13 +296,13 @@ public class Element extends Base {
 	
   @Override
   public Base setProperty(int hash, String name, Base value) throws FHIRException {
-    if (isPrimitive() && (hash == "value".hashCode())) {
-      this.value = castToString(value).asStringValue();
-      return this;
-    }
     if ("xhtml".equals(getType()) && (hash == "value".hashCode())) {
       this.xhtml = castToXhtml(value);
       this.value =  castToXhtmlString(value);
+      return this;
+    }
+    if (isPrimitive() && (hash == "value".hashCode())) {
+      this.value = castToString(value).asStringValue();
       return this;
     }
     
@@ -423,6 +426,11 @@ public class Element extends Base {
 	}
 	
   @Override
+  public boolean isBooleanPrimitive() {
+    return isPrimitive() && ("boolean".equals(type) || "boolean".equals(property.getType(name)));
+  }
+ 
+  @Override
   public boolean isResource() {
     return property.isResource();
   }
@@ -464,9 +472,30 @@ public class Element extends Base {
 		return this;
 	}
 
-	public void markValidation(StructureDefinition profile, ElementDefinition definition) {
+	public void clearDecorations() {
+	  clearUserData("fhir.decorations");
+	  for (Element e : children)
+	    e.clearDecorations();	  
 	}
 	
+	public void markValidation(StructureDefinition profile, ElementDefinition definition) {
+	  @SuppressWarnings("unchecked")
+    List<ElementDecoration> decorations = (List<ElementDecoration>) getUserData("fhir.decorations");
+	  if (decorations == null) {
+	    decorations = new ArrayList<ElementDecoration>();
+	    setUserData("fhir.decorations", decorations);
+	  }
+	  decorations.add(new ElementDecoration(DecorationType.TYPE, profile.getUserString("path"), definition.getPath()));
+	  if (tail(definition.getId()).contains(":")) {
+	    String[] details = tail(definition.getId()).split("\\:");
+	    decorations.add(new ElementDecoration(DecorationType.SLICE, null, details[1]));
+	  }
+	}
+	
+  private String tail(String id) {
+    return id.contains(".") ? id.substring(id.lastIndexOf(".")+1) : id;
+  }
+
   public Element getNamedChild(String name) {
 	  if (children == null)
   		return null;
@@ -519,7 +548,7 @@ public class Element extends Base {
 
 	@Override
 	public boolean isEmpty() {
-		if (isNotBlank(value)) {
+		if (value != null && !"".equals(value)) {
 			return false;
 		}
 		for (Element next : getChildren()) {
@@ -558,18 +587,54 @@ public class Element extends Base {
   }
 
 
-//  @Override
-//  public boolean equalsDeep(Base other) {
-//    if (!super.equalsDeep(other))
-//      return false;
-//    
-//  }
-//
-//  @Override
-//  public boolean equalsShallow(Base other) {
-//    if (!super.equalsShallow(other))
-//      return false;
-//  }
+  @Override
+  public boolean equalsDeep(Base other) {
+    if (!super.equalsDeep(other))
+      return false;
+    if (isPrimitive() && other.isPrimitive())
+      return primitiveValue().equals(other.primitiveValue());
+    if (isPrimitive() || other.isPrimitive())
+      return false;
+    Set<String> processed  = new HashSet<String>();
+    for (org.hl7.fhir.r4.model.Property p : children()) {
+      String name = p.getName();
+      processed.add(name);
+      org.hl7.fhir.r4.model.Property o = other.getChildByName(name);
+      if (!equalsDeep(p, o))
+        return false;
+    }
+    for (org.hl7.fhir.r4.model.Property p : children()) {
+      String name = p.getName();
+      if (!processed.contains(name)) {
+        org.hl7.fhir.r4.model.Property o = other.getChildByName(name);
+        if (!equalsDeep(p, o))
+          return false;
+      }
+    }
+    return true;
+  }
+
+  private boolean equalsDeep(org.hl7.fhir.r4.model.Property p, org.hl7.fhir.r4.model.Property o) {
+    if (o == null || p == null)
+      return false;
+    if (p.getValues().size() != o.getValues().size())
+      return false;
+    for (int i = 0; i < p.getValues().size(); i++)
+      if (!Base.compareDeep(p.getValues().get(i), o.getValues().get(i), true))
+        return false;
+    return true;
+  }
+
+  @Override
+  public boolean equalsShallow(Base other) {
+    if (!super.equalsShallow(other))
+      return false;
+    if (isPrimitive() && other.isPrimitive())
+      return primitiveValue().equals(other.primitiveValue());
+    if (isPrimitive() || other.isPrimitive())
+      return false;
+    return true; //?
+  }
 
   public Type asType() throws FHIRException {
     return new ObjectConverter(property.getContext()).convertToType(this);
@@ -618,7 +683,7 @@ public class Element extends Base {
     private List<ElementDefinition> children;
     public ElementSortComparator(Element e, Property property) {
       String tn = e.getType();
-      StructureDefinition sd = property.getContext().fetchResource(StructureDefinition.class, "http://hl7.org/fhir/StructureDefinition/"+tn);
+      StructureDefinition sd = property.getContext().fetchResource(StructureDefinition.class, ProfileUtilities.sdNs(tn, property.getContext().getOverrideVersionNs()));
       if (sd != null && !sd.getAbstract())
         children = sd.getSnapshot().getElement();
       else

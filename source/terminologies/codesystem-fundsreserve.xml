@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <CodeSystem xmlns="http://hl7.org/fhir">
   <id value="fundsreserve"/>
-  <url value="http://hl7.org/fhir/fundsreserve"/>
-  <name value="Funds Reservation Codes"/>
+  <url value="http://terminology.hl7.org/CodeSystem/fundsreserve"/>
+  <name value="FundsReservationCodes"/>
+  <title value="Funds Reservation Codes"/>
   <status value="draft"/>
   <experimental value="true"/>
   <description value="This value set includes sample funds reservation type codes."/>

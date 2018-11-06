@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <Observation xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir http://build.fhir.org/device.xsd">
 	<id value="blood-pressure-dar"/>
 	<meta>
@@ -11,7 +11,7 @@
 	<status value="final"/>
 	<category>
 		<coding>
-			<system value="http://hl7.org/fhir/observation-category"/>
+			<system value="http://terminology.hl7.org/CodeSystem/observation-category"/>
 			<code value="vital-signs"/>
 			<display value="Vital Signs"/>
 		</coding>
@@ -19,13 +19,13 @@
 	<code><!-- replaced by 85354-9
 				<coding>
 					<system value="http://loinc.org"/>
-					<code value="55284-4"/>
+					<code value="85354-9"/>
 					<display value="Blood pressure systolic &amp; diastolic"/>
 				</coding>
 		--><coding>
 			<system value="http://loinc.org"/>
 			<code value="85354-9"/>
-			<display value="Bood pressure panel with all children optional"/>
+			<display value="Blood pressure panel with all children optional"/>
 		</coding>
 		<text value="Blood pressure systolic &amp; diastolic"/>
 	</code>
@@ -40,7 +40,7 @@
         of an observation that has no value if it has "COMP" (component)
         observations   --><interpretation>
 		<coding>
-			<system value="http://hl7.org/fhir/v2/0078"/>
+			<system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
 			<code value="L"/>
 			<display value="low"/>
 		</coding>
@@ -87,7 +87,7 @@ this is shown here to demonstrate  the concept of translations within the codeab
 			</coding>
 		</code><!--   Here the Diastolic measurement is missing and we give a reason using the DataAbsentReason element   --><dataAbsentReason>
 			<coding>
-				<system value="http://hl7.org/fhir/data-absent-reason"/>
+				<system value="http://terminology.hl7.org/CodeSystem/data-absent-reason"/>
 				<code value="not-performed"/>
 				<display value="Not Performed"/>
 			</coding>

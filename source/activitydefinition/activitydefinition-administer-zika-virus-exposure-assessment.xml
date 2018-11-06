@@ -90,19 +90,24 @@
   <url value="http://example.org/ActivityDefinition/administer-zika-virus-exposure-assessment"/>
   <status value="draft"/>
   <description value="Administer Zika Virus Exposure Assessment"/>
+  <useContext>
+    <code>
+      <system value="http://terminology.hl7.org/CodeSystem/usage-context-type"/>
+      <code value="age"/>
+    </code>
+    <valueRange>
+      <low><value value="12"/><unit value="a"/></low>
+    </valueRange>
+  </useContext>
   <relatedArtifact>
     <type value="derived-from"/>
     <url value="https://www.cdc.gov/zika/hc-providers/pregnant-woman.html"/>
   </relatedArtifact>
   <relatedArtifact>
     <type value="depends-on"/>
-    <resource>
-      <reference value="Questionnaire/zika-virus-exposure-assessment"/>
-    </resource>
+    <resource value="Questionnaire/zika-virus-exposure-assessment"/>
   </relatedArtifact>
-  <library>
-    <reference value="Library/zika-virus-intervention-logic"/>
-  </library>
+  <library value="Library/zika-virus-intervention-logic"/>
   <kind value="ServiceRequest"/>
   <code>
     <coding>
@@ -112,8 +117,11 @@
   </code>
   <timingTiming>
     <event>
-      <extension url="http://hl7.org/fhir/StructureDefinition/cqif-cqlExpression">
-        <valueString value="Now()"/>
+      <extension url="http://hl7.org/fhir/StructureDefinition/cqf-expression">
+        <valueExpression>
+          <language value="text/cql"/>
+          <expression value="Now()"/>
+        </valueExpression>
       </extension>
     </event>
   </timingTiming>

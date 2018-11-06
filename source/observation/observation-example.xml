@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!-- 
  This is an example of a simple weight measurement.
  -->
@@ -9,7 +9,7 @@
 	<!-- category code is A code that classifies the general type of observation being made. This is used for searching, sorting and display purposes.-->
 	<category>
 		<coding>
-			<system value="http://hl7.org/fhir/observation-category"/>
+			<system value="http://terminology.hl7.org/CodeSystem/observation-category"/>
 			<code value="vital-signs"/>
 			<display value="Vital Signs"/>
 		</coding>
@@ -48,9 +48,9 @@
 	<subject>
 		<reference value="Patient/example"/>
 	</subject>
-	<context>
+	<encounter>
 		<reference value="Encounter/example"/>
-	</context>
+	</encounter>
 	<effectiveDateTime value="2016-03-28"/>
 	<!--  In FHIR, units may be represented twice. Once in the
     agreed human representation, and once in a coded form.

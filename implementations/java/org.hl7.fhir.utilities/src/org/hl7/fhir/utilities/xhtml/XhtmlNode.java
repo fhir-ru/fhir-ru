@@ -74,6 +74,7 @@ public class XhtmlNode implements IBaseXhtml {
   private Map<String, String> attributes = new HashMap<String, String>();
   private List<XhtmlNode> childNodes = new ArrayList<XhtmlNode>();
   private String content;
+  private boolean notPretty;
 
   public XhtmlNode() {
     super();
@@ -217,16 +218,14 @@ public class XhtmlNode implements IBaseXhtml {
     return res;
   }
 
-  public XhtmlNode getElement(String name)
-  {
+  public XhtmlNode getElement(String name) {
     for (XhtmlNode n : childNodes)
       if (n.getNodeType() == NodeType.Element && name.equals(n.getName())) 
         return n;
     return null;
   }
 
-  public XhtmlNode getFirstElement()
-  {
+  public XhtmlNode getFirstElement() {
     for (XhtmlNode n : childNodes)
       if (n.getNodeType() == NodeType.Element) 
         return n;
@@ -234,6 +233,9 @@ public class XhtmlNode implements IBaseXhtml {
   }
 
   public String allText() {
+    if (childNodes == null || childNodes.isEmpty())
+      return getContent();
+    
     StringBuilder b = new StringBuilder();
     for (XhtmlNode n : childNodes)
       if (n.getNodeType() == NodeType.Text)
@@ -337,7 +339,7 @@ public class XhtmlNode implements IBaseXhtml {
       return null;
     }
     try {
-      String retVal = new XhtmlComposer().compose(this);
+      String retVal = new XhtmlComposer(XhtmlComposer.HTML).compose(this);
       retVal = XhtmlDt.preprocessXhtmlNamespaceDeclaration(retVal);
       return retVal;
     } catch (Exception e) {
@@ -545,7 +547,7 @@ public class XhtmlNode implements IBaseXhtml {
     case Document: 
     case Element:
       try {
-        return new XhtmlComposer().compose(this);
+        return new XhtmlComposer(XhtmlComposer.HTML).compose(this);
       } catch (IOException e) {
         return super.toString();
       }
@@ -559,6 +561,29 @@ public class XhtmlNode implements IBaseXhtml {
       return "<? "+this.content+" />";
     }
     return super.toString();
+  }
+
+
+  public XhtmlNode getNextElement(XhtmlNode c) {
+    boolean f = false;
+    for (XhtmlNode n : childNodes) {
+      if (n == c)
+        f = true;
+      else if (f && n.getNodeType() == NodeType.Element) 
+        return n;
+    }
+    return null;
+  }
+
+
+  public XhtmlNode notPretty() {
+    notPretty = true;
+    return this;
+  }
+
+
+  public boolean isNoPretty() {
+    return notPretty;
   }
 
 }

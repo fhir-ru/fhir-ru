@@ -8,7 +8,7 @@
   </identifier>
   <status value="finished"/>
     <class>
-        <system value="http://hl7.org/fhir/v3/ActCode"/>
+        <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
         <code value="AMB"/> <!-- outpatient -->
         <display value="ambulatory"/>
     </class>
@@ -20,11 +20,11 @@
       <reference value="Practitioner/xcda1"/>
     </individual>
   </participant>
-  <reason>
+  <reasonCode>
     <coding>
       <system value="http://ihe.net/xds/connectathon/eventCodes"/>
       <code value="T-D8200"/>
       <display value="Arm"/>
     </coding>
-  </reason>
+  </reasonCode>
 </Encounter>

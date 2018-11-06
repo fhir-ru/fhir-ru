@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Fri, Aug 11, 2017 07:23+1000 for FHIR v3.1.0
+// Generated on Mon, Nov 5, 2018 09:03+1100 for FHIR v3.6.0
 
 import java.util.*;
 
@@ -45,7 +45,7 @@ import org.hl7.fhir.exceptions.FHIRException;
 /**
  * This resource provides the target, request and response, and action details for an action to be performed by the target on or about existing resources.
  */
-@ResourceDef(name="ProcessRequest", profile="http://hl7.org/fhir/Profile/ProcessRequest")
+@ResourceDef(name="ProcessRequest", profile="http://hl7.org/fhir/StructureDefinition/ProcessRequest")
 public class ProcessRequest extends DomainResource {
 
     public enum ProcessRequestStatus {
@@ -445,22 +445,22 @@ public class ProcessRequest extends DomainResource {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof ItemsComponent))
+        if (!(other_ instanceof ItemsComponent))
           return false;
-        ItemsComponent o = (ItemsComponent) other;
+        ItemsComponent o = (ItemsComponent) other_;
         return compareDeep(sequenceLinkId, o.sequenceLinkId, true);
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof ItemsComponent))
+        if (!(other_ instanceof ItemsComponent))
           return false;
-        ItemsComponent o = (ItemsComponent) other;
+        ItemsComponent o = (ItemsComponent) other_;
         return compareValues(sequenceLinkId, o.sequenceLinkId, true);
       }
 
@@ -491,10 +491,10 @@ public class ProcessRequest extends DomainResource {
     protected Enumeration<ProcessRequestStatus> status;
 
     /**
-     * The type of processing action being requested, for example Reversal, Readjudication, StatusRequest,PendedRequest.
+     * The type of processing action being requested, for example Reversal, Readjudication, StatusRequest, PendedRequest.
      */
     @Child(name = "action", type = {CodeType.class}, order=2, min=0, max=1, modifier=false, summary=false)
-    @Description(shortDefinition="cancel | poll | reprocess | status", formalDefinition="The type of processing action being requested, for example Reversal, Readjudication, StatusRequest,PendedRequest." )
+    @Description(shortDefinition="cancel | poll | reprocess | status", formalDefinition="The type of processing action being requested, for example Reversal, Readjudication, StatusRequest, PendedRequest." )
     @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/actionlist")
     protected Enumeration<ActionList> action;
 
@@ -520,31 +520,19 @@ public class ProcessRequest extends DomainResource {
     /**
      * The practitioner who is responsible for the action specified in this request.
      */
-    @Child(name = "provider", type = {Practitioner.class}, order=5, min=0, max=1, modifier=false, summary=false)
+    @Child(name = "provider", type = {Practitioner.class, PractitionerRole.class, Organization.class}, order=5, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Responsible practitioner", formalDefinition="The practitioner who is responsible for the action specified in this request." )
     protected Reference provider;
 
     /**
      * The actual object that is the target of the reference (The practitioner who is responsible for the action specified in this request.)
      */
-    protected Practitioner providerTarget;
-
-    /**
-     * The organization which is responsible for the action speccified in this request.
-     */
-    @Child(name = "organization", type = {Organization.class}, order=6, min=0, max=1, modifier=false, summary=false)
-    @Description(shortDefinition="Responsible organization", formalDefinition="The organization which is responsible for the action speccified in this request." )
-    protected Reference organization;
-
-    /**
-     * The actual object that is the target of the reference (The organization which is responsible for the action speccified in this request.)
-     */
-    protected Organization organizationTarget;
+    protected Resource providerTarget;
 
     /**
      * Reference of resource which is the target or subject of this action.
      */
-    @Child(name = "request", type = {Reference.class}, order=7, min=0, max=1, modifier=false, summary=false)
+    @Child(name = "request", type = {Reference.class}, order=6, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Reference to the Request resource", formalDefinition="Reference of resource which is the target or subject of this action." )
     protected Reference request;
 
@@ -556,7 +544,7 @@ public class ProcessRequest extends DomainResource {
     /**
      * Reference of a prior response to resource which is the target or subject of this action.
      */
-    @Child(name = "response", type = {Reference.class}, order=8, min=0, max=1, modifier=false, summary=false)
+    @Child(name = "response", type = {Reference.class}, order=7, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Reference to the Response resource", formalDefinition="Reference of a prior response to resource which is the target or subject of this action." )
     protected Reference response;
 
@@ -568,46 +556,46 @@ public class ProcessRequest extends DomainResource {
     /**
      * If true remove all history excluding audit.
      */
-    @Child(name = "nullify", type = {BooleanType.class}, order=9, min=0, max=1, modifier=false, summary=false)
+    @Child(name = "nullify", type = {BooleanType.class}, order=8, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Remove history", formalDefinition="If true remove all history excluding audit." )
     protected BooleanType nullify;
 
     /**
      * A reference to supply which authenticates the process.
      */
-    @Child(name = "reference", type = {StringType.class}, order=10, min=0, max=1, modifier=false, summary=false)
+    @Child(name = "reference", type = {StringType.class}, order=9, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Reference number/string", formalDefinition="A reference to supply which authenticates the process." )
     protected StringType reference;
 
     /**
      * List of top level items to be re-adjudicated, if none specified then the entire submission is re-adjudicated.
      */
-    @Child(name = "item", type = {}, order=11, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "item", type = {}, order=10, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Items to re-adjudicate", formalDefinition="List of top level items to be re-adjudicated, if none specified then the entire submission is re-adjudicated." )
     protected List<ItemsComponent> item;
 
     /**
      * Names of resource types to include.
      */
-    @Child(name = "include", type = {StringType.class}, order=12, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "include", type = {StringType.class}, order=11, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Resource type(s) to include", formalDefinition="Names of resource types to include." )
     protected List<StringType> include;
 
     /**
      * Names of resource types to exclude.
      */
-    @Child(name = "exclude", type = {StringType.class}, order=13, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "exclude", type = {StringType.class}, order=12, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Resource type(s) to exclude", formalDefinition="Names of resource types to exclude." )
     protected List<StringType> exclude;
 
     /**
      * A period of time during which the fulfilling resources would have been created.
      */
-    @Child(name = "period", type = {Period.class}, order=14, min=0, max=1, modifier=false, summary=false)
+    @Child(name = "period", type = {Period.class}, order=13, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Selection period", formalDefinition="A period of time during which the fulfilling resources would have been created." )
     protected Period period;
 
-    private static final long serialVersionUID = -346692020L;
+    private static final long serialVersionUID = -1796314965L;
 
   /**
    * Constructor
@@ -719,7 +707,7 @@ public class ProcessRequest extends DomainResource {
     }
 
     /**
-     * @return {@link #action} (The type of processing action being requested, for example Reversal, Readjudication, StatusRequest,PendedRequest.). This is the underlying object with id, value and extensions. The accessor "getAction" gives direct access to the value
+     * @return {@link #action} (The type of processing action being requested, for example Reversal, Readjudication, StatusRequest, PendedRequest.). This is the underlying object with id, value and extensions. The accessor "getAction" gives direct access to the value
      */
     public Enumeration<ActionList> getActionElement() { 
       if (this.action == null)
@@ -739,7 +727,7 @@ public class ProcessRequest extends DomainResource {
     }
 
     /**
-     * @param value {@link #action} (The type of processing action being requested, for example Reversal, Readjudication, StatusRequest,PendedRequest.). This is the underlying object with id, value and extensions. The accessor "getAction" gives direct access to the value
+     * @param value {@link #action} (The type of processing action being requested, for example Reversal, Readjudication, StatusRequest, PendedRequest.). This is the underlying object with id, value and extensions. The accessor "getAction" gives direct access to the value
      */
     public ProcessRequest setActionElement(Enumeration<ActionList> value) { 
       this.action = value;
@@ -747,14 +735,14 @@ public class ProcessRequest extends DomainResource {
     }
 
     /**
-     * @return The type of processing action being requested, for example Reversal, Readjudication, StatusRequest,PendedRequest.
+     * @return The type of processing action being requested, for example Reversal, Readjudication, StatusRequest, PendedRequest.
      */
     public ActionList getAction() { 
       return this.action == null ? null : this.action.getValue();
     }
 
     /**
-     * @param value The type of processing action being requested, for example Reversal, Readjudication, StatusRequest,PendedRequest.
+     * @param value The type of processing action being requested, for example Reversal, Readjudication, StatusRequest, PendedRequest.
      */
     public ProcessRequest setAction(ActionList value) { 
       if (value == null)
@@ -887,64 +875,15 @@ public class ProcessRequest extends DomainResource {
     /**
      * @return {@link #provider} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The practitioner who is responsible for the action specified in this request.)
      */
-    public Practitioner getProviderTarget() { 
-      if (this.providerTarget == null)
-        if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create ProcessRequest.provider");
-        else if (Configuration.doAutoCreate())
-          this.providerTarget = new Practitioner(); // aa
+    public Resource getProviderTarget() { 
       return this.providerTarget;
     }
 
     /**
      * @param value {@link #provider} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The practitioner who is responsible for the action specified in this request.)
      */
-    public ProcessRequest setProviderTarget(Practitioner value) { 
+    public ProcessRequest setProviderTarget(Resource value) { 
       this.providerTarget = value;
-      return this;
-    }
-
-    /**
-     * @return {@link #organization} (The organization which is responsible for the action speccified in this request.)
-     */
-    public Reference getOrganization() { 
-      if (this.organization == null)
-        if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create ProcessRequest.organization");
-        else if (Configuration.doAutoCreate())
-          this.organization = new Reference(); // cc
-      return this.organization;
-    }
-
-    public boolean hasOrganization() { 
-      return this.organization != null && !this.organization.isEmpty();
-    }
-
-    /**
-     * @param value {@link #organization} (The organization which is responsible for the action speccified in this request.)
-     */
-    public ProcessRequest setOrganization(Reference value) { 
-      this.organization = value;
-      return this;
-    }
-
-    /**
-     * @return {@link #organization} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The organization which is responsible for the action speccified in this request.)
-     */
-    public Organization getOrganizationTarget() { 
-      if (this.organizationTarget == null)
-        if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create ProcessRequest.organization");
-        else if (Configuration.doAutoCreate())
-          this.organizationTarget = new Organization(); // aa
-      return this.organizationTarget;
-    }
-
-    /**
-     * @param value {@link #organization} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The organization which is responsible for the action speccified in this request.)
-     */
-    public ProcessRequest setOrganizationTarget(Organization value) { 
-      this.organizationTarget = value;
       return this;
     }
 
@@ -1229,7 +1168,7 @@ public class ProcessRequest extends DomainResource {
       if (this.include == null)
         return false;
       for (StringType v : this.include)
-        if (v.equals(value)) // string
+        if (v.getValue().equals(value)) // string
           return true;
       return false;
     }
@@ -1290,7 +1229,7 @@ public class ProcessRequest extends DomainResource {
       if (this.exclude == null)
         return false;
       for (StringType v : this.exclude)
-        if (v.equals(value)) // string
+        if (v.getValue().equals(value)) // string
           return true;
       return false;
     }
@@ -1323,11 +1262,10 @@ public class ProcessRequest extends DomainResource {
         super.listChildren(children);
         children.add(new Property("identifier", "Identifier", "The ProcessRequest business identifier.", 0, java.lang.Integer.MAX_VALUE, identifier));
         children.add(new Property("status", "code", "The status of the resource instance.", 0, 1, status));
-        children.add(new Property("action", "code", "The type of processing action being requested, for example Reversal, Readjudication, StatusRequest,PendedRequest.", 0, 1, action));
+        children.add(new Property("action", "code", "The type of processing action being requested, for example Reversal, Readjudication, StatusRequest, PendedRequest.", 0, 1, action));
         children.add(new Property("target", "Reference(Organization)", "The organization which is the target of the request.", 0, 1, target));
         children.add(new Property("created", "dateTime", "The date when this resource was created.", 0, 1, created));
-        children.add(new Property("provider", "Reference(Practitioner)", "The practitioner who is responsible for the action specified in this request.", 0, 1, provider));
-        children.add(new Property("organization", "Reference(Organization)", "The organization which is responsible for the action speccified in this request.", 0, 1, organization));
+        children.add(new Property("provider", "Reference(Practitioner|PractitionerRole|Organization)", "The practitioner who is responsible for the action specified in this request.", 0, 1, provider));
         children.add(new Property("request", "Reference(Any)", "Reference of resource which is the target or subject of this action.", 0, 1, request));
         children.add(new Property("response", "Reference(Any)", "Reference of a prior response to resource which is the target or subject of this action.", 0, 1, response));
         children.add(new Property("nullify", "boolean", "If true remove all history excluding audit.", 0, 1, nullify));
@@ -1343,11 +1281,10 @@ public class ProcessRequest extends DomainResource {
         switch (_hash) {
         case -1618432855: /*identifier*/  return new Property("identifier", "Identifier", "The ProcessRequest business identifier.", 0, java.lang.Integer.MAX_VALUE, identifier);
         case -892481550: /*status*/  return new Property("status", "code", "The status of the resource instance.", 0, 1, status);
-        case -1422950858: /*action*/  return new Property("action", "code", "The type of processing action being requested, for example Reversal, Readjudication, StatusRequest,PendedRequest.", 0, 1, action);
+        case -1422950858: /*action*/  return new Property("action", "code", "The type of processing action being requested, for example Reversal, Readjudication, StatusRequest, PendedRequest.", 0, 1, action);
         case -880905839: /*target*/  return new Property("target", "Reference(Organization)", "The organization which is the target of the request.", 0, 1, target);
         case 1028554472: /*created*/  return new Property("created", "dateTime", "The date when this resource was created.", 0, 1, created);
-        case -987494927: /*provider*/  return new Property("provider", "Reference(Practitioner)", "The practitioner who is responsible for the action specified in this request.", 0, 1, provider);
-        case 1178922291: /*organization*/  return new Property("organization", "Reference(Organization)", "The organization which is responsible for the action speccified in this request.", 0, 1, organization);
+        case -987494927: /*provider*/  return new Property("provider", "Reference(Practitioner|PractitionerRole|Organization)", "The practitioner who is responsible for the action specified in this request.", 0, 1, provider);
         case 1095692943: /*request*/  return new Property("request", "Reference(Any)", "Reference of resource which is the target or subject of this action.", 0, 1, request);
         case -340323263: /*response*/  return new Property("response", "Reference(Any)", "Reference of a prior response to resource which is the target or subject of this action.", 0, 1, response);
         case -2001137643: /*nullify*/  return new Property("nullify", "boolean", "If true remove all history excluding audit.", 0, 1, nullify);
@@ -1370,7 +1307,6 @@ public class ProcessRequest extends DomainResource {
         case -880905839: /*target*/ return this.target == null ? new Base[0] : new Base[] {this.target}; // Reference
         case 1028554472: /*created*/ return this.created == null ? new Base[0] : new Base[] {this.created}; // DateTimeType
         case -987494927: /*provider*/ return this.provider == null ? new Base[0] : new Base[] {this.provider}; // Reference
-        case 1178922291: /*organization*/ return this.organization == null ? new Base[0] : new Base[] {this.organization}; // Reference
         case 1095692943: /*request*/ return this.request == null ? new Base[0] : new Base[] {this.request}; // Reference
         case -340323263: /*response*/ return this.response == null ? new Base[0] : new Base[] {this.response}; // Reference
         case -2001137643: /*nullify*/ return this.nullify == null ? new Base[0] : new Base[] {this.nullify}; // BooleanType
@@ -1406,9 +1342,6 @@ public class ProcessRequest extends DomainResource {
           return value;
         case -987494927: // provider
           this.provider = castToReference(value); // Reference
-          return value;
-        case 1178922291: // organization
-          this.organization = castToReference(value); // Reference
           return value;
         case 1095692943: // request
           this.request = castToReference(value); // Reference
@@ -1455,8 +1388,6 @@ public class ProcessRequest extends DomainResource {
           this.created = castToDateTime(value); // DateTimeType
         } else if (name.equals("provider")) {
           this.provider = castToReference(value); // Reference
-        } else if (name.equals("organization")) {
-          this.organization = castToReference(value); // Reference
         } else if (name.equals("request")) {
           this.request = castToReference(value); // Reference
         } else if (name.equals("response")) {
@@ -1487,7 +1418,6 @@ public class ProcessRequest extends DomainResource {
         case -880905839:  return getTarget(); 
         case 1028554472:  return getCreatedElement();
         case -987494927:  return getProvider(); 
-        case 1178922291:  return getOrganization(); 
         case 1095692943:  return getRequest(); 
         case -340323263:  return getResponse(); 
         case -2001137643:  return getNullifyElement();
@@ -1510,7 +1440,6 @@ public class ProcessRequest extends DomainResource {
         case -880905839: /*target*/ return new String[] {"Reference"};
         case 1028554472: /*created*/ return new String[] {"dateTime"};
         case -987494927: /*provider*/ return new String[] {"Reference"};
-        case 1178922291: /*organization*/ return new String[] {"Reference"};
         case 1095692943: /*request*/ return new String[] {"Reference"};
         case -340323263: /*response*/ return new String[] {"Reference"};
         case -2001137643: /*nullify*/ return new String[] {"boolean"};
@@ -1545,10 +1474,6 @@ public class ProcessRequest extends DomainResource {
         else if (name.equals("provider")) {
           this.provider = new Reference();
           return this.provider;
-        }
-        else if (name.equals("organization")) {
-          this.organization = new Reference();
-          return this.organization;
         }
         else if (name.equals("request")) {
           this.request = new Reference();
@@ -1599,7 +1524,6 @@ public class ProcessRequest extends DomainResource {
         dst.target = target == null ? null : target.copy();
         dst.created = created == null ? null : created.copy();
         dst.provider = provider == null ? null : provider.copy();
-        dst.organization = organization == null ? null : organization.copy();
         dst.request = request == null ? null : request.copy();
         dst.response = response == null ? null : response.copy();
         dst.nullify = nullify == null ? null : nullify.copy();
@@ -1628,27 +1552,26 @@ public class ProcessRequest extends DomainResource {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof ProcessRequest))
+        if (!(other_ instanceof ProcessRequest))
           return false;
-        ProcessRequest o = (ProcessRequest) other;
+        ProcessRequest o = (ProcessRequest) other_;
         return compareDeep(identifier, o.identifier, true) && compareDeep(status, o.status, true) && compareDeep(action, o.action, true)
            && compareDeep(target, o.target, true) && compareDeep(created, o.created, true) && compareDeep(provider, o.provider, true)
-           && compareDeep(organization, o.organization, true) && compareDeep(request, o.request, true) && compareDeep(response, o.response, true)
-           && compareDeep(nullify, o.nullify, true) && compareDeep(reference, o.reference, true) && compareDeep(item, o.item, true)
-           && compareDeep(include, o.include, true) && compareDeep(exclude, o.exclude, true) && compareDeep(period, o.period, true)
-          ;
+           && compareDeep(request, o.request, true) && compareDeep(response, o.response, true) && compareDeep(nullify, o.nullify, true)
+           && compareDeep(reference, o.reference, true) && compareDeep(item, o.item, true) && compareDeep(include, o.include, true)
+           && compareDeep(exclude, o.exclude, true) && compareDeep(period, o.period, true);
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof ProcessRequest))
+        if (!(other_ instanceof ProcessRequest))
           return false;
-        ProcessRequest o = (ProcessRequest) other;
+        ProcessRequest o = (ProcessRequest) other_;
         return compareValues(status, o.status, true) && compareValues(action, o.action, true) && compareValues(created, o.created, true)
            && compareValues(nullify, o.nullify, true) && compareValues(reference, o.reference, true) && compareValues(include, o.include, true)
            && compareValues(exclude, o.exclude, true);
@@ -1656,8 +1579,8 @@ public class ProcessRequest extends DomainResource {
 
       public boolean isEmpty() {
         return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(identifier, status, action
-          , target, created, provider, organization, request, response, nullify, reference
-          , item, include, exclude, period);
+          , target, created, provider, request, response, nullify, reference, item, include
+          , exclude, period);
       }
 
   @Override
@@ -1693,7 +1616,7 @@ public class ProcessRequest extends DomainResource {
    * Path: <b>ProcessRequest.provider</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="provider", path="ProcessRequest.provider", description="The provider who regenerated this request", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Practitioner") }, target={Practitioner.class } )
+  @SearchParamDefinition(name="provider", path="ProcessRequest.provider", description="The provider who regenerated this request", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Practitioner") }, target={Organization.class, Practitioner.class, PractitionerRole.class } )
   public static final String SP_PROVIDER = "provider";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>provider</b>
@@ -1710,32 +1633,6 @@ public class ProcessRequest extends DomainResource {
    * the path value of "<b>ProcessRequest:provider</b>".
    */
   public static final ca.uhn.fhir.model.api.Include INCLUDE_PROVIDER = new ca.uhn.fhir.model.api.Include("ProcessRequest:provider").toLocked();
-
- /**
-   * Search parameter: <b>organization</b>
-   * <p>
-   * Description: <b>The organization who generated this request</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>ProcessRequest.organization</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="organization", path="ProcessRequest.organization", description="The organization who generated this request", type="reference", target={Organization.class } )
-  public static final String SP_ORGANIZATION = "organization";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>organization</b>
-   * <p>
-   * Description: <b>The organization who generated this request</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>ProcessRequest.organization</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam ORGANIZATION = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_ORGANIZATION);
-
-/**
-   * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>ProcessRequest:organization</b>".
-   */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_ORGANIZATION = new ca.uhn.fhir.model.api.Include("ProcessRequest:organization").toLocked();
 
  /**
    * Search parameter: <b>action</b>

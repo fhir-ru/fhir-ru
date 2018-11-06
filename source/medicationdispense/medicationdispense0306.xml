@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <MedicationDispense xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://hl7.org/fhir ../../schema/medicationdispense.xsd"
+ xsi:schemaLocation="http://hl7.org/fhir ../../../../GForge/FHIRBuild/build/schema/medicationdispense.xsd"
  xmlns="http://hl7.org/fhir">
     <id value="meddisp0306"/>
     <contained>
@@ -35,7 +35,7 @@
     </authorizingPrescription>
     <type>
         <coding>
-            <system value="http://hl7.org/fhir/v3/ActCode"/>
+            <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
             <code value="DF"/>
             <display value="Daily Fill"/>
         </coding>
@@ -84,12 +84,22 @@
                 <display value="Inject - dosing instruction imperative (qualifier value)"/>
             </coding>
         </method>
-        <doseQuantity>
-            <value value="3"/>
-            <unit value="mg"/>
-            <system value="http://unitsofmeasure.org"/>
-            <code value="mg"/>
-        </doseQuantity>
+        <doseAndRate>
+            <type>
+                <coding>
+                    <system value="http://terminology.hl7.org/CodeSystem/dose-rate-type"/>
+                    <code value="calculated"/>
+                    <display value="Calculated"/>
+                </coding>
+            </type>
+            <doseQuantity>
+                <value value="3"/>
+                <unit value="mg"/>
+                <system value="http://unitsofmeasure.org"/>
+                <code value="mg"/>
+            </doseQuantity>
+        </doseAndRate>
+
     </dosageInstruction>
     <dosageInstruction>
         <sequence value="2"/>
@@ -124,12 +134,22 @@
                 <display value="Inject - dosing instruction imperative (qualifier value)"/>
             </coding>
         </method>
-        <doseQuantity>
-            <value value="10"/>
-            <unit value="mg"/>
-            <system value="http://unitsofmeasure.org"/>
-            <code value="mg"/>
-        </doseQuantity>
+        <doseAndRate>
+            <type>
+                <coding>
+                    <system value="http://terminology.hl7.org/CodeSystem/dose-rate-type"/>
+                    <code value="calculated"/>
+                    <display value="Calculated"/>
+                </coding>
+            </type>
+            <doseQuantity>
+                <value value="10"/>
+                <unit value="mg"/>
+                <system value="http://unitsofmeasure.org"/>
+                <code value="mg"/>
+            </doseQuantity>
+        </doseAndRate>
+
     </dosageInstruction>  
     <dosageInstruction>
         <sequence value="3"/>
@@ -164,12 +184,21 @@
                 <display value="Inject - dosing instruction imperative (qualifier value)"/>
             </coding>
         </method>
-        <doseQuantity>
-            <value value="30"/>
-            <unit value="mg"/>
-            <system value="http://unitsofmeasure.org"/>
-            <code value="mg"/>
-        </doseQuantity>
+        <doseAndRate>
+            <type>
+                <coding>
+                    <system value="http://terminology.hl7.org/CodeSystem/dose-rate-type"/>
+                    <code value="calculated"/>
+                    <display value="Calculated"/>
+                </coding>
+            </type>
+            <doseQuantity>
+                <value value="30"/>
+                <unit value="mg"/>
+                <system value="http://unitsofmeasure.org"/>
+                <code value="mg"/>
+            </doseQuantity>
+        </doseAndRate>
     </dosageInstruction>
 </MedicationDispense>
 

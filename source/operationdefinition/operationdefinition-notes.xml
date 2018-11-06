@@ -1,15 +1,64 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
+<a name="defined"></a>
 <h3>Operations defined as part of this Specification</h3>
 
 <%operationslist%>
 
-<h3>Executing Operations and Named Queries</h3>
+<a name="desc"></a>
+<h3>Describing Operation Parameters</h3>
 
 <p>
-Operations are executed by POSTing to a URL that is <a href="operations.html">defined by the operation definition</a>.
-Named queries are executed by performing a <a href="search.html">search</a> with the value of the search parameter
-"_query" set to the name provided in the definition. 
+There are 2 ways to describe the input and output parameters for
+an operation:
+</p>
+<ul>
+  <li>Using <code>OperationDefinition.parameter</code> to describe the parameters</li>
+  <li>Using <code>OperationDefinition.inputProfile</code> and <code>OperationDefinition.outputProfile</code></li>
+</ul>
+<p>
+The parameters is a simple list of possible parameters, along with cardinalities and types.
+The profiles allow a rich set of validation rules etc. to be provided. OperationDefinitions SHALL
+always define the parameters using <code>OperationDefinition.parameter</code> in the resource,
+and MAY also provide profiles for the parameters. If present, the profiles SHALL NOT disagree
+with the parameters defined for the operation.
+</p>
+<p>
+As an example, consider an operation that defines 3 parameters, 2 in and 1 out:
+</p>
+<table class="grid">
+<tr><td colspan="6"><b>In Parameters:</b></td></tr>
+<tr><td><b>Name</b></td><td><b>Cardinality</b></td><td><b>Type</b></td><td><b>Binding</b></td><td><b>Profile</b></td><td><b>Documentation</b></td></tr>
+<tr><td>a</td><td>0..1</td><td><a href="datatypes.html#integer">integer</a></td><td></td><td></td><td><p>An integer parameter</p></td></tr>
+<tr><td>b</td><td>0..1</td><td><a href="patient.html">Patient</a></td><td></td><td></td><td><p>A patient parameter</p></td></tr>
+<tr><td colspan="6"><b>Out Parameters:</b></td></tr>
+<tr><td><b>Name</b></td><td><b>Cardinality</b></td><td><b>Type</b></td><td><b>Binding</b></td><td><b>Profile</b></td><td><b>Documentation</b></td></tr>
+<tr><td>c</td><td>1..1</td><td><a href="datatypes.html#decimal">decimal</a></td><td></td><td></td><td><p>A result parameter</p></td></tr>
+</table>
+<p>
+In addition to specifying the operation parameters directly, an operation definition can also provide a profile:
+</p>
+<pre class="json">
+ "inputProfile" : "http://example.org/StructureDefinition/op.x.in.profile"
+</pre>
+<p>
+This profile would describe a parameters resource with 2 parameters (using slicing), with the same details as the table above.
+The operation definition would still list the parameters directly to save applications consuming the definition (e.g. to produce
+an <a href="https://github.com/OAI/OpenAPI-Specification">OpenAPI document</a>) from parsing and interpreting the profile.
+</p>
+
+<a name="exec"></a>
+<h3>Executing Operations</h3>
+<p>
+OperationDefinitions with <code>kind = operation</code> are executed as defined in the <a href="operations.html">Operations Framework</a>.
+</p>
+
+<a name="equeries"></a>
+<h3>Executing Named Queries</h3>
+
+<p>
+Named queries (OperationDefinitions with <code>kind = query</code>) are executed by performing a <a href="search.html">search</a> 
+with the value of the search parameter "_query" set to the name provided in the definition. 
 </p>
 <p>
 If the named query is to be performed over the RESTful API, all the parameters must be simple search parameters,
@@ -18,6 +67,11 @@ return a bundle containing a set of resources, so all the out parameters must be
 resources, not data types.
 </p>
  
+<p>
+For named queries, all the standard search parameters are automatically in scope (though servers do not need to support them unless explicitly documented).
+</p>
+
+<a name="passing"></a>
 <h3>Passing Resources to Operations</h3> 
 
 <p>
@@ -25,17 +79,17 @@ There are two ways to pass resources to an operation: directly or by reference.
 The definition of an operation distinguishes between these two, since they have very different behaviors and consequences.
 </p>
 <p>
-As an example, take the <a href="questionnaire-operations.html#populate">Questionnaire.$populate operation</a>.  
-This operation takes a questionnaire as a direct parameter. The type of the parameter is 
-defined as 'Questionnaire'. In a <a href="parameters.html">Parameters</a> resource, it would be represented like this:
+As an example, take the <a href="valueset-operation-expand.html">ValueSet.$expand operation</a>.  
+This operation takes a valueset as a direct parameter. The type of the parameter is 
+defined as 'ValueSet'. In a <a href="parameters.html">Parameters</a> resource, it would be represented like this:
 </p>
 <pre class="xml">
   &lt;parameter&gt;
-    &lt;name value=&quot;questionnaire&quot;/&gt;
+    &lt;name value=&quot;valueset&quot;/&gt;
     &lt;resource&gt;
-      &lt;Questionnaire&gt;
-        &lt;!-- Questionnaire contents --&gt;
-      &lt;/Questionnaire&gt;
+      &lt;ValueSet&gt;
+        &lt;!-- Valueset contents --&gt;
+      &lt;/ValueSet&gt;
     &lt;/resource&gt;
   &lt;/parameter&gt; 
 </pre>
@@ -45,28 +99,27 @@ or, in JSON:
 <pre>
  "parameter": [
     {
-      "name": "questionnaire",
+      "name": "valueset",
       "resource": {
-        "resourceType": "Questionnaire",
-        // Questionnaire contents 
+        "resourceType": "ValueSet",
+        // Valueset contents 
       }
     }
   ]
 </pre>
 
 <p>
-Other parameters are passed by reference. For example, <code>$populate</code> takes a 
-set of references to other resources that should be used to pre-populate the 
-questionnaire. These are passed by reference, and the type of the 
-parameter is <code>Reference(Any)</code> - a reference to any kind of resource.
-In a parameters resource, it would be represented like this: 
+Other parameters are passed by reference. For example, the <a href="chargeitemdefinition-operation-apply.html">ChargeItemDefinition.$apply operation</a> 
+takes two parameters of type Reference - one to the chargeItem and the other to the account.  The type of the 
+parameters is <code>Reference(Charge)</code> and <code>Reference(Account)</code>, respectively.  The expectation is that the server performing the 
+operation will resolve those references as part of the operation execution.
+In a parameters resource, the chargeItem parameter would be represented like this: 
 </p>
 <pre class="xml">
   &lt;parameter&gt;
-    &lt;name value=&quot;content&quot;/&gt;
+    &lt;name value=&quot;chargeItem&quot;/&gt;
     &lt;valueReference&gt;
-      &lt;reference value="Patient/123"&gt;
-      &lt;/Questionnaire&gt;
+      &lt;reference value="ChargeItem/123"/&gt;
     &lt;/valueReference&gt;
   &lt;/parameter&gt; 
 </pre>
@@ -76,9 +129,9 @@ or, in JSON:
 <pre>
  "parameter": [
     {
-      "name": "questionnaire",
+      "name": "chargeItem",
       "valueReference" : {
-        "reference" : "Patient/123"
+        "reference" : "ChargeItem/123"
       }
     }
   ]
@@ -86,9 +139,10 @@ or, in JSON:
 
 <p>
 Some operations can take either form; in that case, two distinct parameters
-must be defined, one for a resource as a direct parameter, and one for a reference.
+must be defined: one for a resource as a direct parameter, and one for a reference.
 </p>
 
+<a name="renaming"></a>
 <h3>Renaming OperationDefinition.name</h3>
 
 <p>
@@ -135,6 +189,7 @@ operation, it can look at the server's <a href="capabilitystatement.html">Capabi
 definition URI and then execute the name given in the capability statement.
 </p>
 
+<a name="system"></a>
 <h3>Determining System Compatibility</h3>
 
 <p>
@@ -151,6 +206,7 @@ In the same sense, a 3rd party tool can examine a server's CapabilityStatement a
 those two system are interoperable or not.
 </p>
 
+<a name="forms"></a>
 <h3>Dynamically Generating Forms</h3>
 
 <p>

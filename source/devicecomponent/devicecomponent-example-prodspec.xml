@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <DeviceComponent xmlns="http://hl7.org/fhir">
   <id value="example-prodspec"/>
 	<identifier>
@@ -59,7 +59,7 @@
 	</productionSpecification>
 	<languageCode>
 		<coding>
-			<system value="http://tools.ietf.org/html/bcp47"/>
+			<system value="urn:ietf:bcp:47"/>
 			<code value="en-US"/>
 		</coding>
 	</languageCode>

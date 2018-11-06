@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <SearchParameter xmlns="http://hl7.org/fhir">
   <id value="example-extension"/>
@@ -13,10 +13,10 @@
       <value value="http://hl7.org/fhir"/>
     </telecom>
   </contact>
+  <description value="Search by url for a participation agreement, which is stored in a DocumentReference"/>
   <code value="part-agree"/>
   <base value="Patient"/>
   <type value="reference"/>
-  <description value="Search by url for a participation agreement, which is stored in a DocumentReference"/>
   <expression value="DocumentReference.extension('http://example.org/fhir/StructureDefinition/participation-agreement')"/>
   <xpath value="f:DocumentReference/f:extension[@url='http://example.org/fhir/StructureDefinition/participation-agreement']"/>
   <xpathUsage value="normal"/>

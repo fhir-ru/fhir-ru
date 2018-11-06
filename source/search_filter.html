@@ -9,13 +9,13 @@
 <body>
 [%file newnavbar%]
 
-<div class="col-9">
+<div class="col-12">
 
-<a name="base"> </a>
+<a name="base"></a>
 <h3>_filter Parameter</h3>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 2</td><td id="ballot"><a href="versions.html#levels">Ballot Status</a>: <a href="versions.html#std-process">Trial Use</a></td></tr></table>
+<table class="colstu"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 2</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Trial Use</a></td></tr></table>
 
-<a name="intro"> </a>
+<a name="intro"></a>
 <h4>Introduction</h4>
 <p>
 <code>_filter</code> is a parameter that can be used with the <a href="search.html">Search Operation</a>.
@@ -27,7 +27,7 @@ for expressing a set of query expressions on the underlying resources.
 <ul>
 <li>Patient: name co "pet" - all patients with the characters "pet" in a given or family name</li>
 <li>Patient: given eq "peter" and birthdate ge 2014-10-10 - all patients with a given name of peter, born on or after 10-Oct 2014</li>
-<li>Observation: name eq http://loinc.org|1234-5 - all observations with the loinc code "1234-5"</li>
+<li>Observation: code eq http://loinc.org|1234-5 - all observations with the loinc code "1234-5"</li>
 <li>Observation: subject.name co "pet" - all observations on a patient with the characters "pet" in a given or family name</li>
 <li>Observation: related[type eq "has-component"].target pr true - all observations that have component observations (note: this uses one of the search parameters defined for this mechanism, see below)</li>
 <li>Observation: related[type eq has-component].target re Observation/4 - all observations that have Observation/v as a component</li>
@@ -53,18 +53,19 @@ otherwise no significant difference between them.
 Formal grammar for the syntax:
 </p>
 <pre>
-filter       = paramExp / logExp / ("not") "(" filter ")"
-logExp       = filter ("and" / "or" filter)+
-paramExp     = paramPath SP compareOp SP compValue
-compareOp    = (see table below)
-compValue    = string / numberOrDate / token
-string       = json string
-token        = any sequence of non-whitespace characters (by Unicode rules) except "]" and ")"
-paramPath    = paramName (("[" filter "]") "." paramPath)
-paramName    = ALPHA (nameChar)*
-nameChar     = "_" / "-" / DIGIT / ALPHA
-numberOrDate = DIGIT (DateChar)*
-dateChar     = DIGIT / "T" / "-" / "." / "+"
+filter        = paramExp / logExp / ("not") "(" filter ")"
+logExp        = filter ("and" / "or" filter)+
+paramExp      = paramPath SP compareOp SP compValue
+compareOp     = (see table below)
+compValue     = string / numberOrDate / token
+string        = json string
+token         = any sequence of non-whitespace characters (by Unicode rules) except "]" and ")"
+paramPath     = paramName (("[" filter "]") "." paramPath)
+paramName     = nameCharStart (nameChar)*
+nameCharStart = "_" / ALPHA
+nameChar      = "_" / "-" / DIGIT / ALPHA
+numberOrDate  = DIGIT (DateChar)*
+dateChar      = DIGIT / "T" / "-" / "." / "+"
 </pre>
 
 <p>Notes about using the syntax:</p>
@@ -75,7 +76,7 @@ dateChar     = DIGIT / "T" / "-" / "." / "+"
 <li>Rhe date format is a standard XML (i.e. XSD) dateTime (including timezone).</li>
 </ul>
 
-<a name="ops"> </a>
+<a name="ops"></a>
 <h4>Operators</h4>
 <p>This table summarizes the comparison operations available:</p>
 
@@ -281,7 +282,7 @@ For detailed rules about the operators eq, ne, le, ge, lt, gt, sa, and eb see
 <li>For convenience, the codes "loinc", "snomed", "rxnorm" and "ucum" are predefined and can be used in place of their associated full namespace.</li>
 </ul>
 
-<a name="params"> </a>
+<a name="params"></a>
 <h4>Additional Parameters</h4>
 
 <p>

@@ -386,19 +386,22 @@
   </type>
   <date value="2015-07-22"/>
   <publisher value="Motive Medical Intelligence"/>
+  <contact>
+    <telecom>
+      <system value="phone"/>
+      <value value="415-362-4007"/>
+      <use value="work"/>
+    </telecom>
+    <telecom>
+      <system value="email"/>
+      <value value="info@motivemi.com"/>
+      <use value="work"/>
+    </telecom>
+  </contact>
   <description value="Logic for Suicide Risk Order Sets"/>
-
-  <purpose value="Defines a referral to a mental-health integrated care program for use in suicide risk order sets. The definition is independent of the order set in which it appears to allow reuse of the general definition of the referrral."/>
-  <usage value="This activity definition is used as the definition of a referral request within various suicide risk order sets. Elements that apply universally are defined here, while elements that apply to the specific setting of a referral within a particular order set are defined in the order set."/>
-  <approvalDate value="2016-03-12"/>
-  <lastReviewDate value="2016-08-15"/>
-  <effectivePeriod>
-    <start value="2016-01-01"/>
-    <end value="2017-12-31"/>
-  </effectivePeriod>
   <useContext>
     <code>
-      <system value="http://hl7.org/fhir/usage-context-type"/>
+      <system value="http://terminology.hl7.org/CodeSystem/usage-context-type"/>
       <code value="age"/>
     </code>
     <valueCodeableConcept>
@@ -411,7 +414,7 @@
   </useContext>
   <useContext>
     <code>
-      <system value="http://hl7.org/fhir/usage-context-type"/>
+      <system value="http://terminology.hl7.org/CodeSystem/usage-context-type"/>
       <code value="focus"/>
     </code>
     <valueCodeableConcept>
@@ -424,7 +427,7 @@
   </useContext>
   <useContext>
     <code>
-      <system value="http://hl7.org/fhir/usage-context-type"/>
+      <system value="http://terminology.hl7.org/CodeSystem/usage-context-type"/>
       <code value="focus"/>
     </code>
     <valueCodeableConcept>
@@ -437,7 +440,7 @@
   </useContext>
   <useContext>
     <code>
-      <system value="http://hl7.org/fhir/usage-context-type"/>
+      <system value="http://terminology.hl7.org/CodeSystem/usage-context-type"/>
       <code value="focus"/>
     </code>
     <valueCodeableConcept>
@@ -450,7 +453,7 @@
   </useContext>
   <useContext>
     <code>
-      <system value="http://hl7.org/fhir/usage-context-type"/>
+      <system value="http://terminology.hl7.org/CodeSystem/usage-context-type"/>
       <code value="user"/>
     </code>
     <valueCodeableConcept>
@@ -463,7 +466,7 @@
   </useContext>
   <useContext>
     <code>
-      <system value="http://hl7.org/fhir/usage-context-type"/>
+      <system value="http://terminology.hl7.org/CodeSystem/usage-context-type"/>
       <code value="venue"/>
     </code>
     <valueCodeableConcept>
@@ -480,39 +483,31 @@
       <code value="US"/>
     </coding>
   </jurisdiction>
+  <purpose value="Defines a referral to a mental-health integrated care program for use in suicide risk order sets. The definition is independent of the order set in which it appears to allow reuse of the general definition of the referrral."/>
+  <usage value="This activity definition is used as the definition of a referral request within various suicide risk order sets. Elements that apply universally are defined here, while elements that apply to the specific setting of a referral within a particular order set are defined in the order set."/>
+  <copyright value="© Copyright 2016 Motive Medical Intelligence. All rights reserved."/>
+  <approvalDate value="2016-03-12"/>
+  <lastReviewDate value="2016-08-15"/>
+  <effectivePeriod>
+    <start value="2016-01-01"/>
+    <end value="2017-12-31"/>
+  </effectivePeriod>
   <topic>
     <text value="Suicide Risk Order Set Logic"/>
   </topic>
-  <contributor>
-    <type value="author"/>
+  <author>
     <name value="Motive Medical Intelligence"/>
-    <contact>
-      <telecom>
-        <system value="phone"/>
-        <value value="415-362-4007"/>
-        <use value="work"/>
-      </telecom>
-      <telecom>
-        <system value="email"/>
-        <value value="info@motivemi.com"/>
-        <use value="work"/>
-      </telecom>
-    </contact>
-  </contributor>
-  <contact>
     <telecom>
-      <system value="phone"/>
-      <value value="415-362-4007"/>
-      <use value="work"/>
+	  <system value="phone"/>
+	  <value value="415-362-4007"/>
+	  <use value="work"/>
     </telecom>
     <telecom>
-      <system value="email"/>
-      <value value="info@motivemi.com"/>
-      <use value="work"/>
+  	  <system value="email"/>
+	  <value value="info@motivemi.com"/>
+	  <use value="work"/>
     </telecom>
-  </contact>
-  <copyright value="© Copyright 2016 Motive Medical Intelligence. All rights reserved."/>
-
+  </author>
   <relatedArtifact>
     <type value="citation"/>
     <display value="Practice Guideline for the Treatment of Patients with Major Depressive Disorder"/>
@@ -521,32 +516,22 @@
 	
   <relatedArtifact>
     <type value="depends-on"/>
-    <resource>
-      <reference value="Library/library-fhir-model-definition"/>
-    </resource>
+    <resource value="Library/library-fhir-model-definition"/>
   </relatedArtifact>
 
   <relatedArtifact>
     <type value="depends-on"/>
-    <resource>
-      <reference value="Library/library-fhir-helpers"/>
-      <display value="FHIRHelpers"/>
-    </resource>
+    <resource value="Library/library-fhir-helpers"/>
   </relatedArtifact>
 
   <relatedArtifact>
     <type value="depends-on"/>
-    <resource>
-      <reference value="http://nucc.org/provider-taxonomy"/>
-    </resource>
+    <resource value="http://nucc.org/provider-taxonomy"/>
   </relatedArtifact>
 
   <relatedArtifact>
     <type value="depends-on"/>
-    <resource>
-      <reference value="ValueSet/1.2.3.4.5"/>
-      <display value="Suicide Risk Assessment"/>
-    </resource>
+    <resource value="ValueSet/1.2.3.4.5"/>
   </relatedArtifact>
 
   <parameter>
@@ -577,7 +562,7 @@
     <type value="RiskAssessment"/>
     <codeFilter>
       <path value="code"/>
-      <valueSetUri value="http://example.org/valueset/1.2.3.4.5"/> <!-- Suicide Risk Assessment -->
+      <valueSet value="http://example.org/valueset/1.2.3.4.5"/> <!-- Suicide Risk Assessment -->
     </codeFilter>
   </dataRequirement>
 

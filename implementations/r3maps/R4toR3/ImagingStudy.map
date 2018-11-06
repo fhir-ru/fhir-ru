@@ -1,0 +1,56 @@
+﻿map "http://hl7.org/fhir/StructureMap/ImagingStudy4to3" = "R4 to R3 Conversion for ImagingStudy"
+
+uses "http://hl7.org/fhir/StructureDefinition/ImagingStudy" alias ImagingStudy as source
+uses "http://hl7.org/fhir/3.0/StructureDefinition/ImagingStudy" alias ImagingStudyR3 as target
+
+imports "http://hl7.org/fhir/StructureMap/*4to3"
+
+group ImagingStudy(source src : ImagingStudyR3, target tgt : ImagingStudy) extends DomainResource <<type+>> {
+  src.identifier -> tgt.identifier;
+  src.status -> tgt.status;
+  src.modality -> tgt.modality;
+  src.subject -> tgt.subject;
+  src.context -> tgt.context;
+  src.started -> tgt.started;
+  src.basedOn -> tgt.basedOn;
+  src.referrer -> tgt.referrer;
+  src.interpreter -> tgt.interpreter;
+  src.endpoint -> tgt.endpoint;
+  src.numberOfSeries -> tgt.numberOfSeries;
+  src.numberOfInstances -> tgt.numberOfInstances;
+  src.procedureReference -> tgt.procedureReference;
+  src.procedureCode -> tgt.procedureCode;
+  src.location -> tgt.location;
+  src.reasonCode -> tgt.reasonCode;
+  src.reasonReference -> tgt.reasonReference;
+  src.note -> tgt.note;
+  src.series as s -> tgt.series as t then ImagingStudySeries(s, t);
+}
+
+group ImagingStudySeries(source src : ImagingStudyR3, target tgt : ImagingStudy) extends BackboneElement <<type+>> {
+  src.identifier -> tgt.identifier;
+  src.number -> tgt.number;
+  src.modality -> tgt.modality;
+  src.description -> tgt.description;
+  src.numberOfInstances -> tgt.numberOfInstances;
+  src.endpoint -> tgt.endpoint;
+  src.bodySite -> tgt.bodySite;
+  src.laterality -> tgt.laterality;
+  src.specimen -> tgt.specimen;
+  src.started -> tgt.started;
+  src.performer as s -> tgt.performer as t then ImagingStudySeriesPerformer(s, t);
+  src.instance as s -> tgt.instance as t then ImagingStudySeriesInstance(s, t);
+}
+
+group ImagingStudySeriesPerformer(source src : ImagingStudyR3, target tgt : ImagingStudy) extends BackboneElement <<type+>> {
+  src.function -> tgt.function;
+  src.actor -> tgt.actor;
+}
+
+group ImagingStudySeriesInstance(source src : ImagingStudyR3, target tgt : ImagingStudy) extends BackboneElement <<type+>> {
+  src.identifier -> tgt.identifier;
+  src.number -> tgt.number;
+  src.sopClass -> tgt.sopClass;
+  src.title -> tgt.title;
+}
+

@@ -1,7 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<a name="scope"> </a>
+<a name="scope"></a>
 <h2>Scope and Usage</h2>
 
 <p>CarePlan is one of the <a href="workflow.html#request">request</a> resources in the FHIR <a href="workflow.html">workflow</a> specification.</p>
@@ -36,7 +36,7 @@ resection, neurological plan post head injury, pre-natal plan, post-partum plan,
 plan, etc.)
 </li>
 <li>
-Decision support-generated plans following specific practice guidelines (e.g. stroke care plan, 
+Decision support generated plans following specific practice guidelines (e.g. stroke care plan, 
 diabetes plan, falls prevention, etc.)
 </li>
 <li>
@@ -53,10 +53,10 @@ that only appropriate plans are exposed via a given user interface.
 </div>
 
 <div>
-<a name="bnr"> </a>
+<a name="bnr"></a>
 <h2>Boundaries and Relationships</h2>
 <p>
-For simplicity sake, CarePlan allows the in-line definition of activities as part of a plan using 
+For simplicity's sake, CarePlan allows the inline definition of activities as part of a plan using 
 the <code>activity.detail</code> element.  However, activities can also be defined using references
 to the various "request" resources.  These references could be to resources with a status of
 "planned" or to an active order.  It is possible for planned activities to exist (e.g. appointments)
@@ -64,13 +64,13 @@ without needing a CarePlan at all.  CarePlans are used when there's a need to gr
 goals and/or participants together to provide some degree of context.
 </p>
 <p>
-CarePlans can be tied to specific <a href="condition.html">Conditions</a> however they can also be 
+CarePlans can be tied to specific <a href="condition.html">Conditions</a>, however they can also be 
 condition-independent and instead focused on a particular type of care (e.g. psychological, nutritional)
 or the care delivered by a particular practitioner or group of practitioners.
 </p>
 <p>
 An <a href="immunizationrecommendation.html">ImmunizationRecommendation</a> can be interpreted as a narrow
-type of Care Plan dealing only with immunization events.  Where such information could appear in either
+type of CarePlan dealing only with immunization events.  Where such information could appear in either
 resource, the immunization-specific resource is preferred.
 </p>
 <p>

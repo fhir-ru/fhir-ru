@@ -1,4 +1,4 @@
-<ClaimResponse xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/claimresponse.xsd">
+﻿<ClaimResponse xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/claimresponse.xsd">
 
 	<id value="R3500"/>
 
@@ -14,6 +14,22 @@
 
 	<status value="active"/>
 
+	<type>
+		<coding>
+			<system value="http://terminology.hl7.org/CodeSystem/claim-type"/>
+			<code value="oral"/>
+		</coding>
+	</type>
+
+	<subType>
+		<coding>
+			<system value="http://terminology.hl7.org/CodeSystem/ex-claimsubtype"/>
+			<code value="emergency"/>
+		</coding>
+	</subType>
+
+	<use value="claim"/>
+	
 	<patient>
 		<reference value="Patient/1"/>
 	</patient>
@@ -27,13 +43,9 @@
 		</identifier>
 	</insurer>
 
-	<requestProvider>
-		<reference value="Practitioner/1"/>
-	</requestProvider>
-
-	<requestOrganization>
+	<requestor>
 		<reference value="Organization/1"/>
-	</requestOrganization>
+	</requestor>
 
 	<request>
 		<reference value="http://www.BenefitsInc.com/fhir/oralhealthclaim/15476332402"/>
@@ -45,7 +57,7 @@
 
 	<payeeType>
 		<coding>
-			<system value="http://hl7.org/fhir/payeetype"/>
+			<system value="http://terminology.hl7.org/CodeSystem/payeetype"/>
 			<code value="provider"/>
 		</coding>
 	</payeeType>
@@ -54,7 +66,7 @@
 
 	<item>
 
-		<sequenceLinkId value="1"/> 
+		<itemSequence value="1"/> 
 
 		<adjudication>
 			<category>
@@ -64,8 +76,7 @@
 			</category>
 			<amount>
 				<value value="135.57"/>
-				<system value="urn:iso:std:iso:4217"/>
-				<code value="USD"/>
+				<currency value="USD"/>
 			</amount>
 		</adjudication>
 
@@ -77,8 +88,7 @@
 			</category>
 			<amount>
 				<value value="10.00"/>
-				<system value="urn:iso:std:iso:4217"/>
-				<code value="USD"/>
+				<currency value="USD"/>
 			</amount>  
 		</adjudication>
 
@@ -98,7 +108,7 @@
 			</category>
 			<reason>
 				<coding>
-					<system value="http://hl7.org/fhir/adjudication-reason"/>
+					<system value="http://terminology.hl7.org/CodeSystem/adjudication-reason"/>
 					<code value="ar002"/>
 					<display value="Plan Limit Reached"/>
 					<!-- should have paid 100.47 -->
@@ -106,30 +116,41 @@
 			</reason>
 			<amount>
 				<value value="90.47"/>
-				<system value="urn:iso:std:iso:4217"/>
-				<code value="USD"/>
+				<currency value="USD"/>
 			</amount>	
 		</adjudication>
 
 	</item>
 
-	<totalCost>
-		<value value="135.57"/>
-		<system value="urn:iso:std:iso:4217"/>
-		<code value="USD"/>
-	</totalCost>	
-
-	<totalBenefit>
-		<value value="90.47"/>
-		<system value="urn:iso:std:iso:4217"/>
-		<code value="USD"/>
-	</totalBenefit>
+	<total>
+		<category>
+			<coding>
+				<code value="submitted"/>
+			</coding>
+		</category>
+		<amount>
+			<value value="135.57"/>
+			<currency value="USD"/> 
+		</amount> 
+	</total>
+	
+	<total>
+		<category>
+			<coding>
+				<code value="benefit"/>
+			</coding>
+		</category>
+		<amount>
+			<value value="90.47"/>
+			<currency value="USD"/> 
+		</amount> 
+	</total>
 
 	<!-- Payment details -->
 	<payment>
 		<type>
 			<coding>
-				<system value="http://hl7.org/fhir/ex-paymenttype"/>
+				<system value="http://terminology.hl7.org/CodeSystem/ex-paymenttype"/>
 				<code value="complete"/>
 			</coding>
 		</type>	
@@ -138,8 +159,7 @@
 
 		<amount>
 			<value value="100.47"/>
-			<system value="urn:iso:std:iso:4217"/>
-			<code value="USD"/>
+			<currency value="USD"/>
 		</amount>	
 
 		<identifier>

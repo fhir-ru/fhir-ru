@@ -4,13 +4,17 @@ import java.util.List;
 import java.util.Map;
 
 import org.hl7.fhir.definitions.generators.specification.SvgGenerator;
+import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ImplementationGuideDefn;
 import org.hl7.fhir.definitions.model.LogicalModel;
 import org.hl7.fhir.definitions.model.ResourceDefn;
+import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.r4.conformance.ProfileUtilities;
 import org.hl7.fhir.r4.conformance.ProfileUtilities.ProfileKnowledgeProvider;
 import org.hl7.fhir.r4.model.ElementDefinition.ElementDefinitionBindingComponent;
 import org.hl7.fhir.r4.model.StructureDefinition;
+import org.hl7.fhir.r4.utils.ToolingExtensions;
+import org.hl7.fhir.utilities.StandardsStatus;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.xhtml.XhtmlComposer;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
@@ -23,8 +27,9 @@ public class LogicalModelProcessor extends BuildToolScriptedPageProcessor implem
   private Map<String, String> examples;
   private List<LogicalModel> logicalModelSet;
   private ImplementationGuideDefn guide;
+  private Definitions definitions;
   
-  public LogicalModelProcessor(String title, PageProcessor page, ImplementationGuideDefn ig, String name, String type, String pagePath, StructureDefinition definition, String tx, String dict, Map<String, String> examples, List<LogicalModel> logicalModelSet) {
+  public LogicalModelProcessor(String title, PageProcessor page, ImplementationGuideDefn ig, String name, String type, String pagePath, StructureDefinition definition, String tx, String dict, Map<String, String> examples, List<LogicalModel> logicalModelSet, Definitions definitions) {
     super(title, ig.getLevel(), page, ig, name, type, pagePath);
     this.guide = ig;
     this.definition = definition;
@@ -32,14 +37,15 @@ public class LogicalModelProcessor extends BuildToolScriptedPageProcessor implem
     this.dict = dict;
     this.examples = examples;
     this.logicalModelSet = logicalModelSet;
-    }
+    this.definitions = definitions;
+  }
 
   @Override
   protected String processCommand(String command, String[] com) throws Exception {
     if (com[0].equals("lmheader"))
       return lmHeader(name, definition.getId(), com.length > 1 ? com[1] : null, true);
     else if (com[0].equals("svg"))
-      return new SvgGenerator(page, genlevel()).generate(definition, com[1], "");        
+      return new SvgGenerator(page, genlevel(), null, true, false).generate(definition, com[1], "");        
     else if (com[0].equals("draft-note"))
       return page.getDraftNote(definition);
     else if (com[0].equals("definition"))
@@ -60,8 +66,43 @@ public class LogicalModelProcessor extends BuildToolScriptedPageProcessor implem
       return "{todo}";      
     else if (com[0].equals("mappings"))
       return "{todo}";      
-    else 
+    else if (com[0].equals("fmm-style")) {
+      String fmm = ToolingExtensions.readStringExtension(definition, ToolingExtensions.EXT_FMM_LEVEL);
+      StandardsStatus ss = ToolingExtensions.getStandardsStatus(definition);
+      if (StandardsStatus.EXTERNAL == ss)
+        return "colse";
+      else
+        return "colsi";
+    } else if (com[0].equals("fmm")) {
+      String fmm = ToolingExtensions.readStringExtension(definition, ToolingExtensions.EXT_FMM_LEVEL);
+      StandardsStatus ss = ToolingExtensions.getStandardsStatus(definition);
+      if (StandardsStatus.EXTERNAL == ss)
+        return getFmmFromlevel("", "N/A");
+      else
+        return getFmmFromlevel("", fmm);
+    } else if (com[0].equals("wg")) {
+      String wg = ToolingExtensions.readStringExtension(definition, ToolingExtensions.EXT_WORKGROUP);
+      return (wg == null || !definitions.getWorkgroups().containsKey(wg) ?  "(No assigned work group)" : "<a _target=\"blank\" href=\""+definitions.getWorkgroups().get(wg).getUrl()+"\">"+definitions.getWorkgroups().get(wg).getName()+"</a> Work Group");
+    } else if (com[0].equals("fmm-style"))  {
+      String fmm = ToolingExtensions.readStringExtension(definition, ToolingExtensions.EXT_FMM_LEVEL);
+      StandardsStatus ss = ToolingExtensions.getStandardsStatus(definition);
+      if (StandardsStatus.EXTERNAL == ss)
+        return "colse";
+      else
+        return "colsi";
+    } else if (com[0].equals("wgt")) {
+      String fmm = ToolingExtensions.readStringExtension(definition, ToolingExtensions.EXT_FMM_LEVEL);
+      StandardsStatus ss = ToolingExtensions.getStandardsStatus(definition);
+      if (StandardsStatus.EXTERNAL == ss)
+        return getFmmFromlevel("", "N/A");
+      else
+        return getFmmFromlevel("", fmm);
+    } else 
       return super.processCommand(command, com);
+  }
+  
+  private String getFmmFromlevel(String prefix, String level) throws Exception {
+    return "&nbsp;<a href=\""+prefix+"versions.html#maturity\" title=\"Maturity Level\">Maturity Level</a>: "+(Utilities.noString(level) ? "0" : level);
   }
 
 
@@ -95,8 +136,8 @@ public class LogicalModelProcessor extends BuildToolScriptedPageProcessor implem
 
   private String genLogicalModelTable(StructureDefinition sd, String prefix) throws Exception {
     ProfileUtilities pu = new ProfileUtilities(page.getWorkerContext(), null, this);
-    XhtmlNode x = pu.generateTable(sd.getId()+"-definitions.html", sd, sd.hasSnapshot() ? false : true, page.getFolders().dstDir, false, sd.getId(), true, prefix, prefix, true, false);
-    return new XhtmlComposer().compose(x);
+    XhtmlNode x = pu.generateTable(sd.getId()+"-definitions.html", sd, sd.hasSnapshot() ? false : true, page.getFolders().dstDir, false, sd.getId(), true, prefix, prefix, true, false, null);
+    return new XhtmlComposer(XhtmlComposer.HTML).compose(x);
   }
 
   @Override
@@ -144,7 +185,7 @@ public class LogicalModelProcessor extends BuildToolScriptedPageProcessor implem
   }
 
   @Override
-  public BindingResolution resolveBinding(StructureDefinition profile, ElementDefinitionBindingComponent binding, String path) {
+  public BindingResolution resolveBinding(StructureDefinition profile, ElementDefinitionBindingComponent binding, String path) throws FHIRException {
     return page.resolveBinding(profile, binding, path);
   }
 

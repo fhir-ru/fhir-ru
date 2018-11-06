@@ -22,6 +22,7 @@ import org.hl7.fhir.r4.model.Base;
 import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.Bundle.BundleEntryComponent;
 import org.hl7.fhir.r4.model.Bundle.BundleLinkComponent;
+import org.hl7.fhir.r4.model.CanonicalType;
 import org.hl7.fhir.r4.model.DomainResource;
 import org.hl7.fhir.r4.model.Element;
 import org.hl7.fhir.r4.model.ExpressionNode;
@@ -354,6 +355,8 @@ public class GraphQLEngine {
   private List<Base> filter(Resource context, Property prop, List<Argument> arguments, List<Base> values, boolean extensionMode) throws FHIRException, EGraphQLException {
     List<Base> result = new ArrayList<Base>();
     if (values.size() > 0) {
+      int count = Integer.MAX_VALUE;
+      int offset = 0;
       StringBuilder fp = new StringBuilder();
       for (Argument arg : arguments) {
         List<Value> vl = resolveValues(arg);
@@ -363,6 +366,10 @@ public class GraphQLEngine {
           throw new EGraphQLException("Attempt to use a filter ("+arg.getName()+") on a primtive type ("+prop.getTypeCode()+")");
         if ((arg.getName().equals("fhirpath")))
           fp.append(" and "+vl.get(0).toString());
+        else if ((arg.getName().equals("_count")))
+          count = Integer.valueOf(vl.get(0).toString());
+        else if ((arg.getName().equals("_offset")))
+          offset = Integer.valueOf(vl.get(0).toString());
         else {
           Property p = values.get(0).getNamedProperty(arg.getName());
           if (p == null)
@@ -370,15 +377,28 @@ public class GraphQLEngine {
           fp.append(" and "+arg.getName()+" = '"+vl.get(0).toString()+"'");
         }
       }
+      int i = 0;
+      int t = 0;
       if (fp.length() == 0)
         for (Base v : values) {
-          if (passesExtensionMode(v, extensionMode))
+          if ((i >= offset) && passesExtensionMode(v, extensionMode)) {
             result.add(v);
+            t++;
+            if (t >= count)
+              break;
+          }
+          i++;
         } else {
           ExpressionNode node = fpe.parse(fp.toString().substring(5));
-          for (Base v : values)
-            if (passesExtensionMode(v, extensionMode) && fpe.evaluateToBoolean(null, context, v, node))
+          for (Base v : values) {
+            if ((i >= offset) && passesExtensionMode(v, extensionMode) && fpe.evaluateToBoolean(null, context, v, node)) {
               result.add(v);
+              t++;
+              if (t >= count)
+                break;
+            }
+            i++;
+          }
         }
     }
     return result;
@@ -496,7 +516,7 @@ public class GraphQLEngine {
   }
 
   private boolean isPrimitive(String typename) {
-    return Utilities.existsInList(typename, "boolean", "integer", "string", "decimal", "uri", "base64Binary", "instant", "date", "dateTime", "time", "code", "oid", "id", "markdown", "unsignedInt", "positiveInt");
+    return Utilities.existsInList(typename, "boolean", "integer", "string", "decimal", "uri", "base64Binary", "instant", "date", "dateTime", "time", "code", "oid", "id", "markdown", "unsignedInt", "positiveInt", "url", "canonical");
   }
 
   private boolean isResourceName(String name, String suffix) {
@@ -518,6 +538,8 @@ public class GraphQLEngine {
               target.addField("resourceType", listStatus(sel.getField(), false)).addValue(new StringValue(source.fhirType()));
             else if ((sel.getField().getName().equals("resource") && source.fhirType().equals("Reference")))
               processReference(context, source, sel.getField(), target, inheritedList, suffix);
+            else if ((sel.getField().getName().equals("resource") && source.fhirType().equals("canonical")))
+              processCanonicalReference(context, source, sel.getField(), target, inheritedList, suffix);
             else if (isResourceName(sel.getField().getName(), "List") && (source instanceof Resource))
               processReverseReferenceList((Resource) source, sel.getField(), target, inheritedList, suffix);
             else if (isResourceName(sel.getField().getName(), "Connection") && (source instanceof Resource))
@@ -570,6 +592,26 @@ public class GraphQLEngine {
       throw new EGraphQLException("Resource Referencing services not provided");
 
     Reference ref = (Reference) source;
+    ReferenceResolution res = services.lookup(appInfo, context, ref);
+    if (res != null) {
+      if (targetTypeOk(field.getArguments(), res.target)) {
+        Argument arg = target.addField(field.getAlias() + suffix, listStatus(field, inheritedList));
+        ObjectValue obj = new ObjectValue();
+        arg.addValue(obj);
+        processObject(res.targetContext, res.target, obj, field.getSelectionSet(), inheritedList, suffix);
+      }
+    }
+    else if (!hasArgument(field.getArguments(), "optional", "true"))
+      throw new EGraphQLException("Unable to resolve reference to "+ref.getReference());
+  }
+
+  private void processCanonicalReference(Resource context, Base source, Field field, ObjectValue target, boolean inheritedList, String suffix) throws EGraphQLException, FHIRException {
+    if (!(source instanceof CanonicalType))
+      throw new EGraphQLException("Not done yet");
+    if (services == null)
+      throw new EGraphQLException("Resource Referencing services not provided");
+
+    Reference ref = new Reference(source.primitiveValue());
     ReferenceResolution res = services.lookup(appInfo, context, ref);
     if (res != null) {
       if (targetTypeOk(field.getArguments(), res.target)) {
@@ -863,7 +905,7 @@ public class GraphQLEngine {
 //  result = "*Connection";
 //}
 //
-//  // http://test.fhir.org/r3/Patient?_format==text/xhtml&search-id==77c97e03-8a6c-415f-a63d-11c80cf73f&&active==true&_sort==_id&search-offset==50&_count==50
+//  // http://test.fhir.org/r4/Patient?_format==text/xhtml&search-id==77c97e03-8a6c-415f-a63d-11c80cf73f&&active==true&_sort==_id&search-offset==50&_count==50
 //
 //function GraphQLSearchWrapper.getPropertyValue(propName: string): Property;
 //var

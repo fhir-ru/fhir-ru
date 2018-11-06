@@ -14,8 +14,9 @@
 <%resheader%>
 <h1>Resource <%title%> - Content</h1>
 
-<table class="<%fmm-style%>"><tr><td><a href="<%wg%>"><%wgt%></a> Work Group</td><td><%fmm%></td><td><%sstatus%></td><td><%complinks%></td></tr></table>
+<table class="<%fmm-style%>"><tr><td><a href="<%wg%>"><%wgt%></a> Work Group</td><td><%fmm%></td><td><%sstatus%></td><td><%sec-cat%></td><!--!ns!--><td><%complinks%></td></tr></table>
 
+[%normative resource %check%]
 <p>
 <%definition%>
 </p>
@@ -24,13 +25,13 @@
 
 <%resref%>
 
-<a name="resource"> </a>
+<a name="resource"></a>
 <h2>
 Resource Content
 </h2>
-<a name="def"> </a>
-<a name="<%name%>"> </a>
-<a name="<%title%>"> </a>
+<a name="def"></a>
+<a name="<%name%>"></a>
+<a name="<%title%>"></a>
 
 <div id="tabs">
   <ul>
@@ -39,7 +40,7 @@ Resource Content
     <li><a href="#tabs-xml">XML</a></li>
     <li><a href="#tabs-json">JSON</a></li>
     <li><a href="#tabs-ttl">Turtle</a></li>
-    <li><a href="#tabs-diff">R2 Diff</a></li>
+    <li><a href="#tabs-diff">R3 Diff</a></li>
     <li><a href="#tabs-all">All</a></li>
   </ul>
   <div id="tabs-struc">
@@ -95,13 +96,13 @@ Resource Content
   <div id="tabs-diff">
 
 <div id="vdiff">
-<p><b>Changes since DSTU2</b></p>
+<p><b>Changes since R3</b></p>
  <div id="diff-inner">
   <%diff-analysis%>
   <p>
   This analysis is available as <a href="<%name%>.diff.xml">XML</a> or <a href="<%name%>.diff.json">JSON</a>.
   </p>
-  <%r2r3transforms%>
+  <%r3r4transforms%>
  </div>
 </div>
 
@@ -109,7 +110,7 @@ Resource Content
   <div id="tabs-all">
 
 <div id="tbl">
-<a name="tbl"> </a>
+<a name="tbl"></a>
 <p><b>Structure</b></p>
  <div id="tbl-inner">
   <%resource-table%>
@@ -118,7 +119,7 @@ Resource Content
 
 
 <div id="uml">
-<a name="uml"> </a>
+<a name="uml"></a>
 <p><b>UML Diagram</b> (<a href="formats.html#uml">Legend</a>)</p>
  <div id="uml-inner">
  <%svg B%>
@@ -126,7 +127,7 @@ Resource Content
 </div>
 
 <div id="xml">
-<a name="xml"> </a>
+<a name="xml"></a>
 <p><b>XML Template</b></p>
  <div id="xml-inner">
   <%xml%>
@@ -134,7 +135,7 @@ Resource Content
 </div>
 
 <div id="json2">
-<a name="json"> </a>
+<a name="json"></a>
 <p><b>JSON Template</b></p>
  <div id="json-inner">
   <%json%>
@@ -142,7 +143,7 @@ Resource Content
 </div>
 
 <div id="ttl2">
-<a name="ttl"> </a>
+<a name="ttl"></a>
 <p><b>Turtle Template</b></p>
  <div id="ttl-inner">
   <%ttl%>
@@ -150,13 +151,13 @@ Resource Content
 </div>
 
 <div id="vdiff2">
-<p><b>Changes since DSTU2</b></p>
+<p><b>Changes since Release 3</b></p>
  <div id="diff-inner2">
   <%diff-analysis%>
   <p>
   This analysis is available as <a href="<%name%>.diff.xml">XML</a> or <a href="<%name%>.diff.json">JSON</a>.
   </p>
-  <%r2r3transforms%>
+  <%r3r4transforms%>
  </div>
 </div>
 
@@ -164,18 +165,19 @@ Resource Content
 </div>
 
 <p>&nbsp;</p>
-<p>Alternate definitions:
-Master Definition (<a href="<%name%>.profile.xml.html">XML</a>, <a href="<%name%>.profile.json.html">JSON</a>),
-<a href="xml.html">XML</a> <a href="<%name%>.xsd">Schema</a>/<a href="<%name%>.sch">Schematron</a> + <a href="json.html">JSON</a> <a href="<%cname%>.schema.json">Schema</a>, <a href="<%name%>.shex.html">ShEx</a> (for <a href="rdf.html">Turtle</a>)</p>
+<p>[%res-ext-link%]alternate definitions:
+Master Definition <a href="<%name%>.profile.xml.html">XML</a> + <a href="<%name%>.profile.json.html">JSON</a>,
+<a href="xml.html">XML</a> <a href="<%name%>.xsd">Schema</a>/<a href="<%name%>.sch">Schematron</a> + <a href="json.html">JSON</a> 
+<a href="<%name%>.schema.json.html">Schema</a>, <a href="<%name%>.shex.html">ShEx</a> (for <a href="rdf.html">Turtle</a>) [%ext-link%] &amp; the <a href="<%name%>-dependencies.html">dependency analysis</a></p>
 
-<a name="tx"> </a>
+<a name="tx"></a>
 <%tx%>
 
 <%inv%>
 
 <%notes%>
 
-<a name="search"> </a>
+<a name="search"></a>
 <%search%>
 
 

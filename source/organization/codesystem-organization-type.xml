@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <CodeSystem xmlns="http://hl7.org/fhir">
-  <url value="http://hl7.org/fhir/organization-type"/>
+  <url value="http://terminology.hl7.org/CodeSystem/organization-type"/>
   <name value="OrganizationType"/>
   <status value="draft"/>
   <experimental value="false"/>
@@ -32,6 +32,11 @@
     <code value="ins"/>
     <display value="Insurance Company"/>
     <definition value="A company that provides insurance to its subscribers that may include healthcare related policies."/>
+  </concept>
+  <concept>
+    <code value="pay"/>
+    <display value="Payer"/>
+    <definition value="A company, charity, or governmental organization which processes claims and/or issues payments to providers on behalf of patients or groups of patients."/>
   </concept>
   <concept>
     <code value="edu"/>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <NutritionOrder xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir file://ERICHPLAPTOP/Users/FHIRBuild/schema/nutritionorder.xsd"><!-- id = diabeticsupplement  file name = nutritionorder-example-diabeticsupplement.xml Name= Diabetic Supplement  Description = Nutrition Order Diabetic Supplement Canonical Example
 edited by Eric Haas Health eData Inc
 
@@ -7,7 +7,7 @@ edited by Eric Haas Health eData Inc
 		<system value="http://goodhealthhospital.org/nutrition-requests"/>
 		<value value="123"/>
 	</identifier>
-	<status value="active"/>
+	<status value="active"/><intent value="order"/>
 	<patient>
 		<reference value="Patient/example"/>
 		<display value="Peter Chalmers"/>
@@ -27,7 +27,7 @@ edited by Eric Haas Health eData Inc
 	</allergyIntolerance>
 	<foodPreferenceModifier>
 		<coding>
-			<system value="http://hl7.org/fhir/diet"/>
+			<system value="http://terminology.hl7.org/CodeSystem/diet"/>
 			<code value="kosher"/>
 		</coding>
 	</foodPreferenceModifier>

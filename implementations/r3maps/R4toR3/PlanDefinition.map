@@ -1,0 +1,64 @@
+﻿map "http://hl7.org/fhir/StructureMap/PlanDefinition4to3" = "R4 to R3 Conversion for PlanDefinition"
+
+uses "http://hl7.org/fhir/StructureDefinition/PlanDefinition" alias PlanDefinition as source
+uses "http://hl7.org/fhir/3.0/StructureDefinition/PlanDefinition" alias PlanDefinitionR3 as target
+
+imports "http://hl7.org/fhir/StructureMap/*4to3"
+
+group PlanDefinition(source src : PlanDefinition, target tgt : PlanDefinitionR3) extends DomainResource <<type+>> {
+  src.url -> tgt.url;
+  src.identifier -> tgt.identifier;
+  src.version -> tgt.version;
+  src.name -> tgt.name;
+  src.title -> tgt.title;
+  src.type -> tgt.type;
+  src.status -> tgt.status;
+  src.experimental -> tgt.experimental;
+  src.date -> tgt.date;
+  src.publisher -> tgt.publisher;
+  src.description -> tgt.description;
+  src.purpose -> tgt.purpose;
+  src.usage -> tgt.usage;
+  src.approvalDate -> tgt.approvalDate;
+  src.lastReviewDate -> tgt.lastReviewDate;
+  src.effectivePeriod -> tgt.effectivePeriod;
+  src.useContext -> tgt.useContext;
+  src.jurisdiction -> tgt.jurisdiction;
+  src.topic -> tgt.topic;
+  src.contributor -> tgt.contributor;
+  src.contact -> tgt.contact;
+  src.copyright -> tgt.copyright;
+  src.relatedArtifact -> tgt.relatedArtifact;
+  src.goal as vs0 -> tgt.goal as vt0 then {
+    vs0.category -> vt0.category;
+    vs0.description -> vt0.description;
+    vs0.priority -> vt0.priority;
+    vs0.start -> vt0.start;
+    vs0.addresses -> vt0.addresses;
+    vs0.documentation -> vt0.documentation;
+  };
+  src.action as vs0 -> tgt.action as vt0 then {
+    vs0.prefix -> vt0.label "label";
+    vs0.title -> vt0.title;
+    vs0.description -> vt0.description;
+    vs0.textEquivalent -> vt0.textEquivalent;
+    vs0.code -> vt0.code;
+    vs0.reason -> vt0.reason;
+    vs0.documentation -> vt0.documentation;
+    vs0.goalId -> vt0.goalId;
+    vs0.trigger -> vt0.triggerDefinition "triggerDefinition";
+    vs0.input -> vt0.input;
+    vs0.output -> vt0.output;
+    vs0.timing : dateTime as vs -> vt0.timing = create("dateTime") as vt then dateTime(vs, vt);
+    vs0.timing : Period as vs -> vt0.timing = create("Period") as vt then Period(vs, vt);
+    vs0.timing : Duration as vs -> vt0.timing = create("Duration") as vt then Duration(vs, vt);
+    vs0.timing : Range as vs -> vt0.timing = create("Range") as vt then Range(vs, vt);
+    vs0.timing : Timing as vs -> vt0.timing = create("Timing") as vt then Timing(vs, vt);
+    vs0.groupingBehavior -> vt0.groupingBehavior;
+    vs0.selectionBehavior -> vt0.selectionBehavior;
+    vs0.requiredBehavior -> vt0.requiredBehavior;
+    vs0.precheckBehavior -> vt0.precheckBehavior;
+    vs0.cardinalityBehavior -> vt0.cardinalityBehavior;
+  };
+}
+

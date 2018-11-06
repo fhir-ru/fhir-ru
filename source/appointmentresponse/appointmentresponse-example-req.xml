@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <AppointmentResponse xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/appointmentresponse.xsd">
 	<id value="exampleresp"/>
 	<text>
@@ -17,7 +17,7 @@
 	<end value="2013-12-25T13:30:00Z" />
   <participantType>
     <coding>
-      <system value="http://hl7.org/fhir/v3/ParticipationType"/>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ParticipationType"/>
       <code value="ATND"/>
     </coding>
   </participantType>

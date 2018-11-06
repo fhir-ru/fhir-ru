@@ -1,6 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <ValueSet xmlns="http://hl7.org/fhir">
+	<extension url="http://hl7.org/fhir/StructureDefinition/valueset-extensible">
+	  <valueBoolean value="true"/>
+	</extension>
   <id value="ucum-common"/>
   <url value="http://hl7.org/fhir/ValueSet/ucum-common"/>
   <name value="Common UCUM units"/>
@@ -8,7 +11,6 @@
   <publisher value="FHIR Project"/>
   <description value="Commonly encountered UCUM units (for purposes of helping populate look ups."/>
   <copyright value="UCUM is Copyright © 1999-2013 Regenstrief Institute, Inc. and The UCUM Organization, Indianapolis, IN. All rights reserved. See http://unitsofmeasure.org/trac//wiki/TermsOfUse for details."/>
-  <extensible value="true"/>
   <compose>
     <include>
       <system value="http://unitsofmeasure.org"/>
@@ -217,11 +219,11 @@
         <display value="per Entity"/>
       </concept>
       <concept>
-        <code value="/{hpf}"/>
+        <code value="/[HPF]"/>
         <display value="per hpf"/>
       </concept>
       <concept>
-        <code value="/{LPF}"/>
+        <code value="/[LPF]"/>
         <display value="per LPF"/>
       </concept>
       <concept>
@@ -457,7 +459,7 @@
         <display value="drop"/>
       </concept>
       <concept>
-        <code value="[drp]/{HPF}"/>
+        <code value="[drp]/[HPF]"/>
         <display value="drop / HPF"/>
       </concept>
       <concept>
@@ -596,10 +598,12 @@
         <code value="[MPL&#39;U]"/>
         <display value="IgM anticardiolipin unit"/>
       </concept>
+<!-- GG 25/03/2018 this is not legal
       <concept>
         <code value="[M&#39;U]"/>
         <display value="M unit"/>
       </concept>
+-->      
       <concept>
         <code value="[nmi_i]"/>
         <display value="nautical mile"/>
@@ -633,7 +637,7 @@
         <display value="part per million in volume per volume"/>
       </concept>
       <concept>
-        <code value="[ppt]"/>
+        <code value="[pptr]"/>
         <display value="part per trillion"/>
       </concept>
       <concept>
@@ -941,7 +945,7 @@
         <display value="Ehrlich unit per 2 hour"/>
       </concept>
       <concept>
-        <code value="{Ehrlich&#39;U}/100g"/>
+        <code value="{Ehrlich&#39;U}/100.g"/>
         <display value="Ehrlich unit per 100 gram"/>
       </concept>
       <concept>
@@ -1001,7 +1005,7 @@
         <display value="FluorescenceIntensity&#39;U"/>
       </concept>
       <concept>
-        <code value="{G}U"/>
+        <code value="U{G}"/>
         <display value="G unit"/>
       </concept>
       <concept>
@@ -1165,8 +1169,8 @@
         <display value="MultOfMean"/>
       </concept>
       <concept>
-        <code value="{NonspecifcOunce}"/>
-        <display value="NonspecifcOunce"/>
+        <code value="{NonspecificOunce}"/>
+        <display value="NonspecificOunce"/>
       </concept>
       <concept>
         <code value="{Number}"/>
@@ -1801,7 +1805,7 @@
         <display value="Hertz"/>
       </concept>
       <concept>
-        <code value="iU"/>
+        <code value="[iU]"/>
         <display value="international unit"/>
       </concept>
       <concept>
@@ -2489,7 +2493,7 @@
         <display value="millimole per kilogram per minute"/>
       </concept>
       <concept>
-        <code value="mmol/kg[H20]"/>
+        <code value="mmol/kg{H20}"/>  <!-- GG: was mmol/kg[H20] but that is not valid ucum -->
         <display value="millimole per kilogram of water"/>
       </concept>
       <concept>

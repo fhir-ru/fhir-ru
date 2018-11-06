@@ -32,7 +32,7 @@
       <itemReference>
         <reference value="#sub03"/>
       </itemReference>
-      <amount>
+      <strength>
         <numerator>
           <value value="500"/>
           <system value="http://unitsofmeasure.org"/>
@@ -40,10 +40,11 @@
         </numerator>
         <denominator>
           <value value="1"/>
+          <unit value="Tablet"/>
           <system value="http://snomed.info/sct"/>
-          <code value="Tablet dose form (qualifier value)"/>
+          <code value="385055001"/>
         </denominator>
-      </amount>
+      </strength>
     </ingredient>
   
 </Medication>

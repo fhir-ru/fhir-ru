@@ -3,9 +3,11 @@ package org.hl7.fhir.tools.converters;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -14,6 +16,10 @@ import java.util.Set;
 
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.hl7.fhir.exceptions.DefinitionException;
+import org.hl7.fhir.exceptions.FHIRFormatError;
+import org.hl7.fhir.r4.conformance.ProfileUtilities;
+import org.hl7.fhir.r4.conformance.XmlSchemaGenerator;
 import org.hl7.fhir.r4.formats.IParser.OutputStyle;
 import org.hl7.fhir.r4.formats.XmlParser;
 import org.hl7.fhir.r4.model.BooleanType;
@@ -25,7 +31,6 @@ import org.hl7.fhir.r4.model.ElementDefinition.TypeRefComponent;
 import org.hl7.fhir.r4.model.Enumeration;
 import org.hl7.fhir.r4.model.Enumerations.BindingStrength;
 import org.hl7.fhir.r4.model.Enumerations.PublicationStatus;
-import org.hl7.fhir.r4.model.Reference;
 import org.hl7.fhir.r4.model.StringType;
 import org.hl7.fhir.r4.model.StructureDefinition;
 import org.hl7.fhir.r4.model.StructureDefinition.StructureDefinitionKind;
@@ -41,6 +46,19 @@ import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
 public class CDAGenerator {
+
+  public class WaitingEntry {
+    private String className;
+    private Element choiceContext; // grad associations from the choice as well
+    public WaitingEntry(String className, Element choiceContext) {
+      super();
+      this.className = className;
+      this.choiceContext = choiceContext;
+    }
+    
+    
+  }
+
 
   public class AssociationSorter implements Comparator<Element> {
 
@@ -60,23 +78,36 @@ public class CDAGenerator {
   }
 
   public static void main(String[] args) throws Exception {
-    int lp = new CDAGenerator().execute("C:\\work\\org.hl7.fhir\\build\\guides\\ccda2\\mapping\\mif", "C:\\work\\org.hl7.fhir\\build\\guides\\ccda2\\mapping\\logical");
+    int lp = new CDAGenerator().execute("c:\\temp\\cda", "c:\\temp\\cda\\out");
     System.out.println("Done. Longest path = "+Integer.toString(lp));
   }
 
+  private Map<String, StructureDefinition> library = new HashMap<String, StructureDefinition>();
+  
   public int execute(String src, String dst) throws Exception {
     target = dst;
     start();
     processDataTypes(Utilities.path(src, "datatypes.mif"));
     processCDA(Utilities.path(src, "cda.mif"));
     finish();
+    generateSchema();
     System.out.println(v3vs.toString());
     return lp;
+  }
+
+  private void generateSchema() throws Exception {
+    XmlSchemaGenerator xsg = new XmlSchemaGenerator("c:\\temp\\cda\\out", null);
+    xsg.setSingle(true);
+    xsg.setLicense("a license text");
+    xsg.setGenDate(new SimpleDateFormat().format(new Date()));
+    xsg.setVersion("0.0.1");
+    xsg.generate(library.get("http://hl7.org/fhir/cda/StructureDefinition/ClinicalDocument"), library);
   }
 
   public CDAGenerator() {
     super();
     primitiveTypes.put("BL", "boolean");
+    primitiveTypes.put("BN", "boolean");
     primitiveTypes.put("INT", "integer");
     primitiveTypes.put("REAL", "decimal");
     primitiveTypes.put("TS", "dateTime");
@@ -159,7 +190,7 @@ public class CDAGenerator {
     }    
   }
 
-  private void processDataTypes(String filename) throws FileNotFoundException, ParserConfigurationException, SAXException, IOException {
+  private void processDataTypes(String filename) throws FileNotFoundException, ParserConfigurationException, SAXException, IOException, FHIRFormatError, DefinitionException {
     System.out.println("Process Data Types");
     Document dtMif = XMLUtil.parseFileToDom(filename);
     List<Element> dts = new ArrayList<Element>();
@@ -184,7 +215,7 @@ public class CDAGenerator {
     buildInfrastructureRoot();
     
     for (StructureDefinition sd : structures) {
-      if (!sd.getAbstract())
+//      if (!sd.getAbstract())
         generateSnapShot(sd);
     }
     System.out.println(" ... done");
@@ -205,19 +236,21 @@ public class CDAGenerator {
         generateSnapShot(dst, dt, typeName);
     }
     for (ElementDefinition ed : src.getDifferential().getElement()) {
-      ElementDefinition ned = ed.copy();
       String path = ed.getPath();
       if (path.contains(".")) {
         path = typeName + path.substring(path.indexOf("."));
-        ned.setPath(path);
         seePath(path);
         boolean found = false;
         for (ElementDefinition de : dst.getSnapshot().getElement()) {
           if (de.getPath().equals(path)) 
             found = true;
         }
-        if (!found)
+        if (!found) {
+          ElementDefinition ned = ed.copy();
+          ned.setPath(path);
+          ned.getBase().setPath(ed.getPath()).setMin(ned.getMin()).setMax(ned.getMax());
           dst.getSnapshot().getElement().add(ned);
+        }
       } 
     }
   }
@@ -234,14 +267,18 @@ public class CDAGenerator {
       if (sd.getUrl().equals(name))
         return sd;
     }
+    if (name.equals("http://hl7.org/fhir/StructureDefinition/Element"))
+      return null;
+    
     throw new Error("Data Type "+name+" not found");
   }
 
 
-  private void buildSXPR() {
+  private void buildSXPR() throws DefinitionException {
     StructureDefinition sd = new StructureDefinition();
     sd.setId(fix("SXPR_TS"));
     sd.setUrl("http://hl7.org/fhir/cda/StructureDefinition/"+fix("SXPR_TS"));
+    library.put(sd.getUrl(), sd);
     sd.setName("V3 Data type SXPR_TS (A set-component that is itself made up of set-components that are evaluated as one value)");
     sd.setTitle("SXPR_TS - Component part of GTS");
     sd.setStatus(PublicationStatus.ACTIVE);
@@ -250,6 +287,7 @@ public class CDAGenerator {
     sd.setDescription("A set-component that is itself made up of set-components that are evaluated as one value");
     sd.setKind(StructureDefinitionKind.LOGICAL);
     sd.setAbstract(false);
+    sd.setType(sd.getUrl());
     sd.addExtension().setUrl("http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace").setValue(new UriType("urn:hl7-org:v3"));
     sd.setBaseDefinition("http://hl7.org/fhir/cda/StructureDefinition/SXCM_TS");
     sd.setDerivation(TypeDerivationRule.SPECIALIZATION);
@@ -267,12 +305,13 @@ public class CDAGenerator {
     ed.setMin(1);
     ed.setMax("*");
     ed.addRepresentation(PropertyRepresentation.TYPEATTR);
-    ed.addType().setCode("IVL_TS");
-    ed.addType().setCode("EIVL_TS");
-    ed.addType().setCode("PIVL_TS");
-    ed.addType().setCode("SXPR_TS");
+    ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/IVL_TS");
+    ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/EIVL_TS");
+    ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/PIVL_TS");
+    ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/SXPR_TS");
     sd.getDifferential().getElement().add(ed);
     
+    new ProfileUtilities(null, null, null).setIds(sd, true);
     structures.add(sd);
   }
 
@@ -280,10 +319,11 @@ public class CDAGenerator {
     seePath(ed.getPath());
   }
 
-  private void buildInfrastructureRoot() {
+  private void buildInfrastructureRoot() throws DefinitionException {
     StructureDefinition sd = new StructureDefinition();
     sd.setId("InfrastructureRoot");
     sd.setUrl("http://hl7.org/fhir/cda/StructureDefinition/InfrastructureRoot");
+    library.put(sd.getUrl(), sd);
     sd.setName("Base Type for all classes in the CDA structure");
     sd.setTitle("InfrastructureRoot");
     sd.setStatus(PublicationStatus.ACTIVE);
@@ -291,6 +331,7 @@ public class CDAGenerator {
     sd.setPublisher("HL7");
     sd.setDescription("Defines the base elements and attributes on all CDA elements (other than data types)");
     sd.setKind(StructureDefinitionKind.LOGICAL);
+    sd.setType(sd.getUrl());
     sd.setAbstract(true);
     sd.addExtension().setUrl("http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace").setValue(new UriType("urn:hl7-org:v3"));
     sd.setBaseDefinition("http://hl7.org/fhir/cda/StructureDefinition/ANY");
@@ -310,7 +351,7 @@ public class CDAGenerator {
     ed.setMin(0);
     ed.setMax("*");
     ed.setDefinition("When valued in an instance, this attribute signals the imposition of realm-specific constraints. The value of this attribute identifies the realm in question");
-    ed.addType().setCode("CS");
+    ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/CS");
     sd.getDifferential().getElement().add(ed);
     
     ed = new ElementDefinition();
@@ -319,7 +360,7 @@ public class CDAGenerator {
     ed.setMin(0);
     ed.setMax("1");
     ed.setDefinition("When valued in an instance, this attribute signals the imposition of constraints defined in an HL7-specified message type. This might be a common type (also known as CMET in the messaging communication environment), or content included within a wrapper. The value of this attribute provides a unique identifier for the type in question.");
-    ed.addType().setCode("II");
+    ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/II");
     sd.getDifferential().getElement().add(ed);
     
     ed = new ElementDefinition();
@@ -328,14 +369,15 @@ public class CDAGenerator {
     ed.setMin(0);
     ed.setMax("*");
     ed.setDefinition("When valued in an instance, this attribute signals the imposition of a set of template-defined constraints. The value of this attribute provides a unique identifier for the templates in question");
-    ed.addType().setCode("II");
+    ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/II");
     sd.getDifferential().getElement().add(ed);
-    
+    new ProfileUtilities(null, null, null).setIds(sd, true);
+
     structures.add(sd);
   }
 
 
-  private void processDataType(Element dt, String n, String p) throws FileNotFoundException, IOException {
+  private void processDataType(Element dt, String n, String p) throws FileNotFoundException, IOException, FHIRFormatError, DefinitionException {
 
     if (!Utilities.existsInList(n, "TYPE", "BN", "BIN", "CO", "UID", "OID", "UUID", "RUID", "URL", "ADXP", "ENXP", "PN", 
         "TN", "ON", "RTO", "CAL", "CLCY", "SET", "LIST", "GLIST", "SLIST", "BAG", "HXIT", "HIST", "UVP", "NPPD", "PPD")) {
@@ -347,12 +389,14 @@ public class CDAGenerator {
       StructureDefinition sd = new StructureDefinition();
       sd.setId(fix(n));
       sd.setUrl("http://hl7.org/fhir/cda/StructureDefinition/"+fix(n));
+      library.put(sd.getUrl(), sd);
       sd.setName("V3 Data type "+n+" ("+dt.getAttribute("title")+")");
       sd.setTitle(sd.getName());
       sd.setStatus(PublicationStatus.ACTIVE);
       sd.setExperimental(false);
       sd.setPublisher("HL7");
       sd.setDescription(getDefinition(dt));
+      sd.setType(sd.getUrl());
       sd.setKind(StructureDefinitionKind.LOGICAL);
       sd.setAbstract("true".equals(dt.getAttribute("isAbstract")));
       sd.addExtension().setUrl("http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace").setValue(new UriType("urn:hl7-org:v3"));
@@ -365,7 +409,8 @@ public class CDAGenerator {
         sd.setBaseDefinition("http://hl7.org/fhir/cda/StructureDefinition/SXCM_TS");
       } else if (derived != null) {
         sd.setBaseDefinition("http://hl7.org/fhir/cda/StructureDefinition/"+XMLUtil.getNamedChildAttribute(derived, "mif:targetDatatype", "name"));
-      }
+      } else 
+        sd.setBaseDefinition("http://hl7.org/fhir/StructureDefinition/Element");
       sd.setDerivation(TypeDerivationRule.SPECIALIZATION);
       ElementDefinition edb = new ElementDefinition();
       edb.setPath(sd.getId());
@@ -381,6 +426,8 @@ public class CDAGenerator {
         copyAttributes(sd, getDefinition("CV"), "code", "codeSystem", "codeSystemVersion", "displayName");
       if (primitiveTypes.containsKey(n))
         addValueAttribute(sd.getDifferential().getElement(), n, primitiveTypes.get(n));
+      if (n.equals("TS"))
+        edb.addExtension("http://hl7.org/fhir/StructureDefinition/elementdefinition-timeformat", new CodeType("YYYYMMDDHHMMSS.UUUU[+|-ZZzz]"));
       if (n.equals("TEL"))
         addValueAttribute(sd.getDifferential().getElement(), n, "uri");
       if (n.equals("SXCM_TS")) {
@@ -408,6 +455,7 @@ public class CDAGenerator {
         addInclusiveAttribute(sd.getDifferential().getElement(), n);
       if (n.equals("CE") || n.equals("CV") || n.equals("CD") )
         addCDExtensions(sd.getDifferential().getElement(), n);
+      new ProfileUtilities(null, null, null).setIds(sd, true);
       structures.add(sd);
     }
   }
@@ -500,7 +548,7 @@ public class CDAGenerator {
       seePath(ed);
       ed.setMin(0);
       ed.setMax("*");
-      ed.addType().setCode("ST");
+      ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/ST");
       list.add(ed);
     }
   }
@@ -513,6 +561,14 @@ public class CDAGenerator {
     ed.setMax("1");
     ed.addType().setCode("code");
     ed.addRepresentation(PropertyRepresentation.XMLATTR);
+    list.add(ed);
+    ed = new ElementDefinition();
+    ed.setPath("ED.text");
+    seePath(ed);
+    ed.setMin(0);
+    ed.setMax("1");
+    ed.addType().setCode("string");
+    ed.addRepresentation(PropertyRepresentation.XMLTEXT); 
     list.add(ed);
     ed = new ElementDefinition();
     ed.setPath("ED.data");
@@ -540,7 +596,7 @@ public class CDAGenerator {
     list.add(ed);
   }
 
-  private void processProperty(List<ElementDefinition> list, String dtn, Element prop, String param) {
+  private void processProperty(List<ElementDefinition> list, String dtn, Element prop, String param) throws FHIRFormatError {
     ElementDefinition ed = new ElementDefinition();
     String n = prop.getAttribute("name");
     PropStatus p = getPropStatus(dtn, n);
@@ -562,31 +618,31 @@ public class CDAGenerator {
     else if (Utilities.existsInList(t, "UID"))
       ed.addType().setCode("string");
     else if (t.equals("T") && param != null)
-      ed.addType().setCode(param);
+      ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/"+param);
     else if (t.equals("N") && param != null)
-      ed.addType().setCode(param);
+      ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/"+param);
     else if (t.equals("D") && param != null)
-      ed.addType().setCode(param);
+      ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/"+param);
     else if (t.equals("QTY") && param != null)
-      ed.addType().setCode("PQ");
+      ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/PQ");
     else if (t.equals("IVL_T"))
-      ed.addType().setCode("IVL_TS");
+      ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/IVL_TS");
     else if ("GTS".equals(t)) {
       ed.setMax("*");
       ed.addRepresentation(PropertyRepresentation.TYPEATTR);
-      ed.addType().setCode("IVL_TS");
-      ed.addType().setCode("EIVL_TS");
-      ed.addType().setCode("PIVL_TS");
-      ed.addType().setCode("SXPR_TS");
+      ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/IVL_TS");
+      ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/EIVL_TS");
+      ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/PIVL_TS");
+      ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/SXPR_TS");
       ed.addExtension().setUrl("http://hl7.org/fhir/StructureDefinition/elementdefinition-defaulttype").setValue(new StringType("SXPR_TS"));
     } else
-      ed.addType().setCode(t);
+      ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/"+t);
     if (p == PropStatus.ATTRIBUTE)
       ed.addRepresentation(PropertyRepresentation.XMLATTR);
     // special stuff
     String vs = getValueSet(dtn, n);
     if (vs != null) {
-      ed.setBinding(new ElementDefinitionBindingComponent().setStrength(BindingStrength.REQUIRED).setValueSet(new Reference().setReference("http://hl7.org/fhir/ValueSet/v3-"+vs)));
+      ed.setBinding(new ElementDefinitionBindingComponent().setStrength(BindingStrength.REQUIRED).setValueSet("http://terminology.hl7.org/ValueSet/v3-"+vs));
       v3vs.add(vs);
     }
     list.add(ed);
@@ -699,7 +755,7 @@ public class CDAGenerator {
       else
         return PropStatus.ELEMENT;
     } else if (dtn.startsWith("PIVL")) {
-      if (Utilities.existsInList(n, "operator", "alignment", "institutionSpecifiedTime"))
+      if (Utilities.existsInList(n, "operator", "alignment", "institutionSpecified"))
         return PropStatus.ATTRIBUTE;
       else if (Utilities.existsInList(n, "hull"))
         return PropStatus.IGNORE;
@@ -770,9 +826,9 @@ public class CDAGenerator {
 
 
   private Set<String> processed = new HashSet<String>();
-  private Set<String> waiting = new HashSet<String>();
+  private Set<WaitingEntry> waiting = new HashSet<WaitingEntry>();
   
-  private void processCDA(String filename) throws ParserConfigurationException, SAXException, IOException {
+  private void processCDA(String filename) throws ParserConfigurationException, SAXException, IOException, FHIRFormatError, DefinitionException {
     System.out.println("Process Structure");
 
     Document pocd = XMLUtil.parseFileToDom(filename);
@@ -782,10 +838,10 @@ public class CDAGenerator {
     XMLUtil.getNamedChildren(pocd.getDocumentElement(), "association", associations);
     Collections.sort(associations, new AssociationSorter());
 
-    waiting.add("ClinicalDocument");
+    waiting.add(new WaitingEntry("ClinicalDocument", null));
     while (!waiting.isEmpty()) {
-      for (String n : waiting) {
-        processClass(classes, associations, n);
+      for (WaitingEntry n : waiting) {
+        processClass(classes, associations, n.className, n.choiceContext);
         break;
       }
     }
@@ -806,14 +862,14 @@ public class CDAGenerator {
 
   private void checkType(TypeRefComponent t) {
     String id = t.getCode();
-    if (Utilities.existsInList(id, "string", "BackboneElement", "code", "boolean", "Resource"))
+    if (Utilities.existsInList(id, "string", "Element", "code", "boolean", "Resource"))
       return;
     for (StructureDefinition sd : structures) {
       if (sd.getId().equals(fix(id)))
         return;
     }
-    if (id.equals("PN") || id.equals("ON"))
-      t.setCode("EN");
+    if (id.equals("http://hl7.org/fhir/cda/StructureDefinition/PN") || id.equals("http://hl7.org/fhir/cda/StructureDefinition/ON"))
+      t.setCode("http://hl7.org/fhir/cda/StructureDefinition/EN");
     else if (id.equals("NARRATIVE"))
       t.setCode("xhtml");
     else
@@ -825,7 +881,7 @@ public class CDAGenerator {
     return id; //.replace("_", ".");
   }
 
-  private void processClass(List<Element> classes, List<Element> associations, String className) {
+  private void processClass(List<Element> classes, List<Element> associations, String className, Element parentTarget) throws FHIRFormatError, DefinitionException {
     Element cclass = null;
     for (Element cclss : classes) {
       String cname = XMLUtil.getNamedChildAttribute(cclss, "class", "name");
@@ -837,16 +893,18 @@ public class CDAGenerator {
     if (cclass == null)
       throw new Error("Unable to find class "+className);
     processed.add(className);
-    waiting.remove(className);
+    waiting.removeIf((WaitingEntry entry) -> entry.className.equals(className));
     
     StructureDefinition sd = new StructureDefinition();
     sd.setId(className);
     sd.setUrl("http://hl7.org/fhir/cda/StructureDefinition/"+className);
+    library.put(sd.getUrl(), sd);
     sd.setName("CDAR2."+className);
     sd.setTitle("FHIR Definition for CDA R2 Class "+className);
     sd.setStatus(PublicationStatus.ACTIVE);
     sd.setExperimental(false);
     sd.setPublisher("HL7");
+    sd.setType(sd.getUrl());
     sd.addExtension().setUrl("http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace").setValue(new UriType("urn:hl7-org:v3"));
     if ("ClinicalDocument".equals(className)) {
       sd.setDescription("This is a generated StructureDefinition that describes CDA - that is, CDA as it actually is for R2. "+
@@ -855,7 +913,7 @@ public class CDAGenerator {
     }
     sd.setKind(StructureDefinitionKind.LOGICAL);
     sd.setAbstract(false);
-    sd.setBaseDefinition("http://hl7.org/fhir/cda/StructureDefinition/Element");
+    sd.setBaseDefinition("http://hl7.org/fhir/StructureDefinition/Element");
 
     ElementDefinition ed = new ElementDefinition();
     ed.setPath(className);
@@ -863,13 +921,14 @@ public class CDAGenerator {
     ed.setMin(1);
     ed.setMax("1");
     sd.getDifferential().getElement().add(ed);
-    sd.getSnapshot().getElement().add(ed);
-    processClassAttributes(classes, associations, sd.getDifferential().getElement(), sd.getSnapshot().getElement(), cclass, className, null);
+    sd.getSnapshot().getElement().add(popBase(ed));
+    processClassAttributes(classes, associations, sd.getDifferential().getElement(), sd.getSnapshot().getElement(), cclass, className, parentTarget);
+    new ProfileUtilities(null, null, null).setIds(sd, true);
     structures.add(sd);
   }
 
 
-  private void processClassAttributes(List<Element> classes, List<Element> associations, List<ElementDefinition> diff, List<ElementDefinition> snapshot, Element cclss, String path, Element parentTarget) {
+  private void processClassAttributes(List<Element> classes, List<Element> associations, List<ElementDefinition> diff, List<ElementDefinition> snapshot, Element cclss, String path, Element parentTarget) throws FHIRFormatError {
 //    System.out.println("  ... "+path);
     addInfrastructureRootAttributes(snapshot, path);
     List<Element> attrs = new ArrayList<Element>();
@@ -918,13 +977,16 @@ public class CDAGenerator {
   }
 
 
-  private void processAttribute(List<Element> classes, List<ElementDefinition> diff, List<ElementDefinition> snapshot, Element cclss, String path, Element attr) {
+  private void processAttribute(List<Element> classes, List<ElementDefinition> diff, List<ElementDefinition> snapshot, Element cclss, String path, Element attr) throws FHIRFormatError {
     String n = attr.getAttribute("name");
     ElementDefinition ed = new ElementDefinition();
     ed.setPath(path+"."+n);
-    seePath(ed);
     ed.setMin(Integer.parseInt(attr.getAttribute("minimumMultiplicity")));
     ed.setMax(attr.getAttribute("maximumMultiplicity"));
+    if (ed.getMax().equals("0"))
+      return;
+    
+    seePath(ed);
     if (!Utilities.noString(attr.getAttribute("namespace")))
       ed.addExtension().setUrl("http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace").setValue(new UriType(attr.getAttribute("namespace")));
     String type = getType(attr);
@@ -938,36 +1000,45 @@ public class CDAGenerator {
     if ("GTS".equals(type)) {
       ed.setMax("*");
       ed.addRepresentation(PropertyRepresentation.TYPEATTR);
-      ed.addType().setCode("IVL_TS");
-      ed.addType().setCode("EIVL_TS");
-      ed.addType().setCode("PIVL_TS");
-      ed.addType().setCode("SXPR_TS");
+      ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/IVL_TS");
+      ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/EIVL_TS");
+      ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/PIVL_TS");
+      ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/SXPR_TS");
       ed.addExtension().setUrl("http://hl7.org/fhir/StructureDefinition/elementdefinition-defaulttype").setValue(new StringType("SXPR_TS"));
     } else if ("ANY".equals(type)) {
       ed.addRepresentation(PropertyRepresentation.TYPEATTR);
-      ed.addType().setCode("BL");
-      ed.addType().setCode("ED");
-      ed.addType().setCode("ST");
-      ed.addType().setCode("CD");
-      ed.addType().setCode("CV");
-      ed.addType().setCode("CE");
-      ed.addType().setCode("SC");
-      ed.addType().setCode("II");
-      ed.addType().setCode("TEL");
-      ed.addType().setCode("AD");
-      ed.addType().setCode("EN");
-      ed.addType().setCode("INT");
-      ed.addType().setCode("REAL");
-      ed.addType().setCode("PQ");
-      ed.addType().setCode("MO");
-      ed.addType().setCode("TS");
-      ed.addType().setCode("IVL_PQ");
-      ed.addType().setCode("IVL_TS");
-      ed.addType().setCode("PIVL_TS");
-      ed.addType().setCode("EIVL_TS");
-      ed.addType().setCode("SXPR_TS");      
-    } else 
+      ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/BL");
+      ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/ED");
+      ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/ST");
+      ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/CD");
+      ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/CV");
+      ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/CE");
+      ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/SC");
+      ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/II");
+      ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/TEL");
+      ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/AD");
+      ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/EN");
+      ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/INT");
+      ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/REAL");
+      ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/PQ");
+      ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/MO");
+      ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/TS");
+      ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/IVL_PQ");
+      ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/IVL_TS");
+      ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/PIVL_TS");
+      ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/EIVL_TS");
+      ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/SXPR_TS");      
+    } else if (isPrimitive(type))
       ed.addType().setCode(type);
+    else if (Utilities.existsInList(type, "PN"))
+      ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/EN");
+    else if (Utilities.existsInList(type, "ON"))
+      ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/ST");
+    else if (Utilities.existsInList(type, "NARRATIVE")) {
+      ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/StrucDoc.Text");
+      ed.addRepresentation(PropertyRepresentation.CDATEXT);
+    } else
+      ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/"+type);
     if ("R".equals(attr.getAttribute("conformance"))) 
       ed.setMustSupport(true);
     if (attr.hasAttribute("defaultValue")) 
@@ -986,14 +1057,18 @@ public class CDAGenerator {
       String cd = XMLUtil.getNamedChildAttribute(vocab, "conceptDomain", "name");
       ElementDefinitionBindingComponent bd = ed.getBinding();
       bd.setStrength(cs.equals("CNE") ? BindingStrength.REQUIRED : BindingStrength.EXTENSIBLE);
-      bd.setValueSet(new Reference("http://hl7.org/fhir/ValueSet/v3-"+cd));
+      bd.setValueSet("http://terminology.hl7.org/ValueSet/v3-"+cd);
       v3vs.add(cd);
     }
     diff.add(ed);    
-    snapshot.add(ed);    
+    snapshot.add(popBase(ed));    
   }
 
-  private void processAssociation(List<Element> classes, List<Element> associations, List<ElementDefinition> diff, List<ElementDefinition> snapshot, Element cclss, String path, Element tc) {
+  private boolean isPrimitive(String type) {
+    return Utilities.existsInList(type, "code", "string", "boolean");
+  }
+
+  private void processAssociation(List<Element> classes, List<Element> associations, List<ElementDefinition> diff, List<ElementDefinition> snapshot, Element cclss, String path, Element tc) throws FHIRFormatError {
     Element target = getClass(classes, tc.getAttribute("participantClassName"));
     if (isChoice(target)) {
       // we create an element for each participant choice, and use the child class instead
@@ -1003,12 +1078,12 @@ public class CDAGenerator {
         String n = choice.getAttribute("traversalName");
         Element choiceClass = getClass(classes, choice.getAttribute("className"));
         Element c = XMLUtil.getNamedChild(choiceClass, "class");
-        processAssociationClass(classes, associations, diff, snapshot, path, tc, choiceClass, c.getAttribute("name"), getDerivation(c), n, target);
+        processAssociationClass(classes, associations, diff, snapshot, path, tc, choiceClass, c.getAttribute("name"), getDerivation(c), n, target, true);
       }
     } else {
       String n = tc.getAttribute("name");
       Element c = XMLUtil.getNamedChild(target, "class");
-      processAssociationClass(classes, associations, diff, snapshot, path, tc, target, c.getAttribute("name"), getDerivation(c), n, null);
+      processAssociationClass(classes, associations, diff, snapshot, path, tc, target, c.getAttribute("name"), getDerivation(c), n, null, false);
     }
   }
 
@@ -1020,27 +1095,36 @@ public class CDAGenerator {
       return der.getAttribute("className");
   }
 
-  private void processAssociationClass(List<Element> classes, List<Element> associations, List<ElementDefinition> diff, List<ElementDefinition> snapshot, String path, Element tc, Element target, String t, String derivation, String n, Element parentTarget) {
+  private void processAssociationClass(List<Element> classes, List<Element> associations, List<ElementDefinition> diff, List<ElementDefinition> snapshot, String path, Element tc, Element target, String t, String derivation, String n, Element parentTarget, boolean inChoice) throws FHIRFormatError {
     ElementDefinition ed = new ElementDefinition();
     String ipath = (path.contains(".") ? path.substring(path.lastIndexOf(".")+1) : path)+"."+n;
     
     ed.setPath(path+"."+n);
     seePath(ed);
-    ed.setMin(Integer.parseInt(tc.getAttribute("minimumMultiplicity")));
+    ed.setMin(inChoice ? 0 : Integer.parseInt(tc.getAttribute("minimumMultiplicity")));
     ed.setMax(tc.getAttribute("maximumMultiplicity"));
-    ed.addType().setCode("BackboneElement");
     if ("R".equals(tc.getAttribute("conformance"))) 
       ed.setMustSupport(true);
     diff.add(ed);    
-    snapshot.add(ed);    
+    ElementDefinition ned = popBase(ed);
+    snapshot.add(ned);    
 
-    if (Utilities.existsInList(derivation, "ActRelationship", "Participation")) // these aren't entry points, so we walk into them
+    if (Utilities.existsInList(derivation, "ActRelationship", "Participation")) { // these aren't entry points, so we walk into them
+      ed.addType().setCode("Element");
+      ned.addType().setCode("Element");
       processClassAttributes(classes, associations, diff, snapshot, target, ed.getPath(), parentTarget);
-    else {
+    } else {
       ed.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/"+t);
+      ned.addType().setCode("http://hl7.org/fhir/cda/StructureDefinition/"+t);
       if (!processed.contains(t))
-        waiting.add(t);
+        waiting.add(new WaitingEntry(t, parentTarget));
     }
+  }
+
+  private ElementDefinition popBase(ElementDefinition ed) {
+    ElementDefinition result = ed.copy();
+    result.getBase().setPath(ed.getPath()).setMin(ed.getMin()).setMax(ed.getMax());
+    return result;
   }
 
   private boolean isChoice(Element e) {

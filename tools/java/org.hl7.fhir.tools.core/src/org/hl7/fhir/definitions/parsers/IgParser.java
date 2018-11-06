@@ -18,22 +18,26 @@ import org.hl7.fhir.definitions.model.Example.ExampleType;
 import org.hl7.fhir.definitions.model.ImplementationGuideDefn;
 import org.hl7.fhir.definitions.model.LogicalModel;
 import org.hl7.fhir.definitions.model.Profile;
-import org.hl7.fhir.definitions.model.WorkGroup;
 import org.hl7.fhir.definitions.model.Profile.ConformancePackageSourceType;
+import org.hl7.fhir.definitions.model.WorkGroup;
+import org.hl7.fhir.igtools.spreadsheets.CodeSystemConvertor;
+import org.hl7.fhir.igtools.spreadsheets.MappingSpace;
 import org.hl7.fhir.r4.conformance.ProfileUtilities;
 import org.hl7.fhir.r4.conformance.ProfileUtilities.ProfileKnowledgeProvider;
 import org.hl7.fhir.r4.formats.XmlParser;
+import org.hl7.fhir.r4.model.BooleanType;
 import org.hl7.fhir.r4.model.CodeSystem;
+import org.hl7.fhir.r4.model.CodeType;
 import org.hl7.fhir.r4.model.ConceptMap;
 import org.hl7.fhir.r4.model.DateTimeType;
+import org.hl7.fhir.r4.model.Enumerations.FHIRVersion;
 import org.hl7.fhir.r4.model.Extension;
 import org.hl7.fhir.r4.model.ImplementationGuide;
-import org.hl7.fhir.r4.model.ImplementationGuide.GuideDependencyType;
-import org.hl7.fhir.r4.model.ImplementationGuide.GuidePageKind;
-import org.hl7.fhir.r4.model.ImplementationGuide.ImplementationGuideDependencyComponent;
-import org.hl7.fhir.r4.model.ImplementationGuide.ImplementationGuidePackageComponent;
-import org.hl7.fhir.r4.model.ImplementationGuide.ImplementationGuidePackageResourceComponent;
-import org.hl7.fhir.r4.model.ImplementationGuide.ImplementationGuidePageComponent;
+import org.hl7.fhir.r4.model.ImplementationGuide.ImplementationGuideDefinitionGroupingComponent;
+import org.hl7.fhir.r4.model.ImplementationGuide.ImplementationGuideDefinitionPageComponent;
+import org.hl7.fhir.r4.model.ImplementationGuide.ImplementationGuideDefinitionResourceComponent;
+import org.hl7.fhir.r4.model.ImplementationGuide.ImplementationGuideDependsOnComponent;
+import org.hl7.fhir.r4.model.Reference;
 import org.hl7.fhir.r4.model.Resource;
 import org.hl7.fhir.r4.model.ResourceType;
 import org.hl7.fhir.r4.model.StructureDefinition;
@@ -41,8 +45,6 @@ import org.hl7.fhir.r4.model.StructureDefinition.StructureDefinitionKind;
 import org.hl7.fhir.r4.model.UriType;
 import org.hl7.fhir.r4.model.ValueSet;
 import org.hl7.fhir.r4.utils.ToolingExtensions;
-import org.hl7.fhir.igtools.spreadsheets.CodeSystemConvertor;
-import org.hl7.fhir.igtools.spreadsheets.MappingSpace;
 import org.hl7.fhir.tools.publisher.BuildWorkerContext;
 import org.hl7.fhir.utilities.CSFile;
 import org.hl7.fhir.utilities.CSFileInputStream;
@@ -52,6 +54,27 @@ import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.validation.ValidationMessage;
 
 public class IgParser {
+  public enum GuidePageKind {
+    LIST, DIRECTORY, PAGE, EXAMPLE, INCLUDE, DICTIONARY, TOC, RESOURCE;
+
+    public String getDisplay() {
+      // TODO Auto-generated method stub
+      return null;
+    }
+
+    public String toCode() {
+      // TODO Auto-generated method stub
+      return null;
+    }
+
+  }
+  public static GuidePageKind getKind(ImplementationGuideDefinitionPageComponent page) {
+return null;
+  }
+
+  public static List<CodeType> getType(ImplementationGuideDefinitionPageComponent page) {
+    return null;
+  }
 
   private Logger logger;
   private BuildWorkerContext context;
@@ -65,9 +88,10 @@ public class IgParser {
   private OIDRegistry registry;
   private Map<String, ConceptMap> maps;
   private Map<String, WorkGroup> workgroups;
+  private boolean exceptionIfExcelNotNormalised;
 
 
-  public IgParser(Logger logger, BuildWorkerContext context, Calendar genDate, ProfileKnowledgeProvider pkp, Map<String, BindingSpecification> commonBindings, WorkGroup committee, Map<String, MappingSpace> mappings, Map<String, ConstraintStructure> profileIds, Map<String, CodeSystem> codeSystems, OIDRegistry registry, Map<String, ConceptMap> maps, Map<String, WorkGroup> workgroups) {
+  public IgParser(Logger logger, BuildWorkerContext context, Calendar genDate, ProfileKnowledgeProvider pkp, Map<String, BindingSpecification> commonBindings, WorkGroup committee, Map<String, MappingSpace> mappings, Map<String, ConstraintStructure> profileIds, Map<String, CodeSystem> codeSystems, OIDRegistry registry, Map<String, ConceptMap> maps, Map<String, WorkGroup> workgroups, boolean exceptionIfExcelNotNormalised) {
     super();
     this.logger = logger;
     this.context = context;
@@ -81,6 +105,7 @@ public class IgParser {
     this.registry = registry;
     this.maps = maps;
     this.workgroups = workgroups;
+    this.exceptionIfExcelNotNormalised = exceptionIfExcelNotNormalised;
   }
 
   public void load(String rootDir, ImplementationGuideDefn igd, List<ValidationMessage> issues, Set<String> loadedIgs) throws Exception {
@@ -102,38 +127,32 @@ public class IgParser {
     
     Map<String, Resource> resources = new HashMap<String, Resource>();
 
-    for (ImplementationGuideDependencyComponent d : ig.getDependency()) {
-      if (d.getType() != GuideDependencyType.REFERENCE)
-        throw new Exception("Unsupported dependency type on "+ig.getName()+": "+d.getType().toCode());
+    for (ImplementationGuideDependsOnComponent d : ig.getDependsOn()) {
       if (!loadedIgs.contains(d.getUri()))
         throw new Exception("Dependency on "+ig.getName()+" not satisfied: "+d.getUri());
     }
     loadedIgs.add(ig.getUrl());
-    for (UriType bin : ig.getBinary()) {
-      if (!new File(Utilities.path(myRoot, bin.getValue())).exists()) 
-        throw new Exception("Binary dependency in "+ig.getName()+" not found: "+bin.getValue());
-      igd.getImageList().add(bin.getValue());
-    }
-    processPage(ig.getPage(), igd);
+//    for (UriType bin : ig.getBinary()) {
+//      if (!new File(Utilities.path(myRoot, bin.getValue())).exists()) 
+//        throw new Exception("Binary dependency in "+ig.getName()+" not found: "+bin.getValue());
+//      igd.getImageList().add(bin.getValue());
+//    }
+    processPage(ig.getDefinition().getPage(), igd);
 
     List<Example> exr = new ArrayList<Example>();
     
-    for (ImplementationGuidePackageComponent p : ig.getPackage()) {
-      if (!p.hasName())
-        throw new Exception("no name on package in IG "+ig.getName());
-
-      // first pass - verify the resources can be loaded
-      for (ImplementationGuidePackageResourceComponent r : p.getResource()) {
-        if (!r.hasSource())
-          throw new Exception("no source on resource in package "+p.getName()+" in IG "+ig.getName());
-        CSFile fn = new CSFile(Utilities.path(myRoot, r.getSourceUriType().getValue()));
+    // first pass - verify the resources can be loaded
+      for (ImplementationGuideDefinitionResourceComponent r : ig.getDefinition().getResource()) {
+        if (!r.hasReference())
+          throw new Exception("no source on resource in IG "+ig.getName());
+        CSFile fn = new CSFile(Utilities.path(myRoot, r.getReference().getReference()));
         if (!fn.exists())
-          throw new Exception("Source "+r.getSourceUriType().getValue()+" resource in package "+p.getName()+" in IG "+ig.getName()+" could not be located @ "+fn.getAbsolutePath());
+          throw new Exception("Source "+r.getReference().getReference()+" resource in IG "+ig.getName()+" could not be located @ "+fn.getAbsolutePath());
 
         String id = Utilities.changeFileExt(fn.getName(), "");
         // we're going to try and load the resource directly.
         // if that fails, then we'll treat it as an example.
-        boolean isExample = r.getExample();
+        boolean isExample = r.hasExample();
         ResourceType rt = null;
         try {
           rt = new XmlParser().parse(new FileInputStream(fn)).getResourceType();
@@ -144,17 +163,17 @@ public class IgParser {
         
         if (isExample) {
           if (!r.hasName()) // which means that non conformance resources must be named
-            throw new Exception("no name on resource in package "+p.getName()+" in IG "+ig.getName());
+            throw new Exception("no name on resource in IG "+ig.getName());
           Example example = new Example(r.getName(), id, r.getDescription(), fn, false, ExampleType.XmlFile, false);
           example.setIg(igd.getCode());
-          if (r.hasExampleFor()) {
-            example.setExampleFor(r.getExampleFor().getReference());
+          if (r.hasExampleCanonicalType()) {
+            example.setExampleFor(r.getExampleCanonicalType().asStringValue());
             example.setRegistered(true);
             exr.add(example);
           }
           igd.getExamples().add(example);
           r.setUserData(ToolResourceUtilities.NAME_RES_EXAMPLE, example);
-          r.setSource(new UriType(example.getId()+".html"));
+          r.setReference(new Reference(example.getId()+".html"));
         } else if (rt == ResourceType.ValueSet) {
           ValueSet vs = (ValueSet) new XmlParser().parse(new FileInputStream(fn));
           if (id.startsWith("valueset-"))
@@ -167,7 +186,15 @@ public class IgParser {
           vs.setUserData(ToolResourceUtilities.NAME_RES_IG, igd);
           vs.setUserData("path", igd.getPath()+"valueset-"+id+".html");
           vs.setUserData("filename", "valueset-"+id);
-          vs.setUserData("committee", committee);
+          if (committee != null) {
+          if (!vs.hasExtension(ToolingExtensions.EXT_WORKGROUP)) {
+            vs.addExtension().setUrl(ToolingExtensions.EXT_WORKGROUP).setValue(new CodeType(committee.getCode()));
+          } else {
+            String ec = ToolingExtensions.readStringExtension(vs, ToolingExtensions.EXT_WORKGROUP);
+            if (!ec.equals(committee.getCode()))
+              System.out.println("ValueSet "+vs.getUrl()+" WG mismatch 2: is "+ec+", want to set to "+committee);
+          } 
+          }
           new CodeSystemConvertor(codeSystems).convert(new XmlParser(), vs, fn.getAbsolutePath());
 //          if (id.contains(File.separator))
           igd.getValueSets().add(vs);
@@ -176,13 +203,13 @@ public class IgParser {
           if (!r.hasDescription())
             r.setDescription(vs.getDescription());
           r.setUserData(ToolResourceUtilities.RES_ACTUAL_RESOURCE, vs);
-          r.setSource(new UriType(fn.getName()));
+          r.setReference(new Reference(fn.getName()));
         } else if (rt == ResourceType.StructureDefinition) {
           StructureDefinition sd;
           sd = (StructureDefinition) new XmlParser().parse(new CSFileInputStream(fn));
           new ProfileUtilities(context, null, pkp).setIds(sd, false);
           if (sd.getKind() == StructureDefinitionKind.LOGICAL) {
-            fn = new CSFile(Utilities.path(myRoot, r.getSourceUriType().asStringValue()));
+            fn = new CSFile(Utilities.path(myRoot, r.getReference().getReference()));
             LogicalModel lm = new LogicalModel(sd);
             lm.setSource(fn.getAbsolutePath());
             lm.setId(sd.getId());
@@ -223,6 +250,9 @@ public class IgParser {
 
       }
       // second pass: load the spreadsheets
+      for (ImplementationGuideDefinitionGroupingComponent p : ig.getDefinition().getGrouping()) {
+        if (!p.hasName())
+          throw new Exception("no name on package in IG "+ig.getName());
       for (Extension ex : p.getExtension()) {
         if (ex.getUrl().equals(ToolResourceUtilities.EXT_PROFILE_SPREADSHEET)) {
           String s = ((UriType) ex.getValue()).getValue();
@@ -233,8 +263,8 @@ public class IgParser {
           ex.setUserData(ToolResourceUtilities.NAME_RES_PROFILE, pr);
           pr.setSource(fn.getAbsolutePath());
           pr.setSourceType(ConformancePackageSourceType.Spreadsheet);
-          SpreadsheetParser sparser = new SpreadsheetParser(pr.getCategory(), new CSFileInputStream(pr.getSource()), Utilities.noString(pr.getId()) ? pr.getSource() : pr.getId(), igd, 
-                rootDir, logger, registry, context.getVersion(), context, genDate, false, pkp, false, committee, mappings, profileIds, codeSystems, maps, workgroups);
+          SpreadsheetParser sparser = new SpreadsheetParser(pr.getCategory(), new CSFileInputStream(pr.getSource()), Utilities.noString(pr.getId()) ? pr.getSource() : pr.getId(), pr.getSource(), igd, 
+                rootDir, logger, registry, FHIRVersion.fromCode(context.getVersion()), context, genDate, false, pkp, false, committee, mappings, profileIds, codeSystems, maps, workgroups, exceptionIfExcelNotNormalised);
           sparser.getBindings().putAll(commonBindings);
           sparser.setFolder(Utilities.getDirectoryForFile(pr.getSource()));
           sparser.parseConformancePackage(pr, null, Utilities.getDirectoryForFile(pr.getSource()), pr.getCategory(), issues, null);
@@ -246,17 +276,17 @@ public class IgParser {
               ValueSet vs  = bs.getValueSet();
               String path = vs.getUserString("path");
               path = path.substring(path.lastIndexOf("/")+1);              
-              ig.getPackage().get(0).addResource().setName(vs.getName()).setDescription(vs.getDescription()).setSource(new UriType(path)).setUserData(ToolResourceUtilities.RES_ACTUAL_RESOURCE, vs);
+              ig.getDefinition().addResource().setName(vs.getName()).setDescription(vs.getDescription()).setReference(new Reference(path)).setUserData(ToolResourceUtilities.RES_ACTUAL_RESOURCE, vs);
             }
           }
           // now, register resources for all the things in the spreadsheet
           for (ValueSet vs : sparser.getValuesets()) 
-            p.addResource().setExample(false).setName(vs.getName()).setDescription(vs.getDescription()).setSource(new UriType("valueset-"+vs.getId()+".html")).setUserData(ToolResourceUtilities.RES_ACTUAL_RESOURCE, vs);
+            ig.getDefinition().addResource().setExample(new BooleanType(false)).setName(vs.getName()).setDescription(vs.getDescription()).setReference(new Reference("valueset-"+vs.getId()+".html")).setUserData(ToolResourceUtilities.RES_ACTUAL_RESOURCE, vs);
           for (StructureDefinition exd : pr.getExtensions()) 
-            p.addResource().setExample(false).setName(exd.getName()).setDescription(exd.getDescription()).setSource(new UriType("extension-"+exd.getId().toLowerCase()+".html")).setUserData(ToolResourceUtilities.RES_ACTUAL_RESOURCE, exd);
+            ig.getDefinition().addResource().setExample(new BooleanType(false)).setName(exd.getName()).setDescription(exd.getDescription()).setReference(new Reference("extension-"+exd.getId().toLowerCase()+".html")).setUserData(ToolResourceUtilities.RES_ACTUAL_RESOURCE, exd);
           for (ConstraintStructure cs : pr.getProfiles()) {
-            cs.setResourceInfo(p.addResource());
-            cs.getResourceInfo().setExample(false).setName(cs.getDefn().getName()).setDescription(cs.getDefn().getDefinition()).setSource(new UriType(cs.getId().toLowerCase()+".html"));
+            cs.setResourceInfo(ig.getDefinition().addResource());
+            cs.getResourceInfo().setExample(new BooleanType(false)).setName(cs.getDefn().getName()).setDescription(cs.getDefn().getDefinition()).setReference(new Reference(cs.getId().toLowerCase()+".html"));
           }
         }
         if (ex.getUrl().equals(ToolResourceUtilities.EXT_LOGICAL_SPREADSHEET)) {
@@ -266,7 +296,7 @@ public class IgParser {
           if (s.endsWith("-spreadsheet.xml"))
             s = s.substring(0, s.length()-16);
           String id = igd.getCode()+"-"+s;
-          SpreadsheetParser sparser = new SpreadsheetParser(igd.getCode(), new CSFileInputStream(fn), id, igd, rootDir, logger, registry, context.getVersion(), context, genDate, false, pkp, false, committee, mappings, profileIds, codeSystems, maps, workgroups);
+          SpreadsheetParser sparser = new SpreadsheetParser(igd.getCode(), new CSFileInputStream(fn), id, fn.getAbsolutePath(), igd, rootDir, logger, registry, FHIRVersion.fromCode(context.getVersion()), context, genDate, false, pkp, false, committee, mappings, profileIds, codeSystems, maps, workgroups, exceptionIfExcelNotNormalised);
           sparser.getBindings().putAll(commonBindings);
           sparser.setFolder(Utilities.getDirectoryForFile(fn.getAbsolutePath()));
           LogicalModel lm = sparser.parseLogicalModel();
@@ -403,18 +433,14 @@ public class IgParser {
     return url.substring(url.lastIndexOf("/")+1);
   }
 
-  private void processPage(ImplementationGuidePageComponent page, ImplementationGuideDefn igd) throws Exception {
+  private void processPage(ImplementationGuideDefinitionPageComponent page, ImplementationGuideDefn igd) throws Exception {
     if (!page.hasTitle())
-      throw new Exception("Page "+page.getSource()+" has no name");
-    if (page.getKind() == GuidePageKind.PAGE || page.getKind() == GuidePageKind.DIRECTORY || page.getKind() == GuidePageKind.LIST || page.getKind() == GuidePageKind.RESOURCE) {
-      if ("generated".equals(page.getFormat())) {
-        page.setFormat(null); 
-      } else {
-        checkExists(igd, page.getSource());
-        igd.getPageList().add(page.getSource());
-      }
+      throw new Exception("Page "+page.getNameUrlType().getValue()+" has no name");
+    if (getKind(page) == null || getKind(page) == GuidePageKind.PAGE || getKind(page) == GuidePageKind.DIRECTORY || getKind(page) == GuidePageKind.LIST || getKind(page) == GuidePageKind.RESOURCE) {
+      checkExists(igd, page.getNameUrlType().getValue());
+      igd.getPageList().add(page.getNameUrlType().getValue());
     }
-    for (ImplementationGuidePageComponent pp : page.getPage()) {
+    for (ImplementationGuideDefinitionPageComponent pp : page.getPage()) {
       processPage(pp, igd);
     }
   }

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <Composition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/composition.xsd">
 	<id value="example"/>
 	<text>
@@ -20,13 +20,13 @@
 			<display value="Consult note"/>
 		</coding>
 	</type>
-	<class>
+	<category>
 		<coding>
 			<system value="http://loinc.org"/>
 			<code value="LP173421-1"/>
 			<display value="Report"/>
 		</coding>
-	</class>
+	</category>
 	<subject>
 		<reference value="Patient/xcda"/>
 		<display value="Henry Levin the 7th"/>
@@ -76,7 +76,7 @@
 	<event>
 		<code>
 			<coding>
-				<system value="http://hl7.org/fhir/v3/ActCode"/>
+				<system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
 				<code value="HEALTHREC"/>
 				<display value="health record"/>
 			</coding>
@@ -146,7 +146,7 @@
 		<mode value="snapshot"/>
 		<orderedBy>
 			<coding>
-				<system value="http://hl7.org/fhir/list-order"/>
+				<system value="http://terminology.hl7.org/CodeSystem/list-order"/>
 				<code value="event-date"/>
 				<display value="Sorted by Event Date"/>
 			</coding>
@@ -179,7 +179,7 @@
 		<mode value="snapshot"/>
 		<emptyReason>
 			<coding>
-				<system value="http://hl7.org/fhir/list-empty-reason"/>
+				<system value="http://terminology.hl7.org/CodeSystem/list-empty-reason"/>
 				<code value="withheld"/>
 				<display value="Information Withheld"/>
 			</coding>

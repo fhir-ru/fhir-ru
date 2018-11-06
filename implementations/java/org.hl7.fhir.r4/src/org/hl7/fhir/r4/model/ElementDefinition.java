@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Fri, Aug 11, 2017 07:23+1000 for FHIR v3.1.0
+// Generated on Mon, Nov 5, 2018 09:03+1100 for FHIR v3.6.0
 
 import java.util.*;
 
@@ -51,7 +51,7 @@ import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
  * Captures constraints on each element within the resource, profile, or extension.
  */
 @DatatypeDef(name="ElementDefinition")
-public class ElementDefinition extends Type implements ICompositeType {
+public class ElementDefinition extends BackboneType implements ICompositeType {
 
     public enum PropertyRepresentation {
         /**
@@ -59,19 +59,19 @@ public class ElementDefinition extends Type implements ICompositeType {
          */
         XMLATTR, 
         /**
-         * This element is represented using the XML text attribute (primitives only)
+         * This element is represented using the XML text attribute (primitives only).
          */
         XMLTEXT, 
         /**
-         * The type of this element is indicated using xsi:type
+         * The type of this element is indicated using xsi:type.
          */
         TYPEATTR, 
         /**
-         * Use CDA narrative instead of XHTML
+         * Use CDA narrative instead of XHTML.
          */
         CDATEXT, 
         /**
-         * The property is represented using XHTML
+         * The property is represented using XHTML.
          */
         XHTML, 
         /**
@@ -119,10 +119,10 @@ public class ElementDefinition extends Type implements ICompositeType {
         public String getDefinition() {
           switch (this) {
             case XMLATTR: return "In XML, this property is represented as an attribute not an element.";
-            case XMLTEXT: return "This element is represented using the XML text attribute (primitives only)";
-            case TYPEATTR: return "The type of this element is indicated using xsi:type";
-            case CDATEXT: return "Use CDA narrative instead of XHTML";
-            case XHTML: return "The property is represented using XHTML";
+            case XMLTEXT: return "This element is represented using the XML text attribute (primitives only).";
+            case TYPEATTR: return "The type of this element is indicated using xsi:type.";
+            case CDATEXT: return "Use CDA narrative instead of XHTML.";
+            case XHTML: return "The property is represented using XHTML.";
             default: return "?";
           }
         }
@@ -195,23 +195,23 @@ public class ElementDefinition extends Type implements ICompositeType {
 
     public enum DiscriminatorType {
         /**
-         * The slices have different values in the nominated element
+         * The slices have different values in the nominated element.
          */
         VALUE, 
         /**
-         * The slices are differentiated by the presence or absence of the nominated element
+         * The slices are differentiated by the presence or absence of the nominated element.
          */
         EXISTS, 
         /**
-         * The slices have different values in the nominated element, as determined by testing them against the applicable ElementDefinition.pattern[x]
+         * The slices have different values in the nominated element, as determined by testing them against the applicable ElementDefinition.pattern[x].
          */
         PATTERN, 
         /**
-         * The slices are differentiated by type of the nominated element to a specifed profile
+         * The slices are differentiated by type of the nominated element.
          */
         TYPE, 
         /**
-         * The slices are differentiated by conformance of the nominated element to a specifed profile
+         * The slices are differentiated by conformance of the nominated element to a specified profile. Note that if the path specifies .resolve() then the profile is the target profile on the reference. In this case, validation by the possible profiles is required to differentiate the slices.
          */
         PROFILE, 
         /**
@@ -258,11 +258,11 @@ public class ElementDefinition extends Type implements ICompositeType {
         }
         public String getDefinition() {
           switch (this) {
-            case VALUE: return "The slices have different values in the nominated element";
-            case EXISTS: return "The slices are differentiated by the presence or absence of the nominated element";
-            case PATTERN: return "The slices have different values in the nominated element, as determined by testing them against the applicable ElementDefinition.pattern[x]";
-            case TYPE: return "The slices are differentiated by type of the nominated element to a specifed profile";
-            case PROFILE: return "The slices are differentiated by conformance of the nominated element to a specifed profile";
+            case VALUE: return "The slices have different values in the nominated element.";
+            case EXISTS: return "The slices are differentiated by the presence or absence of the nominated element.";
+            case PATTERN: return "The slices have different values in the nominated element, as determined by testing them against the applicable ElementDefinition.pattern[x].";
+            case TYPE: return "The slices are differentiated by type of the nominated element.";
+            case PROFILE: return "The slices are differentiated by conformance of the nominated element to a specified profile. Note that if the path specifies .resolve() then the profile is the target profile on the reference. In this case, validation by the possible profiles is required to differentiate the slices.";
             default: return "?";
           }
         }
@@ -551,15 +551,15 @@ public class ElementDefinition extends Type implements ICompositeType {
 
     public enum ReferenceVersionRules {
         /**
-         * The reference may be either version independent or version specific
+         * The reference may be either version independent or version specific.
          */
         EITHER, 
         /**
-         * The reference must be version independent
+         * The reference must be version independent.
          */
         INDEPENDENT, 
         /**
-         * The reference must be version specific
+         * The reference must be version specific.
          */
         SPECIFIC, 
         /**
@@ -598,9 +598,9 @@ public class ElementDefinition extends Type implements ICompositeType {
         }
         public String getDefinition() {
           switch (this) {
-            case EITHER: return "The reference may be either version independent or version specific";
-            case INDEPENDENT: return "The reference must be version independent";
-            case SPECIFIC: return "The reference must be version specific";
+            case EITHER: return "The reference may be either version independent or version specific.";
+            case INDEPENDENT: return "The reference must be version independent.";
+            case SPECIFIC: return "The reference must be version specific.";
             default: return "?";
           }
         }
@@ -1115,23 +1115,23 @@ public class ElementDefinition extends Type implements ICompositeType {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof ElementDefinitionSlicingComponent))
+        if (!(other_ instanceof ElementDefinitionSlicingComponent))
           return false;
-        ElementDefinitionSlicingComponent o = (ElementDefinitionSlicingComponent) other;
+        ElementDefinitionSlicingComponent o = (ElementDefinitionSlicingComponent) other_;
         return compareDeep(discriminator, o.discriminator, true) && compareDeep(description, o.description, true)
            && compareDeep(ordered, o.ordered, true) && compareDeep(rules, o.rules, true);
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof ElementDefinitionSlicingComponent))
+        if (!(other_ instanceof ElementDefinitionSlicingComponent))
           return false;
-        ElementDefinitionSlicingComponent o = (ElementDefinitionSlicingComponent) other;
+        ElementDefinitionSlicingComponent o = (ElementDefinitionSlicingComponent) other_;
         return compareValues(description, o.description, true) && compareValues(ordered, o.ordered, true) && compareValues(rules, o.rules, true)
           ;
       }
@@ -1159,10 +1159,10 @@ public class ElementDefinition extends Type implements ICompositeType {
         protected Enumeration<DiscriminatorType> type;
 
         /**
-         * A FHIRPath expression, using a restricted subset of FHIRPath, that is used to identify the element on which discrimination is based.
+         * A FHIRPath expression, using [the simple subset of FHIRPath](fhirpath.html#simple), that is used to identify the element on which discrimination is based.
          */
         @Child(name = "path", type = {StringType.class}, order=2, min=1, max=1, modifier=false, summary=true)
-        @Description(shortDefinition="Path to element value", formalDefinition="A FHIRPath expression, using a restricted subset of FHIRPath, that is used to identify the element on which discrimination is based." )
+        @Description(shortDefinition="Path to element value", formalDefinition="A FHIRPath expression, using [the simple subset of FHIRPath](fhirpath.html#simple), that is used to identify the element on which discrimination is based." )
         protected StringType path;
 
         private static final long serialVersionUID = 1151159293L;
@@ -1229,7 +1229,7 @@ public class ElementDefinition extends Type implements ICompositeType {
         }
 
         /**
-         * @return {@link #path} (A FHIRPath expression, using a restricted subset of FHIRPath, that is used to identify the element on which discrimination is based.). This is the underlying object with id, value and extensions. The accessor "getPath" gives direct access to the value
+         * @return {@link #path} (A FHIRPath expression, using [the simple subset of FHIRPath](fhirpath.html#simple), that is used to identify the element on which discrimination is based.). This is the underlying object with id, value and extensions. The accessor "getPath" gives direct access to the value
          */
         public StringType getPathElement() { 
           if (this.path == null)
@@ -1249,7 +1249,7 @@ public class ElementDefinition extends Type implements ICompositeType {
         }
 
         /**
-         * @param value {@link #path} (A FHIRPath expression, using a restricted subset of FHIRPath, that is used to identify the element on which discrimination is based.). This is the underlying object with id, value and extensions. The accessor "getPath" gives direct access to the value
+         * @param value {@link #path} (A FHIRPath expression, using [the simple subset of FHIRPath](fhirpath.html#simple), that is used to identify the element on which discrimination is based.). This is the underlying object with id, value and extensions. The accessor "getPath" gives direct access to the value
          */
         public ElementDefinitionSlicingDiscriminatorComponent setPathElement(StringType value) { 
           this.path = value;
@@ -1257,14 +1257,14 @@ public class ElementDefinition extends Type implements ICompositeType {
         }
 
         /**
-         * @return A FHIRPath expression, using a restricted subset of FHIRPath, that is used to identify the element on which discrimination is based.
+         * @return A FHIRPath expression, using [the simple subset of FHIRPath](fhirpath.html#simple), that is used to identify the element on which discrimination is based.
          */
         public String getPath() { 
           return this.path == null ? null : this.path.getValue();
         }
 
         /**
-         * @param value A FHIRPath expression, using a restricted subset of FHIRPath, that is used to identify the element on which discrimination is based.
+         * @param value A FHIRPath expression, using [the simple subset of FHIRPath](fhirpath.html#simple), that is used to identify the element on which discrimination is based.
          */
         public ElementDefinitionSlicingDiscriminatorComponent setPath(String value) { 
             if (this.path == null)
@@ -1276,14 +1276,14 @@ public class ElementDefinition extends Type implements ICompositeType {
         protected void listChildren(List<Property> children) {
           super.listChildren(children);
           children.add(new Property("type", "code", "How the element value is interpreted when discrimination is evaluated.", 0, 1, type));
-          children.add(new Property("path", "string", "A FHIRPath expression, using a restricted subset of FHIRPath, that is used to identify the element on which discrimination is based.", 0, 1, path));
+          children.add(new Property("path", "string", "A FHIRPath expression, using [the simple subset of FHIRPath](fhirpath.html#simple), that is used to identify the element on which discrimination is based.", 0, 1, path));
         }
 
         @Override
         public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
           switch (_hash) {
           case 3575610: /*type*/  return new Property("type", "code", "How the element value is interpreted when discrimination is evaluated.", 0, 1, type);
-          case 3433509: /*path*/  return new Property("path", "string", "A FHIRPath expression, using a restricted subset of FHIRPath, that is used to identify the element on which discrimination is based.", 0, 1, path);
+          case 3433509: /*path*/  return new Property("path", "string", "A FHIRPath expression, using [the simple subset of FHIRPath](fhirpath.html#simple), that is used to identify the element on which discrimination is based.", 0, 1, path);
           default: return super.getNamedProperty(_hash, _name, _checkValid);
           }
 
@@ -1367,22 +1367,22 @@ public class ElementDefinition extends Type implements ICompositeType {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof ElementDefinitionSlicingDiscriminatorComponent))
+        if (!(other_ instanceof ElementDefinitionSlicingDiscriminatorComponent))
           return false;
-        ElementDefinitionSlicingDiscriminatorComponent o = (ElementDefinitionSlicingDiscriminatorComponent) other;
+        ElementDefinitionSlicingDiscriminatorComponent o = (ElementDefinitionSlicingDiscriminatorComponent) other_;
         return compareDeep(type, o.type, true) && compareDeep(path, o.path, true);
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof ElementDefinitionSlicingDiscriminatorComponent))
+        if (!(other_ instanceof ElementDefinitionSlicingDiscriminatorComponent))
           return false;
-        ElementDefinitionSlicingDiscriminatorComponent o = (ElementDefinitionSlicingDiscriminatorComponent) other;
+        ElementDefinitionSlicingDiscriminatorComponent o = (ElementDefinitionSlicingDiscriminatorComponent) other_;
         return compareValues(type, o.type, true) && compareValues(path, o.path, true);
       }
 
@@ -1680,23 +1680,23 @@ public class ElementDefinition extends Type implements ICompositeType {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof ElementDefinitionBaseComponent))
+        if (!(other_ instanceof ElementDefinitionBaseComponent))
           return false;
-        ElementDefinitionBaseComponent o = (ElementDefinitionBaseComponent) other;
+        ElementDefinitionBaseComponent o = (ElementDefinitionBaseComponent) other_;
         return compareDeep(path, o.path, true) && compareDeep(min, o.min, true) && compareDeep(max, o.max, true)
           ;
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof ElementDefinitionBaseComponent))
+        if (!(other_ instanceof ElementDefinitionBaseComponent))
           return false;
-        ElementDefinitionBaseComponent o = (ElementDefinitionBaseComponent) other;
+        ElementDefinitionBaseComponent o = (ElementDefinitionBaseComponent) other_;
         return compareValues(path, o.path, true) && compareValues(min, o.min, true) && compareValues(max, o.max, true)
           ;
       }
@@ -1723,18 +1723,18 @@ public class ElementDefinition extends Type implements ICompositeType {
         protected UriType code;
 
         /**
-         * Identifies a profile structure or implementation Guide that SHALL hold for the datatype this element refers to. Can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide.
+         * Identifies a profile structure or implementation Guide that applies to the datatype this element refers to. If any profiles are specified, then the content must conform to at least one of them. The URL can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the type SHALL conform to at least one profile defined in the implementation guide.
          */
-        @Child(name = "profile", type = {UriType.class}, order=2, min=0, max=1, modifier=false, summary=true)
-        @Description(shortDefinition="Profile (StructureDefinition) to apply (or IG)", formalDefinition="Identifies a profile structure or implementation Guide that SHALL hold for the datatype this element refers to. Can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide." )
-        protected UriType profile;
+        @Child(name = "profile", type = {CanonicalType.class}, order=2, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+        @Description(shortDefinition="Profiles (StructureDefinition or IG) - one must apply", formalDefinition="Identifies a profile structure or implementation Guide that applies to the datatype this element refers to. If any profiles are specified, then the content must conform to at least one of them. The URL can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the type SHALL conform to at least one profile defined in the implementation guide." )
+        protected List<CanonicalType> profile;
 
         /**
-         * Identifies a profile structure or implementation Guide that SHALL hold for the target of the reference this element refers to. Can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide.
+         * Used when the type is "Reference" or "canonical", and identifies a profile structure or implementation Guide that applies to the target of the reference this element refers to. If any profiles are specified, then the content must conform to at least one of them. The URL can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the target resource SHALL conform to at least one profile defined in the implementation guide.
          */
-        @Child(name = "targetProfile", type = {UriType.class}, order=3, min=0, max=1, modifier=false, summary=true)
-        @Description(shortDefinition="Profile (StructureDefinition) to apply to reference target (or IG)", formalDefinition="Identifies a profile structure or implementation Guide that SHALL hold for the target of the reference this element refers to. Can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide." )
-        protected UriType targetProfile;
+        @Child(name = "targetProfile", type = {CanonicalType.class}, order=3, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+        @Description(shortDefinition="Profile (StructureDefinition or IG) on the Reference/canonical target - one must apply", formalDefinition="Used when the type is \"Reference\" or \"canonical\", and identifies a profile structure or implementation Guide that applies to the target of the reference this element refers to. If any profiles are specified, then the content must conform to at least one of them. The URL can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the target resource SHALL conform to at least one profile defined in the implementation guide." )
+        protected List<CanonicalType> targetProfile;
 
         /**
          * If the type is a reference to another resource, how the resource is or can be aggregated - is it a contained resource, or a reference, and if the context is a bundle, is it included in the bundle.
@@ -1752,7 +1752,7 @@ public class ElementDefinition extends Type implements ICompositeType {
         @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/reference-version-rules")
         protected Enumeration<ReferenceVersionRules> versioning;
 
-        private static final long serialVersionUID = -560921355L;
+        private static final long serialVersionUID = 957891653L;
 
     /**
      * Constructor
@@ -1815,101 +1815,125 @@ public class ElementDefinition extends Type implements ICompositeType {
         }
 
         /**
-         * @return {@link #profile} (Identifies a profile structure or implementation Guide that SHALL hold for the datatype this element refers to. Can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide.). This is the underlying object with id, value and extensions. The accessor "getProfile" gives direct access to the value
+         * @return {@link #profile} (Identifies a profile structure or implementation Guide that applies to the datatype this element refers to. If any profiles are specified, then the content must conform to at least one of them. The URL can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the type SHALL conform to at least one profile defined in the implementation guide.)
          */
-        public UriType getProfileElement() { 
+        public List<CanonicalType> getProfile() { 
           if (this.profile == null)
-            if (Configuration.errorOnAutoCreate())
-              throw new Error("Attempt to auto-create TypeRefComponent.profile");
-            else if (Configuration.doAutoCreate())
-              this.profile = new UriType(); // bb
+            this.profile = new ArrayList<CanonicalType>();
           return this.profile;
         }
 
-        public boolean hasProfileElement() { 
-          return this.profile != null && !this.profile.isEmpty();
+        /**
+         * @return Returns a reference to <code>this</code> for easy method chaining
+         */
+        public TypeRefComponent setProfile(List<CanonicalType> theProfile) { 
+          this.profile = theProfile;
+          return this;
         }
 
         public boolean hasProfile() { 
-          return this.profile != null && !this.profile.isEmpty();
+          if (this.profile == null)
+            return false;
+          for (CanonicalType item : this.profile)
+            if (!item.isEmpty())
+              return true;
+          return false;
         }
 
         /**
-         * @param value {@link #profile} (Identifies a profile structure or implementation Guide that SHALL hold for the datatype this element refers to. Can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide.). This is the underlying object with id, value and extensions. The accessor "getProfile" gives direct access to the value
+         * @return {@link #profile} (Identifies a profile structure or implementation Guide that applies to the datatype this element refers to. If any profiles are specified, then the content must conform to at least one of them. The URL can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the type SHALL conform to at least one profile defined in the implementation guide.)
          */
-        public TypeRefComponent setProfileElement(UriType value) { 
-          this.profile = value;
+        public CanonicalType addProfileElement() {//2 
+          CanonicalType t = new CanonicalType();
+          if (this.profile == null)
+            this.profile = new ArrayList<CanonicalType>();
+          this.profile.add(t);
+          return t;
+        }
+
+        /**
+         * @param value {@link #profile} (Identifies a profile structure or implementation Guide that applies to the datatype this element refers to. If any profiles are specified, then the content must conform to at least one of them. The URL can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the type SHALL conform to at least one profile defined in the implementation guide.)
+         */
+        public TypeRefComponent addProfile(String value) { //1
+          CanonicalType t = new CanonicalType();
+          t.setValue(value);
+          if (this.profile == null)
+            this.profile = new ArrayList<CanonicalType>();
+          this.profile.add(t);
           return this;
         }
 
         /**
-         * @return Identifies a profile structure or implementation Guide that SHALL hold for the datatype this element refers to. Can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide.
+         * @param value {@link #profile} (Identifies a profile structure or implementation Guide that applies to the datatype this element refers to. If any profiles are specified, then the content must conform to at least one of them. The URL can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the type SHALL conform to at least one profile defined in the implementation guide.)
          */
-        public String getProfile() { 
-          return this.profile == null ? null : this.profile.getValue();
+        public boolean hasProfile(String value) { 
+          if (this.profile == null)
+            return false;
+          for (CanonicalType v : this.profile)
+            if (v.getValue().equals(value)) // canonical(StructureDefinition|ImplementationGuide)
+              return true;
+          return false;
         }
 
         /**
-         * @param value Identifies a profile structure or implementation Guide that SHALL hold for the datatype this element refers to. Can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide.
+         * @return {@link #targetProfile} (Used when the type is "Reference" or "canonical", and identifies a profile structure or implementation Guide that applies to the target of the reference this element refers to. If any profiles are specified, then the content must conform to at least one of them. The URL can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the target resource SHALL conform to at least one profile defined in the implementation guide.)
          */
-        public TypeRefComponent setProfile(String value) { 
-          if (Utilities.noString(value))
-            this.profile = null;
-          else {
-            if (this.profile == null)
-              this.profile = new UriType();
-            this.profile.setValue(value);
-          }
-          return this;
-        }
-
-        /**
-         * @return {@link #targetProfile} (Identifies a profile structure or implementation Guide that SHALL hold for the target of the reference this element refers to. Can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide.). This is the underlying object with id, value and extensions. The accessor "getTargetProfile" gives direct access to the value
-         */
-        public UriType getTargetProfileElement() { 
+        public List<CanonicalType> getTargetProfile() { 
           if (this.targetProfile == null)
-            if (Configuration.errorOnAutoCreate())
-              throw new Error("Attempt to auto-create TypeRefComponent.targetProfile");
-            else if (Configuration.doAutoCreate())
-              this.targetProfile = new UriType(); // bb
+            this.targetProfile = new ArrayList<CanonicalType>();
           return this.targetProfile;
         }
 
-        public boolean hasTargetProfileElement() { 
-          return this.targetProfile != null && !this.targetProfile.isEmpty();
+        /**
+         * @return Returns a reference to <code>this</code> for easy method chaining
+         */
+        public TypeRefComponent setTargetProfile(List<CanonicalType> theTargetProfile) { 
+          this.targetProfile = theTargetProfile;
+          return this;
         }
 
         public boolean hasTargetProfile() { 
-          return this.targetProfile != null && !this.targetProfile.isEmpty();
+          if (this.targetProfile == null)
+            return false;
+          for (CanonicalType item : this.targetProfile)
+            if (!item.isEmpty())
+              return true;
+          return false;
         }
 
         /**
-         * @param value {@link #targetProfile} (Identifies a profile structure or implementation Guide that SHALL hold for the target of the reference this element refers to. Can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide.). This is the underlying object with id, value and extensions. The accessor "getTargetProfile" gives direct access to the value
+         * @return {@link #targetProfile} (Used when the type is "Reference" or "canonical", and identifies a profile structure or implementation Guide that applies to the target of the reference this element refers to. If any profiles are specified, then the content must conform to at least one of them. The URL can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the target resource SHALL conform to at least one profile defined in the implementation guide.)
          */
-        public TypeRefComponent setTargetProfileElement(UriType value) { 
-          this.targetProfile = value;
+        public CanonicalType addTargetProfileElement() {//2 
+          CanonicalType t = new CanonicalType();
+          if (this.targetProfile == null)
+            this.targetProfile = new ArrayList<CanonicalType>();
+          this.targetProfile.add(t);
+          return t;
+        }
+
+        /**
+         * @param value {@link #targetProfile} (Used when the type is "Reference" or "canonical", and identifies a profile structure or implementation Guide that applies to the target of the reference this element refers to. If any profiles are specified, then the content must conform to at least one of them. The URL can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the target resource SHALL conform to at least one profile defined in the implementation guide.)
+         */
+        public TypeRefComponent addTargetProfile(String value) { //1
+          CanonicalType t = new CanonicalType();
+          t.setValue(value);
+          if (this.targetProfile == null)
+            this.targetProfile = new ArrayList<CanonicalType>();
+          this.targetProfile.add(t);
           return this;
         }
 
         /**
-         * @return Identifies a profile structure or implementation Guide that SHALL hold for the target of the reference this element refers to. Can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide.
+         * @param value {@link #targetProfile} (Used when the type is "Reference" or "canonical", and identifies a profile structure or implementation Guide that applies to the target of the reference this element refers to. If any profiles are specified, then the content must conform to at least one of them. The URL can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the target resource SHALL conform to at least one profile defined in the implementation guide.)
          */
-        public String getTargetProfile() { 
-          return this.targetProfile == null ? null : this.targetProfile.getValue();
-        }
-
-        /**
-         * @param value Identifies a profile structure or implementation Guide that SHALL hold for the target of the reference this element refers to. Can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide.
-         */
-        public TypeRefComponent setTargetProfile(String value) { 
-          if (Utilities.noString(value))
-            this.targetProfile = null;
-          else {
-            if (this.targetProfile == null)
-              this.targetProfile = new UriType();
-            this.targetProfile.setValue(value);
-          }
-          return this;
+        public boolean hasTargetProfile(String value) { 
+          if (this.targetProfile == null)
+            return false;
+          for (CanonicalType v : this.targetProfile)
+            if (v.getValue().equals(value)) // canonical(StructureDefinition|ImplementationGuide)
+              return true;
+          return false;
         }
 
         /**
@@ -2025,8 +2049,8 @@ public class ElementDefinition extends Type implements ICompositeType {
         protected void listChildren(List<Property> children) {
           super.listChildren(children);
           children.add(new Property("code", "uri", "URL of Data type or Resource that is a(or the) type used for this element. References are URLs that are relative to http://hl7.org/fhir/StructureDefinition e.g. \"string\" is a reference to http://hl7.org/fhir/StructureDefinition/string. Absolute URLs are only allowed in logical models.", 0, 1, code));
-          children.add(new Property("profile", "uri", "Identifies a profile structure or implementation Guide that SHALL hold for the datatype this element refers to. Can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide.", 0, 1, profile));
-          children.add(new Property("targetProfile", "uri", "Identifies a profile structure or implementation Guide that SHALL hold for the target of the reference this element refers to. Can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide.", 0, 1, targetProfile));
+          children.add(new Property("profile", "canonical(StructureDefinition|ImplementationGuide)", "Identifies a profile structure or implementation Guide that applies to the datatype this element refers to. If any profiles are specified, then the content must conform to at least one of them. The URL can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the type SHALL conform to at least one profile defined in the implementation guide.", 0, java.lang.Integer.MAX_VALUE, profile));
+          children.add(new Property("targetProfile", "canonical(StructureDefinition|ImplementationGuide)", "Used when the type is \"Reference\" or \"canonical\", and identifies a profile structure or implementation Guide that applies to the target of the reference this element refers to. If any profiles are specified, then the content must conform to at least one of them. The URL can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the target resource SHALL conform to at least one profile defined in the implementation guide.", 0, java.lang.Integer.MAX_VALUE, targetProfile));
           children.add(new Property("aggregation", "code", "If the type is a reference to another resource, how the resource is or can be aggregated - is it a contained resource, or a reference, and if the context is a bundle, is it included in the bundle.", 0, java.lang.Integer.MAX_VALUE, aggregation));
           children.add(new Property("versioning", "code", "Whether this reference needs to be version specific or version independent, or whether either can be used.", 0, 1, versioning));
         }
@@ -2035,8 +2059,8 @@ public class ElementDefinition extends Type implements ICompositeType {
         public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
           switch (_hash) {
           case 3059181: /*code*/  return new Property("code", "uri", "URL of Data type or Resource that is a(or the) type used for this element. References are URLs that are relative to http://hl7.org/fhir/StructureDefinition e.g. \"string\" is a reference to http://hl7.org/fhir/StructureDefinition/string. Absolute URLs are only allowed in logical models.", 0, 1, code);
-          case -309425751: /*profile*/  return new Property("profile", "uri", "Identifies a profile structure or implementation Guide that SHALL hold for the datatype this element refers to. Can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide.", 0, 1, profile);
-          case 1994521304: /*targetProfile*/  return new Property("targetProfile", "uri", "Identifies a profile structure or implementation Guide that SHALL hold for the target of the reference this element refers to. Can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide.", 0, 1, targetProfile);
+          case -309425751: /*profile*/  return new Property("profile", "canonical(StructureDefinition|ImplementationGuide)", "Identifies a profile structure or implementation Guide that applies to the datatype this element refers to. If any profiles are specified, then the content must conform to at least one of them. The URL can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the type SHALL conform to at least one profile defined in the implementation guide.", 0, java.lang.Integer.MAX_VALUE, profile);
+          case 1994521304: /*targetProfile*/  return new Property("targetProfile", "canonical(StructureDefinition|ImplementationGuide)", "Used when the type is \"Reference\" or \"canonical\", and identifies a profile structure or implementation Guide that applies to the target of the reference this element refers to. If any profiles are specified, then the content must conform to at least one of them. The URL can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the target resource SHALL conform to at least one profile defined in the implementation guide.", 0, java.lang.Integer.MAX_VALUE, targetProfile);
           case 841524962: /*aggregation*/  return new Property("aggregation", "code", "If the type is a reference to another resource, how the resource is or can be aggregated - is it a contained resource, or a reference, and if the context is a bundle, is it included in the bundle.", 0, java.lang.Integer.MAX_VALUE, aggregation);
           case -670487542: /*versioning*/  return new Property("versioning", "code", "Whether this reference needs to be version specific or version independent, or whether either can be used.", 0, 1, versioning);
           default: return super.getNamedProperty(_hash, _name, _checkValid);
@@ -2048,8 +2072,8 @@ public class ElementDefinition extends Type implements ICompositeType {
       public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
         switch (hash) {
         case 3059181: /*code*/ return this.code == null ? new Base[0] : new Base[] {this.code}; // UriType
-        case -309425751: /*profile*/ return this.profile == null ? new Base[0] : new Base[] {this.profile}; // UriType
-        case 1994521304: /*targetProfile*/ return this.targetProfile == null ? new Base[0] : new Base[] {this.targetProfile}; // UriType
+        case -309425751: /*profile*/ return this.profile == null ? new Base[0] : this.profile.toArray(new Base[this.profile.size()]); // CanonicalType
+        case 1994521304: /*targetProfile*/ return this.targetProfile == null ? new Base[0] : this.targetProfile.toArray(new Base[this.targetProfile.size()]); // CanonicalType
         case 841524962: /*aggregation*/ return this.aggregation == null ? new Base[0] : this.aggregation.toArray(new Base[this.aggregation.size()]); // Enumeration<AggregationMode>
         case -670487542: /*versioning*/ return this.versioning == null ? new Base[0] : new Base[] {this.versioning}; // Enumeration<ReferenceVersionRules>
         default: return super.getProperty(hash, name, checkValid);
@@ -2064,10 +2088,10 @@ public class ElementDefinition extends Type implements ICompositeType {
           this.code = castToUri(value); // UriType
           return value;
         case -309425751: // profile
-          this.profile = castToUri(value); // UriType
+          this.getProfile().add(castToCanonical(value)); // CanonicalType
           return value;
         case 1994521304: // targetProfile
-          this.targetProfile = castToUri(value); // UriType
+          this.getTargetProfile().add(castToCanonical(value)); // CanonicalType
           return value;
         case 841524962: // aggregation
           value = new AggregationModeEnumFactory().fromType(castToCode(value));
@@ -2087,9 +2111,9 @@ public class ElementDefinition extends Type implements ICompositeType {
         if (name.equals("code")) {
           this.code = castToUri(value); // UriType
         } else if (name.equals("profile")) {
-          this.profile = castToUri(value); // UriType
+          this.getProfile().add(castToCanonical(value));
         } else if (name.equals("targetProfile")) {
-          this.targetProfile = castToUri(value); // UriType
+          this.getTargetProfile().add(castToCanonical(value));
         } else if (name.equals("aggregation")) {
           value = new AggregationModeEnumFactory().fromType(castToCode(value));
           this.getAggregation().add((Enumeration) value);
@@ -2105,8 +2129,8 @@ public class ElementDefinition extends Type implements ICompositeType {
       public Base makeProperty(int hash, String name) throws FHIRException {
         switch (hash) {
         case 3059181:  return getCodeElement();
-        case -309425751:  return getProfileElement();
-        case 1994521304:  return getTargetProfileElement();
+        case -309425751:  return addProfileElement();
+        case 1994521304:  return addTargetProfileElement();
         case 841524962:  return addAggregationElement();
         case -670487542:  return getVersioningElement();
         default: return super.makeProperty(hash, name);
@@ -2118,8 +2142,8 @@ public class ElementDefinition extends Type implements ICompositeType {
       public String[] getTypesForProperty(int hash, String name) throws FHIRException {
         switch (hash) {
         case 3059181: /*code*/ return new String[] {"uri"};
-        case -309425751: /*profile*/ return new String[] {"uri"};
-        case 1994521304: /*targetProfile*/ return new String[] {"uri"};
+        case -309425751: /*profile*/ return new String[] {"canonical"};
+        case 1994521304: /*targetProfile*/ return new String[] {"canonical"};
         case 841524962: /*aggregation*/ return new String[] {"code"};
         case -670487542: /*versioning*/ return new String[] {"code"};
         default: return super.getTypesForProperty(hash, name);
@@ -2152,8 +2176,16 @@ public class ElementDefinition extends Type implements ICompositeType {
         TypeRefComponent dst = new TypeRefComponent();
         copyValues(dst);
         dst.code = code == null ? null : code.copy();
-        dst.profile = profile == null ? null : profile.copy();
-        dst.targetProfile = targetProfile == null ? null : targetProfile.copy();
+        if (profile != null) {
+          dst.profile = new ArrayList<CanonicalType>();
+          for (CanonicalType i : profile)
+            dst.profile.add(i.copy());
+        };
+        if (targetProfile != null) {
+          dst.targetProfile = new ArrayList<CanonicalType>();
+          for (CanonicalType i : targetProfile)
+            dst.targetProfile.add(i.copy());
+        };
         if (aggregation != null) {
           dst.aggregation = new ArrayList<Enumeration<AggregationMode>>();
           for (Enumeration<AggregationMode> i : aggregation)
@@ -2164,26 +2196,25 @@ public class ElementDefinition extends Type implements ICompositeType {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof TypeRefComponent))
+        if (!(other_ instanceof TypeRefComponent))
           return false;
-        TypeRefComponent o = (TypeRefComponent) other;
+        TypeRefComponent o = (TypeRefComponent) other_;
         return compareDeep(code, o.code, true) && compareDeep(profile, o.profile, true) && compareDeep(targetProfile, o.targetProfile, true)
            && compareDeep(aggregation, o.aggregation, true) && compareDeep(versioning, o.versioning, true)
           ;
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof TypeRefComponent))
+        if (!(other_ instanceof TypeRefComponent))
           return false;
-        TypeRefComponent o = (TypeRefComponent) other;
-        return compareValues(code, o.code, true) && compareValues(profile, o.profile, true) && compareValues(targetProfile, o.targetProfile, true)
-           && compareValues(aggregation, o.aggregation, true) && compareValues(versioning, o.versioning, true)
+        TypeRefComponent o = (TypeRefComponent) other_;
+        return compareValues(code, o.code, true) && compareValues(aggregation, o.aggregation, true) && compareValues(versioning, o.versioning, true)
           ;
       }
 
@@ -2197,6 +2228,13 @@ public class ElementDefinition extends Type implements ICompositeType {
 
   }
 
+// added from java-adornments.txt:
+
+  public boolean hasTarget() {
+    return Utilities.existsInList(getCode(), "Reference", "canonical");
+  }
+
+// end addition
   }
 
     @Block()
@@ -2309,39 +2347,42 @@ public class ElementDefinition extends Type implements ICompositeType {
           case 102727412: /*label*/  return new Property("label", "string", "Describes the purpose of this example amoung the set of examples.", 0, 1, label);
           case -1410166417: /*value[x]*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
           case 111972721: /*value*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
-          case 733421943: /*valueBoolean*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
-          case -1668204915: /*valueInteger*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
-          case -2083993440: /*valueDecimal*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
           case -1535024575: /*valueBase64Binary*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
-          case -1668687056: /*valueInstant*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
-          case -1424603934: /*valueString*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
-          case -1410172357: /*valueUri*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
+          case 733421943: /*valueBoolean*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
+          case -786218365: /*valueCanonical*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
+          case -766209282: /*valueCode*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
           case -766192449: /*valueDate*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
           case 1047929900: /*valueDateTime*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
-          case -765708322: /*valueTime*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
-          case -766209282: /*valueCode*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
-          case -1410178407: /*valueOid*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
+          case -2083993440: /*valueDecimal*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
           case 231604844: /*valueId*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
-          case 26529417: /*valueUnsignedInt*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
-          case -1249932027: /*valuePositiveInt*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
+          case -1668687056: /*valueInstant*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
+          case -1668204915: /*valueInteger*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
           case -497880704: /*valueMarkdown*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
+          case -1410178407: /*valueOid*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
+          case -1249932027: /*valuePositiveInt*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
+          case -1424603934: /*valueString*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
+          case -765708322: /*valueTime*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
+          case 26529417: /*valueUnsignedInt*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
+          case -1410172357: /*valueUri*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
+          case -1410172354: /*valueUrl*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
+          case -765667124: /*valueUuid*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
+          case -478981821: /*valueAddress*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
           case -67108992: /*valueAnnotation*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
           case -475566732: /*valueAttachment*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
-          case -130498310: /*valueIdentifier*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
           case 924902896: /*valueCodeableConcept*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
           case -1887705029: /*valueCoding*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
+          case 944904545: /*valueContactPoint*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
+          case -2026205465: /*valueHumanName*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
+          case -130498310: /*valueIdentifier*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
+          case -1524344174: /*valuePeriod*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
           case -2029823716: /*valueQuantity*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
           case 2030761548: /*valueRange*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
-          case -1524344174: /*valuePeriod*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
           case 2030767386: /*valueRatio*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
+          case 1755241690: /*valueReference*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
           case -962229101: /*valueSampledData*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
           case -540985785: /*valueSignature*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
-          case -2026205465: /*valueHumanName*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
-          case -478981821: /*valueAddress*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
-          case 944904545: /*valueContactPoint*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
           case -1406282469: /*valueTiming*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
-          case 1755241690: /*valueReference*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
-          case -765920490: /*valueMeta*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
+          case -1858636920: /*valueDosage*/  return new Property("value[x]", "*", "The actual value for the element, which must be one of the types allowed for this element.", 0, 1, value);
           default: return super.getNamedProperty(_hash, _name, _checkValid);
           }
 
@@ -2408,32 +2449,20 @@ public class ElementDefinition extends Type implements ICompositeType {
         if (name.equals("label")) {
           throw new FHIRException("Cannot call addChild on a primitive type ElementDefinition.label");
         }
-        else if (name.equals("valueBoolean")) {
-          this.value = new BooleanType();
-          return this.value;
-        }
-        else if (name.equals("valueInteger")) {
-          this.value = new IntegerType();
-          return this.value;
-        }
-        else if (name.equals("valueDecimal")) {
-          this.value = new DecimalType();
-          return this.value;
-        }
         else if (name.equals("valueBase64Binary")) {
           this.value = new Base64BinaryType();
           return this.value;
         }
-        else if (name.equals("valueInstant")) {
-          this.value = new InstantType();
+        else if (name.equals("valueBoolean")) {
+          this.value = new BooleanType();
           return this.value;
         }
-        else if (name.equals("valueString")) {
-          this.value = new StringType();
+        else if (name.equals("valueCanonical")) {
+          this.value = new CanonicalType();
           return this.value;
         }
-        else if (name.equals("valueUri")) {
-          this.value = new UriType();
+        else if (name.equals("valueCode")) {
+          this.value = new CodeType();
           return this.value;
         }
         else if (name.equals("valueDate")) {
@@ -2444,32 +2473,64 @@ public class ElementDefinition extends Type implements ICompositeType {
           this.value = new DateTimeType();
           return this.value;
         }
-        else if (name.equals("valueTime")) {
-          this.value = new TimeType();
-          return this.value;
-        }
-        else if (name.equals("valueCode")) {
-          this.value = new CodeType();
-          return this.value;
-        }
-        else if (name.equals("valueOid")) {
-          this.value = new OidType();
+        else if (name.equals("valueDecimal")) {
+          this.value = new DecimalType();
           return this.value;
         }
         else if (name.equals("valueId")) {
           this.value = new IdType();
           return this.value;
         }
-        else if (name.equals("valueUnsignedInt")) {
-          this.value = new UnsignedIntType();
+        else if (name.equals("valueInstant")) {
+          this.value = new InstantType();
+          return this.value;
+        }
+        else if (name.equals("valueInteger")) {
+          this.value = new IntegerType();
+          return this.value;
+        }
+        else if (name.equals("valueMarkdown")) {
+          this.value = new MarkdownType();
+          return this.value;
+        }
+        else if (name.equals("valueOid")) {
+          this.value = new OidType();
           return this.value;
         }
         else if (name.equals("valuePositiveInt")) {
           this.value = new PositiveIntType();
           return this.value;
         }
-        else if (name.equals("valueMarkdown")) {
-          this.value = new MarkdownType();
+        else if (name.equals("valueString")) {
+          this.value = new StringType();
+          return this.value;
+        }
+        else if (name.equals("valueTime")) {
+          this.value = new TimeType();
+          return this.value;
+        }
+        else if (name.equals("valueUnsignedInt")) {
+          this.value = new UnsignedIntType();
+          return this.value;
+        }
+        else if (name.equals("valueUri")) {
+          this.value = new UriType();
+          return this.value;
+        }
+        else if (name.equals("valueUrl")) {
+          this.value = new UrlType();
+          return this.value;
+        }
+        else if (name.equals("valueUuid")) {
+          this.value = new UuidType();
+          return this.value;
+        }
+        else if (name.equals("valueAddress")) {
+          this.value = new Address();
+          return this.value;
+        }
+        else if (name.equals("valueAge")) {
+          this.value = new Age();
           return this.value;
         }
         else if (name.equals("valueAnnotation")) {
@@ -2480,16 +2541,44 @@ public class ElementDefinition extends Type implements ICompositeType {
           this.value = new Attachment();
           return this.value;
         }
-        else if (name.equals("valueIdentifier")) {
-          this.value = new Identifier();
-          return this.value;
-        }
         else if (name.equals("valueCodeableConcept")) {
           this.value = new CodeableConcept();
           return this.value;
         }
         else if (name.equals("valueCoding")) {
           this.value = new Coding();
+          return this.value;
+        }
+        else if (name.equals("valueContactPoint")) {
+          this.value = new ContactPoint();
+          return this.value;
+        }
+        else if (name.equals("valueCount")) {
+          this.value = new Count();
+          return this.value;
+        }
+        else if (name.equals("valueDistance")) {
+          this.value = new Distance();
+          return this.value;
+        }
+        else if (name.equals("valueDuration")) {
+          this.value = new Duration();
+          return this.value;
+        }
+        else if (name.equals("valueHumanName")) {
+          this.value = new HumanName();
+          return this.value;
+        }
+        else if (name.equals("valueIdentifier")) {
+          this.value = new Identifier();
+          return this.value;
+        }
+        else if (name.equals("valueMoney")) {
+          this.value = new Money();
+          return this.value;
+        }
+        else if (name.equals("valuePeriod")) {
+          this.value = new Period();
           return this.value;
         }
         else if (name.equals("valueQuantity")) {
@@ -2500,12 +2589,12 @@ public class ElementDefinition extends Type implements ICompositeType {
           this.value = new Range();
           return this.value;
         }
-        else if (name.equals("valuePeriod")) {
-          this.value = new Period();
-          return this.value;
-        }
         else if (name.equals("valueRatio")) {
           this.value = new Ratio();
+          return this.value;
+        }
+        else if (name.equals("valueReference")) {
+          this.value = new Reference();
           return this.value;
         }
         else if (name.equals("valueSampledData")) {
@@ -2516,28 +2605,44 @@ public class ElementDefinition extends Type implements ICompositeType {
           this.value = new Signature();
           return this.value;
         }
-        else if (name.equals("valueHumanName")) {
-          this.value = new HumanName();
-          return this.value;
-        }
-        else if (name.equals("valueAddress")) {
-          this.value = new Address();
-          return this.value;
-        }
-        else if (name.equals("valueContactPoint")) {
-          this.value = new ContactPoint();
-          return this.value;
-        }
         else if (name.equals("valueTiming")) {
           this.value = new Timing();
           return this.value;
         }
-        else if (name.equals("valueReference")) {
-          this.value = new Reference();
+        else if (name.equals("valueContactDetail")) {
+          this.value = new ContactDetail();
           return this.value;
         }
-        else if (name.equals("valueMeta")) {
-          this.value = new Meta();
+        else if (name.equals("valueContributor")) {
+          this.value = new Contributor();
+          return this.value;
+        }
+        else if (name.equals("valueDataRequirement")) {
+          this.value = new DataRequirement();
+          return this.value;
+        }
+        else if (name.equals("valueExpression")) {
+          this.value = new Expression();
+          return this.value;
+        }
+        else if (name.equals("valueParameterDefinition")) {
+          this.value = new ParameterDefinition();
+          return this.value;
+        }
+        else if (name.equals("valueRelatedArtifact")) {
+          this.value = new RelatedArtifact();
+          return this.value;
+        }
+        else if (name.equals("valueTriggerDefinition")) {
+          this.value = new TriggerDefinition();
+          return this.value;
+        }
+        else if (name.equals("valueUsageContext")) {
+          this.value = new UsageContext();
+          return this.value;
+        }
+        else if (name.equals("valueDosage")) {
+          this.value = new Dosage();
           return this.value;
         }
         else
@@ -2553,22 +2658,22 @@ public class ElementDefinition extends Type implements ICompositeType {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof ElementDefinitionExampleComponent))
+        if (!(other_ instanceof ElementDefinitionExampleComponent))
           return false;
-        ElementDefinitionExampleComponent o = (ElementDefinitionExampleComponent) other;
+        ElementDefinitionExampleComponent o = (ElementDefinitionExampleComponent) other_;
         return compareDeep(label, o.label, true) && compareDeep(value, o.value, true);
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof ElementDefinitionExampleComponent))
+        if (!(other_ instanceof ElementDefinitionExampleComponent))
           return false;
-        ElementDefinitionExampleComponent o = (ElementDefinitionExampleComponent) other;
+        ElementDefinitionExampleComponent o = (ElementDefinitionExampleComponent) other_;
         return compareValues(label, o.label, true);
       }
 
@@ -2615,10 +2720,10 @@ public class ElementDefinition extends Type implements ICompositeType {
         protected StringType human;
 
         /**
-         * A [FHIRPath](http://hl7.org/fluentpath) expression of constraint that can be executed to see if this constraint is met.
+         * A [FHIRPath](fhirpath.html) expression of constraint that can be executed to see if this constraint is met.
          */
-        @Child(name = "expression", type = {StringType.class}, order=5, min=1, max=1, modifier=false, summary=true)
-        @Description(shortDefinition="FHIRPath expression of constraint", formalDefinition="A [FHIRPath](http://hl7.org/fluentpath) expression of constraint that can be executed to see if this constraint is met." )
+        @Child(name = "expression", type = {StringType.class}, order=5, min=0, max=1, modifier=false, summary=true)
+        @Description(shortDefinition="FHIRPath expression of constraint", formalDefinition="A [FHIRPath](fhirpath.html) expression of constraint that can be executed to see if this constraint is met." )
         protected StringType expression;
 
         /**
@@ -2631,11 +2736,11 @@ public class ElementDefinition extends Type implements ICompositeType {
         /**
          * A reference to the original source of the constraint, for traceability purposes.
          */
-        @Child(name = "source", type = {UriType.class}, order=7, min=0, max=1, modifier=false, summary=true)
+        @Child(name = "source", type = {CanonicalType.class}, order=7, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="Reference to original source of constraint", formalDefinition="A reference to the original source of the constraint, for traceability purposes." )
-        protected UriType source;
+        protected CanonicalType source;
 
-        private static final long serialVersionUID = 1860862205L;
+        private static final long serialVersionUID = 1048354565L;
 
     /**
      * Constructor
@@ -2647,12 +2752,11 @@ public class ElementDefinition extends Type implements ICompositeType {
     /**
      * Constructor
      */
-      public ElementDefinitionConstraintComponent(IdType key, Enumeration<ConstraintSeverity> severity, StringType human, StringType expression) {
+      public ElementDefinitionConstraintComponent(IdType key, Enumeration<ConstraintSeverity> severity, StringType human) {
         super();
         this.key = key;
         this.severity = severity;
         this.human = human;
-        this.expression = expression;
       }
 
         /**
@@ -2840,7 +2944,7 @@ public class ElementDefinition extends Type implements ICompositeType {
         }
 
         /**
-         * @return {@link #expression} (A [FHIRPath](http://hl7.org/fluentpath) expression of constraint that can be executed to see if this constraint is met.). This is the underlying object with id, value and extensions. The accessor "getExpression" gives direct access to the value
+         * @return {@link #expression} (A [FHIRPath](fhirpath.html) expression of constraint that can be executed to see if this constraint is met.). This is the underlying object with id, value and extensions. The accessor "getExpression" gives direct access to the value
          */
         public StringType getExpressionElement() { 
           if (this.expression == null)
@@ -2860,7 +2964,7 @@ public class ElementDefinition extends Type implements ICompositeType {
         }
 
         /**
-         * @param value {@link #expression} (A [FHIRPath](http://hl7.org/fluentpath) expression of constraint that can be executed to see if this constraint is met.). This is the underlying object with id, value and extensions. The accessor "getExpression" gives direct access to the value
+         * @param value {@link #expression} (A [FHIRPath](fhirpath.html) expression of constraint that can be executed to see if this constraint is met.). This is the underlying object with id, value and extensions. The accessor "getExpression" gives direct access to the value
          */
         public ElementDefinitionConstraintComponent setExpressionElement(StringType value) { 
           this.expression = value;
@@ -2868,19 +2972,23 @@ public class ElementDefinition extends Type implements ICompositeType {
         }
 
         /**
-         * @return A [FHIRPath](http://hl7.org/fluentpath) expression of constraint that can be executed to see if this constraint is met.
+         * @return A [FHIRPath](fhirpath.html) expression of constraint that can be executed to see if this constraint is met.
          */
         public String getExpression() { 
           return this.expression == null ? null : this.expression.getValue();
         }
 
         /**
-         * @param value A [FHIRPath](http://hl7.org/fluentpath) expression of constraint that can be executed to see if this constraint is met.
+         * @param value A [FHIRPath](fhirpath.html) expression of constraint that can be executed to see if this constraint is met.
          */
         public ElementDefinitionConstraintComponent setExpression(String value) { 
+          if (Utilities.noString(value))
+            this.expression = null;
+          else {
             if (this.expression == null)
               this.expression = new StringType();
             this.expression.setValue(value);
+          }
           return this;
         }
 
@@ -2936,12 +3044,12 @@ public class ElementDefinition extends Type implements ICompositeType {
         /**
          * @return {@link #source} (A reference to the original source of the constraint, for traceability purposes.). This is the underlying object with id, value and extensions. The accessor "getSource" gives direct access to the value
          */
-        public UriType getSourceElement() { 
+        public CanonicalType getSourceElement() { 
           if (this.source == null)
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create ElementDefinitionConstraintComponent.source");
             else if (Configuration.doAutoCreate())
-              this.source = new UriType(); // bb
+              this.source = new CanonicalType(); // bb
           return this.source;
         }
 
@@ -2956,7 +3064,7 @@ public class ElementDefinition extends Type implements ICompositeType {
         /**
          * @param value {@link #source} (A reference to the original source of the constraint, for traceability purposes.). This is the underlying object with id, value and extensions. The accessor "getSource" gives direct access to the value
          */
-        public ElementDefinitionConstraintComponent setSourceElement(UriType value) { 
+        public ElementDefinitionConstraintComponent setSourceElement(CanonicalType value) { 
           this.source = value;
           return this;
         }
@@ -2976,7 +3084,7 @@ public class ElementDefinition extends Type implements ICompositeType {
             this.source = null;
           else {
             if (this.source == null)
-              this.source = new UriType();
+              this.source = new CanonicalType();
             this.source.setValue(value);
           }
           return this;
@@ -2988,9 +3096,9 @@ public class ElementDefinition extends Type implements ICompositeType {
           children.add(new Property("requirements", "string", "Description of why this constraint is necessary or appropriate.", 0, 1, requirements));
           children.add(new Property("severity", "code", "Identifies the impact constraint violation has on the conformance of the instance.", 0, 1, severity));
           children.add(new Property("human", "string", "Text that can be used to describe the constraint in messages identifying that the constraint has been violated.", 0, 1, human));
-          children.add(new Property("expression", "string", "A [FHIRPath](http://hl7.org/fluentpath) expression of constraint that can be executed to see if this constraint is met.", 0, 1, expression));
+          children.add(new Property("expression", "string", "A [FHIRPath](fhirpath.html) expression of constraint that can be executed to see if this constraint is met.", 0, 1, expression));
           children.add(new Property("xpath", "string", "An XPath expression of constraint that can be executed to see if this constraint is met.", 0, 1, xpath));
-          children.add(new Property("source", "uri", "A reference to the original source of the constraint, for traceability purposes.", 0, 1, source));
+          children.add(new Property("source", "canonical(StructureDefinition)", "A reference to the original source of the constraint, for traceability purposes.", 0, 1, source));
         }
 
         @Override
@@ -3000,9 +3108,9 @@ public class ElementDefinition extends Type implements ICompositeType {
           case -1619874672: /*requirements*/  return new Property("requirements", "string", "Description of why this constraint is necessary or appropriate.", 0, 1, requirements);
           case 1478300413: /*severity*/  return new Property("severity", "code", "Identifies the impact constraint violation has on the conformance of the instance.", 0, 1, severity);
           case 99639597: /*human*/  return new Property("human", "string", "Text that can be used to describe the constraint in messages identifying that the constraint has been violated.", 0, 1, human);
-          case -1795452264: /*expression*/  return new Property("expression", "string", "A [FHIRPath](http://hl7.org/fluentpath) expression of constraint that can be executed to see if this constraint is met.", 0, 1, expression);
+          case -1795452264: /*expression*/  return new Property("expression", "string", "A [FHIRPath](fhirpath.html) expression of constraint that can be executed to see if this constraint is met.", 0, 1, expression);
           case 114256029: /*xpath*/  return new Property("xpath", "string", "An XPath expression of constraint that can be executed to see if this constraint is met.", 0, 1, xpath);
-          case -896505829: /*source*/  return new Property("source", "uri", "A reference to the original source of the constraint, for traceability purposes.", 0, 1, source);
+          case -896505829: /*source*/  return new Property("source", "canonical(StructureDefinition)", "A reference to the original source of the constraint, for traceability purposes.", 0, 1, source);
           default: return super.getNamedProperty(_hash, _name, _checkValid);
           }
 
@@ -3017,7 +3125,7 @@ public class ElementDefinition extends Type implements ICompositeType {
         case 99639597: /*human*/ return this.human == null ? new Base[0] : new Base[] {this.human}; // StringType
         case -1795452264: /*expression*/ return this.expression == null ? new Base[0] : new Base[] {this.expression}; // StringType
         case 114256029: /*xpath*/ return this.xpath == null ? new Base[0] : new Base[] {this.xpath}; // StringType
-        case -896505829: /*source*/ return this.source == null ? new Base[0] : new Base[] {this.source}; // UriType
+        case -896505829: /*source*/ return this.source == null ? new Base[0] : new Base[] {this.source}; // CanonicalType
         default: return super.getProperty(hash, name, checkValid);
         }
 
@@ -3046,7 +3154,7 @@ public class ElementDefinition extends Type implements ICompositeType {
           this.xpath = castToString(value); // StringType
           return value;
         case -896505829: // source
-          this.source = castToUri(value); // UriType
+          this.source = castToCanonical(value); // CanonicalType
           return value;
         default: return super.setProperty(hash, name, value);
         }
@@ -3069,7 +3177,7 @@ public class ElementDefinition extends Type implements ICompositeType {
         } else if (name.equals("xpath")) {
           this.xpath = castToString(value); // StringType
         } else if (name.equals("source")) {
-          this.source = castToUri(value); // UriType
+          this.source = castToCanonical(value); // CanonicalType
         } else
           return super.setProperty(name, value);
         return value;
@@ -3099,7 +3207,7 @@ public class ElementDefinition extends Type implements ICompositeType {
         case 99639597: /*human*/ return new String[] {"string"};
         case -1795452264: /*expression*/ return new String[] {"string"};
         case 114256029: /*xpath*/ return new String[] {"string"};
-        case -896505829: /*source*/ return new String[] {"uri"};
+        case -896505829: /*source*/ return new String[] {"canonical"};
         default: return super.getTypesForProperty(hash, name);
         }
 
@@ -3146,27 +3254,27 @@ public class ElementDefinition extends Type implements ICompositeType {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof ElementDefinitionConstraintComponent))
+        if (!(other_ instanceof ElementDefinitionConstraintComponent))
           return false;
-        ElementDefinitionConstraintComponent o = (ElementDefinitionConstraintComponent) other;
+        ElementDefinitionConstraintComponent o = (ElementDefinitionConstraintComponent) other_;
         return compareDeep(key, o.key, true) && compareDeep(requirements, o.requirements, true) && compareDeep(severity, o.severity, true)
            && compareDeep(human, o.human, true) && compareDeep(expression, o.expression, true) && compareDeep(xpath, o.xpath, true)
            && compareDeep(source, o.source, true);
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof ElementDefinitionConstraintComponent))
+        if (!(other_ instanceof ElementDefinitionConstraintComponent))
           return false;
-        ElementDefinitionConstraintComponent o = (ElementDefinitionConstraintComponent) other;
+        ElementDefinitionConstraintComponent o = (ElementDefinitionConstraintComponent) other_;
         return compareValues(key, o.key, true) && compareValues(requirements, o.requirements, true) && compareValues(severity, o.severity, true)
            && compareValues(human, o.human, true) && compareValues(expression, o.expression, true) && compareValues(xpath, o.xpath, true)
-           && compareValues(source, o.source, true);
+          ;
       }
 
       public boolean isEmpty() {
@@ -3199,13 +3307,13 @@ public class ElementDefinition extends Type implements ICompositeType {
         protected StringType description;
 
         /**
-         * Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used. If the binding refers to an explicit value set - the normal case - then use a Reference(ValueSet) preferably containing the canonical URL for the value set. If the reference is to an implicit value set - usually, an IETF RFC that defines a grammar, such as mime types - then use a uri.
+         * Refers to the value set that identifies the set of codes the binding refers to.
          */
-        @Child(name = "valueSet", type = {UriType.class, ValueSet.class}, order=3, min=0, max=1, modifier=false, summary=true)
-        @Description(shortDefinition="Source of value set", formalDefinition="Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used. If the binding refers to an explicit value set - the normal case - then use a Reference(ValueSet) preferably containing the canonical URL for the value set. If the reference is to an implicit value set - usually, an IETF RFC that defines a grammar, such as mime types - then use a uri." )
-        protected Type valueSet;
+        @Child(name = "valueSet", type = {CanonicalType.class}, order=3, min=0, max=1, modifier=false, summary=true)
+        @Description(shortDefinition="Source of value set", formalDefinition="Refers to the value set that identifies the set of codes the binding refers to." )
+        protected CanonicalType valueSet;
 
-        private static final long serialVersionUID = 1355538460L;
+        private static final long serialVersionUID = -514477030L;
 
     /**
      * Constructor
@@ -3317,36 +3425,19 @@ public class ElementDefinition extends Type implements ICompositeType {
         }
 
         /**
-         * @return {@link #valueSet} (Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used. If the binding refers to an explicit value set - the normal case - then use a Reference(ValueSet) preferably containing the canonical URL for the value set. If the reference is to an implicit value set - usually, an IETF RFC that defines a grammar, such as mime types - then use a uri.)
+         * @return {@link #valueSet} (Refers to the value set that identifies the set of codes the binding refers to.). This is the underlying object with id, value and extensions. The accessor "getValueSet" gives direct access to the value
          */
-        public Type getValueSet() { 
+        public CanonicalType getValueSetElement() { 
+          if (this.valueSet == null)
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create ElementDefinitionBindingComponent.valueSet");
+            else if (Configuration.doAutoCreate())
+              this.valueSet = new CanonicalType(); // bb
           return this.valueSet;
         }
 
-        /**
-         * @return {@link #valueSet} (Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used. If the binding refers to an explicit value set - the normal case - then use a Reference(ValueSet) preferably containing the canonical URL for the value set. If the reference is to an implicit value set - usually, an IETF RFC that defines a grammar, such as mime types - then use a uri.)
-         */
-        public UriType getValueSetUriType() throws FHIRException { 
-          if (!(this.valueSet instanceof UriType))
-            throw new FHIRException("Type mismatch: the type UriType was expected, but "+this.valueSet.getClass().getName()+" was encountered");
-          return (UriType) this.valueSet;
-        }
-
-        public boolean hasValueSetUriType() { 
-          return this.valueSet instanceof UriType;
-        }
-
-        /**
-         * @return {@link #valueSet} (Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used. If the binding refers to an explicit value set - the normal case - then use a Reference(ValueSet) preferably containing the canonical URL for the value set. If the reference is to an implicit value set - usually, an IETF RFC that defines a grammar, such as mime types - then use a uri.)
-         */
-        public Reference getValueSetReference() throws FHIRException { 
-          if (!(this.valueSet instanceof Reference))
-            throw new FHIRException("Type mismatch: the type Reference was expected, but "+this.valueSet.getClass().getName()+" was encountered");
-          return (Reference) this.valueSet;
-        }
-
-        public boolean hasValueSetReference() { 
-          return this.valueSet instanceof Reference;
+        public boolean hasValueSetElement() { 
+          return this.valueSet != null && !this.valueSet.isEmpty();
         }
 
         public boolean hasValueSet() { 
@@ -3354,10 +3445,31 @@ public class ElementDefinition extends Type implements ICompositeType {
         }
 
         /**
-         * @param value {@link #valueSet} (Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used. If the binding refers to an explicit value set - the normal case - then use a Reference(ValueSet) preferably containing the canonical URL for the value set. If the reference is to an implicit value set - usually, an IETF RFC that defines a grammar, such as mime types - then use a uri.)
+         * @param value {@link #valueSet} (Refers to the value set that identifies the set of codes the binding refers to.). This is the underlying object with id, value and extensions. The accessor "getValueSet" gives direct access to the value
          */
-        public ElementDefinitionBindingComponent setValueSet(Type value) { 
+        public ElementDefinitionBindingComponent setValueSetElement(CanonicalType value) { 
           this.valueSet = value;
+          return this;
+        }
+
+        /**
+         * @return Refers to the value set that identifies the set of codes the binding refers to.
+         */
+        public String getValueSet() { 
+          return this.valueSet == null ? null : this.valueSet.getValue();
+        }
+
+        /**
+         * @param value Refers to the value set that identifies the set of codes the binding refers to.
+         */
+        public ElementDefinitionBindingComponent setValueSet(String value) { 
+          if (Utilities.noString(value))
+            this.valueSet = null;
+          else {
+            if (this.valueSet == null)
+              this.valueSet = new CanonicalType();
+            this.valueSet.setValue(value);
+          }
           return this;
         }
 
@@ -3365,7 +3477,7 @@ public class ElementDefinition extends Type implements ICompositeType {
           super.listChildren(children);
           children.add(new Property("strength", "code", "Indicates the degree of conformance expectations associated with this binding - that is, the degree to which the provided value set must be adhered to in the instances.", 0, 1, strength));
           children.add(new Property("description", "string", "Describes the intended use of this particular set of codes.", 0, 1, description));
-          children.add(new Property("valueSet[x]", "uri|Reference(ValueSet)", "Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used. If the binding refers to an explicit value set - the normal case - then use a Reference(ValueSet) preferably containing the canonical URL for the value set. If the reference is to an implicit value set - usually, an IETF RFC that defines a grammar, such as mime types - then use a uri.", 0, 1, valueSet));
+          children.add(new Property("valueSet", "canonical(ValueSet)", "Refers to the value set that identifies the set of codes the binding refers to.", 0, 1, valueSet));
         }
 
         @Override
@@ -3373,10 +3485,7 @@ public class ElementDefinition extends Type implements ICompositeType {
           switch (_hash) {
           case 1791316033: /*strength*/  return new Property("strength", "code", "Indicates the degree of conformance expectations associated with this binding - that is, the degree to which the provided value set must be adhered to in the instances.", 0, 1, strength);
           case -1724546052: /*description*/  return new Property("description", "string", "Describes the intended use of this particular set of codes.", 0, 1, description);
-          case -1438410321: /*valueSet[x]*/  return new Property("valueSet[x]", "uri|Reference(ValueSet)", "Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used. If the binding refers to an explicit value set - the normal case - then use a Reference(ValueSet) preferably containing the canonical URL for the value set. If the reference is to an implicit value set - usually, an IETF RFC that defines a grammar, such as mime types - then use a uri.", 0, 1, valueSet);
-          case -1410174671: /*valueSet*/  return new Property("valueSet[x]", "uri|Reference(ValueSet)", "Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used. If the binding refers to an explicit value set - the normal case - then use a Reference(ValueSet) preferably containing the canonical URL for the value set. If the reference is to an implicit value set - usually, an IETF RFC that defines a grammar, such as mime types - then use a uri.", 0, 1, valueSet);
-          case -1438416261: /*valueSetUri*/  return new Property("valueSet[x]", "uri|Reference(ValueSet)", "Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used. If the binding refers to an explicit value set - the normal case - then use a Reference(ValueSet) preferably containing the canonical URL for the value set. If the reference is to an implicit value set - usually, an IETF RFC that defines a grammar, such as mime types - then use a uri.", 0, 1, valueSet);
-          case 295220506: /*valueSetReference*/  return new Property("valueSet[x]", "uri|Reference(ValueSet)", "Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used. If the binding refers to an explicit value set - the normal case - then use a Reference(ValueSet) preferably containing the canonical URL for the value set. If the reference is to an implicit value set - usually, an IETF RFC that defines a grammar, such as mime types - then use a uri.", 0, 1, valueSet);
+          case -1410174671: /*valueSet*/  return new Property("valueSet", "canonical(ValueSet)", "Refers to the value set that identifies the set of codes the binding refers to.", 0, 1, valueSet);
           default: return super.getNamedProperty(_hash, _name, _checkValid);
           }
 
@@ -3387,7 +3496,7 @@ public class ElementDefinition extends Type implements ICompositeType {
         switch (hash) {
         case 1791316033: /*strength*/ return this.strength == null ? new Base[0] : new Base[] {this.strength}; // Enumeration<BindingStrength>
         case -1724546052: /*description*/ return this.description == null ? new Base[0] : new Base[] {this.description}; // StringType
-        case -1410174671: /*valueSet*/ return this.valueSet == null ? new Base[0] : new Base[] {this.valueSet}; // Type
+        case -1410174671: /*valueSet*/ return this.valueSet == null ? new Base[0] : new Base[] {this.valueSet}; // CanonicalType
         default: return super.getProperty(hash, name, checkValid);
         }
 
@@ -3404,7 +3513,7 @@ public class ElementDefinition extends Type implements ICompositeType {
           this.description = castToString(value); // StringType
           return value;
         case -1410174671: // valueSet
-          this.valueSet = castToType(value); // Type
+          this.valueSet = castToCanonical(value); // CanonicalType
           return value;
         default: return super.setProperty(hash, name, value);
         }
@@ -3418,8 +3527,8 @@ public class ElementDefinition extends Type implements ICompositeType {
           this.strength = (Enumeration) value; // Enumeration<BindingStrength>
         } else if (name.equals("description")) {
           this.description = castToString(value); // StringType
-        } else if (name.equals("valueSet[x]")) {
-          this.valueSet = castToType(value); // Type
+        } else if (name.equals("valueSet")) {
+          this.valueSet = castToCanonical(value); // CanonicalType
         } else
           return super.setProperty(name, value);
         return value;
@@ -3430,8 +3539,7 @@ public class ElementDefinition extends Type implements ICompositeType {
         switch (hash) {
         case 1791316033:  return getStrengthElement();
         case -1724546052:  return getDescriptionElement();
-        case -1438410321:  return getValueSet(); 
-        case -1410174671:  return getValueSet(); 
+        case -1410174671:  return getValueSetElement();
         default: return super.makeProperty(hash, name);
         }
 
@@ -3442,7 +3550,7 @@ public class ElementDefinition extends Type implements ICompositeType {
         switch (hash) {
         case 1791316033: /*strength*/ return new String[] {"code"};
         case -1724546052: /*description*/ return new String[] {"string"};
-        case -1410174671: /*valueSet*/ return new String[] {"uri", "Reference"};
+        case -1410174671: /*valueSet*/ return new String[] {"canonical"};
         default: return super.getTypesForProperty(hash, name);
         }
 
@@ -3456,13 +3564,8 @@ public class ElementDefinition extends Type implements ICompositeType {
         else if (name.equals("description")) {
           throw new FHIRException("Cannot call addChild on a primitive type ElementDefinition.description");
         }
-        else if (name.equals("valueSetUri")) {
-          this.valueSet = new UriType();
-          return this.valueSet;
-        }
-        else if (name.equals("valueSetReference")) {
-          this.valueSet = new Reference();
-          return this.valueSet;
+        else if (name.equals("valueSet")) {
+          throw new FHIRException("Cannot call addChild on a primitive type ElementDefinition.valueSet");
         }
         else
           return super.addChild(name);
@@ -3478,23 +3581,23 @@ public class ElementDefinition extends Type implements ICompositeType {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof ElementDefinitionBindingComponent))
+        if (!(other_ instanceof ElementDefinitionBindingComponent))
           return false;
-        ElementDefinitionBindingComponent o = (ElementDefinitionBindingComponent) other;
+        ElementDefinitionBindingComponent o = (ElementDefinitionBindingComponent) other_;
         return compareDeep(strength, o.strength, true) && compareDeep(description, o.description, true)
            && compareDeep(valueSet, o.valueSet, true);
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof ElementDefinitionBindingComponent))
+        if (!(other_ instanceof ElementDefinitionBindingComponent))
           return false;
-        ElementDefinitionBindingComponent o = (ElementDefinitionBindingComponent) other;
+        ElementDefinitionBindingComponent o = (ElementDefinitionBindingComponent) other_;
         return compareValues(strength, o.strength, true) && compareValues(description, o.description, true)
           ;
       }
@@ -3525,6 +3628,7 @@ public class ElementDefinition extends Type implements ICompositeType {
          */
         @Child(name = "language", type = {CodeType.class}, order=2, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="Computable language of mapping", formalDefinition="Identifies the computable language in which mapping.map is expressed." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/mimetypes")
         protected CodeType language;
 
         /**
@@ -3867,23 +3971,23 @@ public class ElementDefinition extends Type implements ICompositeType {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof ElementDefinitionMappingComponent))
+        if (!(other_ instanceof ElementDefinitionMappingComponent))
           return false;
-        ElementDefinitionMappingComponent o = (ElementDefinitionMappingComponent) other;
+        ElementDefinitionMappingComponent o = (ElementDefinitionMappingComponent) other_;
         return compareDeep(identity, o.identity, true) && compareDeep(language, o.language, true) && compareDeep(map, o.map, true)
            && compareDeep(comment, o.comment, true);
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof ElementDefinitionMappingComponent))
+        if (!(other_ instanceof ElementDefinitionMappingComponent))
           return false;
-        ElementDefinitionMappingComponent o = (ElementDefinitionMappingComponent) other;
+        ElementDefinitionMappingComponent o = (ElementDefinitionMappingComponent) other_;
         return compareValues(identity, o.identity, true) && compareValues(language, o.language, true) && compareValues(map, o.map, true)
            && compareValues(comment, o.comment, true);
       }
@@ -3923,16 +4027,23 @@ public class ElementDefinition extends Type implements ICompositeType {
     protected StringType sliceName;
 
     /**
+     * If true, indicates that this slice definition is constraining a slice definition with the same name in an inherited profile. If false, the slice is not overriding any slice in an inherited profile. If missing, the slice might or might not be overriding a slice in an inherited profile, depending on the sliceName.
+     */
+    @Child(name = "sliceIsConstraining", type = {BooleanType.class}, order=3, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="If this slice definition constrains an inherited slice definition (or not)", formalDefinition="If true, indicates that this slice definition is constraining a slice definition with the same name in an inherited profile. If false, the slice is not overriding any slice in an inherited profile. If missing, the slice might or might not be overriding a slice in an inherited profile, depending on the sliceName." )
+    protected BooleanType sliceIsConstraining;
+
+    /**
      * A single preferred label which is the text to display beside the element indicating its meaning or to use to prompt for the element in a user display or form.
      */
-    @Child(name = "label", type = {StringType.class}, order=3, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "label", type = {StringType.class}, order=4, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Name for element to display with or prompt for element", formalDefinition="A single preferred label which is the text to display beside the element indicating its meaning or to use to prompt for the element in a user display or form." )
     protected StringType label;
 
     /**
      * A code that has the same meaning as the element in a particular terminology.
      */
-    @Child(name = "code", type = {Coding.class}, order=4, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Child(name = "code", type = {Coding.class}, order=5, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="Corresponding codes in terminologies", formalDefinition="A code that has the same meaning as the element in a particular terminology." )
     @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/observation-codes")
     protected List<Coding> code;
@@ -3940,193 +4051,210 @@ public class ElementDefinition extends Type implements ICompositeType {
     /**
      * Indicates that the element is sliced into a set of alternative definitions (i.e. in a structure definition, there are multiple different constraints on a single element in the base resource). Slicing can be used in any resource that has cardinality ..* on the base resource, or any resource with a choice of types. The set of slices is any elements that come after this in the element sequence that have the same path, until a shorter path occurs (the shorter path terminates the set).
      */
-    @Child(name = "slicing", type = {}, order=5, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "slicing", type = {}, order=6, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="This element is sliced - slices follow", formalDefinition="Indicates that the element is sliced into a set of alternative definitions (i.e. in a structure definition, there are multiple different constraints on a single element in the base resource). Slicing can be used in any resource that has cardinality ..* on the base resource, or any resource with a choice of types. The set of slices is any elements that come after this in the element sequence that have the same path, until a shorter path occurs (the shorter path terminates the set)." )
     protected ElementDefinitionSlicingComponent slicing;
 
     /**
      * A concise description of what this element means (e.g. for use in autogenerated summaries).
      */
-    @Child(name = "short", type = {StringType.class}, order=6, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "short", type = {StringType.class}, order=7, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Concise definition for space-constrained presentation", formalDefinition="A concise description of what this element means (e.g. for use in autogenerated summaries)." )
     protected StringType short_;
 
     /**
-     * Provides a complete explanation of the meaning of the data element for human readability.  For the case of elements derived from existing elements (e.g. constraints), the definition SHALL be consistent with the base definition, but convey the meaning of the element in the particular context of use of the resource.
+     * Provides a complete explanation of the meaning of the data element for human readability.  For the case of elements derived from existing elements (e.g. constraints), the definition SHALL be consistent with the base definition, but convey the meaning of the element in the particular context of use of the resource. (Note: The text you are reading is specified in ElementDefinition.definition).
      */
-    @Child(name = "definition", type = {MarkdownType.class}, order=7, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Full formal definition as narrative text", formalDefinition="Provides a complete explanation of the meaning of the data element for human readability.  For the case of elements derived from existing elements (e.g. constraints), the definition SHALL be consistent with the base definition, but convey the meaning of the element in the particular context of use of the resource." )
+    @Child(name = "definition", type = {MarkdownType.class}, order=8, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Full formal definition as narrative text", formalDefinition="Provides a complete explanation of the meaning of the data element for human readability.  For the case of elements derived from existing elements (e.g. constraints), the definition SHALL be consistent with the base definition, but convey the meaning of the element in the particular context of use of the resource. (Note: The text you are reading is specified in ElementDefinition.definition)." )
     protected MarkdownType definition;
 
     /**
-     * Explanatory notes and implementation guidance about the data element, including notes about how to use the data properly, exceptions to proper use, etc.
+     * Explanatory notes and implementation guidance about the data element, including notes about how to use the data properly, exceptions to proper use, etc. (Note: The text you are reading is specified in ElementDefinition.comment).
      */
-    @Child(name = "comment", type = {MarkdownType.class}, order=8, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Comments about the use of this element", formalDefinition="Explanatory notes and implementation guidance about the data element, including notes about how to use the data properly, exceptions to proper use, etc." )
+    @Child(name = "comment", type = {MarkdownType.class}, order=9, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Comments about the use of this element", formalDefinition="Explanatory notes and implementation guidance about the data element, including notes about how to use the data properly, exceptions to proper use, etc. (Note: The text you are reading is specified in ElementDefinition.comment)." )
     protected MarkdownType comment;
 
     /**
      * This element is for traceability of why the element was created and why the constraints exist as they do. This may be used to point to source materials or specifications that drove the structure of this element.
      */
-    @Child(name = "requirements", type = {MarkdownType.class}, order=9, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "requirements", type = {MarkdownType.class}, order=10, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Why this resource has been created", formalDefinition="This element is for traceability of why the element was created and why the constraints exist as they do. This may be used to point to source materials or specifications that drove the structure of this element." )
     protected MarkdownType requirements;
 
     /**
      * Identifies additional names by which this element might also be known.
      */
-    @Child(name = "alias", type = {StringType.class}, order=10, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Child(name = "alias", type = {StringType.class}, order=11, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="Other names", formalDefinition="Identifies additional names by which this element might also be known." )
     protected List<StringType> alias;
 
     /**
      * The minimum number of times this element SHALL appear in the instance.
      */
-    @Child(name = "min", type = {UnsignedIntType.class}, order=11, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "min", type = {UnsignedIntType.class}, order=12, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Minimum Cardinality", formalDefinition="The minimum number of times this element SHALL appear in the instance." )
     protected UnsignedIntType min;
 
     /**
      * The maximum number of times this element is permitted to appear in the instance.
      */
-    @Child(name = "max", type = {StringType.class}, order=12, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "max", type = {StringType.class}, order=13, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Maximum Cardinality (a number or *)", formalDefinition="The maximum number of times this element is permitted to appear in the instance." )
     protected StringType max;
 
     /**
-     * Information about the base definition of the element, provided to make it unnecessary for tools to trace the deviation of the element through the derived and related profiles. This information is provided when the element definition is not the original definition of an element - i.g. either in a constraint on another type, or for elements from a super type in a snap shot.
+     * Information about the base definition of the element, provided to make it unnecessary for tools to trace the deviation of the element through the derived and related profiles. When the element definition is not the original definition of an element - i.g. either in a constraint on another type, or for elements from a super type in a snap shot - then the information in provided in the element definition may be different to the base definition. On the original definition of the element, it will be same.
      */
-    @Child(name = "base", type = {}, order=13, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Base definition information for tools", formalDefinition="Information about the base definition of the element, provided to make it unnecessary for tools to trace the deviation of the element through the derived and related profiles. This information is provided when the element definition is not the original definition of an element - i.g. either in a constraint on another type, or for elements from a super type in a snap shot." )
+    @Child(name = "base", type = {}, order=14, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Base definition information for tools", formalDefinition="Information about the base definition of the element, provided to make it unnecessary for tools to trace the deviation of the element through the derived and related profiles. When the element definition is not the original definition of an element - i.g. either in a constraint on another type, or for elements from a super type in a snap shot - then the information in provided in the element definition may be different to the base definition. On the original definition of the element, it will be same." )
     protected ElementDefinitionBaseComponent base;
 
     /**
-     * Identifies the identity of an element defined elsewhere in the profile whose content rules should be applied to the current element.
+     * Identifies an element defined elsewhere in the definition whose content rules should be applied to the current element. ContentReferences bring across all the rules that are in the ElementDefinition for the element, including definitions, cardinality constraints, bindings, invariants etc.
      */
-    @Child(name = "contentReference", type = {UriType.class}, order=14, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Reference to definition of content for the element", formalDefinition="Identifies the identity of an element defined elsewhere in the profile whose content rules should be applied to the current element." )
+    @Child(name = "contentReference", type = {UriType.class}, order=15, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Reference to definition of content for the element", formalDefinition="Identifies an element defined elsewhere in the definition whose content rules should be applied to the current element. ContentReferences bring across all the rules that are in the ElementDefinition for the element, including definitions, cardinality constraints, bindings, invariants etc." )
     protected UriType contentReference;
 
     /**
      * The data type or resource that the value of this element is permitted to be.
      */
-    @Child(name = "type", type = {}, order=15, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Child(name = "type", type = {}, order=16, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="Data type and Profile for this element", formalDefinition="The data type or resource that the value of this element is permitted to be." )
     protected List<TypeRefComponent> type;
 
     /**
      * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
      */
-    @Child(name = "defaultValue", type = {}, order=16, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "defaultValue", type = {}, order=17, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Specified value if missing from instance", formalDefinition="The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false')." )
     protected org.hl7.fhir.r4.model.Type defaultValue;
 
     /**
-     * The Implicit meaning that is to be understood when this element is missing (e.g. 'when this element is missing, the period is ongoing'.
+     * The Implicit meaning that is to be understood when this element is missing (e.g. 'when this element is missing, the period is ongoing').
      */
-    @Child(name = "meaningWhenMissing", type = {MarkdownType.class}, order=17, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Implicit meaning when this element is missing", formalDefinition="The Implicit meaning that is to be understood when this element is missing (e.g. 'when this element is missing, the period is ongoing'." )
+    @Child(name = "meaningWhenMissing", type = {MarkdownType.class}, order=18, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Implicit meaning when this element is missing", formalDefinition="The Implicit meaning that is to be understood when this element is missing (e.g. 'when this element is missing, the period is ongoing')." )
     protected MarkdownType meaningWhenMissing;
 
     /**
      * If present, indicates that the order of the repeating element has meaning and describes what that meaning is.  If absent, it means that the order of the element has no meaning.
      */
-    @Child(name = "orderMeaning", type = {StringType.class}, order=18, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "orderMeaning", type = {StringType.class}, order=19, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="What the order of the elements means", formalDefinition="If present, indicates that the order of the repeating element has meaning and describes what that meaning is.  If absent, it means that the order of the element has no meaning." )
     protected StringType orderMeaning;
 
     /**
      * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
      */
-    @Child(name = "fixed", type = {}, order=19, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "fixed", type = {}, order=20, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Value must be exactly this", formalDefinition="Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing." )
     protected org.hl7.fhir.r4.model.Type fixed;
 
     /**
-     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  
+
+When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.
+
+When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.
+
+When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,
+
+1. If primitive: it must match exactly the pattern value
+2. If a complex object: it must match (recursively) the pattern value
+3. If an array: it must match (recursively) the pattern value.
      */
-    @Child(name = "pattern", type = {}, order=20, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Value must have at least these property values", formalDefinition="Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.)." )
+    @Child(name = "pattern", type = {}, order=21, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Value must have at least these property values", formalDefinition="Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value." )
     protected org.hl7.fhir.r4.model.Type pattern;
 
     /**
      * A sample value for this element demonstrating the type of information that would typically be found in the element.
      */
-    @Child(name = "example", type = {}, order=21, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Child(name = "example", type = {}, order=22, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="Example value (as defined for type)", formalDefinition="A sample value for this element demonstrating the type of information that would typically be found in the element." )
     protected List<ElementDefinitionExampleComponent> example;
 
     /**
      * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
      */
-    @Child(name = "minValue", type = {DateType.class, DateTimeType.class, InstantType.class, TimeType.class, DecimalType.class, IntegerType.class, PositiveIntType.class, UnsignedIntType.class, Quantity.class}, order=22, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "minValue", type = {DateType.class, DateTimeType.class, InstantType.class, TimeType.class, DecimalType.class, IntegerType.class, PositiveIntType.class, UnsignedIntType.class, Quantity.class}, order=23, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Minimum Allowed Value (for some types)", formalDefinition="The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity." )
     protected Type minValue;
 
     /**
      * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
      */
-    @Child(name = "maxValue", type = {DateType.class, DateTimeType.class, InstantType.class, TimeType.class, DecimalType.class, IntegerType.class, PositiveIntType.class, UnsignedIntType.class, Quantity.class}, order=23, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "maxValue", type = {DateType.class, DateTimeType.class, InstantType.class, TimeType.class, DecimalType.class, IntegerType.class, PositiveIntType.class, UnsignedIntType.class, Quantity.class}, order=24, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Maximum Allowed Value (for some types)", formalDefinition="The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity." )
     protected Type maxValue;
 
     /**
      * Indicates the maximum length in characters that is permitted to be present in conformant instances and which is expected to be supported by conformant consumers that support the element.
      */
-    @Child(name = "maxLength", type = {IntegerType.class}, order=24, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "maxLength", type = {IntegerType.class}, order=25, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Max length for strings", formalDefinition="Indicates the maximum length in characters that is permitted to be present in conformant instances and which is expected to be supported by conformant consumers that support the element." )
     protected IntegerType maxLength;
 
     /**
      * A reference to an invariant that may make additional statements about the cardinality or value in the instance.
      */
-    @Child(name = "condition", type = {IdType.class}, order=25, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Child(name = "condition", type = {IdType.class}, order=26, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="Reference to invariant about presence", formalDefinition="A reference to an invariant that may make additional statements about the cardinality or value in the instance." )
     protected List<IdType> condition;
 
     /**
      * Formal constraints such as co-occurrence and other constraints that can be computationally evaluated within the context of the instance.
      */
-    @Child(name = "constraint", type = {}, order=26, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Child(name = "constraint", type = {}, order=27, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="Condition that must evaluate to true", formalDefinition="Formal constraints such as co-occurrence and other constraints that can be computationally evaluated within the context of the instance." )
     protected List<ElementDefinitionConstraintComponent> constraint;
 
     /**
-     * If true, implementations that produce or consume resources SHALL provide "support" for the element in some meaningful way.  If false, the element may be ignored and not supported.
+     * If true, implementations that produce or consume resources SHALL provide "support" for the element in some meaningful way.  If false, the element may be ignored and not supported. If false, whether to populate or use the data element in any way is at the discretion of the implementation.
      */
-    @Child(name = "mustSupport", type = {BooleanType.class}, order=27, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="If the element must supported", formalDefinition="If true, implementations that produce or consume resources SHALL provide \"support\" for the element in some meaningful way.  If false, the element may be ignored and not supported." )
+    @Child(name = "mustSupport", type = {BooleanType.class}, order=28, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="If the element must be supported", formalDefinition="If true, implementations that produce or consume resources SHALL provide \"support\" for the element in some meaningful way.  If false, the element may be ignored and not supported. If false, whether to populate or use the data element in any way is at the discretion of the implementation." )
     protected BooleanType mustSupport;
 
     /**
      * If true, the value of this element affects the interpretation of the element or resource that contains it, and the value of the element cannot be ignored. Typically, this is used for status, negation and qualification codes. The effect of this is that the element cannot be ignored by systems: they SHALL either recognize the element and process it, and/or a pre-determination has been made that it is not relevant to their particular system.
      */
-    @Child(name = "isModifier", type = {BooleanType.class}, order=28, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "isModifier", type = {BooleanType.class}, order=29, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="If this modifies the meaning of other elements", formalDefinition="If true, the value of this element affects the interpretation of the element or resource that contains it, and the value of the element cannot be ignored. Typically, this is used for status, negation and qualification codes. The effect of this is that the element cannot be ignored by systems: they SHALL either recognize the element and process it, and/or a pre-determination has been made that it is not relevant to their particular system." )
     protected BooleanType isModifier;
 
     /**
+     * Explains how that element affects the interpretation of the resource or element that contains it.
+     */
+    @Child(name = "isModifierReason", type = {StringType.class}, order=30, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Reason that this element is marked as a modifier", formalDefinition="Explains how that element affects the interpretation of the resource or element that contains it." )
+    protected StringType isModifierReason;
+
+    /**
      * Whether the element should be included if a client requests a search with the parameter _summary=true.
      */
-    @Child(name = "isSummary", type = {BooleanType.class}, order=29, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "isSummary", type = {BooleanType.class}, order=31, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Include when _summary = true?", formalDefinition="Whether the element should be included if a client requests a search with the parameter _summary=true." )
     protected BooleanType isSummary;
 
     /**
      * Binds to a value set if this element is coded (code, Coding, CodeableConcept, Quantity), or the data types (string, uri).
      */
-    @Child(name = "binding", type = {}, order=30, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "binding", type = {}, order=32, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="ValueSet details if this is coded", formalDefinition="Binds to a value set if this element is coded (code, Coding, CodeableConcept, Quantity), or the data types (string, uri)." )
     protected ElementDefinitionBindingComponent binding;
 
     /**
      * Identifies a concept from an external specification that roughly corresponds to this element.
      */
-    @Child(name = "mapping", type = {}, order=31, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Child(name = "mapping", type = {}, order=33, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="Map element to another set of definitions", formalDefinition="Identifies a concept from an external specification that roughly corresponds to this element." )
     protected List<ElementDefinitionMappingComponent> mapping;
 
-    private static final long serialVersionUID = -1073327209L;
+    private static final long serialVersionUID = 1482114790L;
 
   /**
    * Constructor
@@ -4295,6 +4423,51 @@ public class ElementDefinition extends Type implements ICompositeType {
           this.sliceName = new StringType();
         this.sliceName.setValue(value);
       }
+      return this;
+    }
+
+    /**
+     * @return {@link #sliceIsConstraining} (If true, indicates that this slice definition is constraining a slice definition with the same name in an inherited profile. If false, the slice is not overriding any slice in an inherited profile. If missing, the slice might or might not be overriding a slice in an inherited profile, depending on the sliceName.). This is the underlying object with id, value and extensions. The accessor "getSliceIsConstraining" gives direct access to the value
+     */
+    public BooleanType getSliceIsConstrainingElement() { 
+      if (this.sliceIsConstraining == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create ElementDefinition.sliceIsConstraining");
+        else if (Configuration.doAutoCreate())
+          this.sliceIsConstraining = new BooleanType(); // bb
+      return this.sliceIsConstraining;
+    }
+
+    public boolean hasSliceIsConstrainingElement() { 
+      return this.sliceIsConstraining != null && !this.sliceIsConstraining.isEmpty();
+    }
+
+    public boolean hasSliceIsConstraining() { 
+      return this.sliceIsConstraining != null && !this.sliceIsConstraining.isEmpty();
+    }
+
+    /**
+     * @param value {@link #sliceIsConstraining} (If true, indicates that this slice definition is constraining a slice definition with the same name in an inherited profile. If false, the slice is not overriding any slice in an inherited profile. If missing, the slice might or might not be overriding a slice in an inherited profile, depending on the sliceName.). This is the underlying object with id, value and extensions. The accessor "getSliceIsConstraining" gives direct access to the value
+     */
+    public ElementDefinition setSliceIsConstrainingElement(BooleanType value) { 
+      this.sliceIsConstraining = value;
+      return this;
+    }
+
+    /**
+     * @return If true, indicates that this slice definition is constraining a slice definition with the same name in an inherited profile. If false, the slice is not overriding any slice in an inherited profile. If missing, the slice might or might not be overriding a slice in an inherited profile, depending on the sliceName.
+     */
+    public boolean getSliceIsConstraining() { 
+      return this.sliceIsConstraining == null || this.sliceIsConstraining.isEmpty() ? false : this.sliceIsConstraining.getValue();
+    }
+
+    /**
+     * @param value If true, indicates that this slice definition is constraining a slice definition with the same name in an inherited profile. If false, the slice is not overriding any slice in an inherited profile. If missing, the slice might or might not be overriding a slice in an inherited profile, depending on the sliceName.
+     */
+    public ElementDefinition setSliceIsConstraining(boolean value) { 
+        if (this.sliceIsConstraining == null)
+          this.sliceIsConstraining = new BooleanType();
+        this.sliceIsConstraining.setValue(value);
       return this;
     }
 
@@ -4474,7 +4647,7 @@ public class ElementDefinition extends Type implements ICompositeType {
     }
 
     /**
-     * @return {@link #definition} (Provides a complete explanation of the meaning of the data element for human readability.  For the case of elements derived from existing elements (e.g. constraints), the definition SHALL be consistent with the base definition, but convey the meaning of the element in the particular context of use of the resource.). This is the underlying object with id, value and extensions. The accessor "getDefinition" gives direct access to the value
+     * @return {@link #definition} (Provides a complete explanation of the meaning of the data element for human readability.  For the case of elements derived from existing elements (e.g. constraints), the definition SHALL be consistent with the base definition, but convey the meaning of the element in the particular context of use of the resource. (Note: The text you are reading is specified in ElementDefinition.definition).). This is the underlying object with id, value and extensions. The accessor "getDefinition" gives direct access to the value
      */
     public MarkdownType getDefinitionElement() { 
       if (this.definition == null)
@@ -4494,7 +4667,7 @@ public class ElementDefinition extends Type implements ICompositeType {
     }
 
     /**
-     * @param value {@link #definition} (Provides a complete explanation of the meaning of the data element for human readability.  For the case of elements derived from existing elements (e.g. constraints), the definition SHALL be consistent with the base definition, but convey the meaning of the element in the particular context of use of the resource.). This is the underlying object with id, value and extensions. The accessor "getDefinition" gives direct access to the value
+     * @param value {@link #definition} (Provides a complete explanation of the meaning of the data element for human readability.  For the case of elements derived from existing elements (e.g. constraints), the definition SHALL be consistent with the base definition, but convey the meaning of the element in the particular context of use of the resource. (Note: The text you are reading is specified in ElementDefinition.definition).). This is the underlying object with id, value and extensions. The accessor "getDefinition" gives direct access to the value
      */
     public ElementDefinition setDefinitionElement(MarkdownType value) { 
       this.definition = value;
@@ -4502,14 +4675,14 @@ public class ElementDefinition extends Type implements ICompositeType {
     }
 
     /**
-     * @return Provides a complete explanation of the meaning of the data element for human readability.  For the case of elements derived from existing elements (e.g. constraints), the definition SHALL be consistent with the base definition, but convey the meaning of the element in the particular context of use of the resource.
+     * @return Provides a complete explanation of the meaning of the data element for human readability.  For the case of elements derived from existing elements (e.g. constraints), the definition SHALL be consistent with the base definition, but convey the meaning of the element in the particular context of use of the resource. (Note: The text you are reading is specified in ElementDefinition.definition).
      */
     public String getDefinition() { 
       return this.definition == null ? null : this.definition.getValue();
     }
 
     /**
-     * @param value Provides a complete explanation of the meaning of the data element for human readability.  For the case of elements derived from existing elements (e.g. constraints), the definition SHALL be consistent with the base definition, but convey the meaning of the element in the particular context of use of the resource.
+     * @param value Provides a complete explanation of the meaning of the data element for human readability.  For the case of elements derived from existing elements (e.g. constraints), the definition SHALL be consistent with the base definition, but convey the meaning of the element in the particular context of use of the resource. (Note: The text you are reading is specified in ElementDefinition.definition).
      */
     public ElementDefinition setDefinition(String value) { 
       if (value == null)
@@ -4523,7 +4696,7 @@ public class ElementDefinition extends Type implements ICompositeType {
     }
 
     /**
-     * @return {@link #comment} (Explanatory notes and implementation guidance about the data element, including notes about how to use the data properly, exceptions to proper use, etc.). This is the underlying object with id, value and extensions. The accessor "getComment" gives direct access to the value
+     * @return {@link #comment} (Explanatory notes and implementation guidance about the data element, including notes about how to use the data properly, exceptions to proper use, etc. (Note: The text you are reading is specified in ElementDefinition.comment).). This is the underlying object with id, value and extensions. The accessor "getComment" gives direct access to the value
      */
     public MarkdownType getCommentElement() { 
       if (this.comment == null)
@@ -4543,7 +4716,7 @@ public class ElementDefinition extends Type implements ICompositeType {
     }
 
     /**
-     * @param value {@link #comment} (Explanatory notes and implementation guidance about the data element, including notes about how to use the data properly, exceptions to proper use, etc.). This is the underlying object with id, value and extensions. The accessor "getComment" gives direct access to the value
+     * @param value {@link #comment} (Explanatory notes and implementation guidance about the data element, including notes about how to use the data properly, exceptions to proper use, etc. (Note: The text you are reading is specified in ElementDefinition.comment).). This is the underlying object with id, value and extensions. The accessor "getComment" gives direct access to the value
      */
     public ElementDefinition setCommentElement(MarkdownType value) { 
       this.comment = value;
@@ -4551,14 +4724,14 @@ public class ElementDefinition extends Type implements ICompositeType {
     }
 
     /**
-     * @return Explanatory notes and implementation guidance about the data element, including notes about how to use the data properly, exceptions to proper use, etc.
+     * @return Explanatory notes and implementation guidance about the data element, including notes about how to use the data properly, exceptions to proper use, etc. (Note: The text you are reading is specified in ElementDefinition.comment).
      */
     public String getComment() { 
       return this.comment == null ? null : this.comment.getValue();
     }
 
     /**
-     * @param value Explanatory notes and implementation guidance about the data element, including notes about how to use the data properly, exceptions to proper use, etc.
+     * @param value Explanatory notes and implementation guidance about the data element, including notes about how to use the data properly, exceptions to proper use, etc. (Note: The text you are reading is specified in ElementDefinition.comment).
      */
     public ElementDefinition setComment(String value) { 
       if (value == null)
@@ -4676,7 +4849,7 @@ public class ElementDefinition extends Type implements ICompositeType {
       if (this.alias == null)
         return false;
       for (StringType v : this.alias)
-        if (v.equals(value)) // string
+        if (v.getValue().equals(value)) // string
           return true;
       return false;
     }
@@ -4776,7 +4949,7 @@ public class ElementDefinition extends Type implements ICompositeType {
     }
 
     /**
-     * @return {@link #base} (Information about the base definition of the element, provided to make it unnecessary for tools to trace the deviation of the element through the derived and related profiles. This information is provided when the element definition is not the original definition of an element - i.g. either in a constraint on another type, or for elements from a super type in a snap shot.)
+     * @return {@link #base} (Information about the base definition of the element, provided to make it unnecessary for tools to trace the deviation of the element through the derived and related profiles. When the element definition is not the original definition of an element - i.g. either in a constraint on another type, or for elements from a super type in a snap shot - then the information in provided in the element definition may be different to the base definition. On the original definition of the element, it will be same.)
      */
     public ElementDefinitionBaseComponent getBase() { 
       if (this.base == null)
@@ -4792,7 +4965,7 @@ public class ElementDefinition extends Type implements ICompositeType {
     }
 
     /**
-     * @param value {@link #base} (Information about the base definition of the element, provided to make it unnecessary for tools to trace the deviation of the element through the derived and related profiles. This information is provided when the element definition is not the original definition of an element - i.g. either in a constraint on another type, or for elements from a super type in a snap shot.)
+     * @param value {@link #base} (Information about the base definition of the element, provided to make it unnecessary for tools to trace the deviation of the element through the derived and related profiles. When the element definition is not the original definition of an element - i.g. either in a constraint on another type, or for elements from a super type in a snap shot - then the information in provided in the element definition may be different to the base definition. On the original definition of the element, it will be same.)
      */
     public ElementDefinition setBase(ElementDefinitionBaseComponent value) { 
       this.base = value;
@@ -4800,7 +4973,7 @@ public class ElementDefinition extends Type implements ICompositeType {
     }
 
     /**
-     * @return {@link #contentReference} (Identifies the identity of an element defined elsewhere in the profile whose content rules should be applied to the current element.). This is the underlying object with id, value and extensions. The accessor "getContentReference" gives direct access to the value
+     * @return {@link #contentReference} (Identifies an element defined elsewhere in the definition whose content rules should be applied to the current element. ContentReferences bring across all the rules that are in the ElementDefinition for the element, including definitions, cardinality constraints, bindings, invariants etc.). This is the underlying object with id, value and extensions. The accessor "getContentReference" gives direct access to the value
      */
     public UriType getContentReferenceElement() { 
       if (this.contentReference == null)
@@ -4820,7 +4993,7 @@ public class ElementDefinition extends Type implements ICompositeType {
     }
 
     /**
-     * @param value {@link #contentReference} (Identifies the identity of an element defined elsewhere in the profile whose content rules should be applied to the current element.). This is the underlying object with id, value and extensions. The accessor "getContentReference" gives direct access to the value
+     * @param value {@link #contentReference} (Identifies an element defined elsewhere in the definition whose content rules should be applied to the current element. ContentReferences bring across all the rules that are in the ElementDefinition for the element, including definitions, cardinality constraints, bindings, invariants etc.). This is the underlying object with id, value and extensions. The accessor "getContentReference" gives direct access to the value
      */
     public ElementDefinition setContentReferenceElement(UriType value) { 
       this.contentReference = value;
@@ -4828,14 +5001,14 @@ public class ElementDefinition extends Type implements ICompositeType {
     }
 
     /**
-     * @return Identifies the identity of an element defined elsewhere in the profile whose content rules should be applied to the current element.
+     * @return Identifies an element defined elsewhere in the definition whose content rules should be applied to the current element. ContentReferences bring across all the rules that are in the ElementDefinition for the element, including definitions, cardinality constraints, bindings, invariants etc.
      */
     public String getContentReference() { 
       return this.contentReference == null ? null : this.contentReference.getValue();
     }
 
     /**
-     * @param value Identifies the identity of an element defined elsewhere in the profile whose content rules should be applied to the current element.
+     * @param value Identifies an element defined elsewhere in the definition whose content rules should be applied to the current element. ContentReferences bring across all the rules that are in the ElementDefinition for the element, including definitions, cardinality constraints, bindings, invariants etc.
      */
     public ElementDefinition setContentReference(String value) { 
       if (Utilities.noString(value))
@@ -4921,7 +5094,7 @@ public class ElementDefinition extends Type implements ICompositeType {
     }
 
     /**
-     * @return {@link #meaningWhenMissing} (The Implicit meaning that is to be understood when this element is missing (e.g. 'when this element is missing, the period is ongoing'.). This is the underlying object with id, value and extensions. The accessor "getMeaningWhenMissing" gives direct access to the value
+     * @return {@link #meaningWhenMissing} (The Implicit meaning that is to be understood when this element is missing (e.g. 'when this element is missing, the period is ongoing').). This is the underlying object with id, value and extensions. The accessor "getMeaningWhenMissing" gives direct access to the value
      */
     public MarkdownType getMeaningWhenMissingElement() { 
       if (this.meaningWhenMissing == null)
@@ -4941,7 +5114,7 @@ public class ElementDefinition extends Type implements ICompositeType {
     }
 
     /**
-     * @param value {@link #meaningWhenMissing} (The Implicit meaning that is to be understood when this element is missing (e.g. 'when this element is missing, the period is ongoing'.). This is the underlying object with id, value and extensions. The accessor "getMeaningWhenMissing" gives direct access to the value
+     * @param value {@link #meaningWhenMissing} (The Implicit meaning that is to be understood when this element is missing (e.g. 'when this element is missing, the period is ongoing').). This is the underlying object with id, value and extensions. The accessor "getMeaningWhenMissing" gives direct access to the value
      */
     public ElementDefinition setMeaningWhenMissingElement(MarkdownType value) { 
       this.meaningWhenMissing = value;
@@ -4949,14 +5122,14 @@ public class ElementDefinition extends Type implements ICompositeType {
     }
 
     /**
-     * @return The Implicit meaning that is to be understood when this element is missing (e.g. 'when this element is missing, the period is ongoing'.
+     * @return The Implicit meaning that is to be understood when this element is missing (e.g. 'when this element is missing, the period is ongoing').
      */
     public String getMeaningWhenMissing() { 
       return this.meaningWhenMissing == null ? null : this.meaningWhenMissing.getValue();
     }
 
     /**
-     * @param value The Implicit meaning that is to be understood when this element is missing (e.g. 'when this element is missing, the period is ongoing'.
+     * @param value The Implicit meaning that is to be understood when this element is missing (e.g. 'when this element is missing, the period is ongoing').
      */
     public ElementDefinition setMeaningWhenMissing(String value) { 
       if (value == null)
@@ -5038,7 +5211,17 @@ public class ElementDefinition extends Type implements ICompositeType {
     }
 
     /**
-     * @return {@link #pattern} (Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).)
+     * @return {@link #pattern} (Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  
+
+When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.
+
+When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.
+
+When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,
+
+1. If primitive: it must match exactly the pattern value
+2. If a complex object: it must match (recursively) the pattern value
+3. If an array: it must match (recursively) the pattern value.)
      */
     public org.hl7.fhir.r4.model.Type getPattern() { 
       return this.pattern;
@@ -5049,7 +5232,17 @@ public class ElementDefinition extends Type implements ICompositeType {
     }
 
     /**
-     * @param value {@link #pattern} (Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).)
+     * @param value {@link #pattern} (Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  
+
+When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.
+
+When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.
+
+When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,
+
+1. If primitive: it must match exactly the pattern value
+2. If a complex object: it must match (recursively) the pattern value
+3. If an array: it must match (recursively) the pattern value.)
      */
     public ElementDefinition setPattern(org.hl7.fhir.r4.model.Type value) { 
       this.pattern = value;
@@ -5120,117 +5313,135 @@ public class ElementDefinition extends Type implements ICompositeType {
      * @return {@link #minValue} (The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
      */
     public DateType getMinValueDateType() throws FHIRException { 
+      if (this.minValue == null)
+        this.minValue = new DateType();
       if (!(this.minValue instanceof DateType))
         throw new FHIRException("Type mismatch: the type DateType was expected, but "+this.minValue.getClass().getName()+" was encountered");
       return (DateType) this.minValue;
     }
 
     public boolean hasMinValueDateType() { 
-      return this.minValue instanceof DateType;
+      return this != null && this.minValue instanceof DateType;
     }
 
     /**
      * @return {@link #minValue} (The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
      */
     public DateTimeType getMinValueDateTimeType() throws FHIRException { 
+      if (this.minValue == null)
+        this.minValue = new DateTimeType();
       if (!(this.minValue instanceof DateTimeType))
         throw new FHIRException("Type mismatch: the type DateTimeType was expected, but "+this.minValue.getClass().getName()+" was encountered");
       return (DateTimeType) this.minValue;
     }
 
     public boolean hasMinValueDateTimeType() { 
-      return this.minValue instanceof DateTimeType;
+      return this != null && this.minValue instanceof DateTimeType;
     }
 
     /**
      * @return {@link #minValue} (The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
      */
     public InstantType getMinValueInstantType() throws FHIRException { 
+      if (this.minValue == null)
+        this.minValue = new InstantType();
       if (!(this.minValue instanceof InstantType))
         throw new FHIRException("Type mismatch: the type InstantType was expected, but "+this.minValue.getClass().getName()+" was encountered");
       return (InstantType) this.minValue;
     }
 
     public boolean hasMinValueInstantType() { 
-      return this.minValue instanceof InstantType;
+      return this != null && this.minValue instanceof InstantType;
     }
 
     /**
      * @return {@link #minValue} (The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
      */
     public TimeType getMinValueTimeType() throws FHIRException { 
+      if (this.minValue == null)
+        this.minValue = new TimeType();
       if (!(this.minValue instanceof TimeType))
         throw new FHIRException("Type mismatch: the type TimeType was expected, but "+this.minValue.getClass().getName()+" was encountered");
       return (TimeType) this.minValue;
     }
 
     public boolean hasMinValueTimeType() { 
-      return this.minValue instanceof TimeType;
+      return this != null && this.minValue instanceof TimeType;
     }
 
     /**
      * @return {@link #minValue} (The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
      */
     public DecimalType getMinValueDecimalType() throws FHIRException { 
+      if (this.minValue == null)
+        this.minValue = new DecimalType();
       if (!(this.minValue instanceof DecimalType))
         throw new FHIRException("Type mismatch: the type DecimalType was expected, but "+this.minValue.getClass().getName()+" was encountered");
       return (DecimalType) this.minValue;
     }
 
     public boolean hasMinValueDecimalType() { 
-      return this.minValue instanceof DecimalType;
+      return this != null && this.minValue instanceof DecimalType;
     }
 
     /**
      * @return {@link #minValue} (The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
      */
     public IntegerType getMinValueIntegerType() throws FHIRException { 
+      if (this.minValue == null)
+        this.minValue = new IntegerType();
       if (!(this.minValue instanceof IntegerType))
         throw new FHIRException("Type mismatch: the type IntegerType was expected, but "+this.minValue.getClass().getName()+" was encountered");
       return (IntegerType) this.minValue;
     }
 
     public boolean hasMinValueIntegerType() { 
-      return this.minValue instanceof IntegerType;
+      return this != null && this.minValue instanceof IntegerType;
     }
 
     /**
      * @return {@link #minValue} (The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
      */
     public PositiveIntType getMinValuePositiveIntType() throws FHIRException { 
+      if (this.minValue == null)
+        this.minValue = new PositiveIntType();
       if (!(this.minValue instanceof PositiveIntType))
         throw new FHIRException("Type mismatch: the type PositiveIntType was expected, but "+this.minValue.getClass().getName()+" was encountered");
       return (PositiveIntType) this.minValue;
     }
 
     public boolean hasMinValuePositiveIntType() { 
-      return this.minValue instanceof PositiveIntType;
+      return this != null && this.minValue instanceof PositiveIntType;
     }
 
     /**
      * @return {@link #minValue} (The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
      */
     public UnsignedIntType getMinValueUnsignedIntType() throws FHIRException { 
+      if (this.minValue == null)
+        this.minValue = new UnsignedIntType();
       if (!(this.minValue instanceof UnsignedIntType))
         throw new FHIRException("Type mismatch: the type UnsignedIntType was expected, but "+this.minValue.getClass().getName()+" was encountered");
       return (UnsignedIntType) this.minValue;
     }
 
     public boolean hasMinValueUnsignedIntType() { 
-      return this.minValue instanceof UnsignedIntType;
+      return this != null && this.minValue instanceof UnsignedIntType;
     }
 
     /**
      * @return {@link #minValue} (The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
      */
     public Quantity getMinValueQuantity() throws FHIRException { 
+      if (this.minValue == null)
+        this.minValue = new Quantity();
       if (!(this.minValue instanceof Quantity))
         throw new FHIRException("Type mismatch: the type Quantity was expected, but "+this.minValue.getClass().getName()+" was encountered");
       return (Quantity) this.minValue;
     }
 
     public boolean hasMinValueQuantity() { 
-      return this.minValue instanceof Quantity;
+      return this != null && this.minValue instanceof Quantity;
     }
 
     public boolean hasMinValue() { 
@@ -5241,6 +5452,8 @@ public class ElementDefinition extends Type implements ICompositeType {
      * @param value {@link #minValue} (The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
      */
     public ElementDefinition setMinValue(Type value) { 
+      if (value != null && !(value instanceof DateType || value instanceof DateTimeType || value instanceof InstantType || value instanceof TimeType || value instanceof DecimalType || value instanceof IntegerType || value instanceof PositiveIntType || value instanceof UnsignedIntType || value instanceof Quantity))
+        throw new Error("Not the right type for ElementDefinition.minValue[x]: "+value.fhirType());
       this.minValue = value;
       return this;
     }
@@ -5256,117 +5469,135 @@ public class ElementDefinition extends Type implements ICompositeType {
      * @return {@link #maxValue} (The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
      */
     public DateType getMaxValueDateType() throws FHIRException { 
+      if (this.maxValue == null)
+        this.maxValue = new DateType();
       if (!(this.maxValue instanceof DateType))
         throw new FHIRException("Type mismatch: the type DateType was expected, but "+this.maxValue.getClass().getName()+" was encountered");
       return (DateType) this.maxValue;
     }
 
     public boolean hasMaxValueDateType() { 
-      return this.maxValue instanceof DateType;
+      return this != null && this.maxValue instanceof DateType;
     }
 
     /**
      * @return {@link #maxValue} (The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
      */
     public DateTimeType getMaxValueDateTimeType() throws FHIRException { 
+      if (this.maxValue == null)
+        this.maxValue = new DateTimeType();
       if (!(this.maxValue instanceof DateTimeType))
         throw new FHIRException("Type mismatch: the type DateTimeType was expected, but "+this.maxValue.getClass().getName()+" was encountered");
       return (DateTimeType) this.maxValue;
     }
 
     public boolean hasMaxValueDateTimeType() { 
-      return this.maxValue instanceof DateTimeType;
+      return this != null && this.maxValue instanceof DateTimeType;
     }
 
     /**
      * @return {@link #maxValue} (The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
      */
     public InstantType getMaxValueInstantType() throws FHIRException { 
+      if (this.maxValue == null)
+        this.maxValue = new InstantType();
       if (!(this.maxValue instanceof InstantType))
         throw new FHIRException("Type mismatch: the type InstantType was expected, but "+this.maxValue.getClass().getName()+" was encountered");
       return (InstantType) this.maxValue;
     }
 
     public boolean hasMaxValueInstantType() { 
-      return this.maxValue instanceof InstantType;
+      return this != null && this.maxValue instanceof InstantType;
     }
 
     /**
      * @return {@link #maxValue} (The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
      */
     public TimeType getMaxValueTimeType() throws FHIRException { 
+      if (this.maxValue == null)
+        this.maxValue = new TimeType();
       if (!(this.maxValue instanceof TimeType))
         throw new FHIRException("Type mismatch: the type TimeType was expected, but "+this.maxValue.getClass().getName()+" was encountered");
       return (TimeType) this.maxValue;
     }
 
     public boolean hasMaxValueTimeType() { 
-      return this.maxValue instanceof TimeType;
+      return this != null && this.maxValue instanceof TimeType;
     }
 
     /**
      * @return {@link #maxValue} (The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
      */
     public DecimalType getMaxValueDecimalType() throws FHIRException { 
+      if (this.maxValue == null)
+        this.maxValue = new DecimalType();
       if (!(this.maxValue instanceof DecimalType))
         throw new FHIRException("Type mismatch: the type DecimalType was expected, but "+this.maxValue.getClass().getName()+" was encountered");
       return (DecimalType) this.maxValue;
     }
 
     public boolean hasMaxValueDecimalType() { 
-      return this.maxValue instanceof DecimalType;
+      return this != null && this.maxValue instanceof DecimalType;
     }
 
     /**
      * @return {@link #maxValue} (The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
      */
     public IntegerType getMaxValueIntegerType() throws FHIRException { 
+      if (this.maxValue == null)
+        this.maxValue = new IntegerType();
       if (!(this.maxValue instanceof IntegerType))
         throw new FHIRException("Type mismatch: the type IntegerType was expected, but "+this.maxValue.getClass().getName()+" was encountered");
       return (IntegerType) this.maxValue;
     }
 
     public boolean hasMaxValueIntegerType() { 
-      return this.maxValue instanceof IntegerType;
+      return this != null && this.maxValue instanceof IntegerType;
     }
 
     /**
      * @return {@link #maxValue} (The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
      */
     public PositiveIntType getMaxValuePositiveIntType() throws FHIRException { 
+      if (this.maxValue == null)
+        this.maxValue = new PositiveIntType();
       if (!(this.maxValue instanceof PositiveIntType))
         throw new FHIRException("Type mismatch: the type PositiveIntType was expected, but "+this.maxValue.getClass().getName()+" was encountered");
       return (PositiveIntType) this.maxValue;
     }
 
     public boolean hasMaxValuePositiveIntType() { 
-      return this.maxValue instanceof PositiveIntType;
+      return this != null && this.maxValue instanceof PositiveIntType;
     }
 
     /**
      * @return {@link #maxValue} (The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
      */
     public UnsignedIntType getMaxValueUnsignedIntType() throws FHIRException { 
+      if (this.maxValue == null)
+        this.maxValue = new UnsignedIntType();
       if (!(this.maxValue instanceof UnsignedIntType))
         throw new FHIRException("Type mismatch: the type UnsignedIntType was expected, but "+this.maxValue.getClass().getName()+" was encountered");
       return (UnsignedIntType) this.maxValue;
     }
 
     public boolean hasMaxValueUnsignedIntType() { 
-      return this.maxValue instanceof UnsignedIntType;
+      return this != null && this.maxValue instanceof UnsignedIntType;
     }
 
     /**
      * @return {@link #maxValue} (The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
      */
     public Quantity getMaxValueQuantity() throws FHIRException { 
+      if (this.maxValue == null)
+        this.maxValue = new Quantity();
       if (!(this.maxValue instanceof Quantity))
         throw new FHIRException("Type mismatch: the type Quantity was expected, but "+this.maxValue.getClass().getName()+" was encountered");
       return (Quantity) this.maxValue;
     }
 
     public boolean hasMaxValueQuantity() { 
-      return this.maxValue instanceof Quantity;
+      return this != null && this.maxValue instanceof Quantity;
     }
 
     public boolean hasMaxValue() { 
@@ -5377,6 +5608,8 @@ public class ElementDefinition extends Type implements ICompositeType {
      * @param value {@link #maxValue} (The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
      */
     public ElementDefinition setMaxValue(Type value) { 
+      if (value != null && !(value instanceof DateType || value instanceof DateTimeType || value instanceof InstantType || value instanceof TimeType || value instanceof DecimalType || value instanceof IntegerType || value instanceof PositiveIntType || value instanceof UnsignedIntType || value instanceof Quantity))
+        throw new Error("Not the right type for ElementDefinition.maxValue[x]: "+value.fhirType());
       this.maxValue = value;
       return this;
     }
@@ -5482,7 +5715,7 @@ public class ElementDefinition extends Type implements ICompositeType {
       if (this.condition == null)
         return false;
       for (IdType v : this.condition)
-        if (v.equals(value)) // id
+        if (v.getValue().equals(value)) // id
           return true;
       return false;
     }
@@ -5541,7 +5774,7 @@ public class ElementDefinition extends Type implements ICompositeType {
     }
 
     /**
-     * @return {@link #mustSupport} (If true, implementations that produce or consume resources SHALL provide "support" for the element in some meaningful way.  If false, the element may be ignored and not supported.). This is the underlying object with id, value and extensions. The accessor "getMustSupport" gives direct access to the value
+     * @return {@link #mustSupport} (If true, implementations that produce or consume resources SHALL provide "support" for the element in some meaningful way.  If false, the element may be ignored and not supported. If false, whether to populate or use the data element in any way is at the discretion of the implementation.). This is the underlying object with id, value and extensions. The accessor "getMustSupport" gives direct access to the value
      */
     public BooleanType getMustSupportElement() { 
       if (this.mustSupport == null)
@@ -5561,7 +5794,7 @@ public class ElementDefinition extends Type implements ICompositeType {
     }
 
     /**
-     * @param value {@link #mustSupport} (If true, implementations that produce or consume resources SHALL provide "support" for the element in some meaningful way.  If false, the element may be ignored and not supported.). This is the underlying object with id, value and extensions. The accessor "getMustSupport" gives direct access to the value
+     * @param value {@link #mustSupport} (If true, implementations that produce or consume resources SHALL provide "support" for the element in some meaningful way.  If false, the element may be ignored and not supported. If false, whether to populate or use the data element in any way is at the discretion of the implementation.). This is the underlying object with id, value and extensions. The accessor "getMustSupport" gives direct access to the value
      */
     public ElementDefinition setMustSupportElement(BooleanType value) { 
       this.mustSupport = value;
@@ -5569,14 +5802,14 @@ public class ElementDefinition extends Type implements ICompositeType {
     }
 
     /**
-     * @return If true, implementations that produce or consume resources SHALL provide "support" for the element in some meaningful way.  If false, the element may be ignored and not supported.
+     * @return If true, implementations that produce or consume resources SHALL provide "support" for the element in some meaningful way.  If false, the element may be ignored and not supported. If false, whether to populate or use the data element in any way is at the discretion of the implementation.
      */
     public boolean getMustSupport() { 
       return this.mustSupport == null || this.mustSupport.isEmpty() ? false : this.mustSupport.getValue();
     }
 
     /**
-     * @param value If true, implementations that produce or consume resources SHALL provide "support" for the element in some meaningful way.  If false, the element may be ignored and not supported.
+     * @param value If true, implementations that produce or consume resources SHALL provide "support" for the element in some meaningful way.  If false, the element may be ignored and not supported. If false, whether to populate or use the data element in any way is at the discretion of the implementation.
      */
     public ElementDefinition setMustSupport(boolean value) { 
         if (this.mustSupport == null)
@@ -5627,6 +5860,55 @@ public class ElementDefinition extends Type implements ICompositeType {
         if (this.isModifier == null)
           this.isModifier = new BooleanType();
         this.isModifier.setValue(value);
+      return this;
+    }
+
+    /**
+     * @return {@link #isModifierReason} (Explains how that element affects the interpretation of the resource or element that contains it.). This is the underlying object with id, value and extensions. The accessor "getIsModifierReason" gives direct access to the value
+     */
+    public StringType getIsModifierReasonElement() { 
+      if (this.isModifierReason == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create ElementDefinition.isModifierReason");
+        else if (Configuration.doAutoCreate())
+          this.isModifierReason = new StringType(); // bb
+      return this.isModifierReason;
+    }
+
+    public boolean hasIsModifierReasonElement() { 
+      return this.isModifierReason != null && !this.isModifierReason.isEmpty();
+    }
+
+    public boolean hasIsModifierReason() { 
+      return this.isModifierReason != null && !this.isModifierReason.isEmpty();
+    }
+
+    /**
+     * @param value {@link #isModifierReason} (Explains how that element affects the interpretation of the resource or element that contains it.). This is the underlying object with id, value and extensions. The accessor "getIsModifierReason" gives direct access to the value
+     */
+    public ElementDefinition setIsModifierReasonElement(StringType value) { 
+      this.isModifierReason = value;
+      return this;
+    }
+
+    /**
+     * @return Explains how that element affects the interpretation of the resource or element that contains it.
+     */
+    public String getIsModifierReason() { 
+      return this.isModifierReason == null ? null : this.isModifierReason.getValue();
+    }
+
+    /**
+     * @param value Explains how that element affects the interpretation of the resource or element that contains it.
+     */
+    public ElementDefinition setIsModifierReason(String value) { 
+      if (Utilities.noString(value))
+        this.isModifierReason = null;
+      else {
+        if (this.isModifierReason == null)
+          this.isModifierReason = new StringType();
+        this.isModifierReason.setValue(value);
+      }
       return this;
     }
 
@@ -5757,32 +6039,34 @@ public class ElementDefinition extends Type implements ICompositeType {
         children.add(new Property("path", "string", "The path identifies the element and is expressed as a \".\"-separated list of ancestor elements, beginning with the name of the resource or extension.", 0, 1, path));
         children.add(new Property("representation", "code", "Codes that define how this element is represented in instances, when the deviation varies from the normal case.", 0, java.lang.Integer.MAX_VALUE, representation));
         children.add(new Property("sliceName", "string", "The name of this element definition slice, when slicing is working. The name must be a token with no dots or spaces. This is a unique name referring to a specific set of constraints applied to this element, used to provide a name to different slices of the same element.", 0, 1, sliceName));
+        children.add(new Property("sliceIsConstraining", "boolean", "If true, indicates that this slice definition is constraining a slice definition with the same name in an inherited profile. If false, the slice is not overriding any slice in an inherited profile. If missing, the slice might or might not be overriding a slice in an inherited profile, depending on the sliceName.", 0, 1, sliceIsConstraining));
         children.add(new Property("label", "string", "A single preferred label which is the text to display beside the element indicating its meaning or to use to prompt for the element in a user display or form.", 0, 1, label));
         children.add(new Property("code", "Coding", "A code that has the same meaning as the element in a particular terminology.", 0, java.lang.Integer.MAX_VALUE, code));
         children.add(new Property("slicing", "", "Indicates that the element is sliced into a set of alternative definitions (i.e. in a structure definition, there are multiple different constraints on a single element in the base resource). Slicing can be used in any resource that has cardinality ..* on the base resource, or any resource with a choice of types. The set of slices is any elements that come after this in the element sequence that have the same path, until a shorter path occurs (the shorter path terminates the set).", 0, 1, slicing));
         children.add(new Property("short", "string", "A concise description of what this element means (e.g. for use in autogenerated summaries).", 0, 1, short_));
-        children.add(new Property("definition", "markdown", "Provides a complete explanation of the meaning of the data element for human readability.  For the case of elements derived from existing elements (e.g. constraints), the definition SHALL be consistent with the base definition, but convey the meaning of the element in the particular context of use of the resource.", 0, 1, definition));
-        children.add(new Property("comment", "markdown", "Explanatory notes and implementation guidance about the data element, including notes about how to use the data properly, exceptions to proper use, etc.", 0, 1, comment));
+        children.add(new Property("definition", "markdown", "Provides a complete explanation of the meaning of the data element for human readability.  For the case of elements derived from existing elements (e.g. constraints), the definition SHALL be consistent with the base definition, but convey the meaning of the element in the particular context of use of the resource. (Note: The text you are reading is specified in ElementDefinition.definition).", 0, 1, definition));
+        children.add(new Property("comment", "markdown", "Explanatory notes and implementation guidance about the data element, including notes about how to use the data properly, exceptions to proper use, etc. (Note: The text you are reading is specified in ElementDefinition.comment).", 0, 1, comment));
         children.add(new Property("requirements", "markdown", "This element is for traceability of why the element was created and why the constraints exist as they do. This may be used to point to source materials or specifications that drove the structure of this element.", 0, 1, requirements));
         children.add(new Property("alias", "string", "Identifies additional names by which this element might also be known.", 0, java.lang.Integer.MAX_VALUE, alias));
         children.add(new Property("min", "unsignedInt", "The minimum number of times this element SHALL appear in the instance.", 0, 1, min));
         children.add(new Property("max", "string", "The maximum number of times this element is permitted to appear in the instance.", 0, 1, max));
-        children.add(new Property("base", "", "Information about the base definition of the element, provided to make it unnecessary for tools to trace the deviation of the element through the derived and related profiles. This information is provided when the element definition is not the original definition of an element - i.g. either in a constraint on another type, or for elements from a super type in a snap shot.", 0, 1, base));
-        children.add(new Property("contentReference", "uri", "Identifies the identity of an element defined elsewhere in the profile whose content rules should be applied to the current element.", 0, 1, contentReference));
+        children.add(new Property("base", "", "Information about the base definition of the element, provided to make it unnecessary for tools to trace the deviation of the element through the derived and related profiles. When the element definition is not the original definition of an element - i.g. either in a constraint on another type, or for elements from a super type in a snap shot - then the information in provided in the element definition may be different to the base definition. On the original definition of the element, it will be same.", 0, 1, base));
+        children.add(new Property("contentReference", "uri", "Identifies an element defined elsewhere in the definition whose content rules should be applied to the current element. ContentReferences bring across all the rules that are in the ElementDefinition for the element, including definitions, cardinality constraints, bindings, invariants etc.", 0, 1, contentReference));
         children.add(new Property("type", "", "The data type or resource that the value of this element is permitted to be.", 0, java.lang.Integer.MAX_VALUE, type));
         children.add(new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue));
-        children.add(new Property("meaningWhenMissing", "markdown", "The Implicit meaning that is to be understood when this element is missing (e.g. 'when this element is missing, the period is ongoing'.", 0, 1, meaningWhenMissing));
+        children.add(new Property("meaningWhenMissing", "markdown", "The Implicit meaning that is to be understood when this element is missing (e.g. 'when this element is missing, the period is ongoing').", 0, 1, meaningWhenMissing));
         children.add(new Property("orderMeaning", "string", "If present, indicates that the order of the repeating element has meaning and describes what that meaning is.  If absent, it means that the order of the element has no meaning.", 0, 1, orderMeaning));
         children.add(new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed));
-        children.add(new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).", 0, 1, pattern));
+        children.add(new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.", 0, 1, pattern));
         children.add(new Property("example", "", "A sample value for this element demonstrating the type of information that would typically be found in the element.", 0, java.lang.Integer.MAX_VALUE, example));
         children.add(new Property("minValue[x]", "date|dateTime|instant|time|decimal|integer|positiveInt|unsignedInt|Quantity", "The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.", 0, 1, minValue));
         children.add(new Property("maxValue[x]", "date|dateTime|instant|time|decimal|integer|positiveInt|unsignedInt|Quantity", "The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.", 0, 1, maxValue));
         children.add(new Property("maxLength", "integer", "Indicates the maximum length in characters that is permitted to be present in conformant instances and which is expected to be supported by conformant consumers that support the element.", 0, 1, maxLength));
         children.add(new Property("condition", "id", "A reference to an invariant that may make additional statements about the cardinality or value in the instance.", 0, java.lang.Integer.MAX_VALUE, condition));
         children.add(new Property("constraint", "", "Formal constraints such as co-occurrence and other constraints that can be computationally evaluated within the context of the instance.", 0, java.lang.Integer.MAX_VALUE, constraint));
-        children.add(new Property("mustSupport", "boolean", "If true, implementations that produce or consume resources SHALL provide \"support\" for the element in some meaningful way.  If false, the element may be ignored and not supported.", 0, 1, mustSupport));
+        children.add(new Property("mustSupport", "boolean", "If true, implementations that produce or consume resources SHALL provide \"support\" for the element in some meaningful way.  If false, the element may be ignored and not supported. If false, whether to populate or use the data element in any way is at the discretion of the implementation.", 0, 1, mustSupport));
         children.add(new Property("isModifier", "boolean", "If true, the value of this element affects the interpretation of the element or resource that contains it, and the value of the element cannot be ignored. Typically, this is used for status, negation and qualification codes. The effect of this is that the element cannot be ignored by systems: they SHALL either recognize the element and process it, and/or a pre-determination has been made that it is not relevant to their particular system.", 0, 1, isModifier));
+        children.add(new Property("isModifierReason", "string", "Explains how that element affects the interpretation of the resource or element that contains it.", 0, 1, isModifierReason));
         children.add(new Property("isSummary", "boolean", "Whether the element should be included if a client requests a search with the parameter _summary=true.", 0, 1, isSummary));
         children.add(new Property("binding", "", "Binds to a value set if this element is coded (code, Coding, CodeableConcept, Quantity), or the data types (string, uri).", 0, 1, binding));
         children.add(new Property("mapping", "", "Identifies a concept from an external specification that roughly corresponds to this element.", 0, java.lang.Integer.MAX_VALUE, mapping));
@@ -5794,126 +6078,136 @@ public class ElementDefinition extends Type implements ICompositeType {
         case 3433509: /*path*/  return new Property("path", "string", "The path identifies the element and is expressed as a \".\"-separated list of ancestor elements, beginning with the name of the resource or extension.", 0, 1, path);
         case -671065907: /*representation*/  return new Property("representation", "code", "Codes that define how this element is represented in instances, when the deviation varies from the normal case.", 0, java.lang.Integer.MAX_VALUE, representation);
         case -825289923: /*sliceName*/  return new Property("sliceName", "string", "The name of this element definition slice, when slicing is working. The name must be a token with no dots or spaces. This is a unique name referring to a specific set of constraints applied to this element, used to provide a name to different slices of the same element.", 0, 1, sliceName);
+        case 333040519: /*sliceIsConstraining*/  return new Property("sliceIsConstraining", "boolean", "If true, indicates that this slice definition is constraining a slice definition with the same name in an inherited profile. If false, the slice is not overriding any slice in an inherited profile. If missing, the slice might or might not be overriding a slice in an inherited profile, depending on the sliceName.", 0, 1, sliceIsConstraining);
         case 102727412: /*label*/  return new Property("label", "string", "A single preferred label which is the text to display beside the element indicating its meaning or to use to prompt for the element in a user display or form.", 0, 1, label);
         case 3059181: /*code*/  return new Property("code", "Coding", "A code that has the same meaning as the element in a particular terminology.", 0, java.lang.Integer.MAX_VALUE, code);
         case -2119287345: /*slicing*/  return new Property("slicing", "", "Indicates that the element is sliced into a set of alternative definitions (i.e. in a structure definition, there are multiple different constraints on a single element in the base resource). Slicing can be used in any resource that has cardinality ..* on the base resource, or any resource with a choice of types. The set of slices is any elements that come after this in the element sequence that have the same path, until a shorter path occurs (the shorter path terminates the set).", 0, 1, slicing);
         case 109413500: /*short*/  return new Property("short", "string", "A concise description of what this element means (e.g. for use in autogenerated summaries).", 0, 1, short_);
-        case -1014418093: /*definition*/  return new Property("definition", "markdown", "Provides a complete explanation of the meaning of the data element for human readability.  For the case of elements derived from existing elements (e.g. constraints), the definition SHALL be consistent with the base definition, but convey the meaning of the element in the particular context of use of the resource.", 0, 1, definition);
-        case 950398559: /*comment*/  return new Property("comment", "markdown", "Explanatory notes and implementation guidance about the data element, including notes about how to use the data properly, exceptions to proper use, etc.", 0, 1, comment);
+        case -1014418093: /*definition*/  return new Property("definition", "markdown", "Provides a complete explanation of the meaning of the data element for human readability.  For the case of elements derived from existing elements (e.g. constraints), the definition SHALL be consistent with the base definition, but convey the meaning of the element in the particular context of use of the resource. (Note: The text you are reading is specified in ElementDefinition.definition).", 0, 1, definition);
+        case 950398559: /*comment*/  return new Property("comment", "markdown", "Explanatory notes and implementation guidance about the data element, including notes about how to use the data properly, exceptions to proper use, etc. (Note: The text you are reading is specified in ElementDefinition.comment).", 0, 1, comment);
         case -1619874672: /*requirements*/  return new Property("requirements", "markdown", "This element is for traceability of why the element was created and why the constraints exist as they do. This may be used to point to source materials or specifications that drove the structure of this element.", 0, 1, requirements);
         case 92902992: /*alias*/  return new Property("alias", "string", "Identifies additional names by which this element might also be known.", 0, java.lang.Integer.MAX_VALUE, alias);
         case 108114: /*min*/  return new Property("min", "unsignedInt", "The minimum number of times this element SHALL appear in the instance.", 0, 1, min);
         case 107876: /*max*/  return new Property("max", "string", "The maximum number of times this element is permitted to appear in the instance.", 0, 1, max);
-        case 3016401: /*base*/  return new Property("base", "", "Information about the base definition of the element, provided to make it unnecessary for tools to trace the deviation of the element through the derived and related profiles. This information is provided when the element definition is not the original definition of an element - i.g. either in a constraint on another type, or for elements from a super type in a snap shot.", 0, 1, base);
-        case 1193747154: /*contentReference*/  return new Property("contentReference", "uri", "Identifies the identity of an element defined elsewhere in the profile whose content rules should be applied to the current element.", 0, 1, contentReference);
+        case 3016401: /*base*/  return new Property("base", "", "Information about the base definition of the element, provided to make it unnecessary for tools to trace the deviation of the element through the derived and related profiles. When the element definition is not the original definition of an element - i.g. either in a constraint on another type, or for elements from a super type in a snap shot - then the information in provided in the element definition may be different to the base definition. On the original definition of the element, it will be same.", 0, 1, base);
+        case 1193747154: /*contentReference*/  return new Property("contentReference", "uri", "Identifies an element defined elsewhere in the definition whose content rules should be applied to the current element. ContentReferences bring across all the rules that are in the ElementDefinition for the element, including definitions, cardinality constraints, bindings, invariants etc.", 0, 1, contentReference);
         case 3575610: /*type*/  return new Property("type", "", "The data type or resource that the value of this element is permitted to be.", 0, java.lang.Integer.MAX_VALUE, type);
         case 587922128: /*defaultValue[x]*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
         case -659125328: /*defaultValue*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
-        case 600437336: /*defaultValueBoolean*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
-        case -1801189522: /*defaultValueInteger*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
-        case 2077989249: /*defaultValueDecimal*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
         case 1470297600: /*defaultValueBase64Binary*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
-        case -1801671663: /*defaultValueInstant*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
-        case -320515103: /*defaultValueString*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
-        case 587916188: /*defaultValueUri*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
+        case 600437336: /*defaultValueBoolean*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
+        case 264593188: /*defaultValueCanonical*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
+        case 1044993469: /*defaultValueCode*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
         case 1045010302: /*defaultValueDate*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
         case 1220374379: /*defaultValueDateTime*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
-        case 1045494429: /*defaultValueTime*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
-        case 1044993469: /*defaultValueCode*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
-        case 587910138: /*defaultValueOid*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
+        case 2077989249: /*defaultValueDecimal*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
         case -2059245333: /*defaultValueId*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
-        case 539117290: /*defaultValueUnsignedInt*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
-        case -737344154: /*defaultValuePositiveInt*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
+        case -1801671663: /*defaultValueInstant*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
+        case -1801189522: /*defaultValueInteger*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
         case -325436225: /*defaultValueMarkdown*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
+        case 587910138: /*defaultValueOid*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
+        case -737344154: /*defaultValuePositiveInt*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
+        case -320515103: /*defaultValueString*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
+        case 1045494429: /*defaultValueTime*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
+        case 539117290: /*defaultValueUnsignedInt*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
+        case 587916188: /*defaultValueUri*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
+        case 587916191: /*defaultValueUrl*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
+        case 1045535627: /*defaultValueUuid*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
+        case -611966428: /*defaultValueAddress*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
         case -1851689217: /*defaultValueAnnotation*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
         case 2034820339: /*defaultValueAttachment*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
-        case -1915078535: /*defaultValueIdentifier*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
         case -410434095: /*defaultValueCodeableConcept*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
         case -783616198: /*defaultValueCoding*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
+        case -344740576: /*defaultValueContactPoint*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
+        case -975393912: /*defaultValueHumanName*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
+        case -1915078535: /*defaultValueIdentifier*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
+        case -420255343: /*defaultValuePeriod*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
         case -1857379237: /*defaultValueQuantity*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
         case -1951495315: /*defaultValueRange*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
-        case -420255343: /*defaultValuePeriod*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
         case -1951489477: /*defaultValueRatio*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
+        case -1488914053: /*defaultValueReference*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
         case -449641228: /*defaultValueSampledData*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
         case 509825768: /*defaultValueSignature*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
-        case -975393912: /*defaultValueHumanName*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
-        case -611966428: /*defaultValueAddress*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
-        case -344740576: /*defaultValueContactPoint*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
         case -302193638: /*defaultValueTiming*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
-        case -1488914053: /*defaultValueReference*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
-        case 1045282261: /*defaultValueMeta*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
-        case 1857257103: /*meaningWhenMissing*/  return new Property("meaningWhenMissing", "markdown", "The Implicit meaning that is to be understood when this element is missing (e.g. 'when this element is missing, the period is ongoing'.", 0, 1, meaningWhenMissing);
+        case -754548089: /*defaultValueDosage*/  return new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, 1, defaultValue);
+        case 1857257103: /*meaningWhenMissing*/  return new Property("meaningWhenMissing", "markdown", "The Implicit meaning that is to be understood when this element is missing (e.g. 'when this element is missing, the period is ongoing').", 0, 1, meaningWhenMissing);
         case 1828196047: /*orderMeaning*/  return new Property("orderMeaning", "string", "If present, indicates that the order of the repeating element has meaning and describes what that meaning is.  If absent, it means that the order of the element has no meaning.", 0, 1, orderMeaning);
         case -391522164: /*fixed[x]*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
         case 97445748: /*fixed*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
-        case 520851988: /*fixedBoolean*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
-        case -1880774870: /*fixedInteger*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
-        case 1998403901: /*fixedDecimal*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
         case -799290428: /*fixedBase64Binary*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
-        case -1881257011: /*fixedInstant*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
-        case 1062390949: /*fixedString*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
-        case -391528104: /*fixedUri*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
+        case 520851988: /*fixedBoolean*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
+        case 1092485088: /*fixedCanonical*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
+        case 746991489: /*fixedCode*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
         case 747008322: /*fixedDate*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
         case -1246771409: /*fixedDateTime*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
-        case 747492449: /*fixedTime*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
-        case 746991489: /*fixedCode*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
-        case -391534154: /*fixedOid*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
+        case 1998403901: /*fixedDecimal*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
         case -843914321: /*fixedId*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
-        case 1574283430: /*fixedUnsignedInt*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
-        case 297821986: /*fixedPositiveInt*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
+        case -1881257011: /*fixedInstant*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
+        case -1880774870: /*fixedInteger*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
         case 1502385283: /*fixedMarkdown*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
+        case -391534154: /*fixedOid*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
+        case 297821986: /*fixedPositiveInt*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
+        case 1062390949: /*fixedString*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
+        case 747492449: /*fixedTime*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
+        case 1574283430: /*fixedUnsignedInt*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
+        case -391528104: /*fixedUri*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
+        case -391528101: /*fixedUrl*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
+        case 747533647: /*fixedUuid*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
+        case -691551776: /*fixedAddress*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
         case -1956844093: /*fixedAnnotation*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
         case 1929665463: /*fixedAttachment*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
-        case -2020233411: /*fixedIdentifier*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
         case 1962764685: /*fixedCodeableConcept*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
         case 599289854: /*fixedCoding*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
+        case 1680638692: /*fixedContactPoint*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
+        case -147502012: /*fixedHumanName*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
+        case -2020233411: /*fixedIdentifier*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
+        case 962650709: /*fixedPeriod*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
         case -29557729: /*fixedQuantity*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
         case 1695345193: /*fixedRange*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
-        case 962650709: /*fixedPeriod*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
         case 1695351031: /*fixedRatio*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
+        case -661022153: /*fixedReference*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
         case 585524912: /*fixedSampledData*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
         case 1337717668: /*fixedSignature*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
-        case -147502012: /*fixedHumanName*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
-        case -691551776: /*fixedAddress*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
-        case 1680638692: /*fixedContactPoint*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
         case 1080712414: /*fixedTiming*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
-        case -661022153: /*fixedReference*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
-        case 747280281: /*fixedMeta*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
-        case -885125392: /*pattern[x]*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).", 0, 1, pattern);
-        case -791090288: /*pattern*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).", 0, 1, pattern);
-        case -1776945544: /*patternBoolean*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).", 0, 1, pattern);
-        case 116394894: /*patternInteger*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).", 0, 1, pattern);
-        case -299393631: /*patternDecimal*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).", 0, 1, pattern);
-        case 2127857120: /*patternBase64Binary*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).", 0, 1, pattern);
-        case 115912753: /*patternInstant*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).", 0, 1, pattern);
-        case 2096647105: /*patternString*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).", 0, 1, pattern);
-        case -885131332: /*patternUri*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).", 0, 1, pattern);
-        case -1669789858: /*patternDate*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).", 0, 1, pattern);
-        case 535949131: /*patternDateTime*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).", 0, 1, pattern);
-        case -1669305731: /*patternTime*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).", 0, 1, pattern);
-        case -1669806691: /*patternCode*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).", 0, 1, pattern);
-        case -885137382: /*patternOid*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).", 0, 1, pattern);
-        case -28553013: /*patternId*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).", 0, 1, pattern);
-        case -963691766: /*patternUnsignedInt*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).", 0, 1, pattern);
-        case 2054814086: /*patternPositiveInt*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).", 0, 1, pattern);
-        case -1009861473: /*patternMarkdown*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).", 0, 1, pattern);
-        case 1840611039: /*patternAnnotation*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).", 0, 1, pattern);
-        case 1432153299: /*patternAttachment*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).", 0, 1, pattern);
-        case 1777221721: /*patternIdentifier*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).", 0, 1, pattern);
-        case -400610831: /*patternCodeableConcept*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).", 0, 1, pattern);
-        case 1633546010: /*patternCoding*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).", 0, 1, pattern);
-        case 1753162811: /*patternQuantity*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).", 0, 1, pattern);
-        case -210954355: /*patternRange*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).", 0, 1, pattern);
-        case 1996906865: /*patternPeriod*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).", 0, 1, pattern);
-        case -210948517: /*patternRatio*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).", 0, 1, pattern);
-        case -1952450284: /*patternSampledData*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).", 0, 1, pattern);
-        case 767479560: /*patternSignature*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).", 0, 1, pattern);
-        case -717740120: /*patternHumanName*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).", 0, 1, pattern);
-        case 1305617988: /*patternAddress*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).", 0, 1, pattern);
-        case 312818944: /*patternContactPoint*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).", 0, 1, pattern);
-        case 2114968570: /*patternTiming*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).", 0, 1, pattern);
-        case -1231260261: /*patternReference*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).", 0, 1, pattern);
-        case -1669517899: /*patternMeta*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).", 0, 1, pattern);
+        case 628357963: /*fixedDosage*/  return new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, 1, fixed);
+        case -885125392: /*pattern[x]*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.", 0, 1, pattern);
+        case -791090288: /*pattern*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.", 0, 1, pattern);
+        case 2127857120: /*patternBase64Binary*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.", 0, 1, pattern);
+        case -1776945544: /*patternBoolean*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.", 0, 1, pattern);
+        case 522246980: /*patternCanonical*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.", 0, 1, pattern);
+        case -1669806691: /*patternCode*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.", 0, 1, pattern);
+        case -1669789858: /*patternDate*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.", 0, 1, pattern);
+        case 535949131: /*patternDateTime*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.", 0, 1, pattern);
+        case -299393631: /*patternDecimal*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.", 0, 1, pattern);
+        case -28553013: /*patternId*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.", 0, 1, pattern);
+        case 115912753: /*patternInstant*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.", 0, 1, pattern);
+        case 116394894: /*patternInteger*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.", 0, 1, pattern);
+        case -1009861473: /*patternMarkdown*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.", 0, 1, pattern);
+        case -885137382: /*patternOid*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.", 0, 1, pattern);
+        case 2054814086: /*patternPositiveInt*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.", 0, 1, pattern);
+        case 2096647105: /*patternString*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.", 0, 1, pattern);
+        case -1669305731: /*patternTime*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.", 0, 1, pattern);
+        case -963691766: /*patternUnsignedInt*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.", 0, 1, pattern);
+        case -885131332: /*patternUri*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.", 0, 1, pattern);
+        case -885131329: /*patternUrl*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.", 0, 1, pattern);
+        case -1669264533: /*patternUuid*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.", 0, 1, pattern);
+        case 1305617988: /*patternAddress*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.", 0, 1, pattern);
+        case 1840611039: /*patternAnnotation*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.", 0, 1, pattern);
+        case 1432153299: /*patternAttachment*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.", 0, 1, pattern);
+        case -400610831: /*patternCodeableConcept*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.", 0, 1, pattern);
+        case 1633546010: /*patternCoding*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.", 0, 1, pattern);
+        case 312818944: /*patternContactPoint*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.", 0, 1, pattern);
+        case -717740120: /*patternHumanName*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.", 0, 1, pattern);
+        case 1777221721: /*patternIdentifier*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.", 0, 1, pattern);
+        case 1996906865: /*patternPeriod*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.", 0, 1, pattern);
+        case 1753162811: /*patternQuantity*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.", 0, 1, pattern);
+        case -210954355: /*patternRange*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.", 0, 1, pattern);
+        case -210948517: /*patternRatio*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.", 0, 1, pattern);
+        case -1231260261: /*patternReference*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.", 0, 1, pattern);
+        case -1952450284: /*patternSampledData*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.", 0, 1, pattern);
+        case 767479560: /*patternSignature*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.", 0, 1, pattern);
+        case 2114968570: /*patternTiming*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.", 0, 1, pattern);
+        case 1662614119: /*patternDosage*/  return new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  \n\nWhen pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.\n\nWhen pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.\n\nWhen pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,\n\n1. If primitive: it must match exactly the pattern value\n2. If a complex object: it must match (recursively) the pattern value\n3. If an array: it must match (recursively) the pattern value.", 0, 1, pattern);
         case -1322970774: /*example*/  return new Property("example", "", "A sample value for this element demonstrating the type of information that would typically be found in the element.", 0, java.lang.Integer.MAX_VALUE, example);
         case -55301663: /*minValue[x]*/  return new Property("minValue[x]", "date|dateTime|instant|time|decimal|integer|positiveInt|unsignedInt|Quantity", "The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.", 0, 1, minValue);
         case -1376969153: /*minValue*/  return new Property("minValue[x]", "date|dateTime|instant|time|decimal|integer|positiveInt|unsignedInt|Quantity", "The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.", 0, 1, minValue);
@@ -5940,8 +6234,9 @@ public class ElementDefinition extends Type implements ICompositeType {
         case -791400086: /*maxLength*/  return new Property("maxLength", "integer", "Indicates the maximum length in characters that is permitted to be present in conformant instances and which is expected to be supported by conformant consumers that support the element.", 0, 1, maxLength);
         case -861311717: /*condition*/  return new Property("condition", "id", "A reference to an invariant that may make additional statements about the cardinality or value in the instance.", 0, java.lang.Integer.MAX_VALUE, condition);
         case -190376483: /*constraint*/  return new Property("constraint", "", "Formal constraints such as co-occurrence and other constraints that can be computationally evaluated within the context of the instance.", 0, java.lang.Integer.MAX_VALUE, constraint);
-        case -1402857082: /*mustSupport*/  return new Property("mustSupport", "boolean", "If true, implementations that produce or consume resources SHALL provide \"support\" for the element in some meaningful way.  If false, the element may be ignored and not supported.", 0, 1, mustSupport);
+        case -1402857082: /*mustSupport*/  return new Property("mustSupport", "boolean", "If true, implementations that produce or consume resources SHALL provide \"support\" for the element in some meaningful way.  If false, the element may be ignored and not supported. If false, whether to populate or use the data element in any way is at the discretion of the implementation.", 0, 1, mustSupport);
         case -1408783839: /*isModifier*/  return new Property("isModifier", "boolean", "If true, the value of this element affects the interpretation of the element or resource that contains it, and the value of the element cannot be ignored. Typically, this is used for status, negation and qualification codes. The effect of this is that the element cannot be ignored by systems: they SHALL either recognize the element and process it, and/or a pre-determination has been made that it is not relevant to their particular system.", 0, 1, isModifier);
+        case -1854387259: /*isModifierReason*/  return new Property("isModifierReason", "string", "Explains how that element affects the interpretation of the resource or element that contains it.", 0, 1, isModifierReason);
         case 1857548060: /*isSummary*/  return new Property("isSummary", "boolean", "Whether the element should be included if a client requests a search with the parameter _summary=true.", 0, 1, isSummary);
         case -108220795: /*binding*/  return new Property("binding", "", "Binds to a value set if this element is coded (code, Coding, CodeableConcept, Quantity), or the data types (string, uri).", 0, 1, binding);
         case 837556430: /*mapping*/  return new Property("mapping", "", "Identifies a concept from an external specification that roughly corresponds to this element.", 0, java.lang.Integer.MAX_VALUE, mapping);
@@ -5956,6 +6251,7 @@ public class ElementDefinition extends Type implements ICompositeType {
         case 3433509: /*path*/ return this.path == null ? new Base[0] : new Base[] {this.path}; // StringType
         case -671065907: /*representation*/ return this.representation == null ? new Base[0] : this.representation.toArray(new Base[this.representation.size()]); // Enumeration<PropertyRepresentation>
         case -825289923: /*sliceName*/ return this.sliceName == null ? new Base[0] : new Base[] {this.sliceName}; // StringType
+        case 333040519: /*sliceIsConstraining*/ return this.sliceIsConstraining == null ? new Base[0] : new Base[] {this.sliceIsConstraining}; // BooleanType
         case 102727412: /*label*/ return this.label == null ? new Base[0] : new Base[] {this.label}; // StringType
         case 3059181: /*code*/ return this.code == null ? new Base[0] : this.code.toArray(new Base[this.code.size()]); // Coding
         case -2119287345: /*slicing*/ return this.slicing == null ? new Base[0] : new Base[] {this.slicing}; // ElementDefinitionSlicingComponent
@@ -5982,6 +6278,7 @@ public class ElementDefinition extends Type implements ICompositeType {
         case -190376483: /*constraint*/ return this.constraint == null ? new Base[0] : this.constraint.toArray(new Base[this.constraint.size()]); // ElementDefinitionConstraintComponent
         case -1402857082: /*mustSupport*/ return this.mustSupport == null ? new Base[0] : new Base[] {this.mustSupport}; // BooleanType
         case -1408783839: /*isModifier*/ return this.isModifier == null ? new Base[0] : new Base[] {this.isModifier}; // BooleanType
+        case -1854387259: /*isModifierReason*/ return this.isModifierReason == null ? new Base[0] : new Base[] {this.isModifierReason}; // StringType
         case 1857548060: /*isSummary*/ return this.isSummary == null ? new Base[0] : new Base[] {this.isSummary}; // BooleanType
         case -108220795: /*binding*/ return this.binding == null ? new Base[0] : new Base[] {this.binding}; // ElementDefinitionBindingComponent
         case 837556430: /*mapping*/ return this.mapping == null ? new Base[0] : this.mapping.toArray(new Base[this.mapping.size()]); // ElementDefinitionMappingComponent
@@ -6002,6 +6299,9 @@ public class ElementDefinition extends Type implements ICompositeType {
           return value;
         case -825289923: // sliceName
           this.sliceName = castToString(value); // StringType
+          return value;
+        case 333040519: // sliceIsConstraining
+          this.sliceIsConstraining = castToBoolean(value); // BooleanType
           return value;
         case 102727412: // label
           this.label = castToString(value); // StringType
@@ -6081,6 +6381,9 @@ public class ElementDefinition extends Type implements ICompositeType {
         case -1408783839: // isModifier
           this.isModifier = castToBoolean(value); // BooleanType
           return value;
+        case -1854387259: // isModifierReason
+          this.isModifierReason = castToString(value); // StringType
+          return value;
         case 1857548060: // isSummary
           this.isSummary = castToBoolean(value); // BooleanType
           return value;
@@ -6104,6 +6407,8 @@ public class ElementDefinition extends Type implements ICompositeType {
           this.getRepresentation().add((Enumeration) value);
         } else if (name.equals("sliceName")) {
           this.sliceName = castToString(value); // StringType
+        } else if (name.equals("sliceIsConstraining")) {
+          this.sliceIsConstraining = castToBoolean(value); // BooleanType
         } else if (name.equals("label")) {
           this.label = castToString(value); // StringType
         } else if (name.equals("code")) {
@@ -6156,6 +6461,8 @@ public class ElementDefinition extends Type implements ICompositeType {
           this.mustSupport = castToBoolean(value); // BooleanType
         } else if (name.equals("isModifier")) {
           this.isModifier = castToBoolean(value); // BooleanType
+        } else if (name.equals("isModifierReason")) {
+          this.isModifierReason = castToString(value); // StringType
         } else if (name.equals("isSummary")) {
           this.isSummary = castToBoolean(value); // BooleanType
         } else if (name.equals("binding")) {
@@ -6173,6 +6480,7 @@ public class ElementDefinition extends Type implements ICompositeType {
         case 3433509:  return getPathElement();
         case -671065907:  return addRepresentationElement();
         case -825289923:  return getSliceNameElement();
+        case 333040519:  return getSliceIsConstrainingElement();
         case 102727412:  return getLabelElement();
         case 3059181:  return addCode(); 
         case -2119287345:  return getSlicing(); 
@@ -6204,6 +6512,7 @@ public class ElementDefinition extends Type implements ICompositeType {
         case -190376483:  return addConstraint(); 
         case -1402857082:  return getMustSupportElement();
         case -1408783839:  return getIsModifierElement();
+        case -1854387259:  return getIsModifierReasonElement();
         case 1857548060:  return getIsSummaryElement();
         case -108220795:  return getBinding(); 
         case 837556430:  return addMapping(); 
@@ -6218,6 +6527,7 @@ public class ElementDefinition extends Type implements ICompositeType {
         case 3433509: /*path*/ return new String[] {"string"};
         case -671065907: /*representation*/ return new String[] {"code"};
         case -825289923: /*sliceName*/ return new String[] {"string"};
+        case 333040519: /*sliceIsConstraining*/ return new String[] {"boolean"};
         case 102727412: /*label*/ return new String[] {"string"};
         case 3059181: /*code*/ return new String[] {"Coding"};
         case -2119287345: /*slicing*/ return new String[] {};
@@ -6244,6 +6554,7 @@ public class ElementDefinition extends Type implements ICompositeType {
         case -190376483: /*constraint*/ return new String[] {};
         case -1402857082: /*mustSupport*/ return new String[] {"boolean"};
         case -1408783839: /*isModifier*/ return new String[] {"boolean"};
+        case -1854387259: /*isModifierReason*/ return new String[] {"string"};
         case 1857548060: /*isSummary*/ return new String[] {"boolean"};
         case -108220795: /*binding*/ return new String[] {};
         case 837556430: /*mapping*/ return new String[] {};
@@ -6262,6 +6573,9 @@ public class ElementDefinition extends Type implements ICompositeType {
         }
         else if (name.equals("sliceName")) {
           throw new FHIRException("Cannot call addChild on a primitive type ElementDefinition.sliceName");
+        }
+        else if (name.equals("sliceIsConstraining")) {
+          throw new FHIRException("Cannot call addChild on a primitive type ElementDefinition.sliceIsConstraining");
         }
         else if (name.equals("label")) {
           throw new FHIRException("Cannot call addChild on a primitive type ElementDefinition.label");
@@ -6304,32 +6618,20 @@ public class ElementDefinition extends Type implements ICompositeType {
         else if (name.equals("type")) {
           return addType();
         }
-        else if (name.equals("defaultValueBoolean")) {
-          this.defaultValue = new BooleanType();
-          return this.defaultValue;
-        }
-        else if (name.equals("defaultValueInteger")) {
-          this.defaultValue = new IntegerType();
-          return this.defaultValue;
-        }
-        else if (name.equals("defaultValueDecimal")) {
-          this.defaultValue = new DecimalType();
-          return this.defaultValue;
-        }
         else if (name.equals("defaultValueBase64Binary")) {
           this.defaultValue = new Base64BinaryType();
           return this.defaultValue;
         }
-        else if (name.equals("defaultValueInstant")) {
-          this.defaultValue = new InstantType();
+        else if (name.equals("defaultValueBoolean")) {
+          this.defaultValue = new BooleanType();
           return this.defaultValue;
         }
-        else if (name.equals("defaultValueString")) {
-          this.defaultValue = new StringType();
+        else if (name.equals("defaultValueCanonical")) {
+          this.defaultValue = new CanonicalType();
           return this.defaultValue;
         }
-        else if (name.equals("defaultValueUri")) {
-          this.defaultValue = new UriType();
+        else if (name.equals("defaultValueCode")) {
+          this.defaultValue = new CodeType();
           return this.defaultValue;
         }
         else if (name.equals("defaultValueDate")) {
@@ -6340,32 +6642,64 @@ public class ElementDefinition extends Type implements ICompositeType {
           this.defaultValue = new DateTimeType();
           return this.defaultValue;
         }
-        else if (name.equals("defaultValueTime")) {
-          this.defaultValue = new TimeType();
-          return this.defaultValue;
-        }
-        else if (name.equals("defaultValueCode")) {
-          this.defaultValue = new CodeType();
-          return this.defaultValue;
-        }
-        else if (name.equals("defaultValueOid")) {
-          this.defaultValue = new OidType();
+        else if (name.equals("defaultValueDecimal")) {
+          this.defaultValue = new DecimalType();
           return this.defaultValue;
         }
         else if (name.equals("defaultValueId")) {
           this.defaultValue = new IdType();
           return this.defaultValue;
         }
-        else if (name.equals("defaultValueUnsignedInt")) {
-          this.defaultValue = new UnsignedIntType();
+        else if (name.equals("defaultValueInstant")) {
+          this.defaultValue = new InstantType();
+          return this.defaultValue;
+        }
+        else if (name.equals("defaultValueInteger")) {
+          this.defaultValue = new IntegerType();
+          return this.defaultValue;
+        }
+        else if (name.equals("defaultValueMarkdown")) {
+          this.defaultValue = new MarkdownType();
+          return this.defaultValue;
+        }
+        else if (name.equals("defaultValueOid")) {
+          this.defaultValue = new OidType();
           return this.defaultValue;
         }
         else if (name.equals("defaultValuePositiveInt")) {
           this.defaultValue = new PositiveIntType();
           return this.defaultValue;
         }
-        else if (name.equals("defaultValueMarkdown")) {
-          this.defaultValue = new MarkdownType();
+        else if (name.equals("defaultValueString")) {
+          this.defaultValue = new StringType();
+          return this.defaultValue;
+        }
+        else if (name.equals("defaultValueTime")) {
+          this.defaultValue = new TimeType();
+          return this.defaultValue;
+        }
+        else if (name.equals("defaultValueUnsignedInt")) {
+          this.defaultValue = new UnsignedIntType();
+          return this.defaultValue;
+        }
+        else if (name.equals("defaultValueUri")) {
+          this.defaultValue = new UriType();
+          return this.defaultValue;
+        }
+        else if (name.equals("defaultValueUrl")) {
+          this.defaultValue = new UrlType();
+          return this.defaultValue;
+        }
+        else if (name.equals("defaultValueUuid")) {
+          this.defaultValue = new UuidType();
+          return this.defaultValue;
+        }
+        else if (name.equals("defaultValueAddress")) {
+          this.defaultValue = new Address();
+          return this.defaultValue;
+        }
+        else if (name.equals("defaultValueAge")) {
+          this.defaultValue = new Age();
           return this.defaultValue;
         }
         else if (name.equals("defaultValueAnnotation")) {
@@ -6376,16 +6710,44 @@ public class ElementDefinition extends Type implements ICompositeType {
           this.defaultValue = new Attachment();
           return this.defaultValue;
         }
-        else if (name.equals("defaultValueIdentifier")) {
-          this.defaultValue = new Identifier();
-          return this.defaultValue;
-        }
         else if (name.equals("defaultValueCodeableConcept")) {
           this.defaultValue = new CodeableConcept();
           return this.defaultValue;
         }
         else if (name.equals("defaultValueCoding")) {
           this.defaultValue = new Coding();
+          return this.defaultValue;
+        }
+        else if (name.equals("defaultValueContactPoint")) {
+          this.defaultValue = new ContactPoint();
+          return this.defaultValue;
+        }
+        else if (name.equals("defaultValueCount")) {
+          this.defaultValue = new Count();
+          return this.defaultValue;
+        }
+        else if (name.equals("defaultValueDistance")) {
+          this.defaultValue = new Distance();
+          return this.defaultValue;
+        }
+        else if (name.equals("defaultValueDuration")) {
+          this.defaultValue = new Duration();
+          return this.defaultValue;
+        }
+        else if (name.equals("defaultValueHumanName")) {
+          this.defaultValue = new HumanName();
+          return this.defaultValue;
+        }
+        else if (name.equals("defaultValueIdentifier")) {
+          this.defaultValue = new Identifier();
+          return this.defaultValue;
+        }
+        else if (name.equals("defaultValueMoney")) {
+          this.defaultValue = new Money();
+          return this.defaultValue;
+        }
+        else if (name.equals("defaultValuePeriod")) {
+          this.defaultValue = new Period();
           return this.defaultValue;
         }
         else if (name.equals("defaultValueQuantity")) {
@@ -6396,12 +6758,12 @@ public class ElementDefinition extends Type implements ICompositeType {
           this.defaultValue = new Range();
           return this.defaultValue;
         }
-        else if (name.equals("defaultValuePeriod")) {
-          this.defaultValue = new Period();
-          return this.defaultValue;
-        }
         else if (name.equals("defaultValueRatio")) {
           this.defaultValue = new Ratio();
+          return this.defaultValue;
+        }
+        else if (name.equals("defaultValueReference")) {
+          this.defaultValue = new Reference();
           return this.defaultValue;
         }
         else if (name.equals("defaultValueSampledData")) {
@@ -6412,28 +6774,44 @@ public class ElementDefinition extends Type implements ICompositeType {
           this.defaultValue = new Signature();
           return this.defaultValue;
         }
-        else if (name.equals("defaultValueHumanName")) {
-          this.defaultValue = new HumanName();
-          return this.defaultValue;
-        }
-        else if (name.equals("defaultValueAddress")) {
-          this.defaultValue = new Address();
-          return this.defaultValue;
-        }
-        else if (name.equals("defaultValueContactPoint")) {
-          this.defaultValue = new ContactPoint();
-          return this.defaultValue;
-        }
         else if (name.equals("defaultValueTiming")) {
           this.defaultValue = new Timing();
           return this.defaultValue;
         }
-        else if (name.equals("defaultValueReference")) {
-          this.defaultValue = new Reference();
+        else if (name.equals("defaultValueContactDetail")) {
+          this.defaultValue = new ContactDetail();
           return this.defaultValue;
         }
-        else if (name.equals("defaultValueMeta")) {
-          this.defaultValue = new Meta();
+        else if (name.equals("defaultValueContributor")) {
+          this.defaultValue = new Contributor();
+          return this.defaultValue;
+        }
+        else if (name.equals("defaultValueDataRequirement")) {
+          this.defaultValue = new DataRequirement();
+          return this.defaultValue;
+        }
+        else if (name.equals("defaultValueExpression")) {
+          this.defaultValue = new Expression();
+          return this.defaultValue;
+        }
+        else if (name.equals("defaultValueParameterDefinition")) {
+          this.defaultValue = new ParameterDefinition();
+          return this.defaultValue;
+        }
+        else if (name.equals("defaultValueRelatedArtifact")) {
+          this.defaultValue = new RelatedArtifact();
+          return this.defaultValue;
+        }
+        else if (name.equals("defaultValueTriggerDefinition")) {
+          this.defaultValue = new TriggerDefinition();
+          return this.defaultValue;
+        }
+        else if (name.equals("defaultValueUsageContext")) {
+          this.defaultValue = new UsageContext();
+          return this.defaultValue;
+        }
+        else if (name.equals("defaultValueDosage")) {
+          this.defaultValue = new Dosage();
           return this.defaultValue;
         }
         else if (name.equals("meaningWhenMissing")) {
@@ -6442,32 +6820,20 @@ public class ElementDefinition extends Type implements ICompositeType {
         else if (name.equals("orderMeaning")) {
           throw new FHIRException("Cannot call addChild on a primitive type ElementDefinition.orderMeaning");
         }
-        else if (name.equals("fixedBoolean")) {
-          this.fixed = new BooleanType();
-          return this.fixed;
-        }
-        else if (name.equals("fixedInteger")) {
-          this.fixed = new IntegerType();
-          return this.fixed;
-        }
-        else if (name.equals("fixedDecimal")) {
-          this.fixed = new DecimalType();
-          return this.fixed;
-        }
         else if (name.equals("fixedBase64Binary")) {
           this.fixed = new Base64BinaryType();
           return this.fixed;
         }
-        else if (name.equals("fixedInstant")) {
-          this.fixed = new InstantType();
+        else if (name.equals("fixedBoolean")) {
+          this.fixed = new BooleanType();
           return this.fixed;
         }
-        else if (name.equals("fixedString")) {
-          this.fixed = new StringType();
+        else if (name.equals("fixedCanonical")) {
+          this.fixed = new CanonicalType();
           return this.fixed;
         }
-        else if (name.equals("fixedUri")) {
-          this.fixed = new UriType();
+        else if (name.equals("fixedCode")) {
+          this.fixed = new CodeType();
           return this.fixed;
         }
         else if (name.equals("fixedDate")) {
@@ -6478,32 +6844,64 @@ public class ElementDefinition extends Type implements ICompositeType {
           this.fixed = new DateTimeType();
           return this.fixed;
         }
-        else if (name.equals("fixedTime")) {
-          this.fixed = new TimeType();
-          return this.fixed;
-        }
-        else if (name.equals("fixedCode")) {
-          this.fixed = new CodeType();
-          return this.fixed;
-        }
-        else if (name.equals("fixedOid")) {
-          this.fixed = new OidType();
+        else if (name.equals("fixedDecimal")) {
+          this.fixed = new DecimalType();
           return this.fixed;
         }
         else if (name.equals("fixedId")) {
           this.fixed = new IdType();
           return this.fixed;
         }
-        else if (name.equals("fixedUnsignedInt")) {
-          this.fixed = new UnsignedIntType();
+        else if (name.equals("fixedInstant")) {
+          this.fixed = new InstantType();
+          return this.fixed;
+        }
+        else if (name.equals("fixedInteger")) {
+          this.fixed = new IntegerType();
+          return this.fixed;
+        }
+        else if (name.equals("fixedMarkdown")) {
+          this.fixed = new MarkdownType();
+          return this.fixed;
+        }
+        else if (name.equals("fixedOid")) {
+          this.fixed = new OidType();
           return this.fixed;
         }
         else if (name.equals("fixedPositiveInt")) {
           this.fixed = new PositiveIntType();
           return this.fixed;
         }
-        else if (name.equals("fixedMarkdown")) {
-          this.fixed = new MarkdownType();
+        else if (name.equals("fixedString")) {
+          this.fixed = new StringType();
+          return this.fixed;
+        }
+        else if (name.equals("fixedTime")) {
+          this.fixed = new TimeType();
+          return this.fixed;
+        }
+        else if (name.equals("fixedUnsignedInt")) {
+          this.fixed = new UnsignedIntType();
+          return this.fixed;
+        }
+        else if (name.equals("fixedUri")) {
+          this.fixed = new UriType();
+          return this.fixed;
+        }
+        else if (name.equals("fixedUrl")) {
+          this.fixed = new UrlType();
+          return this.fixed;
+        }
+        else if (name.equals("fixedUuid")) {
+          this.fixed = new UuidType();
+          return this.fixed;
+        }
+        else if (name.equals("fixedAddress")) {
+          this.fixed = new Address();
+          return this.fixed;
+        }
+        else if (name.equals("fixedAge")) {
+          this.fixed = new Age();
           return this.fixed;
         }
         else if (name.equals("fixedAnnotation")) {
@@ -6514,16 +6912,44 @@ public class ElementDefinition extends Type implements ICompositeType {
           this.fixed = new Attachment();
           return this.fixed;
         }
-        else if (name.equals("fixedIdentifier")) {
-          this.fixed = new Identifier();
-          return this.fixed;
-        }
         else if (name.equals("fixedCodeableConcept")) {
           this.fixed = new CodeableConcept();
           return this.fixed;
         }
         else if (name.equals("fixedCoding")) {
           this.fixed = new Coding();
+          return this.fixed;
+        }
+        else if (name.equals("fixedContactPoint")) {
+          this.fixed = new ContactPoint();
+          return this.fixed;
+        }
+        else if (name.equals("fixedCount")) {
+          this.fixed = new Count();
+          return this.fixed;
+        }
+        else if (name.equals("fixedDistance")) {
+          this.fixed = new Distance();
+          return this.fixed;
+        }
+        else if (name.equals("fixedDuration")) {
+          this.fixed = new Duration();
+          return this.fixed;
+        }
+        else if (name.equals("fixedHumanName")) {
+          this.fixed = new HumanName();
+          return this.fixed;
+        }
+        else if (name.equals("fixedIdentifier")) {
+          this.fixed = new Identifier();
+          return this.fixed;
+        }
+        else if (name.equals("fixedMoney")) {
+          this.fixed = new Money();
+          return this.fixed;
+        }
+        else if (name.equals("fixedPeriod")) {
+          this.fixed = new Period();
           return this.fixed;
         }
         else if (name.equals("fixedQuantity")) {
@@ -6534,12 +6960,12 @@ public class ElementDefinition extends Type implements ICompositeType {
           this.fixed = new Range();
           return this.fixed;
         }
-        else if (name.equals("fixedPeriod")) {
-          this.fixed = new Period();
-          return this.fixed;
-        }
         else if (name.equals("fixedRatio")) {
           this.fixed = new Ratio();
+          return this.fixed;
+        }
+        else if (name.equals("fixedReference")) {
+          this.fixed = new Reference();
           return this.fixed;
         }
         else if (name.equals("fixedSampledData")) {
@@ -6550,56 +6976,60 @@ public class ElementDefinition extends Type implements ICompositeType {
           this.fixed = new Signature();
           return this.fixed;
         }
-        else if (name.equals("fixedHumanName")) {
-          this.fixed = new HumanName();
-          return this.fixed;
-        }
-        else if (name.equals("fixedAddress")) {
-          this.fixed = new Address();
-          return this.fixed;
-        }
-        else if (name.equals("fixedContactPoint")) {
-          this.fixed = new ContactPoint();
-          return this.fixed;
-        }
         else if (name.equals("fixedTiming")) {
           this.fixed = new Timing();
           return this.fixed;
         }
-        else if (name.equals("fixedReference")) {
-          this.fixed = new Reference();
+        else if (name.equals("fixedContactDetail")) {
+          this.fixed = new ContactDetail();
           return this.fixed;
         }
-        else if (name.equals("fixedMeta")) {
-          this.fixed = new Meta();
+        else if (name.equals("fixedContributor")) {
+          this.fixed = new Contributor();
           return this.fixed;
         }
-        else if (name.equals("patternBoolean")) {
-          this.pattern = new BooleanType();
-          return this.pattern;
+        else if (name.equals("fixedDataRequirement")) {
+          this.fixed = new DataRequirement();
+          return this.fixed;
         }
-        else if (name.equals("patternInteger")) {
-          this.pattern = new IntegerType();
-          return this.pattern;
+        else if (name.equals("fixedExpression")) {
+          this.fixed = new Expression();
+          return this.fixed;
         }
-        else if (name.equals("patternDecimal")) {
-          this.pattern = new DecimalType();
-          return this.pattern;
+        else if (name.equals("fixedParameterDefinition")) {
+          this.fixed = new ParameterDefinition();
+          return this.fixed;
+        }
+        else if (name.equals("fixedRelatedArtifact")) {
+          this.fixed = new RelatedArtifact();
+          return this.fixed;
+        }
+        else if (name.equals("fixedTriggerDefinition")) {
+          this.fixed = new TriggerDefinition();
+          return this.fixed;
+        }
+        else if (name.equals("fixedUsageContext")) {
+          this.fixed = new UsageContext();
+          return this.fixed;
+        }
+        else if (name.equals("fixedDosage")) {
+          this.fixed = new Dosage();
+          return this.fixed;
         }
         else if (name.equals("patternBase64Binary")) {
           this.pattern = new Base64BinaryType();
           return this.pattern;
         }
-        else if (name.equals("patternInstant")) {
-          this.pattern = new InstantType();
+        else if (name.equals("patternBoolean")) {
+          this.pattern = new BooleanType();
           return this.pattern;
         }
-        else if (name.equals("patternString")) {
-          this.pattern = new StringType();
+        else if (name.equals("patternCanonical")) {
+          this.pattern = new CanonicalType();
           return this.pattern;
         }
-        else if (name.equals("patternUri")) {
-          this.pattern = new UriType();
+        else if (name.equals("patternCode")) {
+          this.pattern = new CodeType();
           return this.pattern;
         }
         else if (name.equals("patternDate")) {
@@ -6610,32 +7040,64 @@ public class ElementDefinition extends Type implements ICompositeType {
           this.pattern = new DateTimeType();
           return this.pattern;
         }
-        else if (name.equals("patternTime")) {
-          this.pattern = new TimeType();
-          return this.pattern;
-        }
-        else if (name.equals("patternCode")) {
-          this.pattern = new CodeType();
-          return this.pattern;
-        }
-        else if (name.equals("patternOid")) {
-          this.pattern = new OidType();
+        else if (name.equals("patternDecimal")) {
+          this.pattern = new DecimalType();
           return this.pattern;
         }
         else if (name.equals("patternId")) {
           this.pattern = new IdType();
           return this.pattern;
         }
-        else if (name.equals("patternUnsignedInt")) {
-          this.pattern = new UnsignedIntType();
+        else if (name.equals("patternInstant")) {
+          this.pattern = new InstantType();
+          return this.pattern;
+        }
+        else if (name.equals("patternInteger")) {
+          this.pattern = new IntegerType();
+          return this.pattern;
+        }
+        else if (name.equals("patternMarkdown")) {
+          this.pattern = new MarkdownType();
+          return this.pattern;
+        }
+        else if (name.equals("patternOid")) {
+          this.pattern = new OidType();
           return this.pattern;
         }
         else if (name.equals("patternPositiveInt")) {
           this.pattern = new PositiveIntType();
           return this.pattern;
         }
-        else if (name.equals("patternMarkdown")) {
-          this.pattern = new MarkdownType();
+        else if (name.equals("patternString")) {
+          this.pattern = new StringType();
+          return this.pattern;
+        }
+        else if (name.equals("patternTime")) {
+          this.pattern = new TimeType();
+          return this.pattern;
+        }
+        else if (name.equals("patternUnsignedInt")) {
+          this.pattern = new UnsignedIntType();
+          return this.pattern;
+        }
+        else if (name.equals("patternUri")) {
+          this.pattern = new UriType();
+          return this.pattern;
+        }
+        else if (name.equals("patternUrl")) {
+          this.pattern = new UrlType();
+          return this.pattern;
+        }
+        else if (name.equals("patternUuid")) {
+          this.pattern = new UuidType();
+          return this.pattern;
+        }
+        else if (name.equals("patternAddress")) {
+          this.pattern = new Address();
+          return this.pattern;
+        }
+        else if (name.equals("patternAge")) {
+          this.pattern = new Age();
           return this.pattern;
         }
         else if (name.equals("patternAnnotation")) {
@@ -6646,16 +7108,44 @@ public class ElementDefinition extends Type implements ICompositeType {
           this.pattern = new Attachment();
           return this.pattern;
         }
-        else if (name.equals("patternIdentifier")) {
-          this.pattern = new Identifier();
-          return this.pattern;
-        }
         else if (name.equals("patternCodeableConcept")) {
           this.pattern = new CodeableConcept();
           return this.pattern;
         }
         else if (name.equals("patternCoding")) {
           this.pattern = new Coding();
+          return this.pattern;
+        }
+        else if (name.equals("patternContactPoint")) {
+          this.pattern = new ContactPoint();
+          return this.pattern;
+        }
+        else if (name.equals("patternCount")) {
+          this.pattern = new Count();
+          return this.pattern;
+        }
+        else if (name.equals("patternDistance")) {
+          this.pattern = new Distance();
+          return this.pattern;
+        }
+        else if (name.equals("patternDuration")) {
+          this.pattern = new Duration();
+          return this.pattern;
+        }
+        else if (name.equals("patternHumanName")) {
+          this.pattern = new HumanName();
+          return this.pattern;
+        }
+        else if (name.equals("patternIdentifier")) {
+          this.pattern = new Identifier();
+          return this.pattern;
+        }
+        else if (name.equals("patternMoney")) {
+          this.pattern = new Money();
+          return this.pattern;
+        }
+        else if (name.equals("patternPeriod")) {
+          this.pattern = new Period();
           return this.pattern;
         }
         else if (name.equals("patternQuantity")) {
@@ -6666,12 +7156,12 @@ public class ElementDefinition extends Type implements ICompositeType {
           this.pattern = new Range();
           return this.pattern;
         }
-        else if (name.equals("patternPeriod")) {
-          this.pattern = new Period();
-          return this.pattern;
-        }
         else if (name.equals("patternRatio")) {
           this.pattern = new Ratio();
+          return this.pattern;
+        }
+        else if (name.equals("patternReference")) {
+          this.pattern = new Reference();
           return this.pattern;
         }
         else if (name.equals("patternSampledData")) {
@@ -6682,28 +7172,44 @@ public class ElementDefinition extends Type implements ICompositeType {
           this.pattern = new Signature();
           return this.pattern;
         }
-        else if (name.equals("patternHumanName")) {
-          this.pattern = new HumanName();
-          return this.pattern;
-        }
-        else if (name.equals("patternAddress")) {
-          this.pattern = new Address();
-          return this.pattern;
-        }
-        else if (name.equals("patternContactPoint")) {
-          this.pattern = new ContactPoint();
-          return this.pattern;
-        }
         else if (name.equals("patternTiming")) {
           this.pattern = new Timing();
           return this.pattern;
         }
-        else if (name.equals("patternReference")) {
-          this.pattern = new Reference();
+        else if (name.equals("patternContactDetail")) {
+          this.pattern = new ContactDetail();
           return this.pattern;
         }
-        else if (name.equals("patternMeta")) {
-          this.pattern = new Meta();
+        else if (name.equals("patternContributor")) {
+          this.pattern = new Contributor();
+          return this.pattern;
+        }
+        else if (name.equals("patternDataRequirement")) {
+          this.pattern = new DataRequirement();
+          return this.pattern;
+        }
+        else if (name.equals("patternExpression")) {
+          this.pattern = new Expression();
+          return this.pattern;
+        }
+        else if (name.equals("patternParameterDefinition")) {
+          this.pattern = new ParameterDefinition();
+          return this.pattern;
+        }
+        else if (name.equals("patternRelatedArtifact")) {
+          this.pattern = new RelatedArtifact();
+          return this.pattern;
+        }
+        else if (name.equals("patternTriggerDefinition")) {
+          this.pattern = new TriggerDefinition();
+          return this.pattern;
+        }
+        else if (name.equals("patternUsageContext")) {
+          this.pattern = new UsageContext();
+          return this.pattern;
+        }
+        else if (name.equals("patternDosage")) {
+          this.pattern = new Dosage();
           return this.pattern;
         }
         else if (name.equals("example")) {
@@ -6796,6 +7302,9 @@ public class ElementDefinition extends Type implements ICompositeType {
         else if (name.equals("isModifier")) {
           throw new FHIRException("Cannot call addChild on a primitive type ElementDefinition.isModifier");
         }
+        else if (name.equals("isModifierReason")) {
+          throw new FHIRException("Cannot call addChild on a primitive type ElementDefinition.isModifierReason");
+        }
         else if (name.equals("isSummary")) {
           throw new FHIRException("Cannot call addChild on a primitive type ElementDefinition.isSummary");
         }
@@ -6825,6 +7334,7 @@ public class ElementDefinition extends Type implements ICompositeType {
             dst.representation.add(i.copy());
         };
         dst.sliceName = sliceName == null ? null : sliceName.copy();
+        dst.sliceIsConstraining = sliceIsConstraining == null ? null : sliceIsConstraining.copy();
         dst.label = label == null ? null : label.copy();
         if (code != null) {
           dst.code = new ArrayList<Coding>();
@@ -6875,6 +7385,7 @@ public class ElementDefinition extends Type implements ICompositeType {
         };
         dst.mustSupport = mustSupport == null ? null : mustSupport.copy();
         dst.isModifier = isModifier == null ? null : isModifier.copy();
+        dst.isModifierReason = isModifierReason == null ? null : isModifierReason.copy();
         dst.isSummary = isSummary == null ? null : isSummary.copy();
         dst.binding = binding == null ? null : binding.copy();
         if (mapping != null) {
@@ -6890,48 +7401,52 @@ public class ElementDefinition extends Type implements ICompositeType {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof ElementDefinition))
+        if (!(other_ instanceof ElementDefinition))
           return false;
-        ElementDefinition o = (ElementDefinition) other;
+        ElementDefinition o = (ElementDefinition) other_;
         return compareDeep(path, o.path, true) && compareDeep(representation, o.representation, true) && compareDeep(sliceName, o.sliceName, true)
-           && compareDeep(label, o.label, true) && compareDeep(code, o.code, true) && compareDeep(slicing, o.slicing, true)
-           && compareDeep(short_, o.short_, true) && compareDeep(definition, o.definition, true) && compareDeep(comment, o.comment, true)
-           && compareDeep(requirements, o.requirements, true) && compareDeep(alias, o.alias, true) && compareDeep(min, o.min, true)
-           && compareDeep(max, o.max, true) && compareDeep(base, o.base, true) && compareDeep(contentReference, o.contentReference, true)
-           && compareDeep(type, o.type, true) && compareDeep(defaultValue, o.defaultValue, true) && compareDeep(meaningWhenMissing, o.meaningWhenMissing, true)
+           && compareDeep(sliceIsConstraining, o.sliceIsConstraining, true) && compareDeep(label, o.label, true)
+           && compareDeep(code, o.code, true) && compareDeep(slicing, o.slicing, true) && compareDeep(short_, o.short_, true)
+           && compareDeep(definition, o.definition, true) && compareDeep(comment, o.comment, true) && compareDeep(requirements, o.requirements, true)
+           && compareDeep(alias, o.alias, true) && compareDeep(min, o.min, true) && compareDeep(max, o.max, true)
+           && compareDeep(base, o.base, true) && compareDeep(contentReference, o.contentReference, true) && compareDeep(type, o.type, true)
+           && compareDeep(defaultValue, o.defaultValue, true) && compareDeep(meaningWhenMissing, o.meaningWhenMissing, true)
            && compareDeep(orderMeaning, o.orderMeaning, true) && compareDeep(fixed, o.fixed, true) && compareDeep(pattern, o.pattern, true)
            && compareDeep(example, o.example, true) && compareDeep(minValue, o.minValue, true) && compareDeep(maxValue, o.maxValue, true)
            && compareDeep(maxLength, o.maxLength, true) && compareDeep(condition, o.condition, true) && compareDeep(constraint, o.constraint, true)
            && compareDeep(mustSupport, o.mustSupport, true) && compareDeep(isModifier, o.isModifier, true)
-           && compareDeep(isSummary, o.isSummary, true) && compareDeep(binding, o.binding, true) && compareDeep(mapping, o.mapping, true)
-          ;
+           && compareDeep(isModifierReason, o.isModifierReason, true) && compareDeep(isSummary, o.isSummary, true)
+           && compareDeep(binding, o.binding, true) && compareDeep(mapping, o.mapping, true);
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof ElementDefinition))
+        if (!(other_ instanceof ElementDefinition))
           return false;
-        ElementDefinition o = (ElementDefinition) other;
+        ElementDefinition o = (ElementDefinition) other_;
         return compareValues(path, o.path, true) && compareValues(representation, o.representation, true) && compareValues(sliceName, o.sliceName, true)
-           && compareValues(label, o.label, true) && compareValues(short_, o.short_, true) && compareValues(definition, o.definition, true)
-           && compareValues(comment, o.comment, true) && compareValues(requirements, o.requirements, true) && compareValues(alias, o.alias, true)
-           && compareValues(min, o.min, true) && compareValues(max, o.max, true) && compareValues(contentReference, o.contentReference, true)
-           && compareValues(meaningWhenMissing, o.meaningWhenMissing, true) && compareValues(orderMeaning, o.orderMeaning, true)
-           && compareValues(maxLength, o.maxLength, true) && compareValues(condition, o.condition, true) && compareValues(mustSupport, o.mustSupport, true)
-           && compareValues(isModifier, o.isModifier, true) && compareValues(isSummary, o.isSummary, true);
+           && compareValues(sliceIsConstraining, o.sliceIsConstraining, true) && compareValues(label, o.label, true)
+           && compareValues(short_, o.short_, true) && compareValues(definition, o.definition, true) && compareValues(comment, o.comment, true)
+           && compareValues(requirements, o.requirements, true) && compareValues(alias, o.alias, true) && compareValues(min, o.min, true)
+           && compareValues(max, o.max, true) && compareValues(contentReference, o.contentReference, true) && compareValues(meaningWhenMissing, o.meaningWhenMissing, true)
+           && compareValues(orderMeaning, o.orderMeaning, true) && compareValues(maxLength, o.maxLength, true)
+           && compareValues(condition, o.condition, true) && compareValues(mustSupport, o.mustSupport, true) && compareValues(isModifier, o.isModifier, true)
+           && compareValues(isModifierReason, o.isModifierReason, true) && compareValues(isSummary, o.isSummary, true)
+          ;
       }
 
       public boolean isEmpty() {
         return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(path, representation, sliceName
-          , label, code, slicing, short_, definition, comment, requirements, alias, min
-          , max, base, contentReference, type, defaultValue, meaningWhenMissing, orderMeaning
-          , fixed, pattern, example, minValue, maxValue, maxLength, condition, constraint
-          , mustSupport, isModifier, isSummary, binding, mapping);
+          , sliceIsConstraining, label, code, slicing, short_, definition, comment, requirements
+          , alias, min, max, base, contentReference, type, defaultValue, meaningWhenMissing
+          , orderMeaning, fixed, pattern, example, minValue, maxValue, maxLength, condition
+          , constraint, mustSupport, isModifier, isModifierReason, isSummary, binding, mapping
+          );
       }
 
 // added from java-adornments.txt:
@@ -6952,6 +7467,14 @@ public class ElementDefinition extends Type implements ICompositeType {
     self.setMax(max);
   }
   
+  public void makeBase() {
+    ElementDefinitionBaseComponent self = getBase();
+    self.setPath(getPath());
+    self.setMin(getMin());
+    self.setMax(getMax());
+  }
+  
+  
   
   public String typeSummary() {
     CommaSeparatedStringBuilder b = new CommaSeparatedStringBuilder();
@@ -6962,6 +7485,27 @@ public class ElementDefinition extends Type implements ICompositeType {
     return b.toString();
    }
   
+  public TypeRefComponent getType(String code) {
+    for (TypeRefComponent tr : getType()) 
+      if (tr.getCode().equals(code))
+        return tr;
+    TypeRefComponent tr = new TypeRefComponent();
+    tr.setCode(code);
+    type.add(tr);
+    return tr;
+  }
+
+  public static final boolean NOT_MODIFIER = false;
+  public static final boolean NOT_IN_SUMMARY = false;
+  public static final boolean IS_MODIFIER = true;
+  public static final boolean IS_IN_SUMMARY = true;
+  public ElementDefinition(boolean defaults, boolean modifier, boolean inSummary) {
+    super();
+    if (defaults) {
+      setIsModifier(modifier);
+      setIsSummary(inSummary);
+    }
+  }  
 
 
 // end addition

@@ -1,0 +1,62 @@
+﻿map "http://hl7.org/fhir/StructureMap/RequestGroup3to4" = "R3 to R4 Conversions for RequestGroup"
+
+uses "http://hl7.org/fhir/3.0/StructureDefinition/RequestGroup" alias RequestGroupR3 as source
+uses "http://hl7.org/fhir/StructureDefinition/RequestGroup" alias Requestgroup as target
+
+imports "http://hl7.org/fhir/StructureMap/*3to4"
+
+group Requestgroup(source src : RequestGroupR3, target tgt : Requestgroup) extends DomainResource <<type+>> {
+  src.identifier -> tgt.identifier;
+  src.instantiatesCanonical -> tgt.instantiatesCanonical;
+  src.instantiatesUri -> tgt.instantiatesUri;
+  src.basedOn -> tgt.basedOn;
+  src.replaces -> tgt.replaces;
+  src.groupIdentifier -> tgt.groupIdentifier;
+  src.status -> tgt.status;
+  src.intent -> tgt.intent;
+  src.priority -> tgt.priority;
+  src.code -> tgt.code;
+  src.subject -> tgt.subject;
+  src.context -> tgt.context;
+  src.authoredOn -> tgt.authoredOn;
+  src.author -> tgt.author;
+  src.reasonCode -> tgt.reasonCode;
+  src.reasonReference -> tgt.reasonReference;
+  src.note -> tgt.note;
+  src.action as s -> tgt.action as t then RequestGroupAction(s, t);
+}
+
+group RequestGroupAction(source src : RequestGroupR3, target tgt : Requestgroup) extends BackboneElement <<type+>> {
+  src.prefix -> tgt.prefix;
+  src.title -> tgt.title;
+  src.description -> tgt.description;
+  src.textEquivalent -> tgt.textEquivalent;
+  src.code -> tgt.code;
+  src.documentation -> tgt.documentation;
+  src.condition as s -> tgt.condition as t then RequestGroupActionCondition(s, t);
+  src.relatedAction as s -> tgt.relatedAction as t then RequestGroupActionRelatedAction(s, t);
+  src.timing -> tgt.timing;
+  src.participant -> tgt.participant;
+  src.type -> tgt.type;
+  src.groupingBehavior -> tgt.groupingBehavior;
+  src.selectionBehavior -> tgt.selectionBehavior;
+  src.requiredBehavior -> tgt.requiredBehavior;
+  src.precheckBehavior -> tgt.precheckBehavior;
+  src.cardinalityBehavior -> tgt.cardinalityBehavior;
+  src.resource -> tgt.resource;
+  src.action -> tgt.action;
+}
+
+group RequestGroupActionCondition(source src : RequestGroupR3, target tgt : Requestgroup) extends BackboneElement <<type+>> {
+  src.kind -> tgt.kind;
+  src.description -> tgt.description;
+  src.language -> tgt.language;
+  src.expression -> tgt.expression;
+}
+
+group RequestGroupActionRelatedAction(source src : RequestGroupR3, target tgt : Requestgroup) extends BackboneElement <<type+>> {
+  src.actionId -> tgt.actionId;
+  src.relationship -> tgt.relationship;
+  src.offset -> tgt.offset;
+}
+

@@ -1,12 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <CodeSystem xmlns="http://hl7.org/fhir">
   <id value="concept-properties"/>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="vocab"/> 
+  </extension> 
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="normative"/> 
+  </extension> 
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="4"/> 
+  </extension> 
   <url value="http://hl7.org/fhir/concept-properties"/>
   <name value="FHIR Defined Concept Properties"/>
   <status value="draft"/>
   <publisher value="FHIR Project"/>
-  <description value="A set of common concept properties for use on coded systems through out the FHIR eco-system."/>
+  <description value="A set of common concept properties for use on coded systems throughout the FHIR eco-system."/>
   <valueSet value="http://hl7.org/fhir/ValueSet/concept-properties"/>
   <caseSensitive value="true"/>
   <content value="complete"/>
@@ -23,7 +32,7 @@
   <concept>
     <code value="notSelectable"/>
     <display value="Not Selectable"/>
-    <definition value="The concept is not intended to be chosen by the user - only intended to be used as a selector for other concepts. Note, though, that the interpretation of this is highly contextual; all concepts are selectable in some context. Property type is boolean, default value is false"/>
+    <definition value="The concept is not intended to be chosen by the user - only intended to be used as a selector for other concepts. Note, though, that the interpretation of this is highly contextual; all concepts are selectable in some context. Property type is boolean"/>
   </concept>
   <concept>
     <code value="parent"/>

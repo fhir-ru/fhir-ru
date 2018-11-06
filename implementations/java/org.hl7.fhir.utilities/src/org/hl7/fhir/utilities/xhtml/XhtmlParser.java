@@ -839,6 +839,8 @@ private boolean elementIsOk(String name) throws FHIRFormatError  {
       s.append(XhtmlNode.NBSP);
     else if (c.equals("amp"))
       s.append('&');
+    else if (c.equals("lsquo"))
+      s.append((char) 8216); // right single quotation, U+2019 ISOnum 
     else if (c.equals("rsquo"))
       s.append((char) 8217); // right single quotation, U+2019 ISOnum 
       //s.append((char)0x60); // right single quote
@@ -1106,6 +1108,14 @@ private boolean elementIsOk(String name) throws FHIRFormatError  {
       s.append((char) 9829); // black heart suit = valentine, U+2665 ISOpub
     else if (c.equals("diams"))
       s.append((char) 9830); // black diamond suit, U+2666 ISOpub --
+    else if (c.equals("ndash"))
+      s.append((char) 8211); 
+    else if (c.equals("mdash"))
+      s.append((char) 8212); 
+    else if (c.equals("ldquo"))
+      s.append((char) 8221); 
+    else if (c.equals("rdquo"))
+      s.append((char) 201D); 
     else
       throw new FHIRFormatError("unable to parse character reference '" + c + "'' (last text = '" + lastText + "'" + descLoc());
   }

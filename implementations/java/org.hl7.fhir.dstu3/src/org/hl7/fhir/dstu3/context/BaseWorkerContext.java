@@ -15,7 +15,6 @@ import java.util.Set;
 
 import org.apache.commons.codec.Charsets;
 import org.hl7.fhir.dstu3.formats.IParser.OutputStyle;
-import org.hl7.fhir.dstu3.context.IWorkerContext.ILoggingService.LogCategory;
 import org.hl7.fhir.dstu3.formats.JsonParser;
 import org.hl7.fhir.dstu3.model.BooleanType;
 import org.hl7.fhir.dstu3.model.Bundle;
@@ -40,6 +39,7 @@ import org.hl7.fhir.dstu3.model.Resource;
 import org.hl7.fhir.dstu3.model.SearchParameter;
 import org.hl7.fhir.dstu3.model.StringType;
 import org.hl7.fhir.dstu3.model.StructureDefinition;
+import org.hl7.fhir.dstu3.model.StructureDefinition.TypeDerivationRule;
 import org.hl7.fhir.dstu3.model.StructureMap;
 import org.hl7.fhir.dstu3.model.UriType;
 import org.hl7.fhir.dstu3.model.ValueSet;
@@ -64,6 +64,7 @@ import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.validation.ValidationMessage.IssueSeverity;
 import org.hl7.fhir.utilities.validation.ValidationMessage.IssueType;
 
+import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 
 public abstract class BaseWorkerContext implements IWorkerContext {
@@ -94,6 +95,7 @@ public abstract class BaseWorkerContext implements IWorkerContext {
   protected FHIRToolingClient txServer;
   private Bundle bndCodeSystems;
   private boolean canRunWithoutTerminology;
+  protected boolean allowLoadingDuplicates;
   protected boolean noTerminologyServer;
   protected String cache;
   private int expandCodesLimit = 1000;
@@ -140,6 +142,13 @@ public abstract class BaseWorkerContext implements IWorkerContext {
     extensionDefinitions.put(ed.getUrl(), ed);
   }
 
+  public void dropExtensionDefinition(String id) {
+    StructureDefinition sd = extensionDefinitions.get(id);
+    extensionDefinitions.remove(id);
+    if (sd!= null)
+      extensionDefinitions.remove(sd.getUrl());
+  }
+
   public void seeQuestionnaire(String url, Questionnaire theQuestionnaire) throws Exception {
     if (questionnaires.get(theQuestionnaire.getId()) != null)
       throw new Exception("duplicate extension definition: "+theQuestionnaire.getId());
@@ -155,12 +164,33 @@ public abstract class BaseWorkerContext implements IWorkerContext {
   }
 
   public void seeValueSet(String url, ValueSet vs) throws Exception {
-    if (valueSets.containsKey(vs.getUrl()))
+    if (valueSets.containsKey(vs.getUrl()) && !allowLoadingDuplicates)
       throw new Exception("Duplicate value set "+vs.getUrl());
     valueSets.put(vs.getId(), vs);
     valueSets.put(url, vs);
     valueSets.put(vs.getUrl(), vs);
-    throw new Error("this is not used");
+  }
+
+  public void dropValueSet(String id) {
+    ValueSet vs = valueSets.get(id);
+    valueSets.remove(id);
+    if (vs != null)
+      valueSets.remove(vs.getUrl());
+  }
+
+  public void seeCodeSystem(String url, CodeSystem cs) throws FHIRException {
+    if (codeSystems.containsKey(cs.getUrl()) && !allowLoadingDuplicates)
+      throw new FHIRException("Duplicate code system "+cs.getUrl());
+    codeSystems.put(cs.getId(), cs);
+    codeSystems.put(url, cs);
+    codeSystems.put(cs.getUrl(), cs);
+  }
+
+  public void dropCodeSystem(String id) {
+    CodeSystem cs = codeSystems.get(id);
+    codeSystems.remove(id);
+    if (cs != null)
+      codeSystems.remove(cs.getUrl());
   }
 
   public void seeProfile(String url, StructureDefinition p) throws Exception {
@@ -169,6 +199,13 @@ public abstract class BaseWorkerContext implements IWorkerContext {
     profiles.put(p.getId(), p);
     profiles.put(url, p);
     profiles.put(p.getUrl(), p);
+  }
+
+  public void dropProfile(String id) {
+    StructureDefinition sd = profiles.get(id);
+    profiles.remove(id);
+    if (sd!= null)
+      profiles.remove(sd.getUrl());
   }
 
   @Override
@@ -194,7 +231,7 @@ public abstract class BaseWorkerContext implements IWorkerContext {
         } catch (Exception e) {
           if (canRunWithoutTerminology) {
             noTerminologyServer = true;
-            log("==============!! Running without terminology server !!==============");
+            log("==============!! Running without terminology server !!============== ("+e.getMessage()+")");
             return false;
           } else
             throw new TerminologyServiceException(e);
@@ -886,5 +923,52 @@ public abstract class BaseWorkerContext implements IWorkerContext {
     res.addAll(getResourceNames());
     return res;
   }
+
+  public void reportStatus(JsonObject json) {
+    json.addProperty("codeystem-count", codeSystems.size());
+    json.addProperty("valueset-count", valueSets.size());
+    json.addProperty("conceptmap-count", maps.size());
+    json.addProperty("transforms-count", transforms.size());
+    json.addProperty("structures-count", profiles.size());
+  }
+
+  public void cacheResource(Resource r) throws Exception {
+    if (r instanceof ValueSet)
+      seeValueSet(((ValueSet) r).getUrl(), (ValueSet) r);
+    else if (r instanceof CodeSystem)
+      seeCodeSystem(((CodeSystem) r).getUrl(), (CodeSystem) r);
+    else if (r instanceof StructureDefinition) {
+      StructureDefinition sd = (StructureDefinition) r;
+      if ("http://hl7.org/fhir/StructureDefinition/Extension".equals(sd.getBaseDefinition()))
+        seeExtensionDefinition(sd.getUrl(), sd);
+      else if (sd.getDerivation() == TypeDerivationRule.CONSTRAINT) 
+        seeProfile(sd.getUrl(), sd);
+    }
+  }
+
+  public void dropResource(String type, String id) throws FHIRException {
+    if (type.equals("ValueSet"))
+      dropValueSet(id);   
+    if (type.equals("CodeSystem"))
+      dropCodeSystem(id);   
+    if (type.equals("StructureDefinition")) {
+      dropProfile(id);   
+      dropExtensionDefinition(id);
+    }
+  }
+
+  public boolean isAllowLoadingDuplicates() {
+    return allowLoadingDuplicates;
+  }
+
+  public void setAllowLoadingDuplicates(boolean allowLoadingDuplicates) {
+    this.allowLoadingDuplicates = allowLoadingDuplicates;
+  }
+
+  @Override
+  public StructureDefinition fetchTypeDefinition(String typeName) {
+    return fetchResource(StructureDefinition.class, "http://hl7.org/fhir/StructureDefinition/"+typeName);
+  }
+
 
 }

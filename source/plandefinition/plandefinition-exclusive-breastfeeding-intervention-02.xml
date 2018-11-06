@@ -1,4 +1,4 @@
-<PlanDefinition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/plandefinition.xsd">
+﻿<PlanDefinition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/plandefinition.xsd">
   <id value="exclusive-breastfeeding-intervention-02"/>
   <text>
     <status value="generated"/>
@@ -149,44 +149,46 @@
   </topic>
   <relatedArtifact>
     <type value="derived-from"/>
-    <resource>
-      <reference value="Measure/measure-exclusive-breastfeeding"/>
-    </resource>
+    <resource value="Measure/measure-exclusive-breastfeeding"/>
   </relatedArtifact>
-  <library>
-    <reference value="Library/library-exclusive-breastfeeding-cds-logic"/>
-  </library>
+  <library value="Library/library-exclusive-breastfeeding-cds-logic"/>
   <action>
     <title value="Mother should be administered a breastfeeding readiness assessment."/>
-    <triggerDefinition>
+    <trigger>
       <type value="named-event"/>
       <name value="Admission"/>
-    </triggerDefinition>
-    <triggerDefinition>
+    </trigger>
+    <trigger>
       <type value="named-event"/>
       <name value="Birth"/>
-    </triggerDefinition>
-    <triggerDefinition>
+    </trigger>
+    <trigger>
       <type value="named-event"/>
       <name value="Infant Transfer to Recovery"/>
-    </triggerDefinition>
-    <triggerDefinition>
+    </trigger>
+    <trigger>
       <type value="named-event"/>
       <name value="Transfer to Post-Partum"/>
-    </triggerDefinition>
+    </trigger>
     <condition>
 	  <kind value="applicability"/>
-      <expression value="Should Notify Provider to Sign Assessment Order"/>
+      <expression>
+        <language value="text/cql"/>
+        <expression value="Should Notify Provider to Sign Assessment Order"/>
+      </expression>
     </condition>
     <action>
       <title value="Notify the provider to sign the order."/>
       <textEquivalent value="A Breastfeeding Readiness Assessment is recommended, please authorize or reject the order."/>
       <type>
-        <code value="create"/>
+        <coding><code value="create"/></coding>
       </type>
       <dynamicValue>
         <path value="/"/>
-        <expression value="Communication Request to Provider"/>
+        <expression>
+          <language value="text/cql"/>
+          <expression value="Communication Request to Provider"/>
+        </expression>
       </dynamicValue>
     </action>
   </action>

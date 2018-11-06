@@ -41,6 +41,7 @@ import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.Invariant;
 import org.hl7.fhir.definitions.model.ProfiledType;
+import org.hl7.fhir.igtools.spreadsheets.TypeRef;
 import org.hl7.fhir.r4.formats.IParser.OutputStyle;
 import org.hl7.fhir.r4.formats.XmlParser;
 import org.hl7.fhir.r4.model.ElementDefinition;
@@ -50,13 +51,10 @@ import org.hl7.fhir.r4.model.ElementDefinition.ElementDefinitionSlicingDiscrimin
 import org.hl7.fhir.r4.model.ElementDefinition.PropertyRepresentation;
 import org.hl7.fhir.r4.model.ElementDefinition.TypeRefComponent;
 import org.hl7.fhir.r4.model.Enumeration;
-import org.hl7.fhir.r4.model.Reference;
-import org.hl7.fhir.r4.model.StringType;
 import org.hl7.fhir.r4.model.StructureDefinition;
 import org.hl7.fhir.r4.model.Type;
 import org.hl7.fhir.r4.model.UriType;
 import org.hl7.fhir.r4.model.ValueSet;
-import org.hl7.fhir.igtools.spreadsheets.TypeRef;
 import org.hl7.fhir.tools.publisher.PageProcessor;
 import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
 import org.hl7.fhir.utilities.Utilities;
@@ -83,17 +81,17 @@ public class XmlSpecGenerator extends OutputStreamWriter {
     if (bs == null)
       return "terminologies.html#unbound";
     if (bs.getValueSet() != null) 
-      return bs.getValueSet().getUserString("path");
+      return bs.getValueSet().hasUserData("external.url") ? bs.getValueSet().getUserString("external.url") : bs.getValueSet().getUserString("path");
     else if (!Utilities.noString(bs.getReference()))
       return bs.getReference();      
     else 
       return "terminologies.html#unbound";
   }
 
-	public void generate(ElementDefn root, boolean isAbstract) throws Exception {
+	public void generate(ElementDefn root, boolean isAbstract, boolean isResource) throws Exception {
 		write("<pre class=\"spec\">\r\n");
 
-		generateInner(root, true, isAbstract);
+		generateInner(root, isResource, isAbstract);
 
 		write("</pre>\r\n");
 		flush();
@@ -206,6 +204,8 @@ public class XmlSpecGenerator extends OutputStreamWriter {
         if (root.typeCode().equals("DomainResource"))
           write(" &lt;!-- from <a href=\""+prefix+"domainresource.html\">DomainResource</a>: <a href=\""+prefix+"narrative.html#Narrative\">text</a>, <a href=\""+prefix+"references.html#contained\">contained</a>, <a href=\""+prefix+"extensibility.html\">extension</a>, and <a href=\""+prefix+"extensibility.html#modifierExtension\">modifierExtension</a> -->\r\n");
       }
+    } else if (root.typeCode().equals("BackboneElement")) {
+      write(" &lt;!-- from BackboneElement: <a href=\""+prefix+"extensibility.html\">extension</a>, <a href=\""+prefix+"extensibility.html\">modifierExtension</a> -->\r\n");
     } else {
       write(" &lt;!-- from Element: <a href=\""+prefix+"extensibility.html\">extension</a> -->\r\n");
     }
@@ -556,11 +556,9 @@ public class XmlSpecGenerator extends OutputStreamWriter {
           if (elem.hasBinding() && elem.getBinding().hasValueSet()) {
             ValueSet vs = resolveValueSet(elem.getBinding().getValueSet());
             if (vs != null)
-              write("<span style=\"color: navy\"><a href=\""+prefix+vs.getUserData("filename")+".html\" style=\"color: navy\">" + Utilities.escapeXml(elem.getShort()) + "</a></span>");
-            else if (elem.getBinding().getValueSet() instanceof UriType)
-              write("<span style=\"color: navy\"><a href=\""+((UriType)elem.getBinding().getValueSet()).getValue()+".html\" style=\"color: navy\">" + Utilities.escapeXml(elem.getShort()) + "</a></span>");          
-            else
-              write("<span style=\"color: navy\"><a href=\""+((Reference)elem.getBinding().getValueSet()).getReference()+".html\" style=\"color: navy\">" + Utilities.escapeXml(elem.getShort()) + "</a></span>");          
+              write("<span style=\"color: navy\"><a href=\""+prefix+vs.getUserData("path")+"\" style=\"color: navy\">" + Utilities.escapeXml(elem.getShort()) + "</a><!--A--></span>");
+            else 
+              write("<span style=\"color: navy\"><a href=\""+elem.getBinding().getValueSet()+"\" style=\"color: navy\">" + Utilities.escapeXml(elem.getShort()) + "</a><!--B--></span>");          
           } else
             write("<span style=\"color: navy\">" + docPrefix(width, indent, elem)+Utilities.escapeXml(elem.getShort()) + "</span>");
           if (elem.hasMax() && elem.getMax().equals("0")) 
@@ -640,24 +638,8 @@ public class XmlSpecGenerator extends OutputStreamWriter {
     return " sliced by "+csv.toString()+" "+s;
   }
 
-  private ValueSet resolveValueSet(Type reference) {
-    //            else if (bs.getReference().startsWith("http://hl7.org/fhir")) {
-    //              if (bs.getReference().startsWith("http://hl7.org/fhir/v3/vs/")) {
-    //                AtomEntry<ValueSet> vs = page.getValueSets().get(bs.getReference()); // night be null in a partial build
-    //                write("<a href=\""+(vs == null ? "??" : vs.getLinks().get("path").replace(File.separatorChar, '/'))+"\" style=\"color: navy\">" + Utilities.escapeXml(elem.getShortDefn()) + "</a>");
-    //              } else if (bs.getReference().startsWith("http://hl7.org/fhir/v2/vs/")) {
-    //                  AtomEntry<ValueSet> vs = page.getValueSets().get(bs.getReference());
-    //                  write("<a href=\""+(vs == null ? "??" : vs.getLinks().get("path").replace(File.separatorChar, '/'))+"\" style=\"color: navy\">" + Utilities.escapeXml(elem.getShortDefn())+ "</a>");
-    //              } else if (bs.getReference().startsWith("http://hl7.org/fhir/vs/")) {
-    //                BindingSpecification bs1 = page.getDefinitions().getBindingByReference("#"+bs.getReference().substring(23), bs);
-    //                if (bs1 != null)
-    //                  write("<a href=\""+bs.getReference().substring(23)+".html\" style=\"color: navy\">" + Utilities.escapeXml(elem.getShortDefn()) + "</a>");
-    //                else
-    //                  write("<a href=\"valueset-"+bs.getReference().substring(23)+".html\" style=\"color: navy\">" + Utilities.escapeXml(elem.getShortDefn()) + "</a>");
-    //              } else
-    //                throw new Exception("Internal reference "+bs.getReference()+" not handled yet");
-    // TODO Auto-generated method stub
-    return null;
+  private ValueSet resolveValueSet(String reference) {
+    return page.getValueSets().get(reference);
   }
 
   private String tail(String path) {
@@ -806,14 +788,14 @@ public class XmlSpecGenerator extends OutputStreamWriter {
       if (t.getCode().equals("list"))
         write(t.getCode());
       else if (t.getCode().equals("Extension") && t.hasProfile())
-        write("<a href=\""+prefix+t.getProfile()+"\"><span style=\"color: DarkViolet\">@"+t.getProfile().substring(1)+"</span></a>");     
+        write("<a href=\""+prefix+t.getProfile()+"\"><span style=\"color: DarkViolet\">@"+t.getProfile().get(0).getValue().substring(1)+"</span></a>");     
       else {
         write("<a href=\"" + prefix+(dtRoot + definitions.getSrcFile(t.getCode())
             + ".html#" + t.getCode() + "\">" + t.getCode())
             + "</a>");
         if (t.getCode().equals("Reference") && t.hasTargetProfile()) {
           write("(");
-          String pt = t.getTargetProfile();
+          String pt = t.getTargetProfile().get(0).getValue();
           if (pt.startsWith("http://hl7.org/fhir/StructureDefinition/") && definitions.hasResource(pt.substring(40))) {
             write("<a href=\"" + prefix+pt.substring(40).toLowerCase() + ".html\">" + pt.substring(40) + "</a>");
           } else {

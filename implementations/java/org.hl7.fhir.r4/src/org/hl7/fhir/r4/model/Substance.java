@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Fri, Aug 11, 2017 07:23+1000 for FHIR v3.1.0
+// Generated on Mon, Nov 5, 2018 09:03+1100 for FHIR v3.6.0
 
 import java.util.*;
 
@@ -45,20 +45,20 @@ import org.hl7.fhir.exceptions.FHIRException;
 /**
  * A homogeneous material with a definite composition.
  */
-@ResourceDef(name="Substance", profile="http://hl7.org/fhir/Profile/Substance")
+@ResourceDef(name="Substance", profile="http://hl7.org/fhir/StructureDefinition/Substance")
 public class Substance extends DomainResource {
 
     public enum FHIRSubstanceStatus {
         /**
-         * The substance is considered for use or reference
+         * The substance is considered for use or reference.
          */
         ACTIVE, 
         /**
-         * The substance is considered for reference, but not for use
+         * The substance is considered for reference, but not for use.
          */
         INACTIVE, 
         /**
-         * The substance was entered in error
+         * The substance was entered in error.
          */
         ENTEREDINERROR, 
         /**
@@ -97,9 +97,9 @@ public class Substance extends DomainResource {
         }
         public String getDefinition() {
           switch (this) {
-            case ACTIVE: return "The substance is considered for use or reference";
-            case INACTIVE: return "The substance is considered for reference, but not for use";
-            case ENTEREDINERROR: return "The substance was entered in error";
+            case ACTIVE: return "The substance is considered for use or reference.";
+            case INACTIVE: return "The substance is considered for reference, but not for use.";
+            case ENTEREDINERROR: return "The substance was entered in error.";
             default: return "?";
           }
         }
@@ -175,11 +175,11 @@ public class Substance extends DomainResource {
         /**
          * The amount of the substance.
          */
-        @Child(name = "quantity", type = {SimpleQuantity.class}, order=3, min=0, max=1, modifier=false, summary=true)
+        @Child(name = "quantity", type = {Quantity.class}, order=3, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="Amount of substance in the package", formalDefinition="The amount of the substance." )
-        protected SimpleQuantity quantity;
+        protected Quantity quantity;
 
-        private static final long serialVersionUID = -794314734L;
+        private static final long serialVersionUID = -1474380480L;
 
     /**
      * Constructor
@@ -264,12 +264,12 @@ public class Substance extends DomainResource {
         /**
          * @return {@link #quantity} (The amount of the substance.)
          */
-        public SimpleQuantity getQuantity() { 
+        public Quantity getQuantity() { 
           if (this.quantity == null)
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create SubstanceInstanceComponent.quantity");
             else if (Configuration.doAutoCreate())
-              this.quantity = new SimpleQuantity(); // cc
+              this.quantity = new Quantity(); // cc
           return this.quantity;
         }
 
@@ -280,7 +280,7 @@ public class Substance extends DomainResource {
         /**
          * @param value {@link #quantity} (The amount of the substance.)
          */
-        public SubstanceInstanceComponent setQuantity(SimpleQuantity value) { 
+        public SubstanceInstanceComponent setQuantity(Quantity value) { 
           this.quantity = value;
           return this;
         }
@@ -308,7 +308,7 @@ public class Substance extends DomainResource {
         switch (hash) {
         case -1618432855: /*identifier*/ return this.identifier == null ? new Base[0] : new Base[] {this.identifier}; // Identifier
         case -1289159373: /*expiry*/ return this.expiry == null ? new Base[0] : new Base[] {this.expiry}; // DateTimeType
-        case -1285004149: /*quantity*/ return this.quantity == null ? new Base[0] : new Base[] {this.quantity}; // SimpleQuantity
+        case -1285004149: /*quantity*/ return this.quantity == null ? new Base[0] : new Base[] {this.quantity}; // Quantity
         default: return super.getProperty(hash, name, checkValid);
         }
 
@@ -324,7 +324,7 @@ public class Substance extends DomainResource {
           this.expiry = castToDateTime(value); // DateTimeType
           return value;
         case -1285004149: // quantity
-          this.quantity = castToSimpleQuantity(value); // SimpleQuantity
+          this.quantity = castToQuantity(value); // Quantity
           return value;
         default: return super.setProperty(hash, name, value);
         }
@@ -338,7 +338,7 @@ public class Substance extends DomainResource {
         } else if (name.equals("expiry")) {
           this.expiry = castToDateTime(value); // DateTimeType
         } else if (name.equals("quantity")) {
-          this.quantity = castToSimpleQuantity(value); // SimpleQuantity
+          this.quantity = castToQuantity(value); // Quantity
         } else
           return super.setProperty(name, value);
         return value;
@@ -376,7 +376,7 @@ public class Substance extends DomainResource {
           throw new FHIRException("Cannot call addChild on a primitive type Substance.expiry");
         }
         else if (name.equals("quantity")) {
-          this.quantity = new SimpleQuantity();
+          this.quantity = new Quantity();
           return this.quantity;
         }
         else
@@ -393,23 +393,23 @@ public class Substance extends DomainResource {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof SubstanceInstanceComponent))
+        if (!(other_ instanceof SubstanceInstanceComponent))
           return false;
-        SubstanceInstanceComponent o = (SubstanceInstanceComponent) other;
+        SubstanceInstanceComponent o = (SubstanceInstanceComponent) other_;
         return compareDeep(identifier, o.identifier, true) && compareDeep(expiry, o.expiry, true) && compareDeep(quantity, o.quantity, true)
           ;
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof SubstanceInstanceComponent))
+        if (!(other_ instanceof SubstanceInstanceComponent))
           return false;
-        SubstanceInstanceComponent o = (SubstanceInstanceComponent) other;
+        SubstanceInstanceComponent o = (SubstanceInstanceComponent) other_;
         return compareValues(expiry, o.expiry, true);
       }
 
@@ -494,26 +494,30 @@ public class Substance extends DomainResource {
          * @return {@link #substance} (Another substance that is a component of this substance.)
          */
         public CodeableConcept getSubstanceCodeableConcept() throws FHIRException { 
+          if (this.substance == null)
+            this.substance = new CodeableConcept();
           if (!(this.substance instanceof CodeableConcept))
             throw new FHIRException("Type mismatch: the type CodeableConcept was expected, but "+this.substance.getClass().getName()+" was encountered");
           return (CodeableConcept) this.substance;
         }
 
         public boolean hasSubstanceCodeableConcept() { 
-          return this.substance instanceof CodeableConcept;
+          return this != null && this.substance instanceof CodeableConcept;
         }
 
         /**
          * @return {@link #substance} (Another substance that is a component of this substance.)
          */
         public Reference getSubstanceReference() throws FHIRException { 
+          if (this.substance == null)
+            this.substance = new Reference();
           if (!(this.substance instanceof Reference))
             throw new FHIRException("Type mismatch: the type Reference was expected, but "+this.substance.getClass().getName()+" was encountered");
           return (Reference) this.substance;
         }
 
         public boolean hasSubstanceReference() { 
-          return this.substance instanceof Reference;
+          return this != null && this.substance instanceof Reference;
         }
 
         public boolean hasSubstance() { 
@@ -524,6 +528,8 @@ public class Substance extends DomainResource {
          * @param value {@link #substance} (Another substance that is a component of this substance.)
          */
         public SubstanceIngredientComponent setSubstance(Type value) { 
+          if (value != null && !(value instanceof CodeableConcept || value instanceof Reference))
+            throw new Error("Not the right type for Substance.ingredient.substance[x]: "+value.fhirType());
           this.substance = value;
           return this;
         }
@@ -630,22 +636,22 @@ public class Substance extends DomainResource {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof SubstanceIngredientComponent))
+        if (!(other_ instanceof SubstanceIngredientComponent))
           return false;
-        SubstanceIngredientComponent o = (SubstanceIngredientComponent) other;
+        SubstanceIngredientComponent o = (SubstanceIngredientComponent) other_;
         return compareDeep(quantity, o.quantity, true) && compareDeep(substance, o.substance, true);
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof SubstanceIngredientComponent))
+        if (!(other_ instanceof SubstanceIngredientComponent))
           return false;
-        SubstanceIngredientComponent o = (SubstanceIngredientComponent) other;
+        SubstanceIngredientComponent o = (SubstanceIngredientComponent) other_;
         return true;
       }
 
@@ -670,7 +676,7 @@ public class Substance extends DomainResource {
     /**
      * A code to indicate if the substance is actively used.
      */
-    @Child(name = "status", type = {CodeType.class}, order=1, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "status", type = {CodeType.class}, order=1, min=0, max=1, modifier=true, summary=true)
     @Description(shortDefinition="active | inactive | entered-in-error", formalDefinition="A code to indicate if the substance is actively used." )
     @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/substance-status")
     protected Enumeration<FHIRSubstanceStatus> status;
@@ -1253,24 +1259,24 @@ public class Substance extends DomainResource {
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof Substance))
+        if (!(other_ instanceof Substance))
           return false;
-        Substance o = (Substance) other;
+        Substance o = (Substance) other_;
         return compareDeep(identifier, o.identifier, true) && compareDeep(status, o.status, true) && compareDeep(category, o.category, true)
            && compareDeep(code, o.code, true) && compareDeep(description, o.description, true) && compareDeep(instance, o.instance, true)
            && compareDeep(ingredient, o.ingredient, true);
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof Substance))
+        if (!(other_ instanceof Substance))
           return false;
-        Substance o = (Substance) other;
+        Substance o = (Substance) other_;
         return compareValues(status, o.status, true) && compareValues(description, o.description, true);
       }
 
@@ -1332,7 +1338,7 @@ public class Substance extends DomainResource {
    * Path: <b>Substance.code, Substance.ingredient.substanceCodeableConcept</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="code", path="Substance.code | Substance.ingredient.substance.as(CodeableConcept)", description="The code of the substance or ingredient", type="token" )
+  @SearchParamDefinition(name="code", path="Substance.code | (Substance.ingredient.substance as CodeableConcept)", description="The code of the substance or ingredient", type="token" )
   public static final String SP_CODE = "code";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>code</b>
@@ -1372,7 +1378,7 @@ public class Substance extends DomainResource {
    * Path: <b>Substance.ingredient.substanceReference</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="substance-reference", path="Substance.ingredient.substance.as(Reference)", description="A component of the substance", type="reference", target={Substance.class } )
+  @SearchParamDefinition(name="substance-reference", path="(Substance.ingredient.substance as Reference)", description="A component of the substance", type="reference", target={Substance.class } )
   public static final String SP_SUBSTANCE_REFERENCE = "substance-reference";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>substance-reference</b>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <Bundle xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir file://Mac/Home/Documents/FHIR/working%20build/schema/account.xsd">
 	<id value="101"/>
 	<type value="collection"/>
@@ -48,7 +48,7 @@ Basophils             x10*9/L     0.92+++     &lt;0.21
 				<status value="final"/>
 				<category>
 					<coding>
-						<system value="http://hl7.org/fhir/v2/0074"/>
+						<system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
 						<code value="HM"/>
 					</coding>
 				</category><!--    first, various administrative/context stuff    --><code>
@@ -66,9 +66,9 @@ Basophils             x10*9/L     0.92+++     &lt;0.21
 				<subject>
 					<reference value="Patient/pat2"/>
 				</subject>
-				<context>
+				<encounter>
 					<reference value="Encounter/example"/>
-				</context>
+				</encounter>
 				<effectiveDateTime value="2011-03-04T08:30:00+11:00"/><!--    all this report is final    --><issued value="2011-03-04T11:45:33+11:00"/>
 				<performer>
 					<reference value="Organization/1832473e-2fe0-452d-abe9-3cdb9879522f"/>
@@ -255,7 +255,7 @@ Basophils             x10*9/L     0.92+++     &lt;0.21
 				</valueQuantity>
 				<interpretation>
 					<coding>
-						<system value="http://hl7.org/fhir/v2/0078"/>
+						<system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
 						<code value="H"/>
 					</coding>
 				</interpretation>
@@ -301,7 +301,7 @@ Basophils             x10*9/L     0.92+++     &lt;0.21
 				</valueQuantity>
 				<interpretation>
 					<coding>
-						<system value="http://hl7.org/fhir/v2/0078"/>
+						<system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
 						<code value="H"/>
 					</coding>
 				</interpretation>
@@ -351,7 +351,7 @@ Basophils             x10*9/L     0.92+++     &lt;0.21
 				</valueQuantity>
 				<interpretation>
 					<coding>
-						<system value="http://hl7.org/fhir/v2/0078"/>
+						<system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
 						<code value="H"/>
 					</coding>
 				</interpretation>
@@ -519,7 +519,7 @@ Basophils             x10*9/L     0.92+++     &lt;0.21
 				</valueQuantity>
 				<interpretation>
 					<coding>
-						<system value="http://hl7.org/fhir/v2/0078"/>
+						<system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
 						<code value="LL"/>
 					</coding>
 				</interpretation>
@@ -599,7 +599,7 @@ Basophils             x10*9/L     0.92+++     &lt;0.21
 				</valueQuantity>
 				<interpretation>
 					<coding>
-						<system value="http://hl7.org/fhir/v2/0078"/>
+						<system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
 						<code value="L"/>
 					</coding>
 				</interpretation>
@@ -753,7 +753,7 @@ Basophils             x10*9/L     0.92+++     &lt;0.21
 				</valueQuantity>
 				<interpretation>
 					<coding>
-						<system value="http://hl7.org/fhir/v2/0078"/>
+						<system value="http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation"/>
 						<code value="HH"/>
 					</coding>
 				</interpretation>

@@ -62,13 +62,22 @@ public abstract class ParserBase extends FormatUtilities implements IParser {
     return parseType(input.getBytes("UTF-8"), typeName);
   }
   
+  public Type parseAnyType(String input, String typeName) throws FHIRFormatError, IOException {
+    return parseAnyType(input.getBytes("UTF-8"), typeName);
+  }
+  
   public Type parseType(byte[] bytes, String typeName) throws FHIRFormatError, IOException {
     ByteArrayInputStream bi = new ByteArrayInputStream(bytes);
     return parseType(bi, typeName);
   }
 
+  public Type parseAnyType(byte[] bytes, String typeName) throws FHIRFormatError, IOException {
+    ByteArrayInputStream bi = new ByteArrayInputStream(bytes);
+    return parseAnyType(bi, typeName);
+  }
+
   public String composeString(Resource resource) throws IOException {
-    return new String(composeBytes(resource));
+    return new String(composeBytes(resource), "UTF-8");
   }
 
   public byte[] composeBytes(Resource resource) throws IOException {

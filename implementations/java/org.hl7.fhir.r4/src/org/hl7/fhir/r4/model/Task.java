@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Fri, Aug 11, 2017 07:23+1000 for FHIR v3.1.0
+// Generated on Mon, Nov 5, 2018 09:03+1100 for FHIR v3.6.0
 
 import java.util.*;
 
@@ -45,7 +45,7 @@ import org.hl7.fhir.exceptions.FHIRException;
 /**
  * A task to be performed.
  */
-@ResourceDef(name="Task", profile="http://hl7.org/fhir/Profile/Task")
+@ResourceDef(name="Task", profile="http://hl7.org/fhir/StructureDefinition/Task")
 public class Task extends DomainResource {
 
     public enum TaskStatus {
@@ -70,7 +70,7 @@ public class Task extends DomainResource {
          */
         REJECTED, 
         /**
-         * Task is ready to be performed, but no action has yet been taken.  Used in place of requested/received/accepted/rejected when request assignment and acceptance is a given.
+         * The task is ready to be performed, but no action has yet been taken.  Used in place of requested/received/accepted/rejected when request assignment and acceptance is a given.
          */
         READY, 
         /**
@@ -78,11 +78,11 @@ public class Task extends DomainResource {
          */
         CANCELLED, 
         /**
-         * Task has been started but is not yet complete.
+         * The task has been started but is not yet complete.
          */
         INPROGRESS, 
         /**
-         * Task has been started but work has been paused.
+         * The task has been started but work has been paused.
          */
         ONHOLD, 
         /**
@@ -174,10 +174,10 @@ public class Task extends DomainResource {
             case RECEIVED: return "A potential performer has claimed ownership of the task and is evaluating whether to perform it.";
             case ACCEPTED: return "The potential performer has agreed to execute the task but has not yet started work.";
             case REJECTED: return "The potential performer who claimed ownership of the task has decided not to execute it prior to performing any action.";
-            case READY: return "Task is ready to be performed, but no action has yet been taken.  Used in place of requested/received/accepted/rejected when request assignment and acceptance is a given.";
+            case READY: return "The task is ready to be performed, but no action has yet been taken.  Used in place of requested/received/accepted/rejected when request assignment and acceptance is a given.";
             case CANCELLED: return "The task was not completed.";
-            case INPROGRESS: return "Task has been started but is not yet complete.";
-            case ONHOLD: return "Task has been started but work has been paused.";
+            case INPROGRESS: return "The task has been started but is not yet complete.";
+            case ONHOLD: return "The task has been started but work has been paused.";
             case FAILED: return "The task was attempted but could not be completed due to some error.";
             case COMPLETED: return "The task has been completed.";
             case ENTEREDINERROR: return "The task should never have existed and is retained only because of the possibility it may have used.";
@@ -302,37 +302,39 @@ public class Task extends DomainResource {
 
     public enum TaskIntent {
         /**
-         * The request is a suggestion made by someone/something that doesn't have an intention to ensure it occurs and without providing an authorization to act
+         * The intent is not known.  When dealing with Task, it's not always known (or relevant) how the task was initiated - i.e. whether it was proposed, planned, ordered or just done spontaneously.
+         */
+        UNKNOWN, 
+        /**
+         * null
          */
         PROPOSAL, 
         /**
-         * The request represents an intension to ensure something occurs without providing an authorization for others to act
+         * null
          */
         PLAN, 
         /**
-         * The request represents a request/demand and authorization for action
+         * null
          */
         ORDER, 
         /**
-         * The request represents an original authorization for action
+         * null
          */
         ORIGINALORDER, 
         /**
-         * The request represents an automatically generated supplemental authorization for action based on a parent authorization together with initial results of the action taken against that parent authorization
+         * null
          */
         REFLEXORDER, 
         /**
-         * The request represents the view of an authorization instantiated by a fulfilling system representing the details of the fulfiller's intention to act upon a submitted order
+         * null
          */
         FILLERORDER, 
         /**
-         * An order created in fulfillment of a broader order that represents the authorization for a single activity occurrence.  E.g. The administration of a single dose of a drug.
+         * null
          */
         INSTANCEORDER, 
         /**
-         * The request represents a component or option for a RequestGroup that establishes timing, conditionality and/or other constraints among a set of requests.
-
-Refer to [[[RequestGroup]]] for additional information on how this status is used
+         * null
          */
         OPTION, 
         /**
@@ -342,6 +344,8 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
         public static TaskIntent fromCode(String codeString) throws FHIRException {
             if (codeString == null || "".equals(codeString))
                 return null;
+        if ("unknown".equals(codeString))
+          return UNKNOWN;
         if ("proposal".equals(codeString))
           return PROPOSAL;
         if ("plan".equals(codeString))
@@ -365,6 +369,7 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
         }
         public String toCode() {
           switch (this) {
+            case UNKNOWN: return "unknown";
             case PROPOSAL: return "proposal";
             case PLAN: return "plan";
             case ORDER: return "order";
@@ -378,6 +383,7 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
         }
         public String getSystem() {
           switch (this) {
+            case UNKNOWN: return "http://hl7.org/fhir/task-intent";
             case PROPOSAL: return "http://hl7.org/fhir/request-intent";
             case PLAN: return "http://hl7.org/fhir/request-intent";
             case ORDER: return "http://hl7.org/fhir/request-intent";
@@ -391,27 +397,29 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
         }
         public String getDefinition() {
           switch (this) {
-            case PROPOSAL: return "The request is a suggestion made by someone/something that doesn't have an intention to ensure it occurs and without providing an authorization to act";
-            case PLAN: return "The request represents an intension to ensure something occurs without providing an authorization for others to act";
-            case ORDER: return "The request represents a request/demand and authorization for action";
-            case ORIGINALORDER: return "The request represents an original authorization for action";
-            case REFLEXORDER: return "The request represents an automatically generated supplemental authorization for action based on a parent authorization together with initial results of the action taken against that parent authorization";
-            case FILLERORDER: return "The request represents the view of an authorization instantiated by a fulfilling system representing the details of the fulfiller's intention to act upon a submitted order";
-            case INSTANCEORDER: return "An order created in fulfillment of a broader order that represents the authorization for a single activity occurrence.  E.g. The administration of a single dose of a drug.";
-            case OPTION: return "The request represents a component or option for a RequestGroup that establishes timing, conditionality and/or other constraints among a set of requests.\n\nRefer to [[[RequestGroup]]] for additional information on how this status is used";
+            case UNKNOWN: return "The intent is not known.  When dealing with Task, it's not always known (or relevant) how the task was initiated - i.e. whether it was proposed, planned, ordered or just done spontaneously.";
+            case PROPOSAL: return "";
+            case PLAN: return "";
+            case ORDER: return "";
+            case ORIGINALORDER: return "";
+            case REFLEXORDER: return "";
+            case FILLERORDER: return "";
+            case INSTANCEORDER: return "";
+            case OPTION: return "";
             default: return "?";
           }
         }
         public String getDisplay() {
           switch (this) {
-            case PROPOSAL: return "Proposal";
-            case PLAN: return "Plan";
-            case ORDER: return "Order";
-            case ORIGINALORDER: return "Original Order";
-            case REFLEXORDER: return "Reflex Order";
-            case FILLERORDER: return "Filler Order";
-            case INSTANCEORDER: return "Instance Order";
-            case OPTION: return "Option";
+            case UNKNOWN: return "Unknown";
+            case PROPOSAL: return "proposal";
+            case PLAN: return "plan";
+            case ORDER: return "order";
+            case ORIGINALORDER: return "original-order";
+            case REFLEXORDER: return "reflex-order";
+            case FILLERORDER: return "filler-order";
+            case INSTANCEORDER: return "instance-order";
+            case OPTION: return "option";
             default: return "?";
           }
         }
@@ -422,6 +430,8 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
       if (codeString == null || "".equals(codeString))
             if (codeString == null || "".equals(codeString))
                 return null;
+        if ("unknown".equals(codeString))
+          return TaskIntent.UNKNOWN;
         if ("proposal".equals(codeString))
           return TaskIntent.PROPOSAL;
         if ("plan".equals(codeString))
@@ -448,6 +458,8 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
           String codeString = ((PrimitiveType) code).asStringValue();
           if (codeString == null || "".equals(codeString))
             return null;
+        if ("unknown".equals(codeString))
+          return new Enumeration<TaskIntent>(this, TaskIntent.UNKNOWN);
         if ("proposal".equals(codeString))
           return new Enumeration<TaskIntent>(this, TaskIntent.PROPOSAL);
         if ("plan".equals(codeString))
@@ -467,6 +479,8 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
         throw new FHIRException("Unknown TaskIntent code '"+codeString+"'");
         }
     public String toCode(TaskIntent code) {
+      if (code == TaskIntent.UNKNOWN)
+        return "unknown";
       if (code == TaskIntent.PROPOSAL)
         return "proposal";
       if (code == TaskIntent.PLAN)
@@ -492,19 +506,19 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
 
     public enum TaskPriority {
         /**
-         * The request has normal priority
+         * The request has normal priority.
          */
         ROUTINE, 
         /**
-         * The request should be actioned promptly - higher priority than routine
+         * The request should be actioned promptly - higher priority than routine.
          */
         URGENT, 
         /**
-         * The request should be actioned as soon as possible - higher priority than urgent
+         * The request should be actioned as soon as possible - higher priority than urgent.
          */
         ASAP, 
         /**
-         * The request should be actioned immediately - highest possible priority.  E.g. an emergency
+         * The request should be actioned immediately - highest possible priority.  E.g. an emergency.
          */
         STAT, 
         /**
@@ -547,10 +561,10 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
         }
         public String getDefinition() {
           switch (this) {
-            case ROUTINE: return "The request has normal priority";
-            case URGENT: return "The request should be actioned promptly - higher priority than routine";
-            case ASAP: return "The request should be actioned as soon as possible - higher priority than urgent";
-            case STAT: return "The request should be actioned immediately - highest possible priority.  E.g. an emergency";
+            case ROUTINE: return "The request has normal priority.";
+            case URGENT: return "The request should be actioned promptly - higher priority than routine.";
+            case ASAP: return "The request should be actioned as soon as possible - higher priority than urgent.";
+            case STAT: return "The request should be actioned immediately - highest possible priority.  E.g. an emergency.";
             default: return "?";
           }
         }
@@ -613,256 +627,6 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
       return code.getSystem();
       }
     }
-
-    @Block()
-    public static class TaskRequesterComponent extends BackboneElement implements IBaseBackboneElement {
-        /**
-         * The device, practitioner, etc. who initiated the task.
-         */
-        @Child(name = "agent", type = {Device.class, Organization.class, Patient.class, Practitioner.class, RelatedPerson.class}, order=1, min=1, max=1, modifier=false, summary=true)
-        @Description(shortDefinition="Individual asking for task", formalDefinition="The device, practitioner, etc. who initiated the task." )
-        protected Reference agent;
-
-        /**
-         * The actual object that is the target of the reference (The device, practitioner, etc. who initiated the task.)
-         */
-        protected Resource agentTarget;
-
-        /**
-         * The organization the device or practitioner was acting on behalf of when they initiated the task.
-         */
-        @Child(name = "onBehalfOf", type = {Organization.class}, order=2, min=0, max=1, modifier=false, summary=false)
-        @Description(shortDefinition="Organization individual is acting for", formalDefinition="The organization the device or practitioner was acting on behalf of when they initiated the task." )
-        protected Reference onBehalfOf;
-
-        /**
-         * The actual object that is the target of the reference (The organization the device or practitioner was acting on behalf of when they initiated the task.)
-         */
-        protected Organization onBehalfOfTarget;
-
-        private static final long serialVersionUID = -71453027L;
-
-    /**
-     * Constructor
-     */
-      public TaskRequesterComponent() {
-        super();
-      }
-
-    /**
-     * Constructor
-     */
-      public TaskRequesterComponent(Reference agent) {
-        super();
-        this.agent = agent;
-      }
-
-        /**
-         * @return {@link #agent} (The device, practitioner, etc. who initiated the task.)
-         */
-        public Reference getAgent() { 
-          if (this.agent == null)
-            if (Configuration.errorOnAutoCreate())
-              throw new Error("Attempt to auto-create TaskRequesterComponent.agent");
-            else if (Configuration.doAutoCreate())
-              this.agent = new Reference(); // cc
-          return this.agent;
-        }
-
-        public boolean hasAgent() { 
-          return this.agent != null && !this.agent.isEmpty();
-        }
-
-        /**
-         * @param value {@link #agent} (The device, practitioner, etc. who initiated the task.)
-         */
-        public TaskRequesterComponent setAgent(Reference value) { 
-          this.agent = value;
-          return this;
-        }
-
-        /**
-         * @return {@link #agent} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The device, practitioner, etc. who initiated the task.)
-         */
-        public Resource getAgentTarget() { 
-          return this.agentTarget;
-        }
-
-        /**
-         * @param value {@link #agent} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The device, practitioner, etc. who initiated the task.)
-         */
-        public TaskRequesterComponent setAgentTarget(Resource value) { 
-          this.agentTarget = value;
-          return this;
-        }
-
-        /**
-         * @return {@link #onBehalfOf} (The organization the device or practitioner was acting on behalf of when they initiated the task.)
-         */
-        public Reference getOnBehalfOf() { 
-          if (this.onBehalfOf == null)
-            if (Configuration.errorOnAutoCreate())
-              throw new Error("Attempt to auto-create TaskRequesterComponent.onBehalfOf");
-            else if (Configuration.doAutoCreate())
-              this.onBehalfOf = new Reference(); // cc
-          return this.onBehalfOf;
-        }
-
-        public boolean hasOnBehalfOf() { 
-          return this.onBehalfOf != null && !this.onBehalfOf.isEmpty();
-        }
-
-        /**
-         * @param value {@link #onBehalfOf} (The organization the device or practitioner was acting on behalf of when they initiated the task.)
-         */
-        public TaskRequesterComponent setOnBehalfOf(Reference value) { 
-          this.onBehalfOf = value;
-          return this;
-        }
-
-        /**
-         * @return {@link #onBehalfOf} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The organization the device or practitioner was acting on behalf of when they initiated the task.)
-         */
-        public Organization getOnBehalfOfTarget() { 
-          if (this.onBehalfOfTarget == null)
-            if (Configuration.errorOnAutoCreate())
-              throw new Error("Attempt to auto-create TaskRequesterComponent.onBehalfOf");
-            else if (Configuration.doAutoCreate())
-              this.onBehalfOfTarget = new Organization(); // aa
-          return this.onBehalfOfTarget;
-        }
-
-        /**
-         * @param value {@link #onBehalfOf} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The organization the device or practitioner was acting on behalf of when they initiated the task.)
-         */
-        public TaskRequesterComponent setOnBehalfOfTarget(Organization value) { 
-          this.onBehalfOfTarget = value;
-          return this;
-        }
-
-        protected void listChildren(List<Property> children) {
-          super.listChildren(children);
-          children.add(new Property("agent", "Reference(Device|Organization|Patient|Practitioner|RelatedPerson)", "The device, practitioner, etc. who initiated the task.", 0, 1, agent));
-          children.add(new Property("onBehalfOf", "Reference(Organization)", "The organization the device or practitioner was acting on behalf of when they initiated the task.", 0, 1, onBehalfOf));
-        }
-
-        @Override
-        public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
-          switch (_hash) {
-          case 92750597: /*agent*/  return new Property("agent", "Reference(Device|Organization|Patient|Practitioner|RelatedPerson)", "The device, practitioner, etc. who initiated the task.", 0, 1, agent);
-          case -14402964: /*onBehalfOf*/  return new Property("onBehalfOf", "Reference(Organization)", "The organization the device or practitioner was acting on behalf of when they initiated the task.", 0, 1, onBehalfOf);
-          default: return super.getNamedProperty(_hash, _name, _checkValid);
-          }
-
-        }
-
-      @Override
-      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
-        switch (hash) {
-        case 92750597: /*agent*/ return this.agent == null ? new Base[0] : new Base[] {this.agent}; // Reference
-        case -14402964: /*onBehalfOf*/ return this.onBehalfOf == null ? new Base[0] : new Base[] {this.onBehalfOf}; // Reference
-        default: return super.getProperty(hash, name, checkValid);
-        }
-
-      }
-
-      @Override
-      public Base setProperty(int hash, String name, Base value) throws FHIRException {
-        switch (hash) {
-        case 92750597: // agent
-          this.agent = castToReference(value); // Reference
-          return value;
-        case -14402964: // onBehalfOf
-          this.onBehalfOf = castToReference(value); // Reference
-          return value;
-        default: return super.setProperty(hash, name, value);
-        }
-
-      }
-
-      @Override
-      public Base setProperty(String name, Base value) throws FHIRException {
-        if (name.equals("agent")) {
-          this.agent = castToReference(value); // Reference
-        } else if (name.equals("onBehalfOf")) {
-          this.onBehalfOf = castToReference(value); // Reference
-        } else
-          return super.setProperty(name, value);
-        return value;
-      }
-
-      @Override
-      public Base makeProperty(int hash, String name) throws FHIRException {
-        switch (hash) {
-        case 92750597:  return getAgent(); 
-        case -14402964:  return getOnBehalfOf(); 
-        default: return super.makeProperty(hash, name);
-        }
-
-      }
-
-      @Override
-      public String[] getTypesForProperty(int hash, String name) throws FHIRException {
-        switch (hash) {
-        case 92750597: /*agent*/ return new String[] {"Reference"};
-        case -14402964: /*onBehalfOf*/ return new String[] {"Reference"};
-        default: return super.getTypesForProperty(hash, name);
-        }
-
-      }
-
-      @Override
-      public Base addChild(String name) throws FHIRException {
-        if (name.equals("agent")) {
-          this.agent = new Reference();
-          return this.agent;
-        }
-        else if (name.equals("onBehalfOf")) {
-          this.onBehalfOf = new Reference();
-          return this.onBehalfOf;
-        }
-        else
-          return super.addChild(name);
-      }
-
-      public TaskRequesterComponent copy() {
-        TaskRequesterComponent dst = new TaskRequesterComponent();
-        copyValues(dst);
-        dst.agent = agent == null ? null : agent.copy();
-        dst.onBehalfOf = onBehalfOf == null ? null : onBehalfOf.copy();
-        return dst;
-      }
-
-      @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
-          return false;
-        if (!(other instanceof TaskRequesterComponent))
-          return false;
-        TaskRequesterComponent o = (TaskRequesterComponent) other;
-        return compareDeep(agent, o.agent, true) && compareDeep(onBehalfOf, o.onBehalfOf, true);
-      }
-
-      @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
-          return false;
-        if (!(other instanceof TaskRequesterComponent))
-          return false;
-        TaskRequesterComponent o = (TaskRequesterComponent) other;
-        return true;
-      }
-
-      public boolean isEmpty() {
-        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(agent, onBehalfOf);
-      }
-
-  public String fhirType() {
-    return "Task.requester";
-
-  }
-
-  }
 
     @Block()
     public static class TaskRestrictionComponent extends BackboneElement implements IBaseBackboneElement {
@@ -1144,23 +908,23 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof TaskRestrictionComponent))
+        if (!(other_ instanceof TaskRestrictionComponent))
           return false;
-        TaskRestrictionComponent o = (TaskRestrictionComponent) other;
+        TaskRestrictionComponent o = (TaskRestrictionComponent) other_;
         return compareDeep(repetitions, o.repetitions, true) && compareDeep(period, o.period, true) && compareDeep(recipient, o.recipient, true)
           ;
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof TaskRestrictionComponent))
+        if (!(other_ instanceof TaskRestrictionComponent))
           return false;
-        TaskRestrictionComponent o = (TaskRestrictionComponent) other;
+        TaskRestrictionComponent o = (TaskRestrictionComponent) other_;
         return compareValues(repetitions, o.repetitions, true);
       }
 
@@ -1265,39 +1029,42 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
           case 3575610: /*type*/  return new Property("type", "CodeableConcept", "A code or description indicating how the input is intended to be used as part of the task execution.", 0, 1, type);
           case -1410166417: /*value[x]*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
           case 111972721: /*value*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
-          case 733421943: /*valueBoolean*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
-          case -1668204915: /*valueInteger*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
-          case -2083993440: /*valueDecimal*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
           case -1535024575: /*valueBase64Binary*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
-          case -1668687056: /*valueInstant*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
-          case -1424603934: /*valueString*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
-          case -1410172357: /*valueUri*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
+          case 733421943: /*valueBoolean*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
+          case -786218365: /*valueCanonical*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
+          case -766209282: /*valueCode*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
           case -766192449: /*valueDate*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
           case 1047929900: /*valueDateTime*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
-          case -765708322: /*valueTime*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
-          case -766209282: /*valueCode*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
-          case -1410178407: /*valueOid*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
+          case -2083993440: /*valueDecimal*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
           case 231604844: /*valueId*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
-          case 26529417: /*valueUnsignedInt*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
-          case -1249932027: /*valuePositiveInt*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
+          case -1668687056: /*valueInstant*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
+          case -1668204915: /*valueInteger*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
           case -497880704: /*valueMarkdown*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
+          case -1410178407: /*valueOid*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
+          case -1249932027: /*valuePositiveInt*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
+          case -1424603934: /*valueString*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
+          case -765708322: /*valueTime*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
+          case 26529417: /*valueUnsignedInt*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
+          case -1410172357: /*valueUri*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
+          case -1410172354: /*valueUrl*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
+          case -765667124: /*valueUuid*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
+          case -478981821: /*valueAddress*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
           case -67108992: /*valueAnnotation*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
           case -475566732: /*valueAttachment*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
-          case -130498310: /*valueIdentifier*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
           case 924902896: /*valueCodeableConcept*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
           case -1887705029: /*valueCoding*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
+          case 944904545: /*valueContactPoint*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
+          case -2026205465: /*valueHumanName*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
+          case -130498310: /*valueIdentifier*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
+          case -1524344174: /*valuePeriod*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
           case -2029823716: /*valueQuantity*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
           case 2030761548: /*valueRange*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
-          case -1524344174: /*valuePeriod*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
           case 2030767386: /*valueRatio*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
+          case 1755241690: /*valueReference*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
           case -962229101: /*valueSampledData*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
           case -540985785: /*valueSignature*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
-          case -2026205465: /*valueHumanName*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
-          case -478981821: /*valueAddress*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
-          case 944904545: /*valueContactPoint*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
           case -1406282469: /*valueTiming*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
-          case 1755241690: /*valueReference*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
-          case -765920490: /*valueMeta*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
+          case -1858636920: /*valueDosage*/  return new Property("value[x]", "*", "The value of the input parameter as a basic type.", 0, 1, value);
           default: return super.getNamedProperty(_hash, _name, _checkValid);
           }
 
@@ -1365,32 +1132,20 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
           this.type = new CodeableConcept();
           return this.type;
         }
-        else if (name.equals("valueBoolean")) {
-          this.value = new BooleanType();
-          return this.value;
-        }
-        else if (name.equals("valueInteger")) {
-          this.value = new IntegerType();
-          return this.value;
-        }
-        else if (name.equals("valueDecimal")) {
-          this.value = new DecimalType();
-          return this.value;
-        }
         else if (name.equals("valueBase64Binary")) {
           this.value = new Base64BinaryType();
           return this.value;
         }
-        else if (name.equals("valueInstant")) {
-          this.value = new InstantType();
+        else if (name.equals("valueBoolean")) {
+          this.value = new BooleanType();
           return this.value;
         }
-        else if (name.equals("valueString")) {
-          this.value = new StringType();
+        else if (name.equals("valueCanonical")) {
+          this.value = new CanonicalType();
           return this.value;
         }
-        else if (name.equals("valueUri")) {
-          this.value = new UriType();
+        else if (name.equals("valueCode")) {
+          this.value = new CodeType();
           return this.value;
         }
         else if (name.equals("valueDate")) {
@@ -1401,32 +1156,64 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
           this.value = new DateTimeType();
           return this.value;
         }
-        else if (name.equals("valueTime")) {
-          this.value = new TimeType();
-          return this.value;
-        }
-        else if (name.equals("valueCode")) {
-          this.value = new CodeType();
-          return this.value;
-        }
-        else if (name.equals("valueOid")) {
-          this.value = new OidType();
+        else if (name.equals("valueDecimal")) {
+          this.value = new DecimalType();
           return this.value;
         }
         else if (name.equals("valueId")) {
           this.value = new IdType();
           return this.value;
         }
-        else if (name.equals("valueUnsignedInt")) {
-          this.value = new UnsignedIntType();
+        else if (name.equals("valueInstant")) {
+          this.value = new InstantType();
+          return this.value;
+        }
+        else if (name.equals("valueInteger")) {
+          this.value = new IntegerType();
+          return this.value;
+        }
+        else if (name.equals("valueMarkdown")) {
+          this.value = new MarkdownType();
+          return this.value;
+        }
+        else if (name.equals("valueOid")) {
+          this.value = new OidType();
           return this.value;
         }
         else if (name.equals("valuePositiveInt")) {
           this.value = new PositiveIntType();
           return this.value;
         }
-        else if (name.equals("valueMarkdown")) {
-          this.value = new MarkdownType();
+        else if (name.equals("valueString")) {
+          this.value = new StringType();
+          return this.value;
+        }
+        else if (name.equals("valueTime")) {
+          this.value = new TimeType();
+          return this.value;
+        }
+        else if (name.equals("valueUnsignedInt")) {
+          this.value = new UnsignedIntType();
+          return this.value;
+        }
+        else if (name.equals("valueUri")) {
+          this.value = new UriType();
+          return this.value;
+        }
+        else if (name.equals("valueUrl")) {
+          this.value = new UrlType();
+          return this.value;
+        }
+        else if (name.equals("valueUuid")) {
+          this.value = new UuidType();
+          return this.value;
+        }
+        else if (name.equals("valueAddress")) {
+          this.value = new Address();
+          return this.value;
+        }
+        else if (name.equals("valueAge")) {
+          this.value = new Age();
           return this.value;
         }
         else if (name.equals("valueAnnotation")) {
@@ -1437,16 +1224,44 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
           this.value = new Attachment();
           return this.value;
         }
-        else if (name.equals("valueIdentifier")) {
-          this.value = new Identifier();
-          return this.value;
-        }
         else if (name.equals("valueCodeableConcept")) {
           this.value = new CodeableConcept();
           return this.value;
         }
         else if (name.equals("valueCoding")) {
           this.value = new Coding();
+          return this.value;
+        }
+        else if (name.equals("valueContactPoint")) {
+          this.value = new ContactPoint();
+          return this.value;
+        }
+        else if (name.equals("valueCount")) {
+          this.value = new Count();
+          return this.value;
+        }
+        else if (name.equals("valueDistance")) {
+          this.value = new Distance();
+          return this.value;
+        }
+        else if (name.equals("valueDuration")) {
+          this.value = new Duration();
+          return this.value;
+        }
+        else if (name.equals("valueHumanName")) {
+          this.value = new HumanName();
+          return this.value;
+        }
+        else if (name.equals("valueIdentifier")) {
+          this.value = new Identifier();
+          return this.value;
+        }
+        else if (name.equals("valueMoney")) {
+          this.value = new Money();
+          return this.value;
+        }
+        else if (name.equals("valuePeriod")) {
+          this.value = new Period();
           return this.value;
         }
         else if (name.equals("valueQuantity")) {
@@ -1457,12 +1272,12 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
           this.value = new Range();
           return this.value;
         }
-        else if (name.equals("valuePeriod")) {
-          this.value = new Period();
-          return this.value;
-        }
         else if (name.equals("valueRatio")) {
           this.value = new Ratio();
+          return this.value;
+        }
+        else if (name.equals("valueReference")) {
+          this.value = new Reference();
           return this.value;
         }
         else if (name.equals("valueSampledData")) {
@@ -1473,28 +1288,44 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
           this.value = new Signature();
           return this.value;
         }
-        else if (name.equals("valueHumanName")) {
-          this.value = new HumanName();
-          return this.value;
-        }
-        else if (name.equals("valueAddress")) {
-          this.value = new Address();
-          return this.value;
-        }
-        else if (name.equals("valueContactPoint")) {
-          this.value = new ContactPoint();
-          return this.value;
-        }
         else if (name.equals("valueTiming")) {
           this.value = new Timing();
           return this.value;
         }
-        else if (name.equals("valueReference")) {
-          this.value = new Reference();
+        else if (name.equals("valueContactDetail")) {
+          this.value = new ContactDetail();
           return this.value;
         }
-        else if (name.equals("valueMeta")) {
-          this.value = new Meta();
+        else if (name.equals("valueContributor")) {
+          this.value = new Contributor();
+          return this.value;
+        }
+        else if (name.equals("valueDataRequirement")) {
+          this.value = new DataRequirement();
+          return this.value;
+        }
+        else if (name.equals("valueExpression")) {
+          this.value = new Expression();
+          return this.value;
+        }
+        else if (name.equals("valueParameterDefinition")) {
+          this.value = new ParameterDefinition();
+          return this.value;
+        }
+        else if (name.equals("valueRelatedArtifact")) {
+          this.value = new RelatedArtifact();
+          return this.value;
+        }
+        else if (name.equals("valueTriggerDefinition")) {
+          this.value = new TriggerDefinition();
+          return this.value;
+        }
+        else if (name.equals("valueUsageContext")) {
+          this.value = new UsageContext();
+          return this.value;
+        }
+        else if (name.equals("valueDosage")) {
+          this.value = new Dosage();
           return this.value;
         }
         else
@@ -1510,22 +1341,22 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof ParameterComponent))
+        if (!(other_ instanceof ParameterComponent))
           return false;
-        ParameterComponent o = (ParameterComponent) other;
+        ParameterComponent o = (ParameterComponent) other_;
         return compareDeep(type, o.type, true) && compareDeep(value, o.value, true);
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof ParameterComponent))
+        if (!(other_ instanceof ParameterComponent))
           return false;
-        ParameterComponent o = (ParameterComponent) other;
+        ParameterComponent o = (ParameterComponent) other_;
         return true;
       }
 
@@ -1629,39 +1460,42 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
           case 3575610: /*type*/  return new Property("type", "CodeableConcept", "The name of the Output parameter.", 0, 1, type);
           case -1410166417: /*value[x]*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
           case 111972721: /*value*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
-          case 733421943: /*valueBoolean*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
-          case -1668204915: /*valueInteger*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
-          case -2083993440: /*valueDecimal*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
           case -1535024575: /*valueBase64Binary*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
-          case -1668687056: /*valueInstant*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
-          case -1424603934: /*valueString*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
-          case -1410172357: /*valueUri*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
+          case 733421943: /*valueBoolean*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
+          case -786218365: /*valueCanonical*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
+          case -766209282: /*valueCode*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
           case -766192449: /*valueDate*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
           case 1047929900: /*valueDateTime*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
-          case -765708322: /*valueTime*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
-          case -766209282: /*valueCode*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
-          case -1410178407: /*valueOid*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
+          case -2083993440: /*valueDecimal*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
           case 231604844: /*valueId*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
-          case 26529417: /*valueUnsignedInt*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
-          case -1249932027: /*valuePositiveInt*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
+          case -1668687056: /*valueInstant*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
+          case -1668204915: /*valueInteger*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
           case -497880704: /*valueMarkdown*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
+          case -1410178407: /*valueOid*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
+          case -1249932027: /*valuePositiveInt*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
+          case -1424603934: /*valueString*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
+          case -765708322: /*valueTime*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
+          case 26529417: /*valueUnsignedInt*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
+          case -1410172357: /*valueUri*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
+          case -1410172354: /*valueUrl*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
+          case -765667124: /*valueUuid*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
+          case -478981821: /*valueAddress*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
           case -67108992: /*valueAnnotation*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
           case -475566732: /*valueAttachment*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
-          case -130498310: /*valueIdentifier*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
           case 924902896: /*valueCodeableConcept*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
           case -1887705029: /*valueCoding*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
+          case 944904545: /*valueContactPoint*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
+          case -2026205465: /*valueHumanName*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
+          case -130498310: /*valueIdentifier*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
+          case -1524344174: /*valuePeriod*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
           case -2029823716: /*valueQuantity*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
           case 2030761548: /*valueRange*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
-          case -1524344174: /*valuePeriod*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
           case 2030767386: /*valueRatio*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
+          case 1755241690: /*valueReference*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
           case -962229101: /*valueSampledData*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
           case -540985785: /*valueSignature*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
-          case -2026205465: /*valueHumanName*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
-          case -478981821: /*valueAddress*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
-          case 944904545: /*valueContactPoint*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
           case -1406282469: /*valueTiming*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
-          case 1755241690: /*valueReference*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
-          case -765920490: /*valueMeta*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
+          case -1858636920: /*valueDosage*/  return new Property("value[x]", "*", "The value of the Output parameter as a basic type.", 0, 1, value);
           default: return super.getNamedProperty(_hash, _name, _checkValid);
           }
 
@@ -1729,32 +1563,20 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
           this.type = new CodeableConcept();
           return this.type;
         }
-        else if (name.equals("valueBoolean")) {
-          this.value = new BooleanType();
-          return this.value;
-        }
-        else if (name.equals("valueInteger")) {
-          this.value = new IntegerType();
-          return this.value;
-        }
-        else if (name.equals("valueDecimal")) {
-          this.value = new DecimalType();
-          return this.value;
-        }
         else if (name.equals("valueBase64Binary")) {
           this.value = new Base64BinaryType();
           return this.value;
         }
-        else if (name.equals("valueInstant")) {
-          this.value = new InstantType();
+        else if (name.equals("valueBoolean")) {
+          this.value = new BooleanType();
           return this.value;
         }
-        else if (name.equals("valueString")) {
-          this.value = new StringType();
+        else if (name.equals("valueCanonical")) {
+          this.value = new CanonicalType();
           return this.value;
         }
-        else if (name.equals("valueUri")) {
-          this.value = new UriType();
+        else if (name.equals("valueCode")) {
+          this.value = new CodeType();
           return this.value;
         }
         else if (name.equals("valueDate")) {
@@ -1765,32 +1587,64 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
           this.value = new DateTimeType();
           return this.value;
         }
-        else if (name.equals("valueTime")) {
-          this.value = new TimeType();
-          return this.value;
-        }
-        else if (name.equals("valueCode")) {
-          this.value = new CodeType();
-          return this.value;
-        }
-        else if (name.equals("valueOid")) {
-          this.value = new OidType();
+        else if (name.equals("valueDecimal")) {
+          this.value = new DecimalType();
           return this.value;
         }
         else if (name.equals("valueId")) {
           this.value = new IdType();
           return this.value;
         }
-        else if (name.equals("valueUnsignedInt")) {
-          this.value = new UnsignedIntType();
+        else if (name.equals("valueInstant")) {
+          this.value = new InstantType();
+          return this.value;
+        }
+        else if (name.equals("valueInteger")) {
+          this.value = new IntegerType();
+          return this.value;
+        }
+        else if (name.equals("valueMarkdown")) {
+          this.value = new MarkdownType();
+          return this.value;
+        }
+        else if (name.equals("valueOid")) {
+          this.value = new OidType();
           return this.value;
         }
         else if (name.equals("valuePositiveInt")) {
           this.value = new PositiveIntType();
           return this.value;
         }
-        else if (name.equals("valueMarkdown")) {
-          this.value = new MarkdownType();
+        else if (name.equals("valueString")) {
+          this.value = new StringType();
+          return this.value;
+        }
+        else if (name.equals("valueTime")) {
+          this.value = new TimeType();
+          return this.value;
+        }
+        else if (name.equals("valueUnsignedInt")) {
+          this.value = new UnsignedIntType();
+          return this.value;
+        }
+        else if (name.equals("valueUri")) {
+          this.value = new UriType();
+          return this.value;
+        }
+        else if (name.equals("valueUrl")) {
+          this.value = new UrlType();
+          return this.value;
+        }
+        else if (name.equals("valueUuid")) {
+          this.value = new UuidType();
+          return this.value;
+        }
+        else if (name.equals("valueAddress")) {
+          this.value = new Address();
+          return this.value;
+        }
+        else if (name.equals("valueAge")) {
+          this.value = new Age();
           return this.value;
         }
         else if (name.equals("valueAnnotation")) {
@@ -1801,16 +1655,44 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
           this.value = new Attachment();
           return this.value;
         }
-        else if (name.equals("valueIdentifier")) {
-          this.value = new Identifier();
-          return this.value;
-        }
         else if (name.equals("valueCodeableConcept")) {
           this.value = new CodeableConcept();
           return this.value;
         }
         else if (name.equals("valueCoding")) {
           this.value = new Coding();
+          return this.value;
+        }
+        else if (name.equals("valueContactPoint")) {
+          this.value = new ContactPoint();
+          return this.value;
+        }
+        else if (name.equals("valueCount")) {
+          this.value = new Count();
+          return this.value;
+        }
+        else if (name.equals("valueDistance")) {
+          this.value = new Distance();
+          return this.value;
+        }
+        else if (name.equals("valueDuration")) {
+          this.value = new Duration();
+          return this.value;
+        }
+        else if (name.equals("valueHumanName")) {
+          this.value = new HumanName();
+          return this.value;
+        }
+        else if (name.equals("valueIdentifier")) {
+          this.value = new Identifier();
+          return this.value;
+        }
+        else if (name.equals("valueMoney")) {
+          this.value = new Money();
+          return this.value;
+        }
+        else if (name.equals("valuePeriod")) {
+          this.value = new Period();
           return this.value;
         }
         else if (name.equals("valueQuantity")) {
@@ -1821,12 +1703,12 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
           this.value = new Range();
           return this.value;
         }
-        else if (name.equals("valuePeriod")) {
-          this.value = new Period();
-          return this.value;
-        }
         else if (name.equals("valueRatio")) {
           this.value = new Ratio();
+          return this.value;
+        }
+        else if (name.equals("valueReference")) {
+          this.value = new Reference();
           return this.value;
         }
         else if (name.equals("valueSampledData")) {
@@ -1837,28 +1719,44 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
           this.value = new Signature();
           return this.value;
         }
-        else if (name.equals("valueHumanName")) {
-          this.value = new HumanName();
-          return this.value;
-        }
-        else if (name.equals("valueAddress")) {
-          this.value = new Address();
-          return this.value;
-        }
-        else if (name.equals("valueContactPoint")) {
-          this.value = new ContactPoint();
-          return this.value;
-        }
         else if (name.equals("valueTiming")) {
           this.value = new Timing();
           return this.value;
         }
-        else if (name.equals("valueReference")) {
-          this.value = new Reference();
+        else if (name.equals("valueContactDetail")) {
+          this.value = new ContactDetail();
           return this.value;
         }
-        else if (name.equals("valueMeta")) {
-          this.value = new Meta();
+        else if (name.equals("valueContributor")) {
+          this.value = new Contributor();
+          return this.value;
+        }
+        else if (name.equals("valueDataRequirement")) {
+          this.value = new DataRequirement();
+          return this.value;
+        }
+        else if (name.equals("valueExpression")) {
+          this.value = new Expression();
+          return this.value;
+        }
+        else if (name.equals("valueParameterDefinition")) {
+          this.value = new ParameterDefinition();
+          return this.value;
+        }
+        else if (name.equals("valueRelatedArtifact")) {
+          this.value = new RelatedArtifact();
+          return this.value;
+        }
+        else if (name.equals("valueTriggerDefinition")) {
+          this.value = new TriggerDefinition();
+          return this.value;
+        }
+        else if (name.equals("valueUsageContext")) {
+          this.value = new UsageContext();
+          return this.value;
+        }
+        else if (name.equals("valueDosage")) {
+          this.value = new Dosage();
           return this.value;
         }
         else
@@ -1874,22 +1772,22 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof TaskOutputComponent))
+        if (!(other_ instanceof TaskOutputComponent))
           return false;
-        TaskOutputComponent o = (TaskOutputComponent) other;
+        TaskOutputComponent o = (TaskOutputComponent) other_;
         return compareDeep(type, o.type, true) && compareDeep(value, o.value, true);
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof TaskOutputComponent))
+        if (!(other_ instanceof TaskOutputComponent))
           return false;
-        TaskOutputComponent o = (TaskOutputComponent) other;
+        TaskOutputComponent o = (TaskOutputComponent) other_;
         return true;
       }
 
@@ -1912,20 +1810,27 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
     protected List<Identifier> identifier;
 
     /**
-     * A reference to a formal or informal definition of the task.  For example, a protocol, a step within a defined workflow definition, etc.
+     * The URL pointing to a *FHIR*-defined protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Task.
      */
-    @Child(name = "definition", type = {UriType.class, ActivityDefinition.class}, order=1, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Formal definition of task", formalDefinition="A reference to a formal or informal definition of the task.  For example, a protocol, a step within a defined workflow definition, etc." )
-    protected Type definition;
+    @Child(name = "instantiatesCanonical", type = {CanonicalType.class}, order=1, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Formal definition of task", formalDefinition="The URL pointing to a *FHIR*-defined protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Task." )
+    protected CanonicalType instantiatesCanonical;
 
     /**
-     * BasedOn refers to a higher-level authorization that triggered the creation of the task.  It references a "request" resource such as a ProcedureRequest, MedicationRequest, ProcedureRequest, CarePlan, etc. which is distinct from the "request" resource the task is seeking to fulfil.  This latter resource is referenced by FocusOn.  For example, based on a ProcedureRequest (= BasedOn), a task is created to fulfil a procedureRequest ( = FocusOn ) to collect a specimen from a patient.
+     * The URL pointing to an *externally* maintained  protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Task.
      */
-    @Child(name = "basedOn", type = {Reference.class}, order=2, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
-    @Description(shortDefinition="Request fulfilled by this task", formalDefinition="BasedOn refers to a higher-level authorization that triggered the creation of the task.  It references a \"request\" resource such as a ProcedureRequest, MedicationRequest, ProcedureRequest, CarePlan, etc. which is distinct from the \"request\" resource the task is seeking to fulfil.  This latter resource is referenced by FocusOn.  For example, based on a ProcedureRequest (= BasedOn), a task is created to fulfil a procedureRequest ( = FocusOn ) to collect a specimen from a patient." )
+    @Child(name = "instantiatesUri", type = {UriType.class}, order=2, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Formal definition of task", formalDefinition="The URL pointing to an *externally* maintained  protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Task." )
+    protected UriType instantiatesUri;
+
+    /**
+     * BasedOn refers to a higher-level authorization that triggered the creation of the task.  It references a "request" resource such as a ServiceRequest, MedicationRequest, ServiceRequest, CarePlan, etc. which is distinct from the "request" resource the task is seeking to fulfill.  This latter resource is referenced by FocusOn.  For example, based on a ServiceRequest (= BasedOn), a task is created to fulfill a procedureRequest ( = FocusOn ) to collect a specimen from a patient.
+     */
+    @Child(name = "basedOn", type = {Reference.class}, order=3, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Description(shortDefinition="Request fulfilled by this task", formalDefinition="BasedOn refers to a higher-level authorization that triggered the creation of the task.  It references a \"request\" resource such as a ServiceRequest, MedicationRequest, ServiceRequest, CarePlan, etc. which is distinct from the \"request\" resource the task is seeking to fulfill.  This latter resource is referenced by FocusOn.  For example, based on a ServiceRequest (= BasedOn), a task is created to fulfill a procedureRequest ( = FocusOn ) to collect a specimen from a patient." )
     protected List<Reference> basedOn;
     /**
-     * The actual objects that are the target of the reference (BasedOn refers to a higher-level authorization that triggered the creation of the task.  It references a "request" resource such as a ProcedureRequest, MedicationRequest, ProcedureRequest, CarePlan, etc. which is distinct from the "request" resource the task is seeking to fulfil.  This latter resource is referenced by FocusOn.  For example, based on a ProcedureRequest (= BasedOn), a task is created to fulfil a procedureRequest ( = FocusOn ) to collect a specimen from a patient.)
+     * The actual objects that are the target of the reference (BasedOn refers to a higher-level authorization that triggered the creation of the task.  It references a "request" resource such as a ServiceRequest, MedicationRequest, ServiceRequest, CarePlan, etc. which is distinct from the "request" resource the task is seeking to fulfill.  This latter resource is referenced by FocusOn.  For example, based on a ServiceRequest (= BasedOn), a task is created to fulfill a procedureRequest ( = FocusOn ) to collect a specimen from a patient.)
      */
     protected List<Resource> basedOnTarget;
 
@@ -1933,14 +1838,14 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
     /**
      * An identifier that links together multiple tasks and other requests that were created in the same context.
      */
-    @Child(name = "groupIdentifier", type = {Identifier.class}, order=3, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "groupIdentifier", type = {Identifier.class}, order=4, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Requisition or grouper id", formalDefinition="An identifier that links together multiple tasks and other requests that were created in the same context." )
     protected Identifier groupIdentifier;
 
     /**
      * Task that this particular task is part of.
      */
-    @Child(name = "partOf", type = {Task.class}, order=4, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Child(name = "partOf", type = {Task.class}, order=5, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="Composite task", formalDefinition="Task that this particular task is part of." )
     protected List<Reference> partOf;
     /**
@@ -1952,7 +1857,7 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
     /**
      * The current status of the task.
      */
-    @Child(name = "status", type = {CodeType.class}, order=5, min=1, max=1, modifier=false, summary=true)
+    @Child(name = "status", type = {CodeType.class}, order=6, min=1, max=1, modifier=true, summary=true)
     @Description(shortDefinition="draft | requested | received | accepted | +", formalDefinition="The current status of the task." )
     @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/task-status")
     protected Enumeration<TaskStatus> status;
@@ -1960,51 +1865,51 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
     /**
      * An explanation as to why this task is held, failed, was refused, etc.
      */
-    @Child(name = "statusReason", type = {CodeableConcept.class}, order=6, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "statusReason", type = {CodeableConcept.class}, order=7, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Reason for current status", formalDefinition="An explanation as to why this task is held, failed, was refused, etc." )
     protected CodeableConcept statusReason;
 
     /**
      * Contains business-specific nuances of the business state.
      */
-    @Child(name = "businessStatus", type = {CodeableConcept.class}, order=7, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "businessStatus", type = {CodeableConcept.class}, order=8, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="E.g. \"Specimen collected\", \"IV prepped\"", formalDefinition="Contains business-specific nuances of the business state." )
     protected CodeableConcept businessStatus;
 
     /**
-     * Indicates the "level" of actionability associated with the Task.  I.e. Is this a proposed task, a planned task, an actionable task, etc.
+     * Indicates the "level" of actionability associated with the Task, i.e. i+R[9]Cs this a proposed task, a planned task, an actionable task, etc.
      */
-    @Child(name = "intent", type = {CodeType.class}, order=8, min=1, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="proposal | plan | order +", formalDefinition="Indicates the \"level\" of actionability associated with the Task.  I.e. Is this a proposed task, a planned task, an actionable task, etc." )
-    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/request-intent")
+    @Child(name = "intent", type = {CodeType.class}, order=9, min=1, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="unknown | proposal | plan | order | original-order | reflex-order | filler-order | instance-order | option", formalDefinition="Indicates the \"level\" of actionability associated with the Task, i.e. i+R[9]Cs this a proposed task, a planned task, an actionable task, etc." )
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/task-intent")
     protected Enumeration<TaskIntent> intent;
 
     /**
      * Indicates how quickly the Task should be addressed with respect to other requests.
      */
-    @Child(name = "priority", type = {CodeType.class}, order=9, min=0, max=1, modifier=false, summary=false)
-    @Description(shortDefinition="normal | urgent | asap | stat", formalDefinition="Indicates how quickly the Task should be addressed with respect to other requests." )
+    @Child(name = "priority", type = {CodeType.class}, order=10, min=0, max=1, modifier=false, summary=false)
+    @Description(shortDefinition="routine | urgent | asap | stat", formalDefinition="Indicates how quickly the Task should be addressed with respect to other requests." )
     @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/request-priority")
     protected Enumeration<TaskPriority> priority;
 
     /**
      * A name or code (or both) briefly describing what the task involves.
      */
-    @Child(name = "code", type = {CodeableConcept.class}, order=10, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "code", type = {CodeableConcept.class}, order=11, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Task Type", formalDefinition="A name or code (or both) briefly describing what the task involves." )
     protected CodeableConcept code;
 
     /**
      * A free-text description of what is to be performed.
      */
-    @Child(name = "description", type = {StringType.class}, order=11, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "description", type = {StringType.class}, order=12, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Human-readable explanation of task", formalDefinition="A free-text description of what is to be performed." )
     protected StringType description;
 
     /**
      * The request being actioned or the resource being manipulated by this task.
      */
-    @Child(name = "focus", type = {Reference.class}, order=12, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "focus", type = {Reference.class}, order=13, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="What task is acting on", formalDefinition="The request being actioned or the resource being manipulated by this task." )
     protected Reference focus;
 
@@ -2016,7 +1921,7 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
     /**
      * The entity who benefits from the performance of the service specified in the task (e.g., the patient).
      */
-    @Child(name = "for", type = {Reference.class}, order=13, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "for", type = {Reference.class}, order=14, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Beneficiary of the Task", formalDefinition="The entity who benefits from the performance of the service specified in the task (e.g., the patient)." )
     protected Reference for_;
 
@@ -2028,55 +1933,60 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
     /**
      * The healthcare event  (e.g. a patient and healthcare provider interaction) during which this task was created.
      */
-    @Child(name = "context", type = {Encounter.class, EpisodeOfCare.class}, order=14, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "encounter", type = {Encounter.class}, order=15, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Healthcare event during which this task originated", formalDefinition="The healthcare event  (e.g. a patient and healthcare provider interaction) during which this task was created." )
-    protected Reference context;
+    protected Reference encounter;
 
     /**
      * The actual object that is the target of the reference (The healthcare event  (e.g. a patient and healthcare provider interaction) during which this task was created.)
      */
-    protected Resource contextTarget;
+    protected Encounter encounterTarget;
 
     /**
      * Identifies the time action was first taken against the task (start) and/or the time final action was taken against the task prior to marking it as completed (end).
      */
-    @Child(name = "executionPeriod", type = {Period.class}, order=15, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "executionPeriod", type = {Period.class}, order=16, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Start and end time of execution", formalDefinition="Identifies the time action was first taken against the task (start) and/or the time final action was taken against the task prior to marking it as completed (end)." )
     protected Period executionPeriod;
 
     /**
      * The date and time this task was created.
      */
-    @Child(name = "authoredOn", type = {DateTimeType.class}, order=16, min=0, max=1, modifier=false, summary=false)
+    @Child(name = "authoredOn", type = {DateTimeType.class}, order=17, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Task Creation Date", formalDefinition="The date and time this task was created." )
     protected DateTimeType authoredOn;
 
     /**
      * The date and time of last modification to this task.
      */
-    @Child(name = "lastModified", type = {DateTimeType.class}, order=17, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "lastModified", type = {DateTimeType.class}, order=18, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Task Last Modified Date", formalDefinition="The date and time of last modification to this task." )
     protected DateTimeType lastModified;
 
     /**
      * The creator of the task.
      */
-    @Child(name = "requester", type = {}, order=18, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "requester", type = {Device.class, Organization.class, Patient.class, Practitioner.class, PractitionerRole.class, RelatedPerson.class}, order=19, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Who is asking for task to be done", formalDefinition="The creator of the task." )
-    protected TaskRequesterComponent requester;
+    protected Reference requester;
 
     /**
-     * The type of participant that can execute the task.
+     * The actual object that is the target of the reference (The creator of the task.)
      */
-    @Child(name = "performerType", type = {CodeableConcept.class}, order=19, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
-    @Description(shortDefinition="requester | dispatcher | scheduler | performer | monitor | manager | acquirer | reviewer", formalDefinition="The type of participant that can execute the task." )
-    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/task-performer-type")
+    protected Resource requesterTarget;
+
+    /**
+     * The kind of participant that should perform the task.
+     */
+    @Child(name = "performerType", type = {CodeableConcept.class}, order=20, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Description(shortDefinition="Requested performer", formalDefinition="The kind of participant that should perform the task." )
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/performer-role")
     protected List<CodeableConcept> performerType;
 
     /**
      * Individual organization or Device currently responsible for task execution.
      */
-    @Child(name = "owner", type = {Device.class, Organization.class, Patient.class, Practitioner.class, RelatedPerson.class}, order=20, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "owner", type = {Practitioner.class, PractitionerRole.class, Organization.class, CareTeam.class, HealthcareService.class, Patient.class, Device.class, RelatedPerson.class}, order=21, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Responsible individual", formalDefinition="Individual organization or Device currently responsible for task execution." )
     protected Reference owner;
 
@@ -2086,23 +1996,59 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
     protected Resource ownerTarget;
 
     /**
+     * The principal physical location where the this task is performed.
+     */
+    @Child(name = "location", type = {Location.class}, order=22, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Where task occurs", formalDefinition="The principal physical location where the this task is performed." )
+    protected Reference location;
+
+    /**
+     * The actual object that is the target of the reference (The principal physical location where the this task is performed.)
+     */
+    protected Location locationTarget;
+
+    /**
      * A description or code indicating why this task needs to be performed.
      */
-    @Child(name = "reason", type = {CodeableConcept.class}, order=21, min=0, max=1, modifier=false, summary=false)
+    @Child(name = "reasonCode", type = {CodeableConcept.class}, order=23, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Why task is needed", formalDefinition="A description or code indicating why this task needs to be performed." )
-    protected CodeableConcept reason;
+    protected CodeableConcept reasonCode;
+
+    /**
+     * A resource reference indicating why this task needs to be performed.
+     */
+    @Child(name = "reasonReference", type = {Reference.class}, order=24, min=0, max=1, modifier=false, summary=false)
+    @Description(shortDefinition="Why task is needed", formalDefinition="A resource reference indicating why this task needs to be performed." )
+    protected Reference reasonReference;
+
+    /**
+     * The actual object that is the target of the reference (A resource reference indicating why this task needs to be performed.)
+     */
+    protected Resource reasonReferenceTarget;
+
+    /**
+     * Insurance plans, coverage extensions, pre-authorizations and/or pre-determinations that may be relevant to the Task.
+     */
+    @Child(name = "insurance", type = {Coverage.class, ClaimResponse.class}, order=25, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Description(shortDefinition="Associated insurance coverage", formalDefinition="Insurance plans, coverage extensions, pre-authorizations and/or pre-determinations that may be relevant to the Task." )
+    protected List<Reference> insurance;
+    /**
+     * The actual objects that are the target of the reference (Insurance plans, coverage extensions, pre-authorizations and/or pre-determinations that may be relevant to the Task.)
+     */
+    protected List<Resource> insuranceTarget;
+
 
     /**
      * Free-text information captured about the task as it progresses.
      */
-    @Child(name = "note", type = {Annotation.class}, order=22, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "note", type = {Annotation.class}, order=26, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Comments made about the task", formalDefinition="Free-text information captured about the task as it progresses." )
     protected List<Annotation> note;
 
     /**
      * Links to Provenance records for past versions of this Task that identify key state transitions or updates that are likely to be relevant to a user looking at the current version of the task.
      */
-    @Child(name = "relevantHistory", type = {Provenance.class}, order=23, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "relevantHistory", type = {Provenance.class}, order=27, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Key events in history of the Task", formalDefinition="Links to Provenance records for past versions of this Task that identify key state transitions or updates that are likely to be relevant to a user looking at the current version of the task." )
     protected List<Reference> relevantHistory;
     /**
@@ -2112,27 +2058,27 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
 
 
     /**
-     * If the Task.focus is a request resource and the task is seeking fulfillment (i.e is asking for the request to be actioned), this element identifies any limitations on what parts of the referenced request should be actioned.
+     * If the Task.focus is a request resource and the task is seeking fulfillment (i.e. is asking for the request to be actioned), this element identifies any limitations on what parts of the referenced request should be actioned.
      */
-    @Child(name = "restriction", type = {}, order=24, min=0, max=1, modifier=false, summary=false)
-    @Description(shortDefinition="Constraints on fulfillment tasks", formalDefinition="If the Task.focus is a request resource and the task is seeking fulfillment (i.e is asking for the request to be actioned), this element identifies any limitations on what parts of the referenced request should be actioned." )
+    @Child(name = "restriction", type = {}, order=28, min=0, max=1, modifier=false, summary=false)
+    @Description(shortDefinition="Constraints on fulfillment tasks", formalDefinition="If the Task.focus is a request resource and the task is seeking fulfillment (i.e. is asking for the request to be actioned), this element identifies any limitations on what parts of the referenced request should be actioned." )
     protected TaskRestrictionComponent restriction;
 
     /**
      * Additional information that may be needed in the execution of the task.
      */
-    @Child(name = "input", type = {}, order=25, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "input", type = {}, order=29, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Information used to perform task", formalDefinition="Additional information that may be needed in the execution of the task." )
     protected List<ParameterComponent> input;
 
     /**
      * Outputs produced by the Task.
      */
-    @Child(name = "output", type = {}, order=26, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "output", type = {}, order=30, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Information produced as part of task", formalDefinition="Outputs produced by the Task." )
     protected List<TaskOutputComponent> output;
 
-    private static final long serialVersionUID = 2060755798L;
+    private static final long serialVersionUID = -765029272L;
 
   /**
    * Constructor
@@ -2204,52 +2150,105 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
     }
 
     /**
-     * @return {@link #definition} (A reference to a formal or informal definition of the task.  For example, a protocol, a step within a defined workflow definition, etc.)
+     * @return {@link #instantiatesCanonical} (The URL pointing to a *FHIR*-defined protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Task.). This is the underlying object with id, value and extensions. The accessor "getInstantiatesCanonical" gives direct access to the value
      */
-    public Type getDefinition() { 
-      return this.definition;
+    public CanonicalType getInstantiatesCanonicalElement() { 
+      if (this.instantiatesCanonical == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create Task.instantiatesCanonical");
+        else if (Configuration.doAutoCreate())
+          this.instantiatesCanonical = new CanonicalType(); // bb
+      return this.instantiatesCanonical;
+    }
+
+    public boolean hasInstantiatesCanonicalElement() { 
+      return this.instantiatesCanonical != null && !this.instantiatesCanonical.isEmpty();
+    }
+
+    public boolean hasInstantiatesCanonical() { 
+      return this.instantiatesCanonical != null && !this.instantiatesCanonical.isEmpty();
     }
 
     /**
-     * @return {@link #definition} (A reference to a formal or informal definition of the task.  For example, a protocol, a step within a defined workflow definition, etc.)
+     * @param value {@link #instantiatesCanonical} (The URL pointing to a *FHIR*-defined protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Task.). This is the underlying object with id, value and extensions. The accessor "getInstantiatesCanonical" gives direct access to the value
      */
-    public UriType getDefinitionUriType() throws FHIRException { 
-      if (!(this.definition instanceof UriType))
-        throw new FHIRException("Type mismatch: the type UriType was expected, but "+this.definition.getClass().getName()+" was encountered");
-      return (UriType) this.definition;
-    }
-
-    public boolean hasDefinitionUriType() { 
-      return this.definition instanceof UriType;
-    }
-
-    /**
-     * @return {@link #definition} (A reference to a formal or informal definition of the task.  For example, a protocol, a step within a defined workflow definition, etc.)
-     */
-    public Reference getDefinitionReference() throws FHIRException { 
-      if (!(this.definition instanceof Reference))
-        throw new FHIRException("Type mismatch: the type Reference was expected, but "+this.definition.getClass().getName()+" was encountered");
-      return (Reference) this.definition;
-    }
-
-    public boolean hasDefinitionReference() { 
-      return this.definition instanceof Reference;
-    }
-
-    public boolean hasDefinition() { 
-      return this.definition != null && !this.definition.isEmpty();
-    }
-
-    /**
-     * @param value {@link #definition} (A reference to a formal or informal definition of the task.  For example, a protocol, a step within a defined workflow definition, etc.)
-     */
-    public Task setDefinition(Type value) { 
-      this.definition = value;
+    public Task setInstantiatesCanonicalElement(CanonicalType value) { 
+      this.instantiatesCanonical = value;
       return this;
     }
 
     /**
-     * @return {@link #basedOn} (BasedOn refers to a higher-level authorization that triggered the creation of the task.  It references a "request" resource such as a ProcedureRequest, MedicationRequest, ProcedureRequest, CarePlan, etc. which is distinct from the "request" resource the task is seeking to fulfil.  This latter resource is referenced by FocusOn.  For example, based on a ProcedureRequest (= BasedOn), a task is created to fulfil a procedureRequest ( = FocusOn ) to collect a specimen from a patient.)
+     * @return The URL pointing to a *FHIR*-defined protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Task.
+     */
+    public String getInstantiatesCanonical() { 
+      return this.instantiatesCanonical == null ? null : this.instantiatesCanonical.getValue();
+    }
+
+    /**
+     * @param value The URL pointing to a *FHIR*-defined protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Task.
+     */
+    public Task setInstantiatesCanonical(String value) { 
+      if (Utilities.noString(value))
+        this.instantiatesCanonical = null;
+      else {
+        if (this.instantiatesCanonical == null)
+          this.instantiatesCanonical = new CanonicalType();
+        this.instantiatesCanonical.setValue(value);
+      }
+      return this;
+    }
+
+    /**
+     * @return {@link #instantiatesUri} (The URL pointing to an *externally* maintained  protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Task.). This is the underlying object with id, value and extensions. The accessor "getInstantiatesUri" gives direct access to the value
+     */
+    public UriType getInstantiatesUriElement() { 
+      if (this.instantiatesUri == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create Task.instantiatesUri");
+        else if (Configuration.doAutoCreate())
+          this.instantiatesUri = new UriType(); // bb
+      return this.instantiatesUri;
+    }
+
+    public boolean hasInstantiatesUriElement() { 
+      return this.instantiatesUri != null && !this.instantiatesUri.isEmpty();
+    }
+
+    public boolean hasInstantiatesUri() { 
+      return this.instantiatesUri != null && !this.instantiatesUri.isEmpty();
+    }
+
+    /**
+     * @param value {@link #instantiatesUri} (The URL pointing to an *externally* maintained  protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Task.). This is the underlying object with id, value and extensions. The accessor "getInstantiatesUri" gives direct access to the value
+     */
+    public Task setInstantiatesUriElement(UriType value) { 
+      this.instantiatesUri = value;
+      return this;
+    }
+
+    /**
+     * @return The URL pointing to an *externally* maintained  protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Task.
+     */
+    public String getInstantiatesUri() { 
+      return this.instantiatesUri == null ? null : this.instantiatesUri.getValue();
+    }
+
+    /**
+     * @param value The URL pointing to an *externally* maintained  protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Task.
+     */
+    public Task setInstantiatesUri(String value) { 
+      if (Utilities.noString(value))
+        this.instantiatesUri = null;
+      else {
+        if (this.instantiatesUri == null)
+          this.instantiatesUri = new UriType();
+        this.instantiatesUri.setValue(value);
+      }
+      return this;
+    }
+
+    /**
+     * @return {@link #basedOn} (BasedOn refers to a higher-level authorization that triggered the creation of the task.  It references a "request" resource such as a ServiceRequest, MedicationRequest, ServiceRequest, CarePlan, etc. which is distinct from the "request" resource the task is seeking to fulfill.  This latter resource is referenced by FocusOn.  For example, based on a ServiceRequest (= BasedOn), a task is created to fulfill a procedureRequest ( = FocusOn ) to collect a specimen from a patient.)
      */
     public List<Reference> getBasedOn() { 
       if (this.basedOn == null)
@@ -2504,7 +2503,7 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
     }
 
     /**
-     * @return {@link #intent} (Indicates the "level" of actionability associated with the Task.  I.e. Is this a proposed task, a planned task, an actionable task, etc.). This is the underlying object with id, value and extensions. The accessor "getIntent" gives direct access to the value
+     * @return {@link #intent} (Indicates the "level" of actionability associated with the Task, i.e. i+R[9]Cs this a proposed task, a planned task, an actionable task, etc.). This is the underlying object with id, value and extensions. The accessor "getIntent" gives direct access to the value
      */
     public Enumeration<TaskIntent> getIntentElement() { 
       if (this.intent == null)
@@ -2524,7 +2523,7 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
     }
 
     /**
-     * @param value {@link #intent} (Indicates the "level" of actionability associated with the Task.  I.e. Is this a proposed task, a planned task, an actionable task, etc.). This is the underlying object with id, value and extensions. The accessor "getIntent" gives direct access to the value
+     * @param value {@link #intent} (Indicates the "level" of actionability associated with the Task, i.e. i+R[9]Cs this a proposed task, a planned task, an actionable task, etc.). This is the underlying object with id, value and extensions. The accessor "getIntent" gives direct access to the value
      */
     public Task setIntentElement(Enumeration<TaskIntent> value) { 
       this.intent = value;
@@ -2532,14 +2531,14 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
     }
 
     /**
-     * @return Indicates the "level" of actionability associated with the Task.  I.e. Is this a proposed task, a planned task, an actionable task, etc.
+     * @return Indicates the "level" of actionability associated with the Task, i.e. i+R[9]Cs this a proposed task, a planned task, an actionable task, etc.
      */
     public TaskIntent getIntent() { 
       return this.intent == null ? null : this.intent.getValue();
     }
 
     /**
-     * @param value Indicates the "level" of actionability associated with the Task.  I.e. Is this a proposed task, a planned task, an actionable task, etc.
+     * @param value Indicates the "level" of actionability associated with the Task, i.e. i+R[9]Cs this a proposed task, a planned task, an actionable task, etc.
      */
     public Task setIntent(TaskIntent value) { 
         if (this.intent == null)
@@ -2749,41 +2748,46 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
     }
 
     /**
-     * @return {@link #context} (The healthcare event  (e.g. a patient and healthcare provider interaction) during which this task was created.)
+     * @return {@link #encounter} (The healthcare event  (e.g. a patient and healthcare provider interaction) during which this task was created.)
      */
-    public Reference getContext() { 
-      if (this.context == null)
+    public Reference getEncounter() { 
+      if (this.encounter == null)
         if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create Task.context");
+          throw new Error("Attempt to auto-create Task.encounter");
         else if (Configuration.doAutoCreate())
-          this.context = new Reference(); // cc
-      return this.context;
+          this.encounter = new Reference(); // cc
+      return this.encounter;
     }
 
-    public boolean hasContext() { 
-      return this.context != null && !this.context.isEmpty();
+    public boolean hasEncounter() { 
+      return this.encounter != null && !this.encounter.isEmpty();
     }
 
     /**
-     * @param value {@link #context} (The healthcare event  (e.g. a patient and healthcare provider interaction) during which this task was created.)
+     * @param value {@link #encounter} (The healthcare event  (e.g. a patient and healthcare provider interaction) during which this task was created.)
      */
-    public Task setContext(Reference value) { 
-      this.context = value;
+    public Task setEncounter(Reference value) { 
+      this.encounter = value;
       return this;
     }
 
     /**
-     * @return {@link #context} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The healthcare event  (e.g. a patient and healthcare provider interaction) during which this task was created.)
+     * @return {@link #encounter} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The healthcare event  (e.g. a patient and healthcare provider interaction) during which this task was created.)
      */
-    public Resource getContextTarget() { 
-      return this.contextTarget;
+    public Encounter getEncounterTarget() { 
+      if (this.encounterTarget == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create Task.encounter");
+        else if (Configuration.doAutoCreate())
+          this.encounterTarget = new Encounter(); // aa
+      return this.encounterTarget;
     }
 
     /**
-     * @param value {@link #context} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The healthcare event  (e.g. a patient and healthcare provider interaction) during which this task was created.)
+     * @param value {@link #encounter} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The healthcare event  (e.g. a patient and healthcare provider interaction) during which this task was created.)
      */
-    public Task setContextTarget(Resource value) { 
-      this.contextTarget = value;
+    public Task setEncounterTarget(Encounter value) { 
+      this.encounterTarget = value;
       return this;
     }
 
@@ -2912,12 +2916,12 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
     /**
      * @return {@link #requester} (The creator of the task.)
      */
-    public TaskRequesterComponent getRequester() { 
+    public Reference getRequester() { 
       if (this.requester == null)
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create Task.requester");
         else if (Configuration.doAutoCreate())
-          this.requester = new TaskRequesterComponent(); // cc
+          this.requester = new Reference(); // cc
       return this.requester;
     }
 
@@ -2928,13 +2932,28 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
     /**
      * @param value {@link #requester} (The creator of the task.)
      */
-    public Task setRequester(TaskRequesterComponent value) { 
+    public Task setRequester(Reference value) { 
       this.requester = value;
       return this;
     }
 
     /**
-     * @return {@link #performerType} (The type of participant that can execute the task.)
+     * @return {@link #requester} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The creator of the task.)
+     */
+    public Resource getRequesterTarget() { 
+      return this.requesterTarget;
+    }
+
+    /**
+     * @param value {@link #requester} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The creator of the task.)
+     */
+    public Task setRequesterTarget(Resource value) { 
+      this.requesterTarget = value;
+      return this;
+    }
+
+    /**
+     * @return {@link #performerType} (The kind of participant that should perform the task.)
      */
     public List<CodeableConcept> getPerformerType() { 
       if (this.performerType == null)
@@ -3026,27 +3045,173 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
     }
 
     /**
-     * @return {@link #reason} (A description or code indicating why this task needs to be performed.)
+     * @return {@link #location} (The principal physical location where the this task is performed.)
      */
-    public CodeableConcept getReason() { 
-      if (this.reason == null)
+    public Reference getLocation() { 
+      if (this.location == null)
         if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create Task.reason");
+          throw new Error("Attempt to auto-create Task.location");
         else if (Configuration.doAutoCreate())
-          this.reason = new CodeableConcept(); // cc
-      return this.reason;
+          this.location = new Reference(); // cc
+      return this.location;
     }
 
-    public boolean hasReason() { 
-      return this.reason != null && !this.reason.isEmpty();
+    public boolean hasLocation() { 
+      return this.location != null && !this.location.isEmpty();
     }
 
     /**
-     * @param value {@link #reason} (A description or code indicating why this task needs to be performed.)
+     * @param value {@link #location} (The principal physical location where the this task is performed.)
      */
-    public Task setReason(CodeableConcept value) { 
-      this.reason = value;
+    public Task setLocation(Reference value) { 
+      this.location = value;
       return this;
+    }
+
+    /**
+     * @return {@link #location} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The principal physical location where the this task is performed.)
+     */
+    public Location getLocationTarget() { 
+      if (this.locationTarget == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create Task.location");
+        else if (Configuration.doAutoCreate())
+          this.locationTarget = new Location(); // aa
+      return this.locationTarget;
+    }
+
+    /**
+     * @param value {@link #location} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The principal physical location where the this task is performed.)
+     */
+    public Task setLocationTarget(Location value) { 
+      this.locationTarget = value;
+      return this;
+    }
+
+    /**
+     * @return {@link #reasonCode} (A description or code indicating why this task needs to be performed.)
+     */
+    public CodeableConcept getReasonCode() { 
+      if (this.reasonCode == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create Task.reasonCode");
+        else if (Configuration.doAutoCreate())
+          this.reasonCode = new CodeableConcept(); // cc
+      return this.reasonCode;
+    }
+
+    public boolean hasReasonCode() { 
+      return this.reasonCode != null && !this.reasonCode.isEmpty();
+    }
+
+    /**
+     * @param value {@link #reasonCode} (A description or code indicating why this task needs to be performed.)
+     */
+    public Task setReasonCode(CodeableConcept value) { 
+      this.reasonCode = value;
+      return this;
+    }
+
+    /**
+     * @return {@link #reasonReference} (A resource reference indicating why this task needs to be performed.)
+     */
+    public Reference getReasonReference() { 
+      if (this.reasonReference == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create Task.reasonReference");
+        else if (Configuration.doAutoCreate())
+          this.reasonReference = new Reference(); // cc
+      return this.reasonReference;
+    }
+
+    public boolean hasReasonReference() { 
+      return this.reasonReference != null && !this.reasonReference.isEmpty();
+    }
+
+    /**
+     * @param value {@link #reasonReference} (A resource reference indicating why this task needs to be performed.)
+     */
+    public Task setReasonReference(Reference value) { 
+      this.reasonReference = value;
+      return this;
+    }
+
+    /**
+     * @return {@link #reasonReference} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (A resource reference indicating why this task needs to be performed.)
+     */
+    public Resource getReasonReferenceTarget() { 
+      return this.reasonReferenceTarget;
+    }
+
+    /**
+     * @param value {@link #reasonReference} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (A resource reference indicating why this task needs to be performed.)
+     */
+    public Task setReasonReferenceTarget(Resource value) { 
+      this.reasonReferenceTarget = value;
+      return this;
+    }
+
+    /**
+     * @return {@link #insurance} (Insurance plans, coverage extensions, pre-authorizations and/or pre-determinations that may be relevant to the Task.)
+     */
+    public List<Reference> getInsurance() { 
+      if (this.insurance == null)
+        this.insurance = new ArrayList<Reference>();
+      return this.insurance;
+    }
+
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public Task setInsurance(List<Reference> theInsurance) { 
+      this.insurance = theInsurance;
+      return this;
+    }
+
+    public boolean hasInsurance() { 
+      if (this.insurance == null)
+        return false;
+      for (Reference item : this.insurance)
+        if (!item.isEmpty())
+          return true;
+      return false;
+    }
+
+    public Reference addInsurance() { //3
+      Reference t = new Reference();
+      if (this.insurance == null)
+        this.insurance = new ArrayList<Reference>();
+      this.insurance.add(t);
+      return t;
+    }
+
+    public Task addInsurance(Reference t) { //3
+      if (t == null)
+        return this;
+      if (this.insurance == null)
+        this.insurance = new ArrayList<Reference>();
+      this.insurance.add(t);
+      return this;
+    }
+
+    /**
+     * @return The first repetition of repeating field {@link #insurance}, creating it if it does not already exist
+     */
+    public Reference getInsuranceFirstRep() { 
+      if (getInsurance().isEmpty()) {
+        addInsurance();
+      }
+      return getInsurance().get(0);
+    }
+
+    /**
+     * @deprecated Use Reference#setResource(IBaseResource) instead
+     */
+    @Deprecated
+    public List<Resource> getInsuranceTarget() { 
+      if (this.insuranceTarget == null)
+        this.insuranceTarget = new ArrayList<Resource>();
+      return this.insuranceTarget;
     }
 
     /**
@@ -3178,7 +3343,7 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
     }
 
     /**
-     * @return {@link #restriction} (If the Task.focus is a request resource and the task is seeking fulfillment (i.e is asking for the request to be actioned), this element identifies any limitations on what parts of the referenced request should be actioned.)
+     * @return {@link #restriction} (If the Task.focus is a request resource and the task is seeking fulfillment (i.e. is asking for the request to be actioned), this element identifies any limitations on what parts of the referenced request should be actioned.)
      */
     public TaskRestrictionComponent getRestriction() { 
       if (this.restriction == null)
@@ -3194,7 +3359,7 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
     }
 
     /**
-     * @param value {@link #restriction} (If the Task.focus is a request resource and the task is seeking fulfillment (i.e is asking for the request to be actioned), this element identifies any limitations on what parts of the referenced request should be actioned.)
+     * @param value {@link #restriction} (If the Task.focus is a request resource and the task is seeking fulfillment (i.e. is asking for the request to be actioned), this element identifies any limitations on what parts of the referenced request should be actioned.)
      */
     public Task setRestriction(TaskRestrictionComponent value) { 
       this.restriction = value;
@@ -3310,30 +3475,34 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
       protected void listChildren(List<Property> children) {
         super.listChildren(children);
         children.add(new Property("identifier", "Identifier", "The business identifier for this task.", 0, java.lang.Integer.MAX_VALUE, identifier));
-        children.add(new Property("definition[x]", "uri|Reference(ActivityDefinition)", "A reference to a formal or informal definition of the task.  For example, a protocol, a step within a defined workflow definition, etc.", 0, 1, definition));
-        children.add(new Property("basedOn", "Reference(Any)", "BasedOn refers to a higher-level authorization that triggered the creation of the task.  It references a \"request\" resource such as a ProcedureRequest, MedicationRequest, ProcedureRequest, CarePlan, etc. which is distinct from the \"request\" resource the task is seeking to fulfil.  This latter resource is referenced by FocusOn.  For example, based on a ProcedureRequest (= BasedOn), a task is created to fulfil a procedureRequest ( = FocusOn ) to collect a specimen from a patient.", 0, java.lang.Integer.MAX_VALUE, basedOn));
+        children.add(new Property("instantiatesCanonical", "canonical(ActivityDefinition)", "The URL pointing to a *FHIR*-defined protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Task.", 0, 1, instantiatesCanonical));
+        children.add(new Property("instantiatesUri", "uri", "The URL pointing to an *externally* maintained  protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Task.", 0, 1, instantiatesUri));
+        children.add(new Property("basedOn", "Reference(Any)", "BasedOn refers to a higher-level authorization that triggered the creation of the task.  It references a \"request\" resource such as a ServiceRequest, MedicationRequest, ServiceRequest, CarePlan, etc. which is distinct from the \"request\" resource the task is seeking to fulfill.  This latter resource is referenced by FocusOn.  For example, based on a ServiceRequest (= BasedOn), a task is created to fulfill a procedureRequest ( = FocusOn ) to collect a specimen from a patient.", 0, java.lang.Integer.MAX_VALUE, basedOn));
         children.add(new Property("groupIdentifier", "Identifier", "An identifier that links together multiple tasks and other requests that were created in the same context.", 0, 1, groupIdentifier));
         children.add(new Property("partOf", "Reference(Task)", "Task that this particular task is part of.", 0, java.lang.Integer.MAX_VALUE, partOf));
         children.add(new Property("status", "code", "The current status of the task.", 0, 1, status));
         children.add(new Property("statusReason", "CodeableConcept", "An explanation as to why this task is held, failed, was refused, etc.", 0, 1, statusReason));
         children.add(new Property("businessStatus", "CodeableConcept", "Contains business-specific nuances of the business state.", 0, 1, businessStatus));
-        children.add(new Property("intent", "code", "Indicates the \"level\" of actionability associated with the Task.  I.e. Is this a proposed task, a planned task, an actionable task, etc.", 0, 1, intent));
+        children.add(new Property("intent", "code", "Indicates the \"level\" of actionability associated with the Task, i.e. i+R[9]Cs this a proposed task, a planned task, an actionable task, etc.", 0, 1, intent));
         children.add(new Property("priority", "code", "Indicates how quickly the Task should be addressed with respect to other requests.", 0, 1, priority));
         children.add(new Property("code", "CodeableConcept", "A name or code (or both) briefly describing what the task involves.", 0, 1, code));
         children.add(new Property("description", "string", "A free-text description of what is to be performed.", 0, 1, description));
         children.add(new Property("focus", "Reference(Any)", "The request being actioned or the resource being manipulated by this task.", 0, 1, focus));
         children.add(new Property("for", "Reference(Any)", "The entity who benefits from the performance of the service specified in the task (e.g., the patient).", 0, 1, for_));
-        children.add(new Property("context", "Reference(Encounter|EpisodeOfCare)", "The healthcare event  (e.g. a patient and healthcare provider interaction) during which this task was created.", 0, 1, context));
+        children.add(new Property("encounter", "Reference(Encounter)", "The healthcare event  (e.g. a patient and healthcare provider interaction) during which this task was created.", 0, 1, encounter));
         children.add(new Property("executionPeriod", "Period", "Identifies the time action was first taken against the task (start) and/or the time final action was taken against the task prior to marking it as completed (end).", 0, 1, executionPeriod));
         children.add(new Property("authoredOn", "dateTime", "The date and time this task was created.", 0, 1, authoredOn));
         children.add(new Property("lastModified", "dateTime", "The date and time of last modification to this task.", 0, 1, lastModified));
-        children.add(new Property("requester", "", "The creator of the task.", 0, 1, requester));
-        children.add(new Property("performerType", "CodeableConcept", "The type of participant that can execute the task.", 0, java.lang.Integer.MAX_VALUE, performerType));
-        children.add(new Property("owner", "Reference(Device|Organization|Patient|Practitioner|RelatedPerson)", "Individual organization or Device currently responsible for task execution.", 0, 1, owner));
-        children.add(new Property("reason", "CodeableConcept", "A description or code indicating why this task needs to be performed.", 0, 1, reason));
+        children.add(new Property("requester", "Reference(Device|Organization|Patient|Practitioner|PractitionerRole|RelatedPerson)", "The creator of the task.", 0, 1, requester));
+        children.add(new Property("performerType", "CodeableConcept", "The kind of participant that should perform the task.", 0, java.lang.Integer.MAX_VALUE, performerType));
+        children.add(new Property("owner", "Reference(Practitioner|PractitionerRole|Organization|CareTeam|HealthcareService|Patient|Device|RelatedPerson)", "Individual organization or Device currently responsible for task execution.", 0, 1, owner));
+        children.add(new Property("location", "Reference(Location)", "The principal physical location where the this task is performed.", 0, 1, location));
+        children.add(new Property("reasonCode", "CodeableConcept", "A description or code indicating why this task needs to be performed.", 0, 1, reasonCode));
+        children.add(new Property("reasonReference", "Reference(Any)", "A resource reference indicating why this task needs to be performed.", 0, 1, reasonReference));
+        children.add(new Property("insurance", "Reference(Coverage|ClaimResponse)", "Insurance plans, coverage extensions, pre-authorizations and/or pre-determinations that may be relevant to the Task.", 0, java.lang.Integer.MAX_VALUE, insurance));
         children.add(new Property("note", "Annotation", "Free-text information captured about the task as it progresses.", 0, java.lang.Integer.MAX_VALUE, note));
         children.add(new Property("relevantHistory", "Reference(Provenance)", "Links to Provenance records for past versions of this Task that identify key state transitions or updates that are likely to be relevant to a user looking at the current version of the task.", 0, java.lang.Integer.MAX_VALUE, relevantHistory));
-        children.add(new Property("restriction", "", "If the Task.focus is a request resource and the task is seeking fulfillment (i.e is asking for the request to be actioned), this element identifies any limitations on what parts of the referenced request should be actioned.", 0, 1, restriction));
+        children.add(new Property("restriction", "", "If the Task.focus is a request resource and the task is seeking fulfillment (i.e. is asking for the request to be actioned), this element identifies any limitations on what parts of the referenced request should be actioned.", 0, 1, restriction));
         children.add(new Property("input", "", "Additional information that may be needed in the execution of the task.", 0, java.lang.Integer.MAX_VALUE, input));
         children.add(new Property("output", "", "Outputs produced by the Task.", 0, java.lang.Integer.MAX_VALUE, output));
       }
@@ -3342,33 +3511,34 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
       public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
         switch (_hash) {
         case -1618432855: /*identifier*/  return new Property("identifier", "Identifier", "The business identifier for this task.", 0, java.lang.Integer.MAX_VALUE, identifier);
-        case -1139422643: /*definition[x]*/  return new Property("definition[x]", "uri|Reference(ActivityDefinition)", "A reference to a formal or informal definition of the task.  For example, a protocol, a step within a defined workflow definition, etc.", 0, 1, definition);
-        case -1014418093: /*definition*/  return new Property("definition[x]", "uri|Reference(ActivityDefinition)", "A reference to a formal or informal definition of the task.  For example, a protocol, a step within a defined workflow definition, etc.", 0, 1, definition);
-        case -1139428583: /*definitionUri*/  return new Property("definition[x]", "uri|Reference(ActivityDefinition)", "A reference to a formal or informal definition of the task.  For example, a protocol, a step within a defined workflow definition, etc.", 0, 1, definition);
-        case -820021448: /*definitionReference*/  return new Property("definition[x]", "uri|Reference(ActivityDefinition)", "A reference to a formal or informal definition of the task.  For example, a protocol, a step within a defined workflow definition, etc.", 0, 1, definition);
-        case -332612366: /*basedOn*/  return new Property("basedOn", "Reference(Any)", "BasedOn refers to a higher-level authorization that triggered the creation of the task.  It references a \"request\" resource such as a ProcedureRequest, MedicationRequest, ProcedureRequest, CarePlan, etc. which is distinct from the \"request\" resource the task is seeking to fulfil.  This latter resource is referenced by FocusOn.  For example, based on a ProcedureRequest (= BasedOn), a task is created to fulfil a procedureRequest ( = FocusOn ) to collect a specimen from a patient.", 0, java.lang.Integer.MAX_VALUE, basedOn);
+        case 8911915: /*instantiatesCanonical*/  return new Property("instantiatesCanonical", "canonical(ActivityDefinition)", "The URL pointing to a *FHIR*-defined protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Task.", 0, 1, instantiatesCanonical);
+        case -1926393373: /*instantiatesUri*/  return new Property("instantiatesUri", "uri", "The URL pointing to an *externally* maintained  protocol, guideline, orderset or other definition that is adhered to in whole or in part by this Task.", 0, 1, instantiatesUri);
+        case -332612366: /*basedOn*/  return new Property("basedOn", "Reference(Any)", "BasedOn refers to a higher-level authorization that triggered the creation of the task.  It references a \"request\" resource such as a ServiceRequest, MedicationRequest, ServiceRequest, CarePlan, etc. which is distinct from the \"request\" resource the task is seeking to fulfill.  This latter resource is referenced by FocusOn.  For example, based on a ServiceRequest (= BasedOn), a task is created to fulfill a procedureRequest ( = FocusOn ) to collect a specimen from a patient.", 0, java.lang.Integer.MAX_VALUE, basedOn);
         case -445338488: /*groupIdentifier*/  return new Property("groupIdentifier", "Identifier", "An identifier that links together multiple tasks and other requests that were created in the same context.", 0, 1, groupIdentifier);
         case -995410646: /*partOf*/  return new Property("partOf", "Reference(Task)", "Task that this particular task is part of.", 0, java.lang.Integer.MAX_VALUE, partOf);
         case -892481550: /*status*/  return new Property("status", "code", "The current status of the task.", 0, 1, status);
         case 2051346646: /*statusReason*/  return new Property("statusReason", "CodeableConcept", "An explanation as to why this task is held, failed, was refused, etc.", 0, 1, statusReason);
         case 2008591314: /*businessStatus*/  return new Property("businessStatus", "CodeableConcept", "Contains business-specific nuances of the business state.", 0, 1, businessStatus);
-        case -1183762788: /*intent*/  return new Property("intent", "code", "Indicates the \"level\" of actionability associated with the Task.  I.e. Is this a proposed task, a planned task, an actionable task, etc.", 0, 1, intent);
+        case -1183762788: /*intent*/  return new Property("intent", "code", "Indicates the \"level\" of actionability associated with the Task, i.e. i+R[9]Cs this a proposed task, a planned task, an actionable task, etc.", 0, 1, intent);
         case -1165461084: /*priority*/  return new Property("priority", "code", "Indicates how quickly the Task should be addressed with respect to other requests.", 0, 1, priority);
         case 3059181: /*code*/  return new Property("code", "CodeableConcept", "A name or code (or both) briefly describing what the task involves.", 0, 1, code);
         case -1724546052: /*description*/  return new Property("description", "string", "A free-text description of what is to be performed.", 0, 1, description);
         case 97604824: /*focus*/  return new Property("focus", "Reference(Any)", "The request being actioned or the resource being manipulated by this task.", 0, 1, focus);
         case 101577: /*for*/  return new Property("for", "Reference(Any)", "The entity who benefits from the performance of the service specified in the task (e.g., the patient).", 0, 1, for_);
-        case 951530927: /*context*/  return new Property("context", "Reference(Encounter|EpisodeOfCare)", "The healthcare event  (e.g. a patient and healthcare provider interaction) during which this task was created.", 0, 1, context);
+        case 1524132147: /*encounter*/  return new Property("encounter", "Reference(Encounter)", "The healthcare event  (e.g. a patient and healthcare provider interaction) during which this task was created.", 0, 1, encounter);
         case 1218624249: /*executionPeriod*/  return new Property("executionPeriod", "Period", "Identifies the time action was first taken against the task (start) and/or the time final action was taken against the task prior to marking it as completed (end).", 0, 1, executionPeriod);
         case -1500852503: /*authoredOn*/  return new Property("authoredOn", "dateTime", "The date and time this task was created.", 0, 1, authoredOn);
         case 1959003007: /*lastModified*/  return new Property("lastModified", "dateTime", "The date and time of last modification to this task.", 0, 1, lastModified);
-        case 693933948: /*requester*/  return new Property("requester", "", "The creator of the task.", 0, 1, requester);
-        case -901444568: /*performerType*/  return new Property("performerType", "CodeableConcept", "The type of participant that can execute the task.", 0, java.lang.Integer.MAX_VALUE, performerType);
-        case 106164915: /*owner*/  return new Property("owner", "Reference(Device|Organization|Patient|Practitioner|RelatedPerson)", "Individual organization or Device currently responsible for task execution.", 0, 1, owner);
-        case -934964668: /*reason*/  return new Property("reason", "CodeableConcept", "A description or code indicating why this task needs to be performed.", 0, 1, reason);
+        case 693933948: /*requester*/  return new Property("requester", "Reference(Device|Organization|Patient|Practitioner|PractitionerRole|RelatedPerson)", "The creator of the task.", 0, 1, requester);
+        case -901444568: /*performerType*/  return new Property("performerType", "CodeableConcept", "The kind of participant that should perform the task.", 0, java.lang.Integer.MAX_VALUE, performerType);
+        case 106164915: /*owner*/  return new Property("owner", "Reference(Practitioner|PractitionerRole|Organization|CareTeam|HealthcareService|Patient|Device|RelatedPerson)", "Individual organization or Device currently responsible for task execution.", 0, 1, owner);
+        case 1901043637: /*location*/  return new Property("location", "Reference(Location)", "The principal physical location where the this task is performed.", 0, 1, location);
+        case 722137681: /*reasonCode*/  return new Property("reasonCode", "CodeableConcept", "A description or code indicating why this task needs to be performed.", 0, 1, reasonCode);
+        case -1146218137: /*reasonReference*/  return new Property("reasonReference", "Reference(Any)", "A resource reference indicating why this task needs to be performed.", 0, 1, reasonReference);
+        case 73049818: /*insurance*/  return new Property("insurance", "Reference(Coverage|ClaimResponse)", "Insurance plans, coverage extensions, pre-authorizations and/or pre-determinations that may be relevant to the Task.", 0, java.lang.Integer.MAX_VALUE, insurance);
         case 3387378: /*note*/  return new Property("note", "Annotation", "Free-text information captured about the task as it progresses.", 0, java.lang.Integer.MAX_VALUE, note);
         case 1538891575: /*relevantHistory*/  return new Property("relevantHistory", "Reference(Provenance)", "Links to Provenance records for past versions of this Task that identify key state transitions or updates that are likely to be relevant to a user looking at the current version of the task.", 0, java.lang.Integer.MAX_VALUE, relevantHistory);
-        case -1561062452: /*restriction*/  return new Property("restriction", "", "If the Task.focus is a request resource and the task is seeking fulfillment (i.e is asking for the request to be actioned), this element identifies any limitations on what parts of the referenced request should be actioned.", 0, 1, restriction);
+        case -1561062452: /*restriction*/  return new Property("restriction", "", "If the Task.focus is a request resource and the task is seeking fulfillment (i.e. is asking for the request to be actioned), this element identifies any limitations on what parts of the referenced request should be actioned.", 0, 1, restriction);
         case 100358090: /*input*/  return new Property("input", "", "Additional information that may be needed in the execution of the task.", 0, java.lang.Integer.MAX_VALUE, input);
         case -1005512447: /*output*/  return new Property("output", "", "Outputs produced by the Task.", 0, java.lang.Integer.MAX_VALUE, output);
         default: return super.getNamedProperty(_hash, _name, _checkValid);
@@ -3380,7 +3550,8 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
       public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
         switch (hash) {
         case -1618432855: /*identifier*/ return this.identifier == null ? new Base[0] : this.identifier.toArray(new Base[this.identifier.size()]); // Identifier
-        case -1014418093: /*definition*/ return this.definition == null ? new Base[0] : new Base[] {this.definition}; // Type
+        case 8911915: /*instantiatesCanonical*/ return this.instantiatesCanonical == null ? new Base[0] : new Base[] {this.instantiatesCanonical}; // CanonicalType
+        case -1926393373: /*instantiatesUri*/ return this.instantiatesUri == null ? new Base[0] : new Base[] {this.instantiatesUri}; // UriType
         case -332612366: /*basedOn*/ return this.basedOn == null ? new Base[0] : this.basedOn.toArray(new Base[this.basedOn.size()]); // Reference
         case -445338488: /*groupIdentifier*/ return this.groupIdentifier == null ? new Base[0] : new Base[] {this.groupIdentifier}; // Identifier
         case -995410646: /*partOf*/ return this.partOf == null ? new Base[0] : this.partOf.toArray(new Base[this.partOf.size()]); // Reference
@@ -3393,14 +3564,17 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
         case -1724546052: /*description*/ return this.description == null ? new Base[0] : new Base[] {this.description}; // StringType
         case 97604824: /*focus*/ return this.focus == null ? new Base[0] : new Base[] {this.focus}; // Reference
         case 101577: /*for*/ return this.for_ == null ? new Base[0] : new Base[] {this.for_}; // Reference
-        case 951530927: /*context*/ return this.context == null ? new Base[0] : new Base[] {this.context}; // Reference
+        case 1524132147: /*encounter*/ return this.encounter == null ? new Base[0] : new Base[] {this.encounter}; // Reference
         case 1218624249: /*executionPeriod*/ return this.executionPeriod == null ? new Base[0] : new Base[] {this.executionPeriod}; // Period
         case -1500852503: /*authoredOn*/ return this.authoredOn == null ? new Base[0] : new Base[] {this.authoredOn}; // DateTimeType
         case 1959003007: /*lastModified*/ return this.lastModified == null ? new Base[0] : new Base[] {this.lastModified}; // DateTimeType
-        case 693933948: /*requester*/ return this.requester == null ? new Base[0] : new Base[] {this.requester}; // TaskRequesterComponent
+        case 693933948: /*requester*/ return this.requester == null ? new Base[0] : new Base[] {this.requester}; // Reference
         case -901444568: /*performerType*/ return this.performerType == null ? new Base[0] : this.performerType.toArray(new Base[this.performerType.size()]); // CodeableConcept
         case 106164915: /*owner*/ return this.owner == null ? new Base[0] : new Base[] {this.owner}; // Reference
-        case -934964668: /*reason*/ return this.reason == null ? new Base[0] : new Base[] {this.reason}; // CodeableConcept
+        case 1901043637: /*location*/ return this.location == null ? new Base[0] : new Base[] {this.location}; // Reference
+        case 722137681: /*reasonCode*/ return this.reasonCode == null ? new Base[0] : new Base[] {this.reasonCode}; // CodeableConcept
+        case -1146218137: /*reasonReference*/ return this.reasonReference == null ? new Base[0] : new Base[] {this.reasonReference}; // Reference
+        case 73049818: /*insurance*/ return this.insurance == null ? new Base[0] : this.insurance.toArray(new Base[this.insurance.size()]); // Reference
         case 3387378: /*note*/ return this.note == null ? new Base[0] : this.note.toArray(new Base[this.note.size()]); // Annotation
         case 1538891575: /*relevantHistory*/ return this.relevantHistory == null ? new Base[0] : this.relevantHistory.toArray(new Base[this.relevantHistory.size()]); // Reference
         case -1561062452: /*restriction*/ return this.restriction == null ? new Base[0] : new Base[] {this.restriction}; // TaskRestrictionComponent
@@ -3417,8 +3591,11 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
         case -1618432855: // identifier
           this.getIdentifier().add(castToIdentifier(value)); // Identifier
           return value;
-        case -1014418093: // definition
-          this.definition = castToType(value); // Type
+        case 8911915: // instantiatesCanonical
+          this.instantiatesCanonical = castToCanonical(value); // CanonicalType
+          return value;
+        case -1926393373: // instantiatesUri
+          this.instantiatesUri = castToUri(value); // UriType
           return value;
         case -332612366: // basedOn
           this.getBasedOn().add(castToReference(value)); // Reference
@@ -3459,8 +3636,8 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
         case 101577: // for
           this.for_ = castToReference(value); // Reference
           return value;
-        case 951530927: // context
-          this.context = castToReference(value); // Reference
+        case 1524132147: // encounter
+          this.encounter = castToReference(value); // Reference
           return value;
         case 1218624249: // executionPeriod
           this.executionPeriod = castToPeriod(value); // Period
@@ -3472,7 +3649,7 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
           this.lastModified = castToDateTime(value); // DateTimeType
           return value;
         case 693933948: // requester
-          this.requester = (TaskRequesterComponent) value; // TaskRequesterComponent
+          this.requester = castToReference(value); // Reference
           return value;
         case -901444568: // performerType
           this.getPerformerType().add(castToCodeableConcept(value)); // CodeableConcept
@@ -3480,8 +3657,17 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
         case 106164915: // owner
           this.owner = castToReference(value); // Reference
           return value;
-        case -934964668: // reason
-          this.reason = castToCodeableConcept(value); // CodeableConcept
+        case 1901043637: // location
+          this.location = castToReference(value); // Reference
+          return value;
+        case 722137681: // reasonCode
+          this.reasonCode = castToCodeableConcept(value); // CodeableConcept
+          return value;
+        case -1146218137: // reasonReference
+          this.reasonReference = castToReference(value); // Reference
+          return value;
+        case 73049818: // insurance
+          this.getInsurance().add(castToReference(value)); // Reference
           return value;
         case 3387378: // note
           this.getNote().add(castToAnnotation(value)); // Annotation
@@ -3507,8 +3693,10 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
       public Base setProperty(String name, Base value) throws FHIRException {
         if (name.equals("identifier")) {
           this.getIdentifier().add(castToIdentifier(value));
-        } else if (name.equals("definition[x]")) {
-          this.definition = castToType(value); // Type
+        } else if (name.equals("instantiatesCanonical")) {
+          this.instantiatesCanonical = castToCanonical(value); // CanonicalType
+        } else if (name.equals("instantiatesUri")) {
+          this.instantiatesUri = castToUri(value); // UriType
         } else if (name.equals("basedOn")) {
           this.getBasedOn().add(castToReference(value));
         } else if (name.equals("groupIdentifier")) {
@@ -3536,8 +3724,8 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
           this.focus = castToReference(value); // Reference
         } else if (name.equals("for")) {
           this.for_ = castToReference(value); // Reference
-        } else if (name.equals("context")) {
-          this.context = castToReference(value); // Reference
+        } else if (name.equals("encounter")) {
+          this.encounter = castToReference(value); // Reference
         } else if (name.equals("executionPeriod")) {
           this.executionPeriod = castToPeriod(value); // Period
         } else if (name.equals("authoredOn")) {
@@ -3545,13 +3733,19 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
         } else if (name.equals("lastModified")) {
           this.lastModified = castToDateTime(value); // DateTimeType
         } else if (name.equals("requester")) {
-          this.requester = (TaskRequesterComponent) value; // TaskRequesterComponent
+          this.requester = castToReference(value); // Reference
         } else if (name.equals("performerType")) {
           this.getPerformerType().add(castToCodeableConcept(value));
         } else if (name.equals("owner")) {
           this.owner = castToReference(value); // Reference
-        } else if (name.equals("reason")) {
-          this.reason = castToCodeableConcept(value); // CodeableConcept
+        } else if (name.equals("location")) {
+          this.location = castToReference(value); // Reference
+        } else if (name.equals("reasonCode")) {
+          this.reasonCode = castToCodeableConcept(value); // CodeableConcept
+        } else if (name.equals("reasonReference")) {
+          this.reasonReference = castToReference(value); // Reference
+        } else if (name.equals("insurance")) {
+          this.getInsurance().add(castToReference(value));
         } else if (name.equals("note")) {
           this.getNote().add(castToAnnotation(value));
         } else if (name.equals("relevantHistory")) {
@@ -3571,8 +3765,8 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
       public Base makeProperty(int hash, String name) throws FHIRException {
         switch (hash) {
         case -1618432855:  return addIdentifier(); 
-        case -1139422643:  return getDefinition(); 
-        case -1014418093:  return getDefinition(); 
+        case 8911915:  return getInstantiatesCanonicalElement();
+        case -1926393373:  return getInstantiatesUriElement();
         case -332612366:  return addBasedOn(); 
         case -445338488:  return getGroupIdentifier(); 
         case -995410646:  return addPartOf(); 
@@ -3585,14 +3779,17 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
         case -1724546052:  return getDescriptionElement();
         case 97604824:  return getFocus(); 
         case 101577:  return getFor(); 
-        case 951530927:  return getContext(); 
+        case 1524132147:  return getEncounter(); 
         case 1218624249:  return getExecutionPeriod(); 
         case -1500852503:  return getAuthoredOnElement();
         case 1959003007:  return getLastModifiedElement();
         case 693933948:  return getRequester(); 
         case -901444568:  return addPerformerType(); 
         case 106164915:  return getOwner(); 
-        case -934964668:  return getReason(); 
+        case 1901043637:  return getLocation(); 
+        case 722137681:  return getReasonCode(); 
+        case -1146218137:  return getReasonReference(); 
+        case 73049818:  return addInsurance(); 
         case 3387378:  return addNote(); 
         case 1538891575:  return addRelevantHistory(); 
         case -1561062452:  return getRestriction(); 
@@ -3607,7 +3804,8 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
       public String[] getTypesForProperty(int hash, String name) throws FHIRException {
         switch (hash) {
         case -1618432855: /*identifier*/ return new String[] {"Identifier"};
-        case -1014418093: /*definition*/ return new String[] {"uri", "Reference"};
+        case 8911915: /*instantiatesCanonical*/ return new String[] {"canonical"};
+        case -1926393373: /*instantiatesUri*/ return new String[] {"uri"};
         case -332612366: /*basedOn*/ return new String[] {"Reference"};
         case -445338488: /*groupIdentifier*/ return new String[] {"Identifier"};
         case -995410646: /*partOf*/ return new String[] {"Reference"};
@@ -3620,14 +3818,17 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
         case -1724546052: /*description*/ return new String[] {"string"};
         case 97604824: /*focus*/ return new String[] {"Reference"};
         case 101577: /*for*/ return new String[] {"Reference"};
-        case 951530927: /*context*/ return new String[] {"Reference"};
+        case 1524132147: /*encounter*/ return new String[] {"Reference"};
         case 1218624249: /*executionPeriod*/ return new String[] {"Period"};
         case -1500852503: /*authoredOn*/ return new String[] {"dateTime"};
         case 1959003007: /*lastModified*/ return new String[] {"dateTime"};
-        case 693933948: /*requester*/ return new String[] {};
+        case 693933948: /*requester*/ return new String[] {"Reference"};
         case -901444568: /*performerType*/ return new String[] {"CodeableConcept"};
         case 106164915: /*owner*/ return new String[] {"Reference"};
-        case -934964668: /*reason*/ return new String[] {"CodeableConcept"};
+        case 1901043637: /*location*/ return new String[] {"Reference"};
+        case 722137681: /*reasonCode*/ return new String[] {"CodeableConcept"};
+        case -1146218137: /*reasonReference*/ return new String[] {"Reference"};
+        case 73049818: /*insurance*/ return new String[] {"Reference"};
         case 3387378: /*note*/ return new String[] {"Annotation"};
         case 1538891575: /*relevantHistory*/ return new String[] {"Reference"};
         case -1561062452: /*restriction*/ return new String[] {};
@@ -3643,13 +3844,11 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
         if (name.equals("identifier")) {
           return addIdentifier();
         }
-        else if (name.equals("definitionUri")) {
-          this.definition = new UriType();
-          return this.definition;
+        else if (name.equals("instantiatesCanonical")) {
+          throw new FHIRException("Cannot call addChild on a primitive type Task.instantiatesCanonical");
         }
-        else if (name.equals("definitionReference")) {
-          this.definition = new Reference();
-          return this.definition;
+        else if (name.equals("instantiatesUri")) {
+          throw new FHIRException("Cannot call addChild on a primitive type Task.instantiatesUri");
         }
         else if (name.equals("basedOn")) {
           return addBasedOn();
@@ -3693,9 +3892,9 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
           this.for_ = new Reference();
           return this.for_;
         }
-        else if (name.equals("context")) {
-          this.context = new Reference();
-          return this.context;
+        else if (name.equals("encounter")) {
+          this.encounter = new Reference();
+          return this.encounter;
         }
         else if (name.equals("executionPeriod")) {
           this.executionPeriod = new Period();
@@ -3708,7 +3907,7 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
           throw new FHIRException("Cannot call addChild on a primitive type Task.lastModified");
         }
         else if (name.equals("requester")) {
-          this.requester = new TaskRequesterComponent();
+          this.requester = new Reference();
           return this.requester;
         }
         else if (name.equals("performerType")) {
@@ -3718,9 +3917,20 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
           this.owner = new Reference();
           return this.owner;
         }
-        else if (name.equals("reason")) {
-          this.reason = new CodeableConcept();
-          return this.reason;
+        else if (name.equals("location")) {
+          this.location = new Reference();
+          return this.location;
+        }
+        else if (name.equals("reasonCode")) {
+          this.reasonCode = new CodeableConcept();
+          return this.reasonCode;
+        }
+        else if (name.equals("reasonReference")) {
+          this.reasonReference = new Reference();
+          return this.reasonReference;
+        }
+        else if (name.equals("insurance")) {
+          return addInsurance();
         }
         else if (name.equals("note")) {
           return addNote();
@@ -3755,7 +3965,8 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
           for (Identifier i : identifier)
             dst.identifier.add(i.copy());
         };
-        dst.definition = definition == null ? null : definition.copy();
+        dst.instantiatesCanonical = instantiatesCanonical == null ? null : instantiatesCanonical.copy();
+        dst.instantiatesUri = instantiatesUri == null ? null : instantiatesUri.copy();
         if (basedOn != null) {
           dst.basedOn = new ArrayList<Reference>();
           for (Reference i : basedOn)
@@ -3776,7 +3987,7 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
         dst.description = description == null ? null : description.copy();
         dst.focus = focus == null ? null : focus.copy();
         dst.for_ = for_ == null ? null : for_.copy();
-        dst.context = context == null ? null : context.copy();
+        dst.encounter = encounter == null ? null : encounter.copy();
         dst.executionPeriod = executionPeriod == null ? null : executionPeriod.copy();
         dst.authoredOn = authoredOn == null ? null : authoredOn.copy();
         dst.lastModified = lastModified == null ? null : lastModified.copy();
@@ -3787,7 +3998,14 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
             dst.performerType.add(i.copy());
         };
         dst.owner = owner == null ? null : owner.copy();
-        dst.reason = reason == null ? null : reason.copy();
+        dst.location = location == null ? null : location.copy();
+        dst.reasonCode = reasonCode == null ? null : reasonCode.copy();
+        dst.reasonReference = reasonReference == null ? null : reasonReference.copy();
+        if (insurance != null) {
+          dst.insurance = new ArrayList<Reference>();
+          for (Reference i : insurance)
+            dst.insurance.add(i.copy());
+        };
         if (note != null) {
           dst.note = new ArrayList<Annotation>();
           for (Annotation i : note)
@@ -3817,43 +4035,47 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
       }
 
       @Override
-      public boolean equalsDeep(Base other) {
-        if (!super.equalsDeep(other))
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
           return false;
-        if (!(other instanceof Task))
+        if (!(other_ instanceof Task))
           return false;
-        Task o = (Task) other;
-        return compareDeep(identifier, o.identifier, true) && compareDeep(definition, o.definition, true)
-           && compareDeep(basedOn, o.basedOn, true) && compareDeep(groupIdentifier, o.groupIdentifier, true)
-           && compareDeep(partOf, o.partOf, true) && compareDeep(status, o.status, true) && compareDeep(statusReason, o.statusReason, true)
-           && compareDeep(businessStatus, o.businessStatus, true) && compareDeep(intent, o.intent, true) && compareDeep(priority, o.priority, true)
-           && compareDeep(code, o.code, true) && compareDeep(description, o.description, true) && compareDeep(focus, o.focus, true)
-           && compareDeep(for_, o.for_, true) && compareDeep(context, o.context, true) && compareDeep(executionPeriod, o.executionPeriod, true)
+        Task o = (Task) other_;
+        return compareDeep(identifier, o.identifier, true) && compareDeep(instantiatesCanonical, o.instantiatesCanonical, true)
+           && compareDeep(instantiatesUri, o.instantiatesUri, true) && compareDeep(basedOn, o.basedOn, true)
+           && compareDeep(groupIdentifier, o.groupIdentifier, true) && compareDeep(partOf, o.partOf, true)
+           && compareDeep(status, o.status, true) && compareDeep(statusReason, o.statusReason, true) && compareDeep(businessStatus, o.businessStatus, true)
+           && compareDeep(intent, o.intent, true) && compareDeep(priority, o.priority, true) && compareDeep(code, o.code, true)
+           && compareDeep(description, o.description, true) && compareDeep(focus, o.focus, true) && compareDeep(for_, o.for_, true)
+           && compareDeep(encounter, o.encounter, true) && compareDeep(executionPeriod, o.executionPeriod, true)
            && compareDeep(authoredOn, o.authoredOn, true) && compareDeep(lastModified, o.lastModified, true)
            && compareDeep(requester, o.requester, true) && compareDeep(performerType, o.performerType, true)
-           && compareDeep(owner, o.owner, true) && compareDeep(reason, o.reason, true) && compareDeep(note, o.note, true)
-           && compareDeep(relevantHistory, o.relevantHistory, true) && compareDeep(restriction, o.restriction, true)
+           && compareDeep(owner, o.owner, true) && compareDeep(location, o.location, true) && compareDeep(reasonCode, o.reasonCode, true)
+           && compareDeep(reasonReference, o.reasonReference, true) && compareDeep(insurance, o.insurance, true)
+           && compareDeep(note, o.note, true) && compareDeep(relevantHistory, o.relevantHistory, true) && compareDeep(restriction, o.restriction, true)
            && compareDeep(input, o.input, true) && compareDeep(output, o.output, true);
       }
 
       @Override
-      public boolean equalsShallow(Base other) {
-        if (!super.equalsShallow(other))
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
           return false;
-        if (!(other instanceof Task))
+        if (!(other_ instanceof Task))
           return false;
-        Task o = (Task) other;
-        return compareValues(status, o.status, true) && compareValues(intent, o.intent, true) && compareValues(priority, o.priority, true)
-           && compareValues(description, o.description, true) && compareValues(authoredOn, o.authoredOn, true)
-           && compareValues(lastModified, o.lastModified, true);
+        Task o = (Task) other_;
+        return compareValues(instantiatesUri, o.instantiatesUri, true) && compareValues(status, o.status, true)
+           && compareValues(intent, o.intent, true) && compareValues(priority, o.priority, true) && compareValues(description, o.description, true)
+           && compareValues(authoredOn, o.authoredOn, true) && compareValues(lastModified, o.lastModified, true)
+          ;
       }
 
       public boolean isEmpty() {
-        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(identifier, definition, basedOn
-          , groupIdentifier, partOf, status, statusReason, businessStatus, intent, priority
-          , code, description, focus, for_, context, executionPeriod, authoredOn, lastModified
-          , requester, performerType, owner, reason, note, relevantHistory, restriction
-          , input, output);
+        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(identifier, instantiatesCanonical
+          , instantiatesUri, basedOn, groupIdentifier, partOf, status, statusReason, businessStatus
+          , intent, priority, code, description, focus, for_, encounter, executionPeriod
+          , authoredOn, lastModified, requester, performerType, owner, location, reasonCode
+          , reasonReference, insurance, note, relevantHistory, restriction, input, output
+          );
       }
 
   @Override
@@ -3869,7 +4091,7 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
    * Path: <b>Task.owner</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="owner", path="Task.owner", description="Search by task owner", type="reference", target={Device.class, Organization.class, Patient.class, Practitioner.class, RelatedPerson.class } )
+  @SearchParamDefinition(name="owner", path="Task.owner", description="Search by task owner", type="reference", target={CareTeam.class, Device.class, HealthcareService.class, Organization.class, Patient.class, Practitioner.class, PractitionerRole.class, RelatedPerson.class } )
   public static final String SP_OWNER = "owner";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>owner</b>
@@ -3892,17 +4114,17 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
    * <p>
    * Description: <b>Search by task requester</b><br>
    * Type: <b>reference</b><br>
-   * Path: <b>Task.requester.agent</b><br>
+   * Path: <b>Task.requester</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="requester", path="Task.requester.agent", description="Search by task requester", type="reference", target={Device.class, Organization.class, Patient.class, Practitioner.class, RelatedPerson.class } )
+  @SearchParamDefinition(name="requester", path="Task.requester", description="Search by task requester", type="reference", target={Device.class, Organization.class, Patient.class, Practitioner.class, PractitionerRole.class, RelatedPerson.class } )
   public static final String SP_REQUESTER = "requester";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>requester</b>
    * <p>
    * Description: <b>Search by task requester</b><br>
    * Type: <b>reference</b><br>
-   * Path: <b>Task.requester.agent</b><br>
+   * Path: <b>Task.requester</b><br>
    * </p>
    */
   public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam REQUESTER = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_REQUESTER);
@@ -4092,6 +4314,32 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
   public static final ca.uhn.fhir.model.api.Include INCLUDE_PART_OF = new ca.uhn.fhir.model.api.Include("Task:part-of").toLocked();
 
  /**
+   * Search parameter: <b>encounter</b>
+   * <p>
+   * Description: <b>Search by encounter</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>Task.encounter</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="encounter", path="Task.encounter", description="Search by encounter", type="reference", target={Encounter.class } )
+  public static final String SP_ENCOUNTER = "encounter";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>encounter</b>
+   * <p>
+   * Description: <b>Search by encounter</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>Task.encounter</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam ENCOUNTER = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_ENCOUNTER);
+
+/**
+   * Constant for fluent queries to be used to add include statements. Specifies
+   * the path value of "<b>Task:encounter</b>".
+   */
+  public static final ca.uhn.fhir.model.api.Include INCLUDE_ENCOUNTER = new ca.uhn.fhir.model.api.Include("Task:encounter").toLocked();
+
+ /**
    * Search parameter: <b>priority</b>
    * <p>
    * Description: <b>Search by task priority</b><br>
@@ -4205,7 +4453,7 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
    * Path: <b>Task.for</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="patient", path="Task.for", description="Search by patient", type="reference", target={Patient.class } )
+  @SearchParamDefinition(name="patient", path="Task.for.where(resolve() is Patient)", description="Search by patient", type="reference", target={Patient.class } )
   public static final String SP_PATIENT = "patient";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>patient</b>
@@ -4222,58 +4470,6 @@ Refer to [[[RequestGroup]]] for additional information on how this status is use
    * the path value of "<b>Task:patient</b>".
    */
   public static final ca.uhn.fhir.model.api.Include INCLUDE_PATIENT = new ca.uhn.fhir.model.api.Include("Task:patient").toLocked();
-
- /**
-   * Search parameter: <b>organization</b>
-   * <p>
-   * Description: <b>Search by responsible organization</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Task.requester.onBehalfOf</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="organization", path="Task.requester.onBehalfOf", description="Search by responsible organization", type="reference", target={Organization.class } )
-  public static final String SP_ORGANIZATION = "organization";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>organization</b>
-   * <p>
-   * Description: <b>Search by responsible organization</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Task.requester.onBehalfOf</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam ORGANIZATION = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_ORGANIZATION);
-
-/**
-   * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>Task:organization</b>".
-   */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_ORGANIZATION = new ca.uhn.fhir.model.api.Include("Task:organization").toLocked();
-
- /**
-   * Search parameter: <b>context</b>
-   * <p>
-   * Description: <b>Search by encounter or episode</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Task.context</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="context", path="Task.context", description="Search by encounter or episode", type="reference", target={Encounter.class, EpisodeOfCare.class } )
-  public static final String SP_CONTEXT = "context";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>context</b>
-   * <p>
-   * Description: <b>Search by encounter or episode</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Task.context</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam CONTEXT = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_CONTEXT);
-
-/**
-   * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>Task:context</b>".
-   */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_CONTEXT = new ca.uhn.fhir.model.api.Include("Task:context").toLocked();
 
  /**
    * Search parameter: <b>modified</b>

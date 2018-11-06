@@ -39,7 +39,25 @@ public class Invariant {
   private String turtle;
   private String requirements;
   private String expression;
+  private String explanation;
   
+  public Invariant(Invariant inv, String oname, String name, String templateTitle, String abb) {
+    context = inv.context.replace(oname, name);
+    english = inv.english;
+    ocl = inv.ocl;
+    xpath = inv.xpath;
+    id = inv.id.replace("inv", abb);
+    fixedName = inv.fixedName;
+    severity = inv.severity;
+    turtle = inv.turtle;
+    requirements = inv.requirements;
+    expression = inv.expression;
+    explanation = inv.explanation;
+  }
+
+  public Invariant() {
+  }
+
   public String getId()
   {
 	  return id;
@@ -121,6 +139,14 @@ public class Invariant {
 
   public void setExpression(String value) {
     this.expression = value;
+  }
+
+  public String getExplanation() {
+    return explanation;
+  }
+
+  public void setExplanation(String explanation) {
+    this.explanation = explanation;
   }
 
   

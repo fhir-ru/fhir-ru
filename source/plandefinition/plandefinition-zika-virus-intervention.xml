@@ -379,6 +379,28 @@
   <status value="active"/>
   <date value="2017-01-12"/>
   <description value="Zika Virus Management intervention describing the CDC Guidelines for Zika Virus Reporting and Management."/>
+  <useContext>
+    <code>
+      <system value="http://terminology.hl7.org/CodeSystem/usage-context-type"/>
+      <code value="age"/>
+    </code>
+    <valueRange>
+      <low><value value="12"/><unit value="a"/></low>
+    </valueRange>
+  </useContext>
+  <useContext>
+    <code>
+      <system value="http://terminology.hl7.org/CodeSystem/usage-context-type"/>
+      <code value="user"/>
+    </code>
+    <valueCodeableConcept>
+      <coding>
+        <system value="http://snomed.info/sct"/>
+        <code value="309343006"/>
+        <display value="Physician"/>
+      </coding>
+    </valueCodeableConcept>
+  </useContext>
   <topic>
     <text value="Zika Virus Management"/>
   </topic>
@@ -388,73 +410,75 @@
   </relatedArtifact>
   <relatedArtifact>
     <type value="predecessor"/>
-    <resource>
-      <reference value="PlanDefinition/zika-virus-intervention-initial"/>
-    </resource>
+    <resource value="PlanDefinition/zika-virus-intervention-initial"/>
   </relatedArtifact>
-  <library>
-    <reference value="Library/zika-virus-intervention-logic"/>
-  </library>
+  <library value="Library/zika-virus-intervention-logic"/>
   <action>
     <title value="Zika Virus Assessment"/>
-    <triggerDefinition>
+    <trigger>
       <type value="named-event"/>
       <name value="patient-view"/>
-    </triggerDefinition>
+    </trigger>
     <condition>
       <kind value="applicability"/>
-      <expression value="Is Patient Pregnant"/>
+      <expression>
+        <language value="text/cql"/>
+        <expression value="Is Patient Pregnant"/>
+      </expression>
     </condition>
     <action>
 		<condition>
 			<kind value="applicability"/>
-			<expression value="Should Administer Zika Virus Exposure Assessment"/>
+            <expression>
+              <language value="text/cql"/>
+              <expression value="Should Administer Zika Virus Exposure Assessment"/>
+            </expression>
 		</condition>
-		<definition>
-			<reference value="ActivityDefinition/administer-zika-virus-exposure-assessment"/>
-		</definition>
+		<definitionCanonical value="ActivityDefinition/administer-zika-virus-exposure-assessment"/>
     </action>
     <action>
 		<condition>
 			<kind value="applicability"/>
-			<expression value="Should Order Serum + Urine rRT-PCR Test"/>
+            <expression>
+              <language value="text/cql"/>
+			  <expression value="Should Order Serum + Urine rRT-PCR Test"/>
+			</expression>
 		</condition>
-		<definition>
-			<reference value="ActivityDefinition/order-serum-urine-rrt-pcr-test"/>
-		</definition>
+		<definitionCanonical value="ActivityDefinition/order-serum-urine-rrt-pcr-test"/>
     </action>
     <action>
 		<condition>
 			<kind value="applicability"/>
-			<expression value="Should Order Serum Zika Virus IgM + Dengue Virus IgM"/>
+            <expression>
+              <language value="text/cql"/>
+			  <expression value="Should Order Serum Zika Virus IgM + Dengue Virus IgM"/>
+			</expression>
 		</condition>
-		<definition>
-			<reference value="ActivityDefinition/order-serum-zika-dengue-virus-igm"/>
-		</definition>
+		<definitionCanonical value="ActivityDefinition/order-serum-zika-dengue-virus-igm"/>
     </action>
     <action>
 		<condition>
 			<kind value="applicability"/>
-			<expression value="Should Consider IgM Antibody Testing"/>
+            <expression>
+              <language value="text/cql"/>
+			  <expression value="Should Consider IgM Antibody Testing"/>
+			</expression>
 		</condition>
-		<definition>
-			<reference value="ActivityDefinition/consider-igm-antibody-testing"/>
-		</definition>
+		<definitionCanonical value="ActivityDefinition/consider-igm-antibody-testing"/>
     </action>
     <action>
 		<condition>
 			<kind value="applicability"/>
-			<expression value="Should Provide Mosquito Prevention and Contraception Advice"/>
+            <expression>
+              <language value="text/cql"/>
+			  <expression value="Should Provide Mosquito Prevention and Contraception Advice"/>
+			</expression>
 		</condition>
 		<action>
-			<definition>
-				<reference value="ActivityDefinition/provide-mosquito-prevention-advice"/>
-			</definition>
+			<definitionCanonical value="ActivityDefinition/provide-mosquito-prevention-advice"/>
 		</action>
 		<action>
-			<definition>
-				<reference value="ActivityDefinition/provide-contraception-advice"/>
-			</definition>
+			<definitionCanonical value="ActivityDefinition/provide-contraception-advice"/>
 		</action>
     </action>
   </action>

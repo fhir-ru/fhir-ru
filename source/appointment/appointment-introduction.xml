@@ -1,6 +1,6 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 	<div>
-<a name="scope"> </a>
+<a name="scope"></a>
 		<h2>Scope and Usage</h2>
 		<p>
 			Appointment resources are used to provide information about
@@ -20,14 +20,14 @@
 			appointment / calendar standards widely used outside of healthcare.
 		</p>
 
-<a name="basic-workflow"> </a>
+<a name="basic-workflow"></a>
     <h3>The basic workflow to create an appointment</h3>
 		<ul>
 			<li>
 				<b>Discovery/Addressing</b>
 				<p>
 					Before an appointment can be made, the address/endpoint details of the resource that we want 
-					to schedule an appointment with must be determined. This is often based on the healthcare Service Type
+					to schedule an appointment with must be determined. This is often based on the healthcare service type
 					and any formatting information which indicates how to make the request.
 					This is typically handled via the Schedule resource.
 				</p>
@@ -36,7 +36,7 @@
 				<b>Checking Availability on the Schedule (optional)</b>
 				<p>
 					This optional step permits the checking of any existing available times 
-					(<a href="slot.html">slot</a> resources associated with a selected <a href="schedule.html">schedule</a>) that can be booked against.
+					(<a href="slot.html">Slot</a> resources associated with a selected <a href="schedule.html">Schedule</a>) that can be booked against.
 					Just because a time is indicated as available doesn't guarantee that an appointment can be made.
 					The booking system that is going to process the request may make other qualifying decisions to
 					determine if the appointment can be made, such as permissions, assessments, availability of other
@@ -82,9 +82,26 @@
 					start again, with other systems replying to a new set of times.
 				</p>
 			</li>
+			<li>
+				<b>Waitlisting the Appointment (optional)</b>
+				<p>
+					This optional step permits creating a waitlisted appointment. This could occur if an
+					appointment needs to be booked into a time that is not ideal for the patient due to lack of available
+					time slots.  In this workflow, there would be two appointments, the booked appointment in the time 
+					slot that is currently available, and the waitlisted appointment with a requestedPeriod spanning the
+					time that the patient would prefer if new slots become available.
+				</p>
+				<p>				
+					If new time slots become available during the requestedPeriod, the scheduling system, or staff
+					at the scheduling organization, can notify the patient that a new time slot is available.  If the patient
+					chooses, the waitlisted appointment would then be booked into that specific slot, and the previously booked 
+					appointment would be canceled.  The specific business process for notifying patients of new availablity is not
+					specified, and is up to the implementing system to determine.					
+				</p>
+			</li>
 		</ul>
 
-<a name="workflow-types"> </a>
+<a name="workflow-types"></a>
 		<h3>There are 2 typical workflows that occur with appointments</h3>
 		<ul>
 			<li>
@@ -105,19 +122,17 @@
 					Consideration should be given to situations where scheduling needs to be handled
 					in more of a queue-like process.
 				</p>
-				<blockquote>
-					<p>
+[%impl-note%]
 						Note: This type of clinical appointment scheduling has not been specifically covered
 						with this definition of the Appointment resource (and other related resources), however if you
 						would like to contribute to the modification of this resource to cover these use cases,
 						please contact the HL7 Patient Administration work-group.
-					</p>
-				</blockquote>
+[%end-note%]
 			</li>
 		</ul>
 	</div>
   <div>
-<a name="bnr"> </a>
+<a name="bnr"></a>
     <h2>Boundaries and Relationships</h2>
 		<h3>Appointment Request/Response Pattern</h3>
 		<p>
@@ -142,7 +157,7 @@
 			If you need multiple actors of a specific type, then multiple participants with that type value
 			are included on the appointment.
 		</p>
-<a name="statuses"> </a>
+<a name="statuses"></a>
     <h3>Appointment Statuses and Encounters</h3>
     <p>
       Appointments can be considered as Administrative only, and the Encounter is expected to have
@@ -159,13 +174,13 @@
     </p>
     <p>
       The Appointment request pattern used is different from the order-response pattern used elsewhere in FHIR.<br/>
-      This is due to the close relationship to the iCAL standard. Many non-clinical systems use generic
+      This is due to the close relationship to the iCal standard. Many non-clinical systems use generic
       non-health appointment systems which implement this standard, and the desire to integrate
       with the consumer who has no access to health based software is highly desirable.<br/>
-      The mappings to the iCAL standard have been provided to guide implementation of gateways between
-      FHIR servers and iCAL systems.
+      The mappings to the iCal standard have been provided to guide implementation of gateways between
+      FHIR servers and iCal systems.
     </p>
-<a name="location"> </a>
+<a name="location"></a>
 		<h3>Appointment Locations and Participation</h3>
 		<p>
 			The location of the appointment is to be defined by using a participant that references a Location

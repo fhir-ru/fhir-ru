@@ -67,6 +67,7 @@ import org.hl7.fhir.dstu3.utils.TranslatingUtilities;
 import org.hl7.fhir.dstu3.utils.formats.CSVWriter;
 import org.hl7.fhir.exceptions.DefinitionException;
 import org.hl7.fhir.exceptions.FHIRException;
+import org.hl7.fhir.exceptions.FHIRFormatError;
 import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.validation.ValidationMessage;
@@ -805,7 +806,7 @@ public class ProfileUtilities extends TranslatingUtilities {
   }
 
 
-  private ElementDefinition overWriteWithCurrent(ElementDefinition profile, ElementDefinition usage) {
+  private ElementDefinition overWriteWithCurrent(ElementDefinition profile, ElementDefinition usage) throws FHIRFormatError {
     ElementDefinition res = profile.copy();
     if (usage.hasSliceName())
       res.setSliceName(usage.getSliceName());
@@ -945,7 +946,7 @@ public class ProfileUtilities extends TranslatingUtilities {
     if (type.hasProfile() && !type.getCode().equals("Reference"))  
       sd = context.fetchResource(StructureDefinition.class, type.getProfile()); 
     if (sd == null)
-      sd = context.fetchResource(StructureDefinition.class, "http://hl7.org/fhir/StructureDefinition/"+type.getCode());
+      sd = context.fetchTypeDefinition(type.getCode());
     if (sd == null)
       System.out.println("XX: failed to find profle for type: " + type.getCode()); // debug GJM
     return sd;
@@ -1573,7 +1574,7 @@ public class ProfileUtilities extends TranslatingUtilities {
     return !p.contains(".");
   }
 
-  public XhtmlNode generateExtensionTable(String defFile, StructureDefinition ed, String imageFolder, boolean inlineGraphics, boolean full, String corePath, String imagePath) throws IOException, FHIRException {
+  public XhtmlNode generateExtensionTable(String defFile, StructureDefinition ed, String imageFolder, boolean inlineGraphics, boolean full, String corePath, String imagePath, Set<String> outputTracker) throws IOException, FHIRException {
     HierarchicalTableGenerator gen = new HierarchicalTableGenerator(imageFolder, inlineGraphics);
     gen.setTranslator(getTranslator());
     TableModel model = gen.initNormalTable(corePath, false);
@@ -1653,7 +1654,7 @@ public class ProfileUtilities extends TranslatingUtilities {
     r.getCells().add(c);
     
     try {
-      return gen.generate(model, corePath, 0);
+      return gen.generate(model, corePath, 0, outputTracker);
   	} catch (org.hl7.fhir.exceptions.FHIRException e) {
   		throw new FHIRException(e.getMessage(), e);
   	}
@@ -1833,8 +1834,8 @@ public class ProfileUtilities extends TranslatingUtilities {
     case BUNDLED : return "b";
     case CONTAINED : return "c";
     case REFERENCED: return "r";
+	 default: return "?";
     }
-    return "?";
   }
 
 
@@ -1941,7 +1942,7 @@ public class ProfileUtilities extends TranslatingUtilities {
     return piece;
   }
 
-  public XhtmlNode generateTable(String defFile, StructureDefinition profile, boolean diff, String imageFolder, boolean inlineGraphics, String profileBaseFileName, boolean snapshot, String corePath, String imagePath, boolean logicalModel, boolean allInvariants) throws IOException, FHIRException {
+  public XhtmlNode generateTable(String defFile, StructureDefinition profile, boolean diff, String imageFolder, boolean inlineGraphics, String profileBaseFileName, boolean snapshot, String corePath, String imagePath, boolean logicalModel, boolean allInvariants, Set<String> outputTracker) throws IOException, FHIRException {
     assert(diff != snapshot);// check it's ok to get rid of one of these
     HierarchicalTableGenerator gen = new HierarchicalTableGenerator(imageFolder, inlineGraphics);
     gen.setTranslator(getTranslator());
@@ -1951,14 +1952,14 @@ public class ProfileUtilities extends TranslatingUtilities {
     profiles.add(profile);
     genElement(defFile == null ? null : defFile+"#", gen, model.getRows(), list.get(0), list, profiles, diff, profileBaseFileName, null, snapshot, corePath, imagePath, true, logicalModel, profile.getDerivation() == TypeDerivationRule.CONSTRAINT && usesMustSupport(list), allInvariants);
     try {
-      return gen.generate(model, imagePath, 0);
+      return gen.generate(model, imagePath, 0, outputTracker);
   	} catch (org.hl7.fhir.exceptions.FHIRException e) {
   		throw new FHIRException(e.getMessage(), e);
   	}
   }
 
 
-  public XhtmlNode generateGrid(String defFile, StructureDefinition profile, String imageFolder, boolean inlineGraphics, String profileBaseFileName, String corePath, String imagePath) throws IOException, FHIRException {
+  public XhtmlNode generateGrid(String defFile, StructureDefinition profile, String imageFolder, boolean inlineGraphics, String profileBaseFileName, String corePath, String imagePath, Set<String> outputTracker) throws IOException, FHIRException {
     HierarchicalTableGenerator gen = new HierarchicalTableGenerator(imageFolder, inlineGraphics);
     gen.setTranslator(getTranslator());
     TableModel model = gen.initGridTable(corePath);
@@ -1967,7 +1968,7 @@ public class ProfileUtilities extends TranslatingUtilities {
     profiles.add(profile);
     genGridElement(defFile == null ? null : defFile+"#", gen, model.getRows(), list.get(0), list, profiles, true, profileBaseFileName, null, corePath, imagePath, true, profile.getDerivation() == TypeDerivationRule.CONSTRAINT && usesMustSupport(list));
     try {
-      return gen.generate(model, imagePath, 1);
+      return gen.generate(model, imagePath, 1, outputTracker);
     } catch (org.hl7.fhir.exceptions.FHIRException e) {
       throw new FHIRException(e.getMessage(), e);
     }
@@ -2032,13 +2033,13 @@ public class ProfileUtilities extends TranslatingUtilities {
       Cell gc = gen.new Cell();
       row.getCells().add(gc);
       if (element != null && element.getIsModifier())
-        checkForNoChange(element.getIsModifierElement(), gc.addImage(imagePath+"modifier.png", translate("sd.table", "This element is a modifier element"), "?!", null, null));
+        checkForNoChange(element.getIsModifierElement(), gc.addStyledText(translate("sd.table", "This element is a modifier element"), "?!", null, null, null, false));
       if (element != null && element.getMustSupport())
-        checkForNoChange(element.getMustSupportElement(), gc.addImage(imagePath+"mustsupport.png", translate("sd.table", "This element must be supported"), "S", "white", "red"));
+        checkForNoChange(element.getMustSupportElement(), gc.addStyledText(translate("sd.table", "This element must be supported"), "S", "white", "red", null, false));
       if (element != null && element.getIsSummary())
-        checkForNoChange(element.getIsSummaryElement(), gc.addImage(imagePath+"summary.png", translate("sd.table", "This element is included in summaries"), "Σ", null, null));
+        checkForNoChange(element.getIsSummaryElement(), gc.addStyledText(translate("sd.table", "This element is included in summaries"), "\u03A3", null, null, null, false));
       if (element != null && (!element.getConstraint().isEmpty() || !element.getCondition().isEmpty()))
-        gc.addImage(imagePath+"lock.png", translate("sd.table", "This element has or is affected by some invariants"), "I", null, null);
+        gc.addStyledText(translate("sd.table", "This element has or is affected by some invariants"), "I", null, null, null, false);
 
       ExtensionContext extDefn = null;
       if (ext) {
@@ -2108,7 +2109,7 @@ public class ProfileUtilities extends TranslatingUtilities {
             if (child.getPath().endsWith(".extension") || child.getPath().endsWith(".modifierExtension"))
               genElement(defPath, gen, row.getSubRows(), child, all, profiles, showMissing, profileBaseFileName, true, false, corePath, imagePath, false, logicalModel, isConstraintMode, allInvariants);
       }
-    }
+    } 
   }
 
   private void genGridElement(String defPath, HierarchicalTableGenerator gen, List<Row> rows, ElementDefinition element, List<ElementDefinition> all, List<StructureDefinition> profiles, boolean showMissing, String profileBaseFileName, Boolean extensions, String corePath, String imagePath, boolean root, boolean isConstraintMode) throws IOException {
@@ -2279,7 +2280,7 @@ public class ProfileUtilities extends TranslatingUtilities {
         if (definition != null && definition.hasShort()) {
           if (!c.getPieces().isEmpty()) c.addPiece(gen.new Piece("br"));
           c.addPiece(checkForNoChange(definition.getShortElement(), gen.new Piece(null, gt(definition.getShortElement()), null)));
-        } else if (fallback != null && fallback != null && fallback.hasShort()) {
+        } else if (fallback != null && fallback.hasShort()) {
           if (!c.getPieces().isEmpty()) c.addPiece(gen.new Piece("br"));
           c.addPiece(checkForNoChange(fallback.getShortElement(), gen.new Piece(null, gt(fallback.getShortElement()), null)));
         }
@@ -2619,7 +2620,7 @@ public class ProfileUtilities extends TranslatingUtilities {
   }
 
   private boolean isDataType(String value) {
-    StructureDefinition sd = context.fetchResource(StructureDefinition.class, "http://hl7.org/fhir/StructureDefinition/"+value);
+    StructureDefinition sd = context.fetchTypeDefinition(value);
     return sd != null && sd.getKind() == StructureDefinitionKind.COMPLEXTYPE;
   }
 
@@ -2628,7 +2629,7 @@ public class ProfileUtilities extends TranslatingUtilities {
   }
 
   public boolean isPrimitive(String value) {
-    StructureDefinition sd = context.fetchResource(StructureDefinition.class, "http://hl7.org/fhir/StructureDefinition/"+value);
+    StructureDefinition sd = context.fetchTypeDefinition(value);
     return sd != null && sd.getKind() == StructureDefinitionKind.PRIMITIVETYPE;
   }
 
@@ -2843,12 +2844,12 @@ public class ProfileUtilities extends TranslatingUtilities {
           else
           ccmp = new ElementDefinitionComparer(true, profile.getSnapshot().getElement(), ed.getType().get(0).getCode(), child.getSelf().getPath().length(), cmp.name);
         } else if (ed.getType().size() == 1 && !ed.getType().get(0).getCode().equals("*")) {
-          StructureDefinition profile = context.fetchResource(StructureDefinition.class, "http://hl7.org/fhir/StructureDefinition/"+ed.getType().get(0).getCode());
+          StructureDefinition profile = context.fetchTypeDefinition(ed.getType().get(0).getCode());
           if (profile==null)
             throw new FHIRException("Unable to resolve profile " + "http://hl7.org/fhir/StructureDefinition/"+ed.getType().get(0).getCode() + " in element " + ed.getPath());
           ccmp = new ElementDefinitionComparer(false, profile.getSnapshot().getElement(), ed.getType().get(0).getCode(), child.getSelf().getPath().length(), cmp.name);
         } else if (child.getSelf().getType().size() == 1) {
-          StructureDefinition profile = context.fetchResource(StructureDefinition.class, "http://hl7.org/fhir/StructureDefinition/"+child.getSelf().getType().get(0).getCode());
+          StructureDefinition profile = context.fetchTypeDefinition(child.getSelf().getType().get(0).getCode());
           if (profile==null)
             throw new FHIRException("Unable to resolve profile " + "http://hl7.org/fhir/StructureDefinition/"+ed.getType().get(0).getCode() + " in element " + ed.getPath());
           ccmp = new ElementDefinitionComparer(false, profile.getSnapshot().getElement(), child.getSelf().getType().get(0).getCode(), child.getSelf().getPath().length(), cmp.name);
@@ -2856,7 +2857,7 @@ public class ProfileUtilities extends TranslatingUtilities {
           String edLastNode = ed.getPath().replaceAll("(.*\\.)*(.*)", "$2");
           String childLastNode = child.getSelf().getPath().replaceAll("(.*\\.)*(.*)", "$2");
           String p = childLastNode.substring(edLastNode.length()-3);
-          StructureDefinition sd = context.fetchResource(StructureDefinition.class, "http://hl7.org/fhir/StructureDefinition/"+p);
+          StructureDefinition sd = context.fetchTypeDefinition(p);
           if (sd == null)
             throw new Error("Unable to find profile "+p);
           ccmp = new ElementDefinitionComparer(false, sd.getSnapshot().getElement(), p, child.getSelf().getPath().length(), cmp.name);
@@ -3435,7 +3436,7 @@ public class ProfileUtilities extends TranslatingUtilities {
     
   }
 
-  public XhtmlNode generateSpanningTable(StructureDefinition profile, String imageFolder, boolean onlyConstraints, String constraintPrefix) throws IOException, FHIRException {
+  public XhtmlNode generateSpanningTable(StructureDefinition profile, String imageFolder, boolean onlyConstraints, String constraintPrefix, Set<String> outputTracker) throws IOException, FHIRException {
     HierarchicalTableGenerator gen = new HierarchicalTableGenerator(imageFolder, false);
     gen.setTranslator(getTranslator());
     TableModel model = initSpanningTable(gen, "", false);
@@ -3443,7 +3444,7 @@ public class ProfileUtilities extends TranslatingUtilities {
     SpanEntry span = buildSpanningTable("(focus)", "", profile, processed, onlyConstraints, constraintPrefix);
     
     genSpanEntry(gen, model.getRows(), span);
-    return gen.generate(model, "", 0);
+    return gen.generate(model, "", 0, outputTracker);
   }
 
   private SpanEntry buildSpanningTable(String name, String cardinality, StructureDefinition profile, Set<String> processed, boolean onlyConstraints, String constraintPrefix) throws IOException {

@@ -1,11 +1,23 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <Condition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/condition.xsd">
   <id value="f201"/>
   <identifier>
     <value value="12345"/>
   </identifier>
-  <clinicalStatus value="resolved"/>
-  <verificationStatus value="confirmed"/>
+  <clinicalStatus>
+    <coding>
+      <system value="http://terminology.hl7.org/CodeSystem/condition-clinical"/>
+      <code value="resolved"/>
+    </coding>
+  </clinicalStatus>
+
+  <verificationStatus>
+    <coding>
+      <system value="http://terminology.hl7.org/CodeSystem/condition-ver-status"/>
+      <code value="confirmed"/>
+    </coding>
+  </verificationStatus>
+
   <category>
     <!--The fever is a mild problem-->
     <coding>
@@ -14,7 +26,7 @@
       <display value="Problem"/>
     </coding>
     <coding>
-      <system value="http://hl7.org/fhir/condition-category"/>
+      <system value="http://terminology.hl7.org/CodeSystem/condition-category"/>
       <code value="problem-list-item"/>
     </coding>
   </category>
@@ -47,12 +59,12 @@
     <reference value="Patient/f201"/>
     <display value="Roel"/>
   </subject>
-  <context>
+  <encounter>
     <reference value="Encounter/f201"/>
-  </context>
+  </encounter>
   <onsetDateTime value="2013-04-02"/>
   <abatementString value="around April 9, 2013"/>
-  <assertedDate value="2013-04-04"/>
+  <recordedDate value="2013-04-04"/>
   <recorder>
     <reference value="Practitioner/f201"/>
   </recorder>

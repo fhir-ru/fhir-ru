@@ -1,12 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <CodeSystem xmlns="http://hl7.org/fhir">
   <id value="resource-status"/>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
+    <valueCode value="trial-use"/> 
+  </extension> 
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="3"/> 
+  </extension> 
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
+    <valueCode value="mnm"/> 
+  </extension>   
   <url value="http://hl7.org/fhir/resource-status"/>
   <name value="Canonical Status Codes for FHIR Resources"/>
   <status value="draft"/>
   <publisher value="FHIR Project"/>
-  <description value="The master set of status codes used through out FHIR. All status codes are mapped to one of these codes."/>
+  <description value="The master set of status codes used throughout FHIR. All status codes are mapped to one of these codes."/>
   <valueSet value="http://hl7.org/fhir/ValueSet/resource-status"/>
   <hierarchyMeaning value="is-a"/>
   <caseSensitive value="true"/>
@@ -159,12 +168,12 @@
   <concept>
     <code value="transduc-discon"/>
     <display value="transduc-discon"/>
-    <definition value="The device transducer is diconnected"/>
+    <definition value="The device transducer is disconnected"/>
   </concept>
   <concept>
     <code value="hw-discon"/>
     <display value="hw-discon"/>
-    <definition value="The hardware is diconnected"/>
+    <definition value="The hardware is disconnected"/>
   </concept>
  
 </CodeSystem>

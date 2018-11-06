@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <Bundle xmlns="http://hl7.org/fhir">
 	<id value="f202"/>
 	<type value="collection"/>
@@ -16,7 +16,7 @@
 						<display value="Laboratory test"/>
 					</coding>
 					<coding>
-						<system value="http://hl7.org/fhir/v2/0074"/>
+						<system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
 						<code value="LAB"/>
 					</coding>
 				</category>
@@ -41,13 +41,13 @@
 					<display value="Results for staphylococcus analysis on Roel's blood culture"/>
 				</result>
 				<conclusion value="Blood culture tested positive on staphylococcus aureus"/>
-				<codedDiagnosis>
+				<conclusionCode>
 					<coding>
 						<system value="http://snomed.info/sct"/>
 						<code value="428763004"/>
 						<display value="Bacteremia due to staphylococcus"/>
 					</coding>
-				</codedDiagnosis>
+				</conclusionCode>
 			</DiagnosticReport>
 		</resource>
 	</entry>
@@ -69,15 +69,13 @@
 					<reference value="Patient/f201"/>
 					<display value="Roel"/>
 				</subject>
-				<context>
+				<encounter>
 					<reference value="Encounter/f203"/>
-					<display value="Roel's encounter on March eleventh 2013"/>
-				</context>
+					<display value="Roel's encounter on March elevanth 2013"/>
+				</encounter>
 				<requester>
-					<agent>
 						<reference value="Practitioner/f201"/>
 						<display value="Dokter Bronsig"/>
-					</agent>
 				</requester>
 			</ServiceRequest>
 		</resource>

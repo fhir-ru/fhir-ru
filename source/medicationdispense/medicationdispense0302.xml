@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <MedicationDispense xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://hl7.org/fhir ../../schema/medicationdispense.xsd"
  xmlns="http://hl7.org/fhir">
@@ -28,7 +28,7 @@
                         <display value="Insulin Aspart (substance)"/>
                     </coding>
                 </itemCodeableConcept>
-                <amount>
+                <strength>
                     <numerator>
                         <value value="100"/>
                         <system value="http://unitsofmeasure.org"/>
@@ -39,7 +39,7 @@
                         <system value="http://unitsofmeasure.org"/>
                         <code value="mL"/>
                     </denominator>
-                </amount>
+                </strength>
             </ingredient>
             <batch>
                 <lotNumber value="12345"/>
@@ -57,6 +57,13 @@
         <display value="Donald Duck"/>
     </subject>
     <performer>
+        <function>
+            <coding>
+                <system value="http://terminology.hl7.org/CodeSystem/med-dispense-perform-function"/>
+                <code value="finalchecker"/>
+                <display value="Final Checker"/>
+            </coding>
+        </function>
         <actor>
             <reference value="Practitioner/f006"/>
         </actor>
@@ -66,7 +73,7 @@
     </authorizingPrescription>
     <type>
         <coding>
-            <system value="http://hl7.org/fhir/v3/ActCode"/>
+            <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
             <code value="RFP"/>
             <display value="Refill - Part Fill"/>
         </coding>
@@ -97,12 +104,21 @@
                 <periodUnit value="d"/>
             </repeat>
         </timing>
-        <doseQuantity>
-            <value value="10"/>
-            <unit value="U"/>
-            <system value="http://unitsofmeasure.org"/>
-            <code value="U"/>
-        </doseQuantity>
+        <doseAndRate>
+            <type>
+                <coding>
+                    <system value="http://terminology.hl7.org/CodeSystem/dose-rate-type"/>
+                    <code value="ordered"/>
+                    <display value="Ordered"/>
+                </coding>
+            </type>
+            <doseQuantity>
+                <value value="10"/>
+                <unit value="U"/>
+                <system value="http://unitsofmeasure.org"/>
+                <code value="U"/>
+            </doseQuantity>
+        </doseAndRate>
     </dosageInstruction>
     <dosageInstruction>
         <sequence value="1"/>
@@ -117,12 +133,21 @@
                 <periodUnit value="d"/>
             </repeat>
         </timing>
-        <doseQuantity>
-            <value value="15"/>
-            <unit value="U"/>
-            <system value="http://unitsofmeasure.org"/>
-            <code value="U"/>
-        </doseQuantity>
+        <doseAndRate>
+            <type>
+                    <coding>
+                        <system value="http://terminology.hl7.org/CodeSystem/dose-rate-type"/>
+                        <code value="ordered"/>
+                        <display value="Ordered"/>
+                    </coding> 
+            </type>
+            <doseQuantity>
+                <value value="15"/>
+                <unit value="U"/>
+                <system value="http://unitsofmeasure.org"/>
+                <code value="U"/>
+            </doseQuantity>
+        </doseAndRate>
     </dosageInstruction>
     <dosageInstruction>
         <sequence value="1"/>
@@ -137,12 +162,21 @@
                 <periodUnit value="d"/>
             </repeat>
         </timing>
-        <doseQuantity>
-            <value value="20"/>
-            <unit value="U"/>
-            <system value="http://unitsofmeasure.org"/>
-            <code value="U"/>
-        </doseQuantity>
+        <doseAndRate>
+            <type>
+                <coding>
+                    <system value="http://terminology.hl7.org/CodeSystem/dose-rate-type"/>
+                    <code value="ordered"/>
+                    <display value="Ordered"/>
+                </coding> 
+            </type>
+            <doseQuantity>
+                <value value="20"/>
+                <unit value="U"/>
+                <system value="http://unitsofmeasure.org"/>
+                <code value="U"/>
+            </doseQuantity>
+        </doseAndRate>
     </dosageInstruction>
 </MedicationDispense>
 

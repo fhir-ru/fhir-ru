@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <HealthcareService xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/healthcareservice.xsd">
 	<id value="example"/>
 	<text>
@@ -31,7 +31,7 @@
   </providedBy>
   <category>
     <coding>
-      <system value="http://hl7.org/fhir/service-category"/>
+      <system value="http://terminology.hl7.org/CodeSystem/service-category"/>
       <code value="8"/>
       <display value="Counselling"/>
     </coding>
@@ -80,18 +80,22 @@
 	</coverageArea>
   <serviceProvisionCode>
     <coding>
-      <system value="http://hl7.org/fhir/service-provision-conditions"/>
+      <system value="http://terminology.hl7.org/CodeSystem/service-provision-conditions"/>
       <code value="cost"/>
       <display value="Fees apply" />
     </coding>
   </serviceProvisionCode>
 	<eligibility>
-		<coding>
-			<display value="DVA Required"/>
-		</coding>
+		<code>
+			<coding>
+				<display value="DVA Required"/>
+			</coding>
+		</code>
+		<comment value="Evidence of application for DVA status may be sufficient for commencing assessment"/>
 	</eligibility>
-	<eligibilityNote value="Evidence of application for DVA status may be sufficient for commencing assessment"/>
-	<programName value="PTSD outreach"/>
+	<program>
+		<text value="PTSD outreach"/>
+	</program>
 	<characteristic>
 		<coding>
 			<display value="Wheelchair access"/>

@@ -48,6 +48,7 @@ public class ValidationMessage implements Comparator<ValidationMessage>, Compara
     Publisher, 
     Ontology, 
     ProfileComparer, 
+    TerminologyEngine,
     QuestionnaireResponseValidator
   }
 
@@ -121,6 +122,9 @@ public class ValidationMessage implements Comparator<ValidationMessage>, Compara
       case INFORMATION: return "Information";
       default: return "?";
       }
+    }
+    public boolean isError() {
+      return this == FATAL || this == ERROR;
     }
   }
 
@@ -457,6 +461,7 @@ public class ValidationMessage implements Comparator<ValidationMessage>, Compara
   private IssueSeverity level;
   private String html;
   private String locationLink;
+  private String txLink;
 
 
   /**
@@ -700,6 +705,15 @@ public class ValidationMessage implements Comparator<ValidationMessage>, Compara
 
   public ValidationMessage setLocationLink(String locationLink) {
     this.locationLink = locationLink;
+    return this;
+  }
+
+  public String getTxLink() {
+    return txLink;
+  }
+
+  public ValidationMessage setTxLink(String txLink) {
+    this.txLink = txLink;
     return this;
   }
 

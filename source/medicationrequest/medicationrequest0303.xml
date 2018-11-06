@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <MedicationRequest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://hl7.org/fhir ../../schema/medicationrequest.xsd"
  xmlns="http://hl7.org/fhir">
@@ -20,6 +20,24 @@
         <system value="http://www.bmc.nl/portal/prescriptions"/>
         <value value="12345689"/>
     </identifier>
+    <status value="active"/>
+    <intent value="order"/>
+    <medicationReference> <!-- Linked to a RESOURCE Medication -->
+           <reference value="#med0311"/>
+    </medicationReference> 
+    <subject> <!-- Linked to the resource patient who needs the medication -->
+        <reference value="Patient/pat1"/>
+        <display value="Donald Duck"/>        
+    </subject>
+    <encounter> <!-- Linked to a resource Encounter between patient and practitioner-->
+        <reference value="Encounter/f001"/>
+        <display value="encounter who leads to this prescription"/>
+    </encounter>
+    <authoredOn value="2015-01-15"/>
+    <requester>
+        <reference value="Practitioner/f007"/>
+        <display value="Patrick Pump"/>
+    </requester>
     <basedOn>
         <reference value="CarePlan/gpvisit"></reference>
     </basedOn>
@@ -28,25 +46,6 @@
         <system value="http://www.bmc.nl/portal/prescriptions"/>
         <value value="983939393"/>
     </groupIdentifier>
-    <status value="active"/>
-    <intent value="order">
-    </intent>
-    <medicationReference> <!-- Linked to a RESOURCE Medication -->
-           <reference value="#med0311"/>
-    </medicationReference> 
-    <subject> <!-- Linked to the resource patient who needs the medication -->
-        <reference value="Patient/pat1"/>
-        <display value="Donald Duck"/>        
-    </subject>
-    <context> <!-- Linked to a resource Encounter between patient and practitioner-->
-        <reference value="Encounter/f001"/>
-        <display value="encounter who leads to this prescription"/>
-    </context>
-    <authoredOn value="2015-01-15"/>
-    <requester>
-        <reference value="Practitioner/f007"/>
-        <display value="Patrick Pump"/>
-    </requester>
     <note>
         <text value="Patient told to take with food"/>
     </note>
@@ -78,12 +77,22 @@
                 <display value="Swallow - dosing instruction imperative (qualifier value)"/>
             </coding>
         </method>
-        <doseQuantity>
-            <value value="4"/>
-            <unit value="TAB"/>
-            <system value="http://hl7.org/fhir/v3/orderableDrugForm"/>
-            <code value="TAB"/> 
-        </doseQuantity>
+        <doseAndRate>
+            <type>
+                <coding>
+                    <system value="http://terminology.hl7.org/CodeSystem/dose-rate-type"/>
+                    <code value="ordered"/>
+                    <display value="Ordered"/>
+                </coding>
+            </type>
+            <doseQuantity>
+                <value value="4"/>
+                <unit value="TAB"/>
+                <system value="http://terminology.hl7.org/CodeSystem/v3-orderableDrugForm"/>
+                <code value="TAB"/> 
+            </doseQuantity>
+        </doseAndRate>
+
     </dosageInstruction>
     <dosageInstruction>
         <sequence value="2"/>
@@ -113,12 +122,22 @@
                 <display value="Swallow - dosing instruction imperative (qualifier value)"/>
             </coding>
         </method>
-        <doseQuantity>
-            <value value="2"/>
-            <unit value="TAB"/>
-            <system value="http://hl7.org/fhir/v3/orderableDrugForm"/>
-            <code value="TAB"/> 
-        </doseQuantity>
+        <doseAndRate>
+            <type>
+                <coding>
+                    <system value="http://terminology.hl7.org/CodeSystem/dose-rate-type"/>
+                    <code value="ordered"/>
+                    <display value="Ordered"/>
+                </coding>
+            </type>
+            <doseQuantity>
+                <value value="2"/>
+                <unit value="TAB"/>
+                <system value="http://terminology.hl7.org/CodeSystem/v3-orderableDrugForm"/>
+                <code value="TAB"/> 
+            </doseQuantity>
+        </doseAndRate>
+
     </dosageInstruction>
     <dosageInstruction>
         <sequence value="3"/>
@@ -148,12 +167,22 @@
                 <display value="Swallow - dosing instruction imperative (qualifier value)"/>
             </coding>
         </method>
-        <doseQuantity>
-            <value value="1"/>
-            <unit value="TAB"/>
-            <system value="http://hl7.org/fhir/v3/orderableDrugForm"/>
-            <code value="TAB"/> 
-        </doseQuantity>
+        <doseAndRate>
+            <type>
+                <coding>
+                    <system value="http://terminology.hl7.org/CodeSystem/dose-rate-type"/>
+                    <code value="ordered"/>
+                    <display value="Ordered"/>
+                </coding>
+            </type>
+            <doseQuantity>
+                <value value="1"/>
+                <unit value="TAB"/>
+                <system value="http://terminology.hl7.org/CodeSystem/v3-orderableDrugForm"/>
+                <code value="TAB"/> 
+            </doseQuantity>
+        </doseAndRate>
+        
     </dosageInstruction>
     <dispenseRequest>
         <validityPeriod>
@@ -164,7 +193,7 @@
         <quantity>
             <value value="51"/>
             <unit value="TAB"/>
-            <system value="http://hl7.org/fhir/v3/orderableDrugForm"/>
+            <system value="http://terminology.hl7.org/CodeSystem/v3-orderableDrugForm"/>
             <code value="TAB"/> 
         </quantity>
         <expectedSupplyDuration>
@@ -178,10 +207,16 @@
         </performer>
     </dispenseRequest>   
     <substitution>
-        <allowed value="true"></allowed>
+        <allowedCodeableConcept>
+            <coding>
+                <system value="http://terminology.hl7.org/CodeSystem/v3-ActSubstanceAdminSubstitutionCode"/>
+                <code value="TB"/>
+                <display value="Therapeutic Brand"/>
+            </coding>
+        </allowedCodeableConcept>
         <reason>
             <coding>
-                <system value="http://hl7.org/fhir/v3/ActReason"/>
+                <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
                 <code value="FP"/>
                 <display value="formulary policy"/>             
             </coding>

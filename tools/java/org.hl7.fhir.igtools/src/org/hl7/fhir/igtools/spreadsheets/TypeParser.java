@@ -37,6 +37,7 @@ import org.hl7.fhir.r4.model.ElementDefinition;
 import org.hl7.fhir.r4.model.ElementDefinition.TypeRefComponent;
 import org.hl7.fhir.r4.model.StructureDefinition;
 import org.hl7.fhir.r4.utils.ToolingExtensions;
+import org.hl7.fhir.r4.utils.TypesUtilities;
 import org.hl7.fhir.utilities.Utilities;
 
 public class TypeParser {
@@ -143,7 +144,7 @@ public class TypeParser {
     List<TypeRefComponent> list = new ArrayList<TypeRefComponent>();
     for (TypeRef t : types) {
       // Expand any Resource(A|B|C) references
-      if(t.hasParams() && !"Reference".equals(t.getName())) {
+      if(t.hasParams() && !("Reference".equals(t.getName()) || "canonical".equals(t.getName()))) {
         throw new Exception("Only resource references can specify parameters.  Path " + path);
       }
       if (t.getParams().size() > 0) {
@@ -151,47 +152,41 @@ public class TypeParser {
           throw new Exception("Cannot declare profile on a resource reference declaring multiple resource types.  Path " + path);
         }
         if (t.getProfile() != null) {
-          TypeRefComponent childType = new TypeRefComponent();
-          childType.setCode(t.getName());
+          TypeRefComponent childType = getTypeComponent(list, t.getName());
           if (t.getVersioning() != null)
             childType.setVersioning(t.getVersioning());
-          if (t.getName().equals("Reference"))
-            childType.setTargetProfile(t.getProfile());
+          if (t.getName().equals("Reference") || t.getName().equals("canonical") )
+            childType.addTargetProfile(t.getProfile());
           else
-            childType.setProfile(t.getProfile());
-          list.add(childType);
+            childType.addProfile(t.getProfile());
         } else          
           for(String param : t.getParams()) {
-            TypeRefComponent childType = new TypeRefComponent();
+            TypeRefComponent childType = getTypeComponent(list, t.getName());
             if (t.getVersioning() != null)
               childType.setVersioning(t.getVersioning());
-            childType.setCode(t.getName());
-            if (t.getName().equals("Reference"))
-              childType.setTargetProfile("http://hl7.org/fhir/StructureDefinition/"+param);
+            String p = "Any".equals(param) ? "Resource" : param;
+            if (t.getName().equals("Reference") || t.getName().equals("canonical"))
+              childType.addTargetProfile("http://hl7.org/fhir/StructureDefinition/"+p);
             else
-              childType.setProfile("http://hl7.org/fhir/StructureDefinition/"+param);
-            list.add(childType);
+              childType.addProfile("http://hl7.org/fhir/StructureDefinition/"+p);
           }
       } else if (t.isWildcardType()) {
         // this list is filled out manually because it may be running before the types referred to have been loaded
-        for (String n : wildcardTypes()) {
+        for (String n : TypesUtilities.wildcardTypes()) {
           TypeRefComponent tc = new TypeRefComponent().setCode(n);
           if (t.getVersioning() != null)
             tc.setVersioning(t.getVersioning());
           list.add(tc);
         }
       } else if (Utilities.noString(t.getName()) && t.getProfile() != null) {
-        TypeRefComponent tc = new TypeRefComponent();
+        StructureDefinition sd = context.fetchResource(StructureDefinition.class, t.getProfile());
+        TypeRefComponent tc = getTypeComponent(list, sd != null ? sd.getType() : t.getName());
         if (t.getVersioning() != null)
           tc.setVersioning(t.getVersioning());
         if (t.getName().equals("Reference"))
-          tc.setTargetProfile(t.getProfile());
+          tc.addTargetProfile(t.getProfile());
         else  
-          tc.setProfile(t.getProfile());
-        StructureDefinition sd = context.fetchResource(StructureDefinition.class, t.getProfile());
-        if (sd != null)
-          tc.setCode(sd.getType());
-        list.add(tc);
+          tc.addProfile(t.getProfile());
       } else if (t.getName().startsWith("=")){
         if (resource)
           list.add(new TypeRefComponent().setCode("BackboneElement"));
@@ -199,65 +194,41 @@ public class TypeParser {
           list.add(new TypeRefComponent().setCode("Element"));
         ToolingExtensions.addStringExtension(ed, "http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name", t.getName().substring(1));
       } else {
-        StructureDefinition sd = context.fetchResource(StructureDefinition.class, "http://hl7.org/fhir/StructureDefinition/"+t.getName());
+        StructureDefinition sd = context.fetchTypeDefinition(t.getName());
         if (sd == null)
           throw new Exception("Unknown type '"+t.getName()+"'");
-        TypeRefComponent tc = new TypeRefComponent().setCode(sd.getType());
+        TypeRefComponent tc = getTypeComponent(list, sd.getType());
         if (t.getVersioning() != null)
           tc.setVersioning(t.getVersioning());
-        list.add(tc);
-        if (t.getName().equals("Reference"))
-          tc.setTargetProfile(t.getProfile());
-        else  
-          tc.setProfile(t.getProfile());
+        if (t.getName().equals("Reference")) {
+          if(t.hasProfile())
+            tc.addTargetProfile(t.getProfile());
+        } else if (t.hasProfile())
+          tc.addProfile(t.getProfile());
       }
     }    
+    // no duplicates
+    for (TypeRefComponent tr1 : list) {
+      for (TypeRefComponent tr2 : list) {
+        if (tr1 != tr2) {
+          if (tr1.getCode().equals(tr2.getCode()))
+            throw new Exception("duplicate code "+tr1.getCode());
+        }
+      }
+    }
     return list;
   }
 
-  public static List<String> wildcardTypes() {
-    List<String> res = new ArrayList<String>();
-    res.add("base64Binary");
-    res.add("boolean");
-    res.add("code");
-    res.add("date");
-    res.add("dateTime");
-    res.add("decimal");
-    res.add("id");
-    res.add("instant");
-    res.add("integer");
-    res.add("markdown");
-    res.add("oid");
-    res.add("positiveInt");
-    res.add("string");
-    res.add("time");
-    res.add("unsignedInt");
-    res.add("uri");
-
-    res.add("Address");
-    res.add("Age");
-    res.add("Annotation");
-    res.add("Attachment");
-    res.add("CodeableConcept");
-    res.add("Coding");
-    res.add("ContactPoint");
-    res.add("Count");
-    res.add("Distance");
-    res.add("Duration");
-    res.add("HumanName");
-    res.add("Identifier");
-    res.add("Money");
-    res.add("Period");
-    res.add("Quantity");
-    res.add("Range");
-    res.add("Ratio");
-    res.add("Reference");
-    res.add("SampledData");
-    res.add("Signature");
-    res.add("Timing");
-
-    res.add("Meta");
-    return res;
+  private TypeRefComponent getTypeComponent(List<TypeRefComponent> list, String name) {
+    for (TypeRefComponent tr : list) 
+      if (tr.getCode().equals(name))
+        return tr;
+    TypeRefComponent tr = new TypeRefComponent();
+    tr.setCode(name);
+    list.add(tr);
+    return tr;
   }
+
+
 
 }

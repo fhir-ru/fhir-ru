@@ -59,8 +59,8 @@ import org.hl7.fhir.dstu2016may.model.StringType;
 import org.hl7.fhir.dstu2016may.model.Type;
 import org.hl7.fhir.dstu2016may.model.UriType;
 import org.hl7.fhir.dstu2016may.model.ValueSet;
-import org.hl7.fhir.utilities.validation.ValidationMessage.Source;
 import org.hl7.fhir.exceptions.FHIRFormatError;
+import org.hl7.fhir.utilities.validation.ValidationMessage.Source;
 
 
 public class ToolingExtensions {
@@ -98,7 +98,7 @@ public class ToolingExtensions {
   public static final String EXT_CIMI_REFERENCE = "http://hl7.org/fhir/StructureDefinition/cimi-reference";
   public static final String EXT_UNCLOSED = "http://hl7.org/fhir/StructureDefinition/valueset-unclosed";
   public static final String EXT_FMM_LEVEL = "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm";
-
+  
 
   // specific extension helpers
 
@@ -488,5 +488,13 @@ public class ToolingExtensions {
     return hasExtension(vs, EXT_OID);
   }
   
+
+  public static void setStringExtension(Element element, String uri, String value) {
+    Extension ext = getExtension(element, uri);
+    if (ext != null)
+      ext.setValue(new StringType(value));
+    else
+      element.getExtension().add(new Extension(new UriType(uri)).setValue(new StringType(value)));
+  }
   
 }

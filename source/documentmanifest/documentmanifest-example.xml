@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!--
 source data from http://wiki.ihe.net/index.php?title=Annotated_ProvideAndRegister.b_Transaction.
 -->
@@ -39,18 +39,9 @@ source data from http://wiki.ihe.net/index.php?title=Annotated_ProvideAndRegiste
 		<reference value="Patient/xcda"/>
 	</subject>
 	<created value="2004-12-25T23:50:50-05:00"/>
-	<agent>
-    <type>
-      <coding>
-        <system value="http://hl7.org/fhir/v3/ParticipationType"/>
-        <code value="AUT"/>
-        <display value="author (originator)"/>
-      </coding>
-    </type>
-		<who>
+	<author>
 		<reference value="#a1"/>
-		</who>
-	</agent>
+	</author>
 	<recipient>
 		<reference value="Practitioner/xcda1"/>
 	</recipient>

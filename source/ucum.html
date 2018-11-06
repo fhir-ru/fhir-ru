@@ -9,12 +9,12 @@
 <body>
 [%file newnavbar%]
 
-<div class="col-9">
+<div class="col-12">
 
 <%txheader%>
 
 <h2>Using UCUM with FHIR</h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg vocab%]">[%wgt vocab%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 5</td><td id="ballot"><a href="versions.html#levels">Ballot Status</a>: <a href="versions.html#std-process">Trial Use</a></td></tr></table>
+<table class="colstu"><tr><td id="wg"><a _target="blank" href="[%wg vocab%]">[%wgt vocab%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 5</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Trial Use</a></td></tr></table>
 
 <p>
 The <a href="http://unitsofmeasure.org">Units of Measure</a> Coding System (UCUM) is recommended 
@@ -42,7 +42,22 @@ UCUM is Copyright © 1999-2013 Regenstrief Institute, Inc. and The UCUM Organiza
 All rights reserved. See <a class="wiki" href="http://unitsofmeasure.org/trac//wiki/TermsOfUse">TermsOfUse</a> for details.
 </p>
 
-<a name="filters"> </a>
+<h3>UCUM Expressions</h3>
+<p>
+UCUM is inherently a compositional code system; almost all
+UCUM codes are expressions composed using the UCUM expression
+syntax. Many servers, however, do not implement full support
+for the syntax, and rely on a large library of pre-built
+valid UCUM codes (FHIR includes a <a href="valueset-ucum-common.html">common UCUM codes value 
+set</a> for this purpose). 
+</p>
+<p>
+UCUM us always documented as a compositional code system. If 
+a server does not support the full grammar, it should document
+that in its <a href="terminologycapabilities-definitions.html#TerminologyCapabilities.codeSystem.version.compositional">Terminology Capabilities Statement</a>.
+</p>
+
+<a name="filters"></a>
 <h3>UCUM Filter Properties</h3>
 
 <p>

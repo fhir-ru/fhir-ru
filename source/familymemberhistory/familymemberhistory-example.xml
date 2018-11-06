@@ -8,7 +8,7 @@
   <identifier>
 	<value value="12345"/>
   </identifier>
-  <instantiates value="http://example.org/fhir/Questionnaire/family-member-history"/>
+  <instantiatesUri value="http://example.org/family-member-history-questionnaire"/>
   <status value="completed"/>
   <patient>
     <reference value="Patient/example"/>
@@ -19,12 +19,18 @@
   
   <relationship>
     <coding>
-      <system value="http://hl7.org/fhir/v3/RoleCode"/>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-RoleCode"/>
       <code value="FTH"/>
       <display value="father"/>
     </coding>
   </relationship>
-  <gender value="male"/>
+  <sex>
+	<coding>
+      <system value="http://hl7.org/fhir/administrative-gender"/>
+      <code value="male"/>
+      <display value="Male"/>
+    </coding>
+  </sex>
   <condition>
     <code>
     <coding>
@@ -35,7 +41,7 @@
     <text value='Heart Attack'/>
     </code>
  
-
+	<contributedToDeath value = "true"/>
     <onsetAge>
       <value value="74" />
       <unit value="yr" />

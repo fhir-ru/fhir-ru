@@ -19,22 +19,39 @@
   </type>
   <date value="2016-11-14"/>
   <description value="Decision support logic for managing zika virus infection"/>
+  <useContext>
+    <code>
+      <system value="http://terminology.hl7.org/CodeSystem/usage-context-type"/>
+      <code value="age"/>
+    </code>
+    <valueRange>
+      <low><value value="12"/><unit value="a"/></low>
+    </valueRange>
+  </useContext>
+  <useContext>
+    <code>
+      <system value="http://terminology.hl7.org/CodeSystem/usage-context-type"/>
+      <code value="user"/>
+    </code>
+    <valueCodeableConcept>
+      <coding>
+        <system value="http://snomed.info/sct"/>
+        <code value="309343006"/>
+        <display value="Physician"/>
+      </coding>
+    </valueCodeableConcept>
+  </useContext>
   <topic>
     <text value="Zika Virus Management"/>
   </topic>
   <relatedArtifact>
     <type value="depends-on"/>
-    <resource>
-      <reference value="Library/fhir-model-definition"/>
-    </resource>
+    <resource value="Library/fhir-model-definition"/>
   </relatedArtifact>
 
   <relatedArtifact>
   	<type value="depends-on"/>
-  	<resource>
-  		<reference value="ValueSet/zika-affected-area"/>
-  		<display value="Zika Affected Area"/>
-  	</resource>
+  	<resource value="ValueSet/zika-affected-area"/>
   </relatedArtifact>
 
   <parameter>
@@ -53,7 +70,7 @@
   	<type value="Condition"/>
   	<codeFilter>
   	  <path value="code"/>
-  	  <valueSetUri value="urn:oid:X.Y.Z"/> <!-- Pregnancy -->
+  	  <valueSet value="urn:oid:X.Y.Z"/> <!-- Pregnancy -->
   	</codeFilter>
   </dataRequirement>
 
@@ -61,7 +78,7 @@
   	<type value="Observation"/>
   	<codeFilter>
   	  <path value="code"/>
-  	  <valueSetUri value="urn:oid:X.Y.Z"/> <!-- Zika Exposure Assessment -->
+  	  <valueSet value="urn:oid:X.Y.Z"/> <!-- Zika Exposure Assessment -->
   	</codeFilter>
   </dataRequirement>
 
@@ -69,7 +86,7 @@
   	<type value="Condition"/>
   	<codeFilter>
   	  <path value="code"/>
-  	  <valueSetUri value="urn:oid:2.16.840.1.114222.4.11.7459"/> <!-- Zika Virus Signs and Symptoms -->
+  	  <valueSet value="urn:oid:2.16.840.1.114222.4.11.7459"/> <!-- Zika Virus Signs and Symptoms -->
   	</codeFilter>
   </dataRequirement>
 
