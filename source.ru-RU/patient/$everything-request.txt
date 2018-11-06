@@ -1,4 +1,0 @@
-// получить все ресурсы, связанные с отдельным пациентом
-
-GET /open/Patient/f001/$everything
-[some headers]

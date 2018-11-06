@@ -1,0 +1,202 @@
+
+*** Parsing file bundle/bundle-spreadsheet.xml
+
+*** Parsing file careplan/careplan-spreadsheet.xml
+
+*** Parsing file careteam/careteam-spreadsheet.xml
+
+*** Parsing file claim/claim-spreadsheet.xml
+
+*** Parsing file claimresponse/claimresponse-spreadsheet.xml
+
+*** Parsing file clinicalimpression/clinicalimpression-spreadsheet.xml
+
+*** Parsing file codesystem/codesystem-spreadsheet.xml
+
+*** Parsing file communication/communication-spreadsheet.xml
+
+*** Parsing file communicationrequest/communicationrequest-spreadsheet.xml
+
+*** Parsing file composition/composition-spreadsheet.xml
+
+*** Parsing file condition/condition-spreadsheet.xml
+
+*** Parsing file consent/consent-spreadsheet.xml
+There is partial match
+Action  to take - permit or deny - when the exception conditions are met
+Action  to take - permit or deny - when the rule conditions are met.  Not permitted in root rule, required in all nested rules.
+Действие, которое будет предпринято - разрешить или отказать - когда условия исключения будут выполнены
+----------------------------
+
+*** Parsing file contract/contract-spreadsheet.xml
+There is partial match
+Unique identifier for this Contract.
+Unique identifier for this Contract or a derivative that references a Source Contract.
+Уникальный идентификатор этого договора.
+----------------------------
+There is partial match
+The matter of concern in the context of this agreement.
+The matter of concern in the context of this provision of the agrement.
+Предмет озабоченности в контексте данного соглашения
+----------------------------
+There is partial match
+Action stipulated by this Contract.
+Action stipulated by this Contract Provision.
+Действие, предусмотренное данным договором.
+----------------------------
+
+*** Parsing file coverage/coverage-spreadsheet.xml
+
+*** Parsing file detectedissue/detectedissue-spreadsheet.xml
+
+*** Parsing file device/device-spreadsheet.xml
+
+*** Parsing file devicecomponent/devicecomponent-spreadsheet.xml
+
+*** Parsing file devicemetric/devicemetric-spreadsheet.xml
+
+*** Parsing file diagnosticreport/diagnosticreport-spreadsheet.xml
+There is partial match
+Who was the source of the report (organization)
+Who was the source of the report
+Кто был первоисточником отчета (организация)
+----------------------------
+
+*** Parsing file documentmanifest/documentmanifest-spreadsheet.xml
+
+*** Parsing file documentreference/documentreference-spreadsheet.xml
+There is partial match
+Identifies the logical organization to go to find the current version, where to report issues, etc. This is different from the physical location of the document, which is the technical location of the document, which host may be delegated to the management of some other organization
+Identifies the logical organization (software system, vendor, or department) to go to find the current version, where to report issues, etc. This is different from the physical location (URL, disk drive, or server) of the document, which is the technical location of the document, which host may be delegated to the management of some other organization
+Определяет логическую организацию, в которой следует искать текущую версию, куда сообщать о проблемах и т. п. Отличается от физического расположения документа, которое является техническим местоположением документа, которое может быть делегировано под управление другой организации
+----------------------------
+
+*** Parsing file eligibilityrequest/eligibilityrequest-spreadsheet.xml
+
+*** Parsing file eligibilityresponse/eligibilityresponse-spreadsheet.xml
+
+*** Parsing file encounter/encounter-spreadsheet.xml
+
+*** Parsing file enrollmentrequest/enrollmentrequest-spreadsheet.xml
+
+*** Parsing file enrollmentresponse/enrollmentresponse-spreadsheet.xml
+
+*** Parsing file episodeofcare/episodeofcare-spreadsheet.xml
+
+*** Parsing file explanationofbenefit/explanationofbenefit-spreadsheet.xml
+
+*** Parsing file familymemberhistory/familymemberhistory-spreadsheet.xml
+
+*** Parsing file flag/flag-spreadsheet.xml
+
+*** Parsing file goal/goal-spreadsheet.xml
+
+*** Parsing file group/group-spreadsheet.xml
+
+*** Parsing file guidanceresponse/guidanceresponse-spreadsheet.xml
+
+*** Parsing file imagingstudy/imagingstudy-spreadsheet.xml
+
+*** Parsing file immunization/immunization-spreadsheet.xml
+
+*** Parsing file immunizationrecommendation/immunizationrecommendation-spreadsheet.xml
+
+*** Parsing file list/list-spreadsheet.xml
+
+*** Parsing file media/media-spreadsheet.xml
+
+*** Parsing file medication/medication-spreadsheet.xml
+There is partial match
+This resource is primarily used for the identification and definition of a medication. It covers the ingredients and the packaging for a medication.
+This resource is primarily used for the identification and definition of a medication for the purposes of prescribing, dispensing, and administering a medication as well as for making statements about medication use.
+Данный ресурс используется в основном для идентификации и определения лекарственного средства. Он также охватывает ингредиенты и упаковку медикамента.
+----------------------------
+
+*** Parsing file medicationadministration/medicationadministration-spreadsheet.xml
+
+*** Parsing file medicationdispense/medicationdispense-spreadsheet.xml
+
+*** Parsing file medicationstatement/medicationstatement-spreadsheet.xml
+There is partial match
+The interval of time during which it is being asserted that the patient was taking the medication (or was not taking, when the wasNotGiven element is true).
+The interval of time during which it is being asserted that the patient is/was/will be taking the medication ( or was not taking, when the MedicationStatement.taken element is No).
+Интервал времени, в течение которого утверждается, что пациент принимал это лекарственное средство (или не принимал, если атрибут 'wasNotGiven' установлен в true). 
+----------------------------
+
+*** Parsing file messageheader/messageheader-spreadsheet.xml
+
+*** Parsing file observation/observation-spreadsheet.xml
+There is partial match
+Date/Time this was made available
+Date/Time this version was made available
+Дата/время, когда было предоставлено
+----------------------------
+There is partial match
+An extension should be used if further typing of the device is needed.  Devices used to support obtaining an observation can be represented using either an extension or through the Observation.related element.
+An extension should be used if further typing of the device is needed.  Devices used to support obtaining an observation can be represented using an extension or the [Provenance](provenance.html) resource. (e.g., a device gateway such as a smart phone).
+Если в дальнейшем потребуется типизация устройства, то следует использовать расширение. Устройства, используемые для поддержки получения наблюдения, могут быть представлены с использованием либо расширения, либо через элемент Observation.related.
+----------------------------
+
+*** Parsing file operationdefinition/operationdefinition-spreadsheet.xml
+
+*** Parsing file organization/organization-spreadsheet.xml
+
+*** Parsing file patient/patient-spreadsheet.xml
+
+*** Parsing file paymentnotice/paymentnotice-spreadsheet.xml
+
+*** Parsing file paymentreconciliation/paymentreconciliation-spreadsheet.xml
+
+*** Parsing file plandefinition/plandefinition-spreadsheet.xml
+
+*** Parsing file procedure/procedure-spreadsheet.xml
+
+*** Parsing file processrequest/processrequest-spreadsheet.xml
+
+*** Parsing file processresponse/processresponse-spreadsheet.xml
+
+*** Parsing file provenance/provenance-spreadsheet.xml
+
+*** Parsing file questionnaire/questionnaire-spreadsheet.xml
+
+*** Parsing file questionnaireresponse/questionnaireresponse-spreadsheet.xml
+
+*** Parsing file referralrequest/referralrequest-spreadsheet.xml
+
+*** Parsing file relatedperson/relatedperson-spreadsheet.xml
+
+*** Parsing file resource/resource-spreadsheet.xml
+
+*** Parsing file riskassessment/riskassessment-spreadsheet.xml
+
+*** Parsing file sequence/sequence-spreadsheet.xml
+
+*** Parsing file specimen/specimen-spreadsheet.xml
+
+*** Parsing file structuredefinition/structuredefinition-spreadsheet.xml
+
+*** Parsing file supplydelivery/supplydelivery-spreadsheet.xml
+
+*** Parsing file supplyrequest/supplyrequest-spreadsheet.xml
+
+*** Parsing file task/task-spreadsheet.xml
+
+*** Parsing file valueset/valueset-spreadsheet.xml
+
+*** Parsing file visionprescription/visionprescription-spreadsheet.xml
+
+*** Parsing file datatypes/address.xml
+
+*** Parsing file datatypes/attachment.xml
+
+*** Parsing file datatypes/coding.xml
+
+*** Parsing file datatypes/elementdefinition.xml
+
+*** Parsing file datatypes/identifier.xml
+
+*** Parsing file datatypes/ratio.xml
+
+*** Parsing file datatypes/signature.xml
+
+*** Parsing file datatypes/timing.xml
