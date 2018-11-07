@@ -1,50 +1,44 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<a name="scope"> </a>
-<h2>Область применения и использование<!-- Scope and Usage --></h2>
+<a name="scope"></a>
+<h2>Scope and Usage</h2>
 <p>
-В ресурс PractitionerRole записывают местоположение и типы оказываемых услуг, которые медицинские специалисты могут предоставлять в организации.
-<!-- PractitionerRole covers the recording of the location and types of services that Practitioners are able to provide
-for an organization. -->
+PractitionerRole covers the recording of the location and types of services that Practitioners are able to provide
+for an organization.
 </p>
 <p>
-Роль, специальность, контактные данные ресурса Location и свойства ресурса HealthcareService могут при необходимости дублироваться в других экземплярах ресурса PractitionerRole. Некоторые системы записывают коллекцию значений услуг для отдельного местоположения, другие записывают отдельную услугу и список местоположений, где она может оказываться. Оба варианта допустимы.
-<!-- The role, specialty, Location telecom and HealthcareService properties can be repeated if required in other instances
+The role, specialty, Location telecom and HealthcareService properties can be repeated if required in other instances
 of the PractitionerRole. Some systems record a collection of service values for a single location, others record the 
-single service and the list of locations it is available. Both are acceptable options for prepresenting this data. -->
+single service and the list of locations it is available. Both are acceptable options for representing this data.
 </p>
 </div>
 
 <div>
-<a name="bnr"> </a>
-<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
+<a name="bnr"></a>
+<h2>Boundaries and Relationships</h2>
 <p>
-Квалификация в ресурсе Practitioner не подразумевает роль, но может учитываться при назначении ролей медицинским специалистам в организации и может нести важную информацию (например срок истечения квалификации), которую необходимо отслеживать в некоторых ситуациях, чтобы гарантировать, что они годятся на данную роль. 
-<!-- 	Qualifications (from the Practitioner resource) do not imply a Role, but might be considered when an Organization 
+	Qualifications (from the Practitioner resource) do not imply a Role, but might be considered when an Organization 
   allocates practitioners to roles within their organization, and could provide useful information (such as expiry information)
-  which could need to be tracked in some situations to ensure they continue to be eligible for a specific role. -->
+  which could need to be tracked in some situations to ensure they continue to be eligible for a specific role.
 </p>
 <p>
-Также часто используют ресурс <a href="careteam.html">CareTeam</a> для описания роли, назначенной медицинскому специалисту, однако он обычно ограничен более высокой степенью детализации ухода и часто в контексте определённого <a href="patient.html">пациента</a>, либо это функциональная роль (например Команда антикризисного планирования). В противоположность, ресурс PractitionerRole используется в более общем смысле и охватывает все места, где работает медицинский специалист (и детали, специфичные для этой роли - такие как телефонный номер или адрес электронных услуг).
-<!--   The <a href="careteam.html">CareTeam</a> resource is also often used to provide details of a role that a practitioner is
+  The <a href="careteam.html">CareTeam</a> resource is also often used to provide details of a role that a practitioner is
   allocated to perform, but is usually scoped to a much finer granularity of care, and often within the specific context
   of a <a href="patient.html">Patient</a>, or functional role (e.g. Crisis planning team). In contrast the PractitionerRole
   is used in a more general sense to cover all the places that the practitioner is allocated to work (and specific details
-  relevant to that role - such as a specific contact number, or electronic services endpoint). -->
+  relevant to that role - such as a specific contact number, or electronic services endpoint).
 </p>
 </div>
 
 <div>
-<a name="bnc"> </a>
-<h2>Предпосылки и контекст<!-- Background and Context --></h2>
+<a name="bnc"></a>
+<h2>Background and Context</h2>
 <p>
-Медицинский специалист выполняет различные роли в пределах одной или нескольких организаций. В зависимости от страны и обычаев создают отдельные ресурсы Practitioner для каждой такой роли или один ресурс Practitioner с несколькими ролями. 
-Роль может быть ограничена определённым периодом времени, после которого предоставление полномочий для этой роли заканчивается. Обратите внимание, что представляемая врачом организация в ресурсе Practitioner не обязательно должна быть его непосредственным работодателем.
-<!-- Practitioner performs different roles within the same or even different organizations. Depending on jurisdiction and custom, 
+Practitioner performs different roles within the same or even different organizations. Depending on jurisdiction and custom, 
 it may be necessary to maintain a specific Practitioner Resource for each such role or have a single Practitioner with multiple roles.
 The role can be limited to a specific period, after which authorization for this role ends. Note that the represented organization
-need not necessarily be the (direct) employer of a Practitioner. -->
+need not necessarily be the (direct) employer of a Practitioner.
 </p>
 </div>
 

@@ -1,0 +1,211 @@
+<!DOCTYPE HTML>
+
+<!--
+These elements SHALL always appear in this order. These basic elements shared by all resources come first
+in order to support consistent definitions for schema and UML derived code. 
+-->
+      
+[%settitle Модуль рабочего процесса%]
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+[%file newheader%]
+</head>
+
+<body>
+[%file newnavbar%]
+
+<div class="col-12">
+<table class="cols">
+    <tr>
+        <td id="wg">Work Group <a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> </td>
+        <td id="ballot"><a href="versions.html#levels">Ballot Status</a>: <a href="versions.html#std-process">Informative</a></td>
+    </tr>
+</table>
+
+<a name="root"> </a>
+<h2>Модуль рабочего процесса<!-- Workflow Module --></h2>
+<p>
+Модуль рабочего процесса направлен на координацию деятельности внутри и между системами. Сюда входят три основных аспекта:
+<!-- The workflow module focuses on the coordination of activities within and across systems.  This includes three primary aspects:
+ --></p>
+<ul>
+  <li>Как мы просим другого человека, устройство или систему что-то сделать? <!-- How do we ask for another person, device or system to do something? --></li>
+  <li>Как мы отслеживаем связи и зависимости между активностями - действиями и их разрешением, сложной активностью и отдельными шагами, протоколами планов и заказами и т.д.? <!-- How do we track the linkages and dependencies between activities - actions to their authorizations, complex activities to individual steps, protocols to plans to orders, etc.? --></li>
+  <li>Как мы задаём, какие активности возможны и ожидаемый порядок и зависимости шагов в рамках этих активностей? Т.е. определение процессов и их координации <!-- How do we define what activities are possible and the expected order and dependencies of the steps within those activities?  I.e. process/orchestration definition --></li>
+</ul>
+<h2>Указатель</h2>
+
+<table class="grid">
+ <tr>
+  <td>Инфраструктура</td>
+  <td>
+    <ul>
+      <li>Ресурс: <a href="task.html">Task</a></li>
+      <li>Модели: <a href="definition.html">Определение</a>, <a href="request.html">Запрос</a>, <a href="event.html">Событие</a></li>
+     <li>Документация: <a href="workflow.html">Общее представление</a>, <a href="workflow-communications.html">Модели коммуникации</a>,
+              <a href="workflow-ad-hoc.html">Узкоспециализированные модели</a><a href="workflow-management.html">Модели управления</a> &amp; <a href="workflow-examples.html">Примеры</a></li>
+    </ul>
+  </td>
+ </tr>
+ <tr>
+  <td>Расписание</td>
+  <td>
+    <ul>
+      <li>Назначенные встречи: <a href="appointment.html">Appointment</a> / <a href="appointmentresponse.html">AppointmentResponse</a></li>
+      <li>Доступность: <a href="schedule.html">Schedule</a> / <a href="slot.html">Slot</a></li>
+    </ul>
+  </td>
+ </tr>
+ <tr>
+  <td>Клинический процесс</td>
+  <td>
+    <ul>
+      <li>Направления: <a href="servicerequest.html">ServiceRequest</a></li>
+      <li>Заказы: <a href="nutritionorder.html">NutritionOrder</a>, <a href="visionprescription.html">VisionPrescription</a></li>
+      <li>Определения: <a href="activitydefinition.html">ActivityDefinition</a>, <a href="plandefinition.html">PlanDefinition</a></li>
+      <li>Разное: <a href="processrequest.html">ProcessRequest</a> &amp; <a href="processresponse.html">ProcessResponse</a>, 
+       <a href="devicerequest.html">DeviceRequest</a> &amp; <a href="deviceusestatement.html">DeviceUseStatement</a>,
+       <a href="supplyrequest.html">SupplyRequest</a> &amp; <a href="supplydelivery.html">SupplyDelivery</a></li>
+    </ul>
+  </td>
+ </tr>
+</table>
+
+<a name="intro"> </a>
+<h3>Введение</h3>
+<p>
+Рабочий процесс может осуществляться прямой отправкой ресурсов на сервер (в комбинации с определенным тегом), с помощью ресурса <a href="task.html">Task</a>, через <a href="messaging.html">обмен сообщениями</a> или через <a href="services.html">сервисы</a> FHIR. В данной спецификации есть страница <a href="workflow.html">Рабочий процесс</a>, которая описывает понятия, лежащие в основе дискуссии о рабочих процессах, и указывает на несколько различных коммуникационных и архитектурных моделей рабочих процессов.
+    <!-- Workflows can be performed through direct posting of resources to a target server (combined with a specific tag), by using the <a href="task.html">Task</a> resource, 
+    through the use of <a href="messaging.html">messaging</a> or via FHIR <a href="services.html">services</a>. This specification includes a <a href="workflow.html">
+    workflow</a> page that describes the concepts underlying the discussion of workflows, and points to a number of different communication and 
+    architectural <a href="workflow-communications.html">workflow patterns</a>. -->
+</p>
+<p>
+В дополнение к ресурсу <a href="task.html">Task</a>, данная спецификация определяет три логические модели - <a href="definition.html">Definition</a>, 
+    <a href="request.html">Request</a> и <a href="event.html">Event</a> с образцами ресурсов, которые обычно используются в рабочем процессе. Эти образцы включают элементы, определяющие общие атрибуты каждого типа ресурса, а также взаимосвязи между ними. Эти взаимосвязи перечислены на странице <a href="workflow.html#relationships">workflow</a>, наряду с полным <a href="workflow.html#list">списком</a> ресурсов, которые соответствуют (ну или надеемся, что соответствуют) моделям "запрос" и "событие".
+<!--     In addition to the <a href="task.html">Task</a> resource, this specification defines three logical models - <a href="definition.html">Definition</a>, 
+    <a href="request.html">Request</a> and <a href="event.html">Event</a> that define the patterns for resources that are typically involved in workflow. These 
+    patterns include elements defining common attributes of each type of resource as well as relationships between them.  These relationships are summarized on the 
+    <a href="workflow.html#relationships">workflow</a> page, along with a complete <a href="workflow.html#list">list</a> of resources that follow (or are hoped to 
+    soon follow) the request and event patterns. -->
+</p>
+<p>
+Ресурсы <a href="plandefinition.html">PlanDefinition</a> и <a href="activitydefinition.html">ActivityDefinition</a> комбинируют для создания протоколов, наборов заказов, руководств и других определений рабочих процессов путём описания активностей, которые могут происходить, и установки правил их сочетания, последовательности, взаимозависимости и выполнения.
+<!--   Finally the <a href="plandefinition.html">PlanDefinition</a> and <a href="activitydefinition.html">ActivityDefinition</a> resources combine to support the 
+  creation of protocols, orders sets, guidelines and other workflow definitions by describing the types of activities that can occur and setting rules about their
+  composition, sequencing, interdependencies and flow. -->
+</p>
+
+<a name="uses"> </a>
+<h3>Практическое использование<!-- Common use Cases --></h3>
+<p>
+Рабочие процессы обнаруживаются во многих местах среды здравоохранения:
+<!-- Workflow manifests in many places in the healthcare environment:
+ -->
+</p>
+<ul>
+    <li>Создание <a href="servicerequest.html">заказа на лабораторное исследование</a>, <a href="medicationrequest.html">рецепта на лекарство</a> 
+      или другого медицинского заказа или <a href="claim.html">требования о страховом возмещении</a>, 
+      <a href="enrollmentrequest.html">enrollment request</a>, <a href="appointment.html">записи на приём</a> или других подобных административных запросов и запрос на его выполнение определённой организацией или медицинским специалистом</li>
+    <li>Обсуждение процесса исполнения, например запрос более подробной информации перед принятием требования о страховом возмещении, выдачей направления или предложением альтернативного лечения при выполнении заказа  
+	<!-- Negotiating a fulfillment process, such as requesting further information before accepting a claim or referral or proposing an alternative therapy 
+      when processing an order --></li>
+    <li>Уведомление заказавшего врача о текущем прогрессе исполнения заказа (например проба крови взята, образец для анализа обрабатывается, получены предварительные результаты и т.п.) <!-- 
+	Letting an ordering physician know what the current progress is in fulfilling an order (e.g. blood has been drawn, sample is being processed, preliminary 
+      results are in, etc.) --></li>
+    <li>Создание <a href="careplan.html">плана по уходу</a> или рекомендаций, включающих ряд медицинских и/или административных мероприятий по уходу за пациентом и дальнейшее отслеживание их выполнения (или невыполнения).
+	<!-- Defining a <a href="careplan.html">plan</a> or recommendation for a set of clinical and/or administrative activities to manage a patient's care and then 
+      tracking how those plans and recommendations are (or are not) acted upon over time. --></li>
+    <li>Сообщение изменения состояния запроса или заказа (например приостановка, обновление, отмена и т.д.) исполняющей системе, чтобы она могла принять необходимые действия <!-- 
+	Communicating a state change to a request or order (e.g. suspension, update, cancellation, etc.) to a fulfilling system so that they can take appropriate action --></li>
+    <li>Осведомление об изменении статуса, запрос на слияние пары записей пациента или вызов какой-то операции или решения, работающего асинхронным способом - к примеру такое, где требуется вмешательство человека 
+	<!-- Asking for a state change, requesting the merge of a couple of patients or the invoking of some operation or decision supported in an asynchronous manner - for example, one 
+      where human intervention is required --></li>
+  <li>Проектирование или следование протоколу исследования, протоколу химиотерапии, создание набора заказов или другого <a href="plandefinition.html">плана</a><!-- 
+  Designing or adhering to a study protocol, chemotherapy protocol, instantiating an order set or other <a href="plandefinition.html">plan definition</a> --></li>
+</ul>
+<p>
+FHIR предлагает несколько способов осуществления этих сценариев (и многих других). Общие механизмы и доводы за и против можно найти в разделах Рабочий процесс на страницах <a href="workflow-communications.html#commpatternslist">моделей</a>.
+<!--   FHIR provides multiple ways to enable these scenarios (and many others). Common mechanisms, along with their pros and cons can be found in the 
+  workflow sections on <a href="workflow-communications.html#commpatternslist">patterns</a>. -->
+</p>
+
+<a name="secpriv"> </a>
+<h3>Безопасность и конфиденциальность<!-- Security and Privacy --></h3>
+<p>
+Ресурсы, связанные с рабочим процессом, должны следовать тем же <a href="security.html">security and privacy guidelines</a>, которые применяются ко всем FHIR-ресурсам, включая специфичные соображения для тех, что могут содержать информацию, по которой можно опознать человека. Есть пара дополнительных соображений по поводу безопасности и конфиденциальности, специфичных для рабочего процесса:
+  <!-- Resources related to workflow need to adhere to the same <a href="security.html">security and privacy guidelines</a> that apply to all FHIR resource, 
+  including specific considerations for those that may contain personally-identifying information.
+  There are a couple of additional security and privacy considerations specific to workflow: -->
+</p>
+<p>
+1. Некоторые рабочие процессы являются узкоспециализированными без предварительно определённых участников или процессов. Это может вызвать трудности в соблюдении конфиденциальности и безопасности
+  <!-- 1. Some workflows are ad-hoc without pre-defined participants or flows. These can be challenging for security and privacy processes to manage appropriately -->
+</p>
+<p>
+2. Рабочий процесс может быть автоматизирован, например всего лишь существование электронной медицинской карты может вызвать обработку информации, выполнение процедур, изменение записей и передачу денег, потенциально без всякого вмешательства, надзора или проверки на правильность человеком. В таком случае необходимо позаботиться об обеспечении того, чтобы:
+  <!-- 2. Workflow can drive automated behavior. I.e. The mere existence of an electronic record can cause information to flow, procedures to be performed, records to 
+  be changed and money to be transferred, potentially without any intervention, oversight or sanity checking by a human being. As such, even greater care must be 
+  taken to ensure that: -->
+</p>
+<ul>
+  <li>имелись ограничивающие условия на то, какие системы (и пользователи) могут инициировать рабочий процесс <!-- constraints are placed on what systems (and users) can initiate workflow processes --></li>
+  <li>запросы на действия должным образом аутентифицировались перед их выполнением <!-- requests for action are appropriately authenticated before action is taken --></li>
+  <li>согласие пациента и другие значимые политики безопасности выполнялись либо системой, хранящей запрос, либо системой, действующей по нему (и что если действие было выполнено действующим лицом не принудительно, что они уверены в том, что соответствующие политики были применены к запросу до его выполнения) <!-- patient consents and other relevant policies are enforced either by the system storing the request or the system acting upon it (and that if enforcement is  
+    not performed by the actor, that they are confident that relevant policies have been enforced on the request prior to action) --></li>
+</ul>
+<p>
+Более общее обсуждение см. в модуле <a href="secpriv-module.html">Безопасность и конфиденциальность</a>.
+</p>
+
+<a name="roadmap"> </a>
+<h3>План развития</h3>
+<p>
+Начальная работа состояла в основном в приведении (пока ещё не всех) ресурсов к моделям <a href="definition.html">Definition</a>, <a href="request.html">Request</a>
+  и <a href="event.html">Event</a>. При подготовке к R4 мы рассчитываем привести к этим моделям все оставшиеся ресурсы, пересмотреть и, возможно, выверить уже приведённые ресурсы (где это будет полезно для реализаторов) и рассмотреть возможность оформить приведение к моделям вычислительным способом (например как интерфейсы). Мы рассмотрим возможность совмещения ресурсов <a href="processrequest.html">ProcessRequest</a> и 
+  <a href="processresponse.html">ProcessResponse</a>
+  <!-- Initial work has taken place on aligning most (though not yet all) resources with the <a href="definition.html">Definition</a>, <a href="request.html">Request</a>
+  and <a href="event.html">Event</a> patterns.  In the lead-up to R4, we'll be looking to align the remaining resources, reviewing and potentially increasing the
+  consistency of existing alignments (where beneficial to implementers) and examining the potential for exposing alignment with the patterns in a computably useful
+  manner (e.g. as interfaces).  We will look at the possibility of collapsing the <a href="processrequest.html">ProcessRequest</a> and 
+  <a href="processresponse.html">ProcessResponse</a>  -->
+</p>
+<p>
+Будет продолжена работа по моделям рабочих процессов, включая исследование моделей на различных клинических сценариях и улучшение документации по моделям. Также мы надеемся проверить обмен сообщениями и сервисы более детально и составить руководство по тому, когда и как эти механизмы следует использовать в рабочем процессе и как они соотносятся с ресурсом <a href="task.html">Task</a>. Кроме того, мы проверим возможность разработки "стандартизованных" рабочих процессов для конкретных предметных областей и как эти модели можно было бы задокументировать. Мы будем ожидать отзывов от реализаторов для направления этой работы.
+  <!-- Work will continue on the workflow patterns, including vetting the patterns against various clinical scenarios and enhancing pattern documentation.  We also hope
+  to examine both messaging and services in more detail with further guidance about when and how such mechanisms should be used for workflow and how they relate to
+  the <a href="task.html">Task</a> resource. As well, we'll examine the possibility for developing "standardized" workflows for certain domains and how such patterns 
+  might be documented.  We will look for implementer feedback to guide this work. -->
+</p>
+<p>
+Мы продолжим развивать ресурсы <a href="plandefinition.html">PlanDefinition</a> and <a href="activitydefinition.html">ActivityDefinition</a> на основе отзывов от сообщества реализаторов. Мы проанализируем их применение разными способами, включая медицинские наборы заказов, протоколы лекарственных средств, протоколы рабочих процессов, траектории рабочего процесса, административные протоколы и т.д.
+<!--   The <a href="plandefinition.html">PlanDefinition</a> and <a href="activitydefinition.html">ActivityDefinition</a> resources will continue to evolve based on feedback
+  from the implementer community.  We'll explore using them in a variety of ways, including clinical order sets, medication protocols, workflow protocols, clinical
+  pathways, administrative protocols, etc. -->
+</p>
+<p>Дополнительные темы для будущей работы:
+</p>
+<ul>
+  <li>Начальные усилия по приведению ресурсов к моделям рабочего процесса были чрезмерно усердными для некоторых из них, что вылилось в потерю контекста предметной области и, порой, к внедрению элементов, которые по-хорошему следовало бы сделать расширениями. В R4 мы постараемся привести эту работу к балансу, гарантирующему, что стремление соответствовать моделям не затмит важные требования к интуитивности и простоте реализации 
+  <!-- The initial effort to align with workflow patterns has been a bit over-zealous for some resources, resulting in the loss of domain-specific context or occasionally the introduction of elements that might be more properly represented as extensions.  In R4, we'll endeavor to improve the balance, ensuring that consistency with patterns does not overshadow the essential requirements for implementer intuitiveness and simplicity --></li>
+  <li>Разрешить проблему частичного совпадения ресурсов <a href="supplyrequest.html">SupplyRequest</a>, <a href="devicerequest.html">DeviceRequest</a> и
+  <a href="visionprescription.html">VisionPrescription</a>
+  <!-- Resolving the overlap between the <a href="supplyrequest.html">SupplyRequest</a>, <a href="devicerequest.html">DeviceRequest</a> and
+  <a href="visionprescription.html">VisionPrescription</a> resources --></li>
+  <li>Модель описания медицинского специалиста Practitioner плюс "onBehalfOf" организации (Organization) и, возможно, их роль сделаны не лучшим образом. Мы проанализируем возможность добавить вместо этого ресурс <a href="practitionerrole.html">PractitionerRole</a> в качестве альтернативы для упрощения моделей
+  <!-- The pattern of capturing Practitioner plus "onBehalfOf" Organization and possibly their role is somewhat ugly.  We will explore whether instead we can add <a href="practitionerrole.html">PractitionerRole</a> as an alternative choice with Practitioner to simplify the models --></li>
+  <li>Улучшить мэппинг и приведение элементов и статус-кодов ресурса <a href="task.html">Task</a> в соответствие со спецификацией WS-HumanTask
+  <!-- Improving mapping and alignment of the elements and status codes of the <a href="task.html">Task</a> resource with the WS-HumanTask specification --></li>
+  <li>Создать руководство с установившимися практиками реализации рабочего процесса для различных бизнес-моделей 
+  <!-- Creating "best practice" guides for how to implement workflow for different business patterns --></li>
+  <li>Проверить, как рабочий процесс используется для "компенсирующих действий", например бухгалтерских транзакций и кассаций (reversals)
+  <!-- Examining how workflow is used for "compensating actions", for example account transactions and reversals --></li>
+</ul>
+
+</div>
+
+[%file newfooter%]
+</body>
+
+</html>

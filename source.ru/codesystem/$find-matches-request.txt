@@ -1,0 +1,35 @@
+<Parameters xmlns="http://hl7.org/fhir">
+  <parameter>
+    <name value="system"/>
+    <valueUri value="http://snomed.info/sct"/>
+  </parameter>
+  <parameter>
+    <name value="exact"/>
+    <valueBoolean value="true"/>
+  </parameter>
+  <parameter>
+    <name value="property"/>
+    <part>
+      <name value="code"/>
+      <valueCode value="focus"/>
+    </part>
+    <part>
+      <name value="value"/>
+      <!-- Measurement finding -->
+      <valueCode value="118245000"/>
+    </part>
+  </parameter>
+  <parameter>
+    <name value="property"/>
+    <part>
+      <name value="code"/>
+      <!-- Interprets -->
+      <valueCode value="363714003"/>
+    </part>
+    <part>
+      <name value="value"/>
+      <!-- Bilirubin -->
+      <valueCode value="302787001"/>
+    </part>
+  </parameter>
+</Parameters>

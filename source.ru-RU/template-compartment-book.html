@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+
+<!-- template-compartment-book.html -->
+
+[%settitle Дорожная карта%]
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+[%file newheader%]
+</head>
+<body>
+[%file newnavbar%]
+
+<div class="col-12">
+
+<h1>Логический модуль<!-- Compartment --> <%comp-title%></h1>
+
+<table class="grid">
+ <tr><td>Описание<!-- Description --></td><td><%comp-desc%></td></tr>
+ <tr><td>Сущность<!-- Identity --></td><td><%comp-identity%></td></tr>
+ <tr><td>Членство<!-- Membership --></td><td><%comp-membership%></td></tr>
+</table>
+
+<p>Правила членства на основе ресурса:
+<!-- Resource based membership rules: -->
+</p>
+
+<%comp-resources%>
+
+<p>
+См. <a href="compartmentdefinition.html">информацию о логических модулях</a>.
+<!-- See <a href="compartmentdefinition.html"> information about compartments</a>.   -->
+</p>
+
+
+</div>
+
+[%file newfooter%]
+    
+</body>
+</html>

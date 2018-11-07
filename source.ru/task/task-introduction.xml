@@ -1,102 +1,130 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
   <div>
-    <a name="scope"> </a>
-    <h2>Область применения и использование</h2>
+    <a name="scope"></a>
+    <h2>Scope and Usage</h2>
     <p>
-Ресурс Task описывает активность, которая может быть выполнена, и отслеживает состояние выполнения этой активности. Это представление того, что активность должна быть или была инициирована и в конечном счёте показывает успешное или неуспешное завершение этой активности.
-    <!--  A task resource describes an activity that can be performed, and tracks the state of
+      A task resource describes an activity that can be performed and tracks the state of
       completion of that activity. It is a representation that an activity should be or has been
       initiated, and eventually, represents the successful or unsuccessful completion of that
-      activity.  -->
-</p>
-    <p>Напомним, что существует большое многообразие процессов, ассоциированных с созданием и обработкой заказов. Некоторые заказы могут обрабатываться непосредственно автоматизированными системами, однако большинству требуется выполнение действий в реальном мире одним или несколькими людьми. Некоторые заказы могут быть обрабатываться только после выполнения других действий в реальном мире, например пациент должен лично явиться на приём, чтобы можно было выполнить запланированное действие. Часто такие зависимости от реального мира подразумеваются только в деталях заказа.
-    <!-- Note that there are a variety of processes associated with making and processing orders.
+      activity.
+    </p>
+    <p> Note that there are a variety of processes associated with making and processing orders.
       Some orders may be handled immediately by automated systems but most require real world
       actions by one or more humans. Some orders can only be processed when other real world actions
-      happen, such as a patient actually presenting themselves so that the action to be performed
+      happen, such as a patient presenting themselves so that the action to be performed
       can actually be performed. Often these real world dependencies are only implicit in the order
-      details.  --></p>
+      details. </p>
   </div>
   <div>
-    <a name="bnc"> </a>
-    <h2>Предпосылки и контекст</h2>
-    <h3>Использование Task в контексте RESTful<!-- Using Tasks in a RESTful context --></h3>
-    <p>В RESTful-контексте сервер функционирует в качестве хранилища задач. Предполагается, что сам сервер либо другие агенты контролируют активность задач и инициируют соответствующие действия для обеспечения выполнения задач, обновляя статусы задачи по мере её прохождения различных стадий завершения. Эти агенты могут координироваться, придерживаясь хорошо поставленной бизнес-логики, чтобы гарантировать выполнение задач. 
-    Управление задачами может вестись централизованно с использованием какого-либо вида системы управления рабочим процессом, в этом случае система сама может обновлять и поддерживать ресурсы задач на сервере и через руководство и координацию мероприятий обеспечивать выполнение задач. Ресурс Task позволяет либо модель управления задачами, все еще обеспечивая непротиворечивую смену статусов задач, выполняемых в поддержку рабочего процесса здравоохранения.
-    <!-- In a RESTful context, a server functions as a repository of tasks. The server itself, or
-      other agents are expected to monitor task activity, and initiate appropriate actions to ensure
+    <a name="bnc"></a>
+    <h2>Background and Context</h2>
+    <h3>Using Tasks in a RESTful context</h3>
+    <p>In a RESTful context, a server functions as a repository of tasks. The server itself, or
+      other agents are expected to monitor task activity and initiate appropriate actions to ensure
       task completion, updating the status of the task as it proceeds through its various stages of
       completion. These agents can be coordinated, following well choreographed business logic to
       ensure that tasks are completed. Task management may also be centrally controlled using some
-      form of workflow engine, in which case, the workflow engine itself may update and maintain the
-      task resources in the server, and through its orchestration activities, ensure that tasks are
+      form of a workflow engine, in which case, the workflow engine itself may update and maintain the
+      task resources in the server, and through its orchestration activities ensure that tasks are
       completed. The task resource enables either model of task management, yet provides a
-      consistent view of the status of tasks being executed in support of healthcare workflows. --> </p>
-    <p>Назначение задач в категории по типу задачи и типу исполнителя, а также статус задачи позволяют серверу функционировать в качестве очереди рабочих элементов. Различные агенты могут опрашивать или подписываться на эту очередь, что позволяет автоматизировать рабочие процессы в FHIR с помощью существующих механизмов поиска и подписки. Владельцы, запросчики, другие агенты (например заведующие рабочим процессом) могут таким образом быть готовыми приступать к следующим шагам в сложном рабочем процессе. 
-    <!-- The assignment of tasks into categories by type of task and type of performer, and task status 
-      enable the server to function as a queue of work items.  This queue can be polled or subscribed 
-      to by various agents, enabling automation of workflows in FHIR using existing search and subscription 
-      mechanisms.  Owners, requesterss, other agents (e.g. workflow managers) can thus be ready to 
-      initiate the next steps in a complex workflow. --></p>
-    <h3>Конечный автомат задач<!-- Tasks State Machine --></h3>
-    <p>Задачи начинаются в состоянии Created. Как только они были назначены владельцу, они переходят в состояние Ready, показывая, что они готовы к выполнению. Как только владелец инициирует активность задачи, эта задача переходит в состояние In Progress, показывая, что работа выполняется. При нормальном завершении задача переходит в состояние Completed. Если произошла ошибка во время выполнения задача, которая препятствует её завершению, она может перейти в состояние Failed, показывая аномальное завершенеие задачи. Задача в любом не-конечном состоянии также может быть отменена (состояние Cancelled), показывая аномальное завершение задачи из-за внешних обстоятельств, а не сбойной ситуации.
-    <!-- Tasks start in a Created state. Once they have been assigned to an owner they transition to
+      consistent view of the status of tasks being executed in support of healthcare workflows. </p>
+    <p>The assignment of tasks into categories by type of task, type of performer and task status
+      enable the server to function as a queue of work items.  This queue can be polled or subscribed
+      to by various agents, enabling automation of workflows in FHIR using existing search and subscription
+      mechanisms.  Owners, requesters, other agents (e.g. workflow managers) can thus be ready to
+      initiate the next steps in a complex workflow.</p>
+    <h3>Tasks State Machine</h3>
+    <p>Tasks start in a Created state. Once they have been assigned to an owner they transition to
       the Ready state, indicating that they are ready to be performed. Once the owner initiates
       activity on the task, the task transitions to the In Progress state, indicating that work is
       being performed. Upon normal completion, the task enters the Completed state. If there is a
       failure during the task execution that prevents the task from being completed, it can also
       enter a Failed state, indicating an abnormal termination of the task. A task in any
       non-terminal state may also be Cancelled, representing an abnormal termination of the task due
-      to external forces, rather than an error condition. --></p>
-    <p>Задачи в не-конечном состоянии (Created, Ready, In Progress) могут быть приостановлены и возобновлены. Когда задача приостановлена, обычно она возобновляется в том же состоянии, в котором была изначально приостановлена. Приостановка задачи также приостанавливает и свои подзадачи. Возобновление задачи возобновляет и все её подзадачи.
-    <!-- Tasks in any non-terminal state (Created, Reading, In Progress) can be suspended and resumed.
+      to external forces, rather than an error condition.</p>
+    <p>Tasks in any non-terminal state (Created, Ready, In Progress) can be suspended and resumed.
       When a task is suspended, it is typically resumed in the state it was in when it was
       originally suspended. Suspending a task suspends all of its children as well. Resuming a task
-      resumes all of its children. --></p>
-    <p>Задача в процессе выполнения также может быть остановлена, что вернёт её в состояние готовности к началу выполнения. Это может быть подготовка к передаче или переназначению (например из-за того, что текущий владелец не может её выполнить), чтобы перезапустить задачу из-за временного сбоя (например чтобы повторно попытаться выполнить активность) или для подготовки, чтобы позволить другим взять эту задачу.
-    <!-- An In-progress task can also be stopped, returning it to a ready state. This may be in
+      resumes all of its children.</p>
+    <p>An In-progress task can also be stopped, returning it to a Ready state. This may be in
       preparation for delegation or reassignment (e.g., because it cannot be completed by the
       current owner), to restart a task due to a temporary failure (e.g., to reattempt completion of
-      the activity), or in preparation to allow others to claim the task. --></p>
-<!--    <h3>Использование операций над ресурсом Task</h3>
-    <p>Ресурс Task определяет несколько операций для обеспечения многогранного контроля над средой выполнения задач. Сервер, управляющий ресурсами Task, может разрешить себе беспрепятственный доступ в режиме чтения ко всем задачам, которые он поддерживает, однако ограничить себе доступ в режиме записи к ресурсам Task, чтобы не влиять на управление через конечный автомат задач. Вместо этого он может предложить операции над задачами, позволяющие строго контролировать операции записи, следуя общепринятым бизнес-правилам управления задачами. К примеру, только задачи в состоянии "In Process" могут перейти в состояние "Completed" или "Failed". Использование или поддержка этих операций не существенна в простых окружениях рабочего процесса, где активности задачи требуется мало управления. 
-    The Task resource defines several operations to enable rich control over the task execution
+      the activity), or in preparation to allow others to claim the task.</p>
+<!--    <h3>Using Tasks with operations</h3>
+    <p>The Task resource defines several operations to enable rich control over the task execution
       environment. A server managing task resources may allow unfettered read access to all tasks
       that it maintains, but restrict write access to the task resources to itself in order to exert
       control over the task state machine. Instead, it might offer operations on tasks that enable
       strictly controlled write operations following commonly accepted business rules for task
       management. For example, only tasks that are in the "In Process" state might be allowed to be
       "Completed" or "Failed". Use or support of these operations is not essential in simple
-      workflow environments where task activity needs little management.</p>
+      workflow environments where task activity needs little management. </p>
     <p>There is no distinct operation for creating a new task because the FHIR RESTful API already
-      distinguishes between the create and update operations.</p>  -->
+      distinguishes between the create and update operations.</p>-->
     <p>The task history allows applications monitoring the state of a workflow to identify tasks
       that are long running, perhaps stuck in some queue, to enable management activities that could
       ensure completion. It also enables tracking of task statistics such as wait time, or time in
       progress, or time to completion, enabling capture of important task metrics in support of
       optimization and quality improvement. </p>
+
+      <blockquote class="stu-note">
+      <a name="dstu"></a>
+      <p>
+      <b>Note:</b>Currently, task pre-requisites can be represented using Task's `description` element or the <a href="requestgroup.html">RequestGroup</a> resource. We are seeking input from the implementer community in evaluating whether there is need for adding another mechanism to this resource for this purpose.<br/>
+      </p>
+      <p>
+      Feedback <a href="https://chat.fhir.org/#narrow/stream/103-Orders-and.20Observation.20WG">here</a>.
+      </p>
+      </blockquote>
+
+
+
   </div>
   <div>
-    <a name="bnr"> </a>
+    <a name="bnr"></a>
     <h2>Boundaries and Relationships</h2>
-    <p>The task resource tracks the state of a task, enabling systems to ensure that tasks are
-      completed. This information is kept separate from the operational details necessary to
-      complete the task, as those details vary across and even within workflows. That detail is 
-      expected to be carried as the subject of the task.
-    </p>
-    <p>Tasks may have named inputs and outputs. Inputs represent information that may 
-      or must be present in order for a task to complete. Outputs represent intermediate or 
-      final results produced by a task. For example, in a task supporting reading of radiology 
-      image, the inputs might include both the imaging study to be read, as well as relevant 
-      prior images. Outputs could represent radiology measurements as well as the 
-      Radiologist's diagnostic report. </p>
-    <p>Inputs and outputs are tracked by the task because workflow management activity
-      may automate the transer of outputs from one task to inputs to a subsequent task.
-    </p>
-    <p>To facilitate the integration of off the shelf workflow applications with FHIR, the task
-    resource may reference a definition.  This definition can represent a description of the workflow 
-    actitivity to be performed, using a standard workflow description language such as BPEL, BPMN, 
-    or XPDL, a workflow definition such as those defined in IHE profiles, or even simple written
-    instructions explaining a process to be performed.</p>
+
+    <p>Task spans both intent and event and tracks the execution through to
+    completion. A Task is a workflow step such as cancelling an order,
+    fulfilling an order, signing an order, merging a set of records, admitting a
+    patient. In contrast, <a href="procedure.html">Procedures</a> are actions
+    that are intended to result in a physical or mental change to or for the
+    subject (e.g. surgery, physiotherapy, training, counseling). A Task resource
+    often exists in parallel with clinical resources. For example, a Task could
+    request fulfillment of a <a href="servicerequest.html">ServiceRequest</a>
+    ordering a Procedure that would result in a Procedure, <a
+    href="observation.html">Observation</a>, <a
+    href="diagnosticreport.html">DiagnosticReport</a>, <a
+    href="imagingstudy.html">ImagingStudy</a> or similar resource.  Another
+    example would be a Task that requests fulfillment of a <a
+    href="communicationrequest.html">CommunicationRequest</a> to be performed
+    between various actors.</p>
+
+    <p>As stated above, the task resource tracks the state of a task, enabling
+    systems to ensure that tasks are completed. This information is kept
+    separate from the operational details necessary to complete the task, as
+    those details vary across and even within workflows. That detail is expected
+    to be carried in the referenced `focus` of the task. </p>
+
+     <p>Tasks may have named inputs and outputs. Inputs represent
+     information that may or must be present in order for a task to
+     complete. Outputs represent intermediate or final results produced by a
+     task. For example, in a task supporting reading of radiology image, the
+     inputs might include both the imaging study to be read, as well as
+     relevant prior images. Outputs could represent radiology measurements
+     as well as the Radiologist's diagnostic report. </p>
+
+    <p>Inputs and outputs are tracked by the task because workflow
+    management activity may automate the transfer of outputs from one task
+    to inputs to a subsequent task. </p>
+
+    <p>To facilitate the integration of off the shelf workflow applications
+    with FHIR, the task resource may reference a definition.  This
+    definition can represent a description of the workflow activity to be
+    performed, using a standard workflow description language such as BPEL,
+    BPMN, or XPDL, a workflow definition such as those defined in IHE
+    profiles, or even simple written instructions explaining a process to be
+    performed.</p>
+
   </div>
 </div>

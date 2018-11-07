@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
  
-[%settitle Профили, определенные в рамках FHIR%]
+[%settitle Profiles and extensions defined as part of FHIR%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -11,23 +11,19 @@
 
 <div class="col-12">
 
-<h2>Профили, определенные стандартом FHIR<!-- Profiles defined as part of FHIR --></h2>
+<h2>Profiles defined as part of FHIR</h2>
+ 
+<table class="colsi"><tbody><tr><td id="wg"><a href="http://www.hl7.org/Special/committees/fiwg/index.cfm" _target="blank">FHIR Infrastructure </a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:  <!-- !ns! --><a href="versions.html#std-process">Informative</a></td></tr></tbody></table>
  
 <p>
-Данная спецификация - это стандарт общепринятой платформы, который должен <a href="profiling.html">адаптироваться к конкретным случаям использования</a>.
-Некоторые частные случаи использования достаточно распространены или важны, чтобы войти в саму спецификацию. 
-Они публикуются в виде "Профилей" - совокупность определенных с общей целью <a href="structuredefinition.html">Structure Definitions</a> (Constraints или Extensions), <a href="valueset.html">наборов значений (Value Sets)</a> и примеров.
-Дополнительные профили можно зарегистрировать в реестре HL7 FHIR по адресу <a href="http://hl7.org/fhir/registry">http://hl7.org/fhir/registry</a>
-<!-- 
 This specification is a common platform standard that must be <a href="profiling.html">adapted to particular
 use cases</a>. 
 
 Some particular use cases are common or important enough to be described as a part of the 
-specification itself.
-These are published as a "Profile" - a group of <a href="structuredefinition.html">Structure Definitions</a> (Constraints or Extensions),
-<a href="valueset.html">Value Sets</a>, and examples that are all defined with a common purpose.
-Additional profiles may be registered on the HL7 FHIR registry at <a href="http://hl7.org/fhir/registry">http://hl7.org/fhir/registry</a>
-  -->
+specification itself. These are published as groups of <a href="structuredefinition.html">Structure Definitions</a> (profiles or extensions),
+which are often found in implementation guides, along with <a href="valueset.html">Value Sets</a>, 
+newly defined <a href="searchparameter.html">search parameters</a> and examples that are all defined with a common purpose. 
+Additional profiles and extensions may be registered on the HL7 FHIR registry at <a href="http://registry.fhir.org">http://registry.fhir.org</a>
 </p>
 
 <%profilelist%>

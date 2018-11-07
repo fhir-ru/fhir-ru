@@ -1,0 +1,38 @@
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
+
+
+<a name="notes"> </a>
+<h2>
+Примечания:<!-- Notes: -->
+</h2>
+<ul> 
+ <li>Часто автор и заверитель - одно лицо, но это может быть не так в некоторых клинических рабочих процессах.<!-- The author and the attester are often the same person, but this may not be the case in some clinical workflows. --></li>
+ <li>Заверитель удостоверяет содержимое ресурса document, ресурса subject и ресурсов, на которые есть ссылки в Composition.section.content. Поскольку документы часто производят Compositions и заверение композиции проводится для того, чтобы применить и к документу, должен использоваться метод <a href="documents.html#presentation">презентации документа</a>, когда/если заверители проверяют содержимое композиции
+ <!-- The attester attests contents of the document resource, the subject resource and the resources referred to 
+   in the Composition.section.content references. Because documents are often derived Compositions and the attestation
+   from the composition is held to apply to the document, the method for <a href="documents.html#presentation">presenting a document</a>
+   should be used when/if attesters review the content of the composition. -->
+   </li>
+ <li>Хранитель (custodian) несет ответственность за поддержание композиции и любых документов, извлеченных из нее. В отношении документов они ответственны за политику касательно постоянства документов. Хотя им не требуется фактически сохранять копию документу, им СЛЕДУЕТ делать это.
+ <!-- The custodian is responsible for the maintenance of the composition and any documents derived from it. With regard to the documents, they are 
+   responsible for the policy regarding persistence of the documents. Although they need not actually retain a copy of the document, they SHOULD do so. -->
+ </li>
+</ul>  
+
+<blockquote class="stu-note">
+<a name="dstu"> </a>
+<p>
+<b>Примечание к STU:<!-- DSTU Note: --></b> Приветствуются отзывы по двум вопросам, связанным с ресурсом Composition:<!-- Feedback is welcome on two issues related to Composition: -->
+</p>
+<ul>
+ <li>Для многих композиций заголовок совпадает с текстом или именем для отображения элемента Composition.type (например "consultation" или "progress note"). Обратите внимание, что <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a> не делает элемент "title" обязательным, однако нет известных сценариев, где было бы полезно опустить заголовок, поэтому на период пробного использования этот элемент сделан обязательным.
+ <!-- For many compositions, the title is the same as the text or a display name of Composition.type (e.g., a "consultation" or "progress note"). Note that <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a> does not make title mandatory, but there are no known cases where it is useful for title to be omitted, so it is mandatory here during the trial use period. --></li>
+ <li>Клиент может запросить сервер сгенерировать полностью укомплектованный в бандл документ из ресурса Composition с помощью операции $generate. Определение этой операции не отвечает на вопрос, как создаются подписи на документ. Этот вопрос остаётся нерешённым на период пробного использования, и необходимы отзывы реализаторов по этому вопросу.
+ <!-- A client can ask a server to generate a fully bundled document from a Composition resource using the $generate operation. This operation definition does not resolve the question how document signatures are created. This is an open issue during the period of trial use, and feedback is requested regarding this question. --></li>
+</ul>
+<p>
+<a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(STU_3)">Отзывы</a>.
+</p>
+</blockquote>
+
+</div>

@@ -20,10 +20,10 @@ code { counter-increment: listing; }
 
 
 <h2>FHIR Overview - Developers</h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="versions.html#maturity">Уровень зрелости</a>: N/A</td><td id="ballot"><a href="versions.html#levels">Статус голосования</a>: <a href="versions.html#std-process">Информативный</a></td></tr></table>
+<table class="colsi"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Informative</a></td></tr></table>
 
 <p>
-FHIR (<i>Fast Health Interoperability Resources</i>) is designed to
+FHIR (<i>Fast Healthcare Interoperability Resources</i>) is designed to
 enable information exchange to support the provision
 of healthcare in a wide variety of settings. The specification
 builds on and adapts modern, widely used RESTful practices
@@ -38,6 +38,7 @@ financial aspects.  The standard is intended for global use and in a wide
 variety of architectures and scenarios.
 </p>
 
+<a name="Framework"></a>
 <h3>Framework</h3>
 <p>
 FHIR is based on "Resources" which are the common building blocks
@@ -59,6 +60,7 @@ different <a href="resourcelist.html">resource types defined</a> in the FHIR spe
 This specification describes a set of resources - that is, a set of resource types that describe the set of resource instances that
 can actually be exchanged. The term 'Resource' is sometimes used without clarifying whether it specifically refers to types or instances - the context of use makes this clear.
 </p>
+<a name="Example"></a>
 <h3>Example Resource Instance</h3>
 <p>
 This is an example of how a <a href="patient.html">patient</a> is represented as a FHIR object in <a href="json.html">JSON</a>. An <a href="xml.html">XML encoding</a> is also defined in the specification.
@@ -128,6 +130,7 @@ Each instance of a resource consists of:
 Note that although this specification always shows the JSON properties in the order that they are defined, many JSON libraries order properties by other criteria.
 </p>
 
+<a name="Interactions"></a>
 <h3>Interactions</h3>
 <p>
 For manipulation of resources, FHIR provides a <a href="http.html">REST API</a> with a
@@ -149,6 +152,7 @@ including exchange of groups of resources as <a href="documents.html">Documents<
 as <a href="messaging.html">Messages</a>, and by using various types of <a href="services.html">Services</a>.
 </p>
 
+<a name="Managing"></a>
 <h3>Managing Variability</h3>
 <p>
 There is a wide variation
@@ -170,8 +174,23 @@ can be supported and standardized by <a href="profiling.html">defining "profiles
 the base resource types.
 </p>
 
-<a name="versions"> </a>
+<a name="versions"></a>
 <h3>Managing Versions</h3>
+<p>
+Versions, in the context of FHIR, means one of three different things:
+</p>
+<ol>
+ <li>FHIR Version: Which FHIR version is in use?</li>
+ <li>Record Version: for tracking changes to resources, and preventing changes overwriting each other</li>
+ <li>Business Version: So humans know which version of the content they are dealing with (for some kinds of resources)</li>
+</ol>
+<p><b>FHIR Version</b></p>
+<p>
+Usually, the FHIR version is fixed by the context - the <a href="capabilitystatement.html">CapabilityStatement</a> 
+that a client can use to find out about the server, but there are other ways 
+of <a href="versioning.html">managing multiple FHIR versions</a>.
+</p>
+<p><b>Record Version</b></p>
 <p>
 FHIR Servers do not have to support versioning, though they are strongly encouraged to do so.
 There are three different levels of versioning support for FHIR servers:
@@ -185,7 +204,15 @@ There are three different levels of versioning support for FHIR servers:
 In addition, servers may require that <a href="http.html#concurrency">version</a> aware updates are used, to prevent over-writing changes,
 but this is not described on this page.
 </p>
+<p><b>Business Version</b></p>
+<p>
+Some resources - typically those that represent content that goes through a formal publishing cycle - carry
+a <code>version</code> element that explicitly states what version of the content the resource represents.
+This is changed explicitly by a human, or by some automated process in accordance with applicable business
+rules.
+</p>
 
+<a name="Creating"></a>
 <h3>Creating a resource</h3>
 <p>
 To <a href="http.html#create">create a resource</a>, send an HTTP POST request to the resource type's respective end
@@ -228,6 +255,7 @@ Notes:
 </ul>
 
 
+<a name="create-response"></a>
 <h3>Create Response</h3>
 <p>
 A response will contain an HTTP code 201 to indicate that the
@@ -260,12 +288,13 @@ do so.
 Notes:
 </p>
 <ul>
-  <li><b>HTTP/1.1 201</b> (line 1) - the operation was successful. Note that use of <a href="https://www.w3.org/Protocols/rfc2616/rfc2616.html">HTTP v 1.1</a> is strongly recommended but not required</li>
+  <li><b>HTTP/1.1 201</b> (line 1) - the operation was successful. Note that use of <a href="https://tools.ietf.org/html/rfc7231">HTTP v 1.1</a> is strongly recommended but not required</li>
   <li><b>ETag</b> (line 5) - used in the <a href="http.html#update">version aware update</a> pattern (if the server supports versioning)</li>
   <li><b>Location</b> (line 6) - the id the server assigned to the resource. The id in the URL must match the id in the resource when the resource is subsequently returned</li>
   <li><b>OperationOutcome</b> (line 9) - OperationOutcome resources in this context have no id or meta element (they have no managed identity)</li>
 </ul>
 
+<a name="error-response"></a>
 <h4>Error response</h4>
 
 <p>
@@ -301,6 +330,7 @@ Notes:
 </ul>
 
 
+<a name="read-request"></a>
 <h3>Read Request</h3>
 <p>
 <a href="http.html#read">Reading a resource</a> is done by sending HTTP GET requests to the desired Resource Type
@@ -327,10 +357,11 @@ Notes:
 <ul>
   <li><b>347</b> (line 1) - The id of the resource that is being fetched</li>
   <li><b>_format=xml</b> (line 1) - this is another method for clients to indicate the desired response format, in addition to using the accept header, and is useful for clients that don't have access to the HTTP Headers (e.g. XSLT transforms) (see <a href="http.html#mimetypes">Mime Types</a>)</li>
-  <li><b>cache control</b> (line 4) - Concurrency control is important, though FHIR itself says nothing about it - see <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html">http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</a> or <a href="https://www.mnot.net/cache_docs/">https://www.mnot.net/cache_docs/</a></li>
+  <li><b>cache control</b> (line 4) - Cache control is important, though FHIR itself says nothing about it - see <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html">http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</a> or <a href="https://www.mnot.net/cache_docs/">https://www.mnot.net/cache_docs/</a></li>
 </ul>
 
 
+<a name="read-response"></a>
 <h3>Read Response</h3>
 <p>
 The response to a GET contains the Resource.
@@ -366,6 +397,7 @@ Notes:
   <li><b>lastUpdated</b> (line 12) - if present, this must match the value in the HTTP header</li>
 </ul>
 
+<a name="search-request"></a>
 <h3>Search Request</h3>
 <p>
 In addition to getting single known resources it's possible to find a collection of resources by
@@ -391,6 +423,7 @@ https://example.com/base/MedicationRequest?patient=347
 returns all the prescriptions for the patient created above.
 </p>
 
+<a name="search-response"></a>
 <h3>Search Response</h3>
 <p>
 The response to a search request is a <a href="bundle.html">Bundle</a>: a list of matching resources with some metadata:
@@ -452,6 +485,7 @@ Notes:
   <li>The search operation is also able to <a href="search.html#include">return additional related resources</a> as well</li>
 </ul>
 
+<a name="update-request"></a>
 <h3>Update Request</h3>
 <p>
 The client sends the server a new version of the resource to replace the existing version - it PUTs it to the location of the existing resource:
@@ -496,6 +530,7 @@ Notes:
   <li><b>resource content</b> (line 14) - Not shown here, the same as Patient above</li>
 </ul>
 
+<a name="update-response"></a>
 <h3>Update Response</h3>
 <p>
 The response to an update request has metadata / status, and optionally an OperationOutcome:
@@ -528,6 +563,7 @@ Notes:
   <li><b>ETag</b> (line 5) - This is the versionId of the new version, and is also found in the location header (line 6) (if the server supports versioning)</li>
 </ul>
 
+<a name="base"></a>
 <h3>Base Resource Content</h3>
 <p>
 Here is an example that shows all the information found in all resources, fully populated:
@@ -543,7 +579,7 @@ Here is an example that shows all the information found in all resources, fully 
 <code>    "lastUpdated" : "2014-08-18T15:43:30Z",</code>
 <code>    "profile" : ["http://example-consortium.org/fhir/profile/patient"],</code>
 <code>    "security" : [{</code>
-<code>      "system" : "http://hl7.org/fhir/v3/ActCode",</code>
+<code>      "system" : "http://terminology.hl7.org/CodeSystem/v3-ActCode",</code>
 <code>      "code" : "EMP"</code>
 <code>    }],</code>
 <code>    "tag" : [{</code>

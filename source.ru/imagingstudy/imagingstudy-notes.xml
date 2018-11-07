@@ -1,10 +1,10 @@
-<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
+﻿<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <!-- insert xhtml content here -->
-
-<h3>Примечания для реализаторов</h3>
+<a name="notes"></a>
+<h3>Implementation Notes</h3>
 <p>
-A referenced DICOM SOP instance could be: 
+A referenced DICOM SOP instance could be:
 <ul>
 <li>A single- or multi-frame, still or video image captured by a variety of imaging modalities, such as X-ray, MR, and ultrasound;</li>
 <li>A set of various presentation parameters, including annotation and markup;</li>
@@ -15,37 +15,67 @@ A referenced DICOM SOP instance could be:
 </ul>
 </p>
 <p>
-UID values follow the FHIR convention of expressing UIDs as URNs. For example, the DICOM Study Instance UID 
-of <code>1.2.250.1.59.40211.12345678.678910</code> is expressed as <code>“urn:oid:1.2.250.1.59.40211.12345678.678910”</code>. 
+DICOM Series Instance UID and SOP Instance UID use the <code>id</code> datatype, and are encoded directly. For example, an image with SOP Instance UID of <code>2.16.124.113543.1154777499.30246.19789.3503430045.1.1</code> is encoded in <code>ImagingStudy.series.instance.uid</code> as <code>“2.16.124.113543.1154777499.30246.19789.3503430045.1.1”</code>.
 </p>
-<p>  
-The ImagingManifest.study.endpoint elements and ImagingManifest.study.series.endpoint elements indicate network 
+<p>
+The ImagingStudy’s DICOM Study Instance UID is encoded in the <code>ImagingStudy.identifier</code> element, which is of the <code>Identifier</code> datatype. When encoding a DICOM UID in an <code>Identifier</code> datatype, use the Identifier system of <code>“urn:dicom:uid”</code>, and prefix the UID value with <code>“urn:oid:”</code>. Therefore, an ImagingStudy with DICOM Study Instance UID of <code>2.16.124.113543.1154777499.30246.19789.3503430046</code> is encoded as:
+<pre class="json">
+
+	"identifier":{
+		"system":"urn:dicom:uid",
+		"value":"urn:oid:2.16.124.113543.1154777499.30246.19789.3503430046"
+	} 
+
+</pre>
+</p>
+<p>
+The study accession number can also be encoded as an <code>Identifier</code> using the <code>“ACSN”</code> identifier type, as follows:
+<pre class="json">
+
+  "identifier":{
+		"type" : {
+			"coding" : [
+				{
+					"system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+					"code" : "ACSN"
+				}
+			]
+		},
+		"system":"http://ginormoushospital.org/accession",
+		"value":"GH334103"
+	} 
+
+</pre>
+</p>
+<p>
+The ImagingStudy.endpoint elements and ImagingStudy.series.endpoint elements indicate network 
 services that can be used to access the studies, series, or instances; for example, a DICOM WADO-RS server. An 
-ImagingManifest.study.series.endpoint of a particular Endpoint.connectionType provides that service for that 
-series, and all contained instances. An ImagingManifest.study.endpoint of a particularconnection type provides 
+ImagingStudy.series.endpoint of a particular Endpoint.connectionType provides that service for that 
+series, and all contained instances. An ImagingStudy.endpoint of a particular connection type provides 
 that service for all series in that study that do not have a specified Endpoint of that type, and their 
-contained instances. That is, an ImagingManifest.study.series.endpoint overrides a ImagingManifest.study.endpoint 
-of the same connection type. (Since each study, or individual series of a study can be stored on different imaging 
+contained instances. That is, an ImagingStudy.series.endpoint overrides an ImagingStudy.endpoint 
+of the same connection type. 
+Systems can determine if a particular study, series, or instance is available or offline by interacting with the endpoint.
+Since each study, or individual series of a study can be stored on different imaging 
 archive servers, per-series endpoints are required. For the identified services and use cases, all instances within 
-a series would be stored together, and thus instance-level endpoints are not defined.)
+a series would be stored together, and thus instance-level endpoints are not defined.
 </p>
 <p>
 Different Endpoint connection types may have different capabilities, protocols or requirements; and the specified 
-Endpoint.url may require manipulation. For the details on use of imaging-related Endpoint connection types, 
-See below for details.
+<code>Endpoint.address</code> may require manipulation. See below for the details on use of imaging-related Endpoint connection types.
 </p>
-<a name="endpoint"> </a>
+<a name="endpoint"></a>
 <h4>WADO-RS</h4>
 <p>
-An <code>Endpoint.connectionType</code> of code <code>dicom-wado-rsi</code>, system <code>http://hl7.org/fhir/endpoint-connection-type</code>, 
+An <code>Endpoint.connectionType</code> of code <code>dicom-wado-rs</code>, system <code>http://terminology.hl7.org/CodeSystem/endpoint-connection-type</code>, 
 identifies a DICOM WADO-RS service. The <code>Endpoint.address</code> identifies the HTTP(S) service base url. 
-That is, only the scheme, authority and path are included. Sub-services, such as study, shall not be specified. 
+That is, only the scheme, authority and path are included. Sub-services, such as <code>study</code>, shall not be specified. 
 The path shall not contain a trailing slash.
 </p>
 <p>
 The DICOM WADO-RS (Web Access to DICOM Objects, RESTful mode) service uses a RESTful approach to instance retrieval.
 This service allows for retrieval of native DICOM SOP instances, or instances “rendered” into other formats, including
-JPEG and MPEG. The media type of a response is specified by the request Accept header (preferred); or, by the accept
+JPEG and MPEG. The media type of a response is specified by the request Accept header (preferred); or, by the <code>accept</code>
 query parameters. Supported media types depend on the  capabilities of the WADO-RS server and the classification of the instance 
 as “single frame,” “multi-frame,” “video,” “text,” or “other.” The WADO-RS service also allows retrieval of study
 or series level information.
@@ -54,12 +84,14 @@ or series level information.
 The path to retrieve a DICOM instance is constructed by appending the appropriate sub-resource paths to the <code>Endpoint.address</code> value.
 </p>
 <p>
-For example, a native DICOM PS3.10 instance file can be retrieved (if consistent with the Accept header) by
-performing a GET on a URL constructed from a <code>Endpoint.address</code> of <code>“https://pacs.hospital.org/wado-rs”</code>, the
-study.uid value
-of <code>“urn:oid:1.2.250.1.59.40211.12345678.678910”</code>, study.series.uid value
-of <code>“urn:oid:1.2.250.1.59.40211.789001276.14556172.67789”</code>, and study.series.instance.uid value
-of <code>“urn:oid:1.2.250.1.59.40211.2678810.87991027.899772.2”</code>:
+For example, using the following information in a fictional ImagingStudy resource:
+<ul>
+<li>the WADO-RS service base url of <code>“https://pacs.hospital.org/wado-rs”</code> found in an <code>ImagingStudy.endpoint.address</code>,</li>
+<li>the DICOM Study Instance UID of <code>“urn:oid:1.2.250.1.59.40211.12345678.678910”</code> found in an <code>ImagingStudy.identifier</code> having <code>Identifier.system</code> of <code>“urn:dicom:uid”</code>,</li>
+<li>the DICOM Series Instance UID of <code>“1.2.250.1.59.40211.789001276.14556172.67789”</code> found in <code>ImagingStudy.series.uid</code>, and</li>
+<li>the DICOM SOP Instance UID of <code>“1.2.250.1.59.40211.2678810.87991027.899772.2”</code> found in <code>ImagingStudy.series.instance.uid</code></li>
+</ul>
+we can construct the WADO-RS URL to issue an HTTP GET for a native DICOM PS3.10 instance file (if consistent with the Accept header):
 </p>
 <pre>
 
@@ -88,9 +120,9 @@ For further details on DICOM WADO-RS capabilities including additional rendering
 see <a href="http://dicom.nema.org/medical/dicom/current/output/chtml/part18/PS3.18.html">DICOM PS 3.18</a>.
 </p>
 <h4>WADO-URI</h4>
-<p>An Endpoint.connectionType of code <code>dicom-wado-uri</code>, system <code>http://hl7.org/fhir/endpoint-connection-type</code>, 
-identifies a DICOM WADO-URI service. The Endpoint.address identifies the HTTP(S) service base url. 
-That is, only the scheme, authority and path are included. Neither a quetstion mark (?) nor any query parameters shall be included.
+<p>An <code>Endpoint.connectionType</code> of code <code>dicom-wado-uri</code>, system <code>http://terminology.hl7.org/CodeSystem/endpoint-connection-type</code>, 
+identifies a DICOM WADO-URI service. The <code>Endpoint.address</code> identifies the HTTP(S) service base url. 
+That is, only the scheme, authority and path are included. Neither a question mark (“?”) nor any query parameters shall be included.
 </p>
 <p>
 The DICOM WADO-URI (Web Access to DICOM Objects, URI mode) service uses HTTP query parameter syntax. This service allows
@@ -99,21 +131,23 @@ type of a response is specified by the request Accept header (preferred); or, by
 Supported media types depend on the classification of the instance as “single frame,” “multi-frame,” “video,” “text,” or “other.”
 </p>
 <p>
-The query to retrieve a DICOM instance is constructed by appending the appropriate query parameters to the <code>Endpoint.address.url</code>.
+The query to retrieve a DICOM instance is constructed by appending the appropriate query parameters to the <code>Endpoint.address</code> value.
 </p>
 <p>
-For example, a native DICOM PS3.10 instance file can be retrieved (if consistent with the Accept header) by performing
-a GET on a URL constructed from a <code>Endpoint.address.url</code> of <code>“https://pacs.hospital.org/wado-uri”</code>, the study.uid value
-of <code>“urn:oid:1.2.250.1.59.40211.12345678.678910”</code>, study.series.uid value
-of <code>“urn:oid:1.2.250.1.59.40211.789001276.14556172.67789”</code>, and study.series.instance.uid value
-of <code>“urn:oid:1.2.250.1.59.40211.2678810.87991027.899772.2”</code>:
+For example, using the following information in a fictional ImagingStudy resource:
+<ul>
+<li>the WADO-URI service base url of <code>“https://pacs.hospital.org/wado-uri”</code> found in an <code>ImagingStudy.endpoint.address</code>,</li>
+<li>the DICOM Study Instance UID of <code>“urn:oid:1.2.250.1.59.40211.12345678.678910”</code> found in an <code>ImagingStudy.identifier</code> having <code>Identifier.system</code> of <code>“urn:dicom:uid”</code>,</li>
+<li>the DICOM Series Instance UID of <code>“1.2.250.1.59.40211.789001276.14556172.67789”</code> found in <code>ImagingStudy.series.uid</code>, and</li>
+<li>the DICOM SOP Instance UID of <code>“1.2.250.1.59.40211.2678810.87991027.899772.2”</code> found in <code>ImagingStudy.series.instance.uid</code></li>
+</ul>
+we can construct the WADO-URI URL to issue an HTTP GET for a native DICOM PS3.10 instance file (if consistent with the Accept header):
 </p>
 <pre>
 
 https://pacs.hospital.org/wado-uri?requestType=WADO&amp;studyUID=1.2.250.1.59.40211.12345678.678910&amp;seriesUID=1.2.250.1.59.40211.789001276.14556172.67789&amp;objectUID=1.2.250.1.59.40211.2678810.87991027.899772.2
 
 </pre>
-
 <p>
 Additional query parameters can control other aspects of the rendering including rendered dimensions, quality (compression
 ratio), the region of interest within the image to render, brightness/contrast (window center/width) adjustments, whether
@@ -134,9 +168,9 @@ For further details on DICOM WADO-URI capabilities including additional renderin
 see <a href="http://dicom.nema.org/medical/dicom/current/output/chtml/part18/PS3.18.html">DICOM PS 3.18</a>.
 </p>
 <h4>IID</h4>
-<p>An Endpoint.connectionType of code <code>ihe-iid</code>, system <code>http://hl7.org/fhir/endpoint-connection-type</code>, identifies an IHE 
-<b>Invoke Image Display (IID)</b> service. The <code>Endpoint.address</code> identifies the HTTP(S) service base url. 
-That is, only the scheme, authority and path are included. Neither the question mark (“?”) nor any query parameters shall be included.
+<p>An <code>Endpoint.connectionType</code> of code <code>ihe-iid</code>, system <code>http://terminology.hl7.org/CodeSystem/endpoint-connection-type</code>, 
+identifies an IHE <b>Invoke Image Display (IID)</b> service. The <code>Endpoint.address</code> identifies the HTTP(S) service base url. 
+That is, only the scheme, authority and path are included. Neither a question mark (“?”) nor any query parameters shall be included.
 </p>
 <p>
 The IHE <b>Invoke Image Display (IID)</b> service provides a standardized mechanism to launch a viewer in a particular study 
@@ -148,9 +182,12 @@ viewer capabilities, image quality, and more.
 To launch a viewer, append the appropriate query parameters to <code>Endpoint.address</code> value.
 </p>
 <p>
-For example, given an <code>Endpoint.address</code> of <code>https://pacs.hospital.org/IHEInvokeImageDisplay</code>, to 
-invoke a diagnostic quality viewer on the study with <code>study.uid</code> value of <code>“urn:uri:1.2.250.1.59.40211.12345678.678910”</code>, 
-the following URL would be constructed:
+For example, using the following information in a fictional ImagingStudy resource:
+<ul>
+<li>the WADO-URI service base url of <code>“https://pacs.hospital.org/IHEInvokeImageDisplay”</code> found in an <code>ImagingStudy.endpoint.address</code>,</li>
+<li>the DICOM Study Instance UID of <code>“urn:oid:1.2.250.1.59.40211.12345678.678910”</code> found in an <code>ImagingStudy.identifier</code> having <code>Identifier.system</code> of <code>“urn:dicom:uid”</code>,</li>
+</ul>
+we can construct the IID URL to invoke a diagnostic quality viewer on the indicated study:
 </p>
 <pre>
 
@@ -162,84 +199,80 @@ For further details on IHE Invoke Image Display capabilities including additiona
 the <a href="http://www.ihe.net/Technical_Frameworks/#radiology">IHE Technical Frameworks</a>, 
 or the introduction on the <a href="http://wiki.ihe.net/index.php/Invoke_Image_Display">IHE IID Profile Wiki</a>.
 </p>
-<h3>Сценарий использования<!-- Use Case --></h3>
-<h4>Доступ к результатам радиологических исследований из ЭМК<!-- EHR access to imaging studies --></h4>
+
+
+<h3>Use Case</h3>
+<h4>EHR access to imaging studies</h4>
 <p>
-Эми, семейный врач, обращается к реестру документов предприятия, содержащему результаты радиологических исследований (<a href="http://www.ihe.net">IHE Radiology XDS-I</a>), чтобы найти исследования её пациента Алекса. Её ЭМК-клиент выполняет FHIR-вызов всех доступных объектов <a href="imagingstudy.html">ImagingStudy</a> для Алекса. В ответ она может получить идентификаторы исследований для каждого исследования, которое было опубликовано в этот реестр. В ответ предоставляется достаточно информации, чтобы получить эскиз через вызов WADO-RS или запустить просмотрщик с помощью вызова профиля <a href="http://www.ihe.net">IHE Radiology - Invoke Image Display (IID)</a>, используя элементы URL, находящиеся в <a href="imagingstudy.html">ImagingStudy</a>.
-<!-- Amy, a family physician, would like to see a list of available studies for her patient, Alex. Her EHR 
-client makes a FHIR call for all <a href="imagingstudy.html">ImagingStudy</a> objects available for Alex. 
-In the response, she is able to see the study date, procedure, modality, and accession number, for each 
-study returned. There is enough information provided in the response to obtain a thumbnail via a WADO-RS 
-call, or to launch a viewer using an <a href="http://www.ihe.net">IHE Radiology - Invoke Image Display (IID)</a> 
-profile call using the url elements found in the <a href="imagingstudy.html">ImagingStudy</a>. -->
+Amy, a family physician, would like to see a list of available studies for her patient, Alex. Her EHR
+client makes a FHIR call for all <a href="imagingstudy.html">ImagingStudy</a> objects available for Alex.
+In the response, she is able to see the study date, procedure, modality, and accession number, for each
+study returned. There is enough information provided in the response to obtain a thumbnail via a WADO-RS
+call, or to launch a viewer using an <a href="http://www.ihe.net">IHE Radiology - Invoke Image Display (IID)</a>
+profile call using the url elements found in the <a href="imagingstudy.html">ImagingStudy</a>.
 </p>
-<h4>Всеобъемлющий плановый рабочий процесс работы с радиологическими изображениями<!-- Comprehensive Imaging Scheduled Workflow --></h4>
+<h4>Comprehensive Imaging Scheduled Workflow</h4>
 <p>
-Джо Энджене жалуется на одышку и нерегулярную боль в груди своему основному лечащему врачу доктору Пату Дауну в местной поликлинике, который заказал для него стресс-эхокардиограмму; этот заказ создаётся в виде FHIR-ресурса <a href="task.html">Task</a> для управления рабочим процессом, со ссылкой на ресурс <a href="servicerequest.html">ServiceRequest</a> с деталями запроса. Заказ запланирован, и его исполнение назначенено кардиологу доктору Арту Сканну, также работающему в этой поликлинике.
+Joe Angina complains of shortness of breath and occasional chest pain to his primary care physician, Dr. Pat Down at
+Local MultiClinic, who orders a stress echocardiogram; the order is created as a FHIR <a href="task.html">Task</a>
+resource to manage the workflow, with a link to a <a href="servicerequest.html">ServiceRequest</a> resource with
+the details of the request.   The order is scheduled and assigned to cardiologist Dr. Art Skann, also at Local MultiClinic.
 </p>
 <p>
-В назначенный по расписанию день обследования Джо прибывает в лабораторию ультразвуковой эхографии для встречи с доктором Сканном и выполнения исследования. Рабочая станция доктора Сканна показывает ежедневный список <a href="task.html">Task</a>, и он переходит по ссылке для открытия заказа на диагностическое исследование (<a href="servicerequest.html">ServiceRequest</a>). Он может перейти по ссылкам из ресурса <a href="patient.html">Patient</a> для доступа к электронной истории болезни Джо, но в данном случае нас это не интересует.
-<!-- On the scheduled day of the exam, Joe arrives at the echo lab to meet with Dr. Skann and have the study done.  
-Dr. Skann’s workstation shows the daily list of <a href="task.html">Task</a>, and he follows the link to retrieve the 
+On the scheduled day of the exam, Joe arrives at the echo lab to meet with Dr. Skann and have the study done.
+Dr. Skann’s workstation shows the daily list of <a href="task.html">Task</a>, and he follows the link to retrieve the
 <a href="servicerequest.html">ServiceRequest</a>. (He may follow the links through the
 referenced <a href="patient.html">Patient</a> resource to access Joe’s electronic 
-medical record, but that is not the concern of this storyboard.)   -->
+medical record, but that is not the concern of this storyboard.)
 </p>
 <p>
-<a href="task.html">Task</a> и <a href="servicerequest.html">ServiceRequest</a> были перекодированы в DICOM Modality Worklist Scheduled Procedure Step, а оборудование в лаборатории ультразвуковой эхографии скачало Modality Worklist. Исследование выполнено, и полученные изображения и предварительные измерения специалиста по ультразвуковой эхографии сохранены в локальной системе передачи и архивации изображений поликлиники (PACS). Система создаёт ресурс <a href="imagingstudy.html">ImagingStudy</a> для каждого проводимого исследования.
-<!-- The <a href="task.html">Task</a> and <a href="servicerequest.html">ServiceRequest</a> has been transcoded to a DICOM Modality Worklist 
-Scheduled Procedure Step, and in the echo lab the equipment has downloaded the Modality Worklist.  The 
-study is performed, and the acquired images and sonographer’s preliminary measurements are stored in the 
-Local MultiClinic Picture Archiving and Communication System (PACS).  The PACS creates 
-an <a href="imagingstudy.html">ImagingStudy</a> resource for each study it manages. -->
+The <a href="task.html">Task</a> and <a href="servicerequest.html">ServiceRequest</a> has been transcoded to a DICOM Modality Worklist
+Scheduled Procedure Step, and in the echo lab the equipment has downloaded the Modality Worklist.  The
+study is performed, and the acquired images and sonographer’s preliminary measurements are stored in the
+Local MultiClinic Picture Archiving and Communication System (PACS).  The PACS creates
+an <a href="imagingstudy.html">ImagingStudy</a> resource for each study it manages.
 </p>
 <p>
-Доктор Сканн интерпретирует результаты исследования на рабочей станции системы PACS и выбирает два ключевых кадра изображения для включения в диагностический отчёт; эта выборка сохраняется в системе PACS в виде DICOM-выборки ключевых объектов под заголовком "Для приложения к отчёту", и PACS делает её доступной (перекодирует её) в виде FHIR-ресурса <a href="imagingmanifest.html">ImagingManifest</a>. Доктор Сканн диктует отчёт, используя программу написания отчётов структурированного ввода данных, включая рекомендацию катетеризации полостей сердца, и подписывает его. Программа написания отчётов оформляет документ в виде <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a>-документа, извлекает ресурс <a href="imagingmanifest.html">ImagingManifest</a> и вставляет отмеченные ключевые изображения в этот отчёт.
-<!-- Dr. Skann interprets the study on a PACS workstation, and he selects two key image frames to be included 
-in the diagnostic report; this selection is stored back to the PACS as a DICOM Key Object Selection with 
-the title "For Report Attachment", and the PACS makes it available (transcodes it) as a 
-FHIR <a href="imagingmanifest.html">ImagingManifest</a> resource.  Dr. Skann dictates the 
-report using a structured data entry report writing program, including a recommendation for a cardiac 
-catheterization procedure, and signs it.  The report writing program formats the report 
-as a <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a> document, 
-retrieves the <a href="imagingmanifest.html">ImagingManifest</a> resource, and inserts the 
-referenced key images into the report. -->
+Dr. Skann interprets the study on a PACS workstation, and he selects two key image frames to be included
+in the diagnostic report; this selection is stored back to the PACS as a DICOM Key Object Selection with
+the title "For Report Attachment", and the PACS makes it available (transcodes it) as a
+FHIR <a href="imagingstudy.html">ImagingStudy</a> resource.  Dr. Skann dictates the
+report using a structured data entry report writing program, including a recommendation for a cardiac
+catheterization procedure, and signs it.  The report writing program formats the report
+as a <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a> document,
+retrieves the <a href="imagingstudy.html">ImagingStudy</a> resource, and inserts the
+referenced key images into the report.
 </p>
 <p>
-Доктор Даун снова встречается с Джо, и они просматривают результаты стресс-теста. У Джо возникает вопрос относительно результатов исследования, которые не показаны на ключевых изображениях в отчёте, поэтому доктор Даун использует локальную информационную систему поликлиники и делает запрос к системе PACS на ресурс <a href="imagingstudy.html">ImagingStudy</a>, проходит по ссылкам для открытия изображений из этого исследования. Джо соглашается на процедуру катетеризации полостей сердца, и доктор Даун отправляет направление в отделение катетеризации больницы при Университете Джайномэс и указывает системе PACS дать совместный доступ к результатам эхографии через городскую систему обмена медицинской информацией.
-<!-- Dr. Down meets again with Joe, and they review the results of the stress test.  Joe has a question about 
-the findings that the key images in the report do not show, so Dr. Down uses the Local MultiClinic EMR 
-to query the PACS for the full <a href="imagingstudy.html">ImagingStudy</a> resource, and uses the references there to open an image 
-display for the full study.  Joe agrees to proceed to catheterization, and Dr. Down sends a referral to 
-the Ginormous University Hospital cath department, and triggers the PACS to share the echo study 
-through the Metropolitan Health Information Exchange.   -->
+Dr. Down meets again with Joe, and they review the results of the stress test.  Joe has a question about
+the findings that the key images in the report do not show, so Dr. Down uses the Local MultiClinic EMR
+to query the PACS for the full <a href="imagingstudy.html">ImagingStudy</a> resource and uses the references there to open an image
+display for the full study.  Joe agrees to proceed to catheterization, and Dr. Down sends a referral to
+the Ginormous University Hospital cath department and triggers the PACS to share the echo study
+through the Metropolitan Health Information Exchange.
 </p>
 <p>
-Система PACS создаёт манифест исследования в виде ресурса <a href="imagingmanifest.html">ImagingManifest</a>, в который входят все изображения, кроме предварительных измерений специалиста по ультразвуковой эхографии (которые в соответствии с политикой безопасности не доступны вне поликлиники). Этот манифест публикуется в городском реестре обмена медицинской информацией. В соответствии с <a href="http://www.ihe.net">IHE XDS-I</a>, эти изображения непосредственно не публикуются в этой системе обмена медицинской информацией, а становятся доступны по запросу к системе PACS.
-<!-- The PACS creates a manifest of the study as an <a href="imagingmanifest.html">ImagingManifest</a> 
-resource, which includes all the 
-images but excludes the sonographer’s preliminary measurements (which as a matter of policy are 
-not shared outside the Local MultiClinic). The manifest is published to the Metro HIE. (In 
-accordance with <a href="http://www.ihe.net">IHE XDS-I</a>, the images themselves are not directly 
-published to the HIE, but available for on-demand retrieval from the PACS.) -->
+The PACS creates an imaging study as an <a href="imagingstudy.html">ImagingStudy</a>
+resource, which includes all the
+images but excludes the sonographer’s preliminary measurements (which as a matter of policy are
+not shared outside the Local MultiClinic). The imaging study is published to the Metro HIE. (In
+accordance with <a href="http://www.ihe.net">IHE XDS-I</a>, the images themselves are not directly
+published to the HIE, but available for on-demand retrieval from the PACS.)
 </p>
 <p>
-В больнице Джайномэс докутор Кора Пламмер получает направление на катетеризацию и ищет то исследование в городской системе обмена медицинской информацией. Она извлекает манифест исследования <a href="imagingmanifest.html">ImagingManifest</a> и использует его для доступа к расшаренным изображениям для подготовки к процедуре катетеризации.
-<!-- At Ginormous Hospital, Dr. Cora Plummer receives the cath referral, and looks up the study in the 
-Metro HIE registry.  She retrieves the study manifest <a href="imagingmanifest.html">ImagingManifest</a>, 
-and uses it to access the shared images, which she uses to prepare for the cath procedure. -->
+At Ginormous Hospital, Dr. Cora Plummer receives the cath referral, and looks up the study in the
+Metro HIE registry.  She retrieves the study <a href="imagingstudy.html">ImagingStudy</a>,
+and uses it to access the shared images, which she uses to prepare for the cath procedure.
 </p>
 
 
 <!-- old use-case replaced August 2015, CP #7679
 <p>
-Следующая раскадровка иллюстрирует основной сценарий использования для этого ресурса:
-The following storyboard illustrates the primary use case for 
+The following storyboard illustrates the primary use case for
 this resource:
 </p>
 <blockquote>
 <p>
-Онколог Карен принимает пациентов в своей клинике, и хотела бы подготовиться к пациентам, которых она будет принимать сегодня. Ее первый сегодняшний пациент, Алекс, уже прибыл. Она запускает свою систему электронных медицинских записей и ищет Алекса, делая запрос по пациентам и используя его фамилию. СЭМЗ делает FHIR-запрос к ресурсу Patient, чтобы предоставить основную демографическую информацию для отрисовки титульной страницы. СЭМЗ делает последующий FHIR-запрос к ресурсу Condition и сообщает, что у Алекса подозревается рак простаты. Получив эту информацию, Карен решает проверить два следующих теста - результаты лабораторного теста Prostate-Specific Antigen (PSA) и КТ, выполненного с местном диагностическом центре. Первое, FHIR-запрос делается к ресурсу Observation для запроса последнего значения PSA (СЭМЗ также запрашивает предыдущие значения PSA для проверки тенденции). Для КТ-осмотра СЭМЗ запрашивает ресурс ImagingStudy, чтобы получить список доступных изображений с другими существенными ограничениями (такими как модальность, участок тела и т. п.). Этот запрос возвращает доступные исследования, а также значимые метаданные о каждом исследовании, его серию и изображения. Эта информация поможет Карен выбрать, какое исследование она захочет посмотреть. Используя предоставленные WADO-RS-ссылки, артефакты. которые захочет посмотреть Карен, можно загружить и просмотреть с помощью программного обеспечения, поддерживающего просмотр DICOM.
 An oncologist, Karen, is seeing patients in her clinic, and would like
 background on the patients she is seeing today. Her first patient of the
 day, Alex. has arrived. She launches her Electronic Medical Record (EMR)
@@ -251,14 +284,14 @@ suspected to have prostate cancer. With this information, Karen decides to
 check for two further tests - the results of a Prostate-Specific Antigen
 (PSA) laboratory test, and of a CT exam performed at the local diagnostic
 facility. First, a FHIR query is made against the Observation resource to
-query for the most recent value of PSA (the EMR also queries previous 
+query for the most recent value of PSA (the EMR also queries previous
 values of PSA for trending). For the CT exam, the EMR software queries on
-the ImagingStudy resource to retrieve a list of available images with other 
-relevant constraints (such as modality, body region etc.). This returns 
+the ImagingStudy resource to retrieve a list of available images with other
+relevant constraints (such as modality, body region etc.). This returns
 back the studies available, with relevant meta-data about each study,
-its series and images. This information will help Karen to select which 
-study would like to review. Using the WADO-RS references provided, the 
-artifacts Karen would like to review can be downloaded and viewed using 
+its series and images. This information will help Karen to select which
+study would like to review. Using the WADO-RS references provided, the
+artifacts Karen would like to review can be downloaded and viewed using
 capable DICOM viewing software.
 </p>
 </blockquote>

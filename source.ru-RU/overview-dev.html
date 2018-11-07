@@ -1,0 +1,597 @@
+<!DOCTYPE HTML>
+
+[%settitle FHIR Overview - Developers%]
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+[%file newheader%]
+
+</head>
+<style>
+.code { counter-reset: listing }
+code { counter-increment: listing; }
+.code i:before { content: counter(listing) ". "; color: gray; }
+.code i { float: left; clear: both; min-width: 2.5em; }
+.code code:before { content: counter(listing) ". "; color: gray; display: inline-block; min-width: 2.5em; }
+</style>
+<body>
+[%file newnavbar%]
+
+<div class="col-12">
+
+
+<h2>FHIR Overview - Developers</h2>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="versions.html#maturity">Уровень зрелости</a>: N/A</td><td id="ballot"><a href="versions.html#levels">Статус голосования</a>: <a href="versions.html#std-process">Информативный</a></td></tr></table>
+
+<p>
+FHIR (<i>Fast Health Interoperability Resources</i>) is designed to
+enable information exchange to support the provision
+of healthcare in a wide variety of settings. The specification
+builds on and adapts modern, widely used RESTful practices
+to enable the provision of integrated healthcare across a
+wide range of teams and organizations.
+</p>
+
+<p>
+The intended scope of FHIR is broad, covering human and veterinary,
+clinical care, public health, clinical trials, administration and
+financial aspects.  The standard is intended for global use and in a wide
+variety of architectures and scenarios.
+</p>
+
+<h3>Framework</h3>
+<p>
+FHIR is based on "Resources" which are the common building blocks
+for all exchanges. Resources are an instance-level representation of some kind of healthcare entity.
+All resources have the following features in <a href="resource.html">common</a>:
+</p>
+<ul>
+ <li>A URL that identifies the resource</li>
+ <li>Common metadata</li>
+ <li>A <a href="narrative.html">human-readable XHTML summary</a></li>
+ <li>A set of defined data elements - a different set for each type of resource </li>
+ <li>An <a href="extensibility.html">extensibility framework</a> to support variation in healthcare</li>
+</ul>
+<p>
+Resource instances are represented as either <a href="xml.html">XML</a>, <a href="json.html">JSON</a> or <a href="rdf.html">RDF</a> and there are currently <%resourcecount%>
+different <a href="resourcelist.html">resource types defined</a> in the FHIR specification.
+</p>
+<p>
+This specification describes a set of resources - that is, a set of resource types that describe the set of resource instances that
+can actually be exchanged. The term 'Resource' is sometimes used without clarifying whether it specifically refers to types or instances - the context of use makes this clear.
+</p>
+<h3>Example Resource Instance</h3>
+<p>
+This is an example of how a <a href="patient.html">patient</a> is represented as a FHIR object in <a href="json.html">JSON</a>. An <a href="xml.html">XML encoding</a> is also defined in the specification.
+</p>
+
+<div class="example">
+<pre class="json linecounter">
+<code>{</code>
+<code>  "resourceType": "Patient",</code>
+<code>  "id" : "23434",</code>
+<code>  "meta" : {</code>
+<code>    "versionId" : "12",</code>
+<code>    "lastUpdated" : "2014-08-18T15:43:30Z"</code>
+<code>  }</code>
+<code>  "text": {</code>
+<code>    "status": "generated",</code>
+<code>    "div": "&lt;!-- Snipped for Brevity -->"</code>
+<code>  },</code>
+<code>  "extension": [</code>
+<code>    {</code>
+<code>      "url": "http://example.org/consent#trials",</code>
+<code>      "valueCode": "renal"</code>
+<code>    }</code>
+<code>  ],</code>
+<code>  "identifier": [</code>
+<code>    {</code>
+<code>      "use": "usual",</code>
+<code>      "label": "MRN",</code>
+<code>      "system": "http://www.goodhealth.org/identifiers/mrn",</code>
+<code>      "value": "123456"</code>
+<code>    }</code>
+<code>  ],</code>
+<code>  "name": [</code>
+<code>    {</code>
+<code>      "family": [</code>
+<code>        "Levin"</code>
+<code>      ],</code>
+<code>      "given": [</code>
+<code>        "Henry"</code>
+<code>      ],</code>
+<code>      "suffix": [</code>
+<code>        "The 7th"</code>
+<code>      ]</code>
+<code>    }</code>
+<code>  ],</code>
+<code>  "gender": {</code>
+<code>    "text": "Male"</code>
+<code>  },</code>
+<code>  "birthDate": "1932-09-24",</code>
+<code>  "active": true</code>
+<code>}</code>
+</pre>
+</div>
+
+<p>
+Each instance of a resource consists of:
+</p>
+<ul>
+  <li><b>resourceType</b> (line 2) - Required: FHIR defines many different types of resources. See <a href="resourcelist.html">the full index</a></li>
+  <li><b>id</b> (line 3) - The id of this resource. Always present when a resource is exchanged, except during the create operation (below)</li>
+  <li><b>meta</b> (lines 4 - 7) - Usually Present: <a href="resource.html#meta">Common use/context data to all resources</a> and managed by the infrastructure. Missing if there is no metadata</li>
+  <li><b>text</b> (lines 8 - 11) - Recommended: XHTML that provides a <a href="narrative.html">human readable representation</a> for the resource</li>
+  <li><b>extension</b> (lines 12 - 17) - Optional: <a href="extensibility.html">Extensions</a> defined by the extensibility framework</li>
+  <li><b>data</b> (lines 18 - 43) - Optional: data elements - a different set, defined for each type of resource</li>
+</ul>
+<p>
+Note that although this specification always shows the JSON properties in the order that they are defined, many JSON libraries order properties by other criteria.
+</p>
+
+<h3>Interactions</h3>
+<p>
+For manipulation of resources, FHIR provides a <a href="http.html">REST API</a> with a
+rich but simple set of interactions:
+</p>
+<ul>
+<li><a href="http.html#create">Create</a> = POST https://example.com/path/{resourceType}</li>
+<li><a href="http.html#read">Read</a> = GET https://example.com/path/{resourceType}/{id}</li>
+<li><a href="http.html#update">Update</a> = PUT https://example.com/path/{resourceType}/{id}</li>
+<li><a href="http.html#delete">Delete</a> = DELETE https://example.com/path/{resourceType}/{id}</li>
+<li><a href="http.html#search">Search</a> = GET https://example.com/path/{resourceType}?search parameters...</li>
+<li><a href="http.html#history">History</a> = GET https://example.com/path/{resourceType}/{id}/_history</li>
+<li><a href="http.html#transaction">Transaction</a> = POST https://example.com/path/ <i>(POST a transaction bundle to the system)</i></li>
+<li><a href="operations.html">Operation</a> = GET https://example.com/path/{resourceType}/{id}/${opname}</li>
+</ul>
+<p>
+The FHIR specification describes other kinds of exchanges beyond this simple RESTful API,
+including exchange of groups of resources as <a href="documents.html">Documents</a>,
+as <a href="messaging.html">Messages</a>, and by using various types of <a href="services.html">Services</a>.
+</p>
+
+<h3>Managing Variability</h3>
+<p>
+There is a wide variation
+between different geo-political jurisdictions and segments of the healthcare industry, and no
+central authority to impose common business practices. Because of this,
+the FHIR specification defines an <a href="extensibility.html">extension framework</a> and defines
+<a href="profiling.html">a framework for managing variability</a>.
+</p>
+<p>
+Another key aspect of the variability encountered in healthcare is that the
+same information may be represented differently and with different levels of
+detail, granularity and nesting by various parties across the system.
+For example, in some cases a blood pressure measurement may be just a simple observation, a
+vital sign measure, while in other cases can be a rich set of highly defined
+data that includes things like controlled vocabularies for posture, exercise, etc.
+The <a href="resourcelist.html">resource types</a> defined in this specification
+focus on the general, common use cases. Richer and more specific content
+can be supported and standardized by <a href="profiling.html">defining "profiles"</a> on
+the base resource types.
+</p>
+
+<a name="versions"> </a>
+<h3>Managing Versions</h3>
+<p>
+FHIR Servers do not have to support versioning, though they are strongly encouraged to do so.
+There are three different levels of versioning support for FHIR servers:
+</p>
+<ul>
+ <li>Versioning and .meta.version are not supported (and usually, .meta.lastUpdated is not supported either)</li>
+ <li>Versioning and the	VersionId meta-property are supported, but a history of old versions is not kept</li>
+ <li>Versioning and the	VersionId meta-property are supported, and a history of old versions is available</li>
+</ul>
+<p>
+In addition, servers may require that <a href="http.html#concurrency">version</a> aware updates are used, to prevent over-writing changes,
+but this is not described on this page.
+</p>
+
+<h3>Creating a resource</h3>
+<p>
+To <a href="http.html#create">create a resource</a>, send an HTTP POST request to the resource type's respective end
+point.
+</p>
+<pre>
+  POST https://example.com/path/{resourceType}
+</pre>
+<p>
+In the example below we see the creation of a Patient.
+</p>
+
+<div class="example">
+<pre class="http linecounter">
+<code>POST {some base path}/Patient HTTP/1.1</code>
+<code>Authorization: Bearer 37CC0B0E-C15B-4578-9AC1-D83DCED2B2F9</code>
+<code>Accept: application/fhir+json</code>
+<code>Content-Type: application/fhir+json</code>
+<code>Content-Length: 1198</code>
+<code> </code>
+<code>{</code>
+<code>  "resourceType": "Patient",</code>
+<code>  ...(properties)</code>
+<code>}</code>
+</pre>
+</div>
+
+<p>
+Submit a new patient to the server, and ask it to store the patient with an id of its own choice.
+</p>
+<p>
+Notes:
+</p>
+<ul>
+  <li><b>/Patient</b> (line 1) - the manager for all patients - use the name of the type of resource</li>
+  <li><b>Authorization</b> (line 2) - see <a href="security.html">Security for FHIR</a></li>
+  <li><b>Accept, Content-Type</b> (lines 3-4) - the content type for all FHIR resources as represented in JSON (or application/fhir+xml for the XML version). FHIR resources are always represented in UTF-8</li>
+  <li><b>id</b> - The client does not need to provide an id for a resource that is being created - the server will assign one. If the client assigns one, the server will overwrite it</li>
+  <li>Resource Content, lines 8+ - There's no meta property at this point. The rest of the resource is the same content as shown above</li>
+</ul>
+
+
+<h3>Create Response</h3>
+<p>
+A response will contain an HTTP code 201 to indicate that the
+Resource has been created successfully. A location header
+indicates where the resource can be fetched in subsequent requests.
+The server may choose to return an <a href="operationoutcome.html">OperationOutcome</a> resource, but is not required to
+do so.
+</p>
+
+<div class="example">
+<pre class="http linecounter">
+<code>HTTP/1.1 201 Created</code>
+<code>Content-Length: 161</code>
+<code>Content-Type: application/fhir+json</code>
+<code>Date: Mon, 18 Aug 2014 01:43:30 GMT</code>
+<code>ETag: W/"1"</code>
+<code>Location: http://example.com/Patient/347</code>
+<code> </code>
+<code>{</code>
+<code>  &quot;resourceType&quot;: &quot;OperationOutcome&quot;,</code>
+<code>  &quot;text&quot;: {</code>
+<code>    &quot;status&quot;: &quot;generated&quot;,</code>
+<code>    &quot;div&quot;: &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;The operation was successful&lt;/div&gt;&quot;</code>
+<code>  }</code>
+<code>}</code>
+</pre>
+</div>
+
+<p>
+Notes:
+</p>
+<ul>
+  <li><b>HTTP/1.1 201</b> (line 1) - the operation was successful. Note that use of <a href="https://www.w3.org/Protocols/rfc2616/rfc2616.html">HTTP v 1.1</a> is strongly recommended but not required</li>
+  <li><b>ETag</b> (line 5) - used in the <a href="http.html#update">version aware update</a> pattern (if the server supports versioning)</li>
+  <li><b>Location</b> (line 6) - the id the server assigned to the resource. The id in the URL must match the id in the resource when the resource is subsequently returned</li>
+  <li><b>OperationOutcome</b> (line 9) - OperationOutcome resources in this context have no id or meta element (they have no managed identity)</li>
+</ul>
+
+<h4>Error response</h4>
+
+<p>
+For a variety of reasons, servers may need to return an error. Clients should be alert to
+authentication related responses, but FHIR content related errors should be returned using an
+appropriate HTTP status code, with an <a href="operationoutcome.html">OperationOutcome</a> resource to provide additional information.
+Here is an example of a server rejecting a resource because of server defined business rules:
+</p>
+
+<div class="example">
+<pre class="http linecounter">
+<code>HTTP/1.1 422 Unprocessable Entity</code>
+<code>Content-Length: 161</code>
+<code>Content-Type: application/fhir+json</code>
+<code>Date: Mon, 18 Aug 2014 01:43:30 GMT</code>
+<code> </code>
+<code>{</code>
+<code>  &quot;resourceType&quot;: &quot;OperationOutcome&quot;,</code>
+<code>  &quot;text&quot;: {</code>
+<code>    &quot;status&quot;: &quot;generated&quot;,</code>
+<code>    &quot;div&quot;: &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;MRN conflict</code>
+<code>   - the MRN 123456 is already assigned to a different patient&lt;/div&gt;&quot;</code>
+<code>  },</code>
+<code>}</code>
+</pre>
+</div>
+
+<p>
+Notes:
+</p>
+<ul>
+  <li>The server can return additional structured information using the details of the <a href="operationoutcome.html">OperationOutcome</a></li>
+</ul>
+
+
+<h3>Read Request</h3>
+<p>
+<a href="http.html#read">Reading a resource</a> is done by sending HTTP GET requests to the desired Resource Type
+end-point.
+</p>
+<pre>
+  GET https://example.com/path/{resourceType}/{id}
+</pre>
+<p>
+Here's an example.
+</p>
+<div class="example">
+<pre class="http linecounter">
+<code>GET /Patient/347?_format=xml HTTP/1.1</code>
+<code>Host: example.com</code>
+<code>Accept: application/fhir+xml</code>
+<code>Cache-Control: no-cache</code>
+</pre>
+</div>
+
+<p>
+Notes:
+</p>
+<ul>
+  <li><b>347</b> (line 1) - The id of the resource that is being fetched</li>
+  <li><b>_format=xml</b> (line 1) - this is another method for clients to indicate the desired response format, in addition to using the accept header, and is useful for clients that don't have access to the HTTP Headers (e.g. XSLT transforms) (see <a href="http.html#mimetypes">Mime Types</a>)</li>
+  <li><b>cache control</b> (line 4) - Concurrency control is important, though FHIR itself says nothing about it - see <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html">http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</a> or <a href="https://www.mnot.net/cache_docs/">https://www.mnot.net/cache_docs/</a></li>
+</ul>
+
+
+<h3>Read Response</h3>
+<p>
+The response to a GET contains the Resource.
+</p>
+
+<div class="example">
+<pre class="http linecounter">
+<code>HTTP/1.1 200 OK</code>
+<code>Content-Length: 729</code>
+<code>Content-Type: application/fhir+xml</code>
+<code>Last-Modified: Sun, 17 Aug 2014 15:43:30 GMT</code>
+<code>ETag: W/"1"</code>
+<code> </code>
+<code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</code>
+<code>&lt;Patient xmlns=&quot;http://hl7.org/fhir&quot;&gt;</code>
+<code>  &lt;id value=&quot;347&quot;/&gt;</code>
+<code>  &lt;meta&gt;</code>
+<code>    &lt;versionId value=&quot;1&quot;/&gt;</code>
+<code>    &lt;lastUpdated value=&quot;2014-08-17T15:43:30Z&quot;/&gt;</code>
+<code>  &lt;/meta&gt;</code>
+<code>  &lt;!-- content as shown above for patient --&gt;  </code>
+<code>&lt;/Patient&gt;</code>
+</pre>
+</div>
+
+<p>
+Notes:
+</p>
+<ul>
+  <li><b>id</b> (line 9) - The id of the resource. This must match the id in the read request</li>
+  <li><b>versionId</b> (line 11) - The current version id of the resource (if the server supports versioning). Best practice is that this value matches the ETag (see <a href="http.html#update">version aware update</a>), but clients must never assume this</li>
+  <li>Note that servers are not required to support versioning, but are strongly encouraged to do so</li>
+  <li><b>lastUpdated</b> (line 12) - if present, this must match the value in the HTTP header</li>
+</ul>
+
+<h3>Search Request</h3>
+<p>
+In addition to getting single known resources it's possible to find a collection of resources by
+<a href="http.html#search">searching the resource type end-point</a> with a <a href="search.html">set of
+criteria</a> describing the set of resources that should be retrieved, and their order. The
+general pattern is:
+</p>
+<div class="example">
+<pre class="http">
+  GET https://example.com/path/{resourceType}?criteria
+</pre>
+</div>
+<p>
+The criteria is a set of HTTP parameters that specify which resources to return. The search operation
+</p>
+
+<div class="example">
+<pre class="http">
+https://example.com/base/MedicationRequest?patient=347
+</pre>
+</div>
+<p>
+returns all the prescriptions for the patient created above.
+</p>
+
+<h3>Search Response</h3>
+<p>
+The response to a search request is a <a href="bundle.html">Bundle</a>: a list of matching resources with some metadata:
+</p>
+
+<div class="example">
+<pre class="json linecounter">
+<code>HTTP/1.1 200 OK</code>
+<code>Content-Length: 14523</code>
+<code>Content-Type: application/fhir+xml</code>
+<code>Last-Modified: Sun, 17 Aug 2014 15:49:30 GMT</code>
+<code> </code>
+<code>{</code>
+<code>  "resourceType": "Bundle",</code>
+<code>  "type": "searchset",</code>
+<code>  "id" : "eceb4882-5c7e-4ca4-af62-995dfb8cef01"</code>
+<code>  "meta" : {</code>
+<code>    "lastUpdated" : "2014-08-19T15:49:30Z"</code>
+<code>  },</code>
+<code>  "total": "3",</code>
+<code>  "link": [</code>
+<code>    {</code>
+<code>      "relation" : "next",</code>
+<code>      "url" : "https://example.com/base/MedicationRequest?patient=347&amp;searchId=ff15fd40-ff71-4b48-b366-09c706bed9d0&amp;page=2"</code>
+<code>    }, {</code>
+<code>      "relation" : "self",</code>
+<code>      "url" : "https://example.com/base/MedicationRequest?patient=347"</code>
+<code>    }</code>
+<code>  ],</code>
+<code>  "entry": [</code>
+<code>    {</code>
+<code>      "resource" : {</code>
+<code>        "resourceType": "MedicationRequest",</code>
+<code>        "id" : "3123",</code>
+<code>        "meta" : {</code>
+<code>          "versionId" : "1",</code>
+<code>          "lastUpdated" : "2014-08-16T05:31:17Z"</code>
+<code>        }, </code>
+<code>        ... content of resource ...</code>
+<code>      }, </code>
+<code>    }, </code>
+<code>    ... 2 additional resources ....</code>
+<code>  ]</code>
+<code>}</code>
+</pre>
+</div>
+
+<p>
+Notes:
+</p>
+<ul>
+  <li><b>resourceType/type</b> (line 7/8) - the result of a search is always a bundle of type "searchset"</li>
+  <li><b>id</b> (line 9) - An identifier assigned to this particular bundle. The server should assign a unique id to this bundle that it will not be re-used</li>
+  <li><b>meta.lastUpdated</b> (line 11) - (if the server supports versioning) This should match the HTTP header, and should be the date the search was executed, or more recent, depending on how the <a href="search.html#currency">server handles ongoing updates</a>. The lastUpdated data SHALL be the same or more recent than the most recent resource in the results</li>
+  <li><b>total</b> (line 13) - The total number of matches in the search results. Not the number of matches in this particular bundle, which may be a <a href="http.html#search">paged view into the results</a></li>
+  <li><b>link</b> (line 14) - A set of named links that give related contexts to this bundle. Names defined in this specification: <a href="http.html#search">first</a>, <a href="http.html#search">prev</a>, <a href="http.html#search">next</a>, <a href="http.html#search">last</a>, <a href="http.html#search">self</a></li>
+  <li><b>entry</b> (line 23) - Actual resources in this set of results</li>
+	<li><b>entry.resource.id</b> (line 27) - Note that in some bundles, the <code>entry.resource.id</code> must be <a href="bundle.html#bundle-unique">unique in the bundle</a></li>
+  <li>The search operation is also able to <a href="search.html#include">return additional related resources</a> as well</li>
+</ul>
+
+<h3>Update Request</h3>
+<p>
+The client sends the server a new version of the resource to replace the existing version - it PUTs it to the location of the existing resource:
+</p>
+<pre>
+  PUT https://example.com/path/{resourceType}/{id}
+</pre>
+<p>
+Note that there does not need to be a resource already existing at {id} - the server may elect to automatically create the resource at the specified address.
+Here is an example of updating a patient:
+</p>
+
+<div class="example">
+<pre class="http linecounter">
+<code>PUT /Patient/347 HTTP/1.1</code>
+<code>Host: example.com</code>
+<code>Content-Type: application/fhir+json</code>
+<code>Content-Length: 1435</code>
+<code>Accept: application/fhir+json</code>
+<code>If-Match: 1</code>
+<code> </code>
+<code>{</code>
+<code>  "resourceType": "Patient",</code>
+<code>  "id" : "347",</code>
+<code>  "meta" : {</code>
+<code>    "versionId" : "1",</code>
+<code>    "lastUpdated" : "2014-08-18T15:43:30Z"    </code>
+<code>  },</code>
+<code>  ...</code>
+<code>}</code>
+</pre>
+</div>
+
+ <p>
+Notes:
+</p>
+<ul>
+  <li><b>resourceType</b> (line 1) - "Patient" in the URL must match the resource type in the resource (line 9)</li>
+  <li><b>resource id</b> (line 1, "347") - This must match the id in the resource (line 10)</li>
+  <li><b>If-Match</b> (line 6) - if this is provided, it must match the value in meta.versionId (line 12), and the server must check the version integrity, or return 412 if it doesn't support versions</li>
+  <li><b>meta.lastUpdated</b> (line 13) - This value is ignored, and will be updated by the server (mostly, but not always, if the server does not support versioning)</li>
+  <li><b>resource content</b> (line 14) - Not shown here, the same as Patient above</li>
+</ul>
+
+<h3>Update Response</h3>
+<p>
+The response to an update request has metadata / status, and optionally an OperationOutcome:
+</p>
+
+<div class="example">
+<pre class="http linecounter">
+<code>HTTP/1.1 200 OK</code>
+<code>Content-Length: 161</code>
+<code>Content-Type: application/fhir+json</code>
+<code>Date: Mon, 18 Aug 2014 01:43:30 GMT</code>
+<code>ETag: W/"2"</code>
+<code>Location: https://example.com/Patient/347/_history/2</code>
+<code> </code>
+<code>{</code>
+<code>  &quot;resourceType&quot;: &quot;OperationOutcome&quot;,</code>
+<code>  &quot;text&quot;: {</code>
+<code>    &quot;status&quot;: &quot;generated&quot;,</code>
+<code>    &quot;div&quot;: &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;The operation was successful&lt;/div&gt;&quot;</code>
+<code>  }</code>
+<code>}</code>
+</pre>
+</div>
+
+
+<p>
+Notes:
+</p>
+<ul>
+  <li><b>ETag</b> (line 5) - This is the versionId of the new version, and is also found in the location header (line 6) (if the server supports versioning)</li>
+</ul>
+
+<h3>Base Resource Content</h3>
+<p>
+Here is an example that shows all the information found in all resources, fully populated:
+</p>
+
+<div class="example">
+<pre class="json linecounter">
+<code>{</code>
+<code>  "resourceType" : "X",</code>
+<code>  "id" : "12",</code>
+<code>  "meta" : {</code>
+<code>    "versionId" : "12",</code>
+<code>    "lastUpdated" : "2014-08-18T15:43:30Z",</code>
+<code>    "profile" : ["http://example-consortium.org/fhir/profile/patient"],</code>
+<code>    "security" : [{</code>
+<code>      "system" : "http://hl7.org/fhir/v3/ActCode",</code>
+<code>      "code" : "EMP"</code>
+<code>    }],</code>
+<code>    "tag" : [{</code>
+<code>      "system" : "http://example.com/codes/workflow",</code>
+<code>      "code" : "needs-review"</code>
+<code>    }]</code>
+<code>  },</code>
+<code>  "implicitRules" : "http://example-consortium.org/fhir/ehr-plugins",</code>
+<code>  "language" : "X"</code>
+<code>}</code>
+</pre>
+</div>
+
+<p>
+Implementers notes:
+</p>
+<ul>
+  <li><b>resourceType</b> (line 2) - always found in every resource. In XML, this is the name of the root element for the resource</li>
+  <li><b>id</b> (line 3) - defined when the resource is created, and never changed. Only missing when the resource is first created</li>
+  <li><b>meta.versionId</b> (line 5) - changes each time any resource contents change (except for the last 3 elements in meta - <code>profile</code>, <code>security</code> and <code>tag</code>)</li>
+  <li><b>meta.lastUpdated</b> (line 6) - Changes when the versionId changes. Systems that don't support versions usually don't track lastUpdated either</li>
+  <li><b>meta.profile</b> (line 7) - An assertion that the content conforms to a profile. See <a href="profiling.html#resources">Extending and Restricting Resources</a> for further discussion. Can be changed as profiles and value sets change or the system rechecks conformance</li>
+  <li><b>meta.security</b> (lines 8 - 11) - <a href="security-labels.html">Security labels</a> applied to this resource. These tags connect resources in specific ways to the overall security policy and infrastructure. Security tags can be updated when the resource changes, or whenever the security sub-system chooses to</li>
+  <li><b>meta.tag</b> (lines 12 - 16) - <a href="resource.html#Meta">Tags</a> applied to this resource. Tags are used to relate resources to process and workflow. Applications are not required to consider the tags when interpreting the meaning of a resource. Tags can be <a href="http.html#tags">updated</a> without changing the resource version</li>
+  <li><b>implicitRules</b> (line 17) - indicates that there is a <a href="profiling.html#agreement">custom agreement</a> about how the resources are used that must be understood in order to safely process the resource. Use of this is discouraged because it restricts sharing, but sometimes necessary</li>
+  <li><b>language</b> (line 18) - The <a href="narrative.html#language">base language of the resource</a>. The resource is allowed to have content from other languages; this is just the base, but should be the main language of the resource</li>
+</ul>
+
+<p>
+The base properties of all resources are defined on the resource types <a href="resource.html">Resource</a> and <a href="domainresource.html">DomainResource</a>.
+</p>
+
+<p>
+Want more information?
+</p>
+<ul>
+ <li><a href="modules.html">Getting Started</a></li>
+ <li><a href="resourcelist.html">Resource Index</a></li>
+ <li><a href="resourceguide.html">Resource Guide</a></li>
+ <li><a href="documentation.html">Documentation Index</a></li>
+ <li><a href="http://wiki.hl7.org/index.php?title=FHIR_Support_Page">Support Links</a></li>
+</ul>
+
+</div>
+
+[%file newfooter%]
+
+
+</body>
+</html>
+

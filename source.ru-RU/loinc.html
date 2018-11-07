@@ -1,0 +1,389 @@
+<!DOCTYPE HTML>
+
+
+[%settitle Применение LOINC в FHIR%]
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+[%file newheader%]
+</head>
+<body>
+[%file newnavbar%]
+
+<div class="col-12">
+
+<%txheader%>
+
+<h2>Применение LOINC в FHIR<!-- Using LOINC with FHIR --></h2>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg vocab%]">[%wgt vocab%]</a> Рабочая группа</td><td id="fmm"><a href="versions.html#maturity">Уровень зрелости</a>: 5</td><td id="ballot"><a href="versions.html#levels">Статус голосования</a>: <a href="versions.html#std-process">Пробное использование</a></td></tr></table>
+
+<h3>Краткие сведения<!-- Summary --></h3>
+
+<table class="grid">
+ <tr><td>Source</td><td>LOINC создан под управлением <a href="https://www.regenstrief.org/">Regenstrief Institute</a> по адресу <a href="http://loinc.org">http://loinc.org</a></td></tr>
+ <tr><td>System</td><td>LOINC-коды идентифицирует URI <a href="http://loinc.org">http://loinc.org</a></td></tr>
+ <tr><td>Version</td><td>Если используется версия, она должна быть стандартной версией LOINC, например 2.48</td></tr>
+ <tr><td>Code</td><td>Идентификатор LOINC-кода, например 21176-3. LOINC-коды регистронезависимы. Кроме того, в случае необходимости можно использовать LOINC part codes и LOINC answer string ids</td></tr>
+ <tr><td>Display</td><td>Используйте либо поле SHORTNAME, либо LONG_COMMON_NAME field в качестве значения элемента display</td></tr>
+ <tr><td>Inactive</td><td>codes with Property ACTIVE=DEPRECATED are considered inactive</td></tr>
+ <tr><td>Subsumption</td><td>LOINC defines the Multi-Axial Hierarchy, which is the basis for subsumption logic in LOINC</td></tr>
+ <tr><td>Filter Properties</td><td>Определено несколько свойств, приведенных ниже</td></tr>
+<!--  <tr><td>Source</td><td>LOINC is made available by the <a href="https://www.regenstrief.org/">Regenstrief Institute</a> at <a href="http://loinc.org">http://loinc.org</a></td></tr>
+ <tr><td>System</td><td>The URI <a href="http://loinc.org">http://loinc.org</a> identifies LOINC codes</td></tr>
+ <tr><td>Version</td><td>Where a version is used, it should be the standard LOINC version e.g. 2.48</td></tr>
+ <tr><td>Code</td><td>The LOINC Code Identifier e.g. 21176-3. LOINC codes are not case sensitive. In addition, LOINC part codes and LOINC answer string ids can be used where appropriate</td></tr>
+ <tr><td>Display</td><td>Use either the SHORTNAME or LONG_COMMON_NAME field for the display</td></tr>
+ <tr><td>Inactive</td><td>codes with Property ACTIVE=DEPRECATED are considered inactive</td></tr>
+ <tr><td>Subsumption</td><td>LOINC defines the Multi-Axial Hierarchy, which is the basis for subsumption logic in LOINC</td></tr>
+ <tr><td>Filter Properties</td><td>Several properties are defined as described below</td></tr> -->
+</table>
+
+<h3>Авторские права<!-- Copyright Issues --></h3>
+
+<p>
+Условия использования LOINC требуют, чтобы при каждом использовании LOINC-кодов указывалось <a href="license.html#loinc">предупреждение</a>. Это предупреждение должно приводиться в элементе <i>copyright</i> любого набора значений, который включает в себя LOINC-коды (либо в элементах code или filter, либо в расширении):
+<!-- The terms of use for LOINC require that a <a href="license.html#loinc">notice</a> be included with any use of LOINC codes.
+This notice must appear in the <i>copyright</i> element of any value set that includes LOINC codes (either in the code or filter elements, or in an expansion): -->
+</p>
+<pre>
+&lt;copyright value=&quot;This content LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use&quot;/&gt;
+</pre>
+<p>
+Дополнительные заявления об авторских правах находятся в элементе <i>copyright</i>. У некоторых LOINC-кодов имеются заявления об авторских правах третьей стороны. При включении таких кодов в набор значений, они должны содержать указание и на свои собственные авторские права.
+<!-- Additional copyright statements may also be found in the <i>copyright</i> element. Some LOINC codes have
+3rd party copyright statements. When these codes are included in a value set, they must carry their own 
+copyright statement as well. -->
+</p>
+
+<h3>Чувствительность к регистру<!-- Case Sensitivity --></h3>
+<p>
+Для сравнений LOINC-коды, названия для отображения и значения свойств не чувствительны к регистру, хотя реализаторы ДОЛЖНЫ сохранять правильный регистр, применяя LOINC-коды и значения свойств.
+<!-- For comparison purposes, LOINC codes, displays, and property values are not case sensitive, though implementers SHOULD maintain the correct case when using LOINC codes and property values. -->
+</p>
+
+
+<h3>Use of LOINC PARTS</h3>
+<p>
+Как описано в разделе 10.2 <a href="http://loinc.org/downloads/files/LOINCManual.pdf">пособия по LOINC</a>, LOINC Parts - это кодированное представление значения для измерения, используемого для указания LOINC-термина, которым назначен не-семантический идентификатор с префиксом "LP" и контрольная цифра по модулю 10 (mod-10). В соответствии с лицензией LOINC, эти part codes можно использовать следующим образом:
+<!-- As described in the <a href="http://loinc.org/downloads/files/LOINCManual.pdf">LOINC Manual</a> section 10.2,
+LOINC Parts are a coded representation of a value for a dimension used to specify a LOINC Term
+which are assigned a non-semantic identifier with a "LP" prefix and a mod-10 check digit. Following
+the LOINC license, these part codes may be used in the following ways: -->
+</p>
+<ul>
+ <li>В свойствах фильтра, как описано ниже</li>
+ <li>В <a href="structuredefinition-definitions.html">Structure Definitions</a>, где структура описывает применение набора LOINC-кодов</li>
+ <li>В ресурсе <a href="conceptmap.html">ConceptMap</a>, где задан мэппинг между LOINC-кодами и другими кодами</li>
+<!--  <li>In filter properties, as described below</li>
+ <li>In <a href="structuredefinition-definitions.html">Structure Definitions</a>, where the structure describes the use of a set of LOINC codes</li>
+ <li>In a <a href="conceptmap.html">ConceptMap</a> resource, where mappings between LOINC codes and other codes are being defined</li> -->
+</ul>
+<p>
+Part codes также относятся к системе LOINC (http://loinc.org), их СЛЕДУЕТ представлять в верхнем регистре (например LP31755-9).
+<!-- Part codes are the same LOINC system(http://loinc.org), and SHALL be represented in uppercase (e.g. LP31755-9). -->
+</p>
+
+<h3>Use of LOINC Answer Lists</h3>
+<p>
+Также LOINC выделяет список ответов и строковые идентификаторы ответов для использования в различных формах и опросниках. LOINC Answer String IDs также являются допустимыми LOINC-кодами:
+<!-- LOINC also allocates Answer List and Answer String Ids for use in various forms and questionnaires.
+LOINC Answer String IDs are also valid LOINC codes: -->
+</p>
+<pre>
+  &lt;coding&gt;
+    &lt;system value=&quot;http://loinc.org&quot;/&gt;
+    &lt;code value=&quot;LA11165-0&quot;/&gt;
+    &lt;display value=&quot;Platelet anisocytosis&quot;/&gt;
+  &lt;/coding&gt;
+</pre>
+<p>
+LOINC Answer List Ids фактически являются идентификаторами наборов значений. См. <a href="#alist">ниже</a> как это использовать.
+<!-- LOINC Answer List Ids are actually value set identifiers. See <a href="#alist">below</a> for how to use these. -->
+</p>
+
+
+<h3>RDF</h3>
+
+<p>
+LOINC uses the namespace http://loinc.org/rdf# as the root for LOINC concepts in the
+RDF space. This means that when a LOINC code is converted from the system:code pair, 
+where the system is http://loinc.org, to the <a href="rdf.html">RDF ontological form</a>, 
+the representation is http://loinc.org/rdf#[code].
+</p>
+
+<a name="props"> </a>
+<h3>LOINC Properties</h3>
+<p>
+In addition to the <a href="terminology-service.html#standard-props">standard properties</a>, the following properties are defined for LOINC:
+</p>
+<table class="grid">
+<tr><td>STATUS</td><td>boolean</td><td>Status of the term. For the purposes of LOINC, codes with Property ACTIVE=DEPRECATED are considered inactive</td></tr>
+<tr><td>COMPONENT</td><td>code</td><td>First major axis-component or analyte: Analyte Name, Analyte sub-class, Challenge</td></tr>
+<tr><td>PROPERTY</td><td>code</td><td>Second major axis-property observed: Kind of Property (also called kind of quantity)</td></tr>
+<tr><td>TIME_ASPCT</td><td>code</td><td>Third major axis-timing of the measurement: Time Aspect (Point or moment in time vs. time interval)</td></tr>
+<tr><td>SYSTEM</td><td>code</td><td>Fourth major axis-type of specimen or system: System (Sample) Type</td></tr>
+<tr><td>SCALE_TYP</td><td>code</td><td>Fifth major axis-scale of measurement: Type of Scale</td></tr>
+<tr><td>METHOD_TYP</td><td>code</td><td>Sixth major axis-method of measurement: Type of Method</td></tr>
+<tr><td>CLASS</td><td>string</td><td>An arbitrary classification of the terms for grouping related observations together</td></tr>
+<tr><td>CONSUMER_NAME</td><td>string</td><td>An experimental (beta) consumer friendly name for this item. The intent is to provide a test name that health care consumers will recognize; it will be similar to the names that might appear on a lab report</td></tr>
+<tr><td>CLASSTYPE</td><td>string</td><td>1=Laboratory class; 2=Clinical class; 3=Claims attachments; 4=Surveys</td></tr>
+<tr><td>ORDER_OBS</td><td>string</td><td>??</td></tr>
+<tr><td>ORDER_OBS</td><td>string</td><td>Provides users with an idea of the intended use of the term by categorizing it as an order only, observation only, or both</td></tr>
+<tr><td>DOCUMENT_SECTION</td><td>string</td><td>Classification of whether this LOINC code can be used a full document, a section of a document, or both</td></tr>
+</table>
+
+<p>
+Note that when a <a href="codesystem-operations.html#lookup">$lookup</a> operation is performed on a LOINC code, 
+servers SHALL return the version being used (see above) in the <code>version</code> property. 
+Other properties are at the discretion of the server and the client.
+</p>
+
+<a name="filters"> </a>
+<h3>LOINC Filters</h3>
+
+<p>
+В данном разделе задокументированы фильтры по свойствам, которые можно использовать в кодовой системе LOINC в запросах на компоновку наборов значений.
+<!-- This section documents the property filters that can be used with the LOINC 
+code system in value set composition statements. -->
+</p>
+
+<h4>Фильтр по свойствам LOINC<!-- LOINC Property filter --></h4>
+
+<table class="grid">
+ <tr><td>Описание</td><td>Позволяет делать выборку ряда LOINC-кодов с общим значением свойства (см. список выше)</td></tr>
+ <tr><td>Имя свойства</td><td>Одно из имен, перечисленных в колонке "Field Name" структуры базы данных LOINC (приложение A пособия по LOINC)</td></tr>
+ <tr><td>Допустимые операции</td><td>= / regex</td></tr>
+ <tr><td>Допустимые значения</td><td>[string value]</td></tr>
+ <tr><td>Комментарии</td><td>Следующие 6 свойств применяются чаще всего: COMPONENT, PROPERTY, TIME_ASPCT, SYSTEM, SCALE_TYP и METHOD_TYP.</td></tr>
+<!--  <tr><td>Description</td><td>Allows the selection of a set of LOINC codes with a common property value (see list above)</td></tr>
+ <tr><td>Property Name</td><td>One of the names listed in the "Field Name" column in LOINC Database Structure (Appendix A of the LOINC manual)</td></tr>
+ <tr><td>Operations Allowed</td><td>= / regex</td></tr>
+ <tr><td>Values Allowed</td><td>[string value]</td></tr>
+ <tr><td>Comments</td><td>The 6 properties COMPONENT, PROPERTY, TIME_ASPCT, SYSTEM, SCALE_TYP, and METHOD_TYP are most likely to be useful.</td></tr> -->
+</table>
+
+<h4>3rd Party Copyright</h4>
+
+<table class="grid">
+ <tr><td>Описание</td><td>Позволяет включать или исключать LOINC-коды, содержащие предупреждения об авторских правах третьей стороны</td></tr>
+ <tr><td>Имя свойства</td><td>copyright</td></tr>
+ <tr><td>Допустимые операции</td><td>=</td></tr>
+ <tr><td>Допустимые значения</td><td>LOINC | 3rdParty</td></tr>
+ <tr><td>Комментарии</td><td>LOINC = только коды с авторским правом, принадлежащим исключительно Regenstrief. 3rdParty = только коды с авторским правом третьей стороны в дополнение к Regenstrief.</td></tr>
+<!--  <tr><td>Description</td><td>Allows for the inclusion or exclusion of LOINC codes that include 3rd party copyright notices</td></tr>
+ <tr><td>Property Name</td><td>copyright</td></tr>
+ <tr><td>Operations Allowed</td><td>=</td></tr>
+ <tr><td>Values Allowed</td><td>LOINC | 3rdParty</td></tr>
+ <tr><td>Comments</td><td>LOINC = only codes with a sole copyright by Regenstrief. 3rdParty = only codes with a 3rd party copyright in addition to the one from Regenstrief.</td></tr> -->
+</table>
+
+<h4>Многоосная иерархия<!-- Multi-Axial Hierarchy --></h4>
+
+<table class="grid">
+ <tr><td>Описание</td><td>Позволяет делать выборку ряда кодов на основе их появления в многоосной иерархии LOINC</td></tr>
+ <tr><td>Имя свойства</td><td>parent | ancestor</td></tr>
+ <tr><td>Допустимые операции</td><td>= / in</td></tr>
+ <tr><td>Допустимые значения</td><td>Part Code (или, для "in", несколько part codes через запятую)</td></tr>
+ <tr><td>Комментарии</td><td>"parent" выбирает только непосредственно родительские элементы. Например у кода "44022-2" есть родитель "LP52960-9". "ancestor" включает в себя предков транзитивно, например "LP52960-9" в конечном счете имеет предка "LP31755-9", поэтому код "44022-2" входит в набор кодов, для которых предком является LP31755-9</td></tr>
+<!--  <tr><td>Description</td><td>Allows for the selection of a set of codes base on their appearance in the LOINC multi-axial hierarchy </td></tr>
+ <tr><td>Property Name</td><td>parent | ancestor</td></tr>
+ <tr><td>Operations Allowed</td><td>= / in</td></tr>
+ <tr><td>Values Allowed</td><td>Part Code (or, for "in", multiple part codes separated by commas)</td></tr>
+ <tr><td>Comments</td><td>"parent" selects immediate parents only. For example, the code "44022-2" has the parent "LP52960-9". Ancestor includes parents transitively, e.g. "LP52960-9" eventually has a parent "LP31755-9", so the code "44022-2" is in the set of codes that have ancestor=LP31755-9</td></tr> -->
+</table>
+
+<p><i>TODO: Document Ontology</i></p>
+<!--
+Document.Kind, Document.TypeOfService, Document.Setting, Document.Role, and Document.SubjectMatterDomain
+-->
+
+<a name="implicit"> </a>
+<h3>Имплицитные наборы значений<!-- Implicit Value Sets --></h3>
+
+<p>
+Имплицитные наборы значений - те, спецификация которых может быть предсказана на основе грамматики лежащей в основе кодовой системы и известной структуры URL, который ссылается на них. В LOINC определена одна группа имплицитных наборов значений: по записи многоосной иерархии (By Multi-Axial Hierarchy Entry).
+<!-- Implicit value sets are those whose specification can be predicted based on the grammar of the 
+underlying code system, and the known structure of the URL that refers to them. LOINC
+defines one set of implicit value sets: By Multi-Axial Hierarchy Entry. -->
+</p>
+<p>
+Если какие-либо ресурсы value set созданы с идентификатором, который соответствует одному из шаблонов URL, приведенных ниже, содержимое таких ресурсов должно соответствовать приведенному шаблону. Профилям и другим ссылкам на наборы значений допускается ссылаться на эти наборы значений напрямую. <i>todo: может ли у LOINC в действительности быть сервис, который будет возвращать это?</i>
+<!-- If any value set resources exist with an identifier that conforms to the URL patterns specified below,
+the content of the resource must conform to the template provided. Profiles and other value set
+references are allowed to reference these value sets directly. <i>todo: can LOINC actually host a service that returns these?</i> -->
+</p>
+
+<p>
+Идентификатор набора значений http://loinc.org/vs - это набор значений, который содержит все LOINC-коды.
+<!-- The value set identifier http://loinc.org/vs is a value set that contains all LOINC codes. -->
+</p>
+
+<a name="alist"> </a>
+<h4>LOINC Answer List</h4>
+
+<p>
+LOINC задает ряд перечней ответов, каждый из которых содержит набор LOINC-кодов. 
+Перечни ответов LOINC являются наборами значений. Идентификатор набора значений "http://loinc.org/vs/[id]" определяет набор значений, который содержит набор LOINC-кодов. К примеру, идентификатор набора значений http://loinc.org/vs/LL715-4 имеет следующее определение в LOINC 2.52:
+<!-- LOINC defines a set of Answer lists, each of which contains a set of LOINC codes. 
+LOINC answer lists are value sets. The value set identifier "http://loinc.org/vs/[id]"
+identifies a value set that contains a set of LOINC codes. For instance, the value
+set identifier http://loinc.org/vs/LL715-4 has the following definition for LOINC 2.52: -->
+</p>
+<pre class="xml" fragment="ValueSet">
+&lt;ValueSet xmlns=&quot;http://hl7.org/fhir&quot;&gt;
+  &lt;text&gt;
+    &lt;status value=&quot;generated&quot;/&gt;
+    &lt;div xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+      [some html that identifies that this value set 
+      includes all LOINC codes in this answer list]
+    &lt;/div&gt;
+  &lt;/text&gt;
+  &lt;url value=&quot;http://loinc.org/vs/LL715-4&quot;/&gt;
+  &lt;version value=&quot;2.52&quot;/&gt;
+  &lt;name value=&quot;Platelet morph&quot;/&gt;
+  &lt;description value=&quot;LOINC Answer List for Platelet morph&quot;/&gt;
+  &lt;status value=&quot;active&quot;/&gt;
+  &lt;date value=&quot;[optional date of LOINC release]&quot;/&gt;
+  &lt;compose&gt;
+    &lt;include&gt;
+      &lt;system value=&quot;http://loinc.org&quot;/&gt;
+      &lt;concept&gt;
+        &lt;code value=&quot;LA11165-0&quot;/&gt;
+        &lt;display value=&quot;Platelet anisocytosis&quot;/&gt;
+      &lt;/concept&gt;
+      &lt;concept&gt;
+        &lt;code value=&quot;LA11168-4&quot;/&gt;
+        &lt;display value=&quot;Platelet clump&quot;/&gt;
+      &lt;/concept&gt;
+      &lt;concept&gt;
+        &lt;code value=&quot;LA11167-6&quot;/&gt;
+        &lt;display value=&quot;Platelet large fragments&quot;/&gt;
+      &lt;/concept&gt;
+      &lt;concept&gt;
+        &lt;code value=&quot;LA11166-8&quot;/&gt;
+        &lt;display value=&quot;Platelet satellitism&quot;/&gt;
+      &lt;/concept&gt;
+      &lt;concept&gt;
+        &lt;code value=&quot;LA11169-2&quot;/&gt;
+        &lt;display value=&quot;Platelets.agranular&quot;/&gt;
+      &lt;/concept&gt;
+      &lt;concept&gt;
+        &lt;code value=&quot;LA11170-0&quot;/&gt;
+        &lt;display value=&quot;Platelets.giant&quot;/&gt;
+      &lt;/concept&gt;
+      &lt;concept&gt;
+        &lt;code value=&quot;LA11172-6&quot;/&gt;
+        &lt;display value=&quot;Platelets.large&quot;/&gt;
+      &lt;/concept&gt;
+      &lt;concept&gt;
+        &lt;code value=&quot;LA11171-8&quot;/&gt;
+        &lt;display value=&quot;Platelets.small&quot;/&gt;
+      &lt;/concept&gt;
+    &lt;/include&gt;
+  &lt;/compose&gt;
+&lt;/ValueSet&gt;
+</pre>
+
+<p>
+Вот пример перечня ответов LOINC, используемого в вопросе ресурса Questionnaire:
+<!-- Here is an example of a LOINC Answer list used in a Questionnaire
+question: -->
+</p>
+<pre class="xml">
+&lt;question&gt;
+  &lt;concept&gt;
+    &lt;system value=&quot;http://loinc.org&quot;/&gt;
+    &lt;code value=&quot;11125-2&quot;/&gt;
+    &lt;display value=&quot;Plat morph Bld&quot;/&gt;
+  &lt;/concept&gt;
+  &lt;type value=&quot;choice&quot;/&gt;
+  &lt;options&gt;
+    &lt;reference value=&quot;http://loinc.org/vs/LL715-4&quot;/&gt;
+  &lt;/options&gt;
+&lt;/question&gt;
+</pre>
+
+
+
+<h4>Запись многоосной иерархии<!-- Multi-Axial Hierarchy Entry --></h4>
+
+<p>
+Набор значений с идентификатором "http://loinc.org/vs/[partcode]" должен соответствовать данному шаблону, где [partcode] - это part code из многоосной иерархии:
+<!-- A value set with an identifier of "http://loinc.org/vs/[partcode]" must 
+conform to this template, where [partcode] is a part code from the 
+multi-axial hierarchy: -->
+</p>
+<pre class="xml" fragment="ValueSet">
+&lt;ValueSet xmlns=&quot;http://hl7.org/fhir&quot;&gt;
+  &lt;text&gt;
+    &lt;status value=&quot;generated&quot;/&gt;
+    &lt;div xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+      [some html that identifies that this value set 
+      includes all LOINC codes subsumed by the identified 
+      Multi-Axial Hierarchy Part Code]
+    &lt;/div&gt;
+  &lt;/text&gt;
+  &lt;url value=&quot;http://loinc.org/vs/[partcode]&quot;/&gt;
+  &lt;version value=&quot;[optional - but strongly recommended - LOINC version]&quot;/&gt;
+  &lt;name value=&quot;LOINC Value Set from Multi-Axial Hierarchy code [partcode]&quot;/&gt;
+  &lt;description value=&quot;All LOINC codes for [partcode or name]&quot;/&gt;
+  &lt;status value=&quot;active&quot;/&gt;
+  &lt;date value=&quot;[optional date of LOINC release]&quot;/&gt;
+  &lt;compose&gt;
+    &lt;include&gt;
+      &lt;system value=&quot;http://loinc.org&quot;/&gt;
+      &lt;filter&gt;
+        &lt;property value=&quot;ancestor&quot;/&gt;
+        &lt;op value=&quot;=&quot;/&gt;
+        &lt;value value=&quot;[partcode]&quot;/&gt;
+      &lt;/filter&gt;
+    &lt;/include&gt;
+  &lt;/compose&gt;
+&lt;/ValueSet&gt;
+</pre>
+
+<a name="dataelements"> </a>
+<p>
+The appropriate type is determined by mapping from the LOINC specified SCALE_TYP for v3 to FHIR
+using this table:
+</p>
+<table class="grid">
+ <tr>
+  <td><b>SCALE_TYP</b></td>
+  <td><b>FHIR data type</b></td>
+ </tr>
+ <tr>
+  <td>Qn</td>
+  <td>Quantity</td>
+ </tr>
+ <tr>
+  <td>Ord</td>
+  <td>CodeableConcept</td>
+ </tr>
+ <tr>
+  <td>OrdQn</td>
+  <td>Quantity and CodeableConcept (e.g. both in the data element; either is allowed)</td>
+ </tr>
+ <tr>
+  <td>Nom</td>
+  <td>CodeableConcept (and string?) </td>
+ </tr>
+ <tr>
+  <td>Nar</td>
+  <td>markdown (?)</td>
+ </tr>
+ <tr>
+  <td>Multi</td>
+  <td>Attachment</td>
+ </tr>
+ <tr>
+  <td>Doc</td>
+  <td>Attachment</td>
+ </tr>
+</table>
+
+</div>
+
+[%file newfooter%]
+    
+</body>
+</html>

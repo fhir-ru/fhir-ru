@@ -1,14 +1,15 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
-<a name="srch"> </a>
-<h2>Параметры поиска по расширениям<!-- SearchParameters on Extensions --></h2>
-<p>Ресурс SearchParameter можно использовать для определения различных поисков по расширениям. В зависимости от контекста расширения (типы контекста приводятся в <a href="structuredefinition.html">StructureDefinition</a>) может потребоваться несколько экземпляров элемента <code>SearchParameter.xpath</code> следующим образом:
-</p>
+<a name="srch"></a>
+<h2>SearchParameters on Extensions</h2>
+<p>The SearchParameter resource may be used to define searches on extensions. Depending on the context of the extension
+(as defined in the <a href="structuredefinition.html">StructureDefinition</a>), this may require multiple instances of the
+<code>SearchParameter.xpath</code> element like so:</p>
 <ul>
-<li>Если контекст расширения ограничивается одним ресурсом, в SearchParameter.base необходимо задать этот ресурс, а элементам, определенным в этом контексте расширения, может соответствовать один или несколько <code>xpath</code>-элементов, например "f:Patient/f:name/f:extension[@url='extension url']"
-</li> 
-<li>Если контекст расширения охватывает несколько ресурсов, в <code>SearchParameter.base</code> необходимо задать значение "DomainResource".
-</li>
-<li>Вы можете использовать один <code>xpath</code>-элемент с полным URL расширения для обозначения того, что SearchParameter будет искать по всем элементами заданного в <code>SearchParameter.base</code> ресурса для данного расширения.
-</li>
+<li>If the extension's context is scoped by a single resource, SearchParameter.base must be set to that resource,
+and there may be one or more <code>xpath</code> elements corresponding to the elements specified in the extension's context, e.g.
+"f:Patient/f:name/f:extension[@url='extension url']"</li> 
+<li>If the extension's context specifies multiple resources, <code>SearchParameter.base</code> must be set to "DomainResource".</li>
+<li>You may use a single <code>xpath</code> element with the full URL of the Extension to indicate that the SearchParameter
+would search in all elements of the given <code>SearchParameter.base</code> resource for the given extension.</li>
 </ul>
 </div>

@@ -1,8 +1,8 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<a name="scope"> </a>
-<h2>Область применения и использование<!-- Scope and Usage --></h2>
+<a name="scope"></a>
+<h2>Scope and Usage</h2>
 <p>
 An implementation guide (IG) is a set of rules about how FHIR resources are used (or should be used) to solve
 a particular problem, with associated documentation to support and clarify the usage. Classically, FHIR
@@ -24,21 +24,17 @@ the implementation guides are compatible (see <a href="#compatibility">below</a>
 </div>
 
 <div>
-<a name="bnr"> </a>
-<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
+<a name="bnr"></a>
+<h2>Boundaries and Relationships</h2>
 <p>
-Руководства по реализации содержат два различных типа ссылок на ресурсы:
-<!-- Implementation Guides contain two different types of resource references: -->
+Implementation Guides contain two different types of resource references:
 </p>
 <ul>
- <li>Содержимое: набор логических утверждений, которые должны выполняться реализациями. Это почти всегда ресурсы <a href="conformance-module.html">обеспечения соответствия</a></li>
- <li>Примеры: примеры, иллюстрирующие назначение профилей, заданных в руководстве по реализации. Это могут быть любые виды ресурсов</li>
-<!--  <li>Contents: A set of logical statements which implementations must conformn to. These are almost always <a href="conformance-module.html">conformance resources</a></li>
- <li>Examples: Examples that illustrate the intent of the profiles defined in the implementation guide. These can be any kind of resource</li> -->
+ <li>Contents: A set of logical statements which implementations must conform to. These are almost always <a href="conformance-module.html">conformance resources</a></li>
+ <li>Examples: Examples that illustrate the intent of the profiles defined in the implementation guide. These can be any kind of resource</li>
 </ul>
 <p>
-<a href="capabilitystatement.html">Заявление о возможностях</a> может указывать на одно или несколько руководств по реализации, которым соответствует приложение.
-<!-- An applications <a href="capabilitystatement.html">Capability Statement</a> may identify one or more implementation guides that an application conforms to. -->
+An application's <a href="capabilitystatement.html">Capability Statement</a> may identify one or more implementation guides that an application conforms to.
 </p>
 </div>
 

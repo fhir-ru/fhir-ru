@@ -1,0 +1,42 @@
+﻿<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
+
+
+<div>
+<a name="scope"> </a>
+<h2>Область применения и использование</h2>
+<p>
+Доменный ресурс - это ресурс, который:
+<!-- A domain resource is an resource that: -->
+</p>
+<ul>
+ <li>имеет человекочитаемое XHTML представление содержимого ресурса (см. <a href="narrative.html">Человекочитаемая описательная часть в ресурсах</a>)</li>
+ <li>может содержать дополнительные связанные ресурсы внутри ресурса (см. <a href="references.html#contained">Вложенные ресурсы</a>)</li>
+ <li>может иметь дополнительные расширения и modifierExtensions наряду с заданными данными (см. <a href="extensibility.html">Расширяемость</a>)</li>
+<!--  <li>has a human-readable XHTML representation of the content of the resource (see <a href="narrative.html">Human Narrative in resources</a>)</li>
+ <li>can contain additional related resources inside the resource (see <a href="references.html#contained">Contained Resources</a>)</li>
+ <li>can have additional extensions and modifierExtensions as well as the defined data (See <a href="extensibility.html">Extensibility</a>)</li> -->
+</ul>
+
+<p>
+Как абстрактный, этот ресурс никогда не создается непосредственно; вместо этого создается один из его ресурсов-потомков (см. <a href="resourcelist.html">список ресурсов</a>).
+<!-- As an abstract resource, this resource is never created directly; instead, one of its descendent resources (<a href="resourcelist.html">see List of Resources</a>) is created. -->
+</p>
+
+</div>
+
+<div>
+<a name="bnr"> </a>
+<h2>Границы и связи</h2>
+
+<p>
+Данный ресурс расширяет базовый <a href="resource.html">ресурс</a>. Все перечисленные <a href="resourcelist.html">ресурсы</a>, за исключением <a href="bundle.html">Bundle</a>, <a href="parameters.html">Parameters</a> и <a href="binary.html">Binary</a>, расширяют этот ресурс.
+<!-- 
+This resource extends the base <a href="resource.html">resource</a>. All of the listed <a href="resourcelist.html">Resources</a>
+except <a href="bundle.html">Bundle</a>, <a href="parameters.html">Parameters</a> and <a href="binary.html">Binary</a> extend
+this resource. -->
+</p>
+
+</div>
+
+
+</div>

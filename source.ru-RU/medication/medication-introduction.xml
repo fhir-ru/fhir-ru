@@ -1,0 +1,20 @@
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
+
+<div>
+<a name="scope"> </a>
+<h2>Область применения и использование<!-- Scope and Usage --></h2>
+<p>
+В большинстве случаев представление лекарственных средств является не более чем определением элемента из списка и затем передачей ссылки на выбранный элемент либо в ресурс, связанный с пациентом, либо в другие приложения. Дополнительные сведения о медикаменте часто предоставляются для верификации человеком, однако полная подробная информация о составе и силе лекарственного средства передается с помощью кодов из справочников лекарственных препаратов. В некоторых случаях необходимо идентифицировать немного больше деталей, например при раздаче упаковки, содержащей определенное лекарственное средство, требуется идентификация как препарата, так и самой упаковки одновременно. 
+Также имеются и другие случаи (например частные рецептуры), где необходимо предоставлять состав лекарственного средства.
+В таких случаях ингредиенты лекарственного средства должны указываться вместе с содержащимся количеством, однако ресурс Medication не дает всех деталей.
+</p>
+<p>
+The Medication resource allows for medications to be characterized by the form of the drug and the ingredient (or ingredients), as well as how it is packaged. The medication will include the ingredient(s) and their strength(s) and the package can include the amount (for example, number of tablets, volume, etc.) that is contained in a particular container (for example, 100 capsules of Amoxicillin 500mg per bottle).
+</p>
+    <p> The medication resource can be used to describe a compounded (aka extemporaneous or magistral) product that is manufactured by the pharmacy at the time of dispensing.  In this case there will be multiple ingredients which are typically base chemicals (for example, hydrocortisone powder) and there may be other ingredients that are manufactured products (for example, Glaxal Base).</p>
+<p>
+If medication includes a package, further details about the composition can be provided. A package has a container (vacuum packed box, jar, etc.) and a list of the products or other packages that are in the package.
+</p>
+</div>    
+    
+</div>

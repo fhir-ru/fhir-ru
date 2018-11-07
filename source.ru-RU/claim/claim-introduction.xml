@@ -1,0 +1,42 @@
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
+
+<div>
+<a name="scope"> </a>
+<h2>Область применения и использование</h2>
+<p>
+Ресурс Claim - "требование о страховом возмещении" - используется поставщиками и плательщиками, страховыми компаниями для обмена финансовой информацией и вспомогательной медицинской информацией относительно предоставления услуг здравоохранения с плательщиками и фирмами, которые проводят анализ данных. Основные виды использования этого ресурса: поддержка eClaims - электронных требований о страховом возмещении, обмен данными о предложенных или оказанных услугах c плательщиками пособий (benefit payors), страховщиками и национальными программами здравоохранения, планирование оплаты лечения и её компенсации.
+<!-- The Claim is used by providers and payors, insurers, to exchange the financial information, and supporting clinical information, regarding the provision
+ of healthcare services with payors an firms which provide data analytics. The primary uses of this resource is to support eClaims, 
+the exchange of proposed or actual services to benefit payors, insurers and national health programs, for treatment payment planning and reimbursement. -->
+</p>
+<p>
+Ресурс Claim предназначен для:
+<!-- The Claim is intended to support: -->
+<ul>
+<li>Требований о страховом возмещении, когда предоставление товаров и услуг <b>завершено</b> и требуется компенсация.</li>
+<li>Предварительного санкционирования, когда предоставление товаров и услуг <b>предложено</b> и требуется разрешение (authorization) и/или резервирование средств. </li>
+<li>Предварительного определения, когда предоставление товаров и услуг <b>исследуется</b> для определения того, какие услуги покрываются и какой суммой. По сути, это страховое требование "что будет, если".</li>
+<!-- <li>Claims - where the provision of goods and services is <b>complete</b> and reimbursement is sought.</li>
+<li>Pre-Authorization - where the provision of goods and services is <b>proposed</b> and either authorization and/or the reservation of funds is desired.</li>
+<li>Pre-Determination - where the provision of goods and services is <b>explored</b> to determine what services may be covered and to what amount. Essentially a 'what if' claim.</li> -->
+</ul>
+</p>
+
+<p>
+Ресурс Claim также поддерживает:
+<!-- The Claim also supports: -->
+<ul>
+<li>До 3 уровней иерархии товаров, продуктов и услуг для выставления простых и сложных счетов.</li>
+<li>Несколько страховых программ, расположенных в последовательности согласования выгоды (Coordination of Benefit) для работы с первичными, вторичными, третичными и т. д. страховыми покрытиями.</li>
+<li>Назначение пособия - пособие по запросу может быть направлено абоненту-подписчику (subscriber), поставщику или другой стороне.</li>
+<!-- <li>Up to a 3 tier hierarchy of Goods, products, and Services, to support simple to complex billing.</li>
+<li>Multiple insurance programs arranged in a Coordination of Benefit sequence to enable exchange with primary, secondary, tertiary etc. insurance coverages.</li>
+<li>Assignment of benefit - the benefit may be requested to be directed to the subscriber, the provider or another party.</li> -->
+</ul>
+</p>
+<p> 
+
+</p>
+</div>
+
+</div>

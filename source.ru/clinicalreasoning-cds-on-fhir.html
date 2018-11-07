@@ -1,0 +1,279 @@
+<!DOCTYPE HTML>
+
+[%settitle Clinical Reasoning%]
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+[%file newheader%]
+</head>
+<body>
+[%file newnavbar%]
+
+<div class="col-12">
+
+<a name="clinical-decision-support-services"> </a>
+<h3>Clinical Decision Support Services</h3>
+<table class="cols"><tbody><tr><td id="wg">Work Group <a _target="blank" href="[%wg cds%]">[%wgt cds%]</a></td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 2</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:  <!-- !ns! --><a href="versions.html#std-process">Trial Use</a></td></tr></tbody></table>
+
+<p>This section of the clinical reasoning module discusses the evaluation use case for clinical decision support and how the various knowledge artifacts can be integrated into clinical workflow. The topic focuses on two main scenarios:</p>
+
+<ol>
+	<li>Using CDS Hooks to evaluate remote clinical decision support</li>
+	<li>Using CDS Hooks to surface clinical decision support behavior</li>
+</ol>
+
+<p>Note that this topic is a very high-level approach to using CDS Hooks to support these two use cases. It is not a normative description of any of the CDS Hooks content. Please refer to the <a href="https://cds-hooks.org">CDS Hooks</a> specification itself for more details.</p>
+
+<a name="consuming-decision-support"> </a>
+<h4>Consuming Decision Support Using CDS Hooks</h4>
+
+<p>CDS Hooks is an open source specification focused on user-facing remote clinical decision support. CDS Hooks can use FHIR to represent patient information and recommendations, but is architecturally an independent specification. The basic components of CDS Hooks are:</p>
+
+<table>
+  <tr>
+    <td><b>Service</b></td><td>A decision support service that accepts requests containing patient information, and provides responses</td>
+  </tr>
+  <tr>
+    <td><b>Hook</b></td><td>A defined point within the client system's workflow with well-known contextual information provided as part of the request</td>
+  </tr>
+  <tr>
+    <td><b>EHR</b></td><td>An electronic health record, or other clinical information system that consumes decision support in the form of services</td>
+  </tr>
+  <tr>
+    <td><b>Card</b></td><td>Guidance from decision support services is returned in the form of cards, representing discrete recommendations or suggestions that are presented to the user within the EHR</td>
+  </tr>
+</table>
+
+<a name="configuration"> </a>
+<h5>Configuration</h5>
+
+<p>The first phase in consuming a CDS Service using CDS Hooks is to configure the integration from the EHR. The CDS Service publishes a set of endpoints to advertise available functionality using the <a href="http://cds-hooks.org/specification/1.0/#discovery"><i>discovery</i></a> endpoint. For each endpoint, the service declares the <i>hook</i> during which it expects to be invoked, and optionally, any <i>prefetch</i> information that could be provided to the service.</p>
+
+<p>Each <a href="http://cds-hooks.org/hooks/"><i>hook</i></a> identifies contextual information that is available within the EHR. For example, the <code>medication-prescribe</code> hook specifies the patient in context, as well as the medications being prescribed. When invoking the service from this hook, the EHR is expected to provide this contextual information as part of the request.</p>
+
+<p>In addition, the CDS Service may specify additional information using <a href="http://cds-hooks.org/specification/1.0/#prefetch-template"><i>prefetch</i></a> templates. Each prefetch template is a FHIR query URL, parameterized by the data available in context, and describing information needed by the CDS Service to perform its processing. By providing this information as part of the request, the EHR alleviates the need for the CDS Service to request the additional information.</p>
+
+<p>The following example illustrates a typical service discovery response:</p>
+
+<pre><code>{
+  "services": [
+    {
+      "hook": "medication-prescribe",
+      "prefetch": {
+        "medication": "MedicationOrder?patient\u003d{{context.patientId}}\u0026status\u003dactive"
+      },
+      "title": "Opioid Morphine Milligram Equivalence (MME) Guidance Service",
+      "description": "CDS Service that finds the MME of an opioid medication and provides guidance to the prescriber if the MME exceeds the recommended range.",
+      "id": "cdc-opioid-guidance"
+    },
+    {
+      "hook": "patient-view",
+      "prefetch": {
+        "patient": "Patient/{{context.patientId}}"
+      },
+      "title": "Zika Virus Intervention",
+      "description": "Identifies possible Zika exposure and offers suggestions for suggested actions for pregnant patients",
+      "id": "zika-virus-intervention"
+    },
+}</code></pre>
+
+<a name="evaluation"> </a>
+<h5>Evaluation</h5>
+
+<p>The second phase is the actual request/response call to the CDS Service. Once the integration has been configured using the above information, the EHR can make requests to decision support services at the appropriate times based on the <i>hooks</i> it supports. To make a request, the EHR prepares a <a href="http://cds-hooks.org/specification/1.0/#http-request_1"><i>request</i></a> object containing the contextual information required for the hook, as well as any additional prefetch information.</p>
+
+<p>For example, the following request illustrates a call to the <code>cdc-opioid-guidance</code> service:</p>
+
+<pre><code>{
+  "hookInstance": "d1577c69-dfbe-44ad-ba6d-3e05e953b2ea",
+  "fhirServer": "https://example.org/fhir",
+  "hook": "medication-prescribe",
+  "user": "Practitioner/example",
+  "context":
+    {
+      "resourceType": "MedicationOrder",
+      "id": "medrx001",
+      ... &lt;FHIR Resource - snipped for brevity&gt;
+    },
+  "patient": "Patient/Patient-12214",
+  "prefetch": {
+    "medication": {
+      "resource": {
+        "resourceType": "Bundle",
+        "entry": [
+          {
+            "fullUrl": "https://example.org/fhir/open/MedicationOrder/medrx002",
+            "resource": {
+              "resourceType": "MedicationOrder",
+              "id": "medrx002",
+              ... &lt;FHIR Resource - snipped for brevity&gt;
+          }
+        ]
+      }
+    }
+  }
+}</code></pre>
+
+<p>This request identifies:</p>
+
+<ul>
+	<li><b>hookInstance</b> - A unique identifier for this instance of the hook invocation.</li>
+	<li><b>fhirServer</b> - The base URL for the FHIR server that the CDS Service can use to request any additional information required</li>
+	<li><b>hook</b> - The hook being invoked, <code>medication-prescribe</code> in this case</li>
+	<li><b>user</b> - The identifier of the current user, a Practitioner in this case</li>
+	<li><b>context</b> - The contextual information as defined by the <i>hook</i>, the <code>MedicationOrder</code> being prescribed in this case</li>
+	<li><b>prefetch</b> - The prefetch information as defined by the <i>service</i>, the active <code>MedicationOrder</code>s for the patient in this case</li>
+</ul>
+
+<p>The service responds with a set of <a href="http://cds-hooks.org/specification/1.0/#card-attributes"><i>cards</i></a> describing any recommendations or suggestions that should be presented to the user:</p>
+
+<pre><code>{
+   "cards":[
+      {
+         "summary":"High risk for opioid overdose - taper now",
+         "detail":"Total morphine milligram equivalent (MME) is 110 mg/d. Taper to less than 50.",
+         "indicator":"warning",
+         "source": {
+           "label": "Centers for Comprehensive Disease Control (CDC)",
+           "url": "http://cdc.gov"
+         },
+         "suggestions":[
+            {
+               "label": "Total morphine milligram equivalent (MME) is 110 mg/d. Taper to less than 50.",
+               "actions":[
+                  {
+				     "type": "update",
+                     "description":"Total morphine milligram equivalent (MME) is 110 mg/d. Taper to less than 50.",
+                     "resource": { ... &lt;Updated FHIR Resource - snipped for brevity&gt; ... }
+                  }
+               ]
+            }
+         ],
+         "links":[
+            {
+               "label":"CDC guideline for prescribing opioids for chronic pain",
+               "type": "absolute",
+               "url":"https://guidelines.gov/summaries/summary/50153/cdc-guideline-for-prescribing-opioids-for-chronic-pain---united-states-2016#420"
+            },
+            {
+               "label":"MME Conversion Tables",
+               "type": "absolute",
+               "url":"https://www.cdc.gov/drugoverdose/pdf/calculating_total_daily_dose-a.pdf"
+            }
+         ]
+      }
+   ]
+}</code></pre>
+
+<p>Each card contains:</p>
+
+<ul>
+  <li><b>summary</b> - A short description of the result</li>
+  <li><b>detail</b> - A more detailed description of the information for the card</li>
+  <li><b>indicator</b> - The urgency/importance of the card, <code>info</code>, <code>warning</code> or <code>hard-stop</code></li>
+  <li><b>source</b> - The source of the information</li>
+  <li><b>suggestions</b> - An array of suggestions, allowing the service to suggest a set of changes in the context of the current activity</li>
+  <li><b>links</b> - A set of links allowing the service to provide links to further information about the response</li>
+</ul>
+
+<p>At this point, the EHR processes the response and determines the most appropriate mechanism for displaying the results to the end-user. However, it is often the case that the results of the decision support interaction need to be persisted for future reference. The <a href="guidanceresponse.html">GuidanceResponse</a> and <a href="requestgroup.html">RequestGroup</a> resources provide a general mechanism that supports this use case.</p>
+
+<p>In general, the GuidanceResponse represents the overall response from the CDS Service, and the RequestGroup represents the individual cards and suggestions returned as part of the response, as illustrated by the following basic mapping:</p>
+
+<table>
+  <tr><th><b>CDS Hooks Element</b></th><th><b>FHIR Resource Mapping</b></th></tr>
+  <tr><td>Request.hookInstance</td><td>GuidanceResponse.requestId &amp; RequestGroup.identifier</td></tr>
+  <tr><td>Request URL</td><td>GuidanceResponse.moduleUri &amp; RequestGroup.instantiatesUri</td></tr>
+  <tr><td>Response status</td><td>GuidanceResponse.status</td></tr>
+  <tr><td>Request Patient</td><td>GuidanceResponse.subject &amp; RequestGroup.subject</td></tr>
+  <tr><td>Request time</td><td>GuidanceResponse.occurrenceDateTime &amp; RequestGroup.authoredOn</td></tr>
+  <tr><td>Request service</td><td>GuidanceResponse.performer &amp; RequestGroup.author (as a Device)</td></tr>
+  <tr><td>Response.summary</td><td>RequestGroup.action.title</td></tr>
+  <tr><td>Response.detail</td><td>RequestGroup.action.description</td></tr>
+  <tr><td>Response.indicator</td><td>RequestGroup.priority | RequestGroup.action.resource.priority, using the mapping specified <a href="conceptmap-cdshooks-indicator.html">here</a></td></tr>
+  <tr><td>Response.source</td><td>RequestGroup.action.relatedArtifact.where(type = 'documentation')</td></tr>
+  <tr><td>Response.suggestion.label</td><td>RequestGroup.action.title</td></tr>
+  <tr><td>Response.suggestion.uuid</td><td>RequestGroup.action.id</td></tr>
+  <tr><td>Response.suggestion.action.type</td><td>RequestGroup.action.type</td></tr>
+  <tr><td>Response.suggestion.action.description</td><td>RequestGroup.action.description</td></tr>
+  <tr><td>Response.suggestion.action.resource</td><td>RequestGroup.action.resource</td></tr>
+</table>
+
+<p>Note that these examples all assume a FHIR DSTU2 service is being used. This is because most EHRs currently support DSTU2 in their production versions.</p>
+
+<a name="surfacing-clinical-decision-support"> </a>
+<h4>Surfacing Clinical Decision Support Guidance Using CDS Hooks</h4>
+
+<p>In addition to supporting the user-facing remote decision support use case, CDS Hooks can be used to surface clinical decision support behavior represented by knowledge artifacts in the Clinical Reasoning module. In this use case, a FHIR server functioning as a knowledge provider exposes CDS Hooks Services using the discovery endpoint, and provides guidance using the CDS Service endpoint. To support this, several mappings from Clinical Reasoning functionality to CDS Hooks services are used:</p>
+
+<ol>
+  <li><b>Hooks</b> - Hooks in CDS Hooks are mapped to the TriggerDefinition structure in FHIR</li>
+  <li><b>Services</b> - Services in CDS Hooks are mapped to the PlanDefinition resource in FHIR to provide evaluation behavior</li>
+  <li><b>Prefetch</b> - Prefetch templates in CDS Hooks are mapped to the DataRequirement structure in FHIR</li>
+</ol>
+
+<a name="representing-hooks"> </a>
+<h5>Representing Hooks in FHIR</h5>
+
+<p>A <i>hook</i> in CDS Hooks is a pre-defined point in the workflow of a clinical information system such as an EHR. Each hook defines <i>context</i>, which is the information available as part of the current activity in the system. Each hook represents a point in the workflow that can be augmented by decision support from an external system. Within CDS Hooks, each hook defines the set of available context values, along with whether or not that context value can be used as a prefetch token.</p>
+
+<p>For example, the <code>patient-view</code> hook defines <code>patientId</code> and <code>encounterId</code> as context values, and indicates that they are both available for use as prefetch tokens (meaning that they can be used to parameterize prefetch templates).</p>
+
+<p>Within FHIR, the concept of a hook can be represented using a combination of TriggerDefinition and ParameterDefinition:</p>
+
+<table>
+  <tr><th><b>CDS Hooks Element</b></th><th><b>FHIR Mapping</b></th></tr>
+  <tr><td>Hook.name</td><td>TriggerDefinition.where(type = 'named-event').name</td></tr>
+  <tr><td>Hook.context.field</td><td>ParameterDefinition.name</td></tr>
+  <tr><td>Hook.context.priority</td><td>ParameterDefinition.min &amp; ParameterDefinition.max</td></tr>
+  <tr><td>Hook.context.description</td><td>ParameterDefinition.documentation &amp; ParameterDefinition.type &amp; ParameterDefinition.profile</td></tr>
+</table>
+
+<p>Note that using TriggerDefinition to represent hook information requires that hook details be duplicated everywhere they are used. Another approach would be to use the EventDefinition resource to capture the hook information once, and then reuse that by reference wherever it is needed.</p>
+
+<a name="representing-services"> </a>
+<h5>Representing Services in FHIR</h5>
+
+<p>A <i>service</i> in CDS Hooks is a clinical decision support service that can be used to provide guidance to users at pre-defined points in a workflow. The PlanDefinition resource can be used to describe the behavior of decision support functionality, which can then be exposed via a CDS Hooks service. In the simplest case, there is a one-to-one correspondence between a PlanDefinition and a CDS Service:</p>
+
+<table>
+  <tr><th><b>CDS Hooks Element</b></th><th><b>FHIR Mapping</b></th></tr>
+  <tr><td>Service.id</td><td>PlanDefinition.url (without the base)</td></tr>
+  <tr><td>Service.title</td><td>PlanDefinition.title</td></tr>
+  <tr><td>Service.description</td><td>PlanDefinition.description</td></tr>
+  <tr><td>Service.hook</td><td>PlanDefinition.action.trigger</td></tr>
+  <tr><td>Service.prefetch</td><td>PlanDefinition.data-requirement</td></tr>
+</table>
+
+<p>The PlanDefinition/$apply operation can then be used to provide the behavior of the CDS Hooks service, as described in the Processing CDS Hooks Requests section below.</p>
+
+<h5>Representing Prefetch in FHIR</h5>
+
+<p>In addition to the contextual information defined by the <i>hook</i>, services in CDS Hooks can request that additional information be supplied with each request in the form of <i>prefetch</i> templates. These templates are parameterized FHIR query URLs that can be fulfilled by the EHR as part of the request, reducing the number of round-trips between the CDS Service and the EHR's FHIR server.</p>
+
+<p>The concept of prefetch data is represented within Clinical Reasoning as a DataRequirement, which can be transformed to an instance level read or type level search interaction as follows:</p>
+
+<table>
+  <tr><th><b>DataRequirement Element</b></th><th><b>Mapping to FHIR URL</b></th></tr>
+  <tr><td>type</td><td>[type]{[id] | ?[parameters]}</td></tr>
+  <tr><td>subject</td><td>subject={{patientId}}</td></tr>
+  <tr><td>codeFilter</td><td>[path]{=|:in}[code|valueSet]</td></tr>
+  <tr><td>dateFilter</td><td>[path]{eq|lt|gt|ge|le}[valueDateTime|valuePeriod|valueDuration]</td></tr>
+  <tr><td>sort</td><td>_sort=[sort]</td></tr>
+  <tr><td>limit</td><td>_limit=[limit]</td></tr>
+</table>
+
+<p>This prefetch data can be automatically determined from the data requirements of the PlanDefinition, and provided as part of the service definition to the CDS Hooks discovery response.</p>
+
+<a name="processing-requests"> </a>
+<h5>Processing CDS Hooks Requests</h5>
+
+<p>Once the available PlanDefinition resources are advertised through the discovery endpoint, a CDS Hooks endpoint can be used to perform the actual evaluation, as illustrated in the following diagram:</p>
+
+<img alt="Surfacing Clinical Reasoning Behavior via CDS Hooks" src="clinicalreasoning-cdshooks-approach.png"/>
+
+<p>As depicted in the above diagram, an EHR invokes a CDS Hooks request at the appropriate point in the workflow, providing the requested context and data. The CDS Service responds by performing an $apply operation against the specified PlanDefinition, and transforming the resulting RequestGroup into a CDS Hooks response.</p>
+
+</div>
+[%file newfooter%]
+</body>
+</html>

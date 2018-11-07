@@ -1,13 +1,11 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
-<a name="notes"> </a>
+<a name="notes"></a>
 <h2>
-Примечания:
-<!-- Notes: -->
+Notes:
 </h2>
-  <ul>    
-  <li>Квалификацию (Practitioner.qualification) медицинский специалист получает независимо от организации и роли, и её наличие не подразумевает, что он уполномочен выполнять роли, соответствующие этой квалификации, в какой-либо организации (Organization) или месте (Location).
-  <!-- The practitioner's Qualifications are aquired by the practitioner independant of any organization or role, 
-  and do not imply that they are allowed/authorzied to perform roles relevant to the qualification at any specific Organization/Location. --></li>
+  <ul>
+  <li>The practitioner's Qualifications are acquired by the practitioner independent of any organization or role, 
+  and do not imply that they are allowed/authorized to perform roles relevant to the qualification at any specific Organization/Location.</li>
   </ul>
 </div>
 

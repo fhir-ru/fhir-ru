@@ -1,0 +1,30 @@
+// Simple validation of a code against a known code system
+GET [base]/CodeSystem/loinc/$validate-code?code=1963-8&display=test
+
+--------------------------------------
+// Validate a CodeableConcept against a client specified code system
+POST [base]/CodeSystem/$validate-code
+[other headers]
+
+{
+  "ResourceType" : "Parameters",
+  "parameter" : [
+    {
+    "name" : "codeableConcept",
+    "valueCodeableConcept" : {
+      "coding" : {
+        "system" : "http://example.org",
+          "code" : "code",
+      "display" : "test"
+      }
+    }
+  },
+  {
+    "name" : "codeSystem",
+    "resource": {
+      "resourceType" : "codeSystem",
+    [etc.]
+    }
+  }
+  ]
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+
+<!-- template-profile-questionnaire.html -->
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<%file newheader%>
+</head>
+<body>
+<%file newnavbar%>
+
+<div class="col-12">
+
+<%profileheader questionnaire%>
+
+<h2>[%title%] - Пример формы<!-- Example Form --></h2>
+
+<p>
+Это пример формы, основанной на вопроснике, сгенерированном из своего определения, чтобы помочь визуализировать его содержимое. См. также вопросник в формате <a href="<%name%>.xml.html">XML</a> или <a href="<%name%>.json.html">JSON</a>.
+<!-- This is an example form based on a questionnaire generated from the definition, to help visualise the content. See also the <a href="<%name%>.xml.html">XML</a> or <a href="<%name%>.json.html">JSON</a> questionnaire. -->
+</p>
+
+<%questionnaire%>
+
+<p>
+<!-- spacer -->
+&nbsp;
+</p>
+
+</div>
+
+<%file newfooter%>
+    
+</body>
+</html>

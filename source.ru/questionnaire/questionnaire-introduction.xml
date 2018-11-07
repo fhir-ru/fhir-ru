@@ -1,54 +1,50 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<a name="scope"> </a>
-<h2>Область применения и использование<!-- Scope and Usage --></h2>
+<a name="scope"></a>
+<h2>Scope and Usage</h2>
 <p>
- <b>Questionnaire</b> (вопросник) - это организованная некоторым образом коллекция вопросов, предназначенная для получения информации от пациентов, поставщиков или других лиц, вовлеченных в здравоохранение. Вопросники могут представлять собой простые линейные списки вопросов или быть иерархически организованы в группы и подгруппы, каждая из которых содержит вопросы. <b>Questionnaire</b> определяет вопросы, которые следует задать, то, как они упорядочены и сгруппированы, промежуточные пояснительные тексты, а также ограничения на допустимые ответы. Результаты <b>Questionnaire</b> можно передавать с помощью ресурса <a href="questionnaireresponse.html">QuestionnaireResponse</a>.
-<!-- A <b>Questionnaire</b> is an organized collection of questions intended to solicit information from patients, providers or other individuals involved
-in the healthcare domain.  They may be simple flat lists of questions or can be hierarchically organized in 
+A <b>Questionnaire</b> is an organized collection of questions intended to solicit information from patients, providers or other individuals involved
+in the healthcare domain.  They may be simple flat lists of questions or can be hierarchically organized in
 groups and sub-groups, each containing questions.  The <b>Questionnaire</b> defines the questions to be asked, how they are ordered and grouped, any
 intervening instructional text and what
-the constraints are on the allowed answers.  The results of a <b>Questionnaire</b> can be communicated using the <a href="questionnaireresponse.html">QuestionnaireResponse</a> resource. -->
+the constraints are on the allowed answers.  The results of a <b>Questionnaire</b> can be communicated using the <a href="questionnaireresponse.html">QuestionnaireResponse</a> resource.
 </p>
 <p>
-Вопросники покрывают потребность в передаче данных, поступающих из форм, используемых во время медицинских осмотров, научно-исследовательских анкет и, иногда, полных клинических специализированных записей. В большинстве систем эти данные собираются с помощью пользовательских экранов и форм. Вопросники записывают особенности ввода данных - какие именно вопросы были заданы, в каком порядке, какие были варианты ответов и т. п. Каждый из этих вопросов является частью Questionnaire, а Questionnaire как таковой - это отдельно идентифицируемый ресурс, тогда как отдельные вопросы - нет.(Questionnaire questions can be linked to
+Questionnaires cover the need to communicate data originating from forms used in medical history examinations, research questionnaires and sometimes full
+clinical specialty records. In many systems this data is collected using user-defined screens and forms. Questionnaires define specifics about data capture -
+exactly what questions were asked, in what order, what choices for answers were, etc. Each of these questions is part of the Questionnaire,
+and as such the Questionnaire is a separately identifiable Resource, whereas the individual questions are not.  (Questionnaire questions can be linked to
 shared data elements using the <code>Questionnaire.item.definition</code> element.)
 </p>
-<p>Примеры вопросников:
-<!-- Examples of Questionnaires include: --></p>
+<p>Examples of Questionnaires include:</p>
 <ul>
-<li><!-- Past medical history (PMH) -->Анамнез</li>
-<li><!-- Family diseases -->Семейные заболевания</li>
-<li><!-- Social history -->Социальный анамнез</li>
-<li>Исследовательские анкеты/ Клинические исследовательские формы<!-- Research questionnaires/Clinical research forms (CRFs) --></li>
-<li>Формы оценки качества<!-- Quality and evaluation forms --></li>
-<li>Форма для принятого внутрь пациентом<!-- Patient intake form (e.g. clipboard) --></li>
-<li>Форма страхового возмещения<!-- Insurance claim form --></li>
+<li>Past medical history (PMH)</li>
+<li>Family diseases</li>
+<li>Social history</li>
+<li>Research questionnaires/Clinical research forms (CRFs)</li>
+<li>Quality and evaluation forms</li>
+<li>Patient intake form (e.g. clipboard)</li>
+<li>Forms to support insurance claims</li>
 </ul>
 <p>
-Область действия этого ресурса ограничена поддержкой характеристик простых анкет. Однако были определены общие расширения, которые делают возможным более сложное поведение. В них входят:
-<!-- This resource is limited in scope to support the characteristics of simple questionnaires.  However, common extensions have been defined to allow more
-sophisticated behavior.  This includes: -->
+This resource is limited in scope to support the characteristics of simple questionnaires.  However, common extensions have been defined to allow more
+sophisticated behavior.  This includes:
 </p>
 <ul>
-  <li><a href="questionnaire-extensions.html">Базовые расширения Questionnaire</a>, которые задают дополнительные описательные характеристики вопросников, их групп и вопросов
-  <!-- <a href="questionnaire-extensions.html">Questionnaire core extensions</a> which defines the additional descriptive characteristics for questionnaires and their groups and questions --></li>
-  <li><a href="element-extensions.html">Расширения элементов</a>, которые могут описывать дополнительные ограничения на разрешенные ответов для вопросников, например длину строки, дату и числовые диапазоны
-  <!-- <a href="element-extensions.html">Element extensions</a> which can describe additional constraints on allowed answers for questionnaires such as string length and date and numeric ranges --></li>
+  <li><a href="questionnaire-extensions.html">Questionnaire core extensions</a> which defines the additional descriptive characteristics for questionnaires and their groups and questions</li>
+  <li><a href="element-extensions.html">Element extensions</a> which can describe additional constraints on allowed answers for questionnaires such as string length and date and numeric ranges</li>
 </ul>
 <p>
-Дополнительные профили, например <a href="http://hl7.org/fhir/us/sdc/questionnaire-sdc.html">Structured Data Capture Questionnaire profile</a> дают дополнительные возможности для определения более сложных вопросников и форм.
-<!-- Additional profiles such as the <a href="http://hl7.org/fhir/us/sdc/questionnaire-sdc.html">Structured Data Capture Questionnaire profile</a> may provide additional capabilities for defining
-more sophisticated questionnaires and forms. -->
+Additional implementation guides, in particular the <a href="#sdc">Structured Data Capture Questionnaire IG</a> provide guidance, extensions and operations
+that support additional capabilities and allow the definition of more sophisticated questionnaires and their corresponding responses.
 </p>
 </div>
 
 <div>
-<a name="bnr"> </a>
-<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
+<a name="bnr"></a>
+<h2>Boundaries and Relationships</h2>
 <p>
-<!-- Ресурсы <b>Questionnair</b> отличаются от ресурсов <a href="list.html">List</a> тем, что <a href="list.html">Lists</a> группируют существующие ресурсы, а <b>Questionnaires</b> группируют произвольные вопросы. Теоретически, <b>Questionnaire</b> может быть выражен через ресурс <a href="list.html">List</a> или <a href="composition.html">Composition</a>, содержащий ресурсы <a href="dataelement.html">DataElement</a>. Однако в первом случает будет игнорироваться "цельность", связанная с вопросником, в котором вопросы обычно должны поддерживаться в виде единой структуры. Во втором случае фокус будет на передаче элементов данных, а не на организации сбора информации. -->
 <b>Questionnaires</b> differ from <a href="list.html">Lists</a> because <a href="list.html">Lists</a> group existing resources, while <b>Questionnaires</b> group
 arbitrary questions.
 Questionnaires are distinct from <a href="observation.html">Observations</a> and <a href="diagnosticreport.html">DiagnosticReports</a> in that both of these resources are
@@ -56,8 +52,13 @@ intended to capture only certain types of information (lab, imaging, vitals, etc
 medications, care plans, etc.), while Questionnaires are able to capture any information at all.  More importantly, Observation and DiagnosticReport focus on capturing the
 discrete information in a standardized form so that the information can be used consistently regardless of where or how it is captured.  Questionnaire focuses on information
 capture.  The same information can be captured using a wide variety of questionnaires with differently phrased questions organized in different manners.  As such, the
-Questionnaire resource provides a means to standardize the information gathering process (how information is captured), but not the actual information collected.  Observation 
-and DiagnosticReport standardize what information is actually captured, but not how the information is gathered.
+Questionnaire resource provides a means to standardize the information gathering process (how information is captured), but not how data is interoperably compared, analyzed
+or computed upon (typically managed using Observation, DiagnosticReport as well as other resources).
+</p>
+<p>
+Questionnaire supports data-collection workflow to a limited extent, in that - once triggered - a Questionnaire can guide a user through a data collection process that ensures
+appropriate information is collected based on answers to particular questions.  However, Questionnaire doesn't provide support for capturing sets of information at different
+times or highly interactive data capture.  Broader workflow is typically managed using PlanDefinition and Task or using other mechanisms such as CDSHooks.
 </p>
 <p>
 Questionnaires are similar to the notion of "logical models" supported by the <a href="structuredefinition.html">StructureDefinition</a> resource.  Both support the representation
@@ -70,13 +71,13 @@ data directly.  Rather, they provide a basis for mapping between data capture st
 </div>
 
 <div>
-<a name="bnc"> </a>
-<h2>Предпосылки и контекст<!-- Background and Context --></h2>
+<a name="bnc"></a>
+<h2>Background and Context</h2>
 <p>
 Groups and questions that make up a Questionnaire can use the <code>definition</code> element to refer to data elements in external code systems and <a href="structuredefinition.html">StructureDefinitions</a>.  In this way, it's possible to leverage standard definitions
 of questions and their associated data types and answer sets across questionnaires. This also allows extraction of the data from a questionnaire response into other data
 structures (e.g. populating a <a href="servicerequest.html">ServiceRequest</a> or <a href="careplan.html">CarePlan</a> from information in a completed questionnaire response.
-It can also support other sorts of post-processing of the data contained in a questionnaire response. However, use of the definition element is not required 
+It can also support other sorts of post-processing of the data contained in a questionnaire response. However, use of the definition element is not required
 and Questionnaires may be quite loosely defined. The section <a href="#qversusr">Questionnaire versus Resources</a> below discusses the issues of collecting data in such
 loosely defined Questionnaires versus collecting data as well-defined separate Resources.
 </p>

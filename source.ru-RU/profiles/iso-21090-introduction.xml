@@ -1,0 +1,117 @@
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
+
+<div>
+<h2>Scope and Usage</h2>
+<p>
+This profile defines a large number of extensions that reflect capabilities of the <a href="http://www.hl7.org/documentcenter/private/standards/v3/V3_XMLITS_ISODT_R1_2013OCT.zip">ISO 21090</a>
+data types specification that were not included as part of the FHIR core data types specification.  (These capabilities were excluded because it was determined
+that they represented "edge case" capabilities that the majority of existing implementations did not support.
+</p>
+<p>
+At the present time, this profile is incomplete.  It only contains extensions reflecting capabilities that have been explicitly identified as "useful" in the
+context of FHIR.  The set of extensions in this profile will continue to grow over time until eventually all capabilities of the ISO 21090 specification are reflected.
+</p>
+<p>
+For ease of reading, the extensions have been organized based on the underlying data type in the ISO specification.  The applicable FHIR data type(s) are also identified.
+</p>
+<p>
+<b>NOTE:</b> FHIR uses a different architecture than HL7 v3, so some capabilities might not make sense in the FHIR context or may need
+to be used in a different manner.  Where necessary, guidance is included in this profile on any differences in usage.
+</p>
+
+<div>
+<a name="any"></a>
+<h3>Any (ANY)</h3>
+<p>These extensions may apply to any of the FHIR data types (complex or primitive).  It can also appear on any resource element.</p>
+<h4><a href="extension-iso21090-nullflavor.html">nullFlavor</a></h4>
+<p>
+This extension allows exceptional values to be conveyed, as well as for data to be flagged as "missing" for some reason.
+</p>
+<p>
+In v3, null flavors were often required for data types when particular components were missing.  In the FHIR core specification, there is <b>never</b> an
+automatic requirement to send a null flavor, though profiles may introduce such a requirement.  As well, the need for null flavors is often made
+explicit in the specification by adding relevant null flavors to the value set for coded elements or by introducing a "choice" of data type such that
+either a normal value or a coded special value can be specified.  For example, a resouce might have a <code>quantity[x]</code> element with a type of
+<code>Quantity | code</code> where the value set is limited to TRC, QS or UNK.  In this way, only those null flavors that are relevant to the context are
+included.
+</p>
+<p>Where null flavors are not supported as part of the core specification, extensions can be defined that expose only those null flavors that are relevant.
+This approach is preferred over referencing the full null flavor specification.  (Note that the null flavor code system can be referenced in any value sets.)
+</p>
+
+</div>
+
+<div>
+<a name="entityname"></a>
+<h3>Entity Name (EN)</h3>
+<p>These extensions apply to the <a href="datatypes.html#humanname">HumanName</a> data type.</p>
+<ul>
+  <li><a href="extension-iso21090-en-use.html"><b>EN-use</b></a> - allows a more refined statement of the intended use of a particular name</li>
+  <li><a href="extension-iso21090-en-representation.html"><b>EN-representation</b></a> - is for a subset of <code>EN-use</code> and indicates the representation form of the name (this has specific use in east Asian countries)</li>
+</ul>
+<p>
+This extension applies to <a href="datatypes.html#humanname">HumanName</a> parts - e.g. <code>family</code> and <code>given</code>: 
+</p>
+<ul>
+  <li><a href="extension-iso21090-en-qualifier.html"><b>EN-qualifier</b></a> - allows distinguishing initials, middle names, call-me names and other types of names</li>
+</ul>
+<p>
+Note, however, that subsequent implementer experience has led to a new set of extensions being defined for 
+most of the human name issues (see <a href="extension-humanname-own-name.html">own-name</a>, 
+<a href="extension-humanname-own-prefix.html">own-prefix</a>, 
+<a href="extension-humanname-partner-name.html">partner-name</a>, 
+<a href="extension-humanname-partner-prefix.html">partner-prefix</a>, 
+<a href="extension-humanname-fathers-family.html">fathers-family</a> and
+<a href="extension-humanname-mothers-family.html">mothers-family</a>), and these should be used in preference to the ISO 21090 extensions, which are defined only for backwards compatibility.</p>
+</div>
+
+<div>
+<h3>Parametric Probability Distribution of a Physical Quantity (PPD&lt;PQ&gt;)</h3>
+<p>These extensions provide support for the probability distributions for the <a href="datatypes.html#quantity">Quantity</a> data type.  There are two properties:</p>
+<ul>
+  <li><a href="extension-iso21090-uncertainty.html"><b>uncertainty</b></a> - Indicates the standard deviation associated with the extended quantity.</li>
+  <li><a href="extension-iso21090-uncertaintytype.html"><b>uncertaintyType</b></a> - Identifies the probability distribution associated with the uncertainty of the extended quantity.</li>
+</ul>
+</div>
+
+<div>
+<a name="address"></a>
+<h3>Address (AD)</h3>
+<p>These extensions provide support for various additional properties of the <a href="datatypes.html#address">Address</a> data type.  There are kinds of properties:</p>
+<ul>
+   <li><a href="extension-iso21090-ad-use.html"><b>address-use</b></a> - Identifies additional usages not supported by the <code>Address.use</code> property</li>
+  <li>Additional address parts not broken out as distinct elements in the <a href="datatypes.html#address">Address</a> data type, including:
+    <ul>
+      <li><a href="extension-iso21090-adxp-additionallocator.html">address-part-additionalLocator</a> - Additional information beyond the street number.  E.g. apartment number</li>
+      <li><a href="extension-iso21090-adxp-unitid.html">address-part-unitID</a> - Number of a unit within a building</li>
+      <li><a href="extension-iso21090-adxp-unittype.html">address-part-unitType</a> - Type of unit.  E.g. appartment, floor</li>
+      <li><a href="extension-iso21090-adxp-deliveryaddressline.html">address-part-deliveryAddressLine</a> - Delivery to an installation rather than a physical address.  E.g. PO box, depot, station</li>
+      <li><a href="extension-iso21090-adxp-deliveryinstallationtype.html">address-part-deliveryInstallationType</a> - Lype of delivery site (PO Box, depot, station)</li>
+      <li><a href="extension-iso21090-adxp-deliveryinstallationarea.html">address-part-deliveryInstallationArea</a> - The jurisdiction in which the delivery address is located</li>
+      <li><a href="extension-iso21090-adxp-deliveryinstallationqualifier.html">address-part-deliveryInstallationQualifier</a> - A number or letter identifying the delivery site.  E.g. Station "A", Rural Route "104" </li>
+      <li><a href="extension-iso21090-adxp-deliverymode.html">address-part-deliveryMode</a> - Type of delivery.  E.g. rural route, post office box</li>
+      <li><a href="extension-iso21090-adxp-deliverymodeidentifier.html">address-part-deliveryModeIdentifier</a> - Routing information such as route number, box number</li>
+      <li><a href="extension-iso21090-adxp-streetaddressline.html">address-part-streetAddressLine</a> - A type of address identifying a building located by street name</li>
+      <li><a href="extension-iso21090-adxp-housenumber.html">address-part-houseNumber</a> - The number of the building on the street</li>
+      <li><a href="extension-iso21090-adxp-buildingnumbersuffix.html">address-part-buildingNumberSuffix</a> - The non-numeric portion of a building number.  E.g. "A" in 103A Some Street</li>
+      <li><a href="extension-iso21090-adxp-postbox.html">address-part-postBox</a> - A post office box number</li>
+      <li><a href="extension-iso21090-adxp-housenumbernumeric.html">address-part-houseNumberNumeric</a> -The numeric portion of a building number.  E.g. "103" in 103A Some Street</li>
+      <li><a href="extension-iso21090-adxp-streetname.html">address-part-streetName</a> - The name of a street (distinct from the building number)</li>
+      <li><a href="extension-iso21090-adxp-streetnamebase.html">address-part-streetNameBase</a> - The name of a street excluding type and direction.  E.g. "Main" in Main Street NW</li>
+      <li><a href="extension-iso21090-adxp-streetnametype.html">address-part-streetNameType</a> - The type of a street.  E.g. "Street" in Main Street NW</li>
+      <li><a href="extension-iso21090-adxp-direction.html">address-part-direction</a> - The direction of a street.  E.g. "NW" in Main Street NW</li>
+      <li><a href="extension-iso21090-adxp-careof.html">address-part-careOf</a> - The name of a person to take receipt at the specified address who is responsible for ensuring final deliver</li>
+      <li><a href="extension-iso21090-adxp-censustract.html">address-part-censusTract</a> - A geographic region delineated for demographic purposes</li>
+      <li><a href="extension-iso21090-adxp-delimiter.html">address-part-delimiter</a> - A separator such as a carrage return, dash, comma, etc.</li>
+      <li><a href="extension-iso21090-adxp-precinct.html">address-part-precinct</a> - A subsection of a municipality</li>
+    </ul>
+  </li>
+</ul>
+<p>
+These additional elements of Address will be ignored by applications that do not support them, so any information in them should also be duplicated in the Address.line to which they are attached.
+</p>
+</div>
+
+
+</div>
+</div>

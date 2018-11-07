@@ -1,67 +1,60 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<a name="scope"> </a>
-<h2>Область применения и использование</h2>
+<a name="scope"></a>
+<h2>Scope and Usage</h2>
 <p>
-После создания ресурса subscription любые создаваемые или обновляемые ресурсы, 
-которые отвечают критериям в этом ресурсе, вызывают отправку уведомления в указанный канал.
-Критерии <a href="search.html">поиска</a> являются строками, 
-которые интерпретируются таким же образом, как если бы они добавлялись к базовому URL и отправлялись через REST API. 
-Обратите внимание, что критерии поиска применяются к новому значению ресурса.
-Из этого можно сделать вывод, что уведомление не высылается на удаление ресурса, или когда
-ресурс обновляется таким образом, что он больше не удовлетворяет этим критериям.
-<!-- Once a subscription is created, any newly created or updated resources 
+Once a subscription is created, any newly created or updated resources 
 that meet the criteria in the resource cause a notification to be sent using the 
 provided channel. The criteria are <a href="search.html">Search</a> strings
 that have the same interpretation as if they were appended to the base 
 URL and submitted using the REST API. Note that the search criteria 
 are applied to the new value of the resource. The consequence of this 
 is that there is no notification when a resource is deleted, or when 
-a resource is updated so that it no longer meets the criteria.  -->
+a resource is updated so that it no longer meets the criteria. 
 </p>
 <p>
 The server is able to send notifications without any information about the matching resource, or with the entire resource.
 </p>
 <p>
-Поддерживается несколько типов каналов:
-<!-- Several different types of channels are supported: -->
+Several different types of channels are supported:
 </p>
 <ul>
- <li><b>rest-hook</b>: Команда post выполняется на определенный URL-адрес identified in the Subscription resource. Если в подписке есть требование включать ресурс целиком, то этот URL интерпретируется как базовый адрес сервиса</li>
- <li><b>websocket</b>: сообщение PING отправляется на указанный URI</li>
- <li><b>email/sms</b>: уведомление отправляется на указанный адрес электронной почты или SMS-номер</li>
- <li><b>message</b>: ресурс посылается приложению, определенному в URI как <a href="messaging.html">message</a></li>
-<!--  <li><b>rest-hook</b>: A post is made to the URL. If the subscription requests that the whole resource is included, the URL is interpreted as the service base</li>
- <li><b>websocket</b>: An PING message is sent to the designated URI</li>
- <li><b>email/sms</b>: A notification is send to nominated email address or SMS number</li>
- <li><b>message</b>: The resource is sent to the application identified in the URI as a <a href="messaging.html">message</a></li> -->
+ <li><b>rest-hook</b>: A post is made to the URL identified in the Subscription resource. If the subscription requests that the whole resource is included, the URL is interpreted as the service base</li>
+ <li><b>websocket</b>: A PING message is sent to the designated URI</li>
+ <li><b>email/sms</b>: A notification is sent to the nominated email address or SMS number</li>
+ <li><b>message</b>: The resource is sent to the application identified in the URI as a <a href="messaging.html">message</a></li>
 </ul>
 <p>
-См. ниже продолжение описания различных каналов. Обратите внимание, что отправка
-всего ресурса целиком создает проблемы безопасности, которые должны решаться сервером.
-<!-- See below for further discussion of the various channels. Note that sending
-the entire resource creates security concerns that must be managed by the server. -->
+See below for further discussion of the various channels. Note that sending
+the entire resource creates security concerns that must be managed by the server.
 </p>
 <p>
-Subscriptions - это активные ресурсы; сервер может принять подписку,  только если он будет посылать уведомления в указанный канал для всех ресурсов, полученных впоследствии. Подписка перестает быть активной, как только удаляется с сервера.<!-- Subscriptions are active resources; a server can only accept a subscription
+Subscriptions are active resources; a server can only accept a subscription
 if it will execute the specified channel for any resources subsequently 
 received. The subscription is no longer active once it is deleted from 
-the server. -->
+the server.
 </p>
 </div>
 
 <div>
-<a name="bnr"> </a>
-<h2>Границы и связи</h2>
-
+<a name="bnr"></a>
+<h2>Boundaries and Relationships</h2>
 <p>
-В качестве альтернативы ресурсу subscriptions, RESTful API описывает подписку на основе метода опрашивания, использующий <a href="bundle.html">bundles</a> и операцию <a href="http.html#history">history</a>. Этот метод опрашивания позволяет устанавливать намного более тесную взаимосвязь между клиентом и сервером, которая не предполагает упущения обновлений и/или удалений.
-<!-- As an alternative to subscriptions, the RESTful API describes a 
+As an alternative to subscriptions, the RESTful API describes a 
 polling-based subscription method using <a href="bundle.html">bundles</a> 
 and the <a href="http.html#history">history operation</a>. This method 
 of polling allows for a much tighter relationship between the client and 
-the server that doesn't involve missing updates and/or deletes.  -->
+the server that doesn't involve missing updates and/or deletes. 
+</p>
+<p>
+When using the <code>Subscription</code> resource, the FHIR server combines 
+the roles of publisher and information distributer. Other arrangements
+of the publish and subscribe pattern describe separate agents for the two roles. 
+Implementers may implement the <code>Subscription</code> resource using an 
+architecture with separate agents, or using any other pub/sub architectire
+(e.g. see <a href="http://fhircast.org/">FHIRCast</a>, or, more generally, 
+<a href="https://www.w3.org/TR/websub/">W3C Pub/Sub</a>).
 </p>
 </div>
 

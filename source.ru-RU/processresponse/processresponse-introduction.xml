@@ -1,0 +1,47 @@
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
+
+<div>
+<a name="scope"> </a>
+<h2>Область применения и использование</h2>
+<p>
+<b>NOTE:</b> This resource is slated to be refactored and reduced in scope as some of its functionality
+is taken over by the <a href="task.html">Task</a>
+resource as part of the FHIR Workflow refactoring.  Readers of this resource are encouraged to
+review the Task resource and consider using it instead and/or to provide feedback if they feel
+it will be inadequate to satisfy the use-cases associated with this resource and to express
+opinions about which purposes they feel ProcessRequest and ProcessResponse should be retained for.
+</p>
+<p>
+Ресурс ProcessResponse указывает на ресурс, для которого запросили статус обработки, и предоставляет простое подтверждение приема и статусную информацию об ошибках на уровне приложения. Может также использоваться для передачи дополнительных требований обработки в текстовом виде.
+<!-- The ProcessResponse resource indicates the resource for which the processing status is requested and 
+provides simple acknowledgement and status information of application level errors. It may also be used to 
+convey additional processing requirements in a text form. -->
+</p>
+<p>
+Это официальный ответ на ProcessRequest, который может использоваться в качестве ответа на уровне приложения на ресурс PaymentNotice.
+</p>
+<p>
+<!-- Describes some of the situations/use cases intended to be managed with the resource. May include a child div for "Storyboards" and "Related Specifications". The purpose of this section is to help implementers understand why the resource is needed and how it might be used. -->
+</p>
+</div>
+
+<!-- (recommended): 
+<div>
+<h2>Границы и связи</h2>
+<p>
+Explains how this resource relates to others. Particularly important is to differentiate between appropriate usages for related resources when an implementer might be confused about what to reference when.
+</p>
+</div>
+-->
+
+<!-- (optional):
+<div>
+<h2>Предпосылки и контекст</h2>
+<p>
+Provides additional detail on exactly how the resource is to be used
+</p>
+</div>
+-->
+
+
+</div>

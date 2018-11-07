@@ -1,0 +1,45 @@
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
+
+<div>
+<a name="scope"> </a>
+<h2>Область применения и использование<!-- Scope and Usage --></h2>
+<p>
+Ресурс Media содержит фотографии, видео- и аудиозаписи. Используется с носителями, приобретенными или используемыми в рамках процесса здравоохранения. Вот некоторые типичные варианты применения:
+<!-- The Media resource contains photos, videos, and audio recordings. It is used with media acquired or used as part of the healthcare process. Here are some typical usages: -->
+</p>
+<ul>
+ <li>Фотографии и видео диагностических или процедур по предоставлению ухода в целях записи.<!-- Photos and videos of diagnostic or care provision procedures for recording purposes --> </li>
+ <li>Изображения, содержащиеся в диагностических отчетах.</li> 
+</ul>
+</div>
+
+<div>
+<a name="bnr"> </a>
+<h2>Boundaries and Relationships</h2>
+
+<p>
+This resource captures a specific type of Observation - an <a href="observation.html">Observation</a> whose value is audio, video or image data.  
+This resource is the preferred representation of such forms of information as it exposes the metadata relevant for 
+interpreting the information.  However, in some legacy environments, media information may occasionally appear in 
+Observation instead.  Systems should be aware of this possibility.
+</p>
+<p>
+The Media resource is able to contain medical images in a DICOM format. These images may also be made accessible 
+through an <a href="imagingstudy.html">ImagingStudy</a> resource, which provides a direct reference to the
+image to a <a href="ftp://medical.nema.org/medical/dicom/final/sup161_ft.pdf">WADO-RS server</a>.
+</p>
+<p>
+For such images, the WADO-RS framework is a preferred method for representing the images - the WADO-RS
+service may include rendering the image with annotations and display parameters from an associated DICOM 
+presentation state, for instance. 
+</p>
+<p>
+On the other hand, the media resource allows for a robust transfer of an image across boundaries where
+the WADO-RS service is not available. For this reason, medical images can also be represented in 
+a Media resource, but the Media.content.url should provide a reference to a source WADO-RS service 
+for the image.
+</p>
+</div>
+
+
+</div>

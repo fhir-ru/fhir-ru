@@ -1,1 +1,1 @@
-terminologies/bindings.xml
+

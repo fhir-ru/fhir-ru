@@ -1,11 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <ValueSet xmlns="http://hl7.org/fhir">
   <meta>
     <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
   </meta>
   <url value="http://hl7.org/fhir/ValueSet/observation-category"/>
-  <name value="Observation Category Codes"/>
+  <name value="ObservationCategoryCodes"/>
+  <title value="Observation Category Codes"/>
   <status value="draft"/>
   <publisher value="FHIR Project team"/>
   <contact>
@@ -17,7 +18,7 @@
   <description value="Observation Category codes."/>
   <compose>
     <include>
-      <system value="http://hl7.org/fhir/observation-category"/>
+      <system value="http://terminology.hl7.org/CodeSystem/observation-category"/>
     </include>
   </compose>
 </ValueSet>

@@ -1,0 +1,95 @@
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
+
+<div>
+<a name="scope"> </a>
+<h2>Область применения и использование</h2>
+<p>
+Ресурс List - это одноуровневая, возможно упорядоченная, коллекция записей. Ресурсы List используются во многих местах, включая аллергии, медикаменты, оповещения, семейный анамнез, историю болезни и др. Ресурсы List можно использовать для поддержки специфичных для пациента клинических списоков наряду со списками для управления документооборотом, например отслеживание пациентов, управление обучающими случаями и др. Ресурс List может быть как однородным - т. е. содержать ресурсы только одного типа (например список аллергий); так и неоднородным - т. е. содержать ресурсы различных типов (например список проблем пациента, включающий в себя ресурсы <a href="condition.html">Condition</a>, <a href="allergyintolerance.html">AllergyIntolerance</a>, 
+последние <a href="procedure.html">Procedure</a> и др.).
+<!-- The List resource is a flat, possibly ordered, collection of records. List resources are used in many places, 
+including allergies, medications, alerts, family history, medical history, etc. List resources can be used to 
+support patient-specific clinical lists as well as lists that manage workflows such as tracking patients, managing 
+teaching cases, etc. Resources supported by the List resource can be homogenous – consisting of only one type of 
+resource (e.g., allergy list); as well as heterogeneous – containing a variety of resources (e.g., a problem list 
+including <a href="condition.html">Conditions</a>, <a href="allergyintolerance.html">AllergyIntolerances</a>, 
+recent <a href="procedure.html">Procedures</a>, etc.). -->
+</p>
+<p>
+Списки, как правило, содержат ссылки на ресурсы, которые составляют список, однако в некоторых случаях детали содержимого списка могут быть выражены в виде только текста; например текстовая запись семейного анамнеза. Ресурс List требуется только тогда, когда есть необходимость фильтровать набор ресурсов с помощью механизма, что не может быть выполнено через простой запрос; т. е. нет необходимости в списке для всех ресурсов <a href="allergyintolerance.html">AllergyIntolerance</a>, которые имеются на сервере для данного пациента. Однако ресурс List является подходящим механизмом для обеспечения фильтрованного списка подмножества ресурсов AllergyIntolerance, которые считаются "текущими". Списки могут содержать другие списки, чтобы можно было создавать вложенные коллекции списков.
+<!-- Lists will typically include references to the resources that make up the list, however in some cases the details 
+of the content of the list might be expressed in narrative only; e.g., a text record of a family history.  The List 
+resource is only needed if there is a need to filter the set of resources by a mechanism that cannot be accomplished 
+via a simple query; i.e. there is no need to have a list for all <a href="allergyintolerance.html">AllergyIntolerances</a>
+that exist on a server for a given patient.  However, List is an appropriate mechanism to provide a filtered list of the 
+subset of AllergyIntolerances that are deemed to be "current". Lists are allowed to contain other lists, so 
+that there is a nested collection of lists. -->
+</p>
+<p>
+Запросы списков ресурсов, таких как AllergyIntolerance, Condition или различных Medication-ресурсов, отличается от запросов в специфичных для ресурсов точках взаимодействия. Например список ресурсов AllergyIntolerance будет представлять собой курируемый отмеченный во времени моментальный снимок аллергий и непереносимостей пациента. С другой стороны, запрос к точке взаимодействия ресурса AllergyIntolerance обычно приводит к получению большого набора записей, который не будет ни курируемым (потенциально содержащим дубликаты и устаревшие записи), ни текущим - будет сгенерирован на основе информации по состоянию на "сейчас", а не на последний раз, когда человек вручную проверил экземпляр ресурса List. Какой механизм больше подходит для извлечения данных - будет варьироваться в зависимости от сценария использования. В некоторых случаях системы могут не иметь подходящего курируемого ресурса List для запроса.
+<!-- Querying a List of resources such as AllergyIntolerance, Condition or Medication-related
+resources is different than querying the resource-specific end point. For example, a List of
+AllergyIntolerance would represent a curated point-in-time snapshot of the patient's allergies
+and intolerances. On the other hand, querying the AllergyIntolerance endpoint would typically
+produce a larger set of records as it would both be non-currated (potentially containing
+duplicate or out-of-date records) as well as current - generated based on information as of
+"now" rather than the last time a human manually revised the List resource instance. Which
+mechanism is most appropriate for data retrieval will vary by use-case. In some cases, systems
+may not have an appropriate currated List to query. -->
+</p>
+<p>
+Обратите внимание, что никакие пункты в ресурсе List НЕ ДОЛЖНЫ менять смысл информации, получаемой при рассмотрении этих пунктов вне контекста ресурса List, поскольку пункты могут быть доступны напрямую вне этого списка средствами RESTful, или после обработки документа. Например ресурс List с кодом, который означает "опровергнутые клинические состояния", не может содержать пункты, которыми являются ресурсы <a href="condition.html">Condition</a>, если их статус в элементе <code>Condition.clinicalStatus</code> не установлен в значение <a href="valueset-condition-clinical.html#refuted">refuted</a>.
+
+</p>
+</div>
+
+<div>
+<a name="bnr"> </a>
+<h2>Границы и связи</h2>
+<p>
+В FHIR есть пять механизмов передачи коллекций ресурсов:
+<!-- There are five mechanisms in FHIR for communicating collections of resources: -->
+</p>
+<ul>
+<li>
+Ресурс List - перечисляет одноуровневую коллекцию ресурсов и обеспечивает средства управления этой коллекцией. В то время как конкретный экземпляр ресурса List может представлять собой моментальный снимок, с точки зрения бизнес-процесса обозначение "список" является динамическим - пункты в нём добавляются и удаляются с течением времени. Ресурс List ссылается на другие ресурсы. Списки могут быть курируемыми и иметь особое бизнес-значение.
+<!-- This List resource - enumerates a flat collection of resources and provides features for managing the collection.  
+While a particular List instance may represent a "snapshot", from a business process perspective the notion of "List" 
+is dynamic – items are added and removed over time.  The list resource references other resources.  Lists may be 
+curated and have specific business meaning. -->
+</li>
+<li>
+Ресурс <a href="group.html">Group</a> задаёт группу определённых людей, животных, устройств и т. п. через их перечисление или описание качеств, присущих членам данной группы. Ресурс Group ссылается на другие ресурсы, возможно неявно. Группы создаются, чтобы с ними работать или наблюдать как целое; например проведение психотерапии для группы, подсчёт риска для группы и т. п. Этот ресурс обычно используется в общественном здравоохранении (например для описания населения с риском), в клинических испытаниях (например определение пула испытуемых) и других подобных целей.
+<!-- The <a href="group.html">Group</a> resource - defines a group of specific people, animals, devices, etc. by enumerating them, 
+or by describing qualities that group members have. The group resource refers to other resources, possibly implicitly.  
+Groups are intended to be acted upon or observed as a whole; e.g., performing therapy on a group, calculating risk for a group, 
+etc.  This resource will commonly be used for public health (e.g., describing an at-risk population), clinical trials (e.g., 
+defining a test subject pool) and similar purposes. -->
+</li>
+<li>
+Ресурс <a href="composition.html">Composition</a> задаёт ряд информации, связанной со здравоохранением, которая собирается в единый логический документ, содержащий единое согласованное утверждение смысла, устанавливающий свой собственный контекст и который имеет клиническое заверение того, кто делает это утверждение. Ресурс Composition предоставляет базовую структуру FHIR-<a href="documents.html">документа</a>. Полное содержимое документа выражается с помощью бандла. Ресурсы Composition будут часто ссылаться на ресурсы List в качестве в своих секциях.
+<!-- The <a href="composition.html">Composition</a> resource - defines a set of healthcare-related information that is assembled 
+together into a single logical document that provides a single coherent statement of meaning, establishes its own context and 
+that has clinical attestation with regard to who is making the statement. The composition resource provides the basic structure 
+of a FHIR <a href="documents.html">document</a>.  The full content of the document is expressed using a bundle.  Compositions will 
+often reference Lists as the focus of particular sections. -->
+</li>
+<li>
+Ресурс <a href="bundle.html">Bundle</a> - это инфраструктурный контейнер для группы ресурсов. Он не содержит описательной части и используется для группировки коллекций ресурсов для передачи, хранения или обработки (например сообщения, документы, транзакции, ответы на запросы и др.). Содержимое бандов, как правило, определяется алгоритмически под конкретный обмен данными или в целях хранения.
+<!-- The <a href="bundle.html">Bundle</a> resource - is an infrastructure container for a group of resources.  It does not have narrative 
+and is used to group collections of resources for transmission, persistence or processing (e.g. messages, documents, transactions, 
+query responses, etc.)  The content of bundles is typically algorithmically determined for a particular exchange or persistence purpose. -->
+</li>
+<li>
+Элемент <a href="domainresource.html">DomainResource</a>.<code>contained</code>  позволяет вкладывать неограниченное количество ресурсов в любой DomainResource. Это особый тип группировки, где сгруппированные ресурсы теряют своё независимое существование - они больше не имеют своих собственных идентификаторов, их нельзя легко запросить независимо и т. д. Использование такой группировки - это технический механизм для управления независимостью ресурсов и он не имеет влияния на смысловое значение. Вложенные ресурсы, ресурсы в бандлах и ресурсы, расположенные удалённо, на которые даются ссылки, передают один и тот же смысл.
+<!-- The <a href="domainresource.html">DomainResource</a>.<code>contained</code> element - allows multiple resources to be nested
+inside any DomainResource.  This is a special type of grouping where the grouped resources lose independent existence - they
+no longer have their own identifiers, can't easily be queried independently, etc.  Use of this grouping is a technical 
+mechanism for managing the independence of resources and has no impact on meaning.  Contained, bundles and remotely referenced
+resources convey the same meaning. -->
+</li>
+</ul>
+
+</div>
+
+
+</div>

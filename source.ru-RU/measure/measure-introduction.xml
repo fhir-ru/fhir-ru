@@ -1,0 +1,33 @@
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
+
+<div>
+<a name="bnc"> </a>
+<h2>Область применения и использование</h2>
+<p><strong>This resource is a <em>definition</em> resource from a FHIR workflow perspective</strong> - see <a href="workflow.html">Workflow</a>, specifically <a href="workflow.html#definition">Definition</a>.</p>
+
+<p>Ресурс Measure представляет собой структурированное вычислимое определение клинической меры качества. Мера качества - это количественный инструмент для оценки производительности человека или организации касательно конкретного процесса или результата через измерение действий, процессов или результатов клинического ухода. Меры качества часто берутся из клинических руководств и предназначены для определения, надлежащий ли уход был оказан, по заданному набору клинических критериев и базе фактических данных.
+<!-- The Measure resource represents a structured computable definition of a clinical quality measure. A quality measure is a quantitative tool to assess the performance of an individual or organization with respect to a specified process or outcome via the measurement of actions, processes, or outcomes of clinical care. Quality measures are often derived from clinical quidelines and are designed to determine whether the appropriate care has been provided given a set of clinical criteria and an evidence base. --></p>
+
+<p>Обратите внимание, что сам по себе ресурс Measure не содержит никакой логики; вместо этого в нём есть ссылка на ресурс <a href="library.html">Library</a>, который содержит логику, необходимую мере, и различные элементы выражений, такие как критерий популяции, ссылки на именованные выражения в рамках этой библиотеки (или библиотек). Кроме того, если ресурс Measure ссылается на несколько библиотек, тогда все ссылки на выражения в ресурсе должны уточняться названием библиотеки, которая содержит эти выражения.
+<!-- Note that the Measure itself does not contain any logic; rather a <a href="library.html">Library</a> resource is referenced that contains the logic required by the measure, and the various expression elements, such as poulation criteria, reference named expressions within that library (or libraries). In addition, if the Measure references multiple libraries, then any expression references within the resource must be qualified with the name of the library that contains the referenced expression. --></p>
+</div>
+
+<div>
+<h2>Boundaries and Relationships</h2>
+<p>The Measure resource describes a specific quality measure, providing the structure of the measure in terms of the calculation elements (the <i>populations</i> involved). The <a href="group.html">Group</a> resource is also capable of describing a population, however, the complexity involved in specifying the criteria in the general case requires the use of a high-level query language such as Clinical Quality Language (CQL). As such, the Measure resource defines only the top-level populations and references CQL expressions for the actual criteria.</p>
+
+<p>A Measure is also similar to an <a href="observation.html">Observation</a> resource, with the exception that the Measure is purely definitional, it contains no actual measurements, only a description of how to calculate a particular measurement.</p>
+
+<p>A Measure is also similar to a clinical document, but as with the relationship to Observation, a Document is specific to a particular subject.</p>
+</div>
+
+<!-- (optional):
+<div>
+<h2>Background and Context</h2>
+<p>
+Provides additional detail on exactly how the resource is to be used
+</p>
+</div>
+-->
+
+</div>
