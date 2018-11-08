@@ -2520,7 +2520,7 @@ public class Publisher implements URIResolver, SectionNumberer {
 //        if (page.getToc().containsKey("1.1"))
 //          throw new Exception("Duplicate DOC Entry "+"1.1");
 
-        page.getToc().put("1.1", new TocEntry("1.1", "Table Of Contents", "toc.html", false));
+        page.getToc().put("1.1", new TocEntry("1.1", "Оглавление", "toc.html", false));
         page.log(" ...page toc.html", LogMessageType.Process);
         producePage("toc.html", null);
       }
