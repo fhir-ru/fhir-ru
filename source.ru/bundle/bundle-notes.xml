@@ -1,5 +1,6 @@
 ﻿<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
+<a name="notes"></a>
 <h3>Примечания к ресурсу Bundle<!-- Notes about Bundle --></h3>
 <ul>
 <li>
@@ -12,14 +13,14 @@
 <li>И Bundle.link, и Bundle.entry.link определены для поддержки обеспечения дополнительного контекста при использовании бандлов (например <a href="http://en.wikipedia.org/wiki/HATEOAS">HATEOAS</a>). 
 Bundle.entry.link соответствует ссылкам, находящимся в HTTP-заголовке, если ресурс в записи (entry) был <a href="http.html#read">read</a> непосредственно. 
 Данная спецификация определяет некоторые специфические применения Bundle.link для <a href="search.html#conformance">searching</a> и <a href="http.html#paging">paging</a>, однако нет для Bundle.entry.link, и нет определенной функции в транзакции - значение зависит от реализации
-<!-- Both Bundle.link and Bundle.entry.link are defined to support providing additional context when bundles are used (e.g. <a href="http://en.wikipedia.org/wiki/HATEOAS">HATEOAS</a>). 
+<!-- Both Bundle.link and Bundle.entry.link are defined to support providing additional context when Bundles are used (e.g. <a href="http://en.wikipedia.org/wiki/HATEOAS">HATEOAS</a>). 
   Bundle.entry.link corresponds to links found in the HTTP header if the resource in the entry was <a href="http.html#read">read</a> directly.
   This specification defines some specific uses of Bundle.link for <a href="search.html#conformance">searching</a> and <a href="http.html#paging">paging</a>, but no specific uses for Bundle.entry.link, and no defined function in a transaction - meaning is implementation specific -->
   </li>
   <li>Bundles have both .id and .identifier - see <a href="resource.html#id">Resource Identities</a> for further information</li>  
 </ul>
 
-<a name="using"> </a>
+<a name="using"></a>
 
 <h3>Применение бандлов<!-- Using Bundles --></h3>
 
@@ -29,12 +30,12 @@ Bundle.entry.link соответствует ссылкам, находящим�
 Note that all bundle types use resource identity resolution as described below. -->
 </p>
 
-<a name="document"> </a>
+<a name="document"></a>
 <h4>Тип Document<!-- Document --></h4>
 
 <p>
 Бандл-документ (type = "document") состоит из серии записей (entries), первой из которых будет <a href="composition.html">Composition</a>. Каждый элемент entry ДОЛЖЕН содержать ресурс. Дополнительную информацию см.  в <a href="documents.html">Documents</a>.
-<!-- A document bundle (type = "document") consists of a series of 
+<!-- A document Bundle (type = "document") consists of a series of 
 entries, the first of which is a <a href="composition.html">Composition</a>. 
 Each entry element SHALL contain a resource. See <a href="documents.html">Documents</a>
 for further information. -->
@@ -42,12 +43,12 @@ for further information. -->
 
 <p><a href="document-example-dischargesummary.html">Пример</a></p>
 
-<a name="message"> </a>
+<a name="message"></a>
 <h4>Тип Message<!-- Message --></h4>
 
 <p>
 Бандл-сообщение (type = "message") состоит из серии записей, первой из которых идет <a href="messageheader.html">MessageHeader</a>. Каждый элемент entry ДОЛЖЕН содержать ресурс. Дополнительную информацию см.  в <a href="messaging.html">Messaging</a>.
-<!-- A message bundle (type = "message") consists of a series of 
+<!-- A message Bundle (type = "message") consists of a series of 
 entries, the first of which is a <a href="messageheader.html">MessageHeader</a>. 
 Each entry element SHALL contain a resource. See <a href="messaging.html">Messaging</a>
 for further information. -->
@@ -55,7 +56,7 @@ for further information. -->
 
 <p>Example <a href="message-request-link.html">Request</a> and <a href="message-response-link.html">Response</a></p>
 
-<a name="searchset"> </a>
+<a name="searchset"></a>
 <h4>Результаты поиска (тип searchset)<!-- Search Results --></h4>
 
 <p>
@@ -77,182 +78,107 @@ information: -->
 </p>
 <ul>
  <li><a href="bundle-definitions.html#Bundle.entry.search.mode">search.mode</a>: указание причины включения ресурса в результирующее множество: соответствует критериям поиска или включен, потому что другой ресурс ссылается на него (например с помощью параметра <a href="search.html#include">_include</a>)
- <!-- <a href="bundle-definitions.html#Bundle.entry.search.mode">search.mode</a>: An indication of whether the resource is in the search set because it matched the search criteria, or whether it is included because another resource refers to it (e.g. by the <a href="search.html#include">_include</a> parameter) --></li>
+ <!-- <a href="bundle-definitions.html#Bundle.entry.search.mode">search.mode</a>: An indication of whether the resource is in the search set because it matched the search criteria or whether it is included because another resource refers to it (e.g. by the <a href="search.html#include">_include</a> parameter) --></li>
  <li><a href="bundle-definitions.html#Bundle.entry.search.score">search.score</a>: рейтинговая оценка поиска от сервера для этой записи. Серверам не обязательно возвращать рейтинговую оценку, но если они делают это, то 1 означает наиболее релевантную информацию, а 0 - наименее. Примечание: часто результаты поиска сортируются по рейтингу, однако клиент может указать другой порядок сортировки (см. <a href="search.html#score">Search Relevance</a>)
- <!-- <a href="bundle-definitions.html#Bundle.entry.search.score">search.score</a>: The server's search ranking score for the entry. Servers are not required to return a ranking score, but if they do, 1 is most relevant, and 0 is least relevant. Note: often, search results are sorted by score, but the client may specify a different sort order (see <a href="search.html#score">Search Relevance</a> --></li>
+ <!-- <a href="bundle-definitions.html#Bundle.entry.search.score">search.score</a>: The server's search ranking score for the entry. Servers are not required to return a ranking score, but if they do, 1 is most relevant, and 0 is least relevant. Note: often, search results are sorted by score, but the client may specify a different sort order (see <a href="search.html#score">Search Relevance</a>) --></li>
 </ul>
 
 <p><a href="bundle-example.html">Пример</a></p>
 
-<a name="history"> </a>
+<a name="history"></a>
 <h4>Тип History<!-- History --></h4>
 
 <p>
-История изменении (type = "history") состоит из серии из 0 или более записей. Каждый элемент entry ДОЛЖЕН содержать элемент request, описывающий изменение, которое было сделано, и, если метод POST или PUT, ресурс, который представляет состояние ресурса по завершении операции. Дополнительную информацию см. в <a href="http.html#history">History</a>.
+История изменении (type = "history") состоит из серии из 0 или более записей. Каждый элемент entry ДОЛЖЕН содержать элемент request, описывающий изменение, которое было сделано, и, если метод POST или PUT, ресурс, который представляет состояние ресурса по завершении операции. Элемент response также ДОЛЖЕН присутствовать, чтобы потребители могли иметь доступ к заголовку <code>location</code>.
+Дополнительную информацию см. в <a href="http.html#history">History</a>.
 <!-- An change history (type = "history") consists of a series of 
 0 or more entries. Each entry element SHALL contain a request element that describes the change
-that was made, and, if the method is a POST or PUT, a resource that represents the state of the 
-resource at the conclusion of the operation. 
+that was made and, if the method is a POST or PUT, a resource that represents the state of the 
+resource at the conclusion of the operation. A response element SHALL also be present so that consumers
+can access the <code>location</code> header.  
 See <a href="http.html#history">History</a> for further information. -->
 </p>
 <p>
-Дополнительно можно использовать <a href="bundle-definitions.html#Bundle.total">Bundle.total</a> для возвращения общего количества ресурсов, которые были включены в историю изменений, и которые можно просмотреть, следуя по <a href="bundle-definitions.html#Bundle.link">ссылке</a> "next".
+Дополнительно можно использовать <a href="bundle-definitions.html#Bundle.total">Bundle.total</a> для возвращения общего количества ресурсов, которые были включены в историю изменений, включая те, что можно просмотреть, следуя по <a href="bundle-definitions.html#Bundle.link">ссылке</a> "next".
 <!-- In addition, <a href="bundle-definitions.html#Bundle.total">Bundle.total</a> may be 
 used to return the total number of resources that are included in the change history, 
-and that may be returned by following the "next" <a href="bundle-definitions.html#Bundle.link">link</a>. -->
+including those that may be returned by following the "next" <a href="bundle-definitions.html#Bundle.link">link</a>. -->
 </p>
 
-<p>Пример to do<!-- Example to do --></p>
-
-<a name="transaction"> </a>
+<a name="transaction"></a>
 <h4>Типы Transaction и Batch<!-- Transaction / Batch --></h4>
 
 <p>
-Транзакция (type = "transaction") или пакет (type = "batch") состоит из серии, содержащей 0 или более записей. Каждый элемент entry ДОЛЖЕН содержать либо элемент request, либо элемент resource (либо оба). Дополнительную информацию можно посмотреть в разделе <a href="http.html#transaction">Transactions</a>Каждая запись (entry) в транзакции содержит детали HTTP-операции, сообщающие системе, обрабатывающей эту транзакцию, что делать с этой записью. Если в записи указан метод 'PUT' или 'POST', тогда entry ДОЛЖНА содержать ресурс, который будет телом HTTP-операции.
-<!-- A transaction (type = "transaction") or batch (type = "batch") consists of a series of 0 or more entries. Each entry element 
-SHALL contain either a request element, or a resource element (or both). See <a href="http.html#transaction">Transactions</a> 
-for further information. Each entry in a transaction has the details of an HTTP operation that informs the system 
+Транзакция (type = "transaction") или пакет (type = "batch") состоит из серии, содержащей 0 или более записей. Каждый элемент entry ДОЛЖЕН содержать элемент request с деталями HTTP-операции, сообщающий системе, обрабатывающей эту транзакцию, что ей необходимо сделать с этой записью. Если в записи указан метод 'PUT' или 'POST', тогда entry ДОЛЖНА содержать ресурс, который будет телом HTTP-операции. Дополнительную информацию можно посмотреть в разделе <a href="http.html#transaction">Transactions</a>
+<!-- A transaction (type = "transaction") or batch (type = "batch") consists of a series of 0 or more entries. 
+Each entry element SHALL contain either a request element, or a resource element (or both). 
+Each entry element SHALL contain a request element has the details of an HTTP operation that informs the system 
 processing the transaction what to do with the entry. If the entry method is a 'PUT' or 
-'POST', then the entry SHALL contain a resource that becomes the body of the HTTP operation.  -->
-</p>
-<p>
-Если в записи элемент <code>request</code> отсутствует, тогда она ДОЛЖНА содержать ресурс, а сервер должен сам сделать вывод, создание ли это или обновление, в зависимости от переданного идентификатора ресурса.
-<!-- If there is no <code>request</code> element, then there SHALL be a resource and the server must 
-infer whether this is a create or an update from the resource identity supplied. -->
+'POST', then the entry SHALL contain a resource that becomes the body of the HTTP operation. 
+See <a href="http.html#transaction">Transactions</a> for further information.   -->
 </p>
 
 <p><a href="bundle-transaction.html">Пример</a></p>
 
-<a name="transaction-response"> </a>
+<a name="transaction-response"></a>
 <h4>Ответ транзакции/пакета<!-- Transaction/batch Response --></h4>
 
 <p>
-Ответ транзакции (type = "transaction-response") или ответ пакета (type="batch-response") состоит из серии, содержащей 0 или более записей, по 1 записи на каждую запись в транзакции или пакете, к которой относится этот ответ. Каждый элемент entry ДОЛЖЕН содержать элемент <code>response</code> с результатом выполнения HTTP-операции, выполненной сервером для этой записи.
+Ответ транзакции (type = "transaction-response") или ответ пакета (type="batch-response") состоит из серии, содержащей 0 или более записей: по 1 записи на каждую запись в транзакции или пакете, к которой относится этот ответ. Каждый элемент entry ДОЛЖЕН содержать элемент <code>response</code> с результатом выполнения HTTP-операции, выполненной сервером для этой записи.
 <!-- A transaction response (type = "transaction-response") or batch response (type="batch-response") 
-consists of a series of 0 or more entries, 1 for each entry in the transaction or batch it is in response to. 
+consists of a series of 0 or more entries: 1 for each entry in the transaction or batch it is in response to. 
 Each entry element SHALL contain a <code>response</code> element which indicates 
 the outcome of the HTTP operation that the server performed for the entry. --> 
 </p>
 
 <p><a href="bundle-response.html">Пример</a></p>
 
-<a name="collection"> </a>
+<a name="collection"></a>
 <h4>Тип Collection<!-- Collection --></h4>
 
 <p>
 Коллекция (type = "collection") состоит из серии из 0 или более записей. С этим типом бандла не связано никакого определенного использования относительно FHIR-спецификации. Каждый элемент entry ДОЛЖЕН содержать ресурс.
 <!-- A collection (type = "collection") consists of a series of 
-0 or more entries. No particular use with respect to the FHIR specification is associated with this bundle.
+0 or more entries. No particular use with respect to the FHIR specification is associated with this Bundle.
 Each entry element SHALL contain a resource. -->
 </p>
 
 <p><a href="diagnosticreport-examples.html">Пример</a></p>
 
-<a name="bundle-unique"> </a>
+<a name="bundle-unique"></a>
 <h2>URL ресурса и правила уникальности в бандле<!-- Resource URL &amp; Uniqueness rules in a bundle --></h2>
 
 <p>
 Каждая запись в пакете должна иметь полный URL, являющийся идентификатором ресурса в записи. Обратите внимание, что это не версионная ссылка на ресурс, а его идентификатор. Если ресурсу не назначен постоянный идентификатор, который может быть использован в бандле, следует использовать UUID (urn:uuid:...).
-Except for transactions and batches, Each entry in a <code>Bundle</code> must have a <code>fullUrl</code> 
+Except for transactions and batches, each entry in a <code>Bundle</code> must have a <code>fullUrl</code> 
 which is the identity of the resource in the entry. Note that this is not a versioned reference to the resource, but its 
 identity. Where a resource is not assigned a persistent identity that can be used
-in the bundle, a UUID should be used (urn:uuid:...).
+in the Bundle, a UUID should be used (urn:uuid:...).
 </p>
 <p>
-For transactions and batches, entries may not have fullURLs when the entry.request.method = POST, 
+For transactions and batches, entries MAY not have fullURLs when the entry.request.method = POST, 
 and the resource has no identity. Note that even in this case, there may still be a fullURL in a 
 transaction on a POST so that relationships between resources can be represented (see <a href="http.html#transaction">Transactions</a>).
 </p>
 <p>
-In some bundles, a given resource can only appear once:
+A given version of a resource SHALL only appear once in each Bundle. There might, however, 
+be multiple versions of a single resource present in a single bundle. This would be expected
+in Bundles of type <code>history</code>, and also might be necessitated by closely tracking
+Provenance. 
 </p>
-<table class="grid">
- <tr>
-  <td><b>Тип</b></td>
-  <td><b>Правила</b></td>
- </tr>
- <tr>
-  <td>document</td>
-  <td>нет дубликатов (странные крайние случаи - отслеживание изменений?)</td>
- </tr>
- <tr>
-  <td>message</td>
-  <td>нет дубликатов (ну а дельты при обмене сообщениями?)</td>
- </tr>
- <tr>
-  <td>transaction</td>
-  <td>дубликаты не разрешены</td>
- </tr>
- <tr>
-  <td>transaction-response</td>
-  <td>дубликаты не разрешены</td>
- </tr>
- <tr>
-  <td>batch</td>
-  <td>дубликаты не разрешены</td>
- </tr>
- <tr>
-  <td>batch-response</td>
-  <td>дубликаты не разрешены</td>
- </tr>
- <tr>
-  <td>history</td>
-  <td>да, дубликаты разрешаются</td>
- </tr>
- <tr>
-  <td>searchset</td>
-  <td>дубликаты не разрешены</td>
- </tr>
- <tr>
-  <td>collection</td>
-  <td>да, дубликаты разрешаются, хотя это и не очень хорошая идея</td>
- </tr>
-<!--  <tr>
-  <td><b>Type</b></td>
-  <td><b>Rules</b></td>
- </tr>
- <tr>
-  <td>document</td>
-  <td>no duplicates</td>
- </tr>
- <tr>
-  <td>message</td>
-  <td>no duplicates (generally not, unless noted explicitly in the event definition e.g. for messaging deltas?)</td>
- </tr>
- <tr>
-  <td>transaction</td>
-  <td>no duplicates allowed</td>
- </tr>
- <tr>
-  <td>transaction-response</td>
-  <td>no duplicates allowed</td>
- </tr>
- <tr>
-  <td>batch</td>
-  <td>no duplicates allowed</td>
- </tr>
- <tr>
-  <td>batch-response</td>
-  <td>no duplicates allowed</td>
- </tr>
- <tr>
-  <td>history</td>
-  <td>yes, duplicates are allowed</td>
- </tr>
- <tr>
-  <td>searchset</td>
-  <td>no duplicates allowed</td>
- </tr>
- <tr>
-  <td>collection</td>
-  <td>yes, duplicates are allowed, though generally would not be a good idea</td>
- </tr> -->
-</table>
+<p>
+Note that the meaning of an unversioned reference to a resource that appears multiple times 
+is potentially ambiguous, though processors may have additional informaton to help resolve 
+this (e.g. change order in a history bundle).
+</p>
+<p>
+When processing batches and transactions, it is at server discretion how to behave if multiple
+versions of a single resource are present.
+</p>
 
 
-
-<a name="resolving"> </a>
-<a name="references"> </a>
+<a name="resolving"></a>
+<a name="references"></a>
 <h3>Разрешение ссылок в ресурсах Bundle<!-- Resolving references in Bundles --></h3>
 
 <p>
@@ -260,8 +186,8 @@ In some bundles, a given resource can only appear once:
 <!-- The <code>Bundle</code> resource is a packaging construct that has one of more entries that 
 are other kinds of resources. Those resources themselves have references to other resources - e.g. 
 an Observation that refers to a Patient. The referenced resources may also be found
-in the bundle. For example, the system that constructed the bundle may have included both
-the observation and the patient. The content of the references between resources doesn't 
+in the Bundle. For example, the system that constructed the Bundle may have included both
+the Observation and the Patient. The content of the references between resources doesn't 
 change because of the bundle. -->
 </p>
 <p>
@@ -271,29 +197,41 @@ that this method does not define any new semantics; resolution is based on the w
 resource identity and resource references work. -->
 </p>
 <p>
-Приложения, выполняющие чтение связки, всегда должны сначала <a href="references.html#bundle-refs">искать ресурс</a> в связке по его идентификатору, прежде чем пытаться получить к нему доступ по его URL.
-<!-- Applications reading a bundle should always <a href="references.html#bundle-refs">look for a resource</a> 
-by its identity in the bundle first before trying to access it by its URL. -->
+Приложения, выполняющие чтение связки, всегда должны сначала <a href="references.html#bundle-refs">искать ресурс</a> в связке по его идентификатору, прежде чем пытаться получить к нему доступ по его URL извне.
+<!-- Applications reading a Bundle should always <a href="references.html#bundle-refs">look for a resource</a> 
+by its identity in the bundle first before trying to access it by its URL externally. -->
 </p>
 <p>
 Как разрешается ссылка в бандле:
-<!-- How to resolve a reference in a bundle: -->
+<!-- How to resolve a reference in a Bundle: -->
 </p>
 <ol>
- <li>Если ссылка не абсолютная, то сконвертировать её<!-- If the reference is not an absolute reference, convert it -->
+ <li>Если ссылка не абсолютная, то сконвертировать её в абсолютный URL:<!-- If the reference is not an absolute reference, convert it to an absolute URL: -->
   <ul>
-    <li>если fullUrl начинается с urn:uuid: или urn:oid:, тогда добавить этот id к базовому URL и попытаться разрешить ссылку внутри бандла как для RESTful URL-ссылки. Если разрешение ссылки невозможно, тогда эта ссылка не имеет смысла в рамках данной спецификации<!-- If the fullUrl starts with urn:uuid: or urn:oid:, then append the id to the base URL and try to resolve within the bundle as for a RESTful URL reference.  If no resolution is possible, then the reference has no defined meaning within this specification  --></li>
-    <li>если fullUrl ресурса содержит RESTful-ссылку (см. <a href="references.html#regex">регулярное выражение для RESTful URL</a>), извлечь <a href="http.html#root">[root]</a>, и добавить к нему эту ссылку<!-- if the fullUrl of the resource that contains the reference is a RESTful one (see the <a href="references.html#regex">RESTful URL regex</a>), extract the <a href="http.html#root">[root]</a>, and append the reference to it --></li>
-    <li>иначе работать с fullUrl как с обычной URL-ссылкой по стандартному методу <a href="https://tools.ietf.org/html/rfc2396#section-5.2">Приведение относительных ссылок к абсолютной форме</a><!-- otherwise, treat the fullUrl as a normal URL, and follow the normal method for <a href="https://tools.ietf.org/html/rfc2396#section-5.2">Resolving Relative References to Absolute Form</a> --></li>
+	 <li>if the reference has the format [type]/[id], and</li>
+   <li>if the fullUrl for the bundle entry containing the resource is a RESTful one (see the <a href="references.html#regex">RESTful URL regex</a>) 
+	  <ul>
+     <li>extract the [root] from the fullUrl, and append the reference (type/id) to it</li>
+     <li>then try to resolve within the bundle as for a RESTful URL reference. </li>
+     <li>If no resolution is possible, then the reference has no defined meaning within this specification</li>
+ 	  </ul>
+	 </li>
+   <li>else no resolution is possible and the reference has no defined meaning within this specification</li>
+	</ul>
+ </li>
+ <li>else 
+  <ul>
+   <li>Look for an entry with a fullUrl that matches the URI in the reference</li>
+   <li>if no match is found, and the URI is a URL that can be resolved (e.g. if an http: URL), try accessing it directly)</li>
   </ul>
  </li>
- <li>Найти запись с fullUrl, которая указанный содержит URL<!-- Look for an entry with a fullUrl that contains the URL in the reference -->
-  <ul>
-   <li>Если совпадений не найдено, ресурс находится не в бандле, и его необходимо искать где-то ещё (например если это http-адрес, попытаться открыть его напрямую)<!-- If no match is found, the resource is not in the bundle, and must be found elsewhere (e.g. if an http: URL, try accessing it directly) --></li>
-   <li>Если найдено несколько совпадений, неоднозначно, какое из них правильное<!-- If multiple matches are found, it is ambiguous which is correct --></li>
-  </ul>
- </li>
-</ol>
+</ul>
+
+<p>
+Note, in addition, that a reference may be by identifier, and if it is, and there is no URL, it may be 
+resolved by scanning the ids in the bundle. Note also that transactions may contain <a href="http.html#trules">conditional references</a>  
+that must be resolved by the server before processing the matches.
+</p>
 <p>
 Если ссылка является версионной (относительной или абсолютной), то удалить версию из URL перед поиском соответствия с fullUrl, а затем найти соответствующую версию по <code>Resource.meta.versionId</code>.
 <!-- If the reference is version specific (either relative or absolute), then remove the version from the 
@@ -302,147 +240,31 @@ Note that the rules for resolving references in contained resources are the same
 resolving resources in the resource that contains the contained resource.
 </p>
 <p>
-Вот пример ресурса Bundle, в котором демонстрируются эти правила:
-<!-- Here is an example Bundle the demonstrates these rules: -->
-</p>
-<div class="example">
-<pre class="xml" fragment="Bundle">
-&lt;Bundle xmlns=&quot;http://hl7.org/fhir&quot;&gt;
-  &lt;type value=&quot;collection&quot;/&gt;
-
-  &lt;!-- Ресурс Пациент, у которого уже есть идентификатор на сервере --&gt;
-  &lt;entry&gt;
-    &lt;fullUrl value=&quot;http://example.org/fhir/Patient/23&quot;/&gt;
-    &lt;resource&gt;
-      &lt;Patient&gt;
-         &lt;id value=&quot;23&quot;/&gt;
-      &lt;/Patient&gt;
-    &lt;/resource&gt;
-  &lt;/entry&gt;
-  
-  &lt;!-- Ресурс Пациент, у которого нет постоянного адреса, но есть UUID, присвоенный для локального использования в этом бандле --&gt;
-  &lt;entry&gt;
-    &lt;fullUrl value=&quot;urn:uuid:04121321-4af5-424c-a0e1-ed3aab1c349d&quot;/&gt;
-    &lt;resource&gt;
-      &lt;Patient&gt;
-      &lt;/Patient&gt;
-    &lt;/resource&gt;
-  &lt;/entry&gt;
-  
-  &lt;!-- относительная ссылка на ресурс --&gt;
-  &lt;entry&gt;
-    &lt;fullUrl value=&quot;http://example.org/fhir/Observation/123&quot;/&gt;
-    &lt;resource&gt;
-      &lt;Observation&gt;
-         &lt;id value=&quot;123&quot;/&gt;
-         &lt;subject&gt;
-           &lt;!-- это ссылка на первый ресурс выше --&gt;
-           &lt;reference value=&quot;Patient/23&quot;/&gt;
-         &lt;/subject&gt;
-      &lt;/Observation&gt;
-    &lt;/resource&gt;
-  &lt;/entry&gt;
-
-  &lt;!-- абсолютная ссылка --&gt;
-  &lt;entry&gt;
-    &lt;fullUrl value=&quot;http://example.org/fhir/Observation/124&quot;/&gt;
-    &lt;resource&gt;
-      &lt;Observation&gt;
-         &lt;id value=&quot;124&quot;/&gt;
-         &lt;subject&gt;
-           &lt;!-- это ссылка на ресурс выше --&gt;
-           &lt;reference value=&quot;http://example.org/fhir/Patient/23&quot;/&gt;
-         &lt;/subject&gt;
-      &lt;/Observation&gt;
-    &lt;/resource&gt;
-  &lt;/entry&gt;
-
-  &lt;!-- ссылка на локально идентифицированный ресурс --&gt;
-  &lt;entry&gt;
-    &lt;fullUrl value=&quot;http://example.org/fhir/Observation/12&quot;/&gt;
-    &lt;resource&gt;
-      &lt;Observation&gt;
-         &lt;id value=&quot;12&quot;/&gt;
-         &lt;subject&gt;
-           &lt;!-- ссылка на второго пациента выше --&gt;
-           &lt;reference value=&quot;urn:uuid:04121321-4af5-424c-a0e1-ed3aab1c349d&quot;/&gt;
-         &lt;/subject&gt;
-      &lt;/Observation&gt;
-    &lt;/resource&gt;
-  &lt;/entry&gt;
-  
-  &lt;!-- ссылка, которая не разрешается в этом бандле --&gt;
-  &lt;entry&gt;
-    &lt;fullUrl value=&quot;http://example.org/fhir/Observation/14&quot;/&gt;
-    &lt;resource&gt;
-      &lt;Observation&gt;
-         &lt;id value=&quot;14&quot;/&gt;
-         &lt;subject&gt;
-           &lt;!-- reference to a patient not found in this bundle --&gt;
-           &lt;reference value=&quot;http://example.org/fhir-2/Patient/1&quot;/&gt;
-         &lt;/subject&gt;
-      &lt;/Observation&gt;
-    &lt;/resource&gt;
-  &lt;/entry&gt;
-  
-&lt;/Bundle&gt;
-</pre>
-</div>
-
-<!--</p>
-<a name="bundle-refs"> </a>
-<h3>Resolving references to Resources in Bundles</h3>
-<p>
-When processing bundles, applications should always search the resources in the
-bundle first when a <a href="#Resource">resource reference</a> is encountered.
-</p>
-<div class="example">
-<pre class="xml" fragment="Reference">
-  &lt;institution&gt;
-    &lt;reference value="Organization/23" /&gt;
-  &lt;/institution&gt;
-  &lt;institution&gt;
-    &lt;reference value="Organization/ex/_history/2" /&gt;
-  &lt;/institution&gt;
-</pre>
-</div>
-<p>
-then the application should look for any entry in the bundle where either the
-entry.id matches the reference URL exactly:
-</p>
-<p>
-In the second case, the match is based on a specific version of the
-resource. Note that the matching is based on full URLs by prepending
-the base for the entry (see <a href="bundle.html#resolving">"Bundles" for further information</a>).
-If the resource reference cannot be resolved
-in the bundle, the application SHOULD be able to retrieve the resource by
-following the provided URL directly. If it can't, it will have to use some
-other implementation-specific method for resolving how to find the resource.
-</p>
-<p>
-If the resource reference is a absolute URL, the same basic principle
-applies: attempt to resolve the reference in the bundle first, and then
-look outside. However, before this can be done, the absolute URL must
-be compared to the stated based URL, in <a href="bundle-definitions.html#Bundle.base">Bundle.base</a>;
-if these do not match, the resource is not in the bundle. <i>todo-bundle: how to mix content?</i>
+If multiple matches are found, it is ambiguous which is correct. Applications MAY return an error or take some other action as they deem appropriate.
 </p>
 
 <p>
-Note that the application SHOULD not assume that the base
-service root is actually resolvable. In some circumstances, it will.
-If the bundle has just been received from a server as a result of
-a search or a history operation, the service Base URL SHOULD match
-the URL that the client used (it is allowed not to in order to
-cater for proxies of various kinds). However in other
-circumstances, where the bundle itself has been exchanged onwards
-from the point of origin, and/or stored as an entity in its own
-right (e.g. a <a href="documents.html">clinical document</a>) the
-service Base URL is merely a logical construct that holds within the
-bundle when resolving resources, and will have no meaning outside
-the bundle.
+Вот <a href="bundle-references.html">пример ресурса Bundle</a>, в котором демонстрируются эти правила.
+<!-- There is an <a href="bundle-references.html">example Bundle that demonstrates</a> these rules. -->
 </p>
--->
 
 
+
+<a name="rest"></a>
+<h3>Serving Bundles using the RESTful API</h3>
+
+<p>
+The Bundle resource type has an end-point like all most other resources. This 
+end-point serves the <a href="http.html#interactions">usual interactions</a>.
+Bundles are treated as static resources on the /Bundle end-point (i.e. when a
+batch, transaction, or message is POSTed to /Bundle, it is stored as is, and 
+the content is not processed as batch, transaction, or message - instead, they
+are processed like normal resource, with indexing / auditing etc. Performing a 
+GET /Bundle/[location] will return the same resource.
+</p>
+<p>
+The Bundle end point does have two special search parameters - <code>composition</code> and <code>message</code>,
+which allow for chained search into the first (special) entries in document and message resources.
+</p>
 
 </div>

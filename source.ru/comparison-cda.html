@@ -14,15 +14,15 @@
 
 [%cmpheader cda%]
 
-<h2>Архитектура клинического документа (CDA)<!-- Clinical Document Architecture (CDA) --></h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="versions.html#maturity">Уровень зрелости</a>: N/A</td><td id="ballot"><a href="versions.html#levels">Статус голосования</a>: <a href="versions.html#std-process">Информативный</a></td></tr></table>
-<a name="cda"> </a>
+<h2>Clinical Document Architecture (CDA)</h2>
+<table class="colsi"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Informative</a></td></tr></table>
+<a name="cda"></a>
 <p>
 <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a> - это наиболее широко используемый стандарт семейства <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3</a>. Он описывает стандартизированный заголовок, содержащий метаданные документа, и предоставляет возможность передавать большое разнообразие клинического содержимого, структурированного в различные разделы. Содержимое документа может быть как незакодированным, например PDF, так и полностью закодированным экземпляром HL7 v3.
-<!-- <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a> is HL7's most widely adopted <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3</a> standard. It provides both a standardized 
+<!-- <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a> is HL7's most widely adopted <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3</a> standard.  It provides both a standardized 
 header containing metadata about the document as well as the ability to convey 
-a wide variety of clinical content organized into various sections. The document 
-content can be un-encoded, such as a PDF through to a fully encoded HL7 v3 instance. -->
+a wide variety of clinical content organized into various sections.  The document 
+content can be un-encoded, such as a PDF, through to a fully encoded HL7 v3 instance. -->
 </p>
 <p>
 ПРИМЕЧАНИЕ: Хотя FHIR можно использовать для создания <a href="documents.html">документов</a> с помощью ресурса <a href="composition.html">Composition</a>, FHIR также можно использовать и для передачи традиционных документов CDA R2 с помощью ресурса <a href="documentreference.html">DocumentReference</a>, и работать с самим CDA-документом как с двоичным вложением (как в XDS).
@@ -36,11 +36,11 @@ resource, and handling the CDA document itself as a binary attachment (as XDS do
 <p>
 <b>Clinical document focus:</b> Как следует из названия, Архитектура клинического документа ограничена "клиническими" сценариями использования. Модель CDA не поддерживает обмен содержимым, не имеющим клинического значения, например финансовой информацией, и ограничен теми документами, которые относятся к пациентам. (В некоторых случаях, например для стандарта HL7 Structured Product Labeling, созданы не ориентированные на пациентов подобные CDA спецификации, чтобы обойти это ограничение). FHIR-документы не имеют ограничений на своё содержимое, и их субъектами могут выступать не только пациенты.
 <!-- <b>Clinical document focus:</b> As its name implies, Clinical Document Architecture 
-is limited to "clinical" use cases. The CDA model does not support exchange of content 
-not deemed to have clinical relevance, such as financial information and is limited to 
-documents that deal with patients. (In some cases, such as the HL7 Structured Product 
+is limited to "clinical" use cases.  The CDA model does not support exchange of content 
+not deemed to have clinical relevance, such as financial information, and is limited to 
+documents that deal with patients.  (In some cases, such as the HL7 Structured Product 
 Labeling standard, non-patient-specific CDA-like specifications are created to get 
-around this limitation.) FHIR documents have no limitation on their content and can 
+around this limitation.)  FHIR documents have no limitation on their content and can 
 have subjects other than patients. -->
 </p>
 <p>
@@ -69,7 +69,7 @@ necessary to make use of the <a href="basic.html">Basic</a> resource if an appro
 resource has not yet been defined. -->
 </p>
 <p>
-<b>Шаблоны и профили:</b> Как уже упоминалось выше, CDA полагается на шаблоны при интерпретации значения экземпляров. Хотя смысловое значение, теоретически, можно определить, рассматривая атрибуты и коды RIM, в действительности это часто оказывается небезопасным или недостаточным. По существу, почти каждый экземпляр CDA для задания смыслового значения содержит значения атрибута <i>templateId</i>, разбросанные по всему экземпляру. В FHIR смысл задаётся ресурсом. <a href="profiling.html">Профили</a> можно использовать для определения расширений, однако они никогда не уточняют смысл основных элементов. При этом профили, использованные при создании конкретного экземпляра, можно объявлять в экземпляре с помощью <a href="resource.html#tag">тегов</a>. Однако такое объявление не обязательно.
+<b>Шаблоны и профили:</b> Как уже упоминалось выше, CDA полагается на шаблоны при интерпретации значения экземпляров. Хотя смысловое значение, теоретически, можно определить, рассматривая атрибуты и коды RIM, в действительности это часто оказывается небезопасным или недостаточным. По существу, почти каждый экземпляр CDA для задания смыслового значения содержит значения атрибута <i>templateId</i>, разбросанные по всему экземпляру. В FHIR смысл задаётся ресурсом. <a href="profiling.html">Профили</a> можно использовать для определения расширений, однако они никогда не уточняют смысл основных элементов. При этом профили, использованные при создании конкретного экземпляра, можно объявлять в экземпляре с помощью <a href="resource.html#tag">тегов</a>. Это объявление не обязательно.
 <!-- <b>Templates and Profiles:</b> As discussed above, CDA relies on the presence of templates in 
 order to understand the meaning of instances. While the meaning can theoretically be determined 
 by looking at RIM attributes and codes, the reality is that this is often not safe or sufficient. 
@@ -77,7 +77,7 @@ As such, pretty much every CDA instance includes <i>templateId</i> attribute val
 throughout the instance to define meaning. With FHIR, meaning is defined by the resource. 
 <a href="profiling.html">Profiles</a> can be used to define extensions, but they never refine the 
 meaning of core elements. While the profiles used in constructing a particular instance can be 
-declared within the instance via <a href="resource.html#tag">tags</a>. However, such declaration 
+declared within the instance via <a href="resource.html#tag">tags</a> such declaration 
 is not required. -->
 </p>
 <p>
@@ -86,6 +86,7 @@ is not required. -->
 HTML. FHIR makes use of a constrained set of XHTML which is somewhat more expressive than the CDA 
 markup. Conversions from FHIR to CDA will need to take these constraints into account (or 
 alternatively provide a fully rendered version of the document). -->
+
 </p>
 
 <h3>Соображения совместимости CDA<!-- CDA Interoperability Considerations --></h3>
@@ -126,7 +127,7 @@ be information loss when converting the other way. -->
 
 [%file newfooter%]
 
- 
- 
+    
+    
 </body>
 </html>

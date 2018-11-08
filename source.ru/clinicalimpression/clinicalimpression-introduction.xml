@@ -1,7 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<a name="scope"> </a>
+<a name="scope"></a>
 <h2>Область применения и использование</h2>
 <p>
 Выполнение клинической оценки является фундаментальной частью рабочего процесса клинициста, выполняемой многократно в течение дня.
@@ -12,7 +12,7 @@
 In spite of this - or perhaps, because of it - there is wide variance in how clinical impressions are recorded. 
 Some clinical assessments simply result in an impression recorded as a single text note in the patient 'record' (e.g. "Progress satisfactory, 
 continue with treatment"), while others are associated with careful, detailed record keeping of the 
-evidence gathered and the reasoning leading to a differential diagnosis, and there is a continuum between these. This resource is intended to be
+evidence gathered and the reasoning leading to a differential diagnosis, and there is a continuum between these. This resource is intended to be 
 used to cover all these use cases. -->
 </p>
 <p>
@@ -20,21 +20,21 @@ used to cover all these use cases. -->
 <!-- The assessment is intimately linked to the process of care. It may occur in the context of a care plan,
 and it very often results in a new (or revised) care plan. Normally. clinical assessments are part of an 
 ongoing process of care, and the patient will be re-assessed repeatedly. For this reason, the clinical
-impression can explicit reference both care plans (preceeding and resulting) and reference a previous
+impression can explicit reference both care plans (preceding and resulting) and reference a previous
 impression that this impression follows on from. -->
 </p>
  <p>Клиническое наблюдение - это подведение итога клинической информации и/или сформировавшееся мнение, являющееся результатом процесса клинической оценки. ClinicalImpression может привести к появлению утверждения о налиии некоторого состояния Condition у пациента.<!-- An impression is a clinical summation of information and/or an opinion formed, which is the outcome of the clinical assessment process.  The ClinicalImpression may lead to a statement of a Condition about a patient. --></p>
   
   <p>В FHIR клиническая оценка - это обычно инструмент или средство, используемое для сбора информации о пациенте.<!-- In FHIR, an assessment is typically an instrument or tool used to collect information about a patient. --></p>
-<a name="dstu"> </a>
+<a name="dstu"></a>
 <blockquote class="stu-note">
 <p>
-<b>Примечание к STU:</b> В отличие от многих других ресурсов у обмена записями клинических оценок имеется небольшой прототип. По этой причине данный ресурс должен рассматриваться как особо склонный к постоянным правкам. Рабочая группа Patient Care хотела бы обратить особое внимание рецензентов и исполнителей на следующие вопросы с точки зрения масштаба и использования:
-<!-- <b>STU Note:</b> Unlike many other resources, there is little prior art with regard to exchanging records of 
+В отличие от многих других ресурсов у обмена записями клинических оценок имеется небольшой прототип. По этой причине данный ресурс должен рассматриваться как особо склонный к постоянным правкам. Рабочая группа Patient Care хотела бы обратить особое внимание рецензентов и исполнителей на следующие вопросы с точки зрения масштаба и использования:
+<!-- Unlike many other resources, there is little prior art with regard to exchanging records of 
 clinical assessments. For this reason, this resource should be regarded as particularly 
 prone to ongoing revision. In terms of scope and usage, the Patient Care workgroup wishes to
 draw the attention of reviewers and implementers to the following issues:  -->
-<a name="dstu"> </a>
+<a name="dstu"></a>
 </p>
 <ul>
  <li>В каких случаях ClinicalImpression корректируется, а не создается новый (который ссылается на существующий)? Как это влияет на его статус? Какая имеется взаимосвязь между статусом диагноза и статусом ClinicalImpression? (например для "предварительной" клинической оценки, какую часть считать предварительной?)</li>
@@ -52,13 +52,12 @@ draw the attention of reviewers and implementers to the following issues:  -->
 </ul> 
 <p>
 Feedback is welcome <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(STU_3)">here</a>.
-</p>
-</blockquote>
+[%end-note%]
 
 </div>
 
 <div>
-<a name="bnr"> </a>
+<a name="bnr"></a>
 <h2>Границы и связи</h2>
 <p>
 Есть другое связанное клиническое понятие, которое часто называют "оценкой" - инструменты оценки, например шкала Апгар (также известные как шкалы оценки).
@@ -72,7 +71,7 @@ during the assessment process. -->
 </div>
 
 <div>
-<a name="bnc"> </a>
+<a name="bnc"></a>
 <h2>Предпосылки и контекст</h2>
 <p>
 Важные исходные данные для понимания этого ресурса можно найти на <a href="http://wiki.hl7.org/index.php?title=Clinical_Assessment">страницах wiki-раздела FHIR</a>. В частности, раскадровка планирования дизайна ресурса, а также основа, используемая для всех создаваемых примеров.

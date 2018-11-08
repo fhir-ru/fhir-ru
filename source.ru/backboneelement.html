@@ -15,12 +15,13 @@
  no repeating primitives in datatypes? No id's on primitives in datatypes...No dar on primitives in datatypes. It would be worthwhile to document that and the reason for it.
 -->
 
-<%elheader base%>
+<%belheader base%>
 <h1>BackboneElement</h1>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="versions.html#maturity">Уровень зрелости</a>: 5</td><td id="ballot"><a href="versions.html#levels">Статус голосования</a>: <a href="versions.html#std-process">Пробное использование</a></td></tr></table>
+<table class="colsn"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 5</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Normative</a></td></tr></table>
+[%normative page infrastructure%]
 
 <p>
-Базовое определение для элементов, определяемых в рамках определения ресурса. <a href="datatypes.html">Data Type</a>-элементы не используют этот тип.
+Базовое определение для комплексных элементов, определяемых в рамках определения ресурса - то есть элементы, у которых есть дочерние элементы, определённые в ресурсе. <a href="datatypes.html">Data Type</a>-элементы не используют этот тип, хотя несколько типов данных специализируют его  (<a href="datatypes.html#Timing">Timing</a>, <a href="dosage.html">Dosage</a>, <a href="elementdefinition.html">ElementDefinition</a>).
 Например, <a href="patient.html#resource">Patient.contact</a> - это элемент, определенный в рамках ресурса Patient, следовательно ему автоматически присваивается тип <code>BackboneElement</code>.
 </p>
 
@@ -28,21 +29,12 @@
 Отметьте, что все типы-потомки <code>BackboneElement</code> объявляются неявным образом как часть определений ресурсов.
 </p>
 
-<a name="definition"> </a>
+<a name="definition"></a>
 <h2 style="margin-bottom: 1px">
 Content
 </h2>
 
 [%dt BackboneElement 1%]
-
-<a name="summary"> </a>
-<h2>Специализации</h2>
-
-<p>
-В таблице ниже перечислены все специализации  <code>BackboneElement</code> и пути к их определениям. 
-</p>
-
-<%backboneelementlist%>
 
 </div>
 

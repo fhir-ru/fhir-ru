@@ -1,7 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<a name="scope"> </a>
+<a name="scope"></a>
 <h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p>
 Бывают ситуации, когда полезно или требуется работать с чистым бинарным содержимым с помощью тот же самого фреймворка, что и для других ресурсов. Обычно это случается, когда на бинарное содержимое ссылаются из других FHIR-ресурсов. Использование одного и того же фреймворка означает, что существующие серверы, соглашения по безопасности, библиотеки кода и т. п. могут обрабатывать дополнительное связанное содержимое. Ресурсы Binary используются, как правило, для обработки такого содержимого, как:
@@ -13,24 +13,48 @@ can handle additional related content. Typically, Binary resources are used for 
 <ul>
  <li><a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a>-документы (т. е. с XDS)<!-- <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a> Documents (i.e. with XDS) --></li>
  <li>PDF-документы<!-- PDF Documents --></li>
- <li>Изображения (ресурс Media является предпочтительным для обработки изображений, но не подходит, когда содержимое уже в двоичном виде - XDS)
- <!-- Images (the Media resource is preferred for handling images, but not possible when the content is already binary - XDS) --></li>
+ <li>Изображения
+ <!-- Images --></li>
 </ul>
 <p>
-Ресурс Binary может содержать любую информацию, будь то текст, изображение, PDF, ZIP-архив и т. п. Эти ресурсы обслуживаются в своей нативной форме в REST-интерфейсе, но также могут быть представлены в формате XML или JSON, например при включении этих ресурсов в бандл (используется, когда удобно включить их в непосредственно в фид, а не оставить в виде ссылкок).
+Ресурс Binary может содержать любую информацию, будь то текст, изображение, PDF, ZIP-архив и т. п. Эти ресурсы обслуживаются в своей нативной форме в REST-интерфейсе, но также могут быть представлены в формате XML, JSON или других форматах, например при включении этих ресурсов в Bundle (используется, когда удобно включить их в непосредственно в ответ, а не оставить в виде ссылкок).
 <!-- A binary resource can contain any content, whether text, image, pdf, zip archive, etc. These 
-resources are served in their native form on the rest interface, but can also be represented in XML or JSON, 
-such as when including these resources in a bundle (used when it is convenient to include these in the 
-feed directly rather than leaving them by reference). -->
+resources are served in their native form on the rest interface, but can also be represented in XML, JSON, or other formats, 
+such as when including these resources in a Bundle (used when it is convenient to include these in the 
+response directly rather than leaving them by reference). -->
 </p>
 </div>
 
 <div>
-<a name="bnr"> </a>
+<a name="bnr"></a>
 <h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <p>
-Этот ресурс используется, как правило, в качестве цели <a href="documentreference.html">Document Reference</a> или <a href="datatypes.html#Attachment">Attachment</a>, когда FHIR сервер находит целесообразным управление содержимым в рамках того же общего REST-фреймворка, что и другие ресурсы.
-<!-- This resource is generally used as the target of a <a href="documentreference.html">Document Reference</a> or an <a href="datatypes.html#Attachment">Attachment</a>, when a FHIR server finds it convenient to manage the content within the same overall REST framework as the other resources. -->
+When a FHIR server finds it convenient to manage the content within the same overall REST framework 
+as the other resources, the Binary resource is generally used as the target in the 
+<a href="datatypes.html#Attachment">Attachment</a> data type to reference content via the <code>.url</code> 
+element, such as in the DocumentReference and Media resources. Consequently, the Binary resource can 
+be a target wherever the Attachment data type is used such as in the DocumentReference resource. 
+</p>
+<p>
+The <a href="documentreference.html">DocumentReference</a> and <a href="media.html">Media</a> resources 
+allow conveying binary content (via attachment) or pointing to one (as a <code>Binary</code> or non-FHIR 
+URI) along with the metadata around that resource, and as such are searchable.  
+Binary resources do not support 'search'.
+</p>
+<p>
+While CDA and PDF documents are conveyed as Binary (because they cannot be expressed natively in FHIR), 
+<a href="documents.html">FHIR Documents</a> do not need to be similarly encoded and can be sent natively 
+in FHIR using <a href="bundle.html">Bundle</a>.  However, in some situations FHIR Documents may be sent 
+as a Binary if there is a need to treat them the same as other types of documents or binary files.
+</p>
+<p>
+The Binary resource does not convey context of the file. If the context (information such as 
+author, procedure, technique, etc.) should be conveyed, Media or DocumentReference resources are 
+appropriate. The Binary resource may be used to convey actual binary file content conveyed by 
+those resources.
+</p>
+<p>
+The <a href="media.html">Media</a> resource is preferred for handling images, but this is not possible when the content is already binary (e.g. in some uses of <a href="https://wiki.ihe.net/index.php/Cross-Enterprise_Document_Sharing">IHE XDS</a>).
 </p>
 </div>
 

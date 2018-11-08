@@ -13,21 +13,21 @@ in order to support consistent definitions for schema and UML derived code.
     [%file newnavbar%]
 
     <div class="col-12">
-        <table class="cols"><tr><td id="wg">Work Group <a _target="blank" href="[%wg pa%]">[%wgt pa%]</a> </td><td id="ballot"><a href="versions.html#levels">Статус голосования</a>: <a href="versions.html#std-process">Информативный</a></td></tr></table>
+        <table class="colsi"><tr><td id="wg">Work Group <a _target="blank" href="[%wg pa%]">[%wgt pa%]</a> </td><td id="ballot"><a href="ballot-intro.html#process">Статус голосования</a>:<!--!ns!--><a href="versions.html#std-process">Информативный</a></td></tr></table>
 
-        <a name="root"> </a>
+        <a name="root"></a>
         <h2>Административный модуль</h2>
-        <a name="intro"> </a>
+        <a name="intro"></a>
         <h3>Введение</h3>
         <p>
             В административный модуль входят базовые данные, которые в свою очередь разделяются на более специализированные модули клинического содержимого, финансовый/выставление оплаты, рабочего процесса и др.<br />
-            Разумеется, строится это на модулях технологической платформы FHIR.
+            Строится он на модулях технологической платформы FHIR.
         </p>
         <p>
             Перед записью любых клинических данных необходимо зарегистрировать базовую информацию о пациенте и, как правило, основание взаимедействия (например случай обслуживания).
         </p>
 
-        <a name="index"> </a>
+        <a name="index"></a>
         <h3>Указатель</h3>
         <table width="100%" style="table-layout: fixed">
             <tr>
@@ -35,6 +35,7 @@ in order to support consistent definitions for schema and UML derived code.
                     <ul>
                         <li><a href="patient.html">Patient</a></li>
                         <li><a href="relatedperson.html">RelatedPerson</a></li>
+                        <li><a href="person.html">Person</a></li>
                         <li><a href="group.html">Group</a></li>
                         <li><a href="practitioner.html">Practitioner</a></li>
                         <li><a href="practitionerrole.html">PractitionerRole</a></li>
@@ -63,14 +64,14 @@ in order to support consistent definitions for schema and UML derived code.
                 <td>
                     <ul>
                         <li><a href="device.html">Device</a></li>
-                        <li><a href="devicecomponent.html">DeviceComponent</a></li>
+                        <li><a href="devicedefinition.html">DeviceDefinition</a></li>
                         <li><a href="devicemetric.html">DeviceMetric</a></li>
                         <li><a href="substance.html">Substance</a></li>
                     </ul>
                 </td>
             </tr>
         </table>
-        <a name="patient-reg"> </a>
+        <a name="patient-reg"></a>
         <h4>Реестры пациентов</h4>
         <p>
             Отслеживание людей, вовлеченных в получение медицинских услуг - та основа, на которую ссылается почти всё остальное.
@@ -85,18 +86,16 @@ in order to support consistent definitions for schema and UML derived code.
         <div>
             <img src="administration-module-person.png" alt="Image showing the relationship between resources representing people" width="584px" />
         </div>
-        <p>
-            <blockquote>
-                <em>Примечание:</em> При выполнении поиска со ссылками на другие ресурсы необходимо также учитывать <a href="patient.html#links">связанные между собой ресурсы Patient</a>. Например при поиске диагнозов пациента.<br />
-                На данный момент в спецификации не определено, следует ли выводить ресурсы для связанных ресурсов Patient для включения в результаты поиска диагнозов, которые ссылаются на эти связанные ресурсы Patient. В настоящее время мы ждём ваших отзывов по этому поводу.
-            </blockquote>
-            <blockquote>
-                <em>Примечание:</em> Ресурс Person можно использовать как централизованный реестр лиц, которые в итоге могут быть вовлечены в оказание медицинских услуг, а также мог бы использоваться как центральный регистр демографических данных.<br />
+[%impl-note%]
+При выполнении поиска со ссылками на другие ресурсы необходимо также учитывать <a href="patient.html#links">связанные между собой ресурсы Patient</a>. Например при поиске диагнозов пациента.<br />
+На данный момент в спецификации не определено, следует ли выводить ресурсы для связанных ресурсов Patient для включения в результаты поиска диагнозов, которые ссылаются на эти связанные ресурсы Patient. В настоящее время мы ждём ваших отзывов по этому поводу.
+[%end-note%]
+[%impl-note%]
+Ресурс Person можно использовать как централизованный реестр лиц, которые в итоге могут быть вовлечены в оказание медицинских услуг, а также мог бы использоваться как центральный регистр демографических данных.<br />
                 Тем не менее, поля/значения в ресурсе Person дублируются в других ресурсах, и во многих случаях ресурс Person будет храниться во внешних системах.
-            </blockquote>
-        </p>
+[%end-note%]
 
-        <a name="clinical-reg"> </a>
+        <a name="clinical-reg"></a>
         <h4>Клиническая классификация ресурсов</h4>
         <p>
             Большинство клинических видов деятельности происходят некоторыми группами. Долгосрочный уход обычно охватывается ресурсом EpisodeOfCare, а краткосрочный - ресурсом Encounter. Ресурс Account ассоциирует отслеживание транзакций между ресурсом Patient и другим ресурсом. Ресурс Flag используется для выделения предупреждения или уведомления о пациенте (или другом ресурсе).
@@ -111,14 +110,12 @@ in order to support consistent definitions for schema and UML derived code.
         <div>
             <img src="administration-module-interactions.png" alt="Image showing the administration interactions" width="600px" />
         </div>
-        <p>
-            <blockquote>
-                <em>Примечание:</em> Ресурсы в прямоугольниках с пунктирными линиями описаны в других разделах спецификации:
+[%impl-note%]
+        Ресурсы в прямоугольниках с пунктирными линиями описаны в других разделах спецификации:
                 <code>Coverage</code> и <code>Claim</code> описаны в <a href="financial-module.html">финансовом модуле</a>.
-            </blockquote>
-        </p>
+[%end-note%]
 
-        <a name="dir-reg"> </a>
+        <a name="dir-reg"></a>
         <h4>Ресурсы, связанные с каталогами поставщиков услуг</h4>
         <p>
             Ресурсы, связанные с каталогами поставщиков услуг, обычно хранятся в административном разделе приложений и может быть даже синхронизируются с внешними системами.
@@ -137,7 +134,7 @@ in order to support consistent definitions for schema and UML derived code.
         </div>
         <p></p>
 
-        <a name="sched"> </a>
+        <a name="sched"></a>
         <h4>Планирование и назначение встреч</h4>
         <p>
             Ресурсы планирования и назначения встреч позволяют осуществлять запланированные случаи обслуживания и последующую клиническую деятельность.
@@ -154,7 +151,7 @@ in order to support consistent definitions for schema and UML derived code.
         </div>
         <p></p>
 
-        <a name="dev-sub"> </a>
+        <a name="dev-sub"></a>
         <h4>Устройства и вещества</h4>
         <p>
             Другие активы часто регистрируются в системе администрирования и поддерживаются в виде мастер-файлов.
@@ -162,13 +159,13 @@ in order to support consistent definitions for schema and UML derived code.
         <table class="bare">
             <tr><td><b>Имя</b></td><td><b>Альтернативные имена</b></td><td><b>Описание</b></td></tr>
             [%res-item Device%]
-            [%res-item DeviceComponent%]
+            [%res-item DeviceDefinition%]
             [%res-item DeviceMetric%]
             [%res-item Substance%]
         </table>
 
 
-        <a name="secpriv"> </a>
+        <a name="secpriv"></a>
         <h3>Безопасность и конфиденциальность</h3>
         <p>
             Конфиденциальность пациентов обеспечивается метками и тегами уровней безопастности в свойстве <a href="resource.html#Meta">Meta</a> ресурса.
@@ -190,7 +187,7 @@ in order to support consistent definitions for schema and UML derived code.
             Более общие соображения о безопасности и конфиденциальности см. в модуле <a href="secpriv-module.html">Безопасность и конфиденциальность</a>.
         </p>
 
-        <a name="uses"> </a>
+        <a name="uses"></a>
         <h3>Распространенные случаи использования</h3>
         <p>
             Административные ресурсы являются краеугольным камнем клинического и других доменов стандарта FHIR.

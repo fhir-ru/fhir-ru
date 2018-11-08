@@ -1,7 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<a name="scope"> </a>
+<a name="scope"></a>
 <h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p> 
 Ресурс Composition является базовой структурой, из которой состоят <a href="documents.html">FHIR-документы</a> - неизменяемые связки ресурсов с заверенной описательной частью. Одна логическая композиция может быть ассоциирована с серией производных документов, каждый из которых является замороженной копией этой композиции.
@@ -20,10 +20,16 @@ a prescription form or a set of bedside nursing observations. Using Composition 
 EHR commit is a valid use of the Composition resource, but for FHIR purposes, it would be usual
 to make more granular updates with individual provenance statements. -->
 </p>
+
+<p>
+The <a href="composition-cda-on-fhir.html">CDA on FHIR profile</a> constrains Composition to match 
+<a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a> and specify a clinical document.
+See also the <a href="comparison-cda.html">comparison with CDA</a>.
+</p>
 </div>
 
 <div>
-<a name="bnr"> </a>
+<a name="bnr"></a>
 <h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <p>
 Ресурс Composition - это структура для группирования информации в целях ее хранения и возможности заверения. В FHIR имеются и другие стркутуры для группирования, используемые в различных целях:
@@ -55,86 +61,74 @@ and is used to group collections of resources for transmission, persistence or p
 query responses, etc.).  The content of bundles is typically algorithmically determined for a particular exchange or persistence purpose. -->
 </li>
 <li>
-Ресурс <a href="composition.html">Composition</a> определяет набор медицинской информации, собранной в единый логический документ, несущий единый согласованный смысл, устанавливающий свой собственный контекст и имеющий клиническую аттестацию в отношении того, кто составил это утверждение. Ресурс Composition составляет основную структуру FHIR-<a href="documents.html">документа</a>. Полное содержимое документа формируется с помощью бандла, содержащего ресурс Composition и его записи (entries).
+Ресурс <a href="composition.html">Composition</a> определяет набор медицинской информации, собранной в единый логический документ, несущий единый согласованный смысл, устанавливающий свой собственный контекст и имеющий клиническую аттестацию в отношении того, кто составил это утверждение. Ресурс Composition составляет основную структуру FHIR-<a href="documents.html">документа</a>. Полное содержимое документа формируется с помощью <a href="bundle.html">Bundle</a>, содержащего ресурс Composition и его записи (entries).
 <!-- The <a href="composition.html">Composition</a> resource - defines a set of healthcare-related information that is assembled 
 together into a single logical document that provides a single coherent statement of meaning, establishes its own context and 
 that has clinical attestation with regard to who is making the statement. The Composition resource provides the basic structure 
-of a FHIR <a href="documents.html">document</a>.  The full content of the document is expressed using a bundle containing the Composition and its entries. -->
+of a FHIR <a href="documents.html">document</a>.  The full content of the document is expressed using a <a href="bundle.html">Bundle</a> bundle containing the Composition and its entries. -->
 </li>
 </ul>
 
 <p>
-Ресурс Composition организует клиническое и административное содержимое в секции, каждая из которых содержит описательную часть и ссылки на другие ресурсы с вспомогательными данными. Содержимое описательной части различных секций в ресурсе Composition поддерживаются ресурсами, на которые даются ссылки в разделах. Полный набор содержимого для составления документа включает ресурс Composition вместе с различными ресурсами, указывающими на или косвенно связанными с этим ресурсом Composition, все они объединены в <a href="bundle.html">Bundle</a> для передачи и хранения. В бандл необходимо включать следующие ссылки на ресурс Composition:
+Ресурс Composition организует клиническое и административное содержимое в секции, каждая из которых содержит описательную часть и ссылки на другие ресурсы с вспомогательными данными. Содержимое описательной части различных секций в ресурсе Composition поддерживаются ресурсами, на которые даются ссылки в разделах. Полный набор содержимого для составления документа включает ресурс Composition вместе с различными ресурсами, указывающими на или косвенно связанными с этим ресурсом Composition, все они объединены в <a href="bundle.html">Bundle</a> для передачи и хранения. Ресурсы, ассоциированные со следующим списком ссылок на ресурс Composition. ДОЛЖНЫ быть включены в бандл:
 <!-- The Composition resource organizes clinical and administrative content into sections, each of which contains a narrative, 
 and references other resources for supporting data. The narrative content of the various sections in a Composition are 
 supported by the resources referenced in the section entries.  The complete set of content to make up a document includes 
 the Composition resource together with various resources pointed to or indirectly
 connected to the Composition, all gathered together into a <a href="bundle.html">Bundle</a> for transport and persistence.
-The following list of Composition references SHALL be included in the bundle: -->
+Resources associated with the following list of Composition references SHALL be included in the bundle: -->
 </p>
 <%res-ref-list Composition%>
 
 <p>
-Другие ресурсы, на которые ссылаются эти ресурсы, могут быть включены в бандл по решению системы-составителя или в соответствии с применяемыми профилями.
-<!-- Other resources referred to by those resources may be included in the bundle at the discretion of the authoring 
+Другие ресурсы, на которые ссылаются эти ресурсы, могут быть включены в <a href="bundle.html">Bundle</a> по решению системы-составителя или в соответствии с применяемыми профилями.
+<!-- Other resources referred to by those resources MAY be included in the <a href="bundle.html">Bundle</a> at the discretion of the authoring 
 system, or as specified by any applicable profiles.  -->
 </p>
 </div>
 
 <div>
-<a name="bnc"> </a>
+<a name="bnc"></a>
 <h2>Предпосылки и контекст<!-- Background and Context --></h2>
-<a name="status"> </a>
+<a name="status"></a>
 <h3>Статус-коды Composition<!-- Composition Status Codes --></h3>
 <p>
 Каждая композиция имеет элемент status, который описывает статус содержимого композиции, взятый из этого списка кодов:
 <!-- Every composition has a status element, which describes the status of the content of the composition, taken from this list of codes: -->
 </p>
-<table class="grid">
- <tr> <td><b>Код</b></td> <td><b>Определение</b></td> </tr>
-<!--   <tr> <td><b>Code</b></td> <td><b>Definition</b></td> </tr> -->
-<tr> <td>preliminary</td> <td>Это предварительная композиция (известная также как начальная или промежуточная). Ее содержание может быть неполным или непроверенным.</td> </tr>
- <tr> <td>final</td> <td>Композиция является полной и проверенной соответствующим лицом, и дальнейшая работа не планируется.</td> </tr>
- <tr> <td>appended</td> <td>Композиция была изменена после того, как помечена и/или выпущена как финальная ("final") и является полной и проверенной уполномоченным лицом. Изменения привнесли новую информацию в композицию, но не изменили существующее содержимое.</td> </tr>
- <tr> <td>amended</td> <td>Содержимое композиции или ресурсы, на которые она ссылается, были изменены после того, как выпущены как финальные ("final"), и композиция является полной и проверенной уполномоченным лицом.</td> </tr>
- <tr> <td>retracted</td> <td>Первоначально композиция была создана/выпущена по ошибке, и это поправка, говорящая о том, что вся композиция и любые последующие версии или копии не следует считать действительными.</td> </tr>
-<!--  <tr> <td>preliminary</td> <td>This is a preliminary composition (also known as initial or interim). The content may be incomplete or unverified.</td> </tr>
- <tr> <td>final</td> <td>The composition is complete and verified by an appropriate person and no further work is planned.</td> </tr>
- <tr> <td>appended</td> <td>The composition has been modified subsequent to being marked and/or released as "final" and is complete and verified by an authorized person. The modifications added new information to the composition, but did not revise existing content.</td> </tr>
- <tr> <td>amended</td> <td>The composition content or the referenced resources have been modified subsequently to being released as "final", and the composition is complete and verified by an authorized person.</td> </tr>
- <tr> <td>retracted</td> <td>The composition was originally created/issued in error and this is an amendment that marks that the entire composition and any past versions or copies should not be considered as valid.</td> </tr> -->
-</table>
+<%codelist http://hl7.org/fhir/composition-status%>
+
 <p>
-Статус композиции, как правило, передвигается только вниз по этому списку - от предварительного к финальному, и затем он может стать либо "appended", либо "amended". 
+Статус композиции, как правило, передвигается только вниз по этому списку - от предварительного <code>preliminary</code> к финальному <code>final</code>, и затем он может стать <code>amended</code>. 
 Обратите внимание, что в большинстве рабочих процессов только финальные композиции сделаны доступными, и статус preliminary не используется.
-<!-- Composition status generally only moves down through this list - it moves from preliminary to final and then it may progress to either appended or amended. 
-Note that in many workflows, only final compositions are made available and the preliminary status is not used.  -->
+<!-- Composition status generally only moves down through this list - it moves from <code>preliminary</code> to <code>final</code> and then it may progress to <code>amended</code>. 
+Note that in many workflows, only <code>final</code> compositions are made available and the <code>preliminary</code> status is not used.  -->
 </p>
 <p>
-Очень мало композиций создаются полностью по ошибке в рабочем процессе - обычно композиция создается не тому пациенты или пишется не тем автором, а ошибка обнаруживается уже только после того, как композиция была использована или на ее основе создали документы. Для разрешения таких случаев композиция обновляется пометкой "retracted" (отменено), и новый производный документ может быть создан. 
+Очень мало композиций создаются полностью по ошибке в рабочем процессе - обычно композиция создается не тому пациенты или пишется не тем автором, а ошибка обнаруживается уже только после того, как композиция была использована или на ее основе создали документы. Для разрешения таких случаев композиция обновляется пометкой <code>entered-in-error</code> (отменено), и новый производный документ может быть создан. 
 <!-- A very few compositions are created entirely in error in the workflow - usually the composition concerns the wrong patient or is written by the wrong author,
 and the error is only detected after the composition has been used or documents have been derived from it. To support resolution of this case, 
-the composition is updated to be marked as "retracted" and a new derived document can be created. -->
-Это означает, что целые серии производных документов теперь считаются созданными по ошибке, и системы, получающие производные документы на основе отмененной композиции ДОЛЖНЫ удалить из повседневного использования данные, взятые из более ранних документов, и/или предпринять другие соответствующие меры. Системы не обязаны предоставлять этот рабочий процесс или поддерживать документы, полученные из отмененных композиций, однако они НЕ ДОЛЖНЫ игнорировать статус retracted.
+the composition is updated to be marked as <code>entered-in-error</code> and a new derived document can be created. -->
+Это означает, что целые серии производных документов теперь считаются созданными по ошибке, и системы, получающие производные документы на основе отмененной композиции ДОЛЖНЫ удалить из повседневного использования данные, взятые из более ранних документов, и/или предпринять другие соответствующие меры. Системы не обязаны предоставлять этот рабочий процесс или поддерживать документы, полученные из отмененных композиций, однако они НЕ ДОЛЖНЫ игнорировать статус <code>entered-in-error</code>.
  <!-- This means that the entire series of derived 
 documents is now considered to be created in error and systems receiving derived documents based on retracted compositions
 SHOULD remove data taken from earlier documents from routine use and/or take other appropriate actions. Systems are not required to 
-provide this workflow or support documents derived from retracted compositions, but they SHALL NOT ignore a status of retracted.  -->
-Обратите внимание, что системы, обрабатывающие композиции и производные документы, и не поддерживающие статус retracted, необходимо определить какой-то другой способ обработки композиций, созданных по ошибке; хотя это и не обычное явление, некоторые клинические системы не имеют возможности удаления ошибочной информации из записи пациента, и у пользователя нет способа узнать, что она не подходит для использования - это не безопасно.
-<!-- Note that systems that handle compositions or derived documents and don't support the retracted status need to define 
+provide this workflow or support documents derived from retracted compositions, but they SHALL NOT ignore a status of <code>entered-in-error</code>.  -->
+Обратите внимание, что системы, обрабатывающие композиции и производные документы, и не поддерживающие статус error, необходимо определить какой-то другой способ обработки композиций, созданных по ошибке; хотя это и не обычное явление, некоторые клинические системы не имеют возможности удаления ошибочной информации из записи пациента, и у пользователя нет способа узнать, что она не подходит для использования - это не безопасно.
+<!-- Note that systems that handle compositions or derived documents and don't support the error status need to define 
 some other way of handling compositions that are created in error; while this is not a common occurrence, some clinical systems 
 have no provision for removing erroneous information from a patient's record, and there is no way for a user to know that it is not fit for use -
 this is not safe.  -->
 </p>
 
-<a name="cda"> </a>
+<a name="cda"></a>
 <h3>Примечание для читателей, знакомых с CDA<!-- Note for CDA aware readers --></h3>
 
 <p>
 Большинство пользователей данной спецификации знакомы с <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">Clinical Document Architecture</a> (CDA) и связанными спецификациями. 
-CDA - это основной design вход в ресурс Composition (другие законные входы - это другие спецификации HL7-документов, и EN13606). Есть два важных структурных различия между CDA и ресурсом Composition:
+CDA - это основной design вход в ресурс Composition (другие основные входные данные - это другие спецификации HL7-документов, и EN13606). Есть три важных структурных различия между CDA и ресурсом Composition:
 <!-- Many users of this specification are familiar with the <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">Clinical Document Architecture</a> (CDA) and related specifications.
-CDA is a primary design input to the Composition resource (other principle inputs are other HL7 document specifications and EN13606). There are two important structural 
+CDA is a primary design input to the Composition resource (other principal inputs are other HL7 document specifications and EN13606). There are three important structural 
 differences between CDA and the Composition resource: -->
 </p>
 <ul>

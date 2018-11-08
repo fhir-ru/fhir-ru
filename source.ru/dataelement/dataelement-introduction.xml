@@ -1,7 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<a name="scope"> </a>
+<a name="scope"></a>
 <h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p>
 DataElement - это инфраструктурный ресурс для определения отдельных порций данных, которые можно собирать или хранить. Хотя эти определения могут применяться к элементам в FHIR-ресурсах или профилях, они также могут применяться к вопросам анкет, элементам в хранилищах данных и в других спецификациях (<a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a>, <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a>, CDISC и др.). Т. е. эти определения можно использовать не только в FHIR.
@@ -15,7 +15,7 @@ etc.)  I.e. the definitions aren't FHIR-specific. -->
 </p>
 <ol>
   <li>Определения типов измерений или наблюдений, которые могут быть запрошены или выполнены. В HL7 их иногда называют "мастер-файлами" сервисов, тестов или наблюдений<!-- Definitions of types of measurements or observations that may be requested or performed.  In HL7, these are sometimes referred to as service, test or observation "master files" --></li>
-  <li>Определения "элементов данных" (DEs), которые могут быть использованы в <a href="questionnaire.html">вопросниках (questionnaires)</a> (инструменты создания форм для проведения опросов и сбора данных) и <a href="profile.html">профилях</a> и, потенциально,  отображаются на элементы других ресурсов и профилей<!-- Definitions of "data elements" (DEs) that may be used in <a href="questionnaire.html">questionnaires</a> (survey instruments and data collection forms) and <a href="profile.html">profiles</a> and potentially mapped to elements in other resources and profiles --></li>
+  <li>Определения "элементов данных" (DEs), которые могут быть использованы в <a href="questionnaire.html">вопросниках (questionnaires)</a> (инструменты создания форм для проведения опросов и сбора данных) и <a href="profiling.html">профилях</a> и, потенциально,  отображаются на элементы других ресурсов и профилей<!-- Definitions of "data elements" (DEs) that may be used in <a href="questionnaire.html">questionnaires</a> (survey instruments and data collection forms) and <a href="profiling.html">profiles</a> and potentially mapped to elements in other resources and profiles --></li>
 </ol>
 <p>
 Цель первого сценария использования - позволить системам идентифицировать, какие типы лабораторных заказов, диагностических исследований и других видов наблюдений могут быть заказаны или осуществлены в рамках определенной организации или ином контексте. Практикующий врач, делающий заказ, может запросить список элементов данных по названию категории или другим критериям и указать, какие тесты из набора он хочет заказать.
@@ -42,7 +42,7 @@ patient gender, practitioner address and other data elements that would not typi
 </div>
 
 <div>
-<a name="bnr"> </a>
+<a name="bnr"></a>
 <h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <p>
 Этот ресурс имеет много общего с <a href="structuredefinition.html">StructureDefinition</a> и <a href="questionnaire.html">Questionnaire</a>.
@@ -74,9 +74,9 @@ might either be implicit or may be explicit through an extension.  (For implemen
 <a href="questionnaire.html">Questionnaire</a> rather than being included "by reference" to the <b>DataElement</b>.) -->
 </p>
 <p>
-<b>Примечание</b>: Расширения для <b>DataElement</b>, которые определяют характеристики элемента данных, как правило, также применимы к ElementDefinition <a href="profile.html">профиля</a> и элементу данных Question <a href="questionnaire.html">анкеты</a>, так как они оба используются также для определения характеристик элемента данных.
+<b>Примечание</b>: Расширения для <b>DataElement</b>, которые определяют характеристики элемента данных, как правило, также применимы к ElementDefinition <a href="profiling.html">профиля</a> и элементу данных Question <a href="questionnaire.html">анкеты</a>, так как они оба используются также для определения характеристик элемента данных.
 <!-- 
-<b>Note</b>: Extensions on <b>DataElement</b> that define the characteristics of a data element will typically also be applicable to <a href="profile.html">Profile</a>'s
+<b>Note</b>: Extensions on <b>DataElement</b> that define the characteristics of a data element will typically also be applicable to <a href="profiling.html">Profile</a>'s
 ElementDefinition and <a href="questionnaire.html">Questionnaire</a>'s Question data element as both are also used to define the characteristics of a data element. -->
 </p>
 <p>

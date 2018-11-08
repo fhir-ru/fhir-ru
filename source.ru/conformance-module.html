@@ -14,13 +14,13 @@ in order to support consistent definitions for schema and UML derived code.
 [%file newnavbar%]
 
 <div class="col-12">
-<table class="cols"><tr><td id="wg">Work Group <a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> </td><td id="ballot"><a href="versions.html#levels">Ballot Status</a>: <a href="versions.html#std-process">Informative</a></td></tr></table>
+<table class="colsi"><tr><td id="wg">Work Group <a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> </td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Informative</a></td></tr></table>
 
-<a name="root"> </a>
+<a name="root"></a>
 <h2>Модуль обеспечения соответствия<!-- Conformance Module --></h2>
 <p>The Conformance Module represents metadata about the datatypes, resources and API features of the FHIR specification and can be used to create derived specifications.</p>
 
-<a name="index"> </a>
+<a name="index"></a>
 <table width="100%" style="table-layout: fixed">
  <tr>
  <td width="33%">
@@ -35,9 +35,7 @@ in order to support consistent definitions for schema and UML derived code.
  <ul>
   <li><a href="compartmentdefinition.html">CompartmentDefinition</a></li>
   <li><a href="implementationguide.html">ImplementationGuide</a></li>
-  <li><a href="implementationguideInput.html">ImplementationGuideInput</a></li>
-  <li><a href="implementationguideOutput.html">ImplementationGuideOutput</a></li>
-  <li><a href="elementdefinition.html">ElementDefinition (datatype)</a></li>    
+  <li><a href="elementdefinition.html">ElementDefinition (datatype)</a></li>
 </ul>
 </td>
  <td width="33%">
@@ -49,12 +47,12 @@ in order to support consistent definitions for schema and UML derived code.
 </tr>
 </table>
 
-<a name="intro"> </a>
+<a name="intro"></a>
 <h3>Введение</h3>
     <p>The core FHIR specification describes a set of resources, frameworks and APIs that are
         used in many different contexts in healthcare. However, there is wide variability between
         jurisdictions and across the healthcare ecosystem around practices, requirements,
-        regulations,education and what actions are feasible and/or beneficial.</p>
+        regulations, education and what actions are feasible and/or beneficial.</p>
     <p>For this reason, the FHIR specification is a &quot;platform specification&quot; - it creates
         a common platform or foundation on which a variety of different solutions are implemented.
         As a consequence, this specification usually requires further adaptation to particular
@@ -69,7 +67,7 @@ in order to support consistent definitions for schema and UML derived code.
             and/or implementations</li>
     </ul>
     <p>Note that because of the nature of the healthcare ecosystem, there may be multiple
-        overlapping sets of adaptations - by healthcare domain,by country, by institution, and/or by
+        overlapping sets of adaptations - by healthcare domain, by country, by institution, and/or by
         vendor/implementation.</p>
     <p>FHIR provides a set of resources that can be used to represent and share the adaptations
         listed above in a computable fashion. These resources are collectively called the
@@ -78,15 +76,15 @@ in order to support consistent definitions for schema and UML derived code.
             <em>Capability Statement</em>:</p>
     <ul>
         <li><em>Implementation Guides</em> are documents published by a domain, institution or
-            vendor that describe how FHIR is adapted to support a certain usecase (or set of
-            usecases). An implementation guide combines a set of conformance resources and
+            vendor that describe how FHIR is adapted to support a certain use case (or set of
+            use cases). An implementation guide combines a set of conformance resources and
             supporting narrative into a document for use by implementers.</li>
-        <li>A <em>capability statement</em> which uses the conformance resources to document how a
+        <li>A <em>capability statements</em> use the conformance resources to document how a
             client or server has implemented FHIR, i.e. which aspects of the specification and API
             are implemented and how. </li>
     </ul>
 
-<a name="contents"> </a>
+<a name="contents"></a>
 <h3>Contents</h3>
     <p>The content of an Implementation Guide is described using the <a
             href="implementationguide.html">ImplementationGuide</a> resource,
@@ -125,13 +123,13 @@ in order to support consistent definitions for schema and UML derived code.
 		<code>ValueSet</code>, <code>ConceptMap</code> and <code>StructureMap</code> are from the <a href="terminology-module.html">section on terminology</a>,
 		 <code>TestScript</code> is part of the section on <a href="implsupport-module.html">Implementer Support</a>.</p>
 
-<a name="secpriv"> </a>
+<a name="secpriv"></a>
 <h3>Security and Privacy</h3>
     <p>The conformance resources do not represent patient-related data, and as such are less
         susceptible to data breaching. Some caution is required however:</p>
     <ul>
         <li><code>StructureDefinitions</code> may contain invariants formulated as structured
-            expressions that are evaluated by external engines (i.e. xpath), which -if unproperly
+            expressions that are evaluated by external engines (i.e. xpath), which -if improperly
             sandboxed- could provide low-level access to the system</li>
         <li>A server may be implemented in such a way that it will automatically support additional
             search parameters or compartments definitions uploaded to that system. This may result
@@ -144,7 +142,7 @@ running the risk of being misconfigured.</li>
     </ul>
 
 
-<a name="uses"> </a>
+<a name="uses"></a>
 <h3>Common use Cases</h3>
 <p>Conformance resources are commonly used as part of an <a href="implementationguide.html">Implementation Guide</a> or
 <a href="capabilitystatement.html">CapabilityStatement</a> resource. There are many ways to use the resources independently however, including:</p>
@@ -158,27 +156,30 @@ running the risk of being misconfigured.</li>
                 <code>OperationDefinitions</code> to generate code that represents the structures as
             classes and operations as remotely callable functions to provide an easier programming
             model to a software developer. </li>
-        <li>A server may act as a repository of <code>NameSpace</code> resources, so vendors and
+        <li>A server may act as a repository of <code>NamingSystem</code> resources, so vendors and
             implementers can quickly look up the URLs or oids for a given terminology or identifier
             system.</li>
     </ul>
 
-<a name="roadmap"> </a>
+<a name="roadmap"></a>
 <h3>Дорожная карта разработки<!-- Developmental Roadmap --></h3>
-    <p>A subset of the conformance resources has been tested and used in production tooling and as
-        such have reached a maturity level where changes become less likely. These are
-            <code>CapabilityStatement</code>, <code>StructureDefinition</code>,
-            <code>ValueSet</code>, <code>OperationDefinition</code> and <code>SearchParameter</code>.</p>
+<p>A subset of the conformance resources has been tested and used in production tooling and are now normative.
+        These include StructureDefinition and ValueSet.
+        
+        Others, like CapabilityStatement, have been used widely, but not across all elements. As a consequence, these resource
+        have a considerable number of elements marked for "trial use", while other parts are normative and will no longer change
+        in a substantive way.</p>
+
     <p>Other resources are still under development:</p>
     <ul>
-        <li><code>ImplementationGuide</code>: used in the HL7 production tooling, but has not received much use
+        <li><code>ImplementationGuide</code>: used in the HL7 production tooling but has not received much use
             outside of these tools yet.</li>
-        <li><code>CompartmentDefinition</code>: new in STU3, and as such has not undergone much production
+        <li><code>CompartmentDefinition</code>: was new in STU3, and as such has not undergone much production
             use</li>
     </ul>
-    <p>Over the past two years, these resources have been mainly used in the tools used to build the FHIR
+    <p>These resources have been mainly used in the tools used to build the FHIR
         publication, early-adopter implementation guides and the FHIR Foundation conformance
-        resource registry. In the 2016-2018 timeframe, we expect to see more widespread use of these
+        resource registry. In future, we expect to see more widespread use of these
         resources in validation tooling, code-generators and more extensive model-based guide
         authoring tools.</p>
 
