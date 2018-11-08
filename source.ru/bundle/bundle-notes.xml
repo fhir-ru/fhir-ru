@@ -205,7 +205,7 @@ by its identity in the bundle first before trying to access it by its URL extern
 Как разрешается ссылка в бандле:
 <!-- How to resolve a reference in a Bundle: -->
 </p>
-<ol>
+<ul>
  <li>Если ссылка не абсолютная, то сконвертировать её в абсолютный URL:<!-- If the reference is not an absolute reference, convert it to an absolute URL: -->
   <ul>
 	 <li>if the reference has the format [type]/[id], and</li>
