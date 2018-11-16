@@ -1,34 +1,37 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <a name="notes"></a>
-<h2>Notes</h2>
+<h2>Примечания<!-- Notes --></h2>
 <p>
 <ul>
-<li>The <i>class</i> element describes the setting (in/outpatient etc.) in which the Encounter took place. Since this is important for 
+<li>Элемент <i>class</i> описывает условия (стационарный, амбулаторный пациент и т. п.), в который проходит Encounter. Поскольку это важно для интерпретации контекста Encounter, выбора подходящих бизнес-правил для соблюдения и для управления процессом, этот элемент является обязательным.
+<!-- The <i>class</i> element describes the setting (in/outpatient etc.) in which the Encounter took place. Since this is important for 
 interpreting the context of the encounter, choosing the appropriate business rules to enforce and for the management of the process, this element
-is required.</li>
-<li>In future versions of FHIR, some kind of charge posting vehicle (e.g. Account) will be added.</li>
+is required. --></li>
+<li>В будущих версиях FHIR будет добавлен некоторый вид механизма по начислению сборов (например Account). <!-- In future versions of FHIR, some kind of charge posting vehicle (e.g. Account) will be added. --></li>
 </ul>
 </p>
 <a name="examples"></a>
-<h2>Example usage</h2>
-<p>As stated, Encounter allows a flexible nesting of Encounters using the partOf element. For example:</p>
+<h2>Пример использования<!-- Example usage --></h2>
+<p>Как уже говорилось, с помощью элемента partOf ресурса Encounter можно формировать иерархию случаев обслуживания. Например:<!-- As stated, Encounter allows a flexible nesting of Encounters using the partOf element. For example: --></p>
 <ul>
-<li>A patient is admitted for two weeks - This could be modeled using a single Encounter instance,
+<li>Пациент госпитализирован на 2 недели - это можно смоделировать с помощью отдельного экземпляра ресурса Encounter, в котором заданы начало и длительность всего времени пребывания. Врач приёмного отделения и лечащий врач на время пребывания задаются с помощью компонента Participant.
+<!-- A patient is admitted for two weeks - This could be modeled using a single Encounter instance,
 in which the start and length are given for the duration of the whole stay. The admitting doctor and
-the responsible doctor during the stay are specified using the Participant component.</li>
-<li>During the encounter, the patient moves from the admitting department to the Intensive Care unit and back - 
+the responsible doctor during the stay are specified using the Participant component. --></li>
+<li>В течение случая обслуживания пациент перемещается из приёмного отделения в отделение интенсивной терапии и обратно - можно создать ещё три более подробных ресурса Encounters, по одному на каждое место пребывания пациента. Каждый из этих ресурсов Encounter будет иметь отдельное местоположение (дважды приёмное отделение и один раз отделение интенсивной терапии) и одного или нескольких участников в этом местоположении. Эти ресурсы Encounter могут использовать элемент partOf для указания своей взаимосвязи, что эти передвижения происходили в течение другого, более продолжительного и всеобъемлющего случая обслуживания.<!-- During the encounter, the patient moves from the admitting department to the Intensive Care unit and back - 
 Three more detailed additional Encounters can be created, one for each location in which the patient stayed.
 Each of these Encounters has a single location (twice the admitting department and once
 the Intensive Care unit) and one or more participants at that location. These Encounters may use the partOf 
-relationship to indicate these movements occurred during the longer overarching Encounter.</li>
-<li>During the last part of the stay, the patient is visited by the members of the multi-disciplinary team that
+relationship to indicate these movements occurred during the longer overarching Encounter. --></li>
+<li>Во время последнего этапа пребывания пациента посетили члены многопрофильной команды, которые осмотрели его для вынесения окончательного диагноза. Если уместно, то для каждого из этих коротких визитов может быть создан ресурс Encounter с одним участником. Так как они происходили во время последней части пребывания, можно использовать элемент partOf для связи этих коротких визитов либо с третьим перемещением пациента, либо с более общим случаем обслуживания. <!-- During the last part of the stay, the patient is visited by the members of the multi-disciplinary team that
 treated him for final evaluation - If relevant, for each of these short visits, an Encounter may be created
 with a single participant. Since these took place during the last part of the stay, the partOf element can be
-used to associate these short visits with either the third patient movement or the bigger overall encounter.</li>
+used to associate these short visits with either the third patient movement or the bigger overall encounter. --></li>
 </ul>
-<p>Exactly how the Encounter is used depends on information available in the source system, the relevance of exchange
-of each level of Encounter and demands specific to the communicating partners. The expectation is that for each
-domain of exchange, profiles are used to limit the flexibility of Encounter to meet the demands of the use case.</p>
+<p>Каким именно образом используется ресурс Encounter, зависит от информации, имеющейся в исходной системе, релевантности обмена данными каждого уровня Encounter и специфических требований, установленных между взаимодействующими партнерами. Ожидается, что для каждой доменной области обмена данными будут использоваться свои профили для ограничения гибкости ресурса Encounter и удовлетворения требованиям сценариев использования.<!-- 
+Exactly how the Encounter is used depends on information available in the source system, the relevance of exchange
+of each level of Encounter and demands specific to the communicating partners. The expectation is that for each 
+domain of exchange, profiles are used to limit the flexibility of Encounter to meet the demands of the use case. --></p>
 
 </div>

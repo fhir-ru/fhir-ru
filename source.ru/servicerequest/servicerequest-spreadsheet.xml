@@ -1252,8 +1252,8 @@
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">A request for a service to be performed</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A record of a request for service such as diagnostic investigations, treatments, or operations to be performed.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Запрос на исполнение услуги<!-- A request for a service to be performed --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Запись о заказе улуги, например проведение диагностического исследования, лечения или операции.<!-- A record of a request for service such as diagnostic investigations, treatments, or operations to be performed. --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1286,10 +1286,10 @@
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">Identifiers assigned to this order</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s101"><Data ss:Type="String">Identifiers assigned to this order instance by the orderer and/or the receiver and/or order fulfiller.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Идентификатор, присвоенный этому заказу<!-- Identifiers assigned to this order --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s101"><Data ss:Type="String">Идентификаторы, присвоенные этому заказу заказчиком и/или получателем и/или исполнителем.<!-- Identifiers assigned to this order instance by the orderer and/or the receiver and/or order fulfiller. --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s103"><Data ss:Type="String">The identifier.type element is used to distinguish between the identifiers assigned by the orderer (known as the 'Placer' in HL7 v2) and the producer of the observations in response to the order (known as the 'Filler' in HL7 v2).  For further discussion and examples see the resource notes section below.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Элемент identifier.type используют, чтобы различать идентификаторы, присвоенные заказчиком ('Placer' в HL7 v2) и создателем наблюдений в ответ на заказ ('Filler' в HL7 v2). Обсуждение и примеры см. в примечаних к ресурсу ниже.<!-- The identifier.type element is used to distinguish between the identifiers assigned by the orderer (known as the 'Placer' in HL7 v2) and the producer of the observations in response to the order (known as the 'Filler' in HL7 v2).  For further discussion and examples see the resource notes section below. --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s104"><Data ss:Type="String">.identifier</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String">ORC.2, ORC.3, RF1-6 / RF1-11,</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1320,10 +1320,10 @@
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s109"><Data ss:Type="String">Instantiates FHIR protocol or definition</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s101"><Data ss:Type="String">The URL pointing to a FHIR-defined protocol, guideline, orderset or other definition that is adhered to in whole or in part by this ServiceRequest</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s109"><Data ss:Type="String">Реализуемый FHIR-протокол или определение<!-- Instantiates FHIR protocol or definition --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s101"><Data ss:Type="String">URL-ссылка на определенный на FHIR протокол, руководство, набор заказов или дргое определение, которого частично или полностью придерживается данный ServiceRequest<!-- The URL pointing to a FHIR-defined protocol, guideline, orderset or other definition that is adhered to in whole or in part by this ServiceRequest --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s101"><Data ss:Type="String">Note: This is a business identifier, not a resource identifier (see [discussion](resource.html#identifiers)).  It is best practice for the identifier to only appear on a single resource instance, however business practices may occasionally dictate that multiple resource instances with the same identifier can exist - possibly even with different resource types.  For example, multiple Patient and a Person resource instance might share the same social insurance number.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s101"><Data ss:Type="String">Примечание: это бизнес-идентификатор, а не идентификатор ресурса (см. [discussion](resource.html#identifiers)). Считается хорошей практикой, когда идентификатор появляется только на одном экземпляре ресурса, однако бизнес-практики могут время от времени диктовать, что несколько экземпляров ресурсов с одинаковм идентификатором могут существовать - возможно даже различные типы ресурсов. Например, несколько экземпляров ресурсов Patient и Person могут иметь одинаковый номер социального страхования. <!-- Note: This is a business identifier, not a resource identifier (see [discussion](resource.html#identifiers)).  It is best practice for the identifier to only appear on a single resource instance, however business practices may occasionally dictate that multiple resource instances with the same identifier can exist - possibly even with different resource types.  For example, multiple Patient and a Person resource instance might share the same social insurance number. --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s104"><Data ss:Type="String">.outboundRelationship[typeCode=DEFN].target</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s104"><Data ss:Type="String">Varies by domain</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1354,10 +1354,10 @@
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s109"><Data ss:Type="String">Instantiates external protocol or definition</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s101"><Data ss:Type="String">The URL pointing to an externally maintained protocol, guideline, orderset or other definition that is adhered to in whole or in part by this ServiceRequest</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s109"><Data ss:Type="String">Реализуемый внешний протокол или определение<!-- Instantiates external protocol or definition --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s101"><Data ss:Type="String">URL-ссылка на внешний протокол, руководство, набор заказов или другое определение, которого частично или полностью придерживается данный ServiceRequest<!-- The URL pointing to an externally maintained protocol, guideline, orderset or other definition that is adhered to in whole or in part by this ServiceRequest --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s101"><Data ss:Type="String">This might be an HTML page, PDF, etc. or could just be a non-resolvable URI identifier.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s101"><Data ss:Type="String">Это может быть HTML-страница, PDF, или просто никуда не ведущий URI-идентификатор.<!-- This might be an HTML page, PDF, etc. or could just be a non-resolvable URI identifier. --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s104"><Data ss:Type="String">.outboundRelationship[typeCode=DEFN].target</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s104"><Data ss:Type="String">Varies by domain</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1388,8 +1388,8 @@
     <Cell ss:StyleID="s100"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s100"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s100"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">What request fulfills </Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s114"><Data ss:Type="String">Plan/proposal/order fulfilled by this request</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Какой запрос выполняется<!-- What request fulfills  --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s114"><Data ss:Type="String">План/предложение/заказ, выполнчемый данным запросом<!-- Plan/proposal/order fulfilled by this request --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s115"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s103"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s115"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1422,8 +1422,8 @@
     <Cell ss:StyleID="s100"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s100"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s100"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">What request replaces</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s114"><Data ss:Type="String">The request takes the place of the referenced completed or terminated request(s)</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Какой запрос замещается данным<!-- What request replaces --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s114"><Data ss:Type="String">Данный запрос занимает место указанного выполненного или остановленного запроса(ов)<!-- The request takes the place of the referenced completed or terminated request(s) --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s101"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1456,10 +1456,10 @@
     <Cell ss:StyleID="s100"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s100"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s100"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">Composite Request ID</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s114"><Data ss:Type="String">A shared identifier common to all service requests that were authorized more or less simultaneously by a single author, representing the composite or group identifier.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">Some business processes need to know if multiple items were ordered as part of the same "requisition" for billing or other purposes.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s103"><Data ss:Type="String">Requests are linked either by a "basedOn" relationship (i.e. one request is fulfilling another) or by having a common requisition. Requests that are part of the same requisition are generally treated independently from the perspective of changing their state or maintaining them after initial creation.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Составной ID запроса<!-- Composite Request ID --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s114"><Data ss:Type="String">Общий для всех заказов услуги идентификатор, которые были авторизованы более-менее одновременно одним автором, представляющий составной или групповой идентификатор.<!-- A shared identifier common to all service requests that were authorized more or less simultaneously by a single author, representing the composite or group identifier. --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">Некоторые бизнес-процессам необходимо знать, что несколько пунктов были заказаны с одинаковыми реквизитами в целях выставления счетов или др.<!-- Some business processes need to know if multiple items were ordered as part of the same "requisition" for billing or other purposes. --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Запросы связаны либо через отношение "basedOn" (т.е. один запрос выполняет другой), либо через общий реквизиты. Запросы, имеющие общие реквизиты, обычно обрабатываются независимо от перспективы изменения их статуса или подержки их после начального создания.<!-- Requests are linked either by a "basedOn" relationship (i.e. one request is fulfilling another) or by having a common requisition. Requests that are part of the same requisition are generally treated independently from the perspective of changing their state or maintaining them after initial creation. --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s115"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s104"><Data ss:Type="String">.inboundRelationship(typeCode=COMP].source[moodCode=INT].identifier</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s104"><Data ss:Type="String">ORC.4</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1490,9 +1490,9 @@
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><Data ss:Type="String">draft | active | suspended | completed | entered-in-error | cancelled</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s101"><Data ss:Type="String">The status of the order</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s101"><Data ss:Type="String">Статус заказа<!-- The status of the order --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s103"><Data ss:Type="String">The status is generally fully in the control of the requester - they determine whether the order is draft or active and, after it has been activated, competed, cancelled or suspended. States relating to the activities of the performer are reflected on either the corresponding event (see [Event Pattern](event.html) for general discussion) or using the [Task](task.html) resource.&#xD;&#xD;</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Статус обычно полносью контролируется заказчиком - он определяет, черновик ли это заказа или активный заказ и, после того как он был активирован, завершен, отменен или приостановлен. Статусы отсящиеся к активностям исполнителя отражен либо в соответствующем ресурсе-событии (см. общую дискуссию [Event Pattern](event.html)), либо с помощью ресурса [Task](task.html).<!-- The status is generally fully in the control of the requester - they determine whether the order is draft or active and, after it has been activated, competed, cancelled or suspended. States relating to the activities of the performer are reflected on either the corresponding event (see [Event Pattern](event.html) for general discussion) or using the [Task](task.html) resource. -->&#xD;&#xD;</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s104"><Data ss:Type="String">.status</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String">ORC.5,RF1-1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1515,7 +1515,7 @@
     <Cell ss:StyleID="s100"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s100"><Data ss:Type="String">code</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s100"><Data ss:Type="String">Y</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">This element changes the interpretation of all descriptive attributes. For example "the time the request is recommended to occur" vs. "the time the request is authorized to occur" or "who is recommended to perform the request" vs. "who is authorized to perform the request</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">Этот элемент меняет интерпретацию всех описательных атрибутов. Например "рекомендованное время выполнения запроса" против "время авторизации запроса на исполнение" или "кому рекомендуется выполнить этот запрос"<!-- This element changes the interpretation of all descriptive attributes. For example "the time the request is recommended to occur" vs. "the time the request is authorized to occur" or "who is recommended to perform the request" vs. "who is authorized to perform the request --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s100"><Data ss:Type="String">Y</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s100"><Data ss:Type="String">ServiceRequestIntent</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s100"><Data ss:Type="String">class</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1524,9 +1524,9 @@
     <Cell ss:StyleID="s100"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s100"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s100"><Data ss:Type="String">proposal | plan | order +</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s103"><Data ss:Type="String">Whether the request is a proposal, plan, an original order or a reflex order.  </Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Является ли этот запрос предложением, планом, исходным или последующим заказом.<!-- Whether the request is a proposal, plan, an original order or a reflex order.   --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s115"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s101"><Data ss:Type="String">This element is labeled as a modifier because the intent alters when and how the resource is actually applicable</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s101"><Data ss:Type="String">Этот элемент помечен как модификатор, так как он меняет, когда и как ресурс фактически применяется<!-- This element is labeled as a modifier because the intent alters when and how the resource is actually applicable --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s104"><Data ss:Type="String">.moodCode (nuances beyond PRP/PLAN/RQO would need to be elsewhere)</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s104"><Data ss:Type="String">N/A</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1556,10 +1556,10 @@
     <Cell ss:StyleID="s100"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s100"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s100"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">Classification of service</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s123"><Data ss:Type="String">A code that classifies the service for searching, sorting and display purposes (e.g. "Surgical Procedure").</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">Used for filtering what service request are retrieved and displayed.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String"> There may be multiple axis of categorization depending on the context or use case for retrieving or displaying the resource.  The level of granularity is defined by the category concepts in the value set. &#xD;</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Классификация услуги<!-- Classification of service --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s123"><Data ss:Type="String">Код классификации услуги, используемый для поиска, сортировки и отображения (например "Хирургическая процедура").<!-- A code that classifies the service for searching, sorting and display purposes (e.g. "Surgical Procedure"). --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">Используется для фильтрации отображаемых запросов услуг.<!-- Used for filtering what service request are retrieved and displayed. --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">Типов категоризации может быть несколько в зависимости от контекста или сценария для извлечения или отображения ресурса. Степень гранулярности определяется концептами категории в наборе значений. <!-- There may be multiple axis of categorization depending on the context or use case for retrieving or displaying the resource.  The level of granularity is defined by the category concepts in the value set. --> &#xD;</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s115"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String">.outboundRelationship[typeCode="COMP].target[classCode="LIST", moodCode="INT"].code</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String">RF1-5</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1590,7 +1590,7 @@
     <Cell ss:StyleID="s100"><Data ss:Type="String">If missing, this task should be performed with normal priority</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><Data ss:Type="String">routine | urgent | asap | stat</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s101"><Data ss:Type="String">Indicates how quickly the ServiceRequest should be addressed with respect to other requests.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s101"><Data ss:Type="String">Насколько быстро запрос на услугу должен быть выполнен по отношению к другим запросам.<!-- Indicates how quickly the ServiceRequest should be addressed with respect to other requests. --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s101"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1615,18 +1615,18 @@
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><Data ss:Type="String">boolean</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><Data ss:Type="String">Y</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s99"><Data ss:Type="String">If true this element negates the specified action. For Example,  instead of a request for a procedure, it is a request for the procedure to not occur.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s99"><Data ss:Type="String">При значении true этот элемент отрицает указанное действие. Например, вместо запроса на процедуру это будет запрет на проведение процедуры.<!-- If true this element negates the specified action. For Example,  instead of a request for a procedure, it is a request for the procedure to not occur. --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s100"><Data ss:Type="String">Y</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s99"><Data ss:Type="String">If missing, the request is a positive request e.g. "do perform"</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s99"><Data ss:Type="String">Если элемент отсутствует, то это позитивный запрос, например "надо выполнить"<!-- If missing, the request is a positive request e.g. "do perform" --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s99"><Data ss:Type="String">True if service/procedure should not be performed</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s101"><Data ss:Type="String">Set this to true if the record is saying that the service/procedure should NOT be performed.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s102"><Data ss:Type="String">Used for do not ambulate, do not elevate head of bed, do not flush NG tube, do not take blood pressure on a certain arm, etc. </Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s101"><Data ss:Type="String"> In general, only the code and timeframe will be present, though occasional additional qualifiers such as body site or even performer could be included to narrow the scope of the prohibition.  If the ServiceRequest.code and ServiceRequest.doNotPerform both contain negation, that will reinforce prohibition and should not have a double negative interpretation.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s99"><Data ss:Type="String">Будет иметь значение true, если услуга/процедура не должна быть выполнена<!-- True if service/procedure should not be performed --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s101"><Data ss:Type="String">Установите значение true, если записываете указание, что данная услуга/процедура НЕ ДОЛЖНА быть выполнена.<!-- Set this to true if the record is saying that the service/procedure should NOT be performed. --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s102"><Data ss:Type="String">Используется для таких указаний, как "не перемещать", "не поднимать изголовье кровати", "не промывать назогастральный зонд", "не измерять кровяное давление на определённой руке". <!-- Used for do not ambulate, do not elevate head of bed, do not flush NG tube, do not take blood pressure on a certain arm, etc. --> </Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s101"><Data ss:Type="String">В большинстве случаев указываются только код и временные рамки, хотя изредка дополнительные квалификаторы, например анатомическое расположение или даже исполнитель будут включены для сужения запрета. Если оба элемента ServiceRequest.code и ServiceRequest.doNotPerform содержат отрицание, это усиливает запрет и не должно интерпретироваться как двойное отрицание.<!-- In general, only the code and timeframe will be present, though occasional additional qualifiers such as body site or even performer could be included to narrow the scope of the prohibition.  If the ServiceRequest.code and ServiceRequest.doNotPerform both contain negation, that will reinforce prohibition and should not have a double negative interpretation. --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String"> .actionNegationInd</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s104"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1658,10 +1658,10 @@
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">What is being requested/ordered</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s103"><Data ss:Type="String">A code that identifies a particular service (i.e., procedure, diagnostic investigation, or panel of investigations) that have been requested</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Что именно запрашиваем/заказываем<!-- What is being requested/ordered --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Код, идентифицирующий определённую услугу (т.е. процедура, диагностическое исследование или панель исследований), которая была заказана<!-- A code that identifies a particular service (i.e., procedure, diagnostic investigation, or panel of investigations) that have been requested --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s103"><Data ss:Type="String">Many laboratory and radiology procedure codes embed the specimen/organ system in the test order name, for example,  serum or serum/plasma glucose, or a chest x-ray. The specimen might not be recorded separately from the test code.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Многие коды лабораторных и радиологических процедур содержат в себе образец для анализа/орган тела в названии теста, например глюкоза сыворотки или сыворотки/плазмы крови, или рентген грудной клетки. Образец для анализа может не записываться отдельно от кода теста. <!-- Many laboratory and radiology procedure codes embed the specimen/organ system in the test order name, for example,  serum or serum/plasma glucose, or a chest x-ray. The specimen might not be recorded separately from the test code. --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s104"><Data ss:Type="String">.code</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String">PR1-3 / OBR-4  (varies by domain)</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1692,10 +1692,10 @@
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">Additional order information</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s103"><Data ss:Type="String">Additional details and instructions about the how the services are to be delivered.   For example, and order for a urinary catheter may have an order detail for an external or indwelling catheter, or an order for a bandage may require additional instructions specifying how the bandage should be applied.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Дополнительная информация о заказе<!-- Additional order information --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Дополнительная информация и инструкции по оказанию услуги. Например при заказе мочевого катетера можно детализировать, внешний или постоянный катетер, или для заказа на повязку могут потребоваться дополнительные инструкции, указывающие, как следует наложить повязку.<!-- Additional details and instructions about the how the services are to be delivered.   For example, and order for a urinary catheter may have an order detail for an external or indwelling catheter, or an order for a bandage may require additional instructions specifying how the bandage should be applied. --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s101"><Data ss:Type="String">For information from the medical record intended to support the delivery of the requested services, use the `supportingInformation` element.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s101"><Data ss:Type="String">В элементе supportingInformation можно сослаться на информацию из медкарты, которая будет полезна при оказании заказанных услуг.<!-- For information from the medical record intended to support the delivery of the requested services, use the `supportingInformation` element. --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s104"><Data ss:Type="String">.code</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s104"><Data ss:Type="String">NTE</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1725,9 +1725,9 @@
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">Service amount</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s103"><Data ss:Type="String">An amount of service being requested which can be a quantity ( for example $1,500 home modification), a ratio ( for example, 20 half day visits per month), or a range (2.0 to 1.8 Gy per fraction)</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s102"><Data ss:Type="String">When ordering a service the number of service items may need to be specified separately from the the service item</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Количество услуг<!-- Service amount --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Количество запрашиваемых услуг. Это может быть количество (например домашняя модификация $1,500), соотношение (например 20 полудневных визитов в месяц) или диапазон (от 2.0 до 1.8 Gy на фракцию) <!-- An amount of service being requested which can be a quantity ( for example $1,500 home modification), a ratio ( for example, 20 half day visits per month), or a range (2.0 to 1.8 Gy per fraction) --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s102"><Data ss:Type="String">При заказе услуги может потребоваться указать количество пунктов услуг отдельно от самой услуги<!-- When ordering a service the number of service items may need to be specified separately from the the service --> item</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s101"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String">.quantity</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1758,8 +1758,8 @@
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">Individual or Entity the service is ordered for</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s103"><Data ss:Type="String">On whom or what the service is to be performed. This is usually a human patient, but can also be requested on animals, groups of humans or animals, devices such as dialysis machines, or even locations (typically for environmental scans).</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Человек или объект, для которого заказан эта услуга<!-- Individual or Entity the service is ordered for --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Над кем или чем должна быть выполнена эта услуга. Обычно это пациент, также это могут быть животные, группы людей или животных, устройства (машина для диализа) и даже природные локации (обычно для экологических проверок).<!-- On whom or what the service is to be performed. This is usually a human patient, but can also be requested on animals, groups of humans or animals, devices such as dialysis machines, or even locations (typically for environmental scans). --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s101"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1792,8 +1792,8 @@
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">Encounter in which the request was created</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s103"><Data ss:Type="String">An encounter that provides additional information about the healthcare context in which this request is made</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Случай обслуживания, в рамках которого был создан запрос<!-- Encounter in which the request was created --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Случай обслуживания, описывающий дополнительную информацию о медицинском контексте, в котором был создан запрос<!-- An encounter that provides additional information about the healthcare context in which this request is made --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s101"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1826,8 +1826,8 @@
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s99"><Data ss:Type="String">When service should occur</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s103"><Data ss:Type="String">The date/time at which the requested service should occur.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s99"><Data ss:Type="String">Когда услуга должна произойти<!-- When service should occur --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Дата/время, когда заказанная услуга должна произойти<!-- The date/time at which the requested service should occur. --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s101"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1860,8 +1860,8 @@
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s99"><Data ss:Type="String">Preconditions for service</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s101"><Data ss:Type="String">If a CodeableConcept is present, it indicates the pre-condition for performing the service.  For example "pain", "on flare-up", etc.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s99"><Data ss:Type="String">Предварительные условия для услуги<!-- Preconditions for service --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s101"><Data ss:Type="String">Если указан CodeableConcept, то он означает предварительное условие, необходимое для выполнения услуги. Например "при боли", "при вспышке".<!-- If a CodeableConcept is present, it indicates the pre-condition for performing the service.  For example "pain", "on flare-up", etc. --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s101"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1894,8 +1894,8 @@
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">Date request signed</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s103"><Data ss:Type="String">When the request transitioned to being actionable</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Дата подписания запроса<!-- Date request signed --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Когда запрос вступает в силу<!-- When the request transitioned to being actionable --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s101"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1928,10 +1928,10 @@
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s99"><Data ss:Type="String">Who/what is requesting service</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s101"><Data ss:Type="String">The individual who initiated the request and has responsibility for its activation</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s99"><Data ss:Type="String">Кто/что заказывает услугу<!-- Who/what is requesting service --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s101"><Data ss:Type="String">Человек, инициировавший запрос и ответственный за его активацию<!-- The individual who initiated the request and has responsibility for its activation --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s101"><Data ss:Type="String">This not the dispatcher, but rather who is the authorizer.  This element is not intended to handle delegation which would generally be managed through the Provenance resource.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s101"><Data ss:Type="String">Это не диспетчер, а авторизатор. Этот элемент не предназначен для работы с делегированием, что делается обычно с помощью ресурса Provenance.<!-- This not the dispatcher, but rather who is the authorizer.  This element is not intended to handle delegation which would generally be managed through the Provenance resource. --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s104"><Data ss:Type="String">.participation[typeCode=AUT].role</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String">ORC.12, PRT</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1961,10 +1961,10 @@
     <Cell ss:StyleID="s100"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s100"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s100"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">Performer role</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s103"><Data ss:Type="String">Desired type of performer for doing the requested service. </Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Роль исполнителя<!-- Performer role --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Желаемый тип исполнителя для осуществления заказанной услуги.<!-- Desired type of performer for doing the requested service.  --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s101"><Data ss:Type="String">This is a  role, not  a participation type.  In other words, does not describe the task but describes the capacity.  For example, “compounding pharmacy”, “psychiatrist” or “internal referral”.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s101"><Data ss:Type="String">Это именно роль, а тип участия. Другими словами, не описывает задачу, а описывает возможность. Например "рецептурный отдел аптеки", "психиатр" или "внутреннее направление".<!-- This is a  role, not  a participation type.  In other words, does not describe the task but describes the capacity.  For example, “compounding pharmacy”, “psychiatrist” or “internal referral”. --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s104"><Data ss:Type="String">.participation[typeCode=PRF].role[scoper.determinerCode=KIND].code</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String">PRT, RF!-3</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1995,10 +1995,10 @@
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">Requested performer</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s103"><Data ss:Type="String">The desired performer for doing the requested service.  For example, the surgeon, dermatopathologist, endoscopist, etc.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Запрашиваемый исполнитель<!-- Requested performer --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Желаемый исполнитель для осуществления заказанной услуги. Например хирург, дермопатолог, эндоскопист.<!-- The desired performer for doing the requested service.  For example, the surgeon, dermatopathologist, endoscopist, etc. --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s101"><Data ss:Type="String">If multiple performers are present, it is interpreted as a list of *alternative* performers without any preference regardless of order.  If order of preference is needed use the [request-performerOrder extension](extension-request-performerorder.html).  Use CareTeam to represent a group of performers (for example, Practitioner A *and* Practitioner B).</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s101"><Data ss:Type="String">Если указано несколько исполнителей, они интерпретируется как список *альтернативных* исполнителей без какого-либо предпочтения независимо от порядка в списке. Если порядок важен, используйте [request-performerOrder extension](extension-request-performerorder.html). Для указания группы исполнителей используйте ресурс CareTeam (например Врач А *и* Врач Б).<!-- If multiple performers are present, it is interpreted as a list of *alternative* performers without any preference regardless of order.  If order of preference is needed use the [request-performerOrder extension](extension-request-performerorder.html).  Use CareTeam to represent a group of performers (for example, Practitioner A *and* Practitioner B). --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s104"><Data ss:Type="String">.participation[typeCode=PRF].role[scoper.determinerCode=INSTANCE]</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String">PRT, Practitioner: PRD-2/PRD-7 where PRD-3 = RT; Organization: PRD-10 where PRD-3 = RT</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2029,8 +2029,8 @@
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">Requested location</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s130"><Data ss:Type="String">The preferred location(s) where the procedure should actually happen in coded or free text form. E.g. at home or nursing day care center.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Запрашиваемая локация<!-- Requested location --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s130"><Data ss:Type="String">Предпочтительное местоположение(я), где где будет фактически проводиться процедура, в закодированной или свободно-текстовой форме. Например дома или в центре дневного ухода.<!-- The preferred location(s) where the procedure should actually happen in coded or free text form. E.g. at home or nursing day care center. --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s101"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2062,8 +2062,8 @@
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">Requested location</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s130"><Data ss:Type="String">A reference to the the preferred location(s) where the procedure should actually happen. E.g. at home or nursing day care center.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Запрашиваемое местоположение<!-- Requested location --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s130"><Data ss:Type="String">Ссылка на предпочтительное местоположение, где будет фактически проводиться процедура. Например дома или в центре дневного ухода.<!-- A reference to the the preferred location(s) where the procedure should actually happen. E.g. at home or nursing day care center. --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s101"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2095,10 +2095,10 @@
     <Cell ss:StyleID="s100"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s100"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s100"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">Explanation/Justification for procedure or service</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s103"><Data ss:Type="String">An explanation or justification for why this service is being requested in coded or textual form.   This is often for billing purposes.  May relate to the resources referred to in supportingInformation.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Объяснение/обоснование для процедуры или услуги<!-- Explanation/Justification for procedure or service --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Объяснение или обоснование, почему услуга запрашивается, в кодированной или текстовой форме. Часто указывается в целях выставления счетов. Может относиться к ресурсам, указанным в элементе supportingInformation.<!-- An explanation or justification for why this service is being requested in coded or textual form.   This is often for billing purposes.  May relate to the resources referred to in supportingInformation. --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s115"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s103"><Data ss:Type="String">This element represents why the referral is being made and may be used to decide how the service will be performed, or even if it will be performed at all.   Use `CodeableConcept.text` element if the data is free (uncoded) text as shown in the [CT Scan example](servicerequest-example-di.html).</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Данный элемент показывает, почему делается направление, и может использоваться для принятия решения, каким образом услуга будет проводиться, или даже будет ли она проводиться вообще. Используйте элемент CodeableConcept.text, если данные в свободно-текстовой форме (незакодированные), как показано в [CT Scan example](servicerequest-example-di.html).<!-- This element represents why the referral is being made and may be used to decide how the service will be performed, or even if it will be performed at all.   Use `CodeableConcept.text` element if the data is free (uncoded) text as shown in the [CT Scan example](servicerequest-example-di.html). --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s115"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s104"><Data ss:Type="String">.reasonCode</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String">ORC.16, RF1-10</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2129,10 +2129,10 @@
     <Cell ss:StyleID="s100"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s100"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s100"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">Explanation/Justification for service or service</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s103"><Data ss:Type="String">Indicates another resource that provides a justification for why this service is being requested.   May relate to the resources referred to in supportingInformation.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Объяснение/обоснование услуги или процедуры<!-- Explanation/Justification for service or service --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Указывает другой ресурс, в котором находится обоснование запроса этой услуги. Может относиться к ресурсам, указанным в элементе supportingInformation.<!-- Indicates another resource that provides a justification for why this service is being requested.   May relate to the resources referred to in supportingInformation. --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s115"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s103"><Data ss:Type="String">This element represents why the referral is being made and may be used to decide how the service will be performed, or even if it will be performed at all.    To be as specific as possible,  a reference to  *Observation* or *Condition* should be used if available.  Otherwise when referencing  *DiagnosticReport*  it should contain a finding  in `DiagnosticReport.conclusion` and/or `DiagnosticReport.conclusionCode`.   When using a  reference to *DocumentReference*, the target document should contain clear findings language providing the relevant reason for this service request .  Use  the CodeableConcept text element in `ServiceRequest.reasonCode` if the data is free (uncoded) text as shown in the [CT Scan example](servicerequest-example-di.html).</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Данный элемент показывает, почему делается направление, и может использоваться для принятия решения, каким образом услуга будет проводиться, или даже будет ли она проводиться вообще. Для того, чтобы быть как можно более конкретным, следует по возможности указывать ссылки на *Observation* или *Condition*. В противном случае, когда идет ссылка на *DiagnosticReport*, она должна содержать результаты в DiagnosticReport.conclusion и/или DiagnosticReport.conclusionCode. При указании ссылки на *DocumentReference*, целевой документ должен содержать четкое описание результатов, обеспечивая релевантную причину для этого запроса на услугу. Используйте элемент text у CodeableConcept в ServiceRequest.reasonCode, если данные в свободной (незакодированной) форме, как показано в [примере CT Scan](servicerequest-example-di.html).<!-- This element represents why the referral is being made and may be used to decide how the service will be performed, or even if it will be performed at all.    To be as specific as possible,  a reference to  *Observation* or *Condition* should be used if available.  Otherwise when referencing  *DiagnosticReport*  it should contain a finding  in `DiagnosticReport.conclusion` and/or `DiagnosticReport.conclusionCode`.   When using a  reference to *DocumentReference*, the target document should contain clear findings language providing the relevant reason for this service request .  Use  the CodeableConcept text element in `ServiceRequest.reasonCode` if the data is free (uncoded) text as shown in the [CT Scan example](servicerequest-example-di.html). --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s115"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s104"><Data ss:Type="String">.outboundRelationship[typeCode=RSON].target</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s104"><Data ss:Type="String">ORC.16</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2163,8 +2163,8 @@
     <Cell ss:StyleID="Default"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="Default"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="Default"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="Default"><Data ss:Type="String">Associated insurance coverage</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="Default"><Data ss:Type="String">Insurance plans, coverage extensions, pre-authorizations and/or pre-determinations that may be needed for delivering the requested service.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">Страховое покрытие<!-- Associated insurance coverage --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">Страховые планы, расширения покрытия, предварительные разрешения и/или предварительные определения, которые могут потребоваться для оказания запрошенной услуги.<!-- Insurance plans, coverage extensions, pre-authorizations and/or pre-determinations that may be needed for delivering the requested service. --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="Default"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="Default"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="Default"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2197,10 +2197,10 @@
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">Additional clinical information</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s103"><Data ss:Type="String">Additional clinical information about the patient or specimen that may influence the services or their interpretations.     This information includes diagnosis, clinical findings and other observations.  In laboratory ordering these are typically referred to as "ask at order entry questions (AOEs)".  This includes observations explicitly requested by the producer (filler) to provide context or supporting information needed to complete the order. For example,  reporting the amount of inspired oxygen for blood gas measurements.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Дополнительная медицинская информация<!-- Additional clinical information --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Дополнительная медицинская информация о пациенте или образце для анализа, которая может повлиять на услуги или их интерпретацию. Эта информация включает диагноз, медицинские результаты и другие наблюдения. При заказе лабораторных тестов, они обычно ссылаются на как "вопросы, которые необходимо задать при вводе заказа". Сюда входят наблюдения, явно запрашиваемые производителем (исполнителем) для обеспечения контекста или вспомогательной информации, необходимой для выполнения заказа. Например сообщение количества вдыхаемого кислорода для измерений газов крови.<!-- Additional clinical information about the patient or specimen that may influence the services or their interpretations.     This information includes diagnosis, clinical findings and other observations.  In laboratory ordering these are typically referred to as "ask at order entry questions (AOEs)".  This includes observations explicitly requested by the producer (filler) to provide context or supporting information needed to complete the order. For example,  reporting the amount of inspired oxygen for blood gas measurements. --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s101"><Data ss:Type="String">For information how the services are to be delivered. use the `instructions` element.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s101"><Data ss:Type="String">Для информации о том, каким образом услуги будут оказываться, используйте элемент instructions.<!-- For information how the services are to be delivered. use the `instructions` element. --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s104"><Data ss:Type="String">.outboundRelationship[typeCode=PERT].target</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s104"><Data ss:Type="String">Accompanying segments</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2231,10 +2231,10 @@
     <Cell ss:StyleID="s100"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s100"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s100"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">Procedure Samples</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s103"><Data ss:Type="String">One or more specimens that the laboratory procedure will use. </Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Образцы для анализа для процедуры<!-- Procedure Samples --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Один или несколько образцов для анализа, которые будут использованы в лабораторной процедуре.<!-- One or more specimens that the laboratory procedure will use.  --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s115"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s103"><Data ss:Type="String">Many diagnostic procedures need a specimen, but the request itself is not actually about the specimen. This element is for when the diagnostic is requested on already existing specimens and the request points to the specimen it applies to.    Conversely, If the request is entered first with an unknown specimen, The [Specimen](specimen.html) resource references to the ServiceRequest.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Для многих диагностических процедур необходим образец для анализа, однако сам по себе запрос не об образце для анализа. Этот элемент используется, когда диагностика заказывается на уже существующие образцы для анализа, и запрос указывает на образец для анализа, к которому он делается. И наоборот, если вначале вводится запрос на пока неизвестный образец для анализа, то ресурс [Specimen](specimen.html) буедт ссылаться на ServiceRequest.<!-- Many diagnostic procedures need a specimen, but the request itself is not actually about the specimen. This element is for when the diagnostic is requested on already existing specimens and the request points to the specimen it applies to.    Conversely, If the request is entered first with an unknown specimen, The [Specimen](specimen.html) resource references to the ServiceRequest. --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s115"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s111"><Data ss:Type="String">.participation[typeCode=SPC].role</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String">SPM</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2265,10 +2265,11 @@
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">Location on Body</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s103"><Data ss:Type="String"> Anatomic location where the procedure should be performed. This is the target site.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s102"><Data ss:Type="String">Knowing where the procedure is performed is important for tracking if multiple sites are possible.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s103"><Data ss:Type="String">Only used if not implicit in the code found in ServiceRequest.code.  If the use case requires BodySite to be handled as a separate resource instead of an inline coded element (e.g. to identify and track separately)  then use the standard extension [procedure-targetBodyStructure](extension-procedure-targetbodystructure.html)</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Анатомическое месторасположение<!-- Location on Body --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Анатомическое месторасположение, где будет проводиться процедура. Это целевое место.<!--  Anatomic location where the procedure should be performed. This is the target site. --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s102"><Data ss:Type="String">Информация о том, где будет проводиться процедура, важно для отслеживания, когда возможны несколько мест.<!-- Knowing where the procedure is performed is important for tracking if multiple sites are possible. --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Используется, только если не вытекает из кода в элементе ServiceRequest.code. Если сценарий требует задействовать BodySite как отдельный ресурс вместо встроенного закодированного элемента (например для независимой идентификации и отслеживания), тогда используйте стандартное расширение [procedure-targetBodyStructure](extension-procedure-targetbodystructure.html)
+	<!-- Only used if not implicit in the code found in ServiceRequest.code.  If the use case requires BodySite to be handled as a separate resource instead of an inline coded element (e.g. to identify and track separately)  then use the standard extension [procedure-targetBodyStructure](extension-procedure-targetbodystructure.html) --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s104"><Data ss:Type="String">targetSiteCode</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String">SPM</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2299,8 +2300,8 @@
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">Comments</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s103"><Data ss:Type="String">Any other notes and comments made about the service request. For example, internal billing notes.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Комментарии<!-- Comments --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Любые другие примечания и комментарии к запросу на услугу. Например внутренние примечания к выставлению счетов.<!-- Any other notes and comments made about the service request. For example, internal billing notes. --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s101"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2333,8 +2334,8 @@
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">Patient or consumer-oriented instructions</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s103"><Data ss:Type="String">Instructions in terms that are understood by the patient or consumer.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Инструкции для пациента или потребителя<!-- Patient or consumer-oriented instructions --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Инструкции в форме, понятной пациенту или потребителю.<!-- Instructions in terms that are understood by the patient or consumer. --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s101"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2366,9 +2367,9 @@
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s99"><Data ss:Type="String">Text Summary</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s99"><Data ss:Type="String">A textual description of the referral</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s101"><Data ss:Type="String">The reason element gives a short description of why the referral is being made, the description expands on this to support a more complete clinical summary</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s99"><Data ss:Type="String">Текстовое резюме<!-- Text Summary --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s99"><Data ss:Type="String">Текстовое описание направления<!-- A textual description of the referral --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s101"><Data ss:Type="String">Элемент reason даёт краткое описание, почему делается направление, элемент description расширяет его для поддержки более полной клинической сводки<!-- The reason element gives a short description of why the referral is being made, the description expands on this to support a more complete clinical summary --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="22" ss:StyleID="s103"><Data ss:Type="String">.inboundRelationship(typeCode=SUBJ].source[classCode=ANNGEN, moodCode=EVN].value[xsi:type=ST]</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s104"><Data ss:Type="String">Varies by domain</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2399,10 +2400,10 @@
     <Cell ss:StyleID="s100"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s100"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s100"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">Request provenance</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s103"><Data ss:Type="String">Key events in the history of the request.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Происхождение запроса<!-- Request provenance --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Ключевые события в истории запроса.<!-- Key events in the history of the request. --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s115"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s103"><Data ss:Type="String">This might not include provenances for all versions of the request – only those deemed “relevant” or important.&#xD;This SHALL NOT include the Provenance associated with this current version of the resource.  (If that provenance is deemed to be a “relevant” change, it will need to be added as part of a later update.  Until then, it can be queried directly as the Provenance that points to this version using _revinclude&#xD;All Provenances should have some historical version of this Request as their subject.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Сюда не входит происхождение всех версий запроса - только те, что считаются релевантными или важными.&#xD;Сюда не должны входить Provenance, ассоциированные с этой текущей версией ресурса. (Если этот Provenance считается релевантным изменением, его необходимо добавить как часть последующего обновления. До тех пор, ео можно запрашивать напрямую как Provenance, которые указывает на эту версию, с помощью _revinclude&#xD; Все Provenance должны иметь какую-то историческую версию этого запроса в качестве своего субъекта.<!-- This might not include provenances for all versions of the request – only those deemed “relevant” or important.&#xD;This SHALL NOT include the Provenance associated with this current version of the resource.  (If that provenance is deemed to be a “relevant” change, it will need to be added as part of a later update.  Until then, it can be queried directly as the Provenance that points to this version using _revinclude&#xD;All Provenances should have some historical version of this Request as their subject. --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s115"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s104"><Data ss:Type="String">.inboundRelationship(typeCode=SUBJ].source[classCode=CACT, moodCode=EVN]</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s104"><Data ss:Type="String">N/A</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>

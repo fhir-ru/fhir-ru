@@ -172,7 +172,7 @@ public class JsonSpecGenerator extends OutputStreamWriter {
       rn = root.getName();
 
     
-    write("{<span style=\"float: right\"><a title=\"Documentation for this format\" href=\""+prefix+"json.html\"><img src=\""+prefix+"help.png\" alt=\"doco\"/></a></span>\r\n");
+    write("{<span style=\"float: right\"><a title=\"Документация по этому формату\" href=\""+prefix+"json.html\"><img src=\""+prefix+"help.png\" alt=\"doco\"/></a></span>\r\n");
     if (definitions.hasResource(root.getName()) || Utilities.existsInList(root.getName(), "Parameters")) {
       write("  \"resourceType\" : \"");
       if (defPage == null)
