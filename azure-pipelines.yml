@@ -37,40 +37,6 @@ steps:
   displayName: 'Build via build.sh'
 
 - bash: |
-   SVNREV=$(git rev-parse --short HEAD)
-   LASTMSG=$(git log --oneline --graph HEAD~1..)
-   
-   ~/.local/bin/zulip-send  \
-   --user fhir-bot@fhir.me  \
-   --api-key $(ZULIP_API_KEY) \
-    --site https://chat.fhir.org \
-   --stream  "committers/notification" \
-   --subject "FHIR Build Status" \
-    --message "Build success :thumbs_up:! @${SVNREV} [build logs](https://dev.azure.com/fhir-build/build.fhir.org/_build/results?buildId=${BUILD_BUILDNUMBER}&_a=summary&view=logs)
-   \`\`\`
-   ${LASTMSG}
-   \`\`\`
-   "
-  displayName: 'Success Notification'
-
-- bash: |
-   SVNREV=$(git rev-parse --short HEAD)
-   
-   FAIL_MSG=$(cat publish/simple-error.txt)
-   
-   ~/.local/bin/zulip-send  \
-   --user fhir-bot@fhir.me  \
-   --api-key $(ZULIP_API_KEY) \
-    --site https://chat.fhir.org \
-   --stream  "committers/notification" \
-   --subject "FHIR Build Status" \
-    --message "Build failed :thumbs_down:! @${SVNREV} [build logs](https://dev.azure.com/fhir-build/build.fhir.org/_build/results?buildId=${BUILD_BUILDNUMBER}&_a=summary&view=logs)
-   
-   *${FAIL_MSG}*"
-  displayName: 'Failure Notification'
-  condition: failed()
-
-- bash: |
    echo "Will publish!"
    
    PASSPHRASE=$(DEPLOY_KEY_PASSPHRASE)
@@ -79,7 +45,6 @@ steps:
    chmod 400 ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa
    git config --global user.email "latest@fhir.me"
    git config --global user.name "FHIR Build"
-   echo -e "Host github.com\n  IdentityFile ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa" > ~/.ssh/config
    mkdir fhir-ru.github.io
    cd fhir-ru.github.io
    git init
