@@ -41,16 +41,23 @@ steps:
    
    PASSPHRASE=$(DEPLOY_KEY_PASSPHRASE)
    
-   echo $DEPLOY_KEY_ENCRYPTED | openssl  enc -aes-256-cbc -d  -pass pass:$PASSPHRASE  -base64 -A > ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa
+   echo $(DEPLOY_KEY_ENCRYPTED) | openssl  enc -aes-256-cbc -d  -pass pass:$PASSPHRASE  -base64 -A > ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa
    chmod 400 ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa
-   git config --global user.email "latest@fhir.me"
-   git config --global user.name "FHIR Build"
+   
+   ls -l ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa
+   wc ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa
+
    git init
+
+   git config user.email "azure-devops-build@fhir.org"
+   git config user.name "Azure Deb Ops Builder"
    git remote add origin git@github.com:fhir-ru/built-test
+
    touch .test
    ../remove_files_larger_than_100mg_for_gh_pages_compatibility.sh
    git add -A .
    git commit -m "Azure DevOps docs build"
+   
    GIT_SSH_COMMAND='ssh -i ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa'
    git push -f origin master
    rm ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa
