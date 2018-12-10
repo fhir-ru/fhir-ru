@@ -45,12 +45,9 @@ steps:
    chmod 400 ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa
    git config --global user.email "latest@fhir.me"
    git config --global user.name "FHIR Build"
-   mkdir fhir-ru.github.io
-   cd fhir-ru.github.io
    git init
    git remote add origin git@github.com:fhir-ru/built-test
    touch .test
-   cp -r ../publish/* .
    ../remove_files_larger_than_100mg_for_gh_pages_compatibility.sh
    git add -A .
    git commit -m "Azure DevOps docs build"
