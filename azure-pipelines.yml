@@ -58,8 +58,8 @@ steps:
    git add -A .
    git commit -m "Azure DevOps docs build"
    
-   GIT_SSH_COMMAND='ssh -i ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa'
-   git push -f origin master
+   ssh -i ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa git@github.com
+   GIT_SSH_COMMAND='ssh -i ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa' git push -f origin master
    rm ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa
   workingDirectory: publish
 
