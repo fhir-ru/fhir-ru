@@ -51,7 +51,7 @@ steps:
 
    git config user.email "azure-devops-build@fhir.org"
    git config user.name "Azure Deb Ops Builder"
-   git remote add origin git@github.com:fhir-ru/built-test
+   git remote add origin git@github.com:fhir-ru/fhir-ru.github.io
 
    touch .test
    ../remove_files_larger_than_100mg_for_gh_pages_compatibility.sh
