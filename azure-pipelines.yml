@@ -4,12 +4,13 @@ queue:
   name: Default
 steps:
 - bash: |
+   cp  -R source.ru/* source
    set -ev
    git fetch --depth 20
    
    [ -d publish ] && rm -rf publish
    
-   NAME="Continuous Integration Build"
+   NAME="Непрерывная интеграционная сборка"
    SVNREV=$(git rev-parse --short HEAD)
    
    antBuild (){
@@ -50,7 +51,7 @@ steps:
    git init
 
    git config user.email "azure-devops-build@fhir.org"
-   git config user.name "Azure Deb Ops Builder"
+   git config user.name "Azure Dev Ops Builder"
    git remote add origin git@github.com:fhir-ru/fhir-ru.github.io
 
    touch .test
