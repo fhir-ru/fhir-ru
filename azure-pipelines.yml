@@ -4,7 +4,7 @@ queue:
   name: Default
 steps:
 - bash: |
-   cp  -R source.ru/* source
+   cp -R source.ru/* source
    set -ev
    git fetch --depth 20
    
