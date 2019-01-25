@@ -418,11 +418,11 @@ public class HierarchicalTableGenerator extends TranslatingUtilities {
     
     model.setDocoImg(prefix+"help16.png");
     model.setDocoRef(prefix+"formats.html#table");
-    model.getTitles().add(new Title(null, model.getDocoRef(), translate("sd.head", "РРјСЏ"), translate("sd.hint", "The logical name of the element"), null, 0));
-    model.getTitles().add(new Title(null, model.getDocoRef(), translate("sd.head", "Р¤Р»Р°РіРё"), translate("sd.hint", "Information about the use of the element"), null, 0));
-    model.getTitles().add(new Title(null, model.getDocoRef(), translate("sd.head", "РљР°СЂРґ."), translate("sd.hint", "Minimum and Maximum # of times the the element can appear in the instance"), null, 0));
-    model.getTitles().add(new Title(null, model.getDocoRef(), translate("sd.head", "РўРёРї"), translate("sd.hint", "Reference to the type of the element"), null, 100));
-    model.getTitles().add(new Title(null, model.getDocoRef(), translate("sd.head", "РћРїРёСЃР°РЅРёРµ Рё РѕРіСЂР°РЅРёС‡РµРЅРёСЏ"), translate("sd.hint", "Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ РѕР± СЌР»РµРјРµРЅС‚Рµ"), null, 0));
+    model.getTitles().add(new Title(null, model.getDocoRef(), translate("sd.head", "Имя"), translate("sd.hint", "The logical name of the element"), null, 0));
+    model.getTitles().add(new Title(null, model.getDocoRef(), translate("sd.head", "Флаги"), translate("sd.hint", "Information about the use of the element"), null, 0));
+    model.getTitles().add(new Title(null, model.getDocoRef(), translate("sd.head", "Кард."), translate("sd.hint", "Minimum and Maximum # of times the the element can appear in the instance"), null, 0));
+    model.getTitles().add(new Title(null, model.getDocoRef(), translate("sd.head", "Тип"), translate("sd.hint", "Reference to the type of the element"), null, 100));
+    model.getTitles().add(new Title(null, model.getDocoRef(), translate("sd.head", "Описание и ограничения"), translate("sd.hint", "Дополнительная информация об элементе"), null, 0));
     if (isLogical) {
       model.getTitles().add(new Title(null, prefix+"structuredefinition.html#logical", "Implemented As", "How this logical data item is implemented in a concrete resource", null, 0));
     }
@@ -467,7 +467,7 @@ public class HierarchicalTableGenerator extends TranslatingUtilities {
       XhtmlNode a = tc.addTag("a").setAttribute("title", translate("sd.doco", "Legend for this format")).setAttribute("href", model.getDocoRef());
       if (model.getDocoImg() != null)
         a.addTag("img").setAttribute("alt", "doco").setAttribute("style", "background-color: inherit").setAttribute("src", model.getDocoImg());
-a.addText(" "+translate("sd.doco", "Р”РѕРєСѓРјРµРЅС‚Р°С†РёСЏ РїРѕ СЌС‚РѕРјСѓ С„РѕСЂРјР°С‚Сѓ"));
+a.addText(" "+translate("sd.doco", "Документация по этому формату"));
     }
     return table;
   }
