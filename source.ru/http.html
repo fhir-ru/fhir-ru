@@ -333,7 +333,7 @@ to the server.
 UTF-8 encoding SHALL be used for the mime type <code>application/fhir</code>. This MAY be specified as a 
 MIME type parameter to the application/fhir mime type, but is not required. 
 </p>
-<a name="version-parameter"> </a>
+<a name="version-parameter"></a>
 <h4>FHIR Version Parameter</h4>
 <p>
 This specification defines the MIME-type parameter <code>fhirVersion</code> as a parameter to indicate 
@@ -596,7 +596,7 @@ Servers can choose whether or not to support client defined ids, and indicate su
 using <a href="capabilitystatement-definitions.html#CapabilityStatement.rest.resource.updateCreate">CapabilityStatement.rest.resource.updateCreate</a>.
 </p>
 
-<a name="rejecting-updates"> </a>
+<a name="rejecting-updates"></a>
 <h4>Rejecting Updates</h4>
 <p>
 Servers are permitted to reject update interactions because of integrity concerns or other business rules, and return HTTP status codes accordingly (usually a <code>422</code>).
@@ -1235,7 +1235,7 @@ operations within the Batch. To determine the status of the operations, look ins
 entry of other than 2xx (200, 202 etc) indicates that processing the request in the entry failed.
 </p>
 
-<a name="trules"> </a>
+<a name="trules"></a>
 <h4>Transaction Processing Rules</h4>
 <p>
 For a <code>transaction</code>, servers SHALL either accept all actions and return a <code>200</code> OK, along with a
@@ -1685,7 +1685,7 @@ Servers that do not support HEAD MUST respond in accordance with the HTTP specif
 for example using a 405 ("method not allowed") or a 501 ("not implemented").
 </p>
 
-<a name="custom"> </a>
+<a name="custom"></a>
 <h3>Custom Headers</h3>
 <p>
 This specification defines or recommends some custom headers that implementers

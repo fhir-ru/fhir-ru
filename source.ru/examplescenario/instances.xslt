@@ -157,7 +157,7 @@
 									</ul>
 
 									<h1 class="self-link-parent">
-										<span class="sectioncount">???8.12???<a name="8.12"> </a>
+										<span class="sectioncount">???8.12???<a name="8.12"></a>
 										</span>
 										<xsl:value-of select="/ExampleScenario/process/title/@value"/>
 										<a href="account.html#8.12" title="link to here" class="self-link">
