@@ -3,23 +3,20 @@
 These elements SHALL always appear in this order. These basic elements shared by all resources come first
 in order to support consistent definitions for schema and UML derived code.
 -->
+[%settitle Workflow Module%]
 <html>
   <head>
-    <meta name="generator"
-    content="HTML Tidy for HTML5 (experimental) for Windows https://github.com/w3c/tidy-html5/tree/c63cc39" />
-    <title></title>
+[%file newheader%]    
   </head>
-  <body>[%settitle Workflow Module%] [%file newheader%] [%file newnavbar%]
+  <body>
+  [%file newnavbar%]
   <div class="col-12">
     <table class="colsi">
       <tr>
-        <td id="wg">Work Group 
-        <a href="[%wg%20fhir%]">[%wgt fhir%]</a></td>
-        <td id="ballot">
-        <a href="ballot-intro.html#process">Ballot Status</a>: 
-        <!--!ns!-->
-        <a href="versions.html#std-process">Informative</a></td>
-      </tr>
+                <td id="wg">Work Group <a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> </td>
+                <td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:
+                    <!--!ns!--><a href="versions.html#std-process">Informative</a></td>
+            </tr>
     </table>
     <a name="root"></a>
     <h2>Модуль рабочего процесса 
@@ -314,5 +311,7 @@ in order to support consistent definitions for schema and UML derived code.
       и кассаций (reversals) 
       <!-- Examining how workflow is used for <a href="https://en.wikipedia.org/wiki/Compensating_transaction">compensating actions</a>, for example account transactions and reversals --></li>
     </ul>
-  </div>[%file newfooter%]</body>
+  </div>
+  [%file newfooter%]
+  </body>
 </html>
