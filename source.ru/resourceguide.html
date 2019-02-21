@@ -2,7 +2,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-[%settitle Guide to Resources%]
+[%settitle Путеводитель по ресурсам%]
 [%file newheader%]
 </head>
 <body>
@@ -14,6 +14,7 @@
 <table class="colsi"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Informative</a></td></tr></table>
 
 <p>
+В спецификации FHIR определён набор ресурсов и инфраструктура для работы с ними. Чтобы использовать FHIR при создании решений по интеграции, реализаторам необходимо найти соответствие между своими задачами и ресурсами и их содержимым.
 The FHIR specification defines a set of resources, and an infrastructure for handling resources.
 In order to use FHIR to create solutions for integration requirements, implementers must map their
 problems to resources and their content.
@@ -23,34 +24,56 @@ The <a href="resourcelist.html">Resource List</a> provides views of the resource
 organized in several different ways, and is the primary entry point to the resources. 
 </p>
 <p>
+На этой странице приведено более подробное описание ресурсов и их функциональное назначение, чтобы помочь реализаторам в понимании их назначения и области действия, а также вспомогательная классификация.
 This page describes the resources and their functional intent in more detail to assist implementers to
 understand their purpose and scope, and their supporting classifications.
 </p>
 
 <p>
-Where to find common concepts in this specification:
+Где смотреть информацию по общим понятиям данной спецификации:
+<!-- Where to find common concepts in this specification: -->
 </p>
 <table class="grid">
  <tr>
-  <td><b>Concept</b></td>
+   <td><b>Понятие</b></td>
+  <td><b>Пример</b></td>
+  <td><b>Где найти</b></td>
+<!--   <td><b>Concept</b></td>
   <td><b>Example</b></td>
-  <td><b>Where to find</b></td>
+  <td><b>Where to find</b></td> -->
  </tr>
-
- <tr><td colspan="3"><b>Clinical Findings</b></td></tr>
+ 
+  <tr><td colspan="3"><b>Результаты медицинских исследований</b></td></tr>
+ <tr><td>Лабораторные результаты</td><td>Панель тестов, например общий анализ крови с дифференциалом, анализы для оценки функции печени</td><td><a href="diagnosticreport.html">DiagnosticReport</a> с <a href="observation.html">Observations</a></td></tr>
+ <tr><td>Результаты радиологических исследований</td><td>КТ, МРТ, рентгенография, УЗИ</td><td><a href="diagnosticreport.html">DiagnosticReport</a> (некоторые с <a href="observation.html">Observations</a>)</td></tr>
+ <tr><td>Результаты диагностических исследований</td><td>ЭКГ, анализ лёгочной функции, ЭЭГ</td><td><a href="observation.html">Observations</a> (и, возможно, <a href="diagnosticreport.html">DiagnosticReport</a>)</td></tr>
+ <tr><td>Основные показатели состояния организма</td><td>Температура, кровяное давление, частота сердцебиения, частота дыхания</td><td><a href="observation.html">Observation</a></td></tr>
+ <tr><td>Другие результаты медицинских осмотров</td><td>Результаты выслушивания (больного)</td><td><a href="observation.html">Observation</a></td></tr>
+ <tr><td>Табличные данные по катетерам легочной артерии</td><td>Давление в легочной артерии</td><td><a href="observation.html">Observation</a></td></tr>
+<!--  <tr><td colspan="3"><b>Clinical Findings</b></td></tr>
  <tr><td>Laboratory Results</td><td>Blood panels such as CBC with Differential, Liver Panel, etc.</td><td><a href="diagnosticreport.html">DiagnosticReport</a> with <a href="observation.html">Observations</a></td></tr>
  <tr><td>Imaging Study Findings</td><td>CT Scans, MRI, Plain Radiographs, Ultrasounds)</td><td><a href="diagnosticreport.html">DiagnosticReport</a> (some with <a href="observation.html">Observations</a>)</td></tr>
  <tr><td>Diagnostic Test Results</td><td>EKG, pulmonary function test, EEG</td><td><a href="observation.html">Observations</a> (and maybe a <a href="diagnosticreport.html">DiagnosticReport</a>)</td></tr>
  <tr><td>Vital Signs</td><td>Temperature, Blood Pressure, Heart Rate, Respiratory Rate</td><td><a href="observation.html">Observation</a></td></tr>
  <tr><td>Other Physical Exam Findings</td><td>Auscultation findings</td><td><a href="observation.html">Observation</a></td></tr>
- <tr><td>Pulmonary Artery Catheter readings</td><td>Pulmonary artery pressure</td><td><a href="observation.html">Observation</a></td></tr>
+ <tr><td>Pulmonary Artery Catheter readings</td><td>Pulmonary artery pressure</td><td><a href="observation.html">Observation</a></td></tr> -->
+ 
+  <tr><td colspan="3"><b>Проблемы, аллергии пациента и неблагоприятные события</b></td></tr> 
+ <tr><td>Аллергия</td><td>Пищевые или лекарственные аллергии</td><td><a href="allergyintolerance.html">AllergyIntolerance</a> </td></tr>
+ <tr><td>Клинический диагноз</td><td>Сахарный диабет, застойная сердечная недостаточность</td><td><a href="condition.html">Condition</a> </td></tr>
+ <tr><td>Adverse Event / Reaction</td><td>Отрицательная побочная реакция на вещество, падения, нежелательные побочные проявления после операции, внутрибольничные инфекции</td><td><a href="adverseevent.html">AdverseEvent</a></td></tr> 
 
- <tr><td colspan="3"><b>Patient Problems, Allergies and Adverse Events</b></td></tr>
- <tr><td>Allergy</td><td>Food or drug allergies</td><td><a href="allergyintolerance.html">AllergyIntolerance</a> </td></tr>
- <tr><td>Clinical Diagnosis</td><td>Diabetes, Congestive Heart Failure</td><td><a href="condition.html">Condition</a> </td></tr>
- <tr><td>Adverse Event</td><td>Adverse reaction to an agent, falls, adverse surgical events, hospital infections</td><td><a href="adverseevent.html">AdverseEvent</a> </td></tr>
 
- <tr><td colspan="3"><b>Patient History</b></td></tr>
+ <tr><td colspan="3"><b>История болезни</b></td></tr>
+ <tr><td>Основная жалоба больного</td><td>Кашель, боль, жар, утомление</td><td><a href="condition.html">Condition</a> </td></tr>
+ <tr><td>Хирургический анамнез</td><td>Аппендэктомия, герниопластика</td><td><a href="procedure.html">Procedure</a> </td></tr>
+ <tr><td>Перенесённые заболевания (анамнез)</td><td>Сахарный диабет, застойная сердечная недостаточность</td><td><a href="condition.html">Condition</a> </td></tr>
+ <tr><td>Карточка назначений (Medication Administration Record)</td><td>Варфарин 5 мг перорально - введён 12/10/2013 в 15:00</td><td><a href="medicationadministration.html">MedicationAdministration</a> </td></tr>
+ <tr><td>Домашние медикаменты</td><td>Варфарин 5 мг, 30-дневное количество, выдан 12/01/2013</td><td><a href="medicationstatement.html">MedicationStatement</a> </td></tr>
+ <tr><td>Социальный анамнез</td><td>сексуальное поведение, статус курильщика, употребление алкоголя, употребление запрещённых веществ</td><td><a href="observation.html">Observation</a> </td></tr>
+ <tr><td>Семейный анамнез</td><td>У матери сахарный диабет</td><td><a href="familymemberhistory.html">FamilyMemberHistory</a> </td></tr>
+ <tr><td>Признаки и симптомы</td><td>из исследования систем организма - боль, жар</td><td><a href="condition.html">Condition</a> </td></tr> 
+<!--  <tr><td colspan="3"><b>Patient History</b></td></tr>
  <tr><td>Chief Complaint</td><td>Cough, Pain, Fever, Fatigue</td><td><a href="condition.html">Condition</a> </td></tr>
  <tr><td>Past Surgical History</td><td>Appendectomy, Hernia repair</td><td><a href="procedure.html">Procedure</a> </td></tr>
  <tr><td>Past Medical History</td><td>Diabetes, Congestive heart failure</td><td><a href="condition.html">Condition</a> </td></tr>
@@ -58,27 +81,31 @@ Where to find common concepts in this specification:
  <tr><td>Home Meds</td><td>Warfarin 5mg, 30 day supply, dispensed on 12/01/2013</td><td><a href="medicationstatement.html">MedicationStatement</a> </td></tr>
  <tr><td>Social History</td><td>Sexual behavior, Smoking status, Alcohol intake, Illicit drug use</td><td><a href="observation.html">Observation</a> </td></tr>
  <tr><td>Family History</td><td>Mother has diabetes</td><td><a href="familymemberhistory.html">FamilyMemberHistory</a> </td></tr>
- <tr><td>Signs &amp; Symptoms</td><td>from a review of systems- Pain, Fever</td><td><a href="condition.html">Condition</a> </td></tr>
+ <tr><td>Signs &amp; Symptoms</td><td>from a review of systems- Pain, Fever</td><td><a href="condition.html">Condition</a> </td></tr> -->
 
- <tr><td colspan="3"><b>Suggested Physician Orders </b></td></tr>
- <tr><td>Proposal for a laboratory test</td><td>A blood panel, a stool analysis</td><td><a href="servicerequest.html">ServiceRequest</a> </td></tr>
- <tr><td>Proposal for an imaging procedure</td><td>CT Scan, MRI, X-Rays</td><td><a href="servicerequest.html">ServiceRequest</a> </td></tr>
- <tr><td>Proposed Diet Order</td><td>An oral diet order</td><td><a href="nutritionorder.html">NutritionOrder</a> </td></tr>
- <tr><td>Proposed respiratory order</td><td>Oxygen delivery</td><td>Not done yet</td></tr>
- <tr><td>Proposed Medications</td><td>Aspirin, Lisinopril</td><td><a href="medicationrequest.html">MedicationRequest</a> </td></tr>
- <tr><td>Proposed Supply</td><td>Wheel Chair, Food Tray</td><td><a href="supplyrequest.html">SupplyRequest</a> </td></tr>
-
- <tr><td colspan="3"><b>Interdisciplinary Care Planning</b></td></tr>
+  <tr><td colspan="3"><b>Suggested Physician Orders </b></td></tr>
+ <tr><td>Предложение лабораторного анализа</td><td>Анализ крови, анализ кала</td><td><a href="servicerequest.html">ServiceRequest</a> </td></tr>
+ <tr><td>Предложение радиологической диагностики</td><td>КТ, МРТ, рентген</td><td><a href="servicerequest.html">ServiceRequest</a> </td></tr>
+ <tr><td>Предложенный заказ питания</td><td>Заказ орального питания</td><td><a href="nutritionorder.html">NutritionOrder</a> </td></tr>
+ <tr><td>Предложенный респираторный заказ</td><td>Подача кислорода</td><td>Пока нет</td></tr>
+ <tr><td>Предложенные медикаменты</td><td>Аспирин, лизиноприл</td><td><a href="medicationrequest.html">MedicationRequest</a> </td></tr>
+ <tr><td>Предложенное обеспечение</td><td>Инвалидное кресло, поднос для еды</td><td><a href="supplyrequest.html">SupplyRequest</a> </td></tr>
+ 
+  <tr><td colspan="3"><b>Междисциплинарное планирование ухода</b></td></tr>
+ <tr><td>Цель пациента</td><td>Уменьшить риск падений, сбросить вес</td><td><a href="goal.html">Goal</a> (как часть <a href="careplan.html">CarePlan</a>)</td></tr>
+ <tr><td>Вмешательство</td><td>Оценка состояния пациента</td><td><a href="servicerequest.html">ServiceRequest</a> </td></tr>
+<!--  <tr><td colspan="3"><b>Interdisciplinary Care Planning</b></td></tr>
  <tr><td>Patient Goal</td><td>Reduce risk of falls, lose weight</td><td><a href="goal.html">Goal</a> (as part of a <a href="careplan.html">CarePlan</a>)</td></tr>
- <tr><td>Intervention</td><td>Patient assessments</td><td><a href="servicerequest.html">ServiceRequest</a> </td></tr>
+ <tr><td>Intervention</td><td>Patient assessments</td><td><a href="servicerequest.html">ServiceRequest</a> </td></tr> -->
 </table>
 
 <p>
-In addition, to the information on this page, see also <a href="usecases.html">Common Use Cases</a>.
+В дополнение к информации на этой странице, смотрите также <a href="usecases.html">Распространённые сценарии использования</a>.
+<!-- In addition, to the information on this page, see also <a href="usecases.html">Common Use Cases</a>. -->
 </p>
 
 <a name="w5"></a>
-<h3>Resource Classification</h3>
+<h3>Классификация ресурсов<!-- Resource Classification --></h3>
 
 <p>
 The following frameworks are provided for helping to understand

@@ -15,6 +15,7 @@
 [%normative page infrastructure%]
 
 <p>
+FHIR является 'RESTful'-спецификацией на основе общего уровня применения термина REST в индустрии. На практике FHIR поддерживает только второй уровень <a href="https://martinfowler.com/articles/richardsonMaturityModel.html">REST Maturity model</a> в <a href="https://martinfowler.com/articles/richardsonMaturityModel.html">REST Maturity model</a> в рамках основной спецификации, хотя полное соответствие уровню 3 возможно при использовании <a href="extensibility.html">расширений</a>. Поскольку FHIR - это стандарт, он полагается на стандартизацию структуры и интерфейсов ресурсов. Это можно считать нарушением принципов REST, однако является ключом к обеспечению непротиворечивой совместимости различных систем.
 FHIR is described as a 'RESTful' specification based on common industry level use of the term REST. In practice, FHIR only supports Level 2 of the
 <a href="https://martinfowler.com/articles/richardsonMaturityModel.html">REST Maturity model</a> as part of the core specification, though full Level 3
 conformance is possible through the use of <a href="extensibility.html">extensions</a>. Because FHIR is a standard, it relies on the standardization of
@@ -22,11 +23,17 @@ resource structures and interfaces.  This may be considered a violation of REST 
 diverse systems.
 </p>
 <p>
-Each "resource type" has the same set of interactions defined that can be used to manage the resources
+В FHIR описан определенный набор взаимодействий, с использованием которого можно  достаточно тонко 
+управлять разными типами ресурсов.
+Приложения, которые заявляют поддержку FHIR,  должны реализовать "RESTful API" спецификацию (см. <a href="conformance-rules.html">Conformance</a>).
+<!-- Each "resource type" has the same set of interactions defined that can be used to manage the resources
 in a highly granular fashion. Applications claiming conformance to this framework
-claim to be conformant to "RESTful FHIR"  (see <a href="conformance-rules.html">Conformance</a>).
+claim to be conformant to "RESTful FHIR"  (see <a href="conformance-rules.html">Conformance</a>). -->
 </p>
 <p>
+В рамках RESTful взаимодействий, транзакции происходят на сервере с помощью HTTP запросов и ответов.
+Спецификация не описывает детали аутентификации, авторизации и аудита 
+(для более детальной информации см. <a href="security.html">Security Page</a>). Все операции описаны для синхронного использования, также описан <a href="async.html">Шаблон асинхронного использования</a>.
 Note that in this RESTful framework, transactions are performed directly on the server resource using an
 HTTP request/response. The API does not directly address authentication, authorization, and audit
 collection - for further information, see the <a href="security.html">Security Page</a>. All the 
@@ -34,39 +41,41 @@ interactions are all described for synchronous use, and an <a href="async.html">
 pattern</a> is also defined.
 </p>
 <p>
-The API describes the FHIR resources as a set of operations (known as "interactions") on resources where
+API состоит из набора операций (взаимодействий) над ресурсами, которые сгруппированы по типам в коллекции.
+Серверы могут выбирать, какие из этих операций делать доступными и какие типы ресурсов они поддерживают. Серверы ДОЛЖНЫ предоставлять <a href="capabilitystatement.html">Capability Statement</a>, в котором указывать поддерживаемые операции и ресурсы.
+<!-- The API describes the FHIR resources as a set of operations (known as "interactions") on resources where 
 individual resource instances are managed in collections by their type. Servers can choose which of
 these interactions are made available and which resource types they support. Servers SHALL
 provide a <a href="capabilitystatement.html">Capability Statement</a> that specifies which interactions and
-resources are supported.
+resources are supported. -->
 </p>
 <p>
+В дополнение к многочисленным <a href="#general">общим рассуждениями</a>, на этой странице описаны следующие операции:
 In addition to a number of <a href="#general">General Considerations</a> this page defines the following interactions:
 </p>
 <a name="interactions"></a>
 <a name="operations"></a>
-<table class="list">
-  <tr><td><b>Instance Level Interactions</b></td><td></td></tr>
-  <tr><td><a href="#read">read</a></td><td>Read the current state of the resource</td></tr>
-  <tr><td><a href="#vread">vread</a></td><td>Read the state of a specific version of the resource</td></tr>
-  <tr><td><a href="#update">update</a></td><td>Update an existing resource by its id (or create it if it is new)</td></tr>
+  <tr><td><b>Операции на уровне ресурсов</b></td><td></td></tr>
+  <tr><td><a href="#read">read</a></td><td>Получение текущего состояния ресурса</td></tr>
+  <tr><td><a href="#vread">vread</a></td><td>Получение конкретной версии ресурса</td></tr>
+  <tr><td><a href="#update">update</a></td><td>Обновление ресурса по идентификатору (или создание, если его еще нет)</td></tr>
   <tr><td><a href="#patch">patch</a></td><td>Update an existing resource by posting a set of changes to it</td></tr>
-  <tr><td><a href="#delete">delete</a></td><td>Delete a resource</td></tr>
-  <tr><td><a href="#history">history</a></td><td>Retrieve the change history for a particular resource</td></tr>
-  <tr><td colspan="2"><b>Type Level Interactions</b></td></tr>
-  <tr><td><a href="#create">create</a></td><td>Create a new resource with a server assigned id</td></tr>
-  <tr><td><a href="#search">search</a></td><td>Search the resource type based on some filter criteria</td></tr>
-  <tr><td><a href="#history">history</a></td><td>Retrieve the change history for a particular resource type</td></tr>
-  <tr><td colspan="2"><b>Whole System Interactions</b></td></tr>
-  <tr><td><a href="#capabilities">capabilities</a></td><td>Get a capability statement for the system</td></tr>
-  <tr><td><a href="#transaction">batch/transaction</a></td><td>Update, create or delete a set of resources in a single interaction</td></tr>
-  <tr><td><a href="#history">history</a></td><td>Retrieve the change history for all resources</td></tr>
-  <tr><td><a href="#search">search</a></td><td>Search across all resource types based on some filter criteria</td></tr>
+  <tr><td><a href="#delete">delete</a></td><td>Удаление ресурса</td></tr>
+  <tr><td><a href="#history">history</a></td><td>Получение истории изменений определённого ресурса</td></tr>
+  <tr><td colspan="2"><b>Операции на уровне типов</b></td></tr>
+  <tr><td><a href="#create">create</a></td><td>Создание нового ресурса (id назначает сервер)</td></tr>
+  <tr><td><a href="#search">search</a></td><td>Поиск среди ресурсов одного типа по разным критериям</td></tr>
+  <tr><td><a href="#history">history</a></td><td>Получение полной истории для ресурсов определенного типа</td></tr>
+  <tr><td colspan="2"><b>Операции общесистемного уровня</b></td></tr>
+  <tr><td><a href="#capabilities">capabilities</a></td><td>Получение заявления о соответствии системы</td></tr>
+  <tr><td><a href="#transaction">batch/transaction</a></td><td>Обновление, создание или удаление нескольких ресурсов в рамках одной транзакции</td></tr>
+  <tr><td><a href="#history">history</a></td><td>Получении истории изменений всех ресурсов</td></tr>
+  <tr><td><a href="#search">search</a></td><td>Поиск по ресурсам всех типов по разным критериям</td></tr>
 </table>
 <p>
-In addition to these interactions, there is an <a href="operations.html">operations framework</a>, which includes endpoints
-for <a href="operation-resource-validate.html">validation</a>, <a href="messaging.html#mailbox">messaging</a> and <a href="documents.html#bundle">Documents</a>.
-Also, implementers can <a href="graphql.html">use GraphQL</a>.</p>
+Кроме этих взаимодействий, имеется <a href="operations.html">operations framework</a>, который включает в себя точки взаимодействия для <a href="operation-resource-validate.html">валидации</a>, <a href="messaging.html#mailbox">отправки сообщений</a> и <a href="documents.html#bundle">документов</a>. Также реализаторы могут использовать <a href="graphql.html">GraphQL</a>.
+<!-- In addition to these interactions, there is an <a href="operations.html">operations framework</a>, which includes endpoints
+for <a href="operation-resource-validate.html">validation</a>, <a href="messaging.html#mailbox">messaging</a> and <a href="documents.html#bundle">Documents</a>. Also, implementers can <a href="graphql.html">use GraphQL</a>. --></p>
 
 <a name="general"></a>
 <h3>General Considerations</h3>
@@ -78,79 +87,91 @@ than is mandated in the underlying HTTP protocol.
 </p>
 
 <a name="styleguide"></a>
-<h4>Style Guide</h4>
+<p><b>Руководство по оформлению<!-- Style Guide --></b></p>
 <p>
-The interactions on this page are defined like this:
+Взаимодействия описываются на этой странице следующим образом:
+<!-- The interactions on this page are defined like this: -->
 </p>
 
 <pre>
   VERB [base]/[type]/[id] {?_format=[mime-type]}
 </pre>
 <ul>
- <li>The first word is the HTTP verb used for the interaction</li>
- <li>Content surrounded by [] is mandatory, and will be replaced by the string literal identified. Possible insertion values:
+ <li>Сначала идёт название HTTP-метода, используемого в операции<!-- The first word is the HTTP verb used for the interaction --></li>
+ <li>Текст в квадратных скобочках [] является обязательным, он будет замещён строковым литералом. Возможные значения:<!-- Content surrounded by [] is mandatory, and will be replaced by the string literal identified. Possible insertion values: -->
    <ul>
-     <li><code>base</code>: The <a href="#root">Service Base URL</a></li>
-     <li><code>mime-type</code>: The <a href="#mime-type">Mime Type</a></li>
-     <li><code>type</code>: The name of a resource type (e.g. "Patient")</li>
-     <li><code>id</code>: The <a href="resource.html#id">Logical Id</a> of a resource</li>
-     <li><code>vid</code>: The <a href="resource.html#metadata">Version Id</a> of a resource</li>
-     <li><code>compartment</code>: The name of a <a href="compartmentdefinition.html">compartment</a></li>
-     <li><code>parameters</code>: URL parameters as defined for the particular interaction</li>
+     <li><code>base</code>: <a href="#root">Базовый URL сервиса</a></li>
+     <li><code>mime-type</code>: <a href="#mime-type">MIME-тип</a></li>
+     <li><code>type</code>: Имя типа ресурса (например "Patient")</li>
+     <li><code>id</code>: <a href="resource.html#id">Логический идентификатор</a> ресурса</li>
+     <li><code>vid</code>: <a href="resource.html#metadata">Идентификатор версии</a> ресурса</li>
+     <li><code>compartment</code>: Имя <a href="compartmentdefinition.html">логического модуля</a></li>
+     <li><code>parameters</code>: URL-параметры, допустимые для данной операции</li>
    </ul>
  </li>
- <li>Content surrounded by <code>{}</code> is optional</li>
+ <li>Текст внутри фигурных скобок <code>{}</code> является необязательным.<!-- Content surrounded by <code>{}</code> is optional --></li>
 </ul>
 <p>
-Implementations constructing URLs using these patterns SHOULD conform to <a href="https://tools.ietf.org/html/rfc3986#appendix-A">RFC 3986 Section 6 Appendix A</a>
-which requires percent-encoding for a number of characters that occasionally appear in the URLs (mainly in search parameters).
+Реализации, строящие URL-адреса по этим шаблонам, ДОЛЖНЫ соответствовать <a href="https://tools.ietf.org/html/rfc3986#appendix-A">RFC 3986 Section 6 Appendix A</a>, который требует процентной кодировки для некоторых символов, которые иногда появляются в URL-адресах (преимущественно в параметрах поиска).
+<!-- Implementations constructing URLs using these patterns SHOULD conform to <a href="https://tools.ietf.org/html/rfc3986#appendix-A">RFC 3986 Section 6 Appendix A</a>
+which requires percent-encoding for a number of characters that occasionally appear in the URLs (mainly in search parameters). -->
 </p>
 <p>
-This specification uses the underscore as a prefix to disambiguate reserved names from other names in 3 cases:
+В спецификации для зарезервированных имён используется символ подчёркивания в трёх случаях:
+<!-- This specification uses the underscore as a prefix to disambiguate reserved names from other names in 3 cases: -->
 </p>
 <ul>
- <li>To differentiate system wide history and search interactions from interactions on Resource Types</li>
- <li>To differentiate search, history and similar interactions from instances of a resource type</li>
- <li>To differentiate search parameters defined for all resources from those defined for specific resource types</li>
+ <li>чтобы отличать операции запроса истории изменений и поиска системного уровня от операций над типами ресурсов;<!-- To differentiate system wide history and search interactions from interactions on Resource Types --></li>
+ <li>чтобы отличать операции поиска, истории изменений и подобных взаимодействий от экземпляров типа ресурса;<!-- To differentiate search, history and similar interactions from instances of a resource type --></li>
+ <li>чтобы отличать параметры поиска, определённые для всех ресурсов, от операций, определенных для конкретных типов ресурсов.<!-- To differentiate search parameters defined for all resources from those defined for specific resource types --></li>
 </ul>
 <p>
-In addition, the character <code>$</code> is used as a prefix to operation names that are RPC-like additions to the base
-API defined either by this specification or by implementers.
+Дополнительно используется символ <code>$</code> в качестве префикса названий RPC-подобных операций, являющихся дополнительными к базовому API, определённому спецификацией или реализаторами.
+<!-- In addition, the character <code>$</code> is used as a prefix to operation names that are RPC-like additions to the base
+API defined, either by this specification or by implementers. -->
 </p>
 
 <a name="root"></a>
 <a name="general"></a>
-<h4>Service Base URL</h4>
+<h4>Базовый URL сервиса<!-- Service Base URL --></h4>
 <p>
-The Service Base URL is the address where all of the
+Базовый URL сервиса - это адрес, по которому можно обращаться
+к определенным интерфейсом ресурсам. Он имеет следующий формат:
+<!-- The Service Base URL is the address where all of the
 resources defined by this interface are found. The Service
-Base URL takes the form of
+Root URL takes the form of -->
 </p>
 <pre>
 http{s}://server{/path}
 </pre>
 <p>
-The path portion is optional, and does not include a trailing slash. Each
+Часть {/path} не обязательна и не должна содержать "/" (слэш) в конце.
+Каждый тип ресурсов в спецификации имеет свою точку взаимодействия (или "набор сущностей"), доступную по адресу <code>/[type]</code>, где <code>[type]</code> - это имя типа ресурса. Например, точка взаимодействия для типа "Patient" будет иметь следующий адрес:
+<!-- The path portion is optional, and does not include a trailing slash. Each
 resource type defined in this specification has a manager (or "entity set")
 that lives at the address <code>/[type]</code> where the
 <code>[type]</code> is the name of the resource type.
 For instance, the resource manager for the type
-<code>Patient</code> will live at:
+<code>Patient</code> will live at: -->
 </p>
 <pre>
 https://server/path/Patient
 </pre>
 <p>
-All the logical interactions are defined relative to the service root
+Все логические операции определены относительно базового URL. Т. е. если известен адрес одного FHIR-ресурса системы, всегда можно вычислить адрес другого.
+<!-- All the logical interactions are defined relative to the service root
 URL. This means that if the address of any one FHIR resource on a system
-is known, the address of other resources may be determined.
+is known, the address of other resources may be determined. -->
 </p>
 <p>
-Note: All URLs (and ids that form part of the URL) defined by this specification are case sensitive.
+Примечание: все URL (и идентификаторы, являющиеся частью этих URL), определённые в спецификации, чувствительны к регистру.
+<!-- Note: All URLs (and ids that form part of the URL) defined by this specification are case sensitive. -->
 Clients SHOULD encode URLs using UTF-8, and servers SHOULD decode them assuming they are UTF-8
 (for background, <a href="http://stackoverflow.com/questions/912811/what-is-the-proper-way-to-url-encode-unicode-characters">see here</a>).
 </p>
 <p>
+Обратите внимание, что сервер может использовать пути типа "http://server/...[xx]...", где [xx] - это некоторая переменная часть, идентифицирующая конкретный экземпляр реализации FHIR API. Обычно это идентификатор пациента или пользователя, и его присутствие означает, что вся информация относится к данному пациенту/пользователю либо персонализирована для него.  
+Так, в случае пользователя это означает, что именно ему предоставлен явный доступ к операции. Не обязательно всегда включать идентификатор пациента в URL - реализации могут связывать точку взаимодействия FHIR с конкретным пациентом или провайдером с помощью OAuth. Логическое обоснование можно посмотреть в <a href="compartmentdefinition.html">Compartments</a>.
 Note that a server may use a path of the form <code>http://server/...[xx]...</code> where the <code>[xx]</code> is some variable
 portion that identifies a particular instantiation of the FHIR API. Typically, the variable id
 identifies a patient or a user, and the underlying information is completely compartmented
@@ -161,20 +182,25 @@ with the logical identity. It is not necessary to explicitly embed the patient i
 URL - implementations can associate a FHIR end-point with a particular patient or
 provider by using an OAuth login. See <a href="compartmentdefinition.html">Compartments</a> for the logical underpinning.
 </p>
-<p><b>Identity</b></p>
+<p><b>Идентификация<!-- Identity --></b></p>
 <p>
+Системы часто сталкиваются с задачей сравнения двух URL-адресов для определения того, ведут ли они на один и тот же адрес или нет.
+В рамках данной спецификации применяются следующие правила:
 Systems often need to compare two URLs to determine whether they refer to the same underlying object or not.
 For the purposes of this specification, the following rules apply:
 </p>
 <ul>
- <li>The query part of the URL (anything after <code>?</code>) is ignored</li>
- <li>The comparison of the document portion of the URL (i.e. not the server/port) is case sensitive</li>
- <li>The protocols <code>http:</code> and <code>https:</code> SHALL NOT be used to refer to different underlying objects</li>
- <li>If a port is specified, then the ports must be identical or the objects are different (due to
-   the prevalence of port mapping and/or interface engines running on different ports). Ports should
-	 only be explicit when they have explicit meaning to the server</li>
+ <li>Часть URL, содержащая запрос (всё, что идёт после '?'), игнорируется<!-- The query part of the URL (anything after <code>?</code>) is ignored --></li>
+ <li>Сравнение документной части URL (т. е. не сервер или порт) чувствительно к регистру<!-- The comparison of the document portion of the URL (i.e. not the server/port) is case sensitive --></li>
+ <li>http: и https: взаимозаменяемы и относятся к одному объекту<!-- The protocols <code>http:</code> and <code>https:</code> SHALL NOT be used to refer to different underlying objects --></li>
+ <li>Если задан порт, то порты должны совпадать, иначе это различные объекты (относится к распространенному мэппингу портов и/или работе запущенных интерфейсов на разных портах). Порты надо указывать явно, только когда они имеют значение для сервера<!-- If a port is specified, then the ports must be identical or the objects are different (due to 
+   the prevalence of port mapping and/or interface engines running on different ports). Ports should 
+	 only be explicit when they have explicit meaning to the server --></li>
 </ul>
 <p>
+Например:
+<code>http://myserver.com/Patient/1</code> и <code>https://myserver.com/Patient/1</code> ведут на один и тот же лежащий в их основе объект, а <code>http://myserver.com:81/Patient/1</code> - это отличная от этих двух адресов сущность.
+Это не означает, что эти два адреса необходимо считать одинаковыми, или что сервер должен обслуживать оба эти адреса, или что содержимое по этим двум адресам должно быть идентичным, а показывает только, что если эти два адреса тождественны и если оба они обслуживаются, они должны представлять собой один и тот же лежащий в их основе объект. Системы не обязаны проверять, что это верно. Примечание: сравнение идентичности для протоколов помимо http:/https: не определено.
 For example:
 <code>http://myserver.com/Patient/1</code> and <code>https://myserver.com/Patient/1</code> refer to the same underlying object, while <code>http://myserver.com:81/Patient/1</code> is a distinct entity from either of the above.
 This does not mean that the two addresses need to be treated the same, or that a server must serve both addresses, or that the content from the two addresses must be identical, but just that if these two
@@ -183,9 +209,10 @@ check that this is true. Note: the identity comparison for protocols other than 
 </p>
 
 <a name="versioning"></a>
-<h4>Resource Metadata and Versioning</h4>
+<h3>Метаданные и версионирование ресурсов<!-- Resource Metadata and Versioning --></h3>
 <p>
-Each resource has an associated set of <a href="resource.html#metadata">resource metadata elements</a>. These map to the HTTP request and response using the following fields:
+Каждый ресурс имеет связанный с ним набор <a href="resource.html#metadata">метаданных</a>, которые передаются в запросах и ответах в следующих полях:
+<!-- Each resource has an associated set of <a href="resource.html#metadata">resource metadata elements</a>. These map to the HTTP request and response using the following fields: -->
 </p>
 <table class="grid">
   <tr><th>Metadata Item</th><th>Where found in HTTP</th></tr>
@@ -193,13 +220,15 @@ Each resource has an associated set of <a href="resource.html#metadata">resource
   <tr><td><a href="resource.html#metadata">Version Id (.meta.versionId)</a></td><td>The Version Id is represented in the <code>ETag</code> header</td></tr>
   <tr><td><a href="resource.html#metadata">Last modified (.meta.lastUpdated)</a></td><td>HTTP Last-Modified header</td></tr>
 </table>
-<p>Note that the Version Id is considered a "weak" ETag and <code>ETag</code> headers
-	should be prefixed with <code>W/</code> and enclosed in quotes, for example:</p>
+<p>Обратите внимание, что Version Id считается «слабым» ETag-ом и <code>ETag</code> -заголовки должны быть с префиксом "W/" и заключены в кавычки, например:
+<!-- Note that the Version Id is considered a "weak" ETag and <code>ETag</code> headers
+	should be prefixed with <code>W/</code> and enclosed in quotes, for example: --></p>
 <pre>
 ETag: W/"3141"
 </pre>
-<h4>Security</h4>
+<h4>Безопасность<!-- Security --></h4>
 <p>
+Использование HTTPS является необязательным, но для передачи любых реальных медицинских данных ДОЛЖЕН использоваться SSL и, при необходимости, другие дополнительные предосторожности. См. <a href="security.html#http">Безопасность HTTP </a> для более детальной информации. Большинство операций требуют аутентификации пользователя, и все операции, которые это делают, являются объектами <a href="https://en.wikipedia.org/wiki/Role-based_access_control">RBAC</a> и/или <a href="https://en.wikipedia.org/wiki/Attribute-based_access_control">ABAC</a>, также некоторые операции могут зависеть от получения соответствующего согласия.
 Using HTTPS is optional, but all production exchange of healthcare data SHOULD use SSL and
 additional security as appropriate. See <a href="security.html#http">HTTP Security</a> for further information.
 Most operations will require user authentication, and all operations that do so are subject
@@ -207,24 +236,30 @@ to <a href="https://en.wikipedia.org/wiki/Role-based_access_control">RBAC</a> an
 and some operations may depend on appropriate consent being granted.
 </p>
 <p>
+Примечание: для поддержки браузерных клиентских приложений сервер ДОЛЖЕН реализовывать <a href="http://enable-cors.org/">Кросс-доменный доступ к ресурсам (CORS)</a> для приведенных здесь операций.
 Note: to support browser-based client applications, servers SHOULD implement <a href="http://enable-cors.org/">cross-origin resource sharing (CORS)</a> for the interactions documented here.
 </p>
 <p>
+См. руководство <a href="security.html#AccessDenied">HTTP Security</a> о том, как обрабатывать ответ с отказом в доступе.
 See the <a href="security.html#AccessDenied">HTTP Security</a> guidance for further information about both security generally and the use of CORS.
 </p>
 
 <a name="Status-Codes"></a>
-<h4>HTTP Status Codes</h4>
+<h4>HTTP-коды состояния<!-- HTTP Status Codes --></h4>
 <p>
-This specification makes rules about the use of specific HTTP status codes
+Данная спецификация описывает использование определенных кодов состояния (status codes). Другие коды (не описанные в спецификации) могут быть использованы, когда код не ясен или его использование подходит по семантике HTTP (обычно это коды, связанные с аутентификацией, авторизацией и перенаправлением (redirect).
+Перенаправление для аутентификации не должно быть интерпретировано как изменение адреса ресурса (часто встречающаяся ошибка).
+<!-- This specification makes rules about the use of specific HTTP status codes
 in particular circumstances where the status codes SHALL map to particular
 states correctly, and only where the correct status code is not obvious.
 Other HTTP status codes may be used for other states as appropriate, and this particularly
 includes various authentication related status codes and redirects.
 Authentication redirects should not be interpreted to change the location
-of the resource itself (a common web programming error).
+of the resource itself (a common web programming error). -->
 </p>
 <p>
+FHIR определяет специальный ресурс <a href="operationoutcome.html">OperationOutcome</a>, который может быть использован для структурированного описания ошибок.
+OperationOutcome должен быть включен в ответ для определенных случаев, описанных в спецификации. Также его опционально можно использовать в качестве тела ответа на ошибочные запросы с кодами  4xx or 5xx, однако это не обязательно - большинство этих ошибок могут генерироваться фреймворками сервера общего вида, лежащими в основе FHIR-сервера.
 FHIR defines an <a href="operationoutcome.html">OperationOutcome resource</a> that can be used to convey specific detailed
 processable error information. For some combinations of interactions and specific
 return codes, an OperationOutcome is required to be returned as the content of the response.
@@ -232,11 +267,12 @@ The OperationOutcome may be returned with any HTTP <code>4xx</code> or <code>5xx
 these errors may be generated by generic server frameworks underlying a FHIR server.
 </p>
 <a name="return"></a>
-<h4>Managing Return Content</h4>
+<h4>Управление возвращаемым содержимым<!-- Managing Return Content --></h4>
 <p>
 If the server has a default timezone, it SHOULD return the default timezone in the HTTP Response headers using the "<code>Date</code>" header. 
 </p>
 <p>
+В целях увеличения пропускной способности спецификация позволяет клиентам указывать тип возвращаемого контента для ресурсов.
 In the interests of managing band-width, this specification allows clients
 to specify what kind of content to return for resources.
 </p>
@@ -244,12 +280,14 @@ to specify what kind of content to return for resources.
 <a name="cread"></a>
 <h4>conditional read</h4>
 <p>
+Клиенты могут использовать HTTP-заголовок <code>If-Modified-Since</code> или <code>If-None-Match</code> в запросе на <code>read</code>. В этом случае они ОБЯЗАНЫ принимать или 304 Not Modified в качестве допустимого кода состояния в ответе (который означает, что содержимое не менялось с этой даты), или содержимое целиком (либо содержимое поменялось, либо сервер не поддерживает условные запросы).
 Clients may use the <code>If-Modified-Since</code>, or <code>If-None-Match</code> HTTP header on a <code>read</code> request.
 If so, they SHALL accept either a <code>304</code> Not Modified as a valid status code on the response (which means that the
 content is unchanged since that date) or full content (either the content has changed,
 or the server does not support conditional request).
 </p>
 <p>
+Серверы могут вернуть код состояния 304 Not Modified, если содержимое не менялось с даты/времени, указанной в <code>If-Modified-Since</code> или <code>If-None-Match</code> ETag, либо они могут вернуть содержимое целиком как обычно. Такая оптимизация актуальна при уменьшении пропускной способности для кеширования, и серверам рекомендуется, но не требуется поддерживать её.
 Servers can return <code>304</code> Not Modified where content is unchanged because the
 <code>If-Modified-Since</code> date-time or the <code>If-None-Match</code> ETag was specified, or they can
 return the full content as normal. This optimisation is relevant in reducing bandwidth for caching purposes and servers are encouraged but
@@ -259,17 +297,19 @@ not required to support this. If servers don't support conditional read, they ju
 <a name="ops"></a>
 <h4>create/update/patch/transaction</h4>
 <p>
-These interactions are performed using <code>POST</code>, <code>PUT</code> or <code>PATCH</code>, and
+Эти операции выполняются с помощью <code>POST</code>,<code>PUT</code> or <code>PATCH</code>, и для сервера может быть уместно возвращать либо только статус-код, либо также сам ресурс целиком, что будет являться результатом операции create или update (которые могут отличаться от того, что предоставляется клиентом). В случае транзакций это означает вернуть Bundle с <code>Bundle.entry.transactionResponse</code>, а не <code>Bundle.entry.resource</code>.
+<!-- These interactions are performed using <code>POST</code>, <code>PUT</code> or <code>PATCH</code>, and
 it may be appropriate for a server to return either only a status
 code, or also return the entire resource that is the outcome of the
 create or update (which may be different to that provided by the
 client). In the case of transactions this means returning a Bundle with just the <code>Bundle.entry.response</code> populated for each entry,
-and not the <code>Bundle.entry.resource</code> values.
+and not the <code>Bundle.entry.resource</code> values. -->
 </p>
 <a name="prefer"></a>
-<p>The client can indicate whether the entire resource is
+<p>Клиент может указать, вернётся ли ресурс целиком, с помощью <a href="https://tools.ietf.org/html/rfc7240#section-4.2">предпочтения возврата HTTP</a>:
+<!-- The client can indicate whether the entire resource is
 returned using the <a href="https://tools.ietf.org/html/rfc7240#section-4.2">HTTP
-return preference</a>:
+return preference</a>: -->
 </p>
 <pre>
 Prefer: return=minimal
@@ -277,6 +317,7 @@ Prefer: return=representation
 Prefer: return=OperationOutcome
 </pre>
 <p>
+Первая настройка просит не возвращать body. Вторая просит вернуть полный ресурс. Третья запрашивает сервер вернуть ресурс <a href="operationoutcome.html">OperationOutcome</a>, содержащий подсказки и предупреждения об этой операции, а не сам запрашиваемый ресурс.
 The first of these asks to return no body. The
 second asks to return the full resource. The third asks
 the server to return an <a href="operationoutcome.html">OperationOutcome</a>
@@ -293,10 +334,11 @@ the <code>Prefer</code> header.
 </p>
 
 <a name="mime-type"></a>
-<h4>Content Types and encodings</h4>
+<h4>Типы содержимого и кодировки<!-- Content Types and encodings --></h4>
 <p>
-The formal MIME-type for FHIR resources is <code>application/fhir+xml</code> or <code>application/fhir+json</code>.
-The correct mime type SHALL be used by clients and servers:
+Формальным MIME-типом для FHIR-ресурсов является <code>application/fhir+xml</code> или <code>application/fhir+json</code>. Корректный MIME-тип ДОЛЖЕН использоваться клиентами и серверами:
+<!-- The formal MIME-type for FHIR resources is <code>application/fhir+xml</code> or <code>application/fhir+json</code>.
+The correct mime type SHALL be used by clients and servers: -->
 </p>
 <ul>
  <li>XML: <code>application/fhir+xml</code></li>
@@ -304,6 +346,7 @@ The correct mime type SHALL be used by clients and servers:
  <li>RDF: <code>application/fhir+turtle</code> (only the Turtle format is supported)</li>
 </ul>
 <p>
+Сервер ДОЛЖЕН поддерживать серверное согласование форматов (content negotiation), как описано в <a href="https://tools.ietf.org/html/rfc7231#section-3.4">разделе 12</a> спецификации HTTP.
 Servers SHALL support server-driven content negotiation as described in <a href="https://tools.ietf.org/html/rfc7231#section-3.4">section 12</a>
 of the HTTP specification.
 </p>
@@ -424,15 +467,18 @@ tools, and servers MAY choose to support this parameter.
 </p>
  
 <a name="versions"></a>
-<h4>Support for Versions</h4>
+<h4>Поддержка версий<!-- Support for Versions --></h4>
 <p>
-Servers that support this API SHOULD provide full version support - that is, populate and track
+Серверам, поддерживающим этот API, СЛЕДУЕТ обеспечивать полную поддержку версий - то есть корректно заполнять и отслеживать versionId, поддерживать операцию <code>vread</code> и осуществлять <a href="#versionaware">учитывающие версию обновления</a>. 
+Такая поддержка версионирования позволяет связанным системам отслеживать корректную версию информации и сохранять целостность медицинских записей. Однако большинство современных операционных систем не делают этого и не могут быть легко модернизированы, чтобы делать это.
+<!-- Servers that support this API SHOULD provide full version support - that is, populate and track
 <code>versionId</code> correctly, support <code>vread</code>, and implement <a href="#versionaware">version aware updates</a>.
 Supporting versions like this allows for related systems to track the correct version of information,
 and to keep integrity in clinical records. However, many current operational systems do not
-do this, and cannot easily be re-engineered to do so.
+do this, and cannot easily be re-engineered to do so. -->
 </p>
 <p>
+По этой причине серверам позволяется не предоставлять поддержку версионирования: этот API не навязывает того, чтобы они поддерживались. Клиенты могут выбрать взаимодействовать только с серверами, которые предоставляют полную поддержку версионирования. Системы объявляют о поддержке версионирования в своих <a href="capabilitystatement-definitions.html#CapabilityStatement.rest.resource.versioning">Capability Statements</a>.
 For this reason, servers are allowed to not provide versioning support and this API does not enforce
 that versioning is supported. Clients may elect to only interact with servers that do provide full
 versioning support. Systems declare their support for versioning
@@ -452,6 +498,8 @@ resources they return, and SHALL update the value of <code>Resource.meta.lastUpd
 <a name="read"></a>
 <h3>read</h3>
 <p>
+Взаимодействие <code>read</code> (операция чтения данных) позволяет получить текущее содержимое
+ресурса. Для этого надо послать <code>GET</code> запрос по адресу:
 The <code>read</code> interaction accesses the current contents of a resource. The interaction
 is performed by an HTTP <code>GET</code> command as shown:
 </p>
@@ -459,6 +507,9 @@ is performed by an HTTP <code>GET</code> command as shown:
   GET [base]/[type]/[id] {?_format=[mime-type]}
 </pre>
 <p>
+В ответ сервер присылает содержимое соответствующего типа. Этот адрес может быть доступен из браузера. Возможные значения для логического идентификатора (<a href="resource.html#id">Logical Id</a>; id) описаны в секции <a href="datatypes.html#id">идентификационный тип</a>.
+Возвращаемый ресурс ДОЛЖЕН иметь элемент <code>id</code> со значением <code>[id]</code>.
+Серверам СЛЕДУЕТ возвращать заголовок <code>ETag</code> с versionId и заголовок <code>Content-Location</code> с ответом, представляющим собой полный URL, включающий версию (смотри "vread" ниже) и заголовок <code>Last-Modified</code> с датой последней модификации.
 This returns a single instance with the content specified for the resource type.
 This url may be accessed by a browser. The possible values for the
 <a href="resource.html#id">Logical Id</a> ("id") itself are described in the <a href="datatypes.html#id">id type</a>.
@@ -466,6 +517,7 @@ The returned resource SHALL have an <code>id</code> element with a value that is
 Servers SHOULD return an <code>ETag</code> header with the versionId of the resource (if versioning is supported) and a <code>Last-Modified</code> header.
 </p>
 <p>
+Примечание: если осуществляется попытка чтения <code>GET</code> неизвестного ресурса, сервер должен вернуть статус 404, а для удаленного ресурса - 410, соответственно. Системы, которые не отслеживают удаленные ресурсы, могут считать удаленный ресурс не существующим.
 Note: Unknown resources and deleted resources are treated differently on a read: a <code>GET</code> for a deleted
 resource returns a <code>410</code> status code, whereas a <code>GET</code> for an unknown resource returns <code>404</code>. Systems that do
 not track deleted records will treat deleted records as an unknown resource. Since deleted resources may be brought
@@ -474,12 +526,17 @@ contention management when a resource is brought back to life.
 </p>
 
 <p>
-In addition, the search parameter <code>_summary</code> can be used when reading a resource:
+Дополнительно при чтении ресурса можно использовать параметр поиска <code>_summary</code>:
+<!-- In addition, the search parameter <code>_summary</code> can be used when reading a resource: -->
 </p>
 <pre class="http">
   GET [base]/[type]/[id] {?_summary=text}
 </pre>
 <p>
+Это запрос вернуть только подмножество содержимого ресурса,
+как указано в параметре <code>_summary</code>, который может иметь значения 
+<a href="search.html#summary"><code>true</code>, <code>false</code>, <code>text</code> &amp; <code>data</code></a>.
+Отметьте, что ресурс, который содержит только подмножество данных, не подходит для использования в качестве основы для обновления ресурса, и может не подходить для других целей. То же применимо и к параметру <a href="search.html#elements">_elements</a> - и то, что его следует поддерживать, и все вытекающие из этого выводы. Серверам СЛЕДУЕТ использовать <a href="resource.html#simple-tags">Simple Tag</a> <a href="v3/ObservationValue/cs.html#v3-ObservationValue-SUBSETTED">SUBSETTED</a>, чтобы явным образом помечать такие ресурсы.
 This requests that only a subset of the resource content be returned,
 as specified in the <code>_summary</code> parameter, which can have the values
 <a href="search.html#summary"><code>true</code>, <code>false</code>, <code>text</code>, <code>count</code> and <code>data</code></a>.
@@ -497,6 +554,7 @@ A HEAD request can also be used - <a href="#head">see below</a>.
 <a name="vread"></a>
 <h3>vread</h3>
 <p>
+Взаимодействие <code>vread</code> (операция чтения данных определенной версии) выполняет чтение ресурса определенной версии. Операция выполняется HTTP-командой GET, как показано ниже:
 The <code>vread</code> interaction performs a version specific read of the resource. The interaction
 is performed by an HTTP <code>GET</code> command as shown:
 </p>
@@ -504,6 +562,8 @@ is performed by an HTTP <code>GET</code> command as shown:
   GET [base]/[type]/[id]/_history/[vid] {?_format=[mime-type]}
 </pre>
 <p>
+Эта команда возвращает одиночный экземпляр с содержимым, указанным для этого типа ресурса и этой версии ресурса. 
+Возвращаемый ресурс ДОЛЖЕН иметь элемент <code>id</code> со значением <code>[id]</code>, и элемент <code>meta.versionId</code> со значением <code>[vid]</code>. Серверам СЛЕДУЕТ возвращать <code>ETag</code>-заголовок с versionId (если версионирование поддержано) и заголовок <code>Last-Modified</code>.
 This returns a single instance with the content specified for the resource type for that
 version of the resource.
 The returned resource SHALL have an <code>id</code> element with a value that is the <code>[id]</code>, and a <code>meta.versionId</code>
@@ -511,19 +571,21 @@ element with a value of <code>[vid]</code>. Servers SHOULD return an <code>ETag<
 and a <code>Last-Modified</code> header.
 </p>
 <p>
-The <a href="resource.html#metadata">Version Id</a> ("vid") is an opaque identifier that conforms to the same <a href="datatypes.html#id">format requirements</a> as
+<a href="resource.html#metadata">Version Id</a> (vid) - это непрозрачный идентификатор, соответствующий тем же <a href="datatypes.html#id">требованиям к формату</a>, что и <a href="resource.html#id">Logical Id</a>. Этот id может быть найден с помощью выполнения операции history (см. ниже), с помощью записи version id в местонахождении содержимого, возвращенного операцией read, либо в ссылке на конкретную версию в модели содержимого. Если это ссылка на версию, в которой этот ресурс был удален, то серверу следует вернуть код состояния 410.
+<!-- The <a href="resource.html#metadata">Version Id</a> ("vid") is an opaque identifier that conforms to the same <a href="datatypes.html#id">format requirements</a> as
 a <a href="resource.html#id">Logical Id</a>. The id may have been found by performing a history interaction (see below), by recording the
 version id from a content location returned from a <code>read</code> or from a version specific reference in a
 content model. If the version referred to is actually one where the resource was deleted, the
-server should return a <code>410</code> status code.
+server should return a <code>410</code> status code. -->
 </p>
 <p>
-Servers are encouraged to support a version specific retrieval of the current version of the
+Серверам рекомендуется поддерживать получение конкретной версии ресурса из текущей, даже если они не предоставляют доступ к предыдущим версиям. Если получен запрос на предыдущую версию ресурса, и сервер не поддерживает доступ к предыдущим версиям (либо в общем, либо для этого конкретного ресурса), он должен вернуть ошибку 404 Not Found наряду с результатом операции, поясняющим, что операция history не поддерживается для такого типа или экземпляра ресурса.
+<!-- Servers are encouraged to support a version specific retrieval of the current version of the
 resource even if they do not provide access to previous versions. If a request
-is made for a previous version of a resource, and the server does not support accessing
-previous versions (either generally, or for this particular resource), it should
-return a <code>404</code> Not Found error, with an operation outcome explaining that
-history is not supported for the underlying resource type or instance.
+is made for a previous version of a resource, and the server does not support accessing 
+previous versions (either generally, or for this particular resource), it should 
+return a <code>404</code> Not Found error, with an operation outcome explaining that 
+history is not supported for the underlying resource type or instance. -->
 </p>
 <p>
 A HEAD request can also be used - <a href="#head">see below</a>.
@@ -532,14 +594,19 @@ A HEAD request can also be used - <a href="#head">see below</a>.
 <a name="update"></a>
 <h3>update</h3>
 <p>
-The <code>update</code> interaction creates a new current version for an existing resource or
+Взаимодействие <code>update</code> (операция обновления) создает новую текущую версию для существующего ресурса, либо создает первоначальную версию, если для данного идентификатора еще не существует ресурс. Взаимодействие <code>update</code> выполняется HTTP-командой <code>PUT</code>, как показано ниже:
+<!-- The <code>update</code> interaction creates a new current version for an existing resource or
 creates an initial version if no resource already exists for the given id.
-The <code>update</code> interaction is performed by an HTTP <code>PUT</code> command as shown:
+The <code>update</code> interaction is performed by an HTTP <code>PUT</code> command as shown: -->
 </p>
 <pre class="http">
   PUT [base]/[type]/[id] {?_format=[mime-type]}
 </pre>
 <p>
+Телом запроса должен быть <a href="resource.html">Resource</a> с элементом <code>id</code>, имеющим идентичное значение, что и <code>[id]</code> в URL. Если элемент <code>id</code> не указан, либо значение отличается от указанного в URL, сервер должен вернуть HTTP-код ошибки <code>400</code> и ресурс <a href="operationoutcome.html">OperationOutcome</a> с описанием ошибки.
+Если тело запроса содержит <a href="resource.html#meta">meta</a>, сервер ДОЛЖЕН 
+игнорировать предложенные значения <code>versionId</code> и <code>lastUpdated</code>. 
+Если сервер поддерживает версионирование, он ДОЛЖЕН заполнить <code>meta.versionId</code> и <code>meta.lastUpdated</code> новыми корректными значениями. Серверам разрешается проверять и изменять другие значения метаданных, но СЛЕДУЕТ воздерживаться от этого (см. более подробную информацию на странице <a href="resource.html#meta">описания метаданных</a>). Отметьте, что нет поддержки обновления предыдущих версий - см. примечания к операции <a href="#history">history</a>.
 The request body SHALL be a <a href="resource.html">Resource</a> with an <code>id</code> element
 that has an identical value to the <code>[id]</code> in the URL. If no <code>id</code> element is provided, 
 or the id disagrees with the id in the URL, the server SHALL respond with an HTTP <code>400</code> error code, and SHOULD
@@ -553,6 +620,7 @@ from doing so (see <a href="resource.html#meta">metadata description</a> for fur
 there is no support for updating past versions - see notes on the <a href="#history">history</a> interaction.
 </p>
 <p>
+Сервер ДОЛЖЕН принимать ресурс в том виде, в каком он был отправлен на сервер, когда допускает обновление, и возвращать то же самое содержимое, когда он впоследствии читается. Однако системы могут не иметь возможности делать это; см. примечание к обсуждению в разделе <a href="#transactional-integrity">Транзакционная целостность</a>.
 A server SHOULD accept the resource as submitted when it accepts the update, and return the same
 content when it is subsequently read. However systems might not be able to do this; see
 the note on <a href="#transactional-integrity">transactional integrity</a> for discussion.
@@ -561,6 +629,7 @@ around update behavior. Note that <code>update</code> generally updates the whol
 updates, see <a href="#patch"><code>patch</code></a> below.
 </p>
 <p>
+Если операция прошла успешно, сервер ДОЛЖЕН вернуть либо HTTP статус-код 200 OK, если ресурс был обновлен, либо статус-код 201 Created, если ресурс был создан (или поменял статус с удаленного/был воссоздан), с заголовком <code>Last-Modified</code> и заголовком <code>ETag</code>, который содержит новый <code>versionId</code> ресурса. Если ресурс был создан (т. е. результатом операции был статус-код 201 Created), сервер ДОЛЖЕН вернуть заголовок <code>Location</code> (это нужно только для соответствия протоколу HTTP, больше ни для чего). Тело ответа описано в разеделе <a href="http.html#return">Managing Return Content</a>.
 If the interaction is successful, the server SHALL return either a <code>200</code> OK HTTP status code 
 if the resource was updated, or a <code>201</code> Created status code if the resource was created (or brought 
 back to life/re-created), with a <code>Last-Modified</code> header, and an <code>ETag</code> header which 
@@ -570,6 +639,7 @@ is for HTTP conformance; it's not otherwise needed). The body of response is as 
 in <a href="http.html#return">Managing Return Content</a>.
 </p>
 <p>
+Примечание: серверы МОГУТ решить сохранять XML-комментарии, инструкции и форматирование или JSON-табуляцию, когда принимают операции обновления, однако не обязаны это делать. Может потребоваться учитывать влияние этого на электронные цифровые подписи.
 Note: Servers MAY choose to preserve XML comments, instructions, and formatting or JSON whitespace when accepting updates, but are not required to do so. The impact of this on digital signatures may need to be considered.
 </p>
 <a name="upsert"></a>
