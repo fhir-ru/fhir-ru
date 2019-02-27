@@ -165,7 +165,7 @@ detailing the cause of the failure. Note: An empty search result is not a failur
  <li>В параметре может быть использован запрещённый или недопустимый модификатор, например <code>GET [base]/Condition?onset:text=1995</code>, когда этот модификатор не может быть обработан сервером.
 <!-- A parameter may use an illegal or unacceptable modifier e.g. <code>GET [base]/Condition?onset:text=1995</code>, where the modifier cannot be processed by the server --></li>
  <li>Неправильный формат даты/времени, например <code>GET [base]/Condition?onset=23%20May%202009</code>
-<!-- A data time parameter may have incorrect format e.g. <code>GET [base]/Condition?onset=23%20May%202009 --></code></li>
+<!-- A data time parameter may have incorrect format e.g. <code>GET [base]/Condition?onset=23%20May%202009</code> --></li>
  <li>Параметр может быть неизвестен или не поддерживаться сервером (см. ниже).
 <!-- A parameter may be unknown or unsupported (see below) --></li>
 </ul>
@@ -1360,7 +1360,7 @@ Fetch all the patients that have an Observation where the observation has an aud
 <h4>Составные параметры поиска<!-- Composite Search Parameters --></h4>
 <p>
 Составные параметры поиска поддерживают объединение отдельных значений с помощью <code>$</code>. Например результатом операции поиска будет пересечение ресурсов, которые соответствуют критериям каждого поискового параметра по отдельности. Если параметр повторяется, например <code>/Patient?language=FR&amp;language=NL</code>, тогда это соответствует пациенту, который говорит на обоих языках. Этот параметр поиска называется "AND", поскольку предполагается, что сервер вернёт только те результаты, которые соответствуют обоим значениям.
-<!-- Composite search parameters supports joining single values with a <code>$</code>. For example, the result 
+<!-- Composite search parameters support joining single values with a <code>$</code>. For example, the result 
 of the search operation is the intersection of the resources that match the criteria specified by each
 individual search parameter. If a parameter repeats, such as <code>/Patient?language=FR&amp;language=NL</code>, then
 this matches a patient who speaks both languages. This is known as an AND search parameter, since the
