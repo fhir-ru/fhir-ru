@@ -17,8 +17,11 @@
   <status value="active"/>
   <experimental value="false"/>
   <publisher value="HITSP"/>
-  <description value="This is the code specifying the precise type of document (e.g. Pulmonary History and  Physical, Discharge Summary, Ultrasound Report, etc.). The Document Type value set includes all LOINC  values listed in HITSP C80 Table 2-144 Document Class Value Set Definition above used for Document Class,  and all LOINC values whose SCALE is DOC in the LOINC database."/>
-  <copyright value="This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use."/>
+  <description value="Это код точного типа документа (например Pulmonary History and 
+Physical, Discharge Summary, Ultrasound Report и т. д.). Набор значений Document Type включает в себя все значения LOINC, перечисленные в HITSP C80 Table 2-144 Document Class Value Set Definition выше, используемые в качестве значений Document Class, и все значения LOINC, у которых SCALE = DOC в базе данных LOINC."/>
+<!-- This is the code specifying the precise type of document (e.g. Pulmonary History and  Physical, Discharge Summary, Ultrasound Report, etc.). The Document Type value set includes all LOINC  values listed in HITSP C80 Table 2-144 Document Class Value Set Definition above used for Document Class,  and all LOINC values whose SCALE is DOC in the LOINC database. -->
+  <copyright value="На содержимое LOINC® распространяется авторское право © 1995 Regenstrief Institute, Inc. и комитета LOINC, и оно предоставляется без каких-либо затрат в соответствии с лицензией http://loinc.org/terms-of-use"/>
+  <!-- This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use. -->
   <compose>
     <include>
       <system value="http://loinc.org"/>

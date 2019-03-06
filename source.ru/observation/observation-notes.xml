@@ -47,7 +47,7 @@
 
   </p>
   <a name="gr-other"></a>
-  <h4>Observation.hasMember of and Observation.derivedFrom
+  <h4>Observation.hasMember и Observation.derivedFrom
   </h4>
   <p><code>Observation.hasMember</code> и <code>Observation.derivedFrom</code>, а также официальные расширения <a href="http://hl7.org/fhir/StructureDefinition/observation-sequelTo">Observation-sequelTo</a> и <a href="http://hl7.org/fhir/StructureDefinition/observation-replaces">Observation-replaces</a> используются для всех вспомогательных результатов, которые можно интерпретировать и использовать отдельно и которые имеют одно или несколько различных значений для метода, наблюдения, исполнителя, устройства, времени и/или условий ошибки. Вот два основных случая использования такой структуры:
   

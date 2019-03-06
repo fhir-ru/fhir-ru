@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 
-[%settitle Implementation Details%]
+[%settitle Детали реализации%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -11,7 +11,7 @@
 <div class="col-12">
 
 
-<h1>Downloads</h1>
+<h1>Материалы для скачивания</h1>
 
 <table class="colis"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Informative</a></td></tr></table>
 
@@ -183,19 +183,24 @@
  </table>
 
 [%impl-note%]
-These reference implementations are provided for implementer interest and assistance.
-While they may be used (and are) in production systems, HL7 and their various contributors accept no
-liability for their use. <span style="color: Maroon">Note that these reference implementations are
-provided to assist to implementers to adopt the specification, and some are maintained by the FHIR
-project team, but are not part of the specification, and implementations are not required to
-conform to these, nor are they subject to the formal standards process.</span>
+Эти эталонные реализации предоставлены в помощь разработчикам. 
+    Хотя их и можно использовать (и они используются) в реально действующих системах, однако организация HL7 и её участники не несут ответственность за их применение. Эти реализации предоставляются по стандартной, одобренной OSI лицензии (по большей части пункт 3 BSD).
+<!-- Note: These reference implementations are provided for implementer interest and assistance. 
+While they may be used (and are) in production systems, HL7 and their various contributors accept no 
+liability for their use. --> <span style="color: Maroon"> Обратите внимание, что эти эталонные реализации предоставляется в помощь реализаторам в адаптации спецификации, и некоторые поддерживаются командой проекта FHIR, но не являются частью спецификации, и от реализаций не требуется соответствовать им, также они не подлежат формальному процессу развития стандарта.<!-- Note that these reference implementations are 
+provided to assist to implementers to adopt the specification, and some are maintained by the FHIR 
+project team, but are not part of the specification, and implementations are not required to 
+conform to these, nor are they subject to the formal standards process. --></span>
 [%end-note%]
 <hr/>
 <p>
+Полноценные открытые реализации FHIR, часть которых использует эталонные реализации, перечислены в
+<a href="http://wiki.hl7.org/index.php?title=Open_Source_FHIR_implementations">wiki-разделе сайта HL7</a>.
 Full blown open source implementations for FHIR, some of which use these reference implementations, are
 listed on the <a href="http://wiki.hl7.org/index.php?title=Open_Source_FHIR_implementations">HL7 wiki</a>.
 </p>
 <p>
+Для обеспечения соответствия не обязательно пользоваться этими конкретными реализациями. Разрешается применять любые подходы, включая генерацию кода из схем.
 It is not necessary to use these particular implementations in order to be conformant. Any other approach
 may be used, including code generated from the schemas.
 </p>
