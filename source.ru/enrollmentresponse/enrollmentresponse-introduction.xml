@@ -2,11 +2,13 @@
 
 <div>
 <a name="scope"></a>
-<h2>Scope and Usage</h2>
-<p><b>This resource has not yet undergone proper review by FM. At this time it is a 'stub', is known to be incomplete, and is to be considered as a draft.</b></p>
+<h2>Область применения и использование</h2>
+<p><b>Данный ресурс еще не прошел надлежащую проверку рабочей группой FM. В настоящее время представляет собой незавершённую "заглушку", его следует считать проектом ресурса.
+<!-- This resource has not yet undergone proper review by FM. At this time it is a 'stub', is known to be incomplete, and is to be considered as a draft. --></b></p>
 <p>
-The EnrollmentResponse resource provides enrollment and plan details from the processing of an 
-Enrollment resource. 
+Ресурс EnrollmentResponse предоставляет сведения о регистрации и плане, полученные в результате обработки ресурса Enrollment.
+<!-- The EnrollmentResponse resource provides enrollment and plan details from the processing of an 
+Enrollment resource. -->
 </p>
 
 <p>
@@ -16,7 +18,7 @@ Enrollment resource.
 
 <!-- (recommended): 
 <div>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и связи</h2>
 <p>
 Explains how this resource relates to others. Particularly important is to differentiate between appropriate usages for related resources when an implementer might be confused about what to reference when.
 </p>
@@ -25,7 +27,7 @@ Explains how this resource relates to others. Particularly important is to diffe
 
 <!-- (optional):
 <div>
-<h2>Background and Context</h2>
+<h2>Предпосылки и контекст</h2>
 <p>
 Provides additional detail on exactly how the resource is to be used
 </p>

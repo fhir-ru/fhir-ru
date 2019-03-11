@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 
-[%settitle JSON Format%]
+[%settitle Формат JSON%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -13,7 +13,7 @@
 <%fmtheader json%>
 
 <a name="json"></a>
-<h2>JSON Representation of Resources</h2>
+<h2>JSON-представление ресурсов</h2>
 <table class="colsn"><tr><td id="wg"><a _target="blank" href="[%wg its%]">[%wgt its%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 5</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Normative</a></td></tr></table>
 
 [%normative page infrastructure%]
@@ -36,10 +36,32 @@ The JSON representation for a resource is based on the <a href="https://www.rfc-
 }
 </pre>
 <p>
-Using this format:
+Используя этот формат:
+<!-- Using this format: -->
 </p>
 <ul>
- <li>To build a valid JSON instance of a resource, replace the contents of the property values with valid content
+ <li>Для создания валидного JSON-экземпляра ресурса, замените содержимое значений свойств желаемым контентом, как описано в правилах типов и описании значений, которые можно найти в значении свойства каждого элемента</li>
+ <li>В данном примере:
+   <ol>
+     <li><code>property1</code> имеет примитивный тип данных; значение свойства будет таким же, как описанное для указанного типа</li>
+     <li><code>property2</code> имеет сложный тип данных; значением свойства будет объект с содержимым, соответствующим описанию к указанному типу</li>
+     <li><code>property3</code> - это объектное свойство, которое содержит дополнительные свойства (например propertyA; допустимые свойства перечислены (и также включают расширения при необходимости)</li>
+     <li><code>property4</code> - это массив, который содержит элементы, которые, в свою очередь, являются объектами. Эти элементы могут быть любого из типов, перечисленных в пунктах 1-3</li>
+     <li><code>propertyA</code> is an example of an object property that has a binding to a value set - the Short description is a link to the value set. In addition, the binding strength is shown </li>
+     <li><code>propertyB</code> is an example of an object property that has a reference to a particular kind of resource </li>
+   </ol>
+ </li>
+ <li>Названия свойств чувствительны к регистру (хотя дубликаты, различающиеся только регистром, не используются)</li>
+ <li>Property names SHALL be unique. Note: this is not explicitly stated in the original JSON specification,so stated for clarity here</li>
+ <li>Свойства можно указывать в любом порядке</li>
+ <li>XHTML указывается в виде экранированной строки</li>
+ <li>Объекты не могут быть пустыми. Если элемент присутствует в ресурсе, он ДОЛЖЕН иметь свойства, определенные для его типа, либо 1 или несколько <a href="extensibility.html">расширений</a></li>
+ <li>Значения строковых свойств не могут быть пустыми. Либо свойство отсутствует, либо присутствует и содержит как минимум 1 символ</li>
+ <li>Символ <span style="color: brown"><b>R!</b></span> означает, что элемент является обязательным - он должен присутствовать (либо в массиве должен быть как минимум один элемент)</li>
+ <li>В данном формате <code>//</code> используется для комментариев. Хотя // допустимы в Javascript, их нельзя использовать в JSON-экземплярах независимо от того, игнорируют ли их конкретные приложения</li>
+ <li>Символьная кодировка всегда UTF-8</li>
+ <li>MIME-тип для этого формата - <code>application/fhir+json</code>.</li>
+<!--  <li>To build a valid JSON instance of a resource, replace the contents of the property values with valid content 
    as described by the type rules and content description found in the property value for each element</li>
  <li>In this example:
    <ol>
@@ -75,46 +97,58 @@ in order to foster forwards compatibility in this regard, but may also choose no
 
 <a name="xml"></a>
 
-<h3>Comparison with XML</h3>
+<h3>Сравнение с XML<!-- Comparison with XML --></h3>
 <p>
-The JSON format is similar to the XML format:
+JSON-формат подобен XML-формату:
+<!-- The JSON format is similar to the XML format: -->
 </p>
 <ul>
- <li>The names for the JSON object members are the same as the names of the elements and attributes in XML, including elements that may repeat. Property names are case sensitive</li>
- <li>Just as in XML, JSON objects and arrays are never empty, and properties never have null values (except for a special case documented below). Omit a property if it is empty</li>
- <li>JSON whitespace is not part of the contents of a resource. Applications MAY preserve the whitespace when handling resources, but are not required to do so. Note that digital signatures may depend on the whitespace</li>
+ <li>Имена членов JSON-объекта соответствуют именам элементов и атрибутов в XML, включая элементы, которые могут повторяться. Имена свойств чувствительны к регистру
+The names for the JSON object members are the same as the names of the elements and attributes in XML, including elements that may repeat. Property names are case sensitive</li>
+ <li>Как и в XML, JSON объекты и массивы не бывают пустыми, а свойства  are never empty, and properties никогда не содержат пустые значения (за исключением особого случая, описанного ниже). Следует опустить свойство, если оно пустое
+Just as in XML, JSON objects and arrays are never empty, and properties never have null values (except for a special case documented below). Omit a property if it is empty</li>
+ <li>В JSON символы табуляции не являются частью содержимого ресурса. Приложения могут сохранять символы табуляции во время обработки ресурсов, но не обязаны это делать. Обратите внимание, что от символов табуляции могут зависеть электронные цифровые подписи
+JSON whitespace is not part of the contents of a resource. Applications MAY preserve the whitespace when handling resources, but are not required to do so. Note that digital signatures may depend on the whitespace</li>
 </ul>
 
 <p>There are differences from XML:</p>
 <ul>
- <li>There are no namespaces in the JSON representation</li>
- <li>The type of the resource is represented differently in JSON - instead of being the name of the base object (there is none in JSON), it is carried as the property <code>resourceType</code></li>
- <li>The order of properties of an object is not significant in the JSON representation, though order within an array SHALL be maintained</li>
- <li>JSON does not have a notion of attributes versus elements, so attributes (e.g. <code>id</code>, <code>value</code>) are handled differently (see below)</li>
- <li>JSON has the array notation, which is used to represent repeating elements. Note that arrays are used when the item might repeat, even if it does not repeat in a specific instance</li>
- <li>The XHTML <code>&lt;div&gt;</code> element in the <a href="narrative.html">Narrative</a> datatype is represented as a single escaped string of XHTML. This is to avoid problems in JSON with mixed content, etc. The XHTML SHALL still conform to the rules described for <a href="narrative.html">the Narrative</a></li>
+ <li>В JSON-представлении нет пространств имен</li>
+ <li>Тип ресурса представляется в JSON по-другому - не как имя базового объекта (котрого в JSON нет), а как свойство <code>resourceType</code></li>
+ <li>Порядок следования свойств объекта в JSON-представлении не имеет значения, хотя внутри массива порядок должен поддерживаться</li>
+ <li>JSON не имеет различия в обозначении атрибута и элемента, поэтому атрибуты (e.g. <code>id</code>, <code>value</code>) обрабатываются иначе (см. ниже)</li>
+ <li>В JSON есть обозначение массива, используемое для представления повторяющихся элементов. Обратите внимание, что массивы используются, когда элемент может повторяться, даже если он не повторяется в конкретном случае</li>
+ <li>XHTML-элемент <code>&lt;div&gt;</code> в типе данных <a href="narrative.html">Narrative</a> представлен как отдельная экранированная строка XHTML. Это делается для того, чтобы избежать проблем в JSON со смешанным содержимым и проч. XHTML ДОЛЖЕН по-прежнему соответствовать правилам, описанным для <a href="narrative.html">Narrative</a></li>
 </ul>
 
 <p>
-The JSON format for the resources follows the standard XML format closely to make interconversion
+Формат JSON для ресурсов приближен к стандартному XML-формату, что делает взаимное преобразование легкодоступным, поэтому XPath-запросы легко мапятся на запросы JSON-структур. Однако различия – особенно с повторяющимся элементом, которого невозможно избежать – означают, что универсальные преобразователи XML --&gt; JSON не в состоянии выполнить эту операцию корректно. Эти <a href="downloads.html#refimpl">справочные платформы</a> 
+предлагают функциональность по преобразованию XML &lt;--&gt; JSON, которая учитывает эти специфичные для FHIR технические детали.
+<!-- The JSON format for the resources follows the standard XML format closely to make interconversion
 easy, and so that XPath queries can easily be mapped to query the JSON structures. However,
 the differences - particularly the repeating element one, which cannot be avoided - mean
 that generic XML --&gt; JSON converters are not able to perform correctly. The <a href="downloads.html#refimpl">reference platforms</a>
 provide XML &lt;--&gt; JSON conversion functionality that accommodates these FHIR-specific characteristics.
+ -->
 </p>
 
 
 <a name="repeat"></a>
-<h3>JSON Representation for repeating elements</h3>
+<h3>JSON-представление для повторяющихся элементов</h3>
 
 <p>
+Элемент с максимальным кардинальным числом >1 (например <code>x..*</code> в определениях) может встречаться больше одного раза в экземпляре. В XML это делается простым повторением XML-элемента множество раз. В JSON это делается с помощью типа array. Обратите внимание, что:
+<!--
 An element that has a maximum cardinality of >1 (e.g. <code>x..*</code> in the definitions) may occur more than once in the instance.
 In XML, this is simply done by repeating the XML element multiple times. In JSON, this is
 done by using an array type. Note that:
+-->
 </p>
 <ul>
- <li>The name of the array is singular - the same as the XML element</li>
- <li>An item that may repeat is represented as an array even in the case that it doesn't repeat so that the process of parsing the resource is the same either way</li>
+ <li>Имя массива указывается в единственном числе – так же как и XML-элемента.
+The name of the array is singular - the same as the XML element</li>
+ <li>Элемент, который может повторяться, представляется в виде массива даже в том случае, если он не повторяется, чтобы процесс синтаксического разбора ресурса во всех случаях оставался одинаковым.
+An item that may repeat is represented as an array even in the case that it doesn't repeat so that the process of parsing the resource is the same either way</li>
  </ul>
 <pre class="xml" fragment="CodeableConcept">
  &lt;code&gt;
@@ -145,25 +179,34 @@ done by using an array type. Note that:
 </pre>
 
 <a name="primitive"></a>
-<h3>JSON representation of primitive elements</h3>
+<h3>JSON-представление примитивных элементов</h3>
 <p>
-FHIR elements with primitive data types are represented in two parts:
+FHIR-элементы с примитивными типами данных представляются в двух частях:
+<!--
+FHIR elements with primitive data types are represented in two parts:-->
 </p>
 <ul>
- <li>A JSON property with the name of the element, which has a JSON type of number, boolean, or string</li>
- <li>a JSON property with <code>_</code> prepended to the name of the element, which, if present, contains the value's id and/or extensions</li>
+ <li>JSON-свойство с именем элемента, которое имеет JSON-тип числовой (number), логический (boolean) или строковый (string)
+A JSON property with the name of the element, which has a JSON type of number, boolean, or string</li>
+ <li>JSON-свойство со знаком <code>_</code>, добавленным в начало имени элемента, который, если присутствует, содержит id этого значения и/или расширения
+a JSON property with <code>_</code> prepended to the name of the element, which, if present, contains the value's id and/or extensions</li>
 </ul>
 <p>
+FHIR-типы <a href="datatypes.html#integer">integer</a> и <a href="datatypes.html#decimal">decimal</a> представляются JSON-типом number, FHIR-тип <a href="datatypes.html#boolean">boolean</a>
+ – как JSON boolean, а все остальные типы представляются как JSON-тип string, имеющий то же содержимое, что указано для соответствующего типа данных. Символы табуляции всегда являются значимыми (т. е. пробелы в начале и в конце для нестроковых типов не допускаются).
+<!--
 The FHIR types <a href="datatypes.html#integer">integer</a> and <a href="datatypes.html#decimal">decimal</a> are represented as a JSON number, the FHIR type <a href="datatypes.html#boolean">boolean</a>
 as a JSON boolean, and all other types are represented as a JSON string which has the same content as that specified for the relevant data type. Whitespace is always significant
-(i.e. no leading and trailing spaces for non-strings).</p>
+(i.e. no leading and trailing spaces for non-strings).
+-->
+</p>
 <pre class="xml">
  &lt;<b>code</b> value="abc"/&gt; &lt;!-- code --&gt;
  &lt;<b>date</b> value="1972-11-30"/&gt; &lt;!-- dateTime --&gt;
  &lt;<b>deceased</b> value="false" /&gt; &lt;!-- boolean --&gt;
  &lt;<b>count</b> value="23" /&gt;  &lt;!-- integer --&gt;
 </pre>
-<p>is represented in JSON as</p>
+<p>в JSON представляется так:</p>
 <pre class="json">
  "code" : "abc",
  "date" : "1972-11-30",
@@ -173,17 +216,23 @@ as a JSON boolean, and all other types are represented as a JSON string which ha
 <a name="decimal"></a>
 [%dragons-start%]
 <p>
+При использовании JavaScript JSON.parse() реализации обратите внимание, что JavaScript изначально поддерживает только один числовой тип данных, которым является число с плавающей точкой (floating point number). Это может привести к потере точности для чисел FHIR. В частности, нули после точки будут потеряны, например 2.00 превратится в 2.
+FHIR-тип данных decimal определен таким образом, чтобы точность, включая нули на кнце, сохранялась в целях представления, поскольку это часто является критичным требованием для корректного представления клинических измерений. Реализациям следует рассмотреть использование кастомного парсерав и библиотеки больших чисел (например <a href="https://github.com/jtobey/javascript-bignum">https://github.com/jtobey/javascript-bignum</a>) для удовлетворения этих требований.
+<!--
 When using a JavaScript JSON.parse() implementation, note that JavaScript natively supports only one numeric datatype, which is a floating point number.
 This can cause loss of precision for FHIR numbers. In particular, trailing 0s after a decimal point will be lost e.g. 2.00 will be converted to 2.
 The FHIR decimal data type is defined such that precision, including trailing zeros, is preserved for presentation purposes, and this
 is widely regarded as critical for correct presentation of clinical measurements. Implementations should consider using a custom parser and big number library
 (e.g. <a href="https://github.com/jtobey/javascript-bignum">https://github.com/jtobey/javascript-bignum</a>) to meet these requirements.
+-->
 </p>
 
 [%dragons-end%]
 
 <p>
-If the value has an id attribute, or extensions, then this is represented as follows:
+Если значение имеет атрибут id или расширения, то оно представляется следующим образом:
+<!--
+If the value has an id attribute, or extensions, then this is represented as follows:-->
 </p>
 <a name="null"></a>
 <pre class="xml">
@@ -204,12 +253,16 @@ If the value has an id attribute, or extensions, then this is represented as fol
    }]
  }
 </pre>
-<p>Note: If the primitive has an id attribute or extension, but no value, only the property with the <code>_</code> is rendered.</p>
+<p>Примечание: Если примитив имеет атрибут id или расширение, но не имеет value, то указывается только свойство со знаком <code>_</code>.
+<!-- Note: If the primitive has an id attribute or extension, but no value, only the property with the <code>_</code> is rendered. --></p>
 <p>
+В случае, когда примитивный элемент может повторяться, это представляется двумя массивами. Для заполнения обоих массивов используется JSON-значение null,  чтобы привести в соответствие идентификатор и/или расширение с его значением в первом массиве, как продемонстрировано в этом примере:
+<!--
 In the case where the primitive element may repeat, it is represented
 in two arrays. JSON null values are used to fill out both arrays so
 that the id and/or extension are aligned with the matching value in
 the first array, as demonstrated in this example:
+-->
 </p>
 <pre class="xml">
  &lt;<b>code</b> value="au"/&gt;
@@ -219,7 +272,7 @@ the first array, as demonstrated in this example:
    &lt;/extension&gt;
  &lt;/<b>code</b>&gt;
 </pre>
-<p>is represented in JSON as:</p>
+<p>в JSON представляется так:</p>
 <pre class="json">
  "code": [ "au", "nz" ],
  "_code": [
@@ -232,25 +285,32 @@ the first array, as demonstrated in this example:
    }
   ]
 </pre>
-<p>Note: when one of the repeating elements has no value, it is represented in the first array using a null. When
-an element has a value but no extension/id, the second array will have a null at the position of that element.</p>
+<p>Примечание: когда у одного из повторяющихся элементов нет значения (value), в первом массиве для него указывается значение null. Когда у элемента есть значение, но нет расширения/идентификатора, во втором массиве на месте этого элемента будет стоять null.
+<!--Note: when one of the repeating elements has no value, it is represented in the first array using a null. When
+an element has a value but no extension/id, the second array will have a null at the position of that element. -->
+</p>
 
 [%impl-note%]
+Представление примитивных типов данных было разбито на две части с целью упрощения представления простых примитивных значений без идентификатора или расширений. Это действительно привело к издержкам, сделав представление атрибута id и расширений более неуклюжим, однако они оба редко используются с примитивными типами данных.
+<!--
 The representation of primitive data types has been
 split into two parts like this in order to simplify the representation
 of simple primitive values without id or extensions. This does have the cost of making the
 representation of the id attribute and extensions more ungainly, but these are both
-rarely used with primitive data types.
+rarely used with primitive data types. -->
 [%end-note%]
 
 <a name="complex"></a>
 
-<h3>JSON representation of Elements and Complex Data types</h3>
+<h3>JSON-представление элементов и сложных типов данных</h3>
 
 <p>
+Элементы и сложные <a href="datatypes.html">типы данных</a> (типы, содержащие именованные элементы других типов) представляются с помощью JSON-объекта, содержащего соответствующий элемент для каждого элемента в типе данных. Композиции могут иметь атрибуты id, которые преобразовываются в значения JSON-элементов объекта таким же способом, как описано для примитивов. Например:
+<!--
 Elements, and complex <a href="datatypes.html">datatypes</a> (types that contain named elements of other types) are represented using
 a JSON object, containing a member for each element in the datatype. Composites can have id attributes, which are
-converted to JSON member values, in the same manner as described for primitives. For example:</p>
+converted to JSON member values, in the same manner as described for primitives. For example:
+--></p>
  <pre class="xml" fragment="Patient">
 &lt;Patient&gt;
   &lt;text&gt;
@@ -264,7 +324,7 @@ converted to JSON member values, in the same manner as described for primitives.
   &lt;/name&gt;
 &lt;/Patient&gt;
 </pre>
-<p>is represented in JSON as:</p>
+<p>в JSON представляется так:</p>
 <pre class="json" fragment="Patient">
 {
   "name" : [{
@@ -279,18 +339,26 @@ converted to JSON member values, in the same manner as described for primitives.
   }
 }
 </pre>
-<p>Things to note here are:</p>
+<p>На что здесь необходимо обратить внимание:</p>
 <ul>
-<li>Both given is a repeating XML elements, so it is serialized as an Array, whether or not it repeats in this instance</li>
-<li>In the family part of <code>name</code>, the <code>id</code> is added represented in <code>_family</code> as described above</li>
-<li>The XHTML content in the <code>div</code> element which is in the Narrative element <code>text</code> is represented
+<li>given является повторяющимся XML-элементом, поэтому он сериализуется в массив вне зависимости от того, повторяется он в данном случае или нет.
+<!-- Both given is a repeating XML elements, so it is serialized as an Array, whether or not it repeats in this instance
+--></li>
+<li>В части family элемента <code>name</code> атрибут <code>id</code> представлен в <code>_family</code> способом, описанным выше.
+
+In the family part of <code>name</code>, the <code>id</code> is added represented in <code>_family</code> as described above</li>
+<li>XHTML-содержимое элемента <code>div</code>, который есть в Narrative-элементе <code>text</code>, представлено в виде экранированной строки в JSON-свойстве value. Корневым элементом в XHTML должен быть &lt;div&gt; в пространстве имен XHTML.
+
+The XHTML content in the <code>div</code> element which is in the Narrative element <code>text</code> is represented
   as an escaped string in the value property in JSON. The xhtml root element needs to be a &lt;div&gt; in the xhtml namespace</li>
 </ul>
 
 <a name="resources"></a>
 
-<h3>JSON representation of Resources</h3>
+<h3>JSON-представление ресурсов</h3>
 <p>
+Ресурс – это JSON-объект со свойством <code>resourceType</code>, который сообщает программе-анализатору, какой это тип ресурса:
+
 A resource is a JSON object with a property <code>resourceType</code> which informs the
 parser which resource type this is:
 </p>
@@ -305,9 +373,14 @@ parser which resource type this is:
 }
 </pre>
 <p>
+Обратите внимание, что синтаксические анализаторы не могут полагаться на то, что свойство resourceType будет идти первым.
+
 Note that parsers cannot assume that the resourceType property will come first.
 </p>
 [%impl-note%]
+Это является проблемой для некоторых сериализаторов вида JSON -&gt; Object , которые предполагают, что свойство resourceType действительно идет первым, включая <a href="http://james.newtonking.com/json">Json.NET</a>. 
+Однако некоторые JSON-генераторы не дают авторским приложениям управлять порядком значений свойств, поэтому эти реализации не могут взаимодействовать с реализациями, которые делают предположения о порядке. Учитывая, что JSON заявляет, что значения свойств являются неупорядоченной таблицей пар name/value, данная спецификация не может требовать, чтобы свойства шли в каком-то определенном порядке, хотя реализаторы могут зафиксировать порядок свойств, если у них есть такая возможность (и ссылочные платформы, предоставленные в этой спецификации, делают это).
+<!-- 
 This is a problem for several JSON -&gt; Object serializers that assume that the
 resourceType property does come first, including <a href="http://james.newtonking.com/json">Json.NET</a>.
 However, some JSON generators do not give the authoring application control of the order of the
@@ -316,9 +389,12 @@ assumptions about order. Given that JSON says that the property values are an un
 pairs, this specification cannot require that properties come in any particular order, though implementers
 may choose to fix the property order if they are able (and the reference platforms provided with this
 specification do so).
+-->
 [%end-note%]
 
 <p>
+Для помощи в тестировании JSON-анализаторов приводится <a href="json-edge-cases.json">файл с примером</a>, демонстрирующим многие крайние случаи.
+
 There is <a href="json-edge-cases.json">a sample file</a> with many edge cases to help test JSON parsers.
 </p>
 

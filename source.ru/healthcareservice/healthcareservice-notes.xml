@@ -2,9 +2,9 @@
 
 	<div>
 <a name="notes"></a>
-    <h2>Notes:</h2>
+    <h2>Примечание:<!-- Notes: --></h2>
     <ul>
-			<li>The HealthcareService could be mapped to components of the IHE Care Services Directory, and/or the OMG ServD standards</li>
+			<li>HealthcareService может иметь мэппинг на компоненты IHE Care Services Directory и/или стандарты OMG ServD<!-- The HealthcareService could be mapped to components of the IHE Care Services Directory, and/or the OMG ServD standards --></li>
     </ul>
 	</div>
 
