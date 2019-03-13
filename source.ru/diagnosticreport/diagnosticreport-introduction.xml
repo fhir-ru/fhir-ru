@@ -102,7 +102,7 @@ The results are assembled in "groups" which are nested structures of Observation
 </p>
 
 <p>
-В ресурсе DiagnosticReport можно давать ссылки на графические и медиа-представления отчёта и на вспомогательные изображения. На подробные сведения и сами изображения можно ссылаться напрямую из ресурса DiagnosticReport с помощью элемента "imaging" или косвенно через ресурсы <a href="imagingmanifest.html">ImagingManifest</a> или <a href="imagingstudy.html">ImagingStudy</a>, которые представляют содержимое, полученное в радиологическом исследовании пациента в формате DICOM или наборе экземпляров DICOM.
+В ресурсе DiagnosticReport можно давать ссылки на графические и медиа-представления отчёта и на вспомогательные изображения. На подробные сведения и сами изображения можно ссылаться напрямую из ресурса DiagnosticReport с помощью элемента "imaging" или косвенно через ресурсы <a href="imagingstudy.html">ImagingStudy</a> или <a href="imagingstudy.html">ImagingStudy</a>, которые представляют содержимое, полученное в радиологическом исследовании пациента в формате DICOM или наборе экземпляров DICOM.
 <!-- Image and media representations of the report and supporting images are referenced in the DiagnosticReport resource.  The details and actual image instances can be referenced directly in Diagnostic report using the "imaging" element or by indirect reference through the <a href="imagingstudy.html">ImagingStudy</a> resources which represent the content produced in a DICOM imaging study or set of DICOM Instances for a patient. -->
 </p>
 
