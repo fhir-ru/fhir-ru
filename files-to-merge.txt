@@ -122,14 +122,14 @@ template-example-ttl.html
 template-example-xml.html
 template-example.html
 template-examples.html
-template-extension-definitions.html
++ template-extension-definitions.html
 template-extension-mappings.html
 template-extension.html
 template-ig-toc.html
 template-logical-definitions.html
 template-logical-examples.html
 template-logical-mappings.html
-template-logical.html
++ template-logical.html
 template-mappings.html
 template-operations.html
 template-print.html
@@ -199,129 +199,140 @@ templates/template-introduction.xml
 + cvx.html
 + dataelement/dataelement-introduction.xml
 + dataelement/dataelement-notes.xml
-datatypes-definitions.html
-datatypes-examples.html
-datatypes-extras.html
-datatypes-mappings.html
-datatypes-version-maps.html
-datatypes.html
-defining-extensions.html
-detectedissue/detectedissue-introduction.xml
-detectedissue/detectedissue-notes.xml
-device/device-introduction.xml
-device/device-notes.xml
-devicecomponent/devicecomponent-introduction.xml
-devicecomponent/devicecomponent-notes.xml
-devicemetric/devicemetric-introduction.xml
-devicemetric/devicemetric-notes.xml
-deviceusestatement/deviceusestatement-introduction.xml
-diagnosticreport/diagnosticreport-introduction.xml
-diagnosticreport/diagnosticreport-notes.xml
-diagnostics-module.html
-documentation.html
-documentation/documentation-introduction.xml
-documentmanifest/documentmanifest-introduction.xml
-documentreference/documentreference-introduction.xml
-documentreference/documentreference-notes.xml
-documentreference/valueset-c80-doc-typecodes.xml
-documents.html
-domainresource/domainresource-introduction.xml
-domainresource/domainresource-notes.xml
-dosage-definitions.html
-dosage-examples.html
-dosage-mappings.html
-dosage.html
-downloads.html
-ehr-fm.html
-element-definitions.html
-element.html
-elementdefinition-definitions.html
-elementdefinition-examples.html
-elementdefinition-mappings.html
-elementdefinition.html
-eligibilityrequest/eligibilityrequest-introduction.xml
-eligibilityresponse/eligibilityresponse-introduction.xml
-encounter/encounter-introduction.xml
-encounter/encounter-notes.xml
-enrollmentrequest/enrollmentrequest-introduction.xml
-enrollmentresponse/enrollmentresponse-introduction.xml
-episodeofcare/episodeofcare-introduction.xml
-episodeofcare/episodeofcare-notes.xml
-explanationofbenefit/explanationofbenefit-introduction.xml
-extensibility-definitions.html
-extensibility-examples.html
-extensibility-registry.html
-extensibility.html
-familymemberhistory/familymemberhistory-introduction.xml
-financial-module.html
-flag/flag-introduction.xml
-formats.html
-goal/goal-introduction.xml
-group/group-introduction.xml
-guidanceresponse/guidanceresponse-introduction.xml
-healthcareservice/healthcareservice-introduction.xml
-healthcareservice/healthcareservice-notes.xml
-history.html
-http.html
-identifier-registry.html
-imagingstudy/imagingstudy-introduction.xml
-imagingstudy/imagingstudy-notes.xml
-immunization/immunization-introduction.xml
-immunizationrecommendation/immunizationrecommendation-introduction.xml
-implementationguide/implementationguide-introduction.xml
-implementationguide/implementationguide-notes.xml
-index.html
-integrated-examples.html
-json.html
-library/library-introduction.xml
-license.html
-lifecycle.html
-linkage/linkage-introduction.xml
-list/list-ccda-cognitivestatuses-introduction.xml
-list/list-introduction.xml
-list/list-notes.xml
-location/location-introduction.xml
-location/location-notes.xml
-logical.html
-loinc.html
-managing.html
-mapping-language.html
-mapping-tutorial.html
-measure/measure-introduction.xml
-measurereport/measurereport-introduction.xml
-media/media-introduction.xml
-medication/medication-introduction.xml
-medication/medication-notes.xml
-medicationadministration/medicationadministration-introduction.xml
-medicationadministration/medicationadministration-notes.xml
-medicationdispense/medicationdispense-introduction.xml
-medicationstatement/medicationstatement-introduction.xml
-messageheader/messageheader-introduction.xml
-messageheader/messageheader-notes.xml
-messaging.html
-modules-fragment.html
-modules.html
++datatypes-definitions.html
+09:50 01/16/2019
++ datatypes-examples.html
+* datatypes-extras.html - нет перевода
++ datatypes-mappings.html
+* datatypes-version-maps.html - нет перевода
++datatypes.html
+13:27 01/17/2019
++ defining-extensions.html
++ detectedissue/detectedissue-introduction.xml
++ detectedissue/detectedissue-notes.xml
+20:59 02/04/2019
++ device/device-introduction.xml
++ device/device-notes.xml
+09:22 02/06/2019
++ devicecomponent/devicecomponent-introduction.xml
++ devicecomponent/devicecomponent-notes.xml
++ devicemetric/devicemetric-introduction.xml
++ devicemetric/devicemetric-notes.xml
++ deviceusestatement/deviceusestatement-introduction.xml
++ diagnosticreport/diagnosticreport-introduction.xml
++ diagnosticreport/diagnosticreport-notes.xml
++ diagnostics-module.html
++ documentation.html
++ documentation/documentation-introduction.xml
++ documentmanifest/documentmanifest-introduction.xml
++ documentreference/documentreference-introduction.xml
++ documentreference/documentreference-notes.xml
++ documentreference/valueset-c80-doc-typecodes.xml
++ documents.html
++ domainresource/domainresource-introduction.xml
++ domainresource/domainresource-notes.xml
+* dosage-definitions.html
+* dosage-examples.html
+* dosage-mappings.html
+* dosage.html
+* downloads.html
+* ehr-fm.html
++ element-definitions.html
++ element.html
++ elementdefinition-definitions.html
++ elementdefinition-examples.html
+* elementdefinition-mappings.html
+* elementdefinition.html
+13:38 03/07/2019
++ eligibilityrequest/eligibilityrequest-introduction.xml
++ eligibilityresponse/eligibilityresponse-introduction.xml
++ encounter/encounter-introduction.xml
++ encounter/encounter-notes.xml
++ enrollmentrequest/enrollmentrequest-introduction.xml
++ enrollmentresponse/enrollmentresponse-introduction.xml
++ episodeofcare/episodeofcare-introduction.xml
++ episodeofcare/episodeofcare-notes.xml
++ explanationofbenefit/explanationofbenefit-introduction.xml
+16:10 02/07/2019
++ extensibility-definitions.html
++ extensibility-examples.html
++ extensibility-registry.html
++ extensibility.html
++ familymemberhistory/familymemberhistory-introduction.xml
+* financial-module.html
++ flag/flag-introduction.xml
++ formats.html
++ goal/goal-introduction.xml
++ group/group-introduction.xml
+* guidanceresponse/guidanceresponse-introduction.xml
++ healthcareservice/healthcareservice-introduction.xml
++ healthcareservice/healthcareservice-notes.xml
+* history.html
++ http.html
++ identifier-registry.html
++ imagingstudy/imagingstudy-introduction.xml
++ imagingstudy/imagingstudy-notes.xml
++ immunization/immunization-introduction.xml
++ immunizationrecommendation/immunizationrecommendation-introduction.xml
++ implementationguide/implementationguide-introduction.xml
++ implementationguide/implementationguide-notes.xml
++ index.html
++ integrated-examples.html
++ json.html
+11:25 05/30/2019
++ library/library-introduction.xml
+17:31 08/01/2019
++license.html
++ lifecycle.html
++ linkage/linkage-introduction.xml
+* list/list-ccda-cognitivestatuses-introduction.xml
++ list/list-introduction.xml
++ list/list-notes.xml
++ location/location-introduction.xml
++ location/location-notes.xml
+* logical.html
++ loinc.html
+* managing.html
++ mapping-language.html
+* mapping-tutorial.html
++ measure/measure-introduction.xml
++ measurereport/measurereport-introduction.xml
++ media/media-introduction.xml
++ medication/medication-introduction.xml
++ medication/medication-notes.xml
++ medicationadministration/medicationadministration-introduction.xml
++ medicationadministration/medicationadministration-notes.xml
++ medicationdispense/medicationdispense-introduction.xml
++ medicationstatement/medicationstatement-introduction.xml
++ messageheader/messageheader-introduction.xml
++ messageheader/messageheader-notes.xml
++ messaging.html
++ modules-fragment.html
++ modules.html
+11:28 08/26/2019
 namingsystem/namingsystem-introduction.xml
 narrative-definitions.html
 narrative-example.html
 narrative.html
-ncimeta.html
-ndfrt.html
-newfooter.html
-op-example-request.html
-operationdefinition/operationdefinition-introduction.xml
-operationdefinition/operationdefinition-notes.xml
-operationoutcome/operationoutcome-introduction.xml
-operationoutcome/operationoutcome-notes.xml
-operations.html
-organization/organization-introduction.xml
-organization/organization-notes.xml
-overview-arch.html
-overview-clinical.html
-overview-dev.html
-overview.html
-parameters/parameters-introduction.xml
-parameters/parameters-notes.xml
+15:41 10/21/2019
++ ncimeta.html
++ ndfrt.html
++ newfooter.html
++ op-example-request.html
++ operationdefinition/operationdefinition-introduction.xml
++ operationdefinition/operationdefinition-notes.xml
++ operationoutcome/operationoutcome-introduction.xml
++ operationoutcome/operationoutcome-notes.xml
++ operations.html
++ organization/organization-introduction.xml
++ organization/organization-notes.xml
++ overview-arch.html
++ overview-clinical.html
++ overview-dev.html
++ overview.html
++ parameters/parameters-introduction.xml
++ parameters/parameters-notes.xml
+15:42 10/21/2019
 patient/patient-introduction.xml
 patient/patient-notes.xml
 paymentnotice/paymentnotice-introduction.xml
@@ -332,6 +343,7 @@ plandefinition/plandefinition-introduction.xml
 practitioner/practitioner-introduction.xml
 practitioner/practitioner-notes.xml
 practitionerrole/practitionerrole-introduction.xml
+
 practitionerrole/practitionerrole-notes.xml
 procedure/procedure-introduction.xml
 processrequest/processrequest-introduction.xml
@@ -620,5 +632,5 @@ validation.html
 versions.html
 w5.html
 w5.ini
-workflow-module.html
++ workflow-module.html
 xml.html

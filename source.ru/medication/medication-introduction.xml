@@ -2,16 +2,19 @@
 
 <div>
 <a name="scope"></a>
-<h2>Scope and Usage</h2>
+<h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p>
-Representing medications in the majority of healthcare settings is a matter of identifying an item from a list and then conveying a reference 
+В большинстве случаев представление лекарственных средств является не более чем определением элемента из списка и затем передачей ссылки на выбранный элемент либо в ресурс, связанный с пациентом, либо в другие приложения. Дополнительные сведения о медикаменте часто предоставляются для верификации человеком, однако полная подробная информация о составе и силе лекарственного средства передается с помощью кодов из справочников лекарственных препаратов. В некоторых случаях необходимо идентифицировать немного больше деталей, например при раздаче упаковки, содержащей определенное лекарственное средство, требуется идентификация как препарата, так и самой упаковки одновременно. 
+Также имеются и другие случаи (например частные рецептуры), где необходимо предоставлять состав лекарственного средства.
+В таких случаях ингредиенты лекарственного средства должны указываться вместе с содержащимся количеством, однако ресурс Medication не дает всех деталей.
+<!-- Representing medications in the majority of healthcare settings is a matter of identifying an item from a list and then conveying a reference 
 for the item selected either into a patient-related resource or to other applications.  Additional information about the medication is frequently 
 provided for human verification, but a full representation of the details of composition and efficacy of the medicine is conveyed by referring
 to drug dictionaries by means of the codes they define. There are some occasions where it is necessary to identify slightly more detail, such
 as when dispensing a package containing a particular medication requires identification both of the medicine and the package at once.  
 There are also some occasions (e.g. custom formulations) where the composition of a medicine must be represented.  
 In these cases the ingredients of the medicine have to be specified together with the amount contained, though the Medication resource 
-does not provide full details.
+does not provide full details. -->
 </p>
 <p>
 The Medication resource allows for medications to be characterized by the form of the drug and the ingredient (or ingredients), as well as how it is packaged. The medication will include the ingredient(s) and their strength(s) and the package can include the amount (for example, number of tablets, volume, etc.) that is contained in a particular container (for example, 100 capsules of Amoxicillin 500mg per bottle).

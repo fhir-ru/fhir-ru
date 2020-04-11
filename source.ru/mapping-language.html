@@ -14,64 +14,69 @@
 <table class="colsd"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 0 (Draft)</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Trial Use</a></td></tr></table>
 
 <p>
-The FHIR Specification includes a mapping language. The mapping language has a concrete syntax, defined
+FHIR спецификация включает в себя язык мэппинга. У этого языка есть конкретный синтаксис, который определен и описан на этой странице, и абстрактный синтаксис, который находится в ресурсе <a href="structuremap.html">StructureMap</a> (также <i>появится</i> ANTLR грамматика для конкретного синтаксиса). См. также <a href="mapping-tutorial.html">Обучающее руководство</a>.
+<!-- The FHIR Specification includes a mapping language. The mapping language has a concrete syntax, defined
 and described in this page, and an abstract syntax, which is found in the <a href="structuremap.html">StructureMap</a>
-resource (and there <i>will be</i> an ANTLR grammar for the concrete syntax). See also the <a href="mapping-tutorial.html">Tutorial</a>.
+resource (and there <i>will be</i> an ANTLR grammar for the concrete syntax). See also the <a href="mapping-tutorial.html">Tutorial</a>. -->
 </p>
 <p>
-The mapping language describes how one set of Directed Acyclic Graphs (an instance) is transformed to another set of
+Данный язык мэппинга описывает, каким образом один набор направленных ациклических графов (экземпляр) трансформируется в другой набор направленных ациклических графов. Экземплярам не обязательно иметь формальные объвелния и/или быть строго типизированными - досаточно того, что у них есть именованные потомки, у которых в свою очередь есть некоторые свойства. С другой стороны, когда экземпляры строго типизированы - в частности, когда  они имеют формальные определения, представленные в виде <a href="structuredefinition.html">Structure Definitions</a>, данный язык мэппинга может использовать дополнительные возможности типов.
+<!-- The mapping language describes how one set of Directed Acyclic Graphs (an instance) is transformed to another set of
 directed acyclic graphs. It is not necessary for the instances to have formal declarations and/or be
 strongly typed - just that they have named children that themselves have properties. On the other hand,
 when the instances are strongly typed - specifically, when they have formal definitions that are represented as
 <a href="structuredefinition.html">Structure Definitions</a>, the mapping language can use additional type
-related features.
+related features. -->
 </p>
 <p>
-The mapping language addresses two very different kinds of transformations:
+Язык мэппинга выполняет два разных вида трансформации:
+<!-- The mapping language addresses two very different kinds of transformations: -->
 </p>
 <ul>
- <li>Structural changes between the source and target structures</li>
- <li>Differences in content and formats in string (and related) primitives contained within the structures</li>
+ <li>Структурные изменения между исходной и целевой структурами<!-- Structural changes between the source and target structures --></li>
+ <li>Различия в содержимом и форматах в строковых (и связанных) примитивах, содержащихся внутри структур<!-- Differences in content and formats in string (and related) primitives contained within the structures --></li>
 </ul>
 <p>
-A map has 6 parts:
+Карта состоит из 6 частей:
 </p>
 <ul>
- <li>Metadata</li>
+ <li>Метаданные<!-- Metadata --></li>
  <li>Embedded <a href="conceptmap.html">ConceptMaps</a> to translate between different code systems</li>
- <li>References to the structures involved in the mapping</li>
- <li>Imports: additional Maps used by this map</li>
- <li>A series of groups, each with a list of input variables</li>
- <li>A series of transformation rules in each group</li>
+ <li>Ссылки на другие структуры, участвующие в мэппинге<!-- References to the structures involved in the mapping --></li>
+ <li>Импорт: дополнительные карты, используемые данной картой<!-- Imports: additional Maps used by this map --></li>
+ <li>Серия групп, каждая с перечнем входных переменных у каждой группы<!-- A series of groups, each with a list of input variables --></li>
+ <li>Серия правил трансформации в каждой группе<!-- A series of transformation rules in each group --></li>
 </ul>
 
 <a name="execution"></a>
 <h3>Executing Maps</h3>
 
 <p>
-Maps are executed by a mapping engine. This takes one or more inputs of instances (directed acyclic graphs) and a map, and produces a set of outputs as specified by the map.
+Карты соответствия выполняются с помощью инструмента мэппинга. Он принимает один или несколько входных экземпляров (направленных ациклических графов) и карту соответствия, и создает набор выходных экземпляров в соответствии с этой картой соответствия. Конкретные детали формы, которую примут экземпляры, зависит от инструмента мэппинга / API приложения. Этот язык предполагает, что инструмент может запросить у элемента в экземпляре его потомков, его примитивное значение и (необязательно) его тип. Также язык предполагает, что инструмент поддерживает следующие операции:
+<!-- Maps are executed by a mapping engine. This takes one or more inputs of instances (directed acyclic graphs) and a map, and produces a set of outputs as specified by the map.
 The exact details of the form that the instances take are a matter for the map engine / application API. This language assumes that the engine can query an element in the
-instance for its children, its primitive value, and (optionally) its type. The language also assumes that the engine has application support for the following operations:
+instance for its children, its primitive value, and (optionally) its type. The language also assumes that the engine has application support for the following operations: -->
 </p>
 <ul>
-<li>ValueSet validation operation</li>
-<li>Translation operation</li>
-<li>Lookup another tree of data</li>
-<li>Create an instance tree</li>
-<li>Return the correct string format to refer to a tree (input or output)</li>
+<li>операцию валидации ValueSet<!-- ValueSet validation operation --></li>
+<li>операцию Translation<!-- Translation operation --></li>
+<li>поиск другого дерева данных<!-- Lookup another tree of data --></li>
+<li>создание дерева экземпляров<!-- Create an instance tree --></li>
+<li>возвращение корректного формата строки для ссылки на дерево (входное или выходное)<!-- Return the correct string format to refer to a tree (input or output) --></li>
 </ul>
 <p>
 These functions constitute a Mapping Support API that makes maps portable between different systems
 </p>
 
 <p>
-Generally, it is assumed the invocation of the engine follows some pattern like this:
+Обычно предполагается, что вызов инструмента придерживается некоторого шаблона наподобие:
+<!-- Generally, it is assumed the invocation of the engine follows some pattern like this: -->
 </p>
 <ul>
-<li>The host application creates the engine, and passes it a handle to the standard services</li>
-<li>The host application chooses the model map resource, and asks the engine to prepare it (load, check, cache-up etc.)</li>
-<li>The host application asks the engine to execute and provides a set of resources that match defined inputs in the map</li>
-<li>Any created output will be created via the standard API</li>
+<li>Приложение-хост создаёт инструмент и передает ему управление стандартными сервисами<!-- The host application creates the engine, and passes it a handle to the standard services --></li>
+<li>Приложение-хост выбирает ресурс модели карты соответствия и запрашивает инструмент подготовить его (загрузить, проверить, закэшировать и т.п.)<!-- The host application chooses the model map resource, and asks the engine to prepare it (load, check, cache-up etc.) --></li>
+<li>Приложение-хост вызывает выполнение инструмента и предоставляет ему набор ресурсов, которые соответствуют заданным входным данным в карте соответствия<!-- The host application asks the engine to execute and provides a set of resources that match defined inputs in the map --></li>
+<li>Весь созданный выходной результат будет создан с помощью стандартного API<!-- Any created output will be created via the standard API --></li>
 </ul>
 <p>
 Some host applications may be able to determine how to combine maps and inputs on the fly based
@@ -83,9 +88,10 @@ order to manage the map execution process.
 <a name="syntax"></a>
 <h3>General Syntax Notes</h3>
 <p>
-Mapping files are always plain text in Unicode. Whitespace is any Unicode whitespace, and the particular whitespace used
+Файлы мэппинга всегда представляют собой простой текст в формате unicode. Пробел - это любой пробельный символ в юникоде, а конкретный используемый пробельный символ не имеет значения, крое того, что символы юникода конца строки завершают комментарий. Комментарии начинаются с символов "//".
+<!-- Mapping files are always plain text in Unicode. Whitespace is any Unicode whitespace, and the particular whitespace used
 is not significant, except that Unicode end of line characters terminate a
-comment. Comments are started by the characters "//".
+comment. Comments are started by the characters "//". -->
 </p>
 <p>
 The abstract model includes documentation for each item. The canonical

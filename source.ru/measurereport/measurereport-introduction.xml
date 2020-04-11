@@ -2,7 +2,7 @@
 
 <div>
 <a name="bnc"></a>
-<h2>Scope and Usage</h2>
+<h2>Область применения и использование</h2>
 
 <p><strong>This resource is an <em>event</em> resource from a FHIR workflow perspective</strong> - see <a href="workflow.html">Workflow</a>, specifically <a href="workflow.html#event">Event</a>.</p>
 
