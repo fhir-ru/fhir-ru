@@ -1,6 +1,6 @@
 ## Russian translation of FHIR
 
-[![Build Status](https://travis-ci.org/fhir-ru/fhir-svn.svg?branch=master)](https://travis-ci.org/fhir-ru/fhir-svn)
+[![Build Status](https://dev.azure.com/fhir-build/fhir-ru/_build)
 
 ### To run the FHIR Publisher
 First ensure that [ant 1.9+](http://ant.apache.org/bindownload.cgi) is installed on your system.

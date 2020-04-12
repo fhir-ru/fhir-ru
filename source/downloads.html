@@ -8,12 +8,12 @@
 <body>
 [%file newnavbar%]
 
-<div class="col-12">
+<div class="col-12"><!--ReleaseHeader--><p id="publish-box"></p><!--EndReleaseHeader-->
 
 
 <h1>Downloads</h1>
 
-<table class="colis"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Informative</a></td></tr></table>
+<table class="colis"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="versions.html#std-process">Standards Status</a>:<!--!ns!--><a href="versions.html#std-process">Informative</a></td></tr></table>
 
 <table class="lines">
 
@@ -29,7 +29,7 @@
        <li><a href="definitions.json.zip">JSON</a></li>
        <li><a href="definitions-r2.xml.zip">Forge</a>: Special version of definitions for <a href="https://simplifier.net/Forge">Forge</a> (temporary)</li>
       </ul>
-      These is the master set of definitions that should be the first choice whenever generating any implementation artifacts. All
+      This is the master set of definitions that should be the first choice whenever generating any implementation artifacts. All
       the other forms below include only subsets of the information available in these definition files, and do not contain all of the rules about what makes resources valid. Implementers
       will still need to be familiar with the content of the specification and with any <a href="profiling.html">profiles that apply to the resources</a> in order to make a conformant implementation.
     </td>
@@ -44,8 +44,8 @@
       <ul>
        <li><a href="examples.zip">Examples</a> - all the example resources in XML format</li>
        <li><a href="fhir-all-xsd.zip">Validation Schemas</a> (includes support schemas, resource schemas, modular &amp; combined schemas, and Schematrons)</li>
-       <li><a href="fhir-codegen-xsd.zip">Code Generation Schemas</a> (See <a href="xml.html#schema-gen">notes about code-generation schemas</a>)
-       Also note that names relevant for code generation, including resource names, element &amp; slice names, codes etc may collide with reserved words in the relevant target language, and code generators will need to handle this</li>
+       <li><a href="fhir-codegen-xsd.zip">Code Generation Schemas</a> (see <a href="xml.html#schema-gen">notes about code-generation schemas</a>)<br/>
+       <i>Note that names relevant for code generation, including resource names, element &amp; slice names, codes, etc. may collide with reserved words in the relevant target language, and code generators will need to handle this</i></li>
       </ul>
     </td>
   </tr>
@@ -58,7 +58,7 @@
     <td>
       <ul>
        <li><a href="examples-json.zip">Examples</a> - all the example resources in JSON format</li>
-       <li><a href="fhir.schema.json.zip">JSON Schema</a> (Needs JSON Schema v1.6)</li>
+       <li><a href="fhir.schema.json.zip">JSON Schema</a> (Needs <a href="https://json-schema.org/draft-06/json-schema-release-notes.html">JSON Schema draft-06</a> or more recent)</li>
        <li><a href="examples-ndjson.zip">Examples</a> - all the example resources in <a href="nd-json.html">ND-JSON format</a> (bulk data format)</li>
       </ul>
     </td>
@@ -92,23 +92,30 @@
 
   <tr>
     <td>Validator</td>
-    <td>The <a href="validator.zip">official FHIR validator</a> - a Java jar file that can be used to validate resources. See <a href="validation.html">Validation Tools</a> for further information, or <a href="http://wiki.hl7.org/index.php?title=Using_the_FHIR_Validator">Using the FHIR Validator</a> for parameter documentation</td>
+    <td>The <a href="validator.zip">official FHIR validator</a> - a Java jar file that can be used to validate resources. See <a href="validation.html">Validation Tools</a> for further information, or <a href="https://confluence.hl7.org/display/FHIR/Using+the+FHIR+Validator">Using the FHIR Validator</a> for parameter documentation</td>
   </tr>
 
   <tr>
     <td>IG Publisher</td>
-    <td>The <a href="org.hl7.fhir.igpublisher.jar">Implementation Guide Publishing Tool</a> (see <a href="http://wiki.hl7.org/index.php?title=IG_Publisher_Documentation">IG Publishing documentation</a>)</td>
+    <td>The <a href="https://fhir.github.io/latest-ig-publisher/org.hl7.fhir.publisher.jar">Implementation Guide Publishing Tool</a> (see <a href="https://confluence.hl7.org/display/FHIR/IG+Publisher+Documentation">IG Publishing documentation</a>)</td>
   </tr>
 
   <tr>
     <td>NPM Package</td>
-    <td>The <a href="package.tgz">NPM Package used by many of the FHIR tools</a> (particularly the IG publisher and the validator). 
-		This contains all the conformance &amp; example resources, and various publishing support files. Note that the tools usually find this package directly, and there's no need to download it</td>
+    <td>The NPM Packages are used by many FHIR tools. Four packages are provided:
+      <ul>
+        <li><a href="hl7.fhir.r4.core.tgz">hl7.fhir.r4.core</a>: all the conformance related resources</li>
+        <li><a href="hl7.fhir.r4.examples.tgz">hl7.fhir.r4.examples</a>: all the conformance related resources</li>
+        <li><a href="hl7.fhir.r4.elements.tgz">hl7.fhir.r4.elements</a>: all the conformance related resources</li>
+        <li><a href="hl7.fhir.r4.expansions.tgz">hl7.fhir.r4.expansions</a>: all the conformance related resources</li>
+      </ul>
+      Note that the tools usually find the packages directly, and there's no need to download them
+    </td>
   </tr>
 
   <tr>
     <td>Translation File</td>
-    <td><a href="translations.xml">Translations of common FHIR names and messages</a> into multiple languages (see <a href="http://wiki.hl7.org/index.php?title=FHIR_Implementation_Page">wiki</a> for instructions on how to add to this)</td>
+    <td><a href="translations.xml">Translations of common FHIR names and messages</a> into multiple languages (see <a href="https://chat.fhir.org/#narrow/stream/10-translations">chat.fhir.org translations stream</a> for guidance on how to add to more)</td>
   </tr>
 
   <tr>
@@ -123,8 +130,8 @@
 
   <tr>
     <td>Code Generation Support</td>
-    <td>Value Set expansions for the value sets used in schema generation (<a href="expansions.xml">XML</a> or <a href="expansions.json">JSON</a>) + a list of all <a href="backbone-elements.json">backbone elements</a>.
-    Note that names relevant for code generation, including resource names, element &amp; slice names, codes etc may collide with reserved words in the relevant target language, and code generators will need to handle this</td>
+    <td>ValueSet expansions for the value sets used in schema generation (<a href="expansions.xml">XML</a> or <a href="expansions.json">JSON</a>) + a list of all <a href="choice-elements.json">choice elements</a> &amp; <a href="backbone-elements.json">backbone elements</a>.
+    Note that names relevant for code generation, including resource names, element &amp; slice names, codes, etc. may collide with reserved words in the relevant target language, and code generators will need to handle this</td>
   </tr>
 
   <tr>
@@ -168,9 +175,7 @@
   </tr>
   <tr>
    <td>Javascript</td>
-   <td>
-    <a href="https://github.com/FHIR/fhir.js">FHIR.js</a>:
-    Javascript Client and Utilities
+   <td>See the <a href="https://confluence.hl7.org/pages/viewpage.action?pageId=35718838#OpenSourceImplementations-Javascript">HL7 wiki for Javascript libraries</a> (Clients and Utilities for both servers and clients)
    </td>
   </tr>
   <tr>
@@ -193,7 +198,7 @@ conform to these, nor are they subject to the formal standards process.</span>
 <hr/>
 <p>
 Full blown open source implementations for FHIR, some of which use these reference implementations, are
-listed on the <a href="http://wiki.hl7.org/index.php?title=Open_Source_FHIR_implementations">HL7 wiki</a>.
+listed on <a href="https://confluence.hl7.org/display/FHIR/Open+Source+Implementations">HL7 Confluence</a>.
 </p>
 <p>
 It is not necessary to use these particular implementations in order to be conformant. Any other approach

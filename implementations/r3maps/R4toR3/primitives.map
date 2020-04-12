@@ -1,4 +1,4 @@
-﻿map "http://hl7.org/fhir/StructureMap/primitives4to3" = "R4 to R3 Primitive Conversions"
+map "http://hl7.org/fhir/StructureMap/primitives4to3" = "R4 to R3 Primitive Conversions"
 
 uses "http://hl7.org/fhir/StructureDefinition/base64Binary" as source
 uses "http://hl7.org/fhir/3.0/StructureDefinition/base64Binary" alias base64BinaryR3 as target
@@ -151,11 +151,51 @@ group url2uri(source src : url, target tgt : uriR3) extends Element <<types>> {
   src.value as v -> tgt.value = v "code2uri-value";
 }
 
-group string2id(source src : stringR3, target tgt : id) extends Element <<types>> {
+group string2id(source src : string, target tgt : idR3) extends Element <<types>> {
   src.value as v -> tgt.value = v "uri2code-value";
 }
 
 group string2uri(source src : string, target tgt : uriR3) extends Element <<types>> {
   src.value as v -> tgt.value = v "code2uri-value";
+}
+
+group decimal2unsignedInt(source src : decimal, target tgt : unsignedIntR3) extends Element <<types>> {
+  src.value as v -> tgt.value = v "unsignedInt2decimal-value";
+}
+
+group canonical2string(source src : canonical, target tgt : stringR3) extends Element <<types>> {
+  src.value as v -> tgt.value = v "code2uri-value";
+}
+
+group oid2string(source src : string, target tgt : oidR3) extends Element <<types>> {
+  src.value as v -> tgt.value = v;
+}
+
+group id2oid(source src : id, target tgt : oidR3) extends Element <<types>> {
+  src.value as v -> tgt.value = v;
+}
+
+group id2string(source src : id, target tgt : stringR3) extends Element <<type+>> {
+  src.value as v -> tgt.value = v;
+}
+
+group code2oid(source src : code, target tgt : oidR3) extends Element <<type+>> {
+  src.value as v -> tgt.value = v;
+}
+
+group integer2positiveInt(source src : integer, target tgt : positiveIntR3) extends Element <<types>> {
+  src.value as v -> tgt.value = v "unsignedInt2decimal-value";
+}
+
+group positiveInt2integer(source src : positiveInt, target tgt : integerR3) extends Element <<types>> {
+  src.value as v -> tgt.value = v "unsignedInt2decimal-value";
+}
+
+group unsignedInt2positiveInt(source src : unsignedInt, target tgt : positiveIntR3) extends Element <<types>> {
+  src.value as v -> tgt.value = v;
+}
+
+group code2uri(source src : code, target tgt : uriR3) extends Element <<types>> {
+  src.value as v -> tgt.value = v;
 }
 

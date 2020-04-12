@@ -80,7 +80,6 @@ import org.hl7.fhir.igtools.renderers.ValueSetRenderer;
 import org.hl7.fhir.igtools.renderers.XmlXHtmlRenderer;
 import org.hl7.fhir.igtools.spreadsheets.IgSpreadsheetParser;
 import org.hl7.fhir.igtools.templates.TemplateManager;
-import org.hl7.fhir.igtools.ui.GraphicalPublisher;
 import org.hl7.fhir.r4.conformance.ConstraintJavaGenerator;
 import org.hl7.fhir.r4.conformance.ProfileUtilities;
 import org.hl7.fhir.r4.context.IWorkerContext;
@@ -153,6 +152,7 @@ import org.hl7.fhir.r4.utils.NPMPackageGenerator.Category;
 import org.hl7.fhir.r4.utils.NarrativeGenerator;
 import org.hl7.fhir.r4.utils.NarrativeGenerator.IReferenceResolver;
 import org.hl7.fhir.r4.utils.NarrativeGenerator.ITypeParser;
+import org.hl7.fhir.r4.utils.NarrativeGenerator.ResourceContext;
 import org.hl7.fhir.r4.utils.NarrativeGenerator.ResourceWithReference;
 import org.hl7.fhir.r4.utils.StructureMapUtilities;
 import org.hl7.fhir.r4.utils.StructureMapUtilities.StructureMapAnalysis;
@@ -545,7 +545,7 @@ public class Publisher implements IWorkerContext.ILoggingService, IReferenceReso
           clean();
           long endTime = System.nanoTime();
           processTxLog(Utilities.path(destDir != null ? destDir : outputDir, "qa-tx.html"));
-          ValidationPresenter val = new ValidationPresenter(version, igpkp, childPublisher == null? null : childPublisher.getIgpkp());
+          ValidationPresenter val = new ValidationPresenter(version, igpkp, childPublisher == null? null : childPublisher.getIgpkp(), outputDir);
           log("Finished. "+presentDuration(endTime - startTime)+". Validation output in "+val.generate(sourceIg.getName(), errors, fileList, Utilities.path(destDir != null ? destDir : outputDir, "qa.html"), suppressedMessages));
           recordOutcome(null, val);
         }
@@ -597,7 +597,7 @@ public class Publisher implements IWorkerContext.ILoggingService, IReferenceReso
     generate();
     long endTime = System.nanoTime();
     clean();
-    ValidationPresenter val = new ValidationPresenter(version, igpkp, childPublisher == null? null : childPublisher.getIgpkp());
+    ValidationPresenter val = new ValidationPresenter(version, igpkp, childPublisher == null? null : childPublisher.getIgpkp(), outputDir);
     if (isChild()) {
       log("Finished. "+presentDuration(endTime - startTime));      
     } else {
@@ -703,7 +703,7 @@ public class Publisher implements IWorkerContext.ILoggingService, IReferenceReso
             for (Element e : r.getElement().getChildrenByName("entry")) {
               Element res = e.getNamedChild("resource");
               if (res!=null && "http://hl7.org/fhir/StructureDefinition/DomainResource".equals(res.getProperty().getStructure().getBaseDefinition()) && !hasNarrative(res)) {
-                gen.generate(gen.new ResourceContext(r.getElement(), res), res, true, getTypeLoader(f,r));
+                gen.generate(new ResourceContext(r.getElement(), res), res, true, getTypeLoader(f,r));
               }
             }
           }
@@ -2161,8 +2161,8 @@ public class Publisher implements IWorkerContext.ILoggingService, IReferenceReso
     load("CapabilityStatement");
     load("Questionnaire");
     load("PlanDefinition");
-    checkConformanceResources();
     generateSnapshots();
+    checkConformanceResources();
     generateLogicalMaps();
     load("StructureMap");
     generateAdditionalExamples();
@@ -2618,7 +2618,7 @@ public class Publisher implements IWorkerContext.ILoggingService, IReferenceReso
           changed = true;
           sd.getDifferential().getElement().add(0, new ElementDefinition().setPath(p.substring(0, p.indexOf("."))));
         }
-        utils.generateSnapshot(base, sd, sd.getUrl(), sd.getName());
+        utils.generateSnapshot(base, sd, sd.getUrl(), null, sd.getName());
         changed = true;
       }
     } else { //sd.getKind() == StructureDefinitionKind.LOGICAL
@@ -2661,7 +2661,7 @@ public class Publisher implements IWorkerContext.ILoggingService, IReferenceReso
       try {
         ExpressionNode n = (ExpressionNode) inv.getUserData("validator.expression.cache");
         if (n == null) {
-          n = fpe.parse(inv.getExpression());
+          n = fpe.parse(inv.getExpression(), sd.getUrl()+"#"+ed.getId()+" / "+inv.getKey());
           inv.setUserData("validator.expression.cache", n);
         }
         fpe.check(null, sd, ed.getPath(), n);
@@ -4481,7 +4481,7 @@ public class Publisher implements IWorkerContext.ILoggingService, IReferenceReso
     if (igpkp.wantGen(r, "xlsx")) {
       String path = Utilities.path(tempDir, r.getId()+".xlsx");
       f.getOutputNames().add(path);
-      new ProfileUtilities(context, errors, igpkp).generateXlsx(new FileOutputStream(path), sd, true);
+      new ProfileUtilities(context, errors, igpkp).generateXlsx(new FileOutputStream(path), sd, true, false);
     }
 
     if (!regen && sd.getKind() != StructureDefinitionKind.LOGICAL &&  igpkp.wantGen(r, "sch")) {
@@ -4593,17 +4593,6 @@ public class Publisher implements IWorkerContext.ILoggingService, IReferenceReso
   }
 
   private static void runGUI() throws InterruptedException, InvocationTargetException {
-    EventQueue.invokeLater(new Runnable() {
-      public void run() {
-        try {
-          UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-          GraphicalPublisher window = new GraphicalPublisher();
-          window.frame.setVisible(true);
-        } catch (Exception e) {
-          e.printStackTrace();
-        }
-      }
-    });
   }
 
   public void setTxServer(String s) {

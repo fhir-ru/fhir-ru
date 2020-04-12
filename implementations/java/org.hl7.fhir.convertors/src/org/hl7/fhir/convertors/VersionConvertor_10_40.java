@@ -9477,48 +9477,6 @@ public class VersionConvertor_10_40 {
   }
 
 
-  public org.hl7.fhir.r4.model.ProcessRequest.ActionList convertActionList(org.hl7.fhir.dstu2.model.ProcessRequest.ActionList src) throws FHIRException {
-    if (src == null)
-      return null;
-    switch (src) {
-    case CANCEL: return org.hl7.fhir.r4.model.ProcessRequest.ActionList.CANCEL;
-    case POLL: return org.hl7.fhir.r4.model.ProcessRequest.ActionList.POLL;
-    case REPROCESS: return org.hl7.fhir.r4.model.ProcessRequest.ActionList.REPROCESS;
-    case STATUS: return org.hl7.fhir.r4.model.ProcessRequest.ActionList.STATUS;
-    default: return org.hl7.fhir.r4.model.ProcessRequest.ActionList.NULL;
-    }
-  }
-
-  public org.hl7.fhir.dstu2.model.ProcessRequest.ActionList convertActionList(org.hl7.fhir.r4.model.ProcessRequest.ActionList src) throws FHIRException {
-    if (src == null)
-      return null;
-    switch (src) {
-    case CANCEL: return org.hl7.fhir.dstu2.model.ProcessRequest.ActionList.CANCEL;
-    case POLL: return org.hl7.fhir.dstu2.model.ProcessRequest.ActionList.POLL;
-    case REPROCESS: return org.hl7.fhir.dstu2.model.ProcessRequest.ActionList.REPROCESS;
-    case STATUS: return org.hl7.fhir.dstu2.model.ProcessRequest.ActionList.STATUS;
-    default: return org.hl7.fhir.dstu2.model.ProcessRequest.ActionList.NULL;
-    }
-  }
-
-  public org.hl7.fhir.r4.model.ProcessRequest.ItemsComponent convertItemsComponent(org.hl7.fhir.dstu2.model.ProcessRequest.ItemsComponent src) throws FHIRException {
-    if (src == null || src.isEmpty())
-      return null;
-    org.hl7.fhir.r4.model.ProcessRequest.ItemsComponent tgt = new org.hl7.fhir.r4.model.ProcessRequest.ItemsComponent();
-    copyElement(src, tgt);
-    tgt.setSequenceLinkId(src.getSequenceLinkId());
-    return tgt;
-  }
-
-  public org.hl7.fhir.dstu2.model.ProcessRequest.ItemsComponent convertItemsComponent(org.hl7.fhir.r4.model.ProcessRequest.ItemsComponent src) throws FHIRException {
-    if (src == null || src.isEmpty())
-      return null;
-    org.hl7.fhir.dstu2.model.ProcessRequest.ItemsComponent tgt = new org.hl7.fhir.dstu2.model.ProcessRequest.ItemsComponent();
-    copyElement(src, tgt);
-    tgt.setSequenceLinkId(src.getSequenceLinkId());
-    return tgt;
-  }
-
 //  public org.hl7.fhir.r4.model.Provenance convertProvenance(org.hl7.fhir.dstu2.model.Provenance src) throws FHIRException {
 //    if (src == null || src.isEmpty())
 //      return null;
@@ -10000,7 +9958,7 @@ public class VersionConvertor_10_40 {
     tgt.setSubject(convertReference(src.getSubject()));
 //    tgt.setDate(src.getDate());
     tgt.setCondition(convertReference(src.getCondition()));
-    tgt.setContext(convertReference(src.getEncounter()));
+    tgt.setEncounter(convertReference(src.getEncounter()));
     tgt.setPerformer(convertReference(src.getPerformer()));
     tgt.addIdentifier(convertIdentifier(src.getIdentifier()));
     tgt.setMethod(convertCodeableConcept(src.getMethod()));
@@ -10020,7 +9978,7 @@ public class VersionConvertor_10_40 {
     tgt.setSubject(convertReference(src.getSubject()));
 //    tgt.setDateElement(src.getOccurrenceDateTimeType());
     tgt.setCondition(convertReference(src.getCondition()));
-    tgt.setEncounter(convertReference(src.getContext()));
+    tgt.setEncounter(convertReference(src.getEncounter()));
     tgt.setPerformer(convertReference(src.getPerformer()));
     tgt.setIdentifier(convertIdentifier(src.getIdentifierFirstRep()));
     tgt.setMethod(convertCodeableConcept(src.getMethod()));

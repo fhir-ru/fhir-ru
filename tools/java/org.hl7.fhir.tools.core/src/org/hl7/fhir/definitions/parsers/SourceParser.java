@@ -507,11 +507,11 @@ public class SourceParser {
       
       for (ElementDefn t : trace) {
         if (t.getStandardsStatus() != null && t.getStandardsStatus().isLowerThan(sp.getStandardsStatus()))
-          sp.setStandardsStatus(t.getStandardsStatus());
+          sp.setStandardsStatus(t.getStandardsStatus(), t.getNormativeVersion(rd));
         try {
         TypeDefn tt = definitions.getElementDefn(t.typeCode());
         if (tt.getStandardsStatus() != null && tt.getStandardsStatus().isLowerThan(sp.getStandardsStatus()))
-          sp.setStandardsStatus(tt.getStandardsStatus());
+          sp.setStandardsStatus(tt.getStandardsStatus(), t.getNormativeVersion(rd));
         } catch (Exception e) {
           // nothing
         }
@@ -531,7 +531,7 @@ public class SourceParser {
         }
       else
         bp.append(p);
-      if (!targets.isEmpty()) {
+      if (!targets.isEmpty() && !matchesElementDefinition(targets, ed.getTypes())) {
         bp.append(".where(");
         boolean innerFirst = true;
         for (String t : targets) {
@@ -548,6 +548,21 @@ public class SourceParser {
     }
     return b.toString();
   }
+
+
+  private boolean matchesElementDefinition(Set<String> targets, List<TypeRef> types) {
+    for (TypeRef tr : types) {
+      if (tr.getName().equals("Reference")) {
+        for (String s : tr.getParams()) {
+          if (!targets.contains(s))
+            return false;
+        }
+      }
+    }
+    return true;
+  }
+
+
 
 
   private void processContainerExamples() throws Exception {
@@ -1007,7 +1022,7 @@ public class SourceParser {
   private void genTypeProfile(org.hl7.fhir.definitions.model.TypeDefn t) throws Exception {
     StructureDefinition profile;
     try {
-      profile = new ProfileGenerator(definitions, context, page, genDate, version.toCode(), null, fpUsages, page.getFolders().rootDir).generate(t);
+      profile = new ProfileGenerator(definitions, context, page, genDate, version, null, fpUsages, page.getFolders().rootDir).generate(t);
       t.setProfile(profile);
       DataTypeTableGenerator dtg = new DataTypeTableGenerator(dstDir, page, t.getName(), true);
       t.getProfile().getText().setDiv(new XhtmlNode(NodeType.Element, "div"));
@@ -1026,6 +1041,7 @@ public class SourceParser {
     definitions.getKnownTypes().addAll(ts);
 
     StandardsStatus status = loadStatus(n);
+    String nv = loadNormativeVersion(n);
     
     try {
       TypeRef t = ts.get(0);
@@ -1035,6 +1051,7 @@ public class SourceParser {
         org.hl7.fhir.definitions.model.TypeDefn el = p.parseCompositeType();
         el.setFmmLevel(fmm);
         el.setStandardsStatus(status);
+        el.setNormativeVersion(nv);
         map.put(t.getName(), el);
         genTypeProfile(el);
         errors.addAll(p.getErrors());
@@ -1086,15 +1103,19 @@ public class SourceParser {
     }
   }
 
+  private String loadNormativeVersion(String n) throws FHIRException {
+    String ns = ini.getStringProperty("normative-versions", n);
+    if (Utilities.noString(ns) && loadStatus(n) == StandardsStatus.NORMATIVE)
+      ns = "4.0.0";
+    return ns;
+  }
+
   private StandardsStatus loadStatus(String n) throws FHIRException {
     String ns = ini.getStringProperty("standards-status", n);
     if (Utilities.noString(ns))
       throw new FHIRException("Data types must be registered in the [standards-status] section of fhir.ini ("+n+")");
     return StandardsStatus.fromCode(ns);
   }
-
-
-
 
   private ResourceDefn loadResource(String n, Map<String, ResourceDefn> map, boolean isAbstract, boolean isTemplate) throws Exception {
     String folder = n;
@@ -1116,7 +1137,8 @@ public class SourceParser {
     errors.addAll(sparser.getErrors());
     root.setWg(wg);
     root.setFmmLevel(ini.getStringProperty("fmm", n.toLowerCase()));
-    root.setNormativePackage(ini.getStringProperty("normative", root.getName()));
+    root.setNormativePackage(ini.getStringProperty("normative-package", root.getName()));
+    root.setNormativeVersion(ini.getStringProperty("first-normative-version", root.getName()));
     root.setApproval(FMGApproval.fromCode(ini.getStringProperty("fmg-approval", root.getName())));
     String sc = ini.getStringProperty("security-categorization", root.getName().toLowerCase());
     if (sc != null)
@@ -1136,7 +1158,7 @@ public class SourceParser {
       definitions.getKnownResources().put(root.getName(), new DefinedCode(root.getName(), root.getRoot().getDefinition(), n));
       context.getResourceNames().add(root.getName());
     }
-    if (root.getNormativePackage() != null)
+    if (root.getNormativeVersion() != null || root.getNormativePackage() != null)
       root.setStatus(StandardsStatus.NORMATIVE);
     File f = new File(Utilities.path(srcDir, folder, n+".svg"));
     if (f.exists()) 

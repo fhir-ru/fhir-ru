@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Mon, Nov 5, 2018 09:03+1100 for FHIR v3.6.0
+// Generated on Thu, Dec 13, 2018 14:07+1100 for FHIR v4.0.0
 
 import java.util.*;
 import org.hl7.fhir.utilities.xhtml.NodeType;
@@ -259,7 +259,7 @@ public class Narrative extends BaseNarrative implements INarrative {
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create Narrative.div");
         else if (Configuration.doAutoCreate())
-          this.div = new XhtmlNode(); // cc
+          this.div = new XhtmlNode(NodeType.Element, "div"); // cc 
       return this.div;
     }
 

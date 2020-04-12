@@ -1,4 +1,4 @@
-﻿map "http://hl7.org/fhir/StructureMap/ActivityDefinition3to4" = "R3 to R4 Conversions for ActivityDefinition"
+map "http://hl7.org/fhir/StructureMap/ActivityDefinition3to4" = "R3 to R4 Conversions for ActivityDefinition"
 
 uses "http://hl7.org/fhir/3.0/StructureDefinition/ActivityDefinition" alias ActivityDefinitionR3 as source
 uses "http://hl7.org/fhir/StructureDefinition/ActivityDefinition" alias ActivityDefinition as target
@@ -28,10 +28,13 @@ group ActivityDefinition(source src : ActivityDefinitionR3, target tgt : Activit
   src.lastReviewDate -> tgt.lastReviewDate;
   src.effectivePeriod -> tgt.effectivePeriod;
   src.topic -> tgt.topic;
-  src.contributor -> tgt.contributor;
+  src.contributor as vs where type = 'author' -> tgt.author as vt then Contributor(vs, vt);
+  src.contributor as vs where type = 'editor' -> tgt.editor as vt then Contributor(vs, vt);
+  src.contributor as vs where type = 'reviewer' -> tgt.reviewer as vt then Contributor(vs, vt);
+  src.contributor as vs where type = 'endorser' -> tgt.endorser as vt then Contributor(vs, vt);
   src.relatedArtifact -> tgt.relatedArtifact;
   src.library -> tgt.library;
-  src.kind as v -> tgt.kind = translate(v, "http://hl7.org/fhir/StructureMap/ConceptMaps3to4#ResourceTypeMap", "code");
+  src.kind as v -> tgt.kind = translate(v, 'http://hl7.org/fhir/StructureMap/ConceptMaps3to4#ResourceTypeMap', 'code');
   src.code -> tgt.code;
   src.doNotPerform -> tgt.doNotPerform;
   src.timing -> tgt.timing;
@@ -46,15 +49,17 @@ group ActivityDefinition(source src : ActivityDefinitionR3, target tgt : Activit
   src.dynamicValue as s -> tgt.dynamicValue as t then ActivityDefinitionDynamicValue(s, t);
 }
 
-group ActivityDefinitionParticipant(source src : ActivityDefinitionR3, target tgt : ActivityDefinition) extends BackboneElement <<type+>> {
+group ActivityDefinitionParticipant(source src, target tgt) extends BackboneElement {
   src.type -> tgt.type;
   src.role -> tgt.role;
 }
 
-group ActivityDefinitionDynamicValue(source src : ActivityDefinitionR3, target tgt : ActivityDefinition) extends BackboneElement <<type+>> {
-  src.description -> tgt.description;
+group ActivityDefinitionDynamicValue(source src, target tgt) extends BackboneElement {
   src.path -> tgt.path;
-  src.language -> tgt.language;
-  src.expression -> tgt.expression;
+  src as vs where vs.type.exists().not() -> tgt.expression = create('Expression') as vt then {
+    vs.description -> vt.description;
+    vs.language -> vt.language;
+    vs.expression -> vt.expression;
+  } "expression";
 }
 

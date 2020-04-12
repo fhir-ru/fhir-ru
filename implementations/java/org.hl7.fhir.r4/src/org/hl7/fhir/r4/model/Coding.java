@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Mon, Nov 5, 2018 09:03+1100 for FHIR v3.6.0
+// Generated on Thu, Dec 13, 2018 14:07+1100 for FHIR v4.0.0
 
 import java.util.*;
 
@@ -528,6 +528,10 @@ public class Coding extends Type implements IBaseCoding, ICompositeType, ICoding
       public boolean is(String system, String code) {
         return hasSystem() && hasCode() &&  this.getSystem().equals(system) && this.getCode().equals(code);
       }
+
+	public boolean hasSystem(String url) {
+		return url.equals(getSystem());
+	}
       
 
 // end addition

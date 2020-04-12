@@ -10,11 +10,11 @@
 <body>
 [%file newnavbar%]
 
-<div class="col-12">
+<div class="col-12"><!--ReleaseHeader--><p id="publish-box"></p><!--EndReleaseHeader-->
 
 
 <h2>Validating Resources</h2>
-<table class="colsi"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Informative</a></td></tr></table>
+<table class="colsi"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="versions.html#std-process">Standards Status</a>:<!--!ns!--><a href="versions.html#std-process">Informative</a></td></tr></table>
 
 <p>
 This page provides an overview of how the FHIR specification supports validation of resources. 
@@ -169,7 +169,7 @@ In case of disagreement between these conformance methods, note that:
 </p>
 <ul>
  <li>The schema/schematron is the least capable - mainly because it is not connected to a terminology server</li>
- <li>The java validator is only as good as the underlying definitions, and in particular, depends on whether the underlying terminology server supports all the relevant terminologies</li>
+ <li>The java validator is only as good as the underlying definitions, and depends on whether the underlying terminology server supports all the relevant terminologies</li>
  <li>In general, the server validation operations use or derive from the java validation code, so have the same caveats</li>
  <li>The final arbiter is human inspection of the content of the resources, and the relevant implementation guides and base specification</li>
 </ul>
@@ -201,7 +201,7 @@ might not always be a good idea:
 On the other hand, validation during production use may be very important:
 </p>
 <ul>
- <li>Validation may be required for security reasons - particular validation of narrative may be required to prevent active content or external references</li>
+ <li>Validation may be required for security reasons.  In particular, validation of narrative may be required to prevent active content or external references.</li>
  <li>Validating resources at specific control points in the data flow can allow for better detection and recovery as opposed to specific application logic failing on bad data</li>
 </ul>
 <p>
@@ -305,7 +305,7 @@ Note that it is not necessary to download the resource first; the http address c
 </pre>
 <p>
 The validator requires an underlying terminology server. By default, this is http://fhir3.healthintersections.com.au. 
-For further details of the parameters supported by the validator, see <a href="http://wiki.hl7.org/index.php?title=Using_the_FHIR_Validator">Using the FHIR Validator</a>
+For further details of the parameters supported by the validator, see <a href="https://confluence.hl7.org/display/FHIR/Using+the+FHIR+Validator">Using the FHIR Validator</a>
 </p>
 
 <a name="op"></a>
@@ -340,7 +340,7 @@ There are several things to consider when using this operation:
 <p>
 Some servers expose the $validate functionality 
 through a web page. For known public implementations,
-see the <a href="http://wiki.hl7.org/index.php?title=Public_FHIR_Validation_Services">FHIR wiki</a>
+see the <a href="https://confluence.hl7.org/display/FHIR/Public+FHIR+Validation+Services">FHIR Confluence page</a>
 </p>
 
 </div>

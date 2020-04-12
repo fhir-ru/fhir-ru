@@ -16,14 +16,14 @@ Outstanding issues:
 <body>
 [%file newnavbar%]
 
-<div class="col-12">
+<div class="col-12"><!--ReleaseHeader--><p id="publish-box"></p><!--EndReleaseHeader-->
 
 <h1>FHIR Documents</h1>
-<table class="colstu"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 3</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Trial Use</a></td></tr></table>
+<table class="colstu"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 3</td><td id="ballot"><a href="versions.html#std-process">Standards Status</a>:<!--!ns!--><a href="versions.html#std-process">Trial Use</a></td></tr></table>
 
 <p>
 FHIR resources can be used to build documents that represent a composition:
-a set of coherent information that is a statement of healthcare information, including clinical observations and services.
+a coherent set of information that is a statement of healthcare information, including clinical observations and services.
 A document is an immutable set of resources with a fixed presentation
 that is authored and/or attested by humans, organizations and devices.
 </p>
@@ -78,8 +78,7 @@ The composition resource is the foundation of the clinical document. It:
  <li>divides the document up into a series of sections, each with their own narrative</li>
 </ul>
 <p>
-Any resource referenced directly in the Composition SHALL be included in the bundle when the document
-is assembled. Specifically, this means the following resource references:
+Resources referenced by the Composition as listed below SHALL be included in the bundle when the document is assembled:
 </p>
 <%res-ref-list Composition%>
 <p>
@@ -218,7 +217,7 @@ purpose. Document profiles may make rules about:
  <li>Which resources are to be included in the bundle along with the resources that are directly referenced in the Document resource</li>
 </ul>
 <p>
-Applications should consider publishing <a href="capabilitystatement.html">Capability Statements</a> that identify particular documents they support. Documents can
+Applications should consider publishing <a href="capabilitystatement.html">Capability Statements</a> that identify document types they support. Documents can
 identify a profile that they conform to by placing a profile identifier in the <code>Bundle.meta.profile</code>
 element - see <a href="resource.html#meta">Profile Tags</a> for a discussion of the utility
 of this.

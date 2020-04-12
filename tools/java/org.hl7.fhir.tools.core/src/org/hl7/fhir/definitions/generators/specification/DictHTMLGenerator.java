@@ -183,14 +183,14 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
   }
   
   private boolean isProfiledExtension(ElementDefinition ec) {
-    return ec.getType().size() == 1 && "Extension".equals(ec.getType().get(0).getCode()) && ec.getType().get(0).hasProfile();
+    return ec.getType().size() == 1 && "Extension".equals(ec.getType().get(0).getWorkingCode()) && ec.getType().get(0).hasProfile();
   }
 
   private void generateElementInner(StructureDefinition profile, ElementDefinition d, int mode, ElementDefinition value) throws Exception {
     tableRow("Element Id", null, d.getId());
     tableRowNE("Definition", null, page.processMarkdown(profile.getName(), d.getDefinition(), prefix));
     tableRowNE("Note", null, businessIdWarning(profile.getName(), tail(d.getPath())));
-    tableRow("Control", "conformance-rules.html#conformance", describeCardinality(d) + summariseConditions(d.getCondition()));
+    tableRow("Cardinality", "conformance-rules.html#cardinality", describeCardinality(d) + summariseConditions(d.getCondition()));
     tableRowNE("Terminology Binding", "terminologies.html", describeBinding(d));
     if (d.hasContentReference())
       tableRow("Type", null, "See "+d.getContentReference().substring(1));
@@ -243,7 +243,7 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 
   private String businessIdWarning(String resource, String name) {
     if (name.equals("identifier"))
-      return "This is a business identifer, not a resource identifier (see <a href=\""+prefix+"resource.html#identifiers\">discussion</a>)";
+      return "This is a business identifier, not a resource identifier (see <a href=\""+prefix+"resource.html#identifiers\">discussion</a>)";
     if (name.equals("version")) // && !resource.equals("Device"))
       return "This is a business versionId, not a resource version id (see <a href=\""+prefix+"resource.html#versions\">discussion</a>)";
     return null;
@@ -299,25 +299,25 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
   }
 
   private void describeType(StringBuilder b, TypeRefComponent t) throws Exception {
-    if (t.getCode() == null)
+    if (t.getWorkingCode() == null)
       return;
-    if (t.getCode().startsWith("="))
+    if (t.getWorkingCode().startsWith("="))
       return;
     
-    if (t.getCode().startsWith("xs:")) {
-      b.append(t.getCode());
+    if (t.getWorkingCode().startsWith("xs:")) {
+      b.append(t.getWorkingCode());
     } else {
       b.append("<a href=\"");
       b.append(prefix);         
-      b.append(definitions.getSrcFile(t.getCode()));
+      b.append(definitions.getSrcFile(t.getWorkingCode()));
       b.append(".html#");
-      String type = t.getCode();
+      String type = t.getWorkingCode();
       if (type.equals("*"))
         b.append("open");
       else 
-        b.append(t.getCode());
+        b.append(t.getWorkingCode());
       b.append("\">");
-      b.append(t.getCode());
+      b.append(t.getWorkingCode());
       b.append("</a>");
     }
     if (t.hasProfile() || t.hasTargetProfile()) {
@@ -484,9 +484,9 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
   public void generate(ElementDefn root) throws Exception
 	{
 		write("<table class=\"dict\">\r\n");
-		writeEntry(root.getName(), "0..*", describeType(root), null, root, root.getName());
+		writeEntry(root.getName(), "0..*", describeType(root), null, root, root.getName(), true);
 		for (ElementDefn e : root.getElements()) {
-		   generateElement(root.getName(), e, root.getName());
+		   generateElement(root.getName(), e, root.getName(), false);
 		}
 		write("</table>\r\n");
 		write("\r\n");
@@ -494,23 +494,23 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 		close();
 	}
 
-	private void generateElement(String name, ElementDefn e, String resourceName) throws Exception {
-		writeEntry(name+"."+e.getName(), e.describeCardinality(), describeType(e), e.getBinding(), e, resourceName);
+	private void generateElement(String name, ElementDefn e, String resourceName, boolean root) throws Exception {
+		writeEntry(name+"."+e.getName(), e.describeCardinality(), describeType(e), e.getBinding(), e, resourceName, root);
 		for (ElementDefn c : e.getElements())	{
-		   generateElement(name+"."+e.getName(), c, resourceName);
+		   generateElement(name+"."+e.getName(), c, resourceName, false);
 		}
 	}
 
-	private void writeEntry(String path, String cardinality, String type, BindingSpecification bs, ElementDefn e, String resourceName) throws Exception {
+	private void writeEntry(String path, String cardinality, String type, BindingSpecification bs, ElementDefn e, String resourceName, boolean root) throws Exception {
 		write("  <tr><td colspan=\"2\" class=\"structure\"><a name=\""+path.replace("[", "_").replace("]", "_")+"\"> </a><b>"+path+"</b></td></tr>\r\n");
 		if (e.getStandardsStatus() != null && !path.contains("."))
-      tableRowStyled("Standards Status", "versions.html#std-process", getStandardsStatusNote(e.getStandardsStatus()), getStandardsStatusStyle(e.getStandardsStatus()));
+      tableRowStyled("Standards Status", "versions.html#std-process", getStandardsStatusNote(e.getStandardsStatus(), root), getStandardsStatusStyle(e.getStandardsStatus()));
     if (e.getStandardsStatus() == StandardsStatus.DEPRECATED && path.contains("."))
-      tableRowStyled("Standards Status", "versions.html#std-process", getStandardsStatusNote(e.getStandardsStatus()), getStandardsStatusStyle(e.getStandardsStatus()));
+      tableRowStyled("Standards Status", "versions.html#std-process", getStandardsStatusNote(e.getStandardsStatus(), root), getStandardsStatusStyle(e.getStandardsStatus()));
     tableRow("Element Id", null, e.getPath());
     tableRowNE("Definition", null, page.processMarkdown(path, e.getDefinition(), prefix));
     tableRowNE("Note", null, businessIdWarning(resourceName, e.getName()));
-		tableRow("Control", "conformance-rules.html#conformance", cardinality + (e.hasCondition() ? ": "+  e.getCondition(): ""));
+		tableRow("Cardinality", "conformance-rules.html#cardinality", cardinality + (e.hasCondition() ? ": "+  e.getCondition(): ""));
 		tableRowNE("Terminology Binding", "terminologies.html", describeBinding(path, e));
 		if (!path.contains("."))
       tableRowNE("Type", "datatypes.html", type);
@@ -545,8 +545,8 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
     return "background-color: "+status.getColor();
   }
 
-  private String getStandardsStatusNote(StandardsStatus status) {
-    return "This element has a standards status of \""+status.toDisplay()+"\" which is different from the status of the whole resource";  
+  private String getStandardsStatusNote(StandardsStatus status, boolean root) {
+    return "This element has a standards status of \""+status.toDisplay()+"\""+ (!root ? " which is different from the status of the whole resource" : "");  
   }
 
   private String tasks(List<String> tasks) {

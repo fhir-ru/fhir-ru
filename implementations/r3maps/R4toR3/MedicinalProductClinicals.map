@@ -1,4 +1,4 @@
-﻿map "http://hl7.org/fhir/StructureMap/MedicinalProductClinicals4to3" = "R4 to R3 Conversion for MedicinalProductClinicals"
+map "http://hl7.org/fhir/StructureMap/MedicinalProductClinicals4to3" = "R4 to R3 Conversion for MedicinalProductClinicals"
 
 uses "http://hl7.org/fhir/StructureDefinition/MedicinalProductClinicals" alias MedicinalProductClinicals as source
 uses "http://hl7.org/fhir/3.0/StructureDefinition/MedicinalProductClinicals" alias MedicinalProductClinicalsR3 as target
@@ -12,21 +12,21 @@ group MedicinalProductClinicals(source src : MedicinalProductClinicalsR3, target
   src.interactions as s -> tgt.interactions as t then MedicinalProductClinicalsInteractions(s, t);
 }
 
-group MedicinalProductClinicalsUndesirableEffects(source src : MedicinalProductClinicalsR3, target tgt : MedicinalProductClinicals) extends BackboneElement <<type+>> {
+group MedicinalProductClinicalsUndesirableEffects(source src, target tgt) extends BackboneElement {
   src.symptomConditionEffect -> tgt.symptomConditionEffect;
   src.classification -> tgt.classification;
   src.frequencyOfOccurrence -> tgt.frequencyOfOccurrence;
   src.population as s -> tgt.population as t then MedicinalProductClinicalsUndesirableEffectsPopulation(s, t);
 }
 
-group MedicinalProductClinicalsUndesirableEffectsPopulation(source src : MedicinalProductClinicalsR3, target tgt : MedicinalProductClinicals) extends BackboneElement <<type+>> {
+group MedicinalProductClinicalsUndesirableEffectsPopulation(source src, target tgt) extends BackboneElement {
   src.age -> tgt.age;
   src.gender -> tgt.gender;
   src.race -> tgt.race;
   src.physiologicalCondition -> tgt.physiologicalCondition;
 }
 
-group MedicinalProductClinicalsTherapeuticIndication(source src : MedicinalProductClinicalsR3, target tgt : MedicinalProductClinicals) extends BackboneElement <<type+>> {
+group MedicinalProductClinicalsTherapeuticIndication(source src, target tgt) extends BackboneElement {
   src.diseaseSymptomProcedure -> tgt.diseaseSymptomProcedure;
   src.diseaseStatus -> tgt.diseaseStatus;
   src.comorbidity -> tgt.comorbidity;
@@ -37,12 +37,12 @@ group MedicinalProductClinicalsTherapeuticIndication(source src : MedicinalProdu
   src.population -> tgt.population;
 }
 
-group MedicinalProductClinicalsTherapeuticIndicationOtherTherapy(source src : MedicinalProductClinicalsR3, target tgt : MedicinalProductClinicals) extends BackboneElement <<type+>> {
+group MedicinalProductClinicalsTherapeuticIndicationOtherTherapy(source src, target tgt) extends BackboneElement {
   src.therapyRelationshipType -> tgt.therapyRelationshipType;
   src.medication -> tgt.medication;
 }
 
-group MedicinalProductClinicalsContraindication(source src : MedicinalProductClinicalsR3, target tgt : MedicinalProductClinicals) extends BackboneElement <<type+>> {
+group MedicinalProductClinicalsContraindication(source src, target tgt) extends BackboneElement {
   src.disease -> tgt.disease;
   src.diseaseStatus -> tgt.diseaseStatus;
   src.comorbidity -> tgt.comorbidity;
@@ -51,7 +51,7 @@ group MedicinalProductClinicalsContraindication(source src : MedicinalProductCli
   src.population -> tgt.population;
 }
 
-group MedicinalProductClinicalsInteractions(source src : MedicinalProductClinicalsR3, target tgt : MedicinalProductClinicals) extends BackboneElement <<type+>> {
+group MedicinalProductClinicalsInteractions(source src, target tgt) extends BackboneElement {
   src.interactant -> tgt.interactant;
   src.type -> tgt.type;
   src.effect -> tgt.effect;

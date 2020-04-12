@@ -1,4 +1,4 @@
-﻿map "http://hl7.org/fhir/StructureMap/Appointment4to3" = "R4 to R3 Conversion for Appointment"
+map "http://hl7.org/fhir/StructureMap/Appointment4to3" = "R4 to R3 Conversion for Appointment"
 
 uses "http://hl7.org/fhir/StructureDefinition/Appointment" alias Appointment as source
 uses "http://hl7.org/fhir/3.0/StructureDefinition/Appointment" alias AppointmentR3 as target
@@ -8,12 +8,12 @@ imports "http://hl7.org/fhir/StructureMap/*4to3"
 group Appointment(source src : Appointment, target tgt : AppointmentR3) extends DomainResource <<type+>> {
   src.identifier -> tgt.identifier;
   src.status -> tgt.status;
-  src.serviceCategoryFirstRep -> tgt.serviceCategory "serviceCategory";
+  src.serviceCategory -> tgt.serviceCategory;
   src.serviceType -> tgt.serviceType;
   src.specialty -> tgt.specialty;
   src.appointmentType -> tgt.appointmentType;
-  src.reason -> tgt.reason;
-  src.indication -> tgt.indication;
+  src.reasonCode -> tgt.reason;
+  src.reasonReference -> tgt.indication;
   src.priority -> tgt.priority;
   src.description -> tgt.description;
   src.supportingInformation -> tgt.supportingInformation;

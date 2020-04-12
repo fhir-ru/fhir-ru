@@ -34,6 +34,7 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -62,6 +63,7 @@ import org.hl7.fhir.definitions.model.TypeDefn;
 import org.hl7.fhir.definitions.model.W5Entry;
 import org.hl7.fhir.definitions.model.WorkGroup;
 import org.hl7.fhir.definitions.validation.FHIRPathUsage;
+import org.hl7.fhir.dstu2.model.ValueSet;
 import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.exceptions.FHIRFormatError;
 import org.hl7.fhir.igtools.spreadsheets.TypeParser;
@@ -159,13 +161,13 @@ public class ProfileGenerator {
     private Map<String, ElementDefinition> paths = new HashMap<String, ElementDefinition>();
   }
 
-  public ProfileGenerator(Definitions definitions, BuildWorkerContext context, ProfileKnowledgeProvider pkp, Calendar genDate, String version, Bundle dataElements, List<FHIRPathUsage> fpUsages, String rootFolder) throws FHIRException {
+  public ProfileGenerator(Definitions definitions, BuildWorkerContext context, ProfileKnowledgeProvider pkp, Calendar genDate, FHIRVersion version, Bundle dataElements, List<FHIRPathUsage> fpUsages, String rootFolder) throws FHIRException {
     super();
     this.definitions = definitions;
     this.context = context;
     this.pkp = pkp;
     this.genDate = genDate;
-    this.version = FHIRVersion.fromCode(version);
+    this.version = version;
     this.dataElements = dataElements;
     this.fpUsages = fpUsages;
     this.rootFolder = rootFolder;
@@ -183,8 +185,8 @@ public class ProfileGenerator {
   
   private void generateElementDefinition(StructureDefinition source, ElementDefinition ed, ElementDefinition parent) throws Exception {
     String id = ed.getPath().replace("[x]", "X");
-    if (id.length() > 64)
-      id = id.substring(0, 64);
+    if (id.length() > 61)
+      id = id.substring(0, 61);
 
     if (!id.contains("."))
       return; // throw new Exception("Don't generate data element for root of resources or types");
@@ -192,10 +194,10 @@ public class ProfileGenerator {
       return; // throw new Exception("Don't generate data element for reference elements");
     if (Utilities.existsInList(ed.getType().get(0).getCode(), "Element", "BackboneElement"))
       return; // throw new Exception("Don't generate data element for elements that are not leaves");
-    
+          
     StructureDefinition de;
     if (des.containsKey(id)) {
-      de = des.get("de-"+id);
+      de = des.get(id);
       // do it again because we now have more information to generate with
       de.getSnapshot().getElement().clear();
       de.getExtension().clear();
@@ -214,7 +216,7 @@ public class ProfileGenerator {
     if (!de.hasMeta())
       de.setMeta(new Meta());
     de.getMeta().setLastUpdatedElement(new InstantType(genDate));
-    de.setVersion(Constants.VERSION);
+    de.setVersion(version.toCode());
     de.setName(ed.getPath());
     de.setStatus(PublicationStatus.DRAFT);
     de.setExperimental(true);
@@ -226,6 +228,7 @@ public class ProfileGenerator {
     de.setPurpose("Data Elements are defined for each element to assist in questionnaire construction etc");
     de.setFhirVersion(version);
     de.setKind(StructureDefinitionKind.LOGICAL);
+    de.setType("DataElement");
     de.setAbstract(false);
     de.setType(de.getName());
     de.setBaseDefinition("http://hl7.org/fhir/StructureDefinition/Element");
@@ -256,7 +259,7 @@ public class ProfileGenerator {
     p.setDerivation(TypeDerivationRule.SPECIALIZATION);
     p.setFhirVersion(version);
     p.setVersion(version.toCode());
-    ToolingExtensions.setStandardsStatus(p, StandardsStatus.NORMATIVE);
+    ToolingExtensions.setStandardsStatus(p, StandardsStatus.NORMATIVE, "4.0.0");
 
     
     ToolResourceUtilities.updateUsage(p, "core");
@@ -265,7 +268,7 @@ public class ProfileGenerator {
     p.addContact().getTelecom().add(Factory.newContactPoint(ContactPointSystem.URL, "http://hl7.org/fhir"));
     p.setDescription("Base StructureDefinition for "+type.getCode()+" Type: "+type.getDefinition());
     p.setDate(genDate.getTime());
-    p.setStatus(PublicationStatus.fromCode("draft")); // DSTU
+    p.setStatus(PublicationStatus.fromCode("active")); // normative now
 
     Set<String> containedSlices = new HashSet<String>();
 
@@ -290,16 +293,9 @@ public class ProfileGenerator {
     ec.setMin(0);
     ec.setMax("1");
     TypeRefComponent t = ec.addType();
-    t.getFormatCommentsPre().add("Note: primitive values do not have an assigned type. e.g. this is compiler magic. XML, JSON and RDF types provided by extension");
-    t.setCodeElement(new UriType());
-    ToolingExtensions.addStringExtension(t.getCodeElement(), ToolingExtensions.EXT_JSON_TYPE, type.getJsonType());
-    String xst = type.getSchemaType().replace(", ", " OR ");
-    if (xst.contains("xs:"))
-      xst = xst.replace("xs:", "xsd:");
-    if (!xst.startsWith("xsd:"))
-      xst = "xsd:" + xst;
-    ToolingExtensions.addStringExtension(t.getCodeElement(), ToolingExtensions.EXT_XML_TYPE, xst);
-    ToolingExtensions.addStringExtension(t.getCodeElement(), ToolingExtensions.EXT_RDF_TYPE, xst.replace("anyURI", "string"));
+    t.getFormatCommentsPre().add("Note: special primitive values have a FHIRPath system type. e.g. this is compiler magic (a)");
+    t.setCode(Constants.NS_SYSTEM_TYPE+type.getFHIRPathType());
+    ToolingExtensions.addUrlExtension(t, ToolingExtensions.EXT_FHIR_TYPE, type.getCode());
     if (!Utilities.noString(type.getRegex())) {
       ToolingExtensions.addStringExtension(t, ToolingExtensions.EXT_REGEX, type.getRegex());
     }
@@ -329,7 +325,11 @@ public class ProfileGenerator {
     ec2.setMin(0);
     ec2.setMax("1");
     ec2.setShort("xml:id (or equivalent in JSON)");
-    ec2.getType().add(new TypeRefComponent().setCode("string"));
+    TypeRefComponent tr = ec2.addType();
+    t.getFormatCommentsPre().add("Note: special primitive values have a FHIRPath system type. e.g. this is compiler magic (b)");
+    tr.setCode(Constants.NS_SYSTEM_TYPE+ "String"); 
+    ToolingExtensions.addUrlExtension(tr, ToolingExtensions.EXT_FHIR_TYPE, "string");
+
     generateElementDefinition(p, ec2, ec1);
     ec2.makeBase("Element.id", 0, "1");
 
@@ -347,10 +347,9 @@ public class ProfileGenerator {
     ec3.makeBase();
     t = ec3.addType();
     t.setCodeElement(new UriType());
-    t.getFormatCommentsPre().add("Note: primitive values do not have an assigned type. e.g. this is compiler magic. XML, JSON and RDF types provided by extension");
-    ToolingExtensions.addStringExtension(t.getCodeElement(), ToolingExtensions.EXT_JSON_TYPE, type.getJsonType());
-    ToolingExtensions.addStringExtension(t.getCodeElement(), ToolingExtensions.EXT_XML_TYPE, xst);
-    ToolingExtensions.addStringExtension(t.getCodeElement(), ToolingExtensions.EXT_RDF_TYPE, xst.replace("anyURI", "string"));
+    t.getFormatCommentsPre().add("Note: special primitive values have a FHIRPath system type. e.g. this is compiler magic (c)");
+    t.setCode(Constants.NS_SYSTEM_TYPE+type.getFHIRPathType());
+    ToolingExtensions.addUrlExtension(t, ToolingExtensions.EXT_FHIR_TYPE, type.getCode());
     if (!Utilities.noString(type.getRegex()))
       ToolingExtensions.addStringExtension(t, ToolingExtensions.EXT_REGEX, type.getRegex());
     addSpecificDetails(type, ec3);
@@ -358,6 +357,7 @@ public class ProfileGenerator {
 
     containedSlices.clear();
 
+    addElementConstraintToSnapshot(p);
     XhtmlNode div = new XhtmlNode(NodeType.Element, "div");
     div.addText("to do");
     p.setText(new Narrative());
@@ -366,6 +366,47 @@ public class ProfileGenerator {
     checkHasTypes(p);
     return p;
   }
+
+  public class ElementDefinitionConstraintSorter implements Comparator<ElementDefinitionConstraintComponent> {
+
+    @Override
+    public int compare(ElementDefinitionConstraintComponent arg0, ElementDefinitionConstraintComponent arg1) {
+      String k0 = arg0.getKey();
+      String k1 = arg1.getKey();
+      if (k0.contains("-") && k1.contains("-")) {
+        String p0 = k0.substring(0, k0.indexOf("-"));
+        String i0 = k0.substring(k0.indexOf("-")+1);
+        String p1 = k1.substring(0, k1.indexOf("-"));
+        String i1 = k1.substring(k1.indexOf("-")+1);
+        if (Utilities.isInteger(i0) && Utilities.isInteger(i1) && p0.equals(p1)) {
+          return Integer.compare(Integer.parseInt(i0),  Integer.parseInt(i1));
+        }
+      }
+      return k0.compareTo(k1);
+    }
+  }
+
+  private void addElementConstraintToSnapshot(StructureDefinition sd) {
+    for (ElementDefinition ed : sd.getSnapshot().getElement())
+      addElementConstraint(sd, ed);
+    for (ElementDefinition ed : sd.getSnapshot().getElement())
+      addExtensionConstraint(sd, ed);
+    // to help with unit tests..
+    ElementDefinitionConstraintSorter edcs = new ElementDefinitionConstraintSorter(); 
+    for (ElementDefinition ed : sd.getSnapshot().getElement()) {
+      Collections.sort(ed.getConstraint(), edcs);
+    }
+  }
+
+
+  private boolean hasSystemType(ElementDefinition ed) {
+    for (TypeRefComponent t : ed.getType()) {
+      if (t.hasCode() && t.getCode().startsWith("http://hl7.org/fhirpath/System."))
+        return true;
+    }
+    return false;
+  }
+
 
   private void addElementConstraints(String name, ElementDefinition ed) throws Exception {
     if (definitions.hasPrimitiveType(name) || name.equals("Type") || name.equals("Logical"))
@@ -403,7 +444,7 @@ public class ProfileGenerator {
     p.setDerivation(TypeDerivationRule.SPECIALIZATION);
     p.setFhirVersion(version);
     p.setVersion(version.toCode());
-    ToolingExtensions.setStandardsStatus(p, StandardsStatus.NORMATIVE);
+    ToolingExtensions.setStandardsStatus(p, StandardsStatus.NORMATIVE, "4.0.0");
 
     
     ToolResourceUtilities.updateUsage(p, "core");
@@ -412,7 +453,7 @@ public class ProfileGenerator {
     p.addContact().getTelecom().add(Factory.newContactPoint(ContactPointSystem.URL, "http://hl7.org/fhir"));
     p.setDescription("Base StructureDefinition for xhtml Type");
     p.setDate(genDate.getTime());
-    p.setStatus(PublicationStatus.fromCode("draft")); // DSTU
+    p.setStatus(PublicationStatus.fromCode("active")); 
 
     Set<String> containedSlices = new HashSet<String>();
 
@@ -442,10 +483,9 @@ public class ProfileGenerator {
     ec.setMax("1");
     TypeRefComponent t = ec.addType();
     t.setCodeElement(new UriType());
-    t.getFormatCommentsPre().add("Note: primitive values do not have an assigned type. e.g. this is compiler magic. XML, JSON and RDF types provided by extension");
-    ToolingExtensions.addStringExtension(t.getCodeElement(), ToolingExtensions.EXT_JSON_TYPE, "string");
-    ToolingExtensions.addStringExtension(t.getCodeElement(), ToolingExtensions.EXT_XML_TYPE, "xhtml:div");
-    ToolingExtensions.addStringExtension(t.getCodeElement(), ToolingExtensions.EXT_RDF_TYPE, "string");
+    t.getFormatCommentsPre().add("Note: special primitive values have a FHIRPath system type. e.g. this is compiler magic (d)");
+    t.setCode(Constants.NS_SYSTEM_TYPE+"String");
+    ToolingExtensions.addUrlExtension(t, ToolingExtensions.EXT_FHIR_TYPE, "string");
 
     reset();
     // now. the snapshot
@@ -471,7 +511,10 @@ public class ProfileGenerator {
     ec2.setMin(0);
     ec2.setMax("1");
     ec2.setShort("xml:id (or equivalent in JSON)");
-    ec2.getType().add(new TypeRefComponent().setCode("string"));
+    TypeRefComponent tr = ec2.addType();
+    t.getFormatCommentsPre().add("Note: special primitive values have a FHIRPath system type. e.g. this is compiler magic (e)");
+    tr.setCode(Constants.NS_SYSTEM_TYPE+ "String"); 
+    ToolingExtensions.addUrlExtension(t, ToolingExtensions.EXT_FHIR_TYPE, "string");
     generateElementDefinition(p, ec2, ec1);
     ec2.makeBase("Element.id", 0, "1");
 
@@ -489,14 +532,14 @@ public class ProfileGenerator {
     ec3.setMax("1");
     t = ec3.addType();
     t.setCodeElement(new UriType());
-    t.getFormatCommentsPre().add("Note: primitive values do not have an assigned type. e.g. this is compiler magic. XML, JSON and RDF types provided by extension");
-    ToolingExtensions.addStringExtension(t.getCodeElement(), ToolingExtensions.EXT_JSON_TYPE, "string");
-    ToolingExtensions.addStringExtension(t.getCodeElement(), ToolingExtensions.EXT_XML_TYPE, "xhtml:div");
-    ToolingExtensions.addStringExtension(t.getCodeElement(), ToolingExtensions.EXT_RDF_TYPE, "string");
+    t.getFormatCommentsPre().add("Note: special primitive values have a FHIRPath system type. e.g. this is compiler magic (f)");
+    t.setCode(Constants.NS_SYSTEM_TYPE+"String");
+    ToolingExtensions.addUrlExtension(t, ToolingExtensions.EXT_FHIR_TYPE, "string");
     ec3.makeBase();
     generateElementDefinition(p, ec3, ec);
 
     containedSlices.clear();
+    addElementConstraintToSnapshot(p);
 
     XhtmlNode div = new XhtmlNode(NodeType.Element, "div");
     div.addText("to do");
@@ -529,7 +572,7 @@ public class ProfileGenerator {
     p.setUserData("path", "datatypes.html#"+type.getCode());
     p.setFhirVersion(version);
     p.setVersion(version.toCode());
-    ToolingExtensions.setStandardsStatus(p, StandardsStatus.NORMATIVE);
+    ToolingExtensions.setStandardsStatus(p, StandardsStatus.NORMATIVE, "4.0.0");
 
     ToolResourceUtilities.updateUsage(p, "core");
     p.setName(type.getCode());
@@ -537,7 +580,7 @@ public class ProfileGenerator {
     p.addContact().getTelecom().add(Factory.newContactPoint(ContactPointSystem.URL, "http://hl7.org/fhir"));
     p.setDescription("Base StructureDefinition for "+type.getCode()+" type: "+type.getDefinition());
     p.setDate(genDate.getTime());
-    p.setStatus(PublicationStatus.fromCode("draft")); // DSTU
+    p.setStatus(PublicationStatus.fromCode("active")); 
 
     Set<String> containedSlices = new HashSet<String>();
 
@@ -566,11 +609,9 @@ public class ProfileGenerator {
     ec2.setMax("1");
     TypeRefComponent t = ec2.addType();
     t.setCodeElement(new UriType());
-    t.getFormatCommentsPre().add("Note: primitive values do not have an assigned type. e.g. this is compiler magic. XML, JSON and RDF types provided by extension");
-    ToolingExtensions.addStringExtension(t.getCodeElement(), ToolingExtensions.EXT_JSON_TYPE, type.getJsonType());
-    String xst = type.getSchema().replace("xs:", "xsd:").replace("+", "");
-    ToolingExtensions.addStringExtension(t.getCodeElement(), ToolingExtensions.EXT_XML_TYPE, xst);
-    ToolingExtensions.addStringExtension(t.getCodeElement(), ToolingExtensions.EXT_RDF_TYPE, xst.replace("anyURI", "string"));
+    t.getFormatCommentsPre().add("Note: special primitive values have a FHIRPath system type. e.g. this is compiler magic (g)");
+    t.setCode(Constants.NS_SYSTEM_TYPE+type.getFHIRPathType());
+    ToolingExtensions.addUrlExtension(t, ToolingExtensions.EXT_FHIR_TYPE, type.getCode());
     if (!Utilities.noString(type.getRegex())) {
       ToolingExtensions.addStringExtension(t, ToolingExtensions.EXT_REGEX, type.getRegex());
     }
@@ -599,7 +640,10 @@ public class ProfileGenerator {
     ecid.setMin(0);
     ecid.setMax("1");
     ecid.setShort("xml:id (or equivalent in JSON)");
-    ecid.getType().add(new TypeRefComponent().setCode("string"));
+    TypeRefComponent tr = ecid.addType();
+    tr.getFormatCommentsPre().add("Note: special primitive values have a FHIRPath system type. e.g. this is compiler magic (h)");
+    tr.setCode(Constants.NS_SYSTEM_TYPE+ "String"); 
+    ToolingExtensions.addUrlExtension(tr, ToolingExtensions.EXT_FHIR_TYPE, "string");
     ecid.makeBase("Element.id", 0, "1");
 
     makeExtensionSlice("extension", p, p.getSnapshot(), null, type.getCode());
@@ -616,16 +660,15 @@ public class ProfileGenerator {
     ecB.setMax("1");
     ecB.makeBase(type.getBase()+".value", 0, "1");
     t = ecB.addType();
-    t.setCodeElement(new UriType());
-    t.getFormatCommentsPre().add("Note: primitive values do not have an assigned type. e.g. this is compiler magic. XML, JSON and RDF types provided by extension");
-    ToolingExtensions.addStringExtension(t.getCodeElement(), ToolingExtensions.EXT_JSON_TYPE, type.getJsonType());
-    ToolingExtensions.addStringExtension(t.getCodeElement(), ToolingExtensions.EXT_XML_TYPE, xst);
-    ToolingExtensions.addStringExtension(t.getCodeElement(), ToolingExtensions.EXT_RDF_TYPE, xst.replace("anyURI", "string"));
+    t.getFormatCommentsPre().add("Note: special primitive values have a FHIRPath system type. e.g. this is compiler magic (i)");
+    t.setCode(Constants.NS_SYSTEM_TYPE+"String");
+    ToolingExtensions.addUrlExtension(t, ToolingExtensions.EXT_FHIR_TYPE, "string");
     if (!Utilities.noString(type.getRegex()))
       ToolingExtensions.addStringExtension(t, ToolingExtensions.EXT_REGEX, type.getRegex());
-//    generateElementDefinition(ecB, ecA);
+    generateElementDefinition(p, ecB, ecA);
 
     containedSlices.clear();
+    addElementConstraintToSnapshot(p);
 
     XhtmlNode div = new XhtmlNode(NodeType.Element, "div");
     div.addText("to do");
@@ -643,7 +686,7 @@ public class ProfileGenerator {
     p.setKind(StructureDefinitionKind.COMPLEXTYPE);
     p.setAbstract(t.getName().equals("Element") || t.getName().equals("BackboneElement") );
     p.setUserData("filename", t.getName().toLowerCase());
-    p.setUserData("path", "datatypes.html#"+t.getName());
+    p.setUserData("path", definitions.getSrcFile(t.getName())+".html#"+t.getName());
     assert !Utilities.noString(t.typeCode());
     String b = (t.typeCode().equals("Type") ? "Element" : t.typeCode().equals("Structure") ? "BackboneElement" : t.typeCode());
     if (!Utilities.noString(b)) {
@@ -653,7 +696,7 @@ public class ProfileGenerator {
     p.setType(t.getName());
     p.setFhirVersion(version);
     p.setVersion(version.toCode());
-    ToolingExtensions.setStandardsStatus(p, t.getStandardsStatus());
+    ToolingExtensions.setStandardsStatus(p, t.getStandardsStatus(), t.getNormativeVersion());
 
     ToolResourceUtilities.updateUsage(p, "core");
     p.setName(t.getName());
@@ -662,7 +705,7 @@ public class ProfileGenerator {
     p.setDescription("Base StructureDefinition for "+t.getName()+" Type: "+t.getDefinition());
     p.setPurpose(t.getRequirements());
     p.setDate(genDate.getTime());
-    p.setStatus(PublicationStatus.fromCode("draft")); // DSTU
+    p.setStatus(t.getStandardsStatus() == StandardsStatus.NORMATIVE ?  PublicationStatus.fromCode("active") : PublicationStatus.fromCode("draft")); 
 
 
     Set<String> containedSlices = new HashSet<String>();
@@ -681,6 +724,7 @@ public class ProfileGenerator {
         generateElementDefinition(p, ed, getParent(ed, p.getSnapshot().getElement()));
 
     containedSlices.clear();
+    addElementConstraintToSnapshot(p);
 
     p.getDifferential().getElement().get(0).getType().clear();
     p.getSnapshot().getElement().get(0).getType().clear();
@@ -708,7 +752,8 @@ public class ProfileGenerator {
     p.setUserData("path", "datatypes.html#"+pt.getName());
     p.setFhirVersion(version);
     p.setVersion(version.toCode());
-    ToolingExtensions.setStandardsStatus(p, StandardsStatus.NORMATIVE);
+    ToolingExtensions.setStandardsStatus(p, StandardsStatus.NORMATIVE, "4.0.0");
+    p.setStatus(PublicationStatus.fromCode("active")); 
 
     ToolResourceUtilities.updateUsage(p, "core");
     p.setName(pt.getName());
@@ -717,7 +762,6 @@ public class ProfileGenerator {
     p.setDescription("Base StructureDefinition for Type "+pt.getName()+": "+pt.getDefinition());
     p.setDescription(pt.getDefinition());
     p.setDate(genDate.getTime());
-    p.setStatus(PublicationStatus.fromCode("draft")); // DSTU
 
     // first, the differential
     p.setName(pt.getName());
@@ -780,9 +824,9 @@ public class ProfileGenerator {
     reset();
 
     // now, the snapshot
-    new ProfileUtilities(context, issues, pkp).generateSnapshot(base, p, "http://hl7.org/fhir/StructureDefinition/"+pt.getBaseType(), p.getName());
-//    for (ElementDefinition ed : p.getSnapshot().getElement())
-//      generateElementDefinition(ed, getParent(ed, p.getSnapshot().getElement()));
+    new ProfileUtilities(context, issues, pkp).generateSnapshot(base, p, "http://hl7.org/fhir/StructureDefinition/"+pt.getBaseType(), "http://hl7.org/fhir", p.getName());
+    for (ElementDefinition ed : p.getSnapshot().getElement())
+      generateElementDefinition(p, ed, getParent(ed, p.getSnapshot().getElement()));
 
     p.getDifferential().getElement().get(0).getType().clear();
     p.getSnapshot().getElement().get(0).getType().clear();
@@ -796,6 +840,8 @@ public class ProfileGenerator {
     p.setText(new Narrative());
     p.getText().setStatus(NarrativeStatus.GENERATED);
     p.getText().setDiv(div);
+    addElementConstraintToSnapshot(p);
+
     new ProfileUtilities(context, issues, pkp).setIds(p, false);
     checkHasTypes(p);
     return p;
@@ -858,7 +904,7 @@ public class ProfileGenerator {
     p.setTitle(pack.metadata("display"));
     p.setFhirVersion(version);
     p.setVersion(version.toCode());
-    ToolingExtensions.setStandardsStatus(p, r.getStatus());
+    ToolingExtensions.setStandardsStatus(p, r.getStatus(), r.getNormativeVersion());
 
     if (r.getFmmLevel() != null)
       ToolingExtensions.addIntegerExtension(p, ToolingExtensions.EXT_FMM_LEVEL, Integer.parseInt(r.getFmmLevel()));
@@ -876,7 +922,7 @@ public class ProfileGenerator {
     if (!p.hasPurpose())
       p.setPurpose(r.getRoot().getRequirements());
     p.setDate(genDate.getTime());
-    p.setStatus(PublicationStatus.fromCode("draft")); // DSTU
+    p.setStatus(r.getStatus() == StandardsStatus.NORMATIVE ?  PublicationStatus.fromCode("active") : PublicationStatus.fromCode("draft")); // DSTU
 
     Set<String> containedSlices = new HashSet<String>();
 
@@ -889,8 +935,7 @@ public class ProfileGenerator {
     p.setSnapshot(new StructureDefinitionSnapshotComponent());
     defineElement(null, p, p.getSnapshot().getElement(), r.getRoot(), r.getRoot().getName(), containedSlices, new ArrayList<ProfileGenerator.SliceHandle>(), SnapShotMode.Resource, true, "BackboneElement", r.getRoot().typeCode(), true);
     for (ElementDefinition ed : p.getSnapshot().getElement())
-      if (!ed.hasBase() && !logical)
-        generateElementDefinition(p, ed, getParent(ed, p.getSnapshot().getElement()));
+      generateElementDefinition(p, ed, getParent(ed, p.getSnapshot().getElement()));
 
     if (!logical) {
       List<String> names = new ArrayList<String>();
@@ -909,6 +954,7 @@ public class ProfileGenerator {
       }
     }
     containedSlices.clear();
+    addElementConstraintToSnapshot(p);
 
     p.getDifferential().getElement().get(0).getType().clear();
     p.getSnapshot().getElement().get(0).getType().clear();
@@ -1000,9 +1046,9 @@ public class ProfileGenerator {
     else if (baseResource != null && baseResource.getWg() != null) 
       ToolingExtensions.setCodeExtension(p, ToolingExtensions.EXT_WORKGROUP, baseResource.getWg().getCode());      
     if (pack.hasMetadata("Standards-Status")) 
-      ToolingExtensions.setStandardsStatus(p, StandardsStatus.fromCode(pack.metadata("Standards-Status")));
+      ToolingExtensions.setStandardsStatus(p, StandardsStatus.fromCode(pack.metadata("Standards-Status")), null);
     else
-      ToolingExtensions.setStandardsStatus(p, resource.getStatus());
+      ToolingExtensions.setStandardsStatus(p, resource.getStatus(), null);
     
     if (pack.hasMetadata("status")) 
       p.setStatus(PublicationStatus.fromCode(pack.metadata("status")));
@@ -1032,11 +1078,12 @@ public class ProfileGenerator {
       issues.add(new ValidationMessage(Source.ProfileValidator, IssueType.STRUCTURE, -1, -1, p.getUrl(), s, IssueSeverity.WARNING));
     reset();
     // ok, c is the differential. now we make the snapshot
-    new ProfileUtilities(context, issues, pkp).generateSnapshot(base, p, "http://hl7.org/fhir/StructureDefinition/"+p.getType(), p.getName());
+    new ProfileUtilities(context, issues, pkp).generateSnapshot(base, p, "http://hl7.org/fhir/StructureDefinition/"+p.getType(), "http://hl7.org/fhir", p.getName());
     reset();
 
     p.getDifferential().getElement().get(0).getType().clear();
     p.getSnapshot().getElement().get(0).getType().clear();
+    addElementConstraintToSnapshot(p);
 
     XhtmlNode div = new XhtmlNode(NodeType.Element, "div");
     div.addText("to do");
@@ -1105,17 +1152,15 @@ public class ProfileGenerator {
       context.cacheResource(sp);
       spd.setResource(sp);
       definitions.addNs(sp.getUrl(), "Search Parameter: "+sp.getName(), rn.toLowerCase()+".html#search");
-      sp.setStatus(p.getStatus());
+      sp.setStatus(spd.getStandardsStatus() == StandardsStatus.NORMATIVE ? PublicationStatus.fromCode("active") : PublicationStatus.fromCode("draft"));
       StandardsStatus sst = ToolingExtensions.getStandardsStatus(sp);
       if (sst == null || (spd.getStandardsStatus() == null && spd.getStandardsStatus().isLowerThan(sst)))
-        ToolingExtensions.setStandardsStatus(sp, spd.getStandardsStatus());
+        ToolingExtensions.setStandardsStatus(sp, spd.getStandardsStatus(), spd.getNormativeVersion());
       sp.setExperimental(p.getExperimental());
       sp.setName(spd.getCode());
       sp.setCode(spd.getCode());
       sp.setDate(genDate.getTime());
       sp.setPublisher(p.getPublisher());
-      sp.setMultipleAnd(true);
-      sp.setMultipleOr(true);
       for (ContactDetail tc : p.getContact()) {
         ContactDetail t = sp.addContact();
         if (tc.hasNameElement())
@@ -1126,17 +1171,17 @@ public class ProfileGenerator {
       if (!definitions.hasResource(p.getType()) && !p.getType().equals("Resource") && !p.getType().equals("DomainResource"))
         throw new Exception("unknown resource type "+p.getType());
       sp.setType(getSearchParamType(spd.getType()));
-      if (sp.getType() == SearchParamType.REFERENCE && spd.isHierarchy()) {
-        sp.addModifier(SearchParameter.SearchModifierCode.BELOW);
-        sp.addModifier(SearchParameter.SearchModifierCode.ABOVE);
-      }
+//      if (sp.getType() == SearchParamType.REFERENCE && spd.isHierarchy()) {
+//        sp.addModifier(SearchParameter.SearchModifierCode.BELOW);
+//        sp.addModifier(SearchParameter.SearchModifierCode.ABOVE);
+//      }
       if (shared) {
         sp.setDescription("Multiple Resources: \r\n\r\n* ["+rn+"]("+rn.toLowerCase()+".html): " + spd.getDescription()+"\r\n");
       } else
         sp.setDescription(preProcessMarkdown(spd.getDescription(), "Search Description"));
       if (!Utilities.noString(spd.getExpression())) 
         sp.setExpression(spd.getExpression());
-      addModifiers(sp);
+//      addModifiers(sp);
       addComparators(sp);
       String xpath = Utilities.noString(spd.getXPath()) ? new XPathQueryGenerator(this.definitions, null, null).generateXpath(spd.getPaths()) : spd.getXPath();
       if (xpath != null) {
@@ -1219,6 +1264,7 @@ public class ProfileGenerator {
       sp.addComparator(SearchComparator.EQ);
       sp.addComparator(SearchComparator.NE);
       sp.addComparator(SearchComparator.GT);
+      sp.addComparator(SearchComparator.GE);
       sp.addComparator(SearchComparator.LT);
       sp.addComparator(SearchComparator.LE);
       sp.addComparator(SearchComparator.SA);
@@ -1303,6 +1349,7 @@ public class ProfileGenerator {
 
   private ElementDefinitionBindingComponent generateBinding(BindingSpecification src) throws Exception {
     if (src == null)
+      
       return null;
     ElementDefinitionBindingComponent dst = new ElementDefinitionBindingComponent();
     dst.setDescription(src.getDefinition());
@@ -1322,29 +1369,37 @@ public class ProfileGenerator {
   }
 
   private String buildValueSetReference(BindingSpecification src) throws Exception {
+    String v = ""; 
+    if (src.getStrength() == BindingStrength.REQUIRED) {
+      if (src.getValueSet() != null && src.getValueSet().hasVersion()) {
+        v = "|"+src.getValueSet().getVersion();
+      } else {
+        v = "|"+version.toCode();
+      }
+    }
     switch (src.getBinding()) {
     case Unbound: return null;
     case CodeList:
       if (src.getValueSet()!= null)
-        return src.getValueSet().getUrl();
+        return src.getValueSet().getUrl()+v;
       else if (src.getReference().startsWith("#"))
-        return "http://hl7.org/fhir/ValueSet/"+src.getReference().substring(1);
+        return "http://hl7.org/fhir/ValueSet/"+src.getReference().substring(1)+v;
       else
         throw new Exception("not done yet");
     case ValueSet: 
       if (!Utilities.noString(src.getReference()))
         if (src.getReference().startsWith("http"))
-          return src.getReference();
+          return src.getReference()+v;
         else if (src.getValueSet()!= null)
-          return src.getValueSet().getUrl();
+          return src.getValueSet().getUrl()+v;
         else if (src.getReference().startsWith("valueset-"))
-          return "http://hl7.org/fhir/ValueSet/"+src.getReference().substring(9);
+          return "http://hl7.org/fhir/ValueSet/"+src.getReference().substring(9)+v;
         else
-          return "http://hl7.org/fhir/ValueSet/"+src.getReference();
+          return "http://hl7.org/fhir/ValueSet/"+src.getReference()+v;
       else
         return null; // throw new Exception("not done yet");
     case Special: 
-      return "http://hl7.org/fhir/ValueSet/"+src.getReference().substring(1);
+      return "http://hl7.org/fhir/ValueSet/"+src.getReference().substring(1)+v;
     default: 
       throw new Exception("not done yet");
     }
@@ -1389,7 +1444,7 @@ public class ProfileGenerator {
 //    todo ce.setId(path.substring(path.indexOf(".")+1));
 
     if (e.getStandardsStatus() != null)
-      ToolingExtensions.setStandardsStatus(ce, e.getStandardsStatus());
+      ToolingExtensions.setStandardsStatus(ce, e.getStandardsStatus(), e.getNormativeVersion());
 
     ce.setId(path);
     ce.setPath(path);
@@ -1427,21 +1482,22 @@ public class ProfileGenerator {
     } else if (path.contains(".") && Utilities.noString(e.typeCode()) && snapshot != SnapShotMode.None)
       addElementConstraints(defType, ce);
     buildDefinitionFromElement(path, ce, e, ap, p, null);
-    if (!Utilities.noString(e.getStatedType()))
+    if (!Utilities.noString(e.getStatedType())) {
       ToolingExtensions.addStringExtension(ce, "http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name", e.getStatedType());
-
+    }
 
     if (!root) {
       if (e.typeCode().startsWith("@"))  {
         ce.setContentReference("#"+getIdForPath(elements, e.typeCode().substring(1)));
-      } else if (Utilities.existsInList(path, "Element.id", "Extension.url")) {
+      } else if (Utilities.existsInList(path, "Element.id", "Extension.url") || path.endsWith(".id")) {
         TypeRefComponent tr = ce.addType();
-        tr.getFormatCommentsPre().add("Note: primitive values do not have an assigned type. e.g. this is compiler magic. XML,\r\n    JSON and RDF types provided by extension");
-        tr.getCodeElement().addExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type", new StringType("string")); 
-        tr.getCodeElement().addExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type", new StringType("xsd:string")); 
-        tr.getCodeElement().addExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type", new StringType("xsd:string")); 
-        if (path.equals("Extension.url"))
-          tr.getCodeElement().addExtension("http://hl7.org/fhir/StructureDefinition/regex", new StringType(Constants.URI_REGEX)); 
+        tr.getFormatCommentsPre().add("Note: special primitive values have a FHIRPath system type. e.g. this is compiler magic (j)");
+        tr.setCode(Constants.NS_SYSTEM_TYPE+ "String"); 
+        if (path.equals("Extension.url")) {
+          ToolingExtensions.addUrlExtension(tr, ToolingExtensions.EXT_FHIR_TYPE, "uri");
+        } else {
+          ToolingExtensions.addUrlExtension(tr, ToolingExtensions.EXT_FHIR_TYPE, "string");
+        }
       } else {
         List<TypeRef> expandedTypes = new ArrayList<TypeRef>();
         for (TypeRef t : e.getTypes()) {
@@ -1449,7 +1505,7 @@ public class ProfileGenerator {
           if (t.hasParams() && !Utilities.existsInList(t.getName(), "Reference", "canonical")) {
             throw new Exception("Only resource types can specify parameters.  Path " + path + " in profile " + p.getName());
           }
-          if(t.getParams().size() > 1)
+          if (t.getParams().size() > 1)
           {
             if (t.getProfile() != null && t.getParams().size() !=1) {
               throw new Exception("Cannot declare profile on a resource reference declaring multiple resource types.  Path " + path + " in profile " + p.getName());
@@ -1687,7 +1743,9 @@ public class ProfileGenerator {
         con.setSeverity(ConstraintSeverity.fromCode(inv.getSeverity()));
       con.setHuman(inv.getEnglish());
       con.setXpath(inv.getXpath());
-      con.setSource(source);
+      if (source != null) {
+        con.setSource("http://hl7.org/fhir/StructureDefinition/"+source);
+      }
       if (!"n/a".equals(inv.getExpression()))
         con.setExpression(inv.getExpression());
       ce.getConstraint().add(con);
@@ -1784,6 +1842,68 @@ public class ProfileGenerator {
    */
 
 
+  private ElementDefinition addElementConstraint(StructureDefinition sd, ElementDefinition ed) {
+    if (!ed.getPath().contains(".") && sd.getKind() == StructureDefinitionKind.RESOURCE)
+      return ed;
+    
+    if (hasSystemType(ed))
+      return ed;
+    if (isResource(ed))
+      return ed;
+    if (hasConstraint(ed, "ele-1")) 
+      return ed;
+    
+    ElementDefinitionConstraintComponent inv = ed.addConstraint();
+    inv.setKey("ele-1");
+    inv.setSeverity(ConstraintSeverity.ERROR);
+    inv.setHuman("All FHIR elements must have a @value or children");
+    inv.setExpression("hasValue() or (children().count() > id.count())");
+    inv.setXpath("@value|f:*|h:div");
+    inv.setSource("http://hl7.org/fhir/StructureDefinition/Element");
+    return ed;  
+  }
+  
+  private boolean isResource(ElementDefinition ed) {
+    for (TypeRefComponent t : ed.getType()) {
+      if ("Resource".equals(t.getCode()))
+        return true;
+    }
+    return false;
+
+  }
+
+
+  private ElementDefinition addExtensionConstraint(StructureDefinition sd, ElementDefinition ed) {    
+    if (!typeIsExtension(ed))
+      return ed;
+    if (hasConstraint(ed, "ext-1")) 
+      return ed;
+    
+    ElementDefinitionConstraintComponent inv = ed.addConstraint();
+    inv.setKey("ext-1");
+    inv.setSeverity(ConstraintSeverity.ERROR);
+    inv.setHuman("Must have either extensions or value[x], not both");
+    inv.setExpression("extension.exists() != value.exists()");
+    inv.setXpath("exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])");
+    inv.setSource("http://hl7.org/fhir/StructureDefinition/Extension");
+    return ed;  
+  }
+  
+  
+  private boolean typeIsExtension(ElementDefinition ed) {
+    return ed.getType().size() == 1 && ed.getType().get(0).getCode().equals("Extension");
+  }
+
+
+  private boolean hasConstraint(ElementDefinition ed, String id) {
+    for (ElementDefinitionConstraintComponent inv : ed.getConstraint()) {
+      if (id.equals(inv.getKey()))
+        return true;
+    }
+    return false;
+  }
+
+
   private ElementDefinition makeExtensionSlice(String extensionName, StructureDefinition p, StructureDefinitionSnapshotComponent c, ElementDefn e, String path) throws URISyntaxException, Exception {
     ElementDefinition ex = createBaseDefinition(p, path, definitions.getBaseResources().get("DomainResource").getRoot().getElementByName(definitions, extensionName, false, false, null));
     c.getElement().add(ex);
@@ -1792,6 +1912,15 @@ public class ProfileGenerator {
     ex.getBase().setPath("Element.extension");
     ex.getBase().setMin(0);
     ex.getBase().setMax("*");
+    
+    ElementDefinitionConstraintComponent inv = ex.addConstraint();
+    inv.setKey("ext-1");
+    inv.setSeverity(ConstraintSeverity.ERROR);
+    inv.setHuman("Must have either extensions or value[x], not both");
+    inv.setExpression("extension.exists() != value.exists()");
+    inv.setXpath("exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])");
+    inv.setSource("http://hl7.org/fhir/StructureDefinition/Extension");
+    
     return ex;
   }
 
@@ -1934,10 +2063,18 @@ public class ProfileGenerator {
          ProfiledType ct = definitions.getConstraints().get(t.getName());
          ElementDefinition.TypeRefComponent type = dst.getType(ct.getBaseType());
          type.addProfile("http://hl7.org/fhir/StructureDefinition/"+ct.getName());
+        } else if ("Extension.url".equals(path)) {
+          // juat don't populate it 
+//          ElementDefinition.TypeRefComponent tt = dst.addType();
+//          tt.setCodeElement(new UriType());
+//          tt.getFormatCommentsPre().add("Note: special primitive values do not have an assigned type. e.g. this is compiler magic. XML, JSON and RDF types provided by extension");
+//          ToolingExtensions.addStringExtension(tt.getCodeElement(), ToolingExtensions.EXT_JSON_TYPE, "string");
+//          ToolingExtensions.addStringExtension(tt.getCodeElement(), ToolingExtensions.EXT_XML_TYPE, "xs:anyURI");
+//          ToolingExtensions.addStringExtension(tt.getCodeElement(), ToolingExtensions.EXT_RDF_TYPE, "xs:anyURI");          
         } else {
           ElementDefinition.TypeRefComponent type = dst.getType(t.getName());
           if (t.hasProfile())
-            if (type.getCode().equals("Reference"))
+            if (type.getWorkingCode().equals("Reference"))
               type.addTargetProfile(t.getProfile()); 
             else
               type.addProfile(t.getProfile());
@@ -2044,7 +2181,7 @@ public class ProfileGenerator {
       ToolingExtensions.addIntegerExtension(opd, ToolingExtensions.EXT_FMM_LEVEL, Integer.parseInt(rd.getFmmLevel()));
     else
       ToolingExtensions.addIntegerExtension(opd, ToolingExtensions.EXT_FMM_LEVEL, Integer.parseInt(op.getFmm()));
-    ToolingExtensions.setStandardsStatus(opd, op.getStandardsStatus() == null ? rd.getStatus() : op.getStandardsStatus());
+    ToolingExtensions.setStandardsStatus(opd, op.getStandardsStatus() == null ? rd.getStatus() : op.getStandardsStatus(), op.getNormativeVersion());
     opd.setId(FormatUtilities.makeId(id));
     opd.setUrl("http://hl7.org/fhir/OperationDefinition/"+id);
     opd.setName(op.getTitle());
@@ -2053,7 +2190,7 @@ public class ProfileGenerator {
     opd.addContact().getTelecom().add(org.hl7.fhir.r4.model.Factory.newContactPoint(ContactPointSystem.URL, "http://hl7.org/fhir"));
     opd.getContact().get(0).getTelecom().add(org.hl7.fhir.r4.model.Factory.newContactPoint(ContactPointSystem.EMAIL, "fhir@lists.hl7.org"));
     opd.setDescription(preProcessMarkdown(op.getDoco(), "Operation Documentation"));
-    opd.setStatus(PublicationStatus.DRAFT);
+    opd.setStatus(op.getStandardsStatus() == StandardsStatus.NORMATIVE ?  PublicationStatus.ACTIVE : PublicationStatus.DRAFT);
     opd.setDate(genDate.getTime());
     if (op.getKind().toLowerCase().equals("operation"))
       opd.setKind(OperationKind.OPERATION);
@@ -2106,18 +2243,30 @@ public class ProfileGenerator {
         produceOpParam(path+"."+p.getName(), pp.getPart(), part, pp.getUse());
       }
     } else {
-      TypeRef tr = new TypeParser().parse(p.getFhirType(), false, null, null, false).get(0);
-      if (definitions.getConstraints().containsKey(tr.getName())) {
-        ProfiledType pt = definitions.getConstraints().get(tr.getName());
-        pp.setType(pt.getBaseType().equals("*") ? "Type" : pt.getBaseType());
-        pp.addTargetProfile("http://hl7.org/fhir/StructureDefinition/"+pt.getName());
-      } else { 
+      List<TypeRef> trs = new TypeParser().parse(p.getFhirType(), false, null, null, false);
+      if (trs.size() > 1) {
         if (p.getSearchType() != null)
           pp.setSearchType(SearchParamType.fromCode(p.getSearchType()));
-        pp.setType(tr.getName().equals("*") ? "Type" : tr.getName());
-        if (tr.getParams().size() == 1 && !tr.getParams().get(0).equals("Any"))
-          pp.addTargetProfile("http://hl7.org/fhir/StructureDefinition/"+tr.getParams().get(0));
-      } 
+        pp.setType("Element");
+        for (TypeRef tr : trs) {
+          pp.addExtension(ToolingExtensions.EXT_ALLOWED_TYPE, new UriType(tr.getName()));
+          if (tr.getParams().size() > 0)
+            throw new Error("Multiple types for an operation parameter, where one is a reference, is not supported by the build tools");
+        }        
+      } else {
+        TypeRef tr = trs.get(0);
+        if (definitions.getConstraints().containsKey(tr.getName())) {
+          ProfiledType pt = definitions.getConstraints().get(tr.getName());
+          pp.setType(pt.getBaseType().equals("*") ? "Type" : pt.getBaseType());
+          pp.addTargetProfile("http://hl7.org/fhir/StructureDefinition/"+pt.getName());
+        } else { 
+          if (p.getSearchType() != null)
+            pp.setSearchType(SearchParamType.fromCode(p.getSearchType()));
+          pp.setType(tr.getName().equals("*") ? "Type" : tr.getName());
+          if (tr.getParams().size() == 1 && !tr.getParams().get(0).equals("Any"))
+            pp.addTargetProfile("http://hl7.org/fhir/StructureDefinition/"+tr.getParams().get(0));
+        } 
+      }
     }
   }
 
@@ -2144,7 +2293,8 @@ public class ProfileGenerator {
     p.setTitle(r.getName());
     p.setFhirVersion(version);
     p.setVersion(version.toCode());
-    ToolingExtensions.setStandardsStatus(p, r.getStatus());
+    p.setType(r.getRoot().getName());
+    ToolingExtensions.setStandardsStatus(p, r.getStatus(), null);
 
     ToolResourceUtilities.updateUsage(p, igd.getCode());
     p.setName(r.getRoot().getName());
@@ -2166,6 +2316,7 @@ public class ProfileGenerator {
     // first, the differential
     p.setSnapshot(new StructureDefinitionSnapshotComponent());
     defineElement(null, p, p.getSnapshot().getElement(), r.getRoot(), r.getRoot().getName(), containedSlices, new ArrayList<ProfileGenerator.SliceHandle>(), SnapShotMode.None, true, "Element", "Element", true);
+    addElementConstraintToSnapshot(p);
 
     XhtmlNode div = new XhtmlNode(NodeType.Element, "div");
     div.addText("to do");

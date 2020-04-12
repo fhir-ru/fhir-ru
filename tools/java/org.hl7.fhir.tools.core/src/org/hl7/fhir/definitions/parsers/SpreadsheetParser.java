@@ -547,7 +547,8 @@ public class SpreadsheetParser {
 	          }
 	          Operation op = new Operation(name, system, istype, instance, sheet.getColumn(row, "Type"), sheet.getColumn(row, "Title"), doco, 
 	              sheet.getColumn(row, "Footer"), examples, parseBoolean(sheet.getColumn(row, "Idempotent"), row,  false));
-	          op.setStandardsStatus(StandardsStatus.fromCode(sheet.getColumn(row, "Standards-Status")));
+            op.setStandardsStatus(StandardsStatus.fromCode(sheet.getColumn(row, "Standards-Status")));
+            op.setNormativeVersion(sheet.getColumn(row, "Normative-Version"));
             op.setFooter2(sheet.getColumn(row, "Footer2"));
             op.setFmm(sheet.getColumn(row, "fmm"));
 	          op.getExamples2().addAll(examples2);
@@ -783,8 +784,6 @@ public class SpreadsheetParser {
         sp.setVersion(Constants.VERSION);
         sp.setName(n);
         sp.setCode(n);
-        sp.setMultipleAnd(true);
-        sp.setMultipleOr(true);
 
         if (pack.getProfiles().size() > 0 && pack.getProfiles().get(0).getResource() != null) {
           sp.setStatus(pack.getProfiles().get(0).getResource().getStatus());
@@ -1003,7 +1002,7 @@ public class SpreadsheetParser {
                 if (e != null && e.hasOnlyType("Reference"))
                   throw new Exception("Search Param "+root2.getName()+"/"+n+" wrong type. The search type is "+t.toString()+", but the element type is "+e.typeCode());
                 if (t == SearchType.uri) {
-                  if (e != null && !(e.typeCode().equals("uri") | e.typeCode().equals("url") | e.typeCode().equals("oid")))
+                  if (e != null && !(e.typeCode().equals("uri") || e.typeCode().equals("url") || e.typeCode().equals("oid") || e.typeCode().startsWith("canonical(")))
                     throw new Exception("Search Param "+root2.getName()+"/"+n+" wrong type. The search type is "+t.toString()+", but the element type is "+e.typeCode());
                 } else {
                   if (e != null && e.typeCode().equals("uri"))
@@ -1293,7 +1292,8 @@ public class SpreadsheetParser {
       result.setUrl("http://hl7.org/fhir/ValueSet/"+igSuffix(ig)+ref.substring(9));
       if (!result.hasTitle())
         result.setTitle(Utilities.capitalize(Utilities.unCamelCase(result.getName())));
-	    result.setExperimental(true);
+      if (!result.hasExperimental())
+  	    result.setExperimental(false);
 	    if (!result.hasVersion() || result.getUrl().startsWith("http://hl7.org/fhir"))
 	      result.setVersion(version.toCode());
       result.setUserData("filename", ref);
@@ -1716,6 +1716,7 @@ public class SpreadsheetParser {
 		}
 
     e.setStandardsStatus(StandardsStatus.fromCode(sheet.getColumn(row, "Standards-Status")));
+    e.setNormativeVersion(sheet.getColumn(row, "Normative-Version"));
 
 		if (e.getName().startsWith("@")) {
 		  e.setName(e.getName().substring(1));
@@ -2213,7 +2214,7 @@ public class SpreadsheetParser {
       }
       row++;
     }
-    ProfileGenerator gen = new ProfileGenerator(definitions, null, pkp, null, null, null, fpUsages, null);
+    ProfileGenerator gen = new ProfileGenerator(definitions, null, pkp, null, version, null, fpUsages, null);
     ProfileUtilities utils = new ProfileUtilities(this.context, issues, pkp);
     gen.convertElements(exe, ex, null);
     ex.getDifferential().getElementFirstRep().getType().clear();
@@ -2223,7 +2224,7 @@ public class SpreadsheetParser {
     List<String> errors = new ArrayList<String>();
     utils.sortDifferential(base, ex, "extension "+ex.getUrl(), errors);
     assert(errors.size() == 0);
-    utils.generateSnapshot(base, ex, ex.getUrl(), ex.getName());
+    utils.generateSnapshot(base, ex, ex.getUrl(), "http://hl7.org/fhir", ex.getName());
     utils.setIds(ex, true);
     new ExtensionDefinitionValidator(context).validate(ex);
 	  this.context.cacheResource(ex);
@@ -2292,24 +2293,8 @@ public class SpreadsheetParser {
     // things that go on Extension.value
     if (!Utilities.noString(sheet.getColumn(row, "Type"))) {
       ElementDefn exv = new ElementDefn();
+      exv.setName("value[x]");
       exv.getTypes().addAll(new TypeParser().parse(sheet.getColumn(row, "Type"), true, profileExtensionBase, context, false, sheet.title));
-      if (exv.getTypes().size()>1) {
-        exv.setName("valueReference");
-        for (TypeRef t : exv.getTypes()) {
-          if (!t.getName().equals("Reference") && !t.getName().equals("canonical") ) {
-            exv.setName("value[x]");
-            break;
-          }
-        }
-      } else {
-        TypeRef type = exv.getTypes().get(0);
-        if (type.getName().equals("*") || type.getParams().size()>1)
-          exv.setName("value[x]");
-        else {
-          String name = type.getName();
-          exv.setName("value" + name.substring(0,1).toUpperCase() + name.substring(1));
-        }
-      }
 /*      if (!exv.getName().equals("value[x]")) {
         ElementDefn exd = new ElementDefn();
         exd.setName("value[x]");

@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Mon, Nov 5, 2018 09:03+1100 for FHIR v3.6.0
+// Generated on Thu, Dec 13, 2018 14:07+1100 for FHIR v4.0.0
 
 
 import org.hl7.fhir.instance.model.api.*;
@@ -3311,7 +3311,7 @@ into another (possibly the same) biological entity.
          */
         CHARGEITEMDEFINITION, 
         /**
-         * A provider issued list of services and products provided, or to be provided, to a patient which is provided to an insurer for payment recovery.
+         * A provider issued list of professional services and products which have been provided, or are to be provided, to a patient which is sent to an insurer for reimbursement.
          */
         CLAIM, 
         /**
@@ -3327,7 +3327,7 @@ into another (possibly the same) biological entity.
          */
         CODESYSTEM, 
         /**
-         * An occurrence of information being transmitted; e.g. an alert that was sent to a responsible provider, a public health agency was notified about a reportable condition.
+         * An occurrence of information being transmitted; e.g. an alert that was sent to a responsible provider, a public health agency that was notified about a reportable condition.
          */
         COMMUNICATION, 
         /**
@@ -3403,7 +3403,7 @@ into another (possibly the same) biological entity.
          */
         DOCUMENTMANIFEST, 
         /**
-         * A reference to a document.
+         * A reference to a document of any kind for any purpose. Provides metadata about the document so that the document can be discovered and managed. The scope of a document is any seralized object with a mime-type, so includes formal patient centric documents (CDA), cliical notes, scanned paper, and non-patient specific documents like policy text.
          */
         DOCUMENTREFERENCE, 
         /**
@@ -3427,7 +3427,7 @@ into another (possibly the same) biological entity.
          */
         ENROLLMENTREQUEST, 
         /**
-         * This resource provides enrollment and plan details from the processing of an Enrollment resource.
+         * This resource provides enrollment and plan details from the processing of an EnrollmentRequest resource.
          */
         ENROLLMENTRESPONSE, 
         /**
@@ -3511,15 +3511,11 @@ into another (possibly the same) biological entity.
          */
         INVOICE, 
         /**
-         * A physical, countable instance of an item, for example one box or one unit.
-         */
-        ITEMINSTANCE, 
-        /**
          * The Library resource is a general-purpose container for knowledge asset definitions. It can be used to describe and expose existing knowledge assets such as logic libraries and information model descriptions, as well as to describe a collection of knowledge assets.
          */
         LIBRARY, 
         /**
-         * Identifies two or more records (resource instances) that are referring to the same real-world "occurrence".
+         * Identifies two or more records (resource instances) that refer to the same real-world "occurrence".
          */
         LINKAGE, 
         /**
@@ -3563,7 +3559,9 @@ into another (possibly the same) biological entity.
          */
         MEDICATIONREQUEST, 
         /**
-         * A record of a medication that is being consumed by a patient.   A MedicationStatement may indicate that the patient may be taking the medication now, or has taken the medication in the past or will be taking the medication in the future.  The source of this information can be the patient, significant other (such as a family member or spouse), or a clinician.  A common scenario where this information is captured is during the history taking process during a patient visit or stay.   The medication information may come from sources such as the patient's memory, from a prescription bottle,  or from a list of medications the patient, clinician or other party maintains. The primary difference between a medication statement and a medication administration is that the medication administration has complete administration information and is based on actual administration information from the person who administered the medication.  A medication statement is often, if not always, less specific.  There is no required date/time when the medication was administered, in fact we only know that a source has reported the patient is taking this medication, where details such as time, quantity, or rate or even medication product may be incomplete or missing or less precise.  As stated earlier, the medication statement information may come from the patient's memory, from a prescription bottle or from a list of medications the patient, clinician or other party maintains.  Medication administration is more formal and is not missing detailed information.
+         * A record of a medication that is being consumed by a patient.   A MedicationStatement may indicate that the patient may be taking the medication now or has taken the medication in the past or will be taking the medication in the future.  The source of this information can be the patient, significant other (such as a family member or spouse), or a clinician.  A common scenario where this information is captured is during the history taking process during a patient visit or stay.   The medication information may come from sources such as the patient's memory, from a prescription bottle,  or from a list of medications the patient, clinician or other party maintains. 
+
+The primary difference between a medication statement and a medication administration is that the medication administration has complete administration information and is based on actual administration information from the person who administered the medication.  A medication statement is often, if not always, less specific.  There is no required date/time when the medication was administered, in fact we only know that a source has reported the patient is taking this medication, where details such as time, quantity, or rate or even medication product may be incomplete or missing or less precise.  As stated earlier, the medication statement information may come from the patient's memory, from a prescription bottle or from a list of medications the patient, clinician or other party maintains.  Medication administration is more formal and is not missing detailed information.
          */
         MEDICATIONSTATEMENT, 
         /**
@@ -3663,7 +3661,7 @@ into another (possibly the same) biological entity.
          */
         PAYMENTNOTICE, 
         /**
-         * This resource provides payment details and claim references supporting a bulk payment.
+         * This resource provides the details including amount of a payment and allocates the payment items being paid.
          */
         PAYMENTRECONCILIATION, 
         /**
@@ -3686,14 +3684,6 @@ into another (possibly the same) biological entity.
          * An action that is or was performed on or for a patient. This can be a physical intervention like an operation, or less invasive like long term services, counseling, or hypnotherapy.
          */
         PROCEDURE, 
-        /**
-         * This resource provides the target, request and response, and action details for an action to be performed by the target on or about existing resources.
-         */
-        PROCESSREQUEST, 
-        /**
-         * This resource provides processing status, errors and notes from the processing of a resource.
-         */
-        PROCESSRESPONSE, 
         /**
          * Provenance of a resource is a record that describes entities and processes involved in producing and delivering or otherwise influencing that resource. Provenance provides a critical foundation for assessing authenticity, enabling trust, and allowing reproducibility. Provenance assertions are a form of contextual metadata and can themselves become important records with their own provenance. Provenance statement indicates clinical significance in terms of confidence in authenticity, reliability, and trustworthiness, integrity, and stage in lifecycle (e.g. Document Completion - has the artifact been legally authenticated), all of which may impact security, privacy, and trust policies.
          */
@@ -4119,8 +4109,6 @@ into another (possibly the same) biological entity.
           return INSURANCEPLAN;
         if ("Invoice".equals(codeString))
           return INVOICE;
-        if ("ItemInstance".equals(codeString))
-          return ITEMINSTANCE;
         if ("Library".equals(codeString))
           return LIBRARY;
         if ("Linkage".equals(codeString))
@@ -4207,10 +4195,6 @@ into another (possibly the same) biological entity.
           return PRACTITIONERROLE;
         if ("Procedure".equals(codeString))
           return PROCEDURE;
-        if ("ProcessRequest".equals(codeString))
-          return PROCESSREQUEST;
-        if ("ProcessResponse".equals(codeString))
-          return PROCESSRESPONSE;
         if ("Provenance".equals(codeString))
           return PROVENANCE;
         if ("Questionnaire".equals(codeString))
@@ -4424,7 +4408,6 @@ into another (possibly the same) biological entity.
             case IMPLEMENTATIONGUIDE: return "ImplementationGuide";
             case INSURANCEPLAN: return "InsurancePlan";
             case INVOICE: return "Invoice";
-            case ITEMINSTANCE: return "ItemInstance";
             case LIBRARY: return "Library";
             case LINKAGE: return "Linkage";
             case LIST: return "List";
@@ -4468,8 +4451,6 @@ into another (possibly the same) biological entity.
             case PRACTITIONER: return "Practitioner";
             case PRACTITIONERROLE: return "PractitionerRole";
             case PROCEDURE: return "Procedure";
-            case PROCESSREQUEST: return "ProcessRequest";
-            case PROCESSRESPONSE: return "ProcessResponse";
             case PROVENANCE: return "Provenance";
             case QUESTIONNAIRE: return "Questionnaire";
             case QUESTIONNAIRERESPONSE: return "QuestionnaireResponse";
@@ -4645,7 +4626,6 @@ into another (possibly the same) biological entity.
             case IMPLEMENTATIONGUIDE: return "http://hl7.org/fhir/resource-types";
             case INSURANCEPLAN: return "http://hl7.org/fhir/resource-types";
             case INVOICE: return "http://hl7.org/fhir/resource-types";
-            case ITEMINSTANCE: return "http://hl7.org/fhir/resource-types";
             case LIBRARY: return "http://hl7.org/fhir/resource-types";
             case LINKAGE: return "http://hl7.org/fhir/resource-types";
             case LIST: return "http://hl7.org/fhir/resource-types";
@@ -4689,8 +4669,6 @@ into another (possibly the same) biological entity.
             case PRACTITIONER: return "http://hl7.org/fhir/resource-types";
             case PRACTITIONERROLE: return "http://hl7.org/fhir/resource-types";
             case PROCEDURE: return "http://hl7.org/fhir/resource-types";
-            case PROCESSREQUEST: return "http://hl7.org/fhir/resource-types";
-            case PROCESSRESPONSE: return "http://hl7.org/fhir/resource-types";
             case PROVENANCE: return "http://hl7.org/fhir/resource-types";
             case QUESTIONNAIRE: return "http://hl7.org/fhir/resource-types";
             case QUESTIONNAIRERESPONSE: return "http://hl7.org/fhir/resource-types";
@@ -4816,11 +4794,11 @@ into another (possibly the same) biological entity.
             case CATALOGENTRY: return "Catalog entries are wrappers that contextualize items included in a catalog.";
             case CHARGEITEM: return "The resource ChargeItem describes the provision of healthcare provider products for a certain patient, therefore referring not only to the product, but containing in addition details of the provision, like date, time, amounts and participating organizations and persons. Main Usage of the ChargeItem is to enable the billing process and internal cost allocation.";
             case CHARGEITEMDEFINITION: return "The ChargeItemDefinition resource provides the properties that apply to the (billing) codes necessary to calculate costs and prices. The properties may differ largely depending on type and realm, therefore this resource gives only a rough structure and requires profiling for each type of billing code system.";
-            case CLAIM: return "A provider issued list of services and products provided, or to be provided, to a patient which is provided to an insurer for payment recovery.";
+            case CLAIM: return "A provider issued list of professional services and products which have been provided, or are to be provided, to a patient which is sent to an insurer for reimbursement.";
             case CLAIMRESPONSE: return "This resource provides the adjudication details from the processing of a Claim resource.";
             case CLINICALIMPRESSION: return "A record of a clinical assessment performed to determine what problem(s) may affect the patient and before planning the treatments or management strategies that are best to manage a patient's condition. Assessments are often 1:1 with a clinical consultation / encounter,  but this varies greatly depending on the clinical workflow. This resource is called \"ClinicalImpression\" rather than \"ClinicalAssessment\" to avoid confusion with the recording of assessment tools such as Apgar score.";
             case CODESYSTEM: return "The CodeSystem resource is used to declare the existence of and describe a code system or code system supplement and its key properties, and optionally define a part or all of its content.";
-            case COMMUNICATION: return "An occurrence of information being transmitted; e.g. an alert that was sent to a responsible provider, a public health agency was notified about a reportable condition.";
+            case COMMUNICATION: return "An occurrence of information being transmitted; e.g. an alert that was sent to a responsible provider, a public health agency that was notified about a reportable condition.";
             case COMMUNICATIONREQUEST: return "A request to convey information; e.g. the CDS system proposes that an alert be sent to a responsible provider, the CDS system proposes that the public health agency be notified about a reportable condition.";
             case COMPARTMENTDEFINITION: return "A compartment definition that defines how resources are accessed on a server.";
             case COMPOSITION: return "A set of healthcare-related information that is assembled together into a single logical package that provides a single coherent statement of meaning, establishes its own context and that has clinical attestation with regard to who is making the statement. A Composition defines the structure and narrative content necessary for a document. However, a Composition alone does not constitute a document. Rather, the Composition must be the first entry in a Bundle where Bundle.type=document, and any other resources referenced from Composition must be included as subsequent entries in the Bundle (for example Patient, Practitioner, Encounter, etc.).";
@@ -4839,13 +4817,13 @@ into another (possibly the same) biological entity.
             case DEVICEUSESTATEMENT: return "A record of a device being used by a patient where the record is the result of a report from the patient or another clinician.";
             case DIAGNOSTICREPORT: return "The findings and interpretation of diagnostic  tests performed on patients, groups of patients, devices, and locations, and/or specimens derived from these. The report includes clinical context such as requesting and provider information, and some mix of atomic results, images, textual and coded interpretations, and formatted representation of diagnostic reports.";
             case DOCUMENTMANIFEST: return "A collection of documents compiled for a purpose together with metadata that applies to the collection.";
-            case DOCUMENTREFERENCE: return "A reference to a document.";
+            case DOCUMENTREFERENCE: return "A reference to a document of any kind for any purpose. Provides metadata about the document so that the document can be discovered and managed. The scope of a document is any seralized object with a mime-type, so includes formal patient centric documents (CDA), cliical notes, scanned paper, and non-patient specific documents like policy text.";
             case DOMAINRESOURCE: return "A resource that includes narrative, extensions, and contained resources.";
             case EFFECTEVIDENCESYNTHESIS: return "The EffectEvidenceSynthesis resource describes the difference in an outcome between exposures states in a population where the effect estimate is derived from a combination of research studies.";
             case ENCOUNTER: return "An interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or assessing the health status of a patient.";
             case ENDPOINT: return "The technical details of an endpoint that can be used for electronic services, such as for web services providing XDS.b or a REST endpoint for another FHIR server. This may include any security context information.";
             case ENROLLMENTREQUEST: return "This resource provides the insurance enrollment details to the insurer regarding a specified coverage.";
-            case ENROLLMENTRESPONSE: return "This resource provides enrollment and plan details from the processing of an Enrollment resource.";
+            case ENROLLMENTRESPONSE: return "This resource provides enrollment and plan details from the processing of an EnrollmentRequest resource.";
             case EPISODEOFCARE: return "An association between a patient and an organization / healthcare provider(s) during which time encounters may occur. The managing organization assumes a level of responsibility for the patient during this time.";
             case EVENTDEFINITION: return "The EventDefinition resource provides a reusable description of when a particular event can occur.";
             case EVIDENCE: return "The Evidence resource describes the conditional state (population and any exposures being compared within the population) and outcome (if specified) that the knowledge (evidence, assertion, recommendation) is about.";
@@ -4866,9 +4844,8 @@ into another (possibly the same) biological entity.
             case IMPLEMENTATIONGUIDE: return "A set of rules of how a particular interoperability or standards problem is solved - typically through the use of FHIR resources. This resource is used to gather all the parts of an implementation guide into a logical whole and to publish a computable definition of all the parts.";
             case INSURANCEPLAN: return "Details of a Health Insurance product/plan provided by an organization.";
             case INVOICE: return "Invoice containing collected ChargeItems from an Account with calculated individual and total price for Billing purpose.";
-            case ITEMINSTANCE: return "A physical, countable instance of an item, for example one box or one unit.";
             case LIBRARY: return "The Library resource is a general-purpose container for knowledge asset definitions. It can be used to describe and expose existing knowledge assets such as logic libraries and information model descriptions, as well as to describe a collection of knowledge assets.";
-            case LINKAGE: return "Identifies two or more records (resource instances) that are referring to the same real-world \"occurrence\".";
+            case LINKAGE: return "Identifies two or more records (resource instances) that refer to the same real-world \"occurrence\".";
             case LIST: return "A list is a curated collection of resources.";
             case LOCATION: return "Details and position information for a physical place where services are provided and resources and participants may be stored, found, contained, or accommodated.";
             case MEASURE: return "The Measure resource provides the definition of a quality measure.";
@@ -4879,7 +4856,7 @@ into another (possibly the same) biological entity.
             case MEDICATIONDISPENSE: return "Indicates that a medication product is to be or has been dispensed for a named person/patient.  This includes a description of the medication product (supply) provided and the instructions for administering the medication.  The medication dispense is the result of a pharmacy system responding to a medication order.";
             case MEDICATIONKNOWLEDGE: return "Information about a medication that is used to support knowledge.";
             case MEDICATIONREQUEST: return "An order or request for both supply of the medication and the instructions for administration of the medication to a patient. The resource is called \"MedicationRequest\" rather than \"MedicationPrescription\" or \"MedicationOrder\" to generalize the use across inpatient and outpatient settings, including care plans, etc., and to harmonize with workflow patterns.";
-            case MEDICATIONSTATEMENT: return "A record of a medication that is being consumed by a patient.   A MedicationStatement may indicate that the patient may be taking the medication now, or has taken the medication in the past or will be taking the medication in the future.  The source of this information can be the patient, significant other (such as a family member or spouse), or a clinician.  A common scenario where this information is captured is during the history taking process during a patient visit or stay.   The medication information may come from sources such as the patient's memory, from a prescription bottle,  or from a list of medications the patient, clinician or other party maintains. \r\rThe primary difference between a medication statement and a medication administration is that the medication administration has complete administration information and is based on actual administration information from the person who administered the medication.  A medication statement is often, if not always, less specific.  There is no required date/time when the medication was administered, in fact we only know that a source has reported the patient is taking this medication, where details such as time, quantity, or rate or even medication product may be incomplete or missing or less precise.  As stated earlier, the medication statement information may come from the patient's memory, from a prescription bottle or from a list of medications the patient, clinician or other party maintains.  Medication administration is more formal and is not missing detailed information.";
+            case MEDICATIONSTATEMENT: return "A record of a medication that is being consumed by a patient.   A MedicationStatement may indicate that the patient may be taking the medication now or has taken the medication in the past or will be taking the medication in the future.  The source of this information can be the patient, significant other (such as a family member or spouse), or a clinician.  A common scenario where this information is captured is during the history taking process during a patient visit or stay.   The medication information may come from sources such as the patient's memory, from a prescription bottle,  or from a list of medications the patient, clinician or other party maintains. \n\nThe primary difference between a medication statement and a medication administration is that the medication administration has complete administration information and is based on actual administration information from the person who administered the medication.  A medication statement is often, if not always, less specific.  There is no required date/time when the medication was administered, in fact we only know that a source has reported the patient is taking this medication, where details such as time, quantity, or rate or even medication product may be incomplete or missing or less precise.  As stated earlier, the medication statement information may come from the patient's memory, from a prescription bottle or from a list of medications the patient, clinician or other party maintains.  Medication administration is more formal and is not missing detailed information.";
             case MEDICINALPRODUCT: return "Detailed definition of a medicinal product, typically for uses other than direct patient care (e.g. regulatory use).";
             case MEDICINALPRODUCTAUTHORIZATION: return "The regulatory authorization of a medicinal product.";
             case MEDICINALPRODUCTCONTRAINDICATION: return "The clinical particulars - indications, contraindications etc. of a medicinal product, including for regulatory purposes.";
@@ -4904,14 +4881,12 @@ into another (possibly the same) biological entity.
             case PARAMETERS: return "This resource is a non-persisted resource used to pass information into and back from an [operation](operations.html). It has no other use, and there is no RESTful endpoint associated with it.";
             case PATIENT: return "Demographics and other administrative information about an individual or animal receiving care or other health-related services.";
             case PAYMENTNOTICE: return "This resource provides the status of the payment for goods and services rendered, and the request and response resource references.";
-            case PAYMENTRECONCILIATION: return "This resource provides payment details and claim references supporting a bulk payment.";
+            case PAYMENTRECONCILIATION: return "This resource provides the details including amount of a payment and allocates the payment items being paid.";
             case PERSON: return "Demographics and administrative information about a person independent of a specific health-related context.";
             case PLANDEFINITION: return "This resource allows for the definition of various types of plans as a sharable, consumable, and executable artifact. The resource is general enough to support the description of a broad range of clinical artifacts such as clinical decision support rules, order sets and protocols.";
             case PRACTITIONER: return "A person who is directly or indirectly involved in the provisioning of healthcare.";
             case PRACTITIONERROLE: return "A specific set of Roles/Locations/specialties/services that a practitioner may perform at an organization for a period of time.";
             case PROCEDURE: return "An action that is or was performed on or for a patient. This can be a physical intervention like an operation, or less invasive like long term services, counseling, or hypnotherapy.";
-            case PROCESSREQUEST: return "This resource provides the target, request and response, and action details for an action to be performed by the target on or about existing resources.";
-            case PROCESSRESPONSE: return "This resource provides processing status, errors and notes from the processing of a resource.";
             case PROVENANCE: return "Provenance of a resource is a record that describes entities and processes involved in producing and delivering or otherwise influencing that resource. Provenance provides a critical foundation for assessing authenticity, enabling trust, and allowing reproducibility. Provenance assertions are a form of contextual metadata and can themselves become important records with their own provenance. Provenance statement indicates clinical significance in terms of confidence in authenticity, reliability, and trustworthiness, integrity, and stage in lifecycle (e.g. Document Completion - has the artifact been legally authenticated), all of which may impact security, privacy, and trust policies.";
             case QUESTIONNAIRE: return "A structured set of questions intended to guide the collection of answers from end-users. Questionnaires provide detailed control over order, presentation, phraseology and grouping to allow coherent, consistent data collection.";
             case QUESTIONNAIRERESPONSE: return "A structured set of questions and their answers. The questions are ordered and grouped into coherent subsets, corresponding to the structure of the grouping of the questionnaire being responded to.";
@@ -5087,7 +5062,6 @@ into another (possibly the same) biological entity.
             case IMPLEMENTATIONGUIDE: return "ImplementationGuide";
             case INSURANCEPLAN: return "InsurancePlan";
             case INVOICE: return "Invoice";
-            case ITEMINSTANCE: return "ItemInstance";
             case LIBRARY: return "Library";
             case LINKAGE: return "Linkage";
             case LIST: return "List";
@@ -5131,8 +5105,6 @@ into another (possibly the same) biological entity.
             case PRACTITIONER: return "Practitioner";
             case PRACTITIONERROLE: return "PractitionerRole";
             case PROCEDURE: return "Procedure";
-            case PROCESSREQUEST: return "ProcessRequest";
-            case PROCESSRESPONSE: return "ProcessResponse";
             case PROVENANCE: return "Provenance";
             case QUESTIONNAIRE: return "Questionnaire";
             case QUESTIONNAIRERESPONSE: return "QuestionnaireResponse";
@@ -5444,8 +5416,6 @@ into another (possibly the same) biological entity.
           return FHIRAllTypes.INSURANCEPLAN;
         if ("Invoice".equals(codeString))
           return FHIRAllTypes.INVOICE;
-        if ("ItemInstance".equals(codeString))
-          return FHIRAllTypes.ITEMINSTANCE;
         if ("Library".equals(codeString))
           return FHIRAllTypes.LIBRARY;
         if ("Linkage".equals(codeString))
@@ -5532,10 +5502,6 @@ into another (possibly the same) biological entity.
           return FHIRAllTypes.PRACTITIONERROLE;
         if ("Procedure".equals(codeString))
           return FHIRAllTypes.PROCEDURE;
-        if ("ProcessRequest".equals(codeString))
-          return FHIRAllTypes.PROCESSREQUEST;
-        if ("ProcessResponse".equals(codeString))
-          return FHIRAllTypes.PROCESSRESPONSE;
         if ("Provenance".equals(codeString))
           return FHIRAllTypes.PROVENANCE;
         if ("Questionnaire".equals(codeString))
@@ -5886,8 +5852,6 @@ into another (possibly the same) biological entity.
           return new Enumeration<FHIRAllTypes>(this, FHIRAllTypes.INSURANCEPLAN);
         if ("Invoice".equals(codeString))
           return new Enumeration<FHIRAllTypes>(this, FHIRAllTypes.INVOICE);
-        if ("ItemInstance".equals(codeString))
-          return new Enumeration<FHIRAllTypes>(this, FHIRAllTypes.ITEMINSTANCE);
         if ("Library".equals(codeString))
           return new Enumeration<FHIRAllTypes>(this, FHIRAllTypes.LIBRARY);
         if ("Linkage".equals(codeString))
@@ -5974,10 +5938,6 @@ into another (possibly the same) biological entity.
           return new Enumeration<FHIRAllTypes>(this, FHIRAllTypes.PRACTITIONERROLE);
         if ("Procedure".equals(codeString))
           return new Enumeration<FHIRAllTypes>(this, FHIRAllTypes.PROCEDURE);
-        if ("ProcessRequest".equals(codeString))
-          return new Enumeration<FHIRAllTypes>(this, FHIRAllTypes.PROCESSREQUEST);
-        if ("ProcessResponse".equals(codeString))
-          return new Enumeration<FHIRAllTypes>(this, FHIRAllTypes.PROCESSRESPONSE);
         if ("Provenance".equals(codeString))
           return new Enumeration<FHIRAllTypes>(this, FHIRAllTypes.PROVENANCE);
         if ("Questionnaire".equals(codeString))
@@ -6321,8 +6281,6 @@ into another (possibly the same) biological entity.
         return "InsurancePlan";
       if (code == FHIRAllTypes.INVOICE)
         return "Invoice";
-      if (code == FHIRAllTypes.ITEMINSTANCE)
-        return "ItemInstance";
       if (code == FHIRAllTypes.LIBRARY)
         return "Library";
       if (code == FHIRAllTypes.LINKAGE)
@@ -6409,10 +6367,6 @@ into another (possibly the same) biological entity.
         return "PractitionerRole";
       if (code == FHIRAllTypes.PROCEDURE)
         return "Procedure";
-      if (code == FHIRAllTypes.PROCESSREQUEST)
-        return "ProcessRequest";
-      if (code == FHIRAllTypes.PROCESSRESPONSE)
-        return "ProcessResponse";
       if (code == FHIRAllTypes.PROVENANCE)
         return "Provenance";
       if (code == FHIRAllTypes.QUESTIONNAIRE)
@@ -6825,7 +6779,7 @@ into another (possibly the same) biological entity.
          */
         CHARGEITEMDEFINITION, 
         /**
-         * A provider issued list of services and products provided, or to be provided, to a patient which is provided to an insurer for payment recovery.
+         * A provider issued list of professional services and products which have been provided, or are to be provided, to a patient which is sent to an insurer for reimbursement.
          */
         CLAIM, 
         /**
@@ -6841,7 +6795,7 @@ into another (possibly the same) biological entity.
          */
         CODESYSTEM, 
         /**
-         * An occurrence of information being transmitted; e.g. an alert that was sent to a responsible provider, a public health agency was notified about a reportable condition.
+         * An occurrence of information being transmitted; e.g. an alert that was sent to a responsible provider, a public health agency that was notified about a reportable condition.
          */
         COMMUNICATION, 
         /**
@@ -6917,7 +6871,7 @@ into another (possibly the same) biological entity.
          */
         DOCUMENTMANIFEST, 
         /**
-         * A reference to a document.
+         * A reference to a document of any kind for any purpose. Provides metadata about the document so that the document can be discovered and managed. The scope of a document is any seralized object with a mime-type, so includes formal patient centric documents (CDA), cliical notes, scanned paper, and non-patient specific documents like policy text.
          */
         DOCUMENTREFERENCE, 
         /**
@@ -6941,7 +6895,7 @@ into another (possibly the same) biological entity.
          */
         ENROLLMENTREQUEST, 
         /**
-         * This resource provides enrollment and plan details from the processing of an Enrollment resource.
+         * This resource provides enrollment and plan details from the processing of an EnrollmentRequest resource.
          */
         ENROLLMENTRESPONSE, 
         /**
@@ -7025,15 +6979,11 @@ into another (possibly the same) biological entity.
          */
         INVOICE, 
         /**
-         * A physical, countable instance of an item, for example one box or one unit.
-         */
-        ITEMINSTANCE, 
-        /**
          * The Library resource is a general-purpose container for knowledge asset definitions. It can be used to describe and expose existing knowledge assets such as logic libraries and information model descriptions, as well as to describe a collection of knowledge assets.
          */
         LIBRARY, 
         /**
-         * Identifies two or more records (resource instances) that are referring to the same real-world "occurrence".
+         * Identifies two or more records (resource instances) that refer to the same real-world "occurrence".
          */
         LINKAGE, 
         /**
@@ -7077,7 +7027,9 @@ into another (possibly the same) biological entity.
          */
         MEDICATIONREQUEST, 
         /**
-         * A record of a medication that is being consumed by a patient.   A MedicationStatement may indicate that the patient may be taking the medication now, or has taken the medication in the past or will be taking the medication in the future.  The source of this information can be the patient, significant other (such as a family member or spouse), or a clinician.  A common scenario where this information is captured is during the history taking process during a patient visit or stay.   The medication information may come from sources such as the patient's memory, from a prescription bottle,  or from a list of medications the patient, clinician or other party maintains. The primary difference between a medication statement and a medication administration is that the medication administration has complete administration information and is based on actual administration information from the person who administered the medication.  A medication statement is often, if not always, less specific.  There is no required date/time when the medication was administered, in fact we only know that a source has reported the patient is taking this medication, where details such as time, quantity, or rate or even medication product may be incomplete or missing or less precise.  As stated earlier, the medication statement information may come from the patient's memory, from a prescription bottle or from a list of medications the patient, clinician or other party maintains.  Medication administration is more formal and is not missing detailed information.
+         * A record of a medication that is being consumed by a patient.   A MedicationStatement may indicate that the patient may be taking the medication now or has taken the medication in the past or will be taking the medication in the future.  The source of this information can be the patient, significant other (such as a family member or spouse), or a clinician.  A common scenario where this information is captured is during the history taking process during a patient visit or stay.   The medication information may come from sources such as the patient's memory, from a prescription bottle,  or from a list of medications the patient, clinician or other party maintains. 
+
+The primary difference between a medication statement and a medication administration is that the medication administration has complete administration information and is based on actual administration information from the person who administered the medication.  A medication statement is often, if not always, less specific.  There is no required date/time when the medication was administered, in fact we only know that a source has reported the patient is taking this medication, where details such as time, quantity, or rate or even medication product may be incomplete or missing or less precise.  As stated earlier, the medication statement information may come from the patient's memory, from a prescription bottle or from a list of medications the patient, clinician or other party maintains.  Medication administration is more formal and is not missing detailed information.
          */
         MEDICATIONSTATEMENT, 
         /**
@@ -7177,7 +7129,7 @@ into another (possibly the same) biological entity.
          */
         PAYMENTNOTICE, 
         /**
-         * This resource provides payment details and claim references supporting a bulk payment.
+         * This resource provides the details including amount of a payment and allocates the payment items being paid.
          */
         PAYMENTRECONCILIATION, 
         /**
@@ -7200,14 +7152,6 @@ into another (possibly the same) biological entity.
          * An action that is or was performed on or for a patient. This can be a physical intervention like an operation, or less invasive like long term services, counseling, or hypnotherapy.
          */
         PROCEDURE, 
-        /**
-         * This resource provides the target, request and response, and action details for an action to be performed by the target on or about existing resources.
-         */
-        PROCESSREQUEST, 
-        /**
-         * This resource provides processing status, errors and notes from the processing of a resource.
-         */
-        PROCESSRESPONSE, 
         /**
          * Provenance of a resource is a record that describes entities and processes involved in producing and delivering or otherwise influencing that resource. Provenance provides a critical foundation for assessing authenticity, enabling trust, and allowing reproducibility. Provenance assertions are a form of contextual metadata and can themselves become important records with their own provenance. Provenance statement indicates clinical significance in terms of confidence in authenticity, reliability, and trustworthiness, integrity, and stage in lifecycle (e.g. Document Completion - has the artifact been legally authenticated), all of which may impact security, privacy, and trust policies.
          */
@@ -7625,8 +7569,6 @@ into another (possibly the same) biological entity.
           return INSURANCEPLAN;
         if ("Invoice".equals(codeString))
           return INVOICE;
-        if ("ItemInstance".equals(codeString))
-          return ITEMINSTANCE;
         if ("Library".equals(codeString))
           return LIBRARY;
         if ("Linkage".equals(codeString))
@@ -7713,10 +7655,6 @@ into another (possibly the same) biological entity.
           return PRACTITIONERROLE;
         if ("Procedure".equals(codeString))
           return PROCEDURE;
-        if ("ProcessRequest".equals(codeString))
-          return PROCESSREQUEST;
-        if ("ProcessResponse".equals(codeString))
-          return PROCESSRESPONSE;
         if ("Provenance".equals(codeString))
           return PROVENANCE;
         if ("Questionnaire".equals(codeString))
@@ -7926,7 +7864,6 @@ into another (possibly the same) biological entity.
             case IMPLEMENTATIONGUIDE: return "ImplementationGuide";
             case INSURANCEPLAN: return "InsurancePlan";
             case INVOICE: return "Invoice";
-            case ITEMINSTANCE: return "ItemInstance";
             case LIBRARY: return "Library";
             case LINKAGE: return "Linkage";
             case LIST: return "List";
@@ -7970,8 +7907,6 @@ into another (possibly the same) biological entity.
             case PRACTITIONER: return "Practitioner";
             case PRACTITIONERROLE: return "PractitionerRole";
             case PROCEDURE: return "Procedure";
-            case PROCESSREQUEST: return "ProcessRequest";
-            case PROCESSRESPONSE: return "ProcessResponse";
             case PROVENANCE: return "Provenance";
             case QUESTIONNAIRE: return "Questionnaire";
             case QUESTIONNAIRERESPONSE: return "QuestionnaireResponse";
@@ -8145,7 +8080,6 @@ into another (possibly the same) biological entity.
             case IMPLEMENTATIONGUIDE: return "http://hl7.org/fhir/resource-types";
             case INSURANCEPLAN: return "http://hl7.org/fhir/resource-types";
             case INVOICE: return "http://hl7.org/fhir/resource-types";
-            case ITEMINSTANCE: return "http://hl7.org/fhir/resource-types";
             case LIBRARY: return "http://hl7.org/fhir/resource-types";
             case LINKAGE: return "http://hl7.org/fhir/resource-types";
             case LIST: return "http://hl7.org/fhir/resource-types";
@@ -8189,8 +8123,6 @@ into another (possibly the same) biological entity.
             case PRACTITIONER: return "http://hl7.org/fhir/resource-types";
             case PRACTITIONERROLE: return "http://hl7.org/fhir/resource-types";
             case PROCEDURE: return "http://hl7.org/fhir/resource-types";
-            case PROCESSREQUEST: return "http://hl7.org/fhir/resource-types";
-            case PROCESSRESPONSE: return "http://hl7.org/fhir/resource-types";
             case PROVENANCE: return "http://hl7.org/fhir/resource-types";
             case QUESTIONNAIRE: return "http://hl7.org/fhir/resource-types";
             case QUESTIONNAIRERESPONSE: return "http://hl7.org/fhir/resource-types";
@@ -8314,11 +8246,11 @@ into another (possibly the same) biological entity.
             case CATALOGENTRY: return "Catalog entries are wrappers that contextualize items included in a catalog.";
             case CHARGEITEM: return "The resource ChargeItem describes the provision of healthcare provider products for a certain patient, therefore referring not only to the product, but containing in addition details of the provision, like date, time, amounts and participating organizations and persons. Main Usage of the ChargeItem is to enable the billing process and internal cost allocation.";
             case CHARGEITEMDEFINITION: return "The ChargeItemDefinition resource provides the properties that apply to the (billing) codes necessary to calculate costs and prices. The properties may differ largely depending on type and realm, therefore this resource gives only a rough structure and requires profiling for each type of billing code system.";
-            case CLAIM: return "A provider issued list of services and products provided, or to be provided, to a patient which is provided to an insurer for payment recovery.";
+            case CLAIM: return "A provider issued list of professional services and products which have been provided, or are to be provided, to a patient which is sent to an insurer for reimbursement.";
             case CLAIMRESPONSE: return "This resource provides the adjudication details from the processing of a Claim resource.";
             case CLINICALIMPRESSION: return "A record of a clinical assessment performed to determine what problem(s) may affect the patient and before planning the treatments or management strategies that are best to manage a patient's condition. Assessments are often 1:1 with a clinical consultation / encounter,  but this varies greatly depending on the clinical workflow. This resource is called \"ClinicalImpression\" rather than \"ClinicalAssessment\" to avoid confusion with the recording of assessment tools such as Apgar score.";
             case CODESYSTEM: return "The CodeSystem resource is used to declare the existence of and describe a code system or code system supplement and its key properties, and optionally define a part or all of its content.";
-            case COMMUNICATION: return "An occurrence of information being transmitted; e.g. an alert that was sent to a responsible provider, a public health agency was notified about a reportable condition.";
+            case COMMUNICATION: return "An occurrence of information being transmitted; e.g. an alert that was sent to a responsible provider, a public health agency that was notified about a reportable condition.";
             case COMMUNICATIONREQUEST: return "A request to convey information; e.g. the CDS system proposes that an alert be sent to a responsible provider, the CDS system proposes that the public health agency be notified about a reportable condition.";
             case COMPARTMENTDEFINITION: return "A compartment definition that defines how resources are accessed on a server.";
             case COMPOSITION: return "A set of healthcare-related information that is assembled together into a single logical package that provides a single coherent statement of meaning, establishes its own context and that has clinical attestation with regard to who is making the statement. A Composition defines the structure and narrative content necessary for a document. However, a Composition alone does not constitute a document. Rather, the Composition must be the first entry in a Bundle where Bundle.type=document, and any other resources referenced from Composition must be included as subsequent entries in the Bundle (for example Patient, Practitioner, Encounter, etc.).";
@@ -8337,13 +8269,13 @@ into another (possibly the same) biological entity.
             case DEVICEUSESTATEMENT: return "A record of a device being used by a patient where the record is the result of a report from the patient or another clinician.";
             case DIAGNOSTICREPORT: return "The findings and interpretation of diagnostic  tests performed on patients, groups of patients, devices, and locations, and/or specimens derived from these. The report includes clinical context such as requesting and provider information, and some mix of atomic results, images, textual and coded interpretations, and formatted representation of diagnostic reports.";
             case DOCUMENTMANIFEST: return "A collection of documents compiled for a purpose together with metadata that applies to the collection.";
-            case DOCUMENTREFERENCE: return "A reference to a document.";
+            case DOCUMENTREFERENCE: return "A reference to a document of any kind for any purpose. Provides metadata about the document so that the document can be discovered and managed. The scope of a document is any seralized object with a mime-type, so includes formal patient centric documents (CDA), cliical notes, scanned paper, and non-patient specific documents like policy text.";
             case DOMAINRESOURCE: return "A resource that includes narrative, extensions, and contained resources.";
             case EFFECTEVIDENCESYNTHESIS: return "The EffectEvidenceSynthesis resource describes the difference in an outcome between exposures states in a population where the effect estimate is derived from a combination of research studies.";
             case ENCOUNTER: return "An interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or assessing the health status of a patient.";
             case ENDPOINT: return "The technical details of an endpoint that can be used for electronic services, such as for web services providing XDS.b or a REST endpoint for another FHIR server. This may include any security context information.";
             case ENROLLMENTREQUEST: return "This resource provides the insurance enrollment details to the insurer regarding a specified coverage.";
-            case ENROLLMENTRESPONSE: return "This resource provides enrollment and plan details from the processing of an Enrollment resource.";
+            case ENROLLMENTRESPONSE: return "This resource provides enrollment and plan details from the processing of an EnrollmentRequest resource.";
             case EPISODEOFCARE: return "An association between a patient and an organization / healthcare provider(s) during which time encounters may occur. The managing organization assumes a level of responsibility for the patient during this time.";
             case EVENTDEFINITION: return "The EventDefinition resource provides a reusable description of when a particular event can occur.";
             case EVIDENCE: return "The Evidence resource describes the conditional state (population and any exposures being compared within the population) and outcome (if specified) that the knowledge (evidence, assertion, recommendation) is about.";
@@ -8364,9 +8296,8 @@ into another (possibly the same) biological entity.
             case IMPLEMENTATIONGUIDE: return "A set of rules of how a particular interoperability or standards problem is solved - typically through the use of FHIR resources. This resource is used to gather all the parts of an implementation guide into a logical whole and to publish a computable definition of all the parts.";
             case INSURANCEPLAN: return "Details of a Health Insurance product/plan provided by an organization.";
             case INVOICE: return "Invoice containing collected ChargeItems from an Account with calculated individual and total price for Billing purpose.";
-            case ITEMINSTANCE: return "A physical, countable instance of an item, for example one box or one unit.";
             case LIBRARY: return "The Library resource is a general-purpose container for knowledge asset definitions. It can be used to describe and expose existing knowledge assets such as logic libraries and information model descriptions, as well as to describe a collection of knowledge assets.";
-            case LINKAGE: return "Identifies two or more records (resource instances) that are referring to the same real-world \"occurrence\".";
+            case LINKAGE: return "Identifies two or more records (resource instances) that refer to the same real-world \"occurrence\".";
             case LIST: return "A list is a curated collection of resources.";
             case LOCATION: return "Details and position information for a physical place where services are provided and resources and participants may be stored, found, contained, or accommodated.";
             case MEASURE: return "The Measure resource provides the definition of a quality measure.";
@@ -8377,7 +8308,7 @@ into another (possibly the same) biological entity.
             case MEDICATIONDISPENSE: return "Indicates that a medication product is to be or has been dispensed for a named person/patient.  This includes a description of the medication product (supply) provided and the instructions for administering the medication.  The medication dispense is the result of a pharmacy system responding to a medication order.";
             case MEDICATIONKNOWLEDGE: return "Information about a medication that is used to support knowledge.";
             case MEDICATIONREQUEST: return "An order or request for both supply of the medication and the instructions for administration of the medication to a patient. The resource is called \"MedicationRequest\" rather than \"MedicationPrescription\" or \"MedicationOrder\" to generalize the use across inpatient and outpatient settings, including care plans, etc., and to harmonize with workflow patterns.";
-            case MEDICATIONSTATEMENT: return "A record of a medication that is being consumed by a patient.   A MedicationStatement may indicate that the patient may be taking the medication now, or has taken the medication in the past or will be taking the medication in the future.  The source of this information can be the patient, significant other (such as a family member or spouse), or a clinician.  A common scenario where this information is captured is during the history taking process during a patient visit or stay.   The medication information may come from sources such as the patient's memory, from a prescription bottle,  or from a list of medications the patient, clinician or other party maintains. \r\rThe primary difference between a medication statement and a medication administration is that the medication administration has complete administration information and is based on actual administration information from the person who administered the medication.  A medication statement is often, if not always, less specific.  There is no required date/time when the medication was administered, in fact we only know that a source has reported the patient is taking this medication, where details such as time, quantity, or rate or even medication product may be incomplete or missing or less precise.  As stated earlier, the medication statement information may come from the patient's memory, from a prescription bottle or from a list of medications the patient, clinician or other party maintains.  Medication administration is more formal and is not missing detailed information.";
+            case MEDICATIONSTATEMENT: return "A record of a medication that is being consumed by a patient.   A MedicationStatement may indicate that the patient may be taking the medication now or has taken the medication in the past or will be taking the medication in the future.  The source of this information can be the patient, significant other (such as a family member or spouse), or a clinician.  A common scenario where this information is captured is during the history taking process during a patient visit or stay.   The medication information may come from sources such as the patient's memory, from a prescription bottle,  or from a list of medications the patient, clinician or other party maintains. \n\nThe primary difference between a medication statement and a medication administration is that the medication administration has complete administration information and is based on actual administration information from the person who administered the medication.  A medication statement is often, if not always, less specific.  There is no required date/time when the medication was administered, in fact we only know that a source has reported the patient is taking this medication, where details such as time, quantity, or rate or even medication product may be incomplete or missing or less precise.  As stated earlier, the medication statement information may come from the patient's memory, from a prescription bottle or from a list of medications the patient, clinician or other party maintains.  Medication administration is more formal and is not missing detailed information.";
             case MEDICINALPRODUCT: return "Detailed definition of a medicinal product, typically for uses other than direct patient care (e.g. regulatory use).";
             case MEDICINALPRODUCTAUTHORIZATION: return "The regulatory authorization of a medicinal product.";
             case MEDICINALPRODUCTCONTRAINDICATION: return "The clinical particulars - indications, contraindications etc. of a medicinal product, including for regulatory purposes.";
@@ -8402,14 +8333,12 @@ into another (possibly the same) biological entity.
             case PARAMETERS: return "This resource is a non-persisted resource used to pass information into and back from an [operation](operations.html). It has no other use, and there is no RESTful endpoint associated with it.";
             case PATIENT: return "Demographics and other administrative information about an individual or animal receiving care or other health-related services.";
             case PAYMENTNOTICE: return "This resource provides the status of the payment for goods and services rendered, and the request and response resource references.";
-            case PAYMENTRECONCILIATION: return "This resource provides payment details and claim references supporting a bulk payment.";
+            case PAYMENTRECONCILIATION: return "This resource provides the details including amount of a payment and allocates the payment items being paid.";
             case PERSON: return "Demographics and administrative information about a person independent of a specific health-related context.";
             case PLANDEFINITION: return "This resource allows for the definition of various types of plans as a sharable, consumable, and executable artifact. The resource is general enough to support the description of a broad range of clinical artifacts such as clinical decision support rules, order sets and protocols.";
             case PRACTITIONER: return "A person who is directly or indirectly involved in the provisioning of healthcare.";
             case PRACTITIONERROLE: return "A specific set of Roles/Locations/specialties/services that a practitioner may perform at an organization for a period of time.";
             case PROCEDURE: return "An action that is or was performed on or for a patient. This can be a physical intervention like an operation, or less invasive like long term services, counseling, or hypnotherapy.";
-            case PROCESSREQUEST: return "This resource provides the target, request and response, and action details for an action to be performed by the target on or about existing resources.";
-            case PROCESSRESPONSE: return "This resource provides processing status, errors and notes from the processing of a resource.";
             case PROVENANCE: return "Provenance of a resource is a record that describes entities and processes involved in producing and delivering or otherwise influencing that resource. Provenance provides a critical foundation for assessing authenticity, enabling trust, and allowing reproducibility. Provenance assertions are a form of contextual metadata and can themselves become important records with their own provenance. Provenance statement indicates clinical significance in terms of confidence in authenticity, reliability, and trustworthiness, integrity, and stage in lifecycle (e.g. Document Completion - has the artifact been legally authenticated), all of which may impact security, privacy, and trust policies.";
             case QUESTIONNAIRE: return "A structured set of questions intended to guide the collection of answers from end-users. Questionnaires provide detailed control over order, presentation, phraseology and grouping to allow coherent, consistent data collection.";
             case QUESTIONNAIRERESPONSE: return "A structured set of questions and their answers. The questions are ordered and grouped into coherent subsets, corresponding to the structure of the grouping of the questionnaire being responded to.";
@@ -8583,7 +8512,6 @@ into another (possibly the same) biological entity.
             case IMPLEMENTATIONGUIDE: return "ImplementationGuide";
             case INSURANCEPLAN: return "InsurancePlan";
             case INVOICE: return "Invoice";
-            case ITEMINSTANCE: return "ItemInstance";
             case LIBRARY: return "Library";
             case LINKAGE: return "Linkage";
             case LIST: return "List";
@@ -8627,8 +8555,6 @@ into another (possibly the same) biological entity.
             case PRACTITIONER: return "Practitioner";
             case PRACTITIONERROLE: return "PractitionerRole";
             case PROCEDURE: return "Procedure";
-            case PROCESSREQUEST: return "ProcessRequest";
-            case PROCESSRESPONSE: return "ProcessResponse";
             case PROVENANCE: return "Provenance";
             case QUESTIONNAIRE: return "Questionnaire";
             case QUESTIONNAIRERESPONSE: return "QuestionnaireResponse";
@@ -8938,8 +8864,6 @@ into another (possibly the same) biological entity.
           return FHIRDefinedType.INSURANCEPLAN;
         if ("Invoice".equals(codeString))
           return FHIRDefinedType.INVOICE;
-        if ("ItemInstance".equals(codeString))
-          return FHIRDefinedType.ITEMINSTANCE;
         if ("Library".equals(codeString))
           return FHIRDefinedType.LIBRARY;
         if ("Linkage".equals(codeString))
@@ -9026,10 +8950,6 @@ into another (possibly the same) biological entity.
           return FHIRDefinedType.PRACTITIONERROLE;
         if ("Procedure".equals(codeString))
           return FHIRDefinedType.PROCEDURE;
-        if ("ProcessRequest".equals(codeString))
-          return FHIRDefinedType.PROCESSREQUEST;
-        if ("ProcessResponse".equals(codeString))
-          return FHIRDefinedType.PROCESSRESPONSE;
         if ("Provenance".equals(codeString))
           return FHIRDefinedType.PROVENANCE;
         if ("Questionnaire".equals(codeString))
@@ -9376,8 +9296,6 @@ into another (possibly the same) biological entity.
           return new Enumeration<FHIRDefinedType>(this, FHIRDefinedType.INSURANCEPLAN);
         if ("Invoice".equals(codeString))
           return new Enumeration<FHIRDefinedType>(this, FHIRDefinedType.INVOICE);
-        if ("ItemInstance".equals(codeString))
-          return new Enumeration<FHIRDefinedType>(this, FHIRDefinedType.ITEMINSTANCE);
         if ("Library".equals(codeString))
           return new Enumeration<FHIRDefinedType>(this, FHIRDefinedType.LIBRARY);
         if ("Linkage".equals(codeString))
@@ -9464,10 +9382,6 @@ into another (possibly the same) biological entity.
           return new Enumeration<FHIRDefinedType>(this, FHIRDefinedType.PRACTITIONERROLE);
         if ("Procedure".equals(codeString))
           return new Enumeration<FHIRDefinedType>(this, FHIRDefinedType.PROCEDURE);
-        if ("ProcessRequest".equals(codeString))
-          return new Enumeration<FHIRDefinedType>(this, FHIRDefinedType.PROCESSREQUEST);
-        if ("ProcessResponse".equals(codeString))
-          return new Enumeration<FHIRDefinedType>(this, FHIRDefinedType.PROCESSRESPONSE);
         if ("Provenance".equals(codeString))
           return new Enumeration<FHIRDefinedType>(this, FHIRDefinedType.PROVENANCE);
         if ("Questionnaire".equals(codeString))
@@ -9807,8 +9721,6 @@ into another (possibly the same) biological entity.
         return "InsurancePlan";
       if (code == FHIRDefinedType.INVOICE)
         return "Invoice";
-      if (code == FHIRDefinedType.ITEMINSTANCE)
-        return "ItemInstance";
       if (code == FHIRDefinedType.LIBRARY)
         return "Library";
       if (code == FHIRDefinedType.LINKAGE)
@@ -9895,10 +9807,6 @@ into another (possibly the same) biological entity.
         return "PractitionerRole";
       if (code == FHIRDefinedType.PROCEDURE)
         return "Procedure";
-      if (code == FHIRDefinedType.PROCESSREQUEST)
-        return "ProcessRequest";
-      if (code == FHIRDefinedType.PROCESSRESPONSE)
-        return "ProcessResponse";
       if (code == FHIRDefinedType.PROVENANCE)
         return "Provenance";
       if (code == FHIRDefinedType.QUESTIONNAIRE)
@@ -10062,9 +9970,13 @@ into another (possibly the same) biological entity.
          */
         _3_5_0, 
         /**
-         * Current Development build.
+         * FHIR Release 4 (Normative + STU).
          */
-        _3_6_0, 
+        _4_0_0, 
+        /**
+         * FHIR Release 4 Technical Correction.
+         */
+        _4_0_1, 
         /**
          * added to help the parsers
          */
@@ -10112,9 +10024,15 @@ into another (possibly the same) biological entity.
           return _3_3_0;
         if ("3.5.0".equals(codeString))
           return _3_5_0;
-        if ("3.6.0".equals(codeString))
-          return _3_6_0;
+        if ("4.0.0".equals(codeString))
+            return _4_0_0;
+        if ("4.0.1".equals(codeString))
+            return _4_0_1;
         throw new FHIRException("Unknown FHIRVersion code '"+codeString+"'");
+        }
+        @Override
+        public String toString() {
+          return toCode();
         }
         public String toCode() {
           switch (this) {
@@ -10138,7 +10056,8 @@ into another (possibly the same) biological entity.
             case _3_0_1: return "3.0.1";
             case _3_3_0: return "3.3.0";
             case _3_5_0: return "3.5.0";
-            case _3_6_0: return "3.6.0";
+            case _4_0_0: return "4.0.0";
+            case _4_0_1: return "4.0.1";
             default: return "?";
           }
         }
@@ -10164,7 +10083,8 @@ into another (possibly the same) biological entity.
             case _3_0_1: return "http://hl7.org/fhir/FHIR-version";
             case _3_3_0: return "http://hl7.org/fhir/FHIR-version";
             case _3_5_0: return "http://hl7.org/fhir/FHIR-version";
-            case _3_6_0: return "http://hl7.org/fhir/FHIR-version";
+            case _4_0_0: return "http://hl7.org/fhir/FHIR-version";
+            case _4_0_1: return "http://hl7.org/fhir/FHIR-version";
             default: return "?";
           }
         }
@@ -10190,7 +10110,8 @@ into another (possibly the same) biological entity.
             case _3_0_1: return "FHIR Release 3 (STU) with 1 technical errata.";
             case _3_3_0: return "R4 Ballot #1.";
             case _3_5_0: return "R4 Ballot #2.";
-            case _3_6_0: return "Current Development build.";
+            case _4_0_0: return "FHIR Release 4 (Normative + STU).";
+            case _4_0_1: return "FHIR Release 4 Technical Correction";
             default: return "?";
           }
         }
@@ -10216,9 +10137,16 @@ into another (possibly the same) biological entity.
             case _3_0_1: return "3.0.1";
             case _3_3_0: return "3.3.0";
             case _3_5_0: return "3.5.0";
-            case _3_6_0: return "3.6.0";
+            case _4_0_0: return "4.0.0";
+            case _4_0_1: return "4.0.1";
             default: return "?";
           }
+        }
+        public String toCode(int len) {
+          return toCode().substring(0, len);
+        }
+        public static boolean isR4Plus(String version) {
+          return version.startsWith("4.");
         }
     }
 
@@ -10267,8 +10195,10 @@ into another (possibly the same) biological entity.
           return FHIRVersion._3_3_0;
         if ("3.5.0".equals(codeString))
           return FHIRVersion._3_5_0;
-        if ("3.6.0".equals(codeString))
-          return FHIRVersion._3_6_0;
+        if ("4.0.0".equals(codeString))
+            return FHIRVersion._4_0_0;
+        if ("4.0.1".equals(codeString))
+            return FHIRVersion._4_0_1;
         throw new IllegalArgumentException("Unknown FHIRVersion code '"+codeString+"'");
         }
         public Enumeration<FHIRVersion> fromType(Base code) throws FHIRException {
@@ -10319,8 +10249,10 @@ into another (possibly the same) biological entity.
           return new Enumeration<FHIRVersion>(this, FHIRVersion._3_3_0);
         if ("3.5.0".equals(codeString))
           return new Enumeration<FHIRVersion>(this, FHIRVersion._3_5_0);
-        if ("3.6.0".equals(codeString))
-          return new Enumeration<FHIRVersion>(this, FHIRVersion._3_6_0);
+        if ("4.0.0".equals(codeString))
+          return new Enumeration<FHIRVersion>(this, FHIRVersion._4_0_0);
+        if ("4.0.1".equals(codeString))
+            return new Enumeration<FHIRVersion>(this, FHIRVersion._4_0_1);
         throw new FHIRException("Unknown FHIRVersion code '"+codeString+"'");
         }
     public String toCode(FHIRVersion code) {
@@ -10364,8 +10296,10 @@ into another (possibly the same) biological entity.
         return "3.3.0";
       if (code == FHIRVersion._3_5_0)
         return "3.5.0";
-      if (code == FHIRVersion._3_6_0)
-        return "3.6.0";
+      if (code == FHIRVersion._4_0_0)
+          return "4.0.0";
+      if (code == FHIRVersion._4_0_1)
+          return "4.0.1";
       return "?";
       }
     public String toSystem(FHIRVersion code) {
@@ -11350,7 +11284,7 @@ into another (possibly the same) biological entity.
          */
         CHARGEITEMDEFINITION, 
         /**
-         * A provider issued list of services and products provided, or to be provided, to a patient which is provided to an insurer for payment recovery.
+         * A provider issued list of professional services and products which have been provided, or are to be provided, to a patient which is sent to an insurer for reimbursement.
          */
         CLAIM, 
         /**
@@ -11366,7 +11300,7 @@ into another (possibly the same) biological entity.
          */
         CODESYSTEM, 
         /**
-         * An occurrence of information being transmitted; e.g. an alert that was sent to a responsible provider, a public health agency was notified about a reportable condition.
+         * An occurrence of information being transmitted; e.g. an alert that was sent to a responsible provider, a public health agency that was notified about a reportable condition.
          */
         COMMUNICATION, 
         /**
@@ -11442,7 +11376,7 @@ into another (possibly the same) biological entity.
          */
         DOCUMENTMANIFEST, 
         /**
-         * A reference to a document.
+         * A reference to a document of any kind for any purpose. Provides metadata about the document so that the document can be discovered and managed. The scope of a document is any seralized object with a mime-type, so includes formal patient centric documents (CDA), cliical notes, scanned paper, and non-patient specific documents like policy text.
          */
         DOCUMENTREFERENCE, 
         /**
@@ -11466,7 +11400,7 @@ into another (possibly the same) biological entity.
          */
         ENROLLMENTREQUEST, 
         /**
-         * This resource provides enrollment and plan details from the processing of an Enrollment resource.
+         * This resource provides enrollment and plan details from the processing of an EnrollmentRequest resource.
          */
         ENROLLMENTRESPONSE, 
         /**
@@ -11550,15 +11484,11 @@ into another (possibly the same) biological entity.
          */
         INVOICE, 
         /**
-         * A physical, countable instance of an item, for example one box or one unit.
-         */
-        ITEMINSTANCE, 
-        /**
          * The Library resource is a general-purpose container for knowledge asset definitions. It can be used to describe and expose existing knowledge assets such as logic libraries and information model descriptions, as well as to describe a collection of knowledge assets.
          */
         LIBRARY, 
         /**
-         * Identifies two or more records (resource instances) that are referring to the same real-world "occurrence".
+         * Identifies two or more records (resource instances) that refer to the same real-world "occurrence".
          */
         LINKAGE, 
         /**
@@ -11602,7 +11532,9 @@ into another (possibly the same) biological entity.
          */
         MEDICATIONREQUEST, 
         /**
-         * A record of a medication that is being consumed by a patient.   A MedicationStatement may indicate that the patient may be taking the medication now, or has taken the medication in the past or will be taking the medication in the future.  The source of this information can be the patient, significant other (such as a family member or spouse), or a clinician.  A common scenario where this information is captured is during the history taking process during a patient visit or stay.   The medication information may come from sources such as the patient's memory, from a prescription bottle,  or from a list of medications the patient, clinician or other party maintains. The primary difference between a medication statement and a medication administration is that the medication administration has complete administration information and is based on actual administration information from the person who administered the medication.  A medication statement is often, if not always, less specific.  There is no required date/time when the medication was administered, in fact we only know that a source has reported the patient is taking this medication, where details such as time, quantity, or rate or even medication product may be incomplete or missing or less precise.  As stated earlier, the medication statement information may come from the patient's memory, from a prescription bottle or from a list of medications the patient, clinician or other party maintains.  Medication administration is more formal and is not missing detailed information.
+         * A record of a medication that is being consumed by a patient.   A MedicationStatement may indicate that the patient may be taking the medication now or has taken the medication in the past or will be taking the medication in the future.  The source of this information can be the patient, significant other (such as a family member or spouse), or a clinician.  A common scenario where this information is captured is during the history taking process during a patient visit or stay.   The medication information may come from sources such as the patient's memory, from a prescription bottle,  or from a list of medications the patient, clinician or other party maintains. 
+
+The primary difference between a medication statement and a medication administration is that the medication administration has complete administration information and is based on actual administration information from the person who administered the medication.  A medication statement is often, if not always, less specific.  There is no required date/time when the medication was administered, in fact we only know that a source has reported the patient is taking this medication, where details such as time, quantity, or rate or even medication product may be incomplete or missing or less precise.  As stated earlier, the medication statement information may come from the patient's memory, from a prescription bottle or from a list of medications the patient, clinician or other party maintains.  Medication administration is more formal and is not missing detailed information.
          */
         MEDICATIONSTATEMENT, 
         /**
@@ -11702,7 +11634,7 @@ into another (possibly the same) biological entity.
          */
         PAYMENTNOTICE, 
         /**
-         * This resource provides payment details and claim references supporting a bulk payment.
+         * This resource provides the details including amount of a payment and allocates the payment items being paid.
          */
         PAYMENTRECONCILIATION, 
         /**
@@ -11725,14 +11657,6 @@ into another (possibly the same) biological entity.
          * An action that is or was performed on or for a patient. This can be a physical intervention like an operation, or less invasive like long term services, counseling, or hypnotherapy.
          */
         PROCEDURE, 
-        /**
-         * This resource provides the target, request and response, and action details for an action to be performed by the target on or about existing resources.
-         */
-        PROCESSREQUEST, 
-        /**
-         * This resource provides processing status, errors and notes from the processing of a resource.
-         */
-        PROCESSRESPONSE, 
         /**
          * Provenance of a resource is a record that describes entities and processes involved in producing and delivering or otherwise influencing that resource. Provenance provides a critical foundation for assessing authenticity, enabling trust, and allowing reproducibility. Provenance assertions are a form of contextual metadata and can themselves become important records with their own provenance. Provenance statement indicates clinical significance in terms of confidence in authenticity, reliability, and trustworthiness, integrity, and stage in lifecycle (e.g. Document Completion - has the artifact been legally authenticated), all of which may impact security, privacy, and trust policies.
          */
@@ -12024,8 +11948,6 @@ into another (possibly the same) biological entity.
           return INSURANCEPLAN;
         if ("Invoice".equals(codeString))
           return INVOICE;
-        if ("ItemInstance".equals(codeString))
-          return ITEMINSTANCE;
         if ("Library".equals(codeString))
           return LIBRARY;
         if ("Linkage".equals(codeString))
@@ -12112,10 +12034,6 @@ into another (possibly the same) biological entity.
           return PRACTITIONERROLE;
         if ("Procedure".equals(codeString))
           return PROCEDURE;
-        if ("ProcessRequest".equals(codeString))
-          return PROCESSREQUEST;
-        if ("ProcessResponse".equals(codeString))
-          return PROCESSRESPONSE;
         if ("Provenance".equals(codeString))
           return PROVENANCE;
         if ("Questionnaire".equals(codeString))
@@ -12262,7 +12180,6 @@ into another (possibly the same) biological entity.
             case IMPLEMENTATIONGUIDE: return "ImplementationGuide";
             case INSURANCEPLAN: return "InsurancePlan";
             case INVOICE: return "Invoice";
-            case ITEMINSTANCE: return "ItemInstance";
             case LIBRARY: return "Library";
             case LINKAGE: return "Linkage";
             case LIST: return "List";
@@ -12306,8 +12223,6 @@ into another (possibly the same) biological entity.
             case PRACTITIONER: return "Practitioner";
             case PRACTITIONERROLE: return "PractitionerRole";
             case PROCEDURE: return "Procedure";
-            case PROCESSREQUEST: return "ProcessRequest";
-            case PROCESSRESPONSE: return "ProcessResponse";
             case PROVENANCE: return "Provenance";
             case QUESTIONNAIRE: return "Questionnaire";
             case QUESTIONNAIRERESPONSE: return "QuestionnaireResponse";
@@ -12418,7 +12333,6 @@ into another (possibly the same) biological entity.
             case IMPLEMENTATIONGUIDE: return "http://hl7.org/fhir/resource-types";
             case INSURANCEPLAN: return "http://hl7.org/fhir/resource-types";
             case INVOICE: return "http://hl7.org/fhir/resource-types";
-            case ITEMINSTANCE: return "http://hl7.org/fhir/resource-types";
             case LIBRARY: return "http://hl7.org/fhir/resource-types";
             case LINKAGE: return "http://hl7.org/fhir/resource-types";
             case LIST: return "http://hl7.org/fhir/resource-types";
@@ -12462,8 +12376,6 @@ into another (possibly the same) biological entity.
             case PRACTITIONER: return "http://hl7.org/fhir/resource-types";
             case PRACTITIONERROLE: return "http://hl7.org/fhir/resource-types";
             case PROCEDURE: return "http://hl7.org/fhir/resource-types";
-            case PROCESSREQUEST: return "http://hl7.org/fhir/resource-types";
-            case PROCESSRESPONSE: return "http://hl7.org/fhir/resource-types";
             case PROVENANCE: return "http://hl7.org/fhir/resource-types";
             case QUESTIONNAIRE: return "http://hl7.org/fhir/resource-types";
             case QUESTIONNAIRERESPONSE: return "http://hl7.org/fhir/resource-types";
@@ -12524,11 +12436,11 @@ into another (possibly the same) biological entity.
             case CATALOGENTRY: return "Catalog entries are wrappers that contextualize items included in a catalog.";
             case CHARGEITEM: return "The resource ChargeItem describes the provision of healthcare provider products for a certain patient, therefore referring not only to the product, but containing in addition details of the provision, like date, time, amounts and participating organizations and persons. Main Usage of the ChargeItem is to enable the billing process and internal cost allocation.";
             case CHARGEITEMDEFINITION: return "The ChargeItemDefinition resource provides the properties that apply to the (billing) codes necessary to calculate costs and prices. The properties may differ largely depending on type and realm, therefore this resource gives only a rough structure and requires profiling for each type of billing code system.";
-            case CLAIM: return "A provider issued list of services and products provided, or to be provided, to a patient which is provided to an insurer for payment recovery.";
+            case CLAIM: return "A provider issued list of professional services and products which have been provided, or are to be provided, to a patient which is sent to an insurer for reimbursement.";
             case CLAIMRESPONSE: return "This resource provides the adjudication details from the processing of a Claim resource.";
             case CLINICALIMPRESSION: return "A record of a clinical assessment performed to determine what problem(s) may affect the patient and before planning the treatments or management strategies that are best to manage a patient's condition. Assessments are often 1:1 with a clinical consultation / encounter,  but this varies greatly depending on the clinical workflow. This resource is called \"ClinicalImpression\" rather than \"ClinicalAssessment\" to avoid confusion with the recording of assessment tools such as Apgar score.";
             case CODESYSTEM: return "The CodeSystem resource is used to declare the existence of and describe a code system or code system supplement and its key properties, and optionally define a part or all of its content.";
-            case COMMUNICATION: return "An occurrence of information being transmitted; e.g. an alert that was sent to a responsible provider, a public health agency was notified about a reportable condition.";
+            case COMMUNICATION: return "An occurrence of information being transmitted; e.g. an alert that was sent to a responsible provider, a public health agency that was notified about a reportable condition.";
             case COMMUNICATIONREQUEST: return "A request to convey information; e.g. the CDS system proposes that an alert be sent to a responsible provider, the CDS system proposes that the public health agency be notified about a reportable condition.";
             case COMPARTMENTDEFINITION: return "A compartment definition that defines how resources are accessed on a server.";
             case COMPOSITION: return "A set of healthcare-related information that is assembled together into a single logical package that provides a single coherent statement of meaning, establishes its own context and that has clinical attestation with regard to who is making the statement. A Composition defines the structure and narrative content necessary for a document. However, a Composition alone does not constitute a document. Rather, the Composition must be the first entry in a Bundle where Bundle.type=document, and any other resources referenced from Composition must be included as subsequent entries in the Bundle (for example Patient, Practitioner, Encounter, etc.).";
@@ -12547,13 +12459,13 @@ into another (possibly the same) biological entity.
             case DEVICEUSESTATEMENT: return "A record of a device being used by a patient where the record is the result of a report from the patient or another clinician.";
             case DIAGNOSTICREPORT: return "The findings and interpretation of diagnostic  tests performed on patients, groups of patients, devices, and locations, and/or specimens derived from these. The report includes clinical context such as requesting and provider information, and some mix of atomic results, images, textual and coded interpretations, and formatted representation of diagnostic reports.";
             case DOCUMENTMANIFEST: return "A collection of documents compiled for a purpose together with metadata that applies to the collection.";
-            case DOCUMENTREFERENCE: return "A reference to a document.";
+            case DOCUMENTREFERENCE: return "A reference to a document of any kind for any purpose. Provides metadata about the document so that the document can be discovered and managed. The scope of a document is any seralized object with a mime-type, so includes formal patient centric documents (CDA), cliical notes, scanned paper, and non-patient specific documents like policy text.";
             case DOMAINRESOURCE: return "A resource that includes narrative, extensions, and contained resources.";
             case EFFECTEVIDENCESYNTHESIS: return "The EffectEvidenceSynthesis resource describes the difference in an outcome between exposures states in a population where the effect estimate is derived from a combination of research studies.";
             case ENCOUNTER: return "An interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or assessing the health status of a patient.";
             case ENDPOINT: return "The technical details of an endpoint that can be used for electronic services, such as for web services providing XDS.b or a REST endpoint for another FHIR server. This may include any security context information.";
             case ENROLLMENTREQUEST: return "This resource provides the insurance enrollment details to the insurer regarding a specified coverage.";
-            case ENROLLMENTRESPONSE: return "This resource provides enrollment and plan details from the processing of an Enrollment resource.";
+            case ENROLLMENTRESPONSE: return "This resource provides enrollment and plan details from the processing of an EnrollmentRequest resource.";
             case EPISODEOFCARE: return "An association between a patient and an organization / healthcare provider(s) during which time encounters may occur. The managing organization assumes a level of responsibility for the patient during this time.";
             case EVENTDEFINITION: return "The EventDefinition resource provides a reusable description of when a particular event can occur.";
             case EVIDENCE: return "The Evidence resource describes the conditional state (population and any exposures being compared within the population) and outcome (if specified) that the knowledge (evidence, assertion, recommendation) is about.";
@@ -12574,9 +12486,8 @@ into another (possibly the same) biological entity.
             case IMPLEMENTATIONGUIDE: return "A set of rules of how a particular interoperability or standards problem is solved - typically through the use of FHIR resources. This resource is used to gather all the parts of an implementation guide into a logical whole and to publish a computable definition of all the parts.";
             case INSURANCEPLAN: return "Details of a Health Insurance product/plan provided by an organization.";
             case INVOICE: return "Invoice containing collected ChargeItems from an Account with calculated individual and total price for Billing purpose.";
-            case ITEMINSTANCE: return "A physical, countable instance of an item, for example one box or one unit.";
             case LIBRARY: return "The Library resource is a general-purpose container for knowledge asset definitions. It can be used to describe and expose existing knowledge assets such as logic libraries and information model descriptions, as well as to describe a collection of knowledge assets.";
-            case LINKAGE: return "Identifies two or more records (resource instances) that are referring to the same real-world \"occurrence\".";
+            case LINKAGE: return "Identifies two or more records (resource instances) that refer to the same real-world \"occurrence\".";
             case LIST: return "A list is a curated collection of resources.";
             case LOCATION: return "Details and position information for a physical place where services are provided and resources and participants may be stored, found, contained, or accommodated.";
             case MEASURE: return "The Measure resource provides the definition of a quality measure.";
@@ -12587,7 +12498,7 @@ into another (possibly the same) biological entity.
             case MEDICATIONDISPENSE: return "Indicates that a medication product is to be or has been dispensed for a named person/patient.  This includes a description of the medication product (supply) provided and the instructions for administering the medication.  The medication dispense is the result of a pharmacy system responding to a medication order.";
             case MEDICATIONKNOWLEDGE: return "Information about a medication that is used to support knowledge.";
             case MEDICATIONREQUEST: return "An order or request for both supply of the medication and the instructions for administration of the medication to a patient. The resource is called \"MedicationRequest\" rather than \"MedicationPrescription\" or \"MedicationOrder\" to generalize the use across inpatient and outpatient settings, including care plans, etc., and to harmonize with workflow patterns.";
-            case MEDICATIONSTATEMENT: return "A record of a medication that is being consumed by a patient.   A MedicationStatement may indicate that the patient may be taking the medication now, or has taken the medication in the past or will be taking the medication in the future.  The source of this information can be the patient, significant other (such as a family member or spouse), or a clinician.  A common scenario where this information is captured is during the history taking process during a patient visit or stay.   The medication information may come from sources such as the patient's memory, from a prescription bottle,  or from a list of medications the patient, clinician or other party maintains. \r\rThe primary difference between a medication statement and a medication administration is that the medication administration has complete administration information and is based on actual administration information from the person who administered the medication.  A medication statement is often, if not always, less specific.  There is no required date/time when the medication was administered, in fact we only know that a source has reported the patient is taking this medication, where details such as time, quantity, or rate or even medication product may be incomplete or missing or less precise.  As stated earlier, the medication statement information may come from the patient's memory, from a prescription bottle or from a list of medications the patient, clinician or other party maintains.  Medication administration is more formal and is not missing detailed information.";
+            case MEDICATIONSTATEMENT: return "A record of a medication that is being consumed by a patient.   A MedicationStatement may indicate that the patient may be taking the medication now or has taken the medication in the past or will be taking the medication in the future.  The source of this information can be the patient, significant other (such as a family member or spouse), or a clinician.  A common scenario where this information is captured is during the history taking process during a patient visit or stay.   The medication information may come from sources such as the patient's memory, from a prescription bottle,  or from a list of medications the patient, clinician or other party maintains. \n\nThe primary difference between a medication statement and a medication administration is that the medication administration has complete administration information and is based on actual administration information from the person who administered the medication.  A medication statement is often, if not always, less specific.  There is no required date/time when the medication was administered, in fact we only know that a source has reported the patient is taking this medication, where details such as time, quantity, or rate or even medication product may be incomplete or missing or less precise.  As stated earlier, the medication statement information may come from the patient's memory, from a prescription bottle or from a list of medications the patient, clinician or other party maintains.  Medication administration is more formal and is not missing detailed information.";
             case MEDICINALPRODUCT: return "Detailed definition of a medicinal product, typically for uses other than direct patient care (e.g. regulatory use).";
             case MEDICINALPRODUCTAUTHORIZATION: return "The regulatory authorization of a medicinal product.";
             case MEDICINALPRODUCTCONTRAINDICATION: return "The clinical particulars - indications, contraindications etc. of a medicinal product, including for regulatory purposes.";
@@ -12612,14 +12523,12 @@ into another (possibly the same) biological entity.
             case PARAMETERS: return "This resource is a non-persisted resource used to pass information into and back from an [operation](operations.html). It has no other use, and there is no RESTful endpoint associated with it.";
             case PATIENT: return "Demographics and other administrative information about an individual or animal receiving care or other health-related services.";
             case PAYMENTNOTICE: return "This resource provides the status of the payment for goods and services rendered, and the request and response resource references.";
-            case PAYMENTRECONCILIATION: return "This resource provides payment details and claim references supporting a bulk payment.";
+            case PAYMENTRECONCILIATION: return "This resource provides the details including amount of a payment and allocates the payment items being paid.";
             case PERSON: return "Demographics and administrative information about a person independent of a specific health-related context.";
             case PLANDEFINITION: return "This resource allows for the definition of various types of plans as a sharable, consumable, and executable artifact. The resource is general enough to support the description of a broad range of clinical artifacts such as clinical decision support rules, order sets and protocols.";
             case PRACTITIONER: return "A person who is directly or indirectly involved in the provisioning of healthcare.";
             case PRACTITIONERROLE: return "A specific set of Roles/Locations/specialties/services that a practitioner may perform at an organization for a period of time.";
             case PROCEDURE: return "An action that is or was performed on or for a patient. This can be a physical intervention like an operation, or less invasive like long term services, counseling, or hypnotherapy.";
-            case PROCESSREQUEST: return "This resource provides the target, request and response, and action details for an action to be performed by the target on or about existing resources.";
-            case PROCESSRESPONSE: return "This resource provides processing status, errors and notes from the processing of a resource.";
             case PROVENANCE: return "Provenance of a resource is a record that describes entities and processes involved in producing and delivering or otherwise influencing that resource. Provenance provides a critical foundation for assessing authenticity, enabling trust, and allowing reproducibility. Provenance assertions are a form of contextual metadata and can themselves become important records with their own provenance. Provenance statement indicates clinical significance in terms of confidence in authenticity, reliability, and trustworthiness, integrity, and stage in lifecycle (e.g. Document Completion - has the artifact been legally authenticated), all of which may impact security, privacy, and trust policies.";
             case QUESTIONNAIRE: return "A structured set of questions intended to guide the collection of answers from end-users. Questionnaires provide detailed control over order, presentation, phraseology and grouping to allow coherent, consistent data collection.";
             case QUESTIONNAIRERESPONSE: return "A structured set of questions and their answers. The questions are ordered and grouped into coherent subsets, corresponding to the structure of the grouping of the questionnaire being responded to.";
@@ -12730,7 +12639,6 @@ into another (possibly the same) biological entity.
             case IMPLEMENTATIONGUIDE: return "ImplementationGuide";
             case INSURANCEPLAN: return "InsurancePlan";
             case INVOICE: return "Invoice";
-            case ITEMINSTANCE: return "ItemInstance";
             case LIBRARY: return "Library";
             case LINKAGE: return "Linkage";
             case LIST: return "List";
@@ -12774,8 +12682,6 @@ into another (possibly the same) biological entity.
             case PRACTITIONER: return "Practitioner";
             case PRACTITIONERROLE: return "PractitionerRole";
             case PROCEDURE: return "Procedure";
-            case PROCESSREQUEST: return "ProcessRequest";
-            case PROCESSRESPONSE: return "ProcessResponse";
             case PROVENANCE: return "Provenance";
             case QUESTIONNAIRE: return "Questionnaire";
             case QUESTIONNAIRERESPONSE: return "QuestionnaireResponse";
@@ -12959,8 +12865,6 @@ into another (possibly the same) biological entity.
           return ResourceType.INSURANCEPLAN;
         if ("Invoice".equals(codeString))
           return ResourceType.INVOICE;
-        if ("ItemInstance".equals(codeString))
-          return ResourceType.ITEMINSTANCE;
         if ("Library".equals(codeString))
           return ResourceType.LIBRARY;
         if ("Linkage".equals(codeString))
@@ -13047,10 +12951,6 @@ into another (possibly the same) biological entity.
           return ResourceType.PRACTITIONERROLE;
         if ("Procedure".equals(codeString))
           return ResourceType.PROCEDURE;
-        if ("ProcessRequest".equals(codeString))
-          return ResourceType.PROCESSREQUEST;
-        if ("ProcessResponse".equals(codeString))
-          return ResourceType.PROCESSRESPONSE;
         if ("Provenance".equals(codeString))
           return ResourceType.PROVENANCE;
         if ("Questionnaire".equals(codeString))
@@ -13271,8 +13171,6 @@ into another (possibly the same) biological entity.
           return new Enumeration<ResourceType>(this, ResourceType.INSURANCEPLAN);
         if ("Invoice".equals(codeString))
           return new Enumeration<ResourceType>(this, ResourceType.INVOICE);
-        if ("ItemInstance".equals(codeString))
-          return new Enumeration<ResourceType>(this, ResourceType.ITEMINSTANCE);
         if ("Library".equals(codeString))
           return new Enumeration<ResourceType>(this, ResourceType.LIBRARY);
         if ("Linkage".equals(codeString))
@@ -13359,10 +13257,6 @@ into another (possibly the same) biological entity.
           return new Enumeration<ResourceType>(this, ResourceType.PRACTITIONERROLE);
         if ("Procedure".equals(codeString))
           return new Enumeration<ResourceType>(this, ResourceType.PROCEDURE);
-        if ("ProcessRequest".equals(codeString))
-          return new Enumeration<ResourceType>(this, ResourceType.PROCESSREQUEST);
-        if ("ProcessResponse".equals(codeString))
-          return new Enumeration<ResourceType>(this, ResourceType.PROCESSRESPONSE);
         if ("Provenance".equals(codeString))
           return new Enumeration<ResourceType>(this, ResourceType.PROVENANCE);
         if ("Questionnaire".equals(codeString))
@@ -13576,8 +13470,6 @@ into another (possibly the same) biological entity.
         return "InsurancePlan";
       if (code == ResourceType.INVOICE)
         return "Invoice";
-      if (code == ResourceType.ITEMINSTANCE)
-        return "ItemInstance";
       if (code == ResourceType.LIBRARY)
         return "Library";
       if (code == ResourceType.LINKAGE)
@@ -13664,10 +13556,6 @@ into another (possibly the same) biological entity.
         return "PractitionerRole";
       if (code == ResourceType.PROCEDURE)
         return "Procedure";
-      if (code == ResourceType.PROCESSREQUEST)
-        return "ProcessRequest";
-      if (code == ResourceType.PROCESSRESPONSE)
-        return "ProcessResponse";
       if (code == ResourceType.PROVENANCE)
         return "Provenance";
       if (code == ResourceType.QUESTIONNAIRE)

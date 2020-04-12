@@ -8,12 +8,12 @@
 <body>
 [%file newnavbar%]  
 
-<div class="col-12">
+<div class="col-12"><!--ReleaseHeader--><p id="publish-box"></p><!--EndReleaseHeader-->
 
 <a name="base"></a>
 <h2>Search</h2>
-<table class="colsn"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 5</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Normative</a></td></tr></table>
-[%normative page infrastructure%]
+<table class="colsn"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: Normative</td><td id="ballot"><a href="versions.html#std-process">Standards Status</a>:<!--!ns!--><a href="versions.html#std-process">Normative</a></td></tr></table>
+[%normative page%]
 
 <p>
 Searching for resources is fundamental to the mechanics of FHIR.
@@ -68,6 +68,9 @@ Note that search parameter names are case sensitive, though this specification n
 parameters with names that differ only in case. Clients SHOULD use correct case, and servers SHALL
 not define additional parameters with different meanings with names that only differ in case.
 </p>
+<p>
+There are <a href="safety.html#search">several safety issues</a> associated with the implementation of searching that implementers should always keep in mind.
+</p>
 
 <a name="Introduction"></a>
 <h3>Introduction</h3>
@@ -107,7 +110,7 @@ Search operations can also be implemented in <a href="messaging.html#search">the
 </p>
 <p>
 The server determines which of their resources meet the criteria
-contained in the search parameters as described below. However
+contained in the search parameters as described below. However,
 the server has the prerogative to return additional search results
 if it believes them to be relevant. Note: There is a
 special search for the most relevant context in which the
@@ -266,7 +269,7 @@ In the same manner:
 </pre>
 <p>
 restricts the search to only DiagnosticReport resources that are tagged as conforming to a particular profile.
-The second reference is relative, and refers a local profile on the same server.
+The second reference is relative and refers a local profile on the same server.
 </p>
 <p>
 <a href="resource.html#simple-tags">_tag</a>, and <a href="resource.html#security-labels">_security</a> parameters are token types (see <a href="#token">below</a>),
@@ -299,7 +302,7 @@ which path contains the match.
 </p>
 <p>
 Servers are not required to implement any of the standard search parameters
-(except for the <code>_id</code> parameter described above), and may define their own
+(except for the <code>_id</code> parameter described above).  Servers may also define their own
  parameters.
 </p>
 
@@ -337,7 +340,7 @@ The modifiers are separated from the parameter name by a colon. Modifiers are:</
 <p>
 Server SHALL reject any search request that contains is suffixed by a modifier that the
 server does <b>not</b> support for that parameter. For example, if the server supports
-the <code>name</code> search param, but not the <code>:exact</code> modifier on the name, it should reject a
+the <code>name</code> search parameter, but not the <code>:exact</code> modifier on the name, it should reject a
 search with the parameter <code>name:exact=Bill</code>, using an HTTP <code>400</code> error with
 an <a href="operationoutcome.html">OperationOutcome</a> with a <a href="operationoutcome-example-searchfail.html">clear error message</a>.
 
@@ -459,7 +462,7 @@ Notes about searching on Numbers:
  <li>When a number search is used against a resource element that stores a simple integer (e.g. 
  <a href="immunizationrecommendation-definitions.html#ImmunizationRecommendation.recommendation.doseNumber_x_">ImmunizationRecommendation.recommendation.doseNumber</a>), and the search parameter
     is not expressed using the exponential forms, and does not include any non-zero digits after a decimal point, 
-    the signficance issues cancel out and searching is based on exact matches.  Note that if there are non-zero digits after a decimal point,
+    the significance issues cancel out and searching is based on exact matches.  Note that if there are non-zero digits after a decimal point,
     there cannot be any matches</li>
  <li>When a comparison prefix in the set <code>lgt, lt, ge, le, sa &amp; eb</code> is provided, the 
      implicit precision of the number is ignored, and they are treated as if they have arbitrarily high precision</li>
@@ -473,7 +476,7 @@ Here are some example searches:
 </p>
 <table>
  <tr><td width="50%"><b>Search</b></td><td><b>Description</b></td></tr>
- <tr><td><pre> GET [base]/RiskAssessment?probability=gt0.8</pre></td><td>Search for all the Risk Assessments wth probability great than 0.8 (could also be <code>probability=gt8e-1</code> using exponential form)</td></tr>
+ <tr><td><pre> GET [base]/RiskAssessment?probability=gt0.8</pre></td><td>Search for all the Risk Assessments with probability great than 0.8 (could also be <code>probability=gt8e-1</code> using exponential form)</td></tr>
  <tr><td><pre> GET [base]/ImmunizationRecommendation?dose-number=2</pre></td><td>Search for any immunization recommendation recommending a second dose</td></tr>
 </table>
 
@@ -605,29 +608,29 @@ Other notes:
 		<li>Dates with the year and month are equivalent to an interval that starts at the first instant of the first day of the month and ends on the last instant of the last day of the month, e.g. 2000-04 is equivalent to an interval of [2000-04-01T00:00, 2000-04-30T23:59].</li>
 	</ul>
  </li>
- <li>Where possible, the system should correct for timezones when performing queries. Dates do not have time zones, and time zones
+ <li>Where possible, the system should correct for time zones when performing queries. Dates do not have time zones, and time zones
    should not be considered. Where both search parameters and resource element date times do not have time zones, the servers local
    time zone should be assumed.
  </li>
 </ul>
 <p>
-To search for all the procedures in a patient compartment that occurred over a 2 year period:
+To search for all the procedures in a patient compartment that occurred over a 2-year period:
 </p>
 <pre>
  GET [base]/Patient/23/Procedure?date=ge2010-01-01&amp;date=le2011-12-31
 </pre>
 [%dragons-start%] 
 <p>
-Managing timezones and offsets and their impact on search is a very difficult area. The FHIR
-implementation community is still investigating and debating the best way to handle timezones.
+Managing time zones and offsets and their impact on search is a very difficult area. The FHIR
+implementation community is still investigating and debating the best way to handle time zones.
 Implementation guides may make additional rules in this regard. 
 </p>
 <p>
-Future versions of this specification may impose rules around the use of timezones with dates.
+Future versions of this specification may impose rules around the use of time zones with dates.
 Implementers and authors of implementation guides should be aware of ongoing work in this area.
 </p>
 <p>
-Implementer feedback is welcome <a href="http://wiki.hl7.org????">on the HL7 wiki</a> or <a href="https://chat.fhir.org/#narrow/stream/4-implementers">chat.fhir.org</a>.
+Implementer feedback is welcome <a href="http://hl7.org/fhir-issues">on the issue tracker</a> or <a href="https://chat.fhir.org/#narrow/stream/4-implementers">chat.fhir.org</a>.
 </p>
 [%dragons-end%]
 
@@ -660,7 +663,7 @@ though only a few servers are expected to offer this facility.
 When a string search parameter refers to the types <a href="datatypes.html#HumanName">HumanName</a> and <a href="datatypes.html#Address">Address</a>,
 the search covers the elements of type string, and does not cover elements such as <code>use</code> and <code>period</code>.
 For robust search, servers should search the parts of a family name independently.
-E.g. Searching either Carreno or Quinones should match a family name of "Carreno Quinones".
+E.g. searching either "Carreno" or "Quinones" should match a family name of "Carreno Quinones".
 HL7 affiliates may make more specific recommendations about how search should work
 in their specific culture.
 </p>
@@ -670,7 +673,7 @@ and contact details to remove separator characters prior to matching in order
 to ensure more consistent behavior. For example, a server might remove all
 spaces and <code>-</code> characters from phone numbers. What is most appropriate varies
 depending on culture and context.
-A server may also use a free-text style searches on this property to achieve the best results
+A server may also use a free-text style searches on this property to achieve the best results.<br/>
 When searching whole names and addresses (not parts), servers may also use flexible match
 or a free-text style searches on names to achieve the best results.
 </p>
@@ -727,7 +730,7 @@ are always case sensitive. If the underlying data type is <code><a href="datatyp
 then the search is not case sensitive.
 </p>
 <p>
-<b>Note</b>: There are many challenging issues around case senstivity and token searches. Some 
+<b>Note</b>: There are many challenging issues around case sensitivity and token searches. Some 
 code systems are case sensitive (e.g. UCUM) while others are known not to be. For many code
 systems, it's ambiguous. Other kinds of values are also ambiguous. When in doubt, servers
 SHOULD treat tokens in a case-insensitive manner, on the grounds that including undesired
@@ -736,7 +739,7 @@ use the correct case when possible, and allow for the server to perform case-ins
 matching. 
 </p>
 <p>
-To use subsumption based logic, use the modifiers below, or list
+To use subsumption-based logic, use the modifiers below, or list
 all the codes in the hierarchy. The syntax for the value is one of the following:
 </p>
 <ul>
@@ -813,7 +816,7 @@ Token search parameters are used for the following data types:
   <td><a href="datatypes.html#string">string</a></td>
   <td>n/a</td>
   <td>string</td>
-  <td>Token is sometimes used for string to indicate that exact matching is the correct default search stategy</td>
+  <td>Token is sometimes used for string to indicate that exact matching is the correct default search strategy</td>
  </tr>
 </table>
 <p>
@@ -961,7 +964,7 @@ In addition, searching for <code>reference=http://example.org/fhir/Patient/123</
 match both references.
 </p>
 <p>
-Some references are allowed to point to more than one type of resource; e.g. subject : Reference(Patient|Group|Device|..).
+Some references may point to more than one type of resource; e.g. subject: Reference(Patient|Group|Device|..).
 In these cases, multiple resources may have the same logical identifier. Servers SHOULD reject a search where
 the logical id refers to more than one matching resource across different types.
 In order to allow the client to perform a search in these situations the type is specified explicitly:
@@ -971,7 +974,7 @@ In order to allow the client to perform a search in these situations the type is
 </pre>
 <p>
 This searches for any observations where the subject refers to the patient resource with the
-logical identifier "23". A modifier is also defined to to allow the client to be explicit
+logical identifier "23". A modifier is also defined to allow the client to be explicit
 about the intended type:
 </p>
 <pre>
@@ -1035,7 +1038,7 @@ Elements of type <a href="references.html#Reference">Reference</a> may contain a
 When searching on versioned references, the following rules apply:
 </p>
 <ul>
- <li>If a resource has a reference that is versioned and chaining is performed, the criteria should ideally be evaluated against the version referenced, but most systems will not be capable of this because search is only defined to function against the current version of a resource</li>
+ <li>If a resource has a reference that is versioned, and chaining is performed, the criteria should ideally be evaluated against the version referenced, but most systems will not be capable of this because search is only defined to function against the current version of a resource</li>
  <li>Where a search does not act on the referenced version, search results SHOULD contain a OperationOutcome with a warning that indicates the discrepancy</li>
  <li>If a resource has a reference that is versioned and _include is performed, the specified version SHOULD be provided.</li>
 </ul>
@@ -1052,7 +1055,7 @@ This version is a reference to the business version of the resource.
 </p>
 <p>
 For canonical references, servers SHOULD support searching by Canonical URLs, and SHOULD support 
-automatically detecting a |[version] portion as part of the search parameter, and 
+automatically detecting a |[version] portion as part of the search parameter and 
 interpreting that portion as a search on the business version of the target resource.
 The modifier <code>:below</code> is used with canonical references, to control
 whether the version is considered in the search. The search:
@@ -1249,7 +1252,7 @@ Examples of using composite parameters:
  <tr><td><pre> GET [base]/DiagnosticReport?result.code-value-quantity=http://loinc.org|2823-3$gt5.4|http://unitsofmeasure.org|mmol/L</pre></td><td>Search for all diagnostic reports that contain on observation with a potassium value of >5.4 mmol/L (UCUM)</td></tr>
  <tr><td><pre> GET [base]/Observation?component-code-value-quantity=http://loinc.org|8480-6$lt60</pre></td><td>Search for all the observations with a systolic blood pressure &lt; 60. Note that in this case, the unit is assumed (everyone uses mmHg)</td></tr>
  <tr><td><pre> GET [base]/Group?characteristic-value=gender$mixed</pre></td><td>Search for all groups that have a characteristic "gender" with a text value of "mixed"</td></tr>
- <tr><td><pre> GET [base]/Questionnaire?context-type-value=focus$http://snomed.info/sct|408934002</pre></td><td>Search for all questionnaires that have a cliical focus = "Substance abuse prevention assessment (procedure)"</td></tr>
+ <tr><td><pre> GET [base]/Questionnaire?context-type-value=focus$http://snomed.info/sct|408934002</pre></td><td>Search for all questionnaires that have a clinical focus = "Substance abuse prevention assessment (procedure)"</td></tr>
 </table>
 
 <a name="missing"></a>
@@ -1319,7 +1322,7 @@ This means that:
 GET [base]/Observation?code=a,b
 </pre>
 <p>
-is a request for any Observation that has a code of either <code>a</code> or <code>b</code>, where as:
+is a request for any Observation that has a code of either <code>a</code> or <code>b</code>, whereas:
 </p>
 <pre>
 GET [base]/Observation?code=a\,b
@@ -1371,14 +1374,14 @@ for related words as well.
 </p>
 <p>
 Implementers could consider using the rules specified by the <a href="http://docs.oasis-open.org/odata/odata/v4.0/cs01/part1-protocol/odata-v4.0-cs01-part1-protocol.html#_The_$search_System">
-the OData specification for the $<code>search</code> parameter</a>. Typical implementations would use Lucene, Solr, an sql-based full text search, or some similar indexing service.
+OData specification for the $<code>search</code> parameter</a>. Typical implementations would use Lucene, Solr, an SQL-based full text search, or some similar indexing service.
 </p>
 
 <a name="special"></a>
 <h4>Special Parameters</h4>
 <p>
-A few parameters have the type special. The way this parameter works is
-unique to the parameter, and described with the parameter. The general 
+A few parameters have the type 'special'. That indicates that the way this parameter works is
+unique to the parameter and described with the parameter. The general 
 modifiers and comparators do not apply, except as stated in the description.
 </p>
 <p>
@@ -1403,7 +1406,7 @@ resource.
 <p>
 This request returns all Patient resources that are referenced from the list found at <code>[base]/List/42</code>) in List.entry.item.
 While it is possible to retrieve the list, and then iterate the entries in the list fetching each
-patient, using a list as a search criteria allows for additional search criteria to be specified. For
+patient, using a list as a search criterion allows for additional search criteria to be specified. For
 instance:
 </p>
 <pre>
@@ -1500,7 +1503,7 @@ Technically, the <code>_type</code> parameter is a token parameter on the
 <h4>Sorting</h4>
 <p>
 The client can indicate which order to return the results by
-using the parameter <code>_sort</code>, which can contains a
+using the parameter <code>_sort</code>, which can contain a
 comma-separated list of sort rules in priority order:
 </p>
 <pre>
@@ -1592,8 +1595,8 @@ or processed by the client.
 The parameter <code>_count</code> is defined as an instruction to the server
 regarding how many resources should be returned in a
 single page. Servers SHALL NOT return more resources than
-requested, even if they don't support paging, but are
-allowed to return less than the client requested. The server should repeat
+requested, even if they don't support paging, but may
+return less than the client requested. The server should repeat
 the original <code>_count</code> parameter in its returned page links so that
 subsequent paging requests honor the original <code>_count</code>.  Note:
 It is at the discretion of the search engine as to how to
@@ -1753,7 +1756,7 @@ wrong type of resource would be returned, or the contained resource would be ret
 without its container resource, which provides context to the contained resource.
 </p>
 <p>
-Clients are able to modify this behavior using the <code>_contained</code> parameter, which
+Clients can modify this behavior using the <code>_contained</code> parameter, which
 can have one of the following values:
 </p>
 <ul>
@@ -1898,7 +1901,7 @@ Servers are not obliged to return just a summary as requested. There are only
 a limited number of summary forms defined for resources in order to allow servers
 to store the summarized form(s) in advance. Servers SHOULD mark the resources with the
 tag <a href="v3/SecurityIntegrityObservationValue/cs.html#SUBSETTED"><code>SUBSETTED</code></a>
-to ensure that the incomplete resource is not acidentally used to overwrite
+to ensure that the incomplete resource is not accidentally used to overwrite
 a complete resource.
 </p>
 <p>
@@ -1941,7 +1944,7 @@ a complete resource.
 <h4>Relevance</h4>
 <p>
 Where a search specifies a non-deterministic sort, the search algorithm
-may generate some kind of ranking score to indicate which resources meet
+may generate a ranking score to indicate which resources meet
 the specified criteria better than others. The server can return this
 score in <a href="bundle-definitions.html#Bundle.entry.score">entry.score</a>:
 </p>
@@ -1985,7 +1988,7 @@ to supporting search:
 <ul>
  <li>Servers can choose which parameters to support (other than <code>_id</code> above).</li>
  <li>Servers can choose when and where to implement parameter chaining, and when and where they support the <code>_include</code> parameter.</li>
- <li>Servers are able to declare additional parameters in the profiles referenced from their Capability statements. Servers should define search parameters
+ <li>Servers can declare additional parameters in the profiles referenced from their Capability statements. Servers should define search parameters
     starting with a "-" character to ensure that the names they choose do not clash with future parameters defined by this specification.</li>
  <li>Servers are not required to enforce case sensitivity on parameter names, though the names are case sensitive (and URLs are generally case-sensitive).</li>
  <li>Servers may choose how many results to return, though the client can use <code>_count</code> as above</li>
@@ -2000,7 +2003,7 @@ to supporting search:
 The search framework described above is a useful framework
 for providing a simple search based on indexed criteria,
 but more sophisticated query capability is needed to handle precise
-queries, complex decision support based requests, and
+queries, complex decision support-based requests, and
 direct queries that have human resolution.
 </p>
 <p>
@@ -2029,7 +2032,7 @@ the <code>_query</code> parameter value.
 
 <p>
 The results of a search operation are only guaranteed to be current
-at the moment the operation is executed. After the operation is executed,
+at the instant the operation is executed. After the operation is executed,
 ongoing actions performed on the resources against which the search was
 executed will render the results increasingly stale. The significance
 of this depends on the nature of the search, and the kind of use that
@@ -2248,7 +2251,13 @@ Cross-map between search parameter types and Data types:
  </tr>
  <tr>
   <td><a href="datatypes.html#Age">Age</a></td>
-  <td colspan="7" style="background-color: #f9f9f9"><%xcmchk Age%>Not used in search</td> 
+  <td><%xcm Age:number%></td> <!-- number -->
+  <td><%xcm Age:date%></td> <!-- date -->
+  <td><%xcm Age:reference%></td> <!-- reference -->
+  <td><%xcm Age:quantity%></td> <!-- quantity -->
+  <td><%xcm Age:uri%></td> <!-- uri -->
+  <td><%xcm Age:string%></td> <!-- string -->
+  <td><%xcm Age:token%></td> <!-- token -->
  </tr>
  <tr>
   <td><a href="datatypes.html#Annotation">Annotation</a></td>

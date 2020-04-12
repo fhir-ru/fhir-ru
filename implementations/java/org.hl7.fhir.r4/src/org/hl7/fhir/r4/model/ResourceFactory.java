@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Mon, Nov 5, 2018 09:03+1100 for FHIR v3.6.0
+// Generated on Thu, Dec 13, 2018 14:07+1100 for FHIR v4.0.0
 
 import org.hl7.fhir.exceptions.FHIRException;
 
@@ -252,8 +252,6 @@ public class ResourceFactory extends Factory {
             return new MedicationStatement();
         if ("CommunicationRequest".equals(name))
             return new CommunicationRequest();
-        if ("ItemInstance".equals(name))
-            return new ItemInstance();
         if ("TestScript".equals(name))
             return new TestScript();
         if ("Basic".equals(name))
@@ -264,8 +262,6 @@ public class ResourceFactory extends Factory {
             return new TestReport();
         if ("ClaimResponse".equals(name))
             return new ClaimResponse();
-        if ("ProcessRequest".equals(name))
-            return new ProcessRequest();
         if ("MedicationDispense".equals(name))
             return new MedicationDispense();
         if ("DiagnosticReport".equals(name))
@@ -308,8 +304,6 @@ public class ResourceFactory extends Factory {
             return new Coverage();
         if ("QuestionnaireResponse".equals(name))
             return new QuestionnaireResponse();
-        if ("ProcessResponse".equals(name))
-            return new ProcessResponse();
         if ("CoverageEligibilityRequest".equals(name))
             return new CoverageEligibilityRequest();
         if ("NamingSystem".equals(name))
@@ -551,7 +545,6 @@ public class ResourceFactory extends Factory {
         case 1410262602: return new ImplementationGuide();
         case -1503864573: return new InsurancePlan();
         case -670115059: return new Invoice();
-        case 1347880168: return new ItemInstance();
         case 1830861979: return new Library();
         case 1841735333: return new Linkage();
         case 2368702: return new ListResource();
@@ -603,8 +596,6 @@ public class ResourceFactory extends Factory {
         case 738893626: return new Practitioner();
         case -621058352: return new PractitionerRole();
         case 908763827: return new Procedure();
-        case 8777024: return new ProcessRequest();
-        case 325021616: return new ProcessResponse();
         case 458000626: return new ProdCharacteristic();
         case 1209602103: return new ProductShelfLife();
         case 2093211201: return new Provenance();

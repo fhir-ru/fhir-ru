@@ -1,4 +1,4 @@
-﻿map "http://hl7.org/fhir/StructureMap/EnrollmentRequest4to3" = "R4 to R3 Conversion for EnrollmentRequest"
+map "http://hl7.org/fhir/StructureMap/EnrollmentRequest4to3" = "R4 to R3 Conversion for EnrollmentRequest"
 
 uses "http://hl7.org/fhir/StructureDefinition/EnrollmentRequest" alias EnrollmentRequest as source
 uses "http://hl7.org/fhir/3.0/StructureDefinition/EnrollmentRequest" alias EnrollmentRequestR3 as target
@@ -11,7 +11,7 @@ group EnrollmentRequest(source src : EnrollmentRequestR3, target tgt : Enrollmen
   src.created -> tgt.created;
   src.insurer -> tgt.insurer;
   src.provider -> tgt.provider;
-  src.candidate -> tgt.candidate;
+  src.candidate -> tgt.subject;
   src.coverage -> tgt.coverage;
 }
 

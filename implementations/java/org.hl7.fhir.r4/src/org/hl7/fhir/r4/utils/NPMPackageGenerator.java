@@ -53,7 +53,6 @@ public class NPMPackageGenerator {
  
 
   private String destFile;
-  private ImplementationGuide ig;
   private Set<String> created = new HashSet<String>();
   private TarArchiveOutputStream tar;
   private ByteArrayOutputStream OutputStream;
@@ -64,13 +63,25 @@ public class NPMPackageGenerator {
     super();
     System.out.println("create package file at "+destFile);
     this.destFile = destFile;
-    this.ig = ig;
     start();
-    buildPackageJson(canonical, kind, url, genDate);
+    buildPackageJson(canonical, kind, url, genDate, ig);
+  }
+  
+  public NPMPackageGenerator(String destFile, JsonObject npm) throws FHIRException, IOException {
+    super();
+    System.out.println("create package file at "+destFile);
+    this.destFile = destFile;
+    start();
+    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    String json = gson.toJson(npm);
+    try {
+      addFile(Category.RESOURCE, "package.json", json.getBytes("UTF-8"));
+    } catch (UnsupportedEncodingException e) {
+    }
   }
   
   
-  private void buildPackageJson(String canonical, PackageType kind, String web, String genDate) throws FHIRException, IOException {
+  private void buildPackageJson(String canonical, PackageType kind, String web, String genDate, ImplementationGuide ig) throws FHIRException, IOException {
     CommaSeparatedStringBuilder b = new CommaSeparatedStringBuilder();
     if (!ig.hasPackageId())
       b.append("packageId");
@@ -99,13 +110,15 @@ public class NPMPackageGenerator {
       npm.addProperty("title", ig.getTitle());
     if (ig.hasDescription())
       npm.addProperty("description", ig.getDescription()+ " (built "+genDate+timezone()+")");
-    JsonObject dep = new JsonObject();
-    npm.add("dependencies", dep);
-    for (Enumeration<FHIRVersion> v : ig.getFhirVersion()) { // TODO: fix for multiple versions
-      dep.addProperty("hl7.fhir.core", v.asStringValue());
-    }
-    for (ImplementationGuideDependsOnComponent d : ig.getDependsOn()) {
-      dep.addProperty(d.getPackageId(), d.getVersion());
+    if (kind != PackageType.CORE) {
+      JsonObject dep = new JsonObject();
+      npm.add("dependencies", dep);
+      for (Enumeration<FHIRVersion> v : ig.getFhirVersion()) { // TODO: fix for multiple versions
+        dep.addProperty("hl7.fhir.core", v.asStringValue());
+      }
+      for (ImplementationGuideDependsOnComponent d : ig.getDependsOn()) {
+        dep.addProperty(d.getPackageId(), d.getVersion());
+      }
     }
     if (ig.hasPublisher())
       npm.addProperty("author", ig.getPublisher());

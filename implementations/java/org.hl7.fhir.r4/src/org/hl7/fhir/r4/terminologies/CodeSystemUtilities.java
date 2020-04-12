@@ -15,6 +15,7 @@ import org.hl7.fhir.r4.terminologies.CodeSystemUtilities.ConceptStatus;
 import org.hl7.fhir.r4.model.CodeType;
 import org.hl7.fhir.r4.utils.ToolingExtensions;
 import org.hl7.fhir.r4.model.DateTimeType;
+import org.hl7.fhir.r4.model.Enumerations.PublicationStatus;
 import org.hl7.fhir.r4.model.Identifier;
 import org.hl7.fhir.r4.model.Meta;
 import org.hl7.fhir.r4.model.Type;
@@ -192,7 +193,7 @@ public class CodeSystemUtilities {
     return null;
   }
 
-  public static void markStatus(CodeSystem cs, String wg, StandardsStatus status, String pckage, String fmm) throws FHIRException {
+  public static void markStatus(CodeSystem cs, String wg, StandardsStatus status, String pckage, String fmm, String normativeVersion) throws FHIRException {
     if (wg != null) {
       if (!ToolingExtensions.hasExtension(cs, ToolingExtensions.EXT_WORKGROUP) || 
           (Utilities.existsInList(ToolingExtensions.readStringExtension(cs, ToolingExtensions.EXT_WORKGROUP), "fhir", "vocab") && !Utilities.existsInList(wg, "fhir", "vocab"))) {
@@ -202,7 +203,7 @@ public class CodeSystemUtilities {
     if (status != null) {
       StandardsStatus ss = ToolingExtensions.getStandardsStatus(cs);
       if (ss == null || ss.isLowerThan(status)) 
-        ToolingExtensions.setStandardsStatus(cs, status);
+        ToolingExtensions.setStandardsStatus(cs, status, normativeVersion);
       if (pckage != null) {
         if (!cs.hasUserData("ballot.package"))
           cs.setUserData("ballot.package", pckage);
@@ -210,8 +211,10 @@ public class CodeSystemUtilities {
           if (!"infrastructure".equals(cs.getUserString("ballot.package")))
             System.out.println("Code System "+cs.getUrl()+": ownership clash "+pckage+" vs "+cs.getUserString("ballot.package"));
       }
-      if (ss == StandardsStatus.NORMATIVE)
+      if (status == StandardsStatus.NORMATIVE) {
         cs.setExperimental(false);
+        cs.setStatus(PublicationStatus.ACTIVE);
+      }
     }
     if (fmm != null) {
       String sfmm = ToolingExtensions.readStringExtension(cs, ToolingExtensions.EXT_FMM_LEVEL);

@@ -166,8 +166,7 @@ public class ValidationEngine {
     public void log(String message) {
       if (mapLog != null)
         mapLog.println(message);
-      else
-        System.out.println(message);
+      System.out.println(message);
     }
 
     @Override
@@ -573,7 +572,7 @@ public class ValidationEngine {
     } catch (Exception e) {
     }
     try {
-      new StructureMapUtilities(context, null, null).parse(TextFile.streamToString(stream));
+      new StructureMapUtilities(context, null, null).parse(TextFile.streamToString(stream), null);
       return FhirFormat.TEXT;
     } catch (Exception e) {
     }
@@ -662,7 +661,7 @@ public class ValidationEngine {
             else if (fn.endsWith(".json") && !fn.endsWith("template.json"))
               r = new JsonParser().parse(new ByteArrayInputStream(t.getValue()));
             else if (fn.endsWith(".txt"))
-              r = new StructureMapUtilities(context, null, null).parse(TextFile.bytesToString(t.getValue()));
+              r = new StructureMapUtilities(context, null, null).parse(TextFile.bytesToString(t.getValue()), fn);
             else
               throw new Exception("Unsupported format for "+fn);
           } else
@@ -959,7 +958,7 @@ public class ValidationEngine {
     StructureDefinition sd = (StructureDefinition) res;
     StructureDefinition base = context.fetchResource(StructureDefinition.class, sd.getBaseDefinition());
     
-    new ProfileUtilities(context, null, null).generateSnapshot(base, sd, sd.getUrl(), sd.getName());
+    new ProfileUtilities(context, null, null).generateSnapshot(base, sd, sd.getUrl(), null, sd.getName());
     return sd;
   }
 

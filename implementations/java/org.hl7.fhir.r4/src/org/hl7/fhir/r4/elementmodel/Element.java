@@ -68,6 +68,7 @@ public class Element extends Base {
 	private int col;
 	private SpecialElement special;
 	private XhtmlNode xhtml; // if this is populated, then value will also hold the string representation
+	private String explicitType; // for xsi:type attribute
 
 	public Element(String name) {
 		super();
@@ -333,11 +334,20 @@ public class Element extends Base {
       }
     }
 
+    int i = 0;
     if (childForValue == null)
       for (Property p : property.getChildProperties(this.name, type)) {
+        int t = -1;
+        for (int c =0; c < children.size(); c++) {
+          Element e = children.get(c);
+          if (p.getName().equals(e.getName()))
+            t = c;
+        }
+        if (t > i)
+          i = t;
         if (p.getName().equals(name) || p.getName().equals(name+"[x]")) {
           Element ne = new Element(name, p);
-          children.add(ne);
+          children.add(i, ne);
           childForValue = ne;
           break;
         }
@@ -548,7 +558,10 @@ public class Element extends Base {
 
 	@Override
 	public boolean isEmpty() {
-		if (value != null && !"".equals(value)) {
+  	// GG: this used to also test !"".equals(value). 
+    // the condition where "" is empty and there are no children is an error, and so this really only manifested as an issue in corner cases technical testing of the validator / FHIRPath.
+	  // it should not cause any problems in real life.
+		if (value != null) {   
 			return false;
 		}
 		for (Element next : getChildren()) {
@@ -658,7 +671,7 @@ public class Element extends Base {
     if (p != null) {
       Set<String> types = new HashSet<String>();
       for (TypeRefComponent tr : p.getDefinition().getType()) {
-        types.add(tr.getCode());
+        types.add(tr.getWorkingCode());
       }
       return types.toArray(new String[]{});
     }
@@ -796,6 +809,14 @@ public class Element extends Base {
       return c;
     } else 
       return null;
+  }
+
+  public String getExplicitType() {
+    return explicitType;
+  }
+
+  public void setExplicitType(String explicitType) {
+    this.explicitType = explicitType;
   }
 
   

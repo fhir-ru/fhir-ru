@@ -14,6 +14,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.crypto.CipherInputStream;
+
 import org.apache.commons.codec.Charsets;
 import org.apache.commons.lang3.StringUtils;
 import org.fhir.ucum.UcumService;
@@ -27,6 +29,7 @@ import org.hl7.fhir.r4.formats.JsonParser;
 import org.hl7.fhir.r4.model.BooleanType;
 import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.Bundle.BundleEntryComponent;
+import org.hl7.fhir.r4.model.CapabilityStatement;
 import org.hl7.fhir.r4.model.CodeSystem;
 import org.hl7.fhir.r4.model.CodeSystem.CodeSystemContentMode;
 import org.hl7.fhir.r4.model.CodeSystem.CodeSystemHierarchyMeaning;
@@ -105,9 +108,10 @@ public abstract class BaseWorkerContext implements IWorkerContext {
   private Set<String> supportedCodeSystems = new HashSet<String>();
   private Map<String, ValueSet> valueSets = new HashMap<String, ValueSet>();
   private Map<String, ConceptMap> maps = new HashMap<String, ConceptMap>();
-  private Map<String, StructureMap> transforms = new HashMap<String, StructureMap>();
+  protected Map<String, StructureMap> transforms = new HashMap<String, StructureMap>();
   private Map<String, StructureDefinition> structures = new HashMap<String, StructureDefinition>();
   private Map<String, ImplementationGuide> guides = new HashMap<String, ImplementationGuide>();
+  private Map<String, CapabilityStatement> capstmts = new HashMap<String, CapabilityStatement>();
   private Map<String, SearchParameter> searchParameters = new HashMap<String, SearchParameter>();
   private Map<String, Questionnaire> questionnaires = new HashMap<String, Questionnaire>();
   private Map<String, OperationDefinition> operations = new HashMap<String, OperationDefinition>();
@@ -164,6 +168,7 @@ public abstract class BaseWorkerContext implements IWorkerContext {
       operations.putAll(other.operations);
       systems.addAll(other.systems);
       guides.putAll(other.guides);
+      capstmts.putAll(other.capstmts);
 
       allowLoadingDuplicates = other.allowLoadingDuplicates;
       tsServer = other.tsServer;
@@ -203,6 +208,8 @@ public abstract class BaseWorkerContext implements IWorkerContext {
           seeMetadataResource((CodeSystem) m, codeSystems, false);
         else if (r instanceof ImplementationGuide)
           seeMetadataResource((ImplementationGuide) m, guides, false);
+        else if (r instanceof CapabilityStatement)
+          seeMetadataResource((CapabilityStatement) m, capstmts, false);
         else if (r instanceof SearchParameter)
           seeMetadataResource((SearchParameter) m, searchParameters, false);
         else if (r instanceof PlanDefinition)
@@ -471,12 +478,16 @@ public abstract class BaseWorkerContext implements IWorkerContext {
   
   @Override
   public ValidationResult validateCode(String system, String code, String display) {
+	  if ("http://hl7.org/fhir/sid/ndc".equals(system) || "http://hl7.org/fhir/sid/icd-10".equals(system) )
+		  return new ValidationResult(new ConceptDefinitionComponent().setDisplay("n/a"));
     Coding c = new Coding(system, code, display);
     return validateCode(c, null);
   }
 
   @Override
   public ValidationResult validateCode(String system, String code, String display, ValueSet vs) {
+	  if ("http://hl7.org/fhir/sid/ndc".equals(system) || "http://hl7.org/fhir/sid/icd-10".equals(system) )
+		  return new ValidationResult(new ConceptDefinitionComponent().setDisplay("n/a"));
     Coding c = new Coding(system, code, display);
     return validateCode(c, vs);
   }
@@ -489,6 +500,8 @@ public abstract class BaseWorkerContext implements IWorkerContext {
 
   @Override
   public ValidationResult validateCode(String system, String code, String display, ConceptSetComponent vsi) {
+	  if ("http://hl7.org/fhir/sid/ndc".equals(system) || "http://hl7.org/fhir/sid/icd-10".equals(system) )
+		  return new ValidationResult(new ConceptDefinitionComponent().setDisplay("n/a"));
     Coding c = new Coding(system, code, display);
     ValueSet vs = new ValueSet();
     vs.setUrl(Utilities.makeUuidUrn());
@@ -502,6 +515,8 @@ public abstract class BaseWorkerContext implements IWorkerContext {
   }
   
   public ValidationResult doValidateCode(Coding code, ValueSet vs, boolean implySystem) {
+	  if (code.hasSystem("http://hl7.org/fhir/sid/ndc") || code.hasSystem("http://hl7.org/fhir/sid/icd-10") )
+		  return new ValidationResult(new ConceptDefinitionComponent().setDisplay("n/a"));
     CacheToken cacheToken = txCache != null ? txCache.generateValidationToken(code, vs) : null;
     ValidationResult res = null;
     if (txCache != null) 
@@ -543,6 +558,9 @@ public abstract class BaseWorkerContext implements IWorkerContext {
 
   @Override
   public ValidationResult validateCode(CodeableConcept code, ValueSet vs) {
+	  if (code.hasSystem("http://hl7.org/fhir/sid/ndc") || code.hasSystem("http://hl7.org/fhir/sid/icd-10") )
+		  return new ValidationResult(new ConceptDefinitionComponent().setDisplay("n/a"));
+	  
     CacheToken cacheToken = txCache.generateValidationToken(code, vs);
     ValidationResult res = txCache.getValidation(cacheToken);
     if (res != null)
@@ -693,6 +711,10 @@ public abstract class BaseWorkerContext implements IWorkerContext {
 
       if (uri.startsWith("http:") || uri.startsWith("https:")) {
         String version = null;
+        if (uri.contains("|")) {
+          version = uri.substring(uri.lastIndexOf("|")+1);
+          uri = uri.substring(0, uri.lastIndexOf("|"));
+        }
         if (uri.contains("#"))
           uri = uri.substring(0, uri.indexOf("#"));
         if (class_ == Resource.class || class_ == null) {
@@ -700,6 +722,8 @@ public abstract class BaseWorkerContext implements IWorkerContext {
             return (T) structures.get(uri);
           if (guides.containsKey(uri))
             return (T) guides.get(uri);
+          if (capstmts.containsKey(uri))
+            return (T) capstmts.get(uri);
           if (valueSets.containsKey(uri))
             return (T) valueSets.get(uri);
           if (codeSystems.containsKey(uri))
@@ -716,16 +740,33 @@ public abstract class BaseWorkerContext implements IWorkerContext {
             return (T) transforms.get(uri);
           if (questionnaires.containsKey(uri))
             return (T) questionnaires.get(uri);
+          for (Map<String, Resource> rt : allResourcesById.values()) {
+            for (Resource r : rt.values()) {
+              if (r instanceof MetadataResource) {
+                MetadataResource mr = (MetadataResource) r;
+                if (uri.equals(mr.getUrl()))
+                  return (T) mr;
+              }
+            }            
+          }
           return null;      
         } else if (class_ == ImplementationGuide.class) {
           return (T) guides.get(uri);
+        } else if (class_ == CapabilityStatement.class) {
+          return (T) capstmts.get(uri);
         } else if (class_ == StructureDefinition.class) {
           return (T) structures.get(uri);
         } else if (class_ == StructureMap.class) {
           return (T) transforms.get(uri);
         } else if (class_ == ValueSet.class) {
+          if (valueSets.containsKey(uri+"|"+version))
+            return (T) valueSets.get(uri+"|"+version);
+          else
           return (T) valueSets.get(uri);
         } else if (class_ == CodeSystem.class) {
+          if (codeSystems.containsKey(uri+"|"+version))
+            return (T) codeSystems.get(uri+"|"+version);
+          else
           return (T) codeSystems.get(uri);
         } else if (class_ == ConceptMap.class) {
           return (T) maps.get(uri);
@@ -743,7 +784,6 @@ public abstract class BaseWorkerContext implements IWorkerContext {
               b.append("\r\n");
             }
           }
-          if (res != null)
             return (T) res;
         }
       }
@@ -803,8 +843,12 @@ public abstract class BaseWorkerContext implements IWorkerContext {
   public Resource fetchResourceById(String type, String uri) {
     synchronized (lock) {
       String[] parts = uri.split("\\/");
-      if (!Utilities.noString(type) && parts.length == 1)
+      if (!Utilities.noString(type) && parts.length == 1) {
+        if (allResourcesById.containsKey(type))
         return allResourcesById.get(type).get(parts[0]);
+        else
+          return null;
+      }
       if (parts.length >= 2) {
         if (!Utilities.noString(type))
           if (!type.equals(parts[parts.length-2])) 
@@ -890,6 +934,7 @@ public abstract class BaseWorkerContext implements IWorkerContext {
       json.addProperty("transforms-count", transforms.size());
       json.addProperty("structures-count", structures.size());
       json.addProperty("guides-count", guides.size());
+      json.addProperty("statements-count", capstmts.size());
     }
   }
 
@@ -913,6 +958,8 @@ public abstract class BaseWorkerContext implements IWorkerContext {
         dropMetadataResource(structures, id);
       else if (fhirType.equals("ImplementationGuide"))
         dropMetadataResource(guides, id);
+      else if (fhirType.equals("CapabilityStatement"))
+        dropMetadataResource(capstmts, id);
       else if (fhirType.equals("ValueSet"))
         dropMetadataResource(valueSets, id);
       else if (fhirType.equals("CodeSystem"))
@@ -951,6 +998,7 @@ public abstract class BaseWorkerContext implements IWorkerContext {
       List<MetadataResource> result = new ArrayList<MetadataResource>();
       result.addAll(structures.values());
       result.addAll(guides.values());
+      result.addAll(capstmts.values());
       result.addAll(codeSystems.values());
       result.addAll(valueSets.values());
       result.addAll(maps.values());
@@ -1096,5 +1144,6 @@ public abstract class BaseWorkerContext implements IWorkerContext {
   public void setUcumService(UcumService ucumService) {
     this.ucumService = ucumService;
   }
+  
   
 }

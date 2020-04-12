@@ -159,7 +159,9 @@ public class DateTimeType extends BaseDateTimeType {
 
 	@Override
 	public DateTimeType copy() {
-		return new DateTimeType(getValueAsString());
+		DateTimeType ret = new DateTimeType(getValueAsString());
+    copyValues(ret);
+    return ret;
 	}
 
 	/**
@@ -209,6 +211,11 @@ public class DateTimeType extends BaseDateTimeType {
     if (r.length() <= i || r.charAt(i) != c)
       return r;
     return r.substring(0, i)+r.substring(i+1);
+  }
+
+  @Override
+  public boolean isDateTime() {
+    return true;
   }
 
 }

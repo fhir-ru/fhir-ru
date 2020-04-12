@@ -1,4 +1,4 @@
-﻿map "http://hl7.org/fhir/StructureMap/ProcessResponse4to3" = "R4 to R3 Conversion for ProcessResponse"
+map "http://hl7.org/fhir/StructureMap/ProcessResponse4to3" = "R4 to R3 Conversion for ProcessResponse"
 
 uses "http://hl7.org/fhir/StructureDefinition/ProcessResponse" alias ProcessResponse as source
 uses "http://hl7.org/fhir/3.0/StructureDefinition/ProcessResponse" alias ProcessResponseR3 as target
@@ -20,7 +20,7 @@ group ProcessResponse(source src : ProcessResponseR3, target tgt : ProcessRespon
   src.communicationRequest -> tgt.communicationRequest;
 }
 
-group ProcessResponseProcessNote(source src : ProcessResponseR3, target tgt : ProcessResponse) extends BackboneElement <<type+>> {
+group ProcessResponseProcessNote(source src, target tgt) extends BackboneElement {
   src.type -> tgt.type;
   src.text -> tgt.text;
 }

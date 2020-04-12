@@ -471,7 +471,7 @@ public class IGKnowledgeProvider implements ProfileKnowledgeProvider, ParserBase
 	String base = getProperty(r, "base");
 	if (base!=null)
 	  return base;
-    return r.getElement().fhirType()+"-"+r.getId()+".html";
+  return r.getElement().fhirType()+"-"+r.getId()+".html";
   }
 
   public IWorkerContext getContext() {
@@ -502,5 +502,11 @@ public class IGKnowledgeProvider implements ProfileKnowledgeProvider, ParserBase
     }
     return br;
   }
+
+@Override
+public BindingResolution resolveBinding(StructureDefinition def, String url, String path) throws FHIRException {
+	// TODO Auto-generated method stub
+	return null;
+}
 
 }

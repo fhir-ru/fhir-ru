@@ -25,12 +25,12 @@ notes:
 <body>
 [%file newnavbar%]
 
-<div class="col-12">
+<div class="col-12"><!--ReleaseHeader--><p id="publish-box"></p><!--EndReleaseHeader-->
 
 <a name="history"></a>
 <h3>Version History since DSTU #1</h3>
 
-<table class="colsi"><tbody><tr><td id="wg"><a href="http://www.hl7.org/Special/committees/fiwg/index.cfm" _target="blank">FHIR Infrastructure </a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:  <!-- !ns! --><a href="versions.html#std-process">Informative</a></td></tr></tbody></table>
+<table class="colsi"><tbody><tr><td id="wg"><a href="http://www.hl7.org/Special/committees/fiwg/index.cfm" _target="blank">FHIR Infrastructure </a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="versions.html#std-process">Standards Status</a>:  <!-- !ns! --><a href="versions.html#std-process">Informative</a></td></tr></tbody></table>
 
 <p>
 For background to this version history, see <a href="versions.html">FHIR Version Management Policy</a>.
@@ -41,6 +41,12 @@ For background to this version history, see <a href="versions.html">FHIR Version
 Major Milestones:
 </p>
 <table class="grid">
+  <tr>
+    <td><a href="http://hl7.org/fhir/R4/index.html">Dec 27, 2018</a></td>
+    <td>4.0.1</td>
+    <td>Release 4 (1<sup>st</sup> Normative Content + Trial Use Developments)
+    </td>
+  </tr>
   <tr>
     <td><a href="http://hl7.org/fhir/STU3/index.html">Feb 21, 2017</a></td>
     <td>3.0.1</td>
@@ -59,11 +65,11 @@ Major Milestones:
 </table>
 
 <p>
-This is the developmental version of FHIR. The only changes tracked here are
+This is the 4th milestone release of FHIR. The only changes tracked here are
 the changes made after the publication of the first DSTU release. For earlier changes,
 see the <a href="http://hl7.org/fhir/history.html">DSTU #1 Version History</a>.
 Note that a full archive history of everything is available
-<a href="http://wiki.hl7.org/index.php?title=FHIR">through the HL7 gForge SVN archives</a>.
+<a href="http://github.com/hl7/fhir">through the HL7 GitHub archives</a>.
 </p>
 
 <table class="grid">
@@ -84,6 +90,185 @@ template:
 
 notes: do not list revision in the version
 -->
+	<tr>
+		<td>4.0.1<a name="v4.0.1"></a></td>
+		<td>
+      <p><b>Technical Corrections to R4</b>: Oct-30, 2019. Corrections to invariants &amp; generated conformance resources, and add ANSI Normative Status Notes</p>
+      <p>
+        This list of changes is farily long for a technical correction. The first set of changes should be reviewed for impact on implementations.
+      </p>
+      <p>Corrections to the specification - resolving internal conflicts, or correcting definitional errors:</p>
+      <ul>
+       <li><!-- GF#20487 -->Add <a href="resource.html#Meta">Meta</a> as a Special Type for <a href="datatypes.html#open">Open Type Element</a> list, allowing it to be used as a Parameter <a href="parameters.html">in Parameters.parameter</a>, and in other places. 
+         The <a href="resource-operations.html">$meta operations</a> required their use, but the design did not allow for this. <span style="font-size: 10px">[<%GFT#20487%>]</span></li>
+       <li><!-- https://chat.fhir.org/#narrow/stream/179166-implementers/topic/OIDs -->Change all code system OIDs to use the root 2.16.840.1.113883.4.642.4. instead of 2.16.840.1.113883.4.642.1. 
+          due to reassigning OID leaf values without updating the root in the past. This was causing problems for OID based terminology systems <span style="font-size: 10px">[<a href="https://chat.fhir.org/#narrow/stream/179166-implementers/topic/OIDs">Source</a>]</span></li>
+       <li><!-- GF#23018 -->Add new FHIRPath context variable <a href="fhirpath.html#variables">%rootResource</a>, and use it in <a href="references-definitions.html#Reference">ref-1 constraint</a> - FHIRPath engines will need to support the new context variable <span style="font-size: 10px">[<%GFT#23018%>]</span></li>
+       <li><!-- GF#24110 -->Fix genomics canonical URLS: <code>http://www.ncbi.nlm.nih.gov/refseq/</code> -&gt; <code>http://www.ncbi.nlm.nih.gov/refseq</code>, <code>http://www.ncbi.nlm.nih.gov/clinvar/</code> -&gt; <code>http://www.ncbi.nlm.nih.gov/clinvar</code>, and <code>http://varnomen.hgvs.org/</code> -&gt; <code>http://varnomen.hgvs.org</code>
+                - these are now corrected back to what <a href="http://hl7.org/fhir/STU3/terminologies-systems.html">they had said in R3</a>  <span style="font-size: 10px">[<%GFT#24110%>]</span></li>
+       <li><!-- GF#20393 -->Fix Binding for <a href="familymemberhistory-definitions.html#FamilyMemberHistory.sex">FamilyMemberHistory.sex</a> - it had a reference to the administrative gender value set, but it wrongly referred to the one on http://build.fhir.org; corrected to reference the one in the specification <span style="font-size: 10px">[<%GFT#20393%>]</span></li>
+      </ul>
+      <p>Changes to Constraints and generated definitions (fixing problems in validation, no impact on implementations, except for code generators):</p>
+      <ul>
+       <li><!-- GF#24917 -->Fix expressions for Search parameters <a href="substancespecification.html#search">SubstanceSpecification-code</a> and <a href="structuredefinition.html#search">StructureDefinition-ext-context</a> <span style="font-size: 10px">[<%GFT#24917%>]</span></li>
+       <li><!-- GF#20463 -->Fix the definition of the <a href="patient-extensions.html#search">Mother's Maiden name search parameter</a> from 
+         <code>extension(http://hl7.org/fhir/SearchParameter/patient-extensions-Patient-mothersMaidenName)</code> to <code> extension('http://hl7.org/fhir/StructureDefinition/patient-mothersMaidenName') <span style="font-size: 10px">[<%GFT#20463%>]</span></code></li>
+       <li><!-- GF#23069 -->Fix the extension context for <a href="extension-iso21090-nullFlavor.html">iso21090-nullFlavor</a> and <a href="extension-iso21090-preferred.html">iso21090-preferred</a> to any Element, not any Resource <span style="font-size: 10px">[<%GFT#23069%>]</span></li>
+       <li><!-- GF#20470 -->Remove MultipleAnd/MultipleOr/Modifiers from generated Search Parameters <span style="font-size: 10px">[<%GFT#20470%>]</span></li>
+       <li><!-- GF#22495 -->Add "ge" as a comparator to generated search parameters <span style="font-size: 10px">[<%GFT#22495%>]</span></li>
+       <li><!-- GF#22807 -->Add extension <a href="extension-operationdefinition-allowed-type.html">operationdefinition-allowed-type</a>, and use it to capture the definition of the <a href="codesystem-operation-lookup.html">property.value parameter</a> is captured in the OperationDefinition that describes it <span style="font-size: 10px">[<%GFT#22807%>]</span></li>
+       <li><!-- GF#22493 -->Fix how the type of Element.id and Extension.url is defined in the generated StructureDefinitions <span style="font-size: 10px">[<%GFT#22493%>]</span></li>
+       <li><!-- GF#23967 -->Fix up the definition of <a href="elementdefinition-definitions.html#ElementDefinition.type.code">ElementDefinition.type.code</a> for special elements (Element.id, Extension.url, [Primitive].value) <span style="font-size: 10px">[<%GFT#23967%>]</span></li>
+       <li><!-- GF#22681, GF#20465 -->Regenerate StructureDefinition snapshots to fix various snapshot and id issues <span style="font-size: 10px">[<%GFT#22681%>, <%GFT#20465%>]</span> </li>
+      </ul>
+      <p>Documentation Corrections and Clarifications (no implementer impact):</p>
+      <ul>
+       <li>Add <a href="ansi.html">ANSI</a> notes</li>
+       <li><!-- GF#20584 -->Fix <a href="versions.html#maturity">FMM levels</a> for <a href="device.html">Device</a> (0 to 2), <a href="devicerequest.html">DeviceRequest</a> (0 to 1), <a href="researchstudy.html">ResearchStudy</a> (0 to 1), and <a href="researchsubject.html">ResearchSubject</a> (0 to 1) <span style="font-size: 10px">[<%GFT#20584%>]</span></li>
+       <li><!-- GF#24918, GF#24919 -->Fix up <a href="search.html#table">search parameter table</a> <span style="font-size: 10px">[<%GFT#24918%>, <%GFT#24919%>]</span></li>
+       <li><!-- GF#23044 -->Fix definition of <a href="codesystem-issue-type.html#issue-type-exception">IssueType.exception</a> <span style="font-size: 10px">[<%GFT#23044%>]</span></li>
+       <li><!-- GF#19969 -->Remove Erroneous Normative Marker on <a href="valueset-message-events.html">message-events value set</a> <span style="font-size: 10px">[<%GFT#19969%>]</span></li>
+       <li><!-- GF#20592, GF#23032 & GF#20472 -->Fix various broken internal links &amp; R3 Comparison links + JSON Schema link in downloads <span style="font-size: 10px">[<%GFT#20592%>, <%GFT#23032%>, <%GFT#20472%>]</span></li>
+       <li><!-- GF#18441 -->Add note about markdown and XML signatures (to both <a href="xml.html#digsig">XML</a> and <a href="datatypes.html#signature">Signature</a> pages) <span style="font-size: 10px">[<%GFT#18441%>]</span></li>
+       <li><!-- GF#20618 -->Update language about specification status in <a href="summary.html#status">summary page</a> <span style="font-size: 10px">[<%GFT#20618%>]</span></li>
+       <li><!-- n/a -->Clarify copyright statement for NUBC derived codes (<a href="codesystem-ex-revenue-center.html">here</a> and <a href="codesystem-ex-diagnosis-on-admission.html">here</a>)</li>
+       <li><!-- GF#20199 -->Remove <a href="versions.html#mixed">spurious paragraph about R3 version status</a> <span style="font-size: 10px">[<%GFT#20199%>]</span></li>
+       <li><!-- GF#24856 -->Add note about <a href="fhirpath.html#quantity">FHIRPath Quantity usage</a> <span style="font-size: 10px">[<%GFT#24856%>]</span></li>
+       <li><!-- GF#20456 -->Fix <a href="profiling-examples.html">profiling examples</a> <span style="font-size: 10px">[<%GFT#20456%>]</span></li>
+       <li><!-- GF#20335, GF#20334, GF#22986, GF#20331, GF#20320, GF#22985, GF#20319, GF#22986, GF#22709, GF#23024 -->
+         Fix the FHIRPath expressions for the following invariants: 
+           <a href="structuredefinition.html#invs">sdf-8, sdf-8a, sdf-9, sdf-15, sdf-17, sdf-16</a>, 
+           <a href="condition.html#invs">con-3</a>, 
+           <a href="elementdefinition.html#invs">eld-4, eld-18</a>, 
+           <a href="allergyintolerance.html#invs">ait-1, ait-2</a>, 
+           <a href="observation.html#invs">obs-7</a>, 
+           <a href="bundle.html#invs">bnd-10</a> and
+           <a href="vitalsigns.html#10.1.20.2.3">vs-2</a> + fix the description for <a href="elementdefinition.html#definition">eld-8</a> <span style="font-size: 10px">[<%GFT#20335%>, <%GFT#20334%>, <%GFT#22986%>, <%GFT#20331%>, <%GFT#20320%>, <%GFT#22985%>, <%GFT#20319%>, <%GFT#22986%>, <%GFT#22709%>, <%GFT#23024%>]</span>
+         </li>
+       <li><!-- https://stackoverflow.com/questions/57759578 -->Fix the XPath invariant for dom-3 <span style="font-size: 10px">[<a href="https://stackoverflow.com/questions/57759578">Source</a>]</span></li>
+       <li><!-- https://stackoverflow.com/questions/57759578 -->Fix the definition for <code>entered-in-error</code> for <a href="codesystem-event-status.html#event-status-entered-in-error">Event</a>, 
+         <a href="codesystem-request-status.html#request-status-entered-in-error">Request</a> and <a href="codesystem-supplydelivery-status.html#supplydelivery-status-entered-in-error">SupplyDelivery</a>
+         <span style="font-size: 10px">[<a href="https://stackoverflow.com/questions/57759578 ">Source</a>]</span></li>
+       <li><!-- https://chat.fhir.org/#narrow/stream/179166-implementers/topic/CarePlan.2Estatus.20contradicts.20ValueSet.20request-status -->
+         Fix the short descriptions for the following <code>code</code> elements:
+            <a href="activitydefinition-definitions.html#ActivityDefinition.intent">ActivityDefinition.intent</a>,
+            <a href="appointmentresponse-definitions.html#AppointmentResponse.participantStatus">AppointmentResponse.participantStatus</a>,
+            <a href="careplan-definitions.html#CarePlan.status">CarePlan.status</a>,
+            <a href="careplan-definitions.html#CarePlan.activity.detail.kind">CarePlan.activity.detail.kind</a>,
+            <a href="clinicalimpression-definitions.html#ClinicalImpression.status">ClinicalImpression.status</a>,
+            <a href="codesystem-definitions.html#CodeSystem.filter.operator">CodeSystem.filter.operator</a>,
+            <a href="communication-definitions.html#Communication.status">Communication.status</a>,
+            <a href="communication-definitions.html#Communication.priority">Communication.priority</a>,
+            <a href="communicationrequest-definitions.html#CommunicationRequest.status">CommunicationRequest.status</a>,
+            <a href="communicationrequest-definitions.html#CommunicationRequest.priority">CommunicationRequest.priority</a>,
+            <a href="contract-definitions.html#Contract.status">Contract.status</a>,
+            <a href="contract-definitions.html#Contract.contentDefinition.publicationStatus">Contract.contentDefinition.publicationStatus</a>,
+            <a href="devicerequest-definitions.html#DeviceRequest.status">DeviceRequest.status</a>,
+            <a href="devicerequest-definitions.html#DeviceRequest.intent">DeviceRequest.intent</a>,
+            <a href="devicerequest-definitions.html#DeviceRequest.priority">DeviceRequest.priority</a>,
+            <a href="documentreference-definitions.html#DocumentReference.docStatus">DocumentReference.docStatus</a>,
+            <a href="graphdefinition-definitions.html#GraphDefinition.link.target.compartment.code">GraphDefinition.link.target.compartment.code</a>,
+            <a href="media-definitions.html#Media.status">Media.status</a>,
+            <a href="medicationdispense-definitions.html#MedicationDispense.status">MedicationDispense.status</a>,
+            <a href="medicationrequest-definitions.html#MedicationRequest.intent">MedicationRequest.intent</a>,
+            <a href="nutritionorder-definitions.html#NutritionOrder.status">NutritionOrder.status</a>,
+            <a href="nutritionorder-definitions.html#NutritionOrder.intent">NutritionOrder.intent</a>,
+            <a href="procedure-definitions.html#Procedure.status">Procedure.status</a>,
+            <a href="requestgroup-definitions.html#RequestGroup.status">RequestGroup.status</a>,
+            <a href="requestgroup-definitions.html#RequestGroup.intent">RequestGroup.intent</a>,
+            <a href="servicerequest-definitions.html#ServiceRequest.status">ServiceRequest.status</a> and
+            <a href="servicerequest-definitions.html#ServiceRequest.intent">ServiceRequest.intent</a> - they had been listing the wrong codes <span style="font-size: 10px">[<a href="https://chat.fhir.org/#narrow/stream/179166-implementers/topic/CarePlan.2Estatus.20contradicts.20ValueSet.20request-status">Source</a>]</span> 
+         </li>
+       <li><!-- GF#23730 -->Fix Implicit SNOMED CT Value sets in <a href="conceptmap-103.html">example</a> <a href="conceptmap-example-specimen-type.html">concept maps</a> <span style="font-size: 10px">[<%GFT#23730%>]</span></li>
+      </ul>
+      <p>This technical correction also includes earlier changes made without releasing a new version:</p>
+      <ul>
+       <li>Fix external links for the <a href="http://www.fhir.org/guides/registry">Implementation Guide Registry</a> and the <a href="http://registry.fhir.org">FHIR Registry</a> <span style="font-size: 10px">[<%GFT#20734%>]</span></li>
+      </ul>
+		</td>
+  </tr>
+	<tr>
+		<td>4.0.0<a name="v4.0.0"></a></td>
+		<td>
+      <p><b>R4</b>: Dec 27, 2018. First Normative content, with many significant changes</p>
+      <p>
+      Note that between R3 and R4, nearly 3000 change proposals were applied to the specification, 
+      including &gt;1000 substantive changes, of which 339 were labeled 'non-compatible'. As 
+      such, providing a comprehensive list of changes between specifications is not appropriate. 
+      To help see and understand the differences between the specification releases, implementers can:
+      </p>
+      <ul>
+        <li>consult the <a href="diff.html">R3/R4 difference analysis</a></li>
+        <li>review (or use) the <a href="r3maps.html">R3/R4 transforms</a></li>
+        <li>Use the <img src="compare-to-r3.png"/> link at the foot of every page </li>
+      </ul>
+      <p>
+      To help implementers, the more significant changes are listed here:
+      </p>
+      <ul>
+       <li>Some content marked Normative using <a href="versions.html#std-process" title="Normative Content" class="normative-flag">N</a> - see 
+          <a href="documentation.html">Documentation</a> and <a href="resourcelist.html">Resource</a> indexes. The meaning of normative is
+          described at length in the <a href="versions.html#change">Rules for Inter-version change</a>. 
+       </li>
+       <li>New Resources:
+         <ul style="-moz-column-count: 3; -moz-column-gap: 20px;  -webkit-column-count: 3;  -webkit-column-gap: 20px;  column-count: 3;  column-gap: 20px;">
+           <li><a href="biologicallyderivedproduct.html">BiologicallyDerivedProduct</a></li>
+           <li><a href="catalogentry.html">CatalogEntry</a></li>
+           <li><a href="chargeitemdefinition.html">ChargeItemDefinition</a></li>
+           <li><a href="devicedefinition.html">DeviceDefinition</a></li>
+           <li><a href="effectevidencesynthesis.html">EffectEvidenceSynthesis</a></li>
+           <li><a href="eventdefinition.html">EventDefinition</a></li>
+           <li><a href="evidence.html">Evidence</a></li>
+           <li><a href="evidencevariable.html">EvidenceVariable</a></li>
+           <li><a href="examplescenario.html">ExampleScenario</a></li>
+           <li><a href="immunizationevaluation.html">ImmunizationEvaluation</a></li>
+           <li><a href="insuranceplan.html">InsurancePlan</a></li>
+           <li><a href="invoice.html">Invoice</a></li>
+           <li><a href="medicationknowledge.html">MedicationKnowledge</a></li>
+           <li><a href="medicinalproduct.html">MedicinalProduct</a></li>
+           <li><a href="medicinalproductauthorization.html">MedicinalProductAuthorization</a></li>
+           <li><a href="medicinalproductcontraindication.html">MedicinalProductContraindication</a></li>
+           <li><a href="medicinalproductindication.html">MedicinalProductIndication</a></li>
+           <li><a href="medicinalproductingredient.html">MedicinalProductIngredient</a></li>
+           <li><a href="medicinalproductinteraction.html">MedicinalProductInteraction</a></li>
+           <li><a href="medicinalproductmanufactured.html">MedicinalProductManufactured</a></li>
+           <li><a href="medicinalproductpackaged.html">MedicinalProductPackaged</a></li>
+           <li><a href="medicinalproductpharmaceutical.html">MedicinalProductPharmaceutical</a></li>
+           <li><a href="medicinalproductundesirableeffect.html">MedicinalProductUndesirableEffect</a></li>
+           <li><a href="observationdefinition.html">ObservationDefinition</a></li>
+           <li><a href="organizationaffiliation.html">OrganizationAffiliation</a></li>
+           <li><a href="researchdefinition.html">ResearchDefinition</a></li>
+           <li><a href="researchelementdefinition.html">ResearchElementDefinition</a></li>
+           <li><a href="riskevidencesynthesis.html">RiskEvidenceSynthesis</a></li>
+           <li><a href="specimendefinition.html">SpecimenDefinition</a></li>
+           <li><a href="substancepolymer.html">SubstancePolymer</a></li>
+           <li><a href="substancereferenceinformation.html">SubstanceReferenceInformation</a></li>
+           <li><a href="substancespecification.html">SubstanceSpecification</a></li>
+           <li><a href="terminologycapabilities.html">TerminologyCapabilities</a></li>
+           <li><a href="verificationresult.html">VerificationResult</a></li>
+         </ul>
+       </li>
+       <li>Renamed Resources:
+         <ul>
+           <li><code>BodySite</code> -&gt; <a href="bodystructure.html">BodyStructure</a></li>
+           <li><code>EligibilityRequest</code> ->  <a href="coverageeligibilityrequest.html">CoverageEligibilityRequest</a></li>
+           <li><code>EligibilityResponse</code> ->  <a href="coverageeligibilityresponse.html">CoverageEligibilityResponse</a></li>
+           <li><code>Sequence</code> -> <a href="molecularsequence.html">MolecularSequence</a></li>
+           <li><code>ReferralRequest</code> &amp; <code>ProcedureRequest</code> -> <a href="servicerequest.html">ServiceRequest</a></li>
+         </ul>
+       </li>
+       <li>Deleted Resources:
+         <ul>
+           <li><code>DeviceComponent</code></li>
+           <li><code>ImagingManifest</code></li>
+         </ul>
+       </li>
+       <li>Clarification of the meaning and use of <a href="conformance-rules.html#isModifier">IsModifier</a></li>
+       <li>Considerable development of the <a href="versions.html#versions">Version Management Policy</a>, and support for <a href="versioning.html">multiple FHIR versions</a> (specifically, the <a href="http.html#version-parameter">FHIR Version parameter</a>)</li>
+       <li>Datatypes: Rework <a href="datatypes.html#Money">Money</a> (no longer a constraint on <a href="datatypes.html#Quantity">Quantity</a>), and add <a href="metadatatypes.html#Expression">Expression</a></li>
+      </ul>
+    </td>
+  </tr>
 	<tr>
 		<td>3.6.0<a name="v3.6.0"></a></td>
 		<td>
@@ -140,7 +325,7 @@ notes: do not list revision in the version
         <td>[%diff observation.html Observation%]</td>
         </tr>
       </table>
-      <p><b>This is only the major changes</b>. More comprehensive lists can be found in the <a href="ballot-intro.html">ballot introduction</a>.</p>
+      <p><b>This is only the major changes</b>. More comprehensive lists can be found in the ballot introduction (later removed).</p>
       <p>Major changes in the other parts of the specification:</p>
       <ul>
        <li>New Resources: <a href="medicationknowledge.html">MedicationKnowledge</a>, <a href="devicedefinition.html">DeviceDefinition</a>, <a href="chargeitemdefinition.html">ChargeItemDefinition</a></li>
@@ -168,7 +353,7 @@ notes: do not list revision in the version
 		<td>
       <p><b>Release R4 Ballot #1</b>: Apr 3, 2018. R4 ballot #1. Major changes from R3:</p>
       <ul>
-       <li>Mark all content with ballot status - Normative, Trial use, Draft, or external</li>
+       <li>Mark all content with a standards status - Normative, Trial use, Draft, or external</li>
        <li>Many minor &amp; major changes to data types, resources, operations</li>
        <li>New Resources:      
        <a href="biologicallyderivedproduct.html">BiologicallyDerivedProduct</a>,
@@ -177,7 +362,7 @@ notes: do not list revision in the version
        <a href="examplescenario.html">ExampleScenario</a>,
        <a href="immunizationevaluation.html">ImmunizationEvaluation</a>,
        <a href="invoice.html">Invoice</a>,
-       <a href="iteminstance.html">ItemInstance</a>,
+       ItemInstance,
        <a href="observationdefinition.html">ObservationDefinition</a>,
        OccupationalData,
        <a href="organizationaffiliation.html">OrganizationAffiliation</a>,
@@ -209,7 +394,7 @@ notes: do not list revision in the version
 		<td>
       <p><b>Release R4 Draft</b>: Dec 21, 2017. R4 draft ballot. Major changes:</p>
       <ul>
-       <li>Ensure that all pages have a ballot status, and enforce ballot status throughout. Add dependency analysis</li>
+       <li>Ensure that all pages have a standards status, and enforce standards status throughout. Add dependency analysis</li>
        <li>Many minor changes to data types, resources, operations</li>
        <li>New Resources: <a href="catalogentry.html">CatalogEntry</a>, <a href="specimendefinition.html">SpecimenDefinition</a>, <a href="observationdefinition.html">ObservationDefinition</a>, 
           <a href="examplescenario.html">ExampleScenario</a>, <a href="terminologycapabilities.html">TerminologyCapabilities</a>, UserSession, <a href="invoice.html">Invoice</a>, 
@@ -218,7 +403,7 @@ notes: do not list revision in the version
           <a href="medicinalproductingredient.html">MedicinalProductIngredient</a>, <a href="medicinalproductpackaged.html">MedicinalProductPackaged</a>, 
           <!-- a href="medicinalproductpharmaceutical.html"-->MedicinalProductPharmaceutical<!--/a--> <!--a href="medicinalproductdevicespec.html"-->MedicinalProductDeviceSpec<!--/a-->, 
           <a href="substancespecification.html">SubstanceSpecification</a>, <!--a href="substancepolymer.html"-->SubstancePolymer<!--/a-->, <a href="substancereferenceinformation.html">SubstanceReferenceInformation</a>, 
-          <a href="biologicallyderivedproduct.html">BiologicallyDerivedProduct</a>, <a href="iteminstance.html">ItemInstance</a>  
+          <a href="biologicallyderivedproduct.html">BiologicallyDerivedProduct</a>, ItemInstance 
        </li>
        <li>Add draft support for bulk data (<a href="async.html">Asynchronous API</a> + <a href="nd-json.html">nd-json format</a>)</li>
       </ul>
@@ -273,7 +458,7 @@ notes: do not list revision in the version
 		<td>
       <p><b>FHIR QA Release, Dec 6, 2016</b><a name="v1.8.0"></a></p>
       <p>
-      STU 3 Candidate, and also the basis for several implementation guide ballots and the <a href="http://wiki.hl7.org/index.php?title=FHIR_Connectathon_14">San Antonio Jan 2017 Connectathon</a>
+      STU 3 Candidate, and also the basis for several implementation guide ballots and the <a href="https://confluence.hl7.org/display/FHIR/Connectathon+14">San Antonio Jan 2017 Connectathon</a>
       </p>
       <p><b>Breaking Changes Summary:</b></p>
       <ul>
@@ -297,7 +482,7 @@ notes: do not list revision in the version
 		<td>
       <p><b>FHIR STU3 ballot, Aug 11, 2016</b><a name="v1.6.0"></a></p>
       <p>
-      STU 3 ballot version, and also the basis for the <a href="http://wiki.hl7.org/index.php?title=FHIR_Connectathon_13">Baltimore Sept 2016 Connectathon</a>
+      STU 3 ballot version, and also the basis for the <a href="https://confluence.hl7.org/display/FHIR/Connectathon+13">Baltimore Sept 2016 Connectathon</a>
       </p>
       <p><b>Publication Changes:</b></p>
       <ul>
@@ -461,7 +646,7 @@ notes: do not list revision in the version
        <li>Corrections in the conformance resources that support the specifications</li>
        <li>Correct several erroneous invariants</li>
        <li>Various typos, broken links, and fixes in examples</li>
-       <li>For a comprehensive list of corrections, see the <a href="http://wiki.hl7.org/index.php?title=Task_list_for_FHIR_DSTU2_Technical_Correction_1">Task list for FHIR DSTU2 Technical Correction 1</a></li>
+       <li>For a comprehensive list of corrections, see the <a href="https://confluence.hl7.org/display/FHIR/DSTU2+Technical+Correction+1+Tasks">Task list for FHIR DSTU2 Technical Correction 1</a></li>
       </ul>
     </td>
 	</tr>
@@ -484,8 +669,8 @@ notes: do not list revision in the version
 		<td>1.0.0</td>
 		<td>
       <p><b>DSTU 2 QA Preview, Aug 31 2015</b></p>
-      <p>This version had extensive change as a result of the May 2015 DSTU ballot, ongoing testing, and the open change proposals (1317 gForge tasks). The extent of the changes is best illustrated by the number of the
-        <a href="http://wiki.hl7.org/index.php?title=FHIR_Breaking_changes_between_DSTU_2_ballot_and_final">list of changes labeled 'breaking change'</a> - 158 changes of 1317 total tasks. Below is a list of the most important changes:</p>
+      <p>This version had extensive change as a result of the May 2015 DSTU ballot, ongoing testing, and the open change proposals (1317 tasks). The extent of the changes is best illustrated by the number of the
+        <a href="https://confluence.hl7.org/display/FHIR/DSTU2+Ballot+to+Final+breaking+changes">list of changes labeled 'breaking change'</a> - 158 changes of 1317 total tasks. Below is a list of the most important changes:</p>
       <ul>
         <li>General: introduced the <a href="versions.html#maturity">maturity framework</a></li>
         <li><a href="http.html">RESTful API</a>: add batch, several clarifications around versioning &amp; transactional integrity, changed Bundle URL resolution rules</li>
@@ -518,7 +703,7 @@ notes: do not list revision in the version
 		<td>0.5.0</td>
 		<td>
       <p><b>DSTU Ballot, May 2015</b></p>
-      <p>This version had extensive change as a result of the January 2015 Draft ballot, ongoing testing, and the open change proposals (over 800 gForge tasks). The list below is a summary of the major changes to resource content. It shows only a limited number of the overall changes.</p>
+      <p>This version had extensive change as a result of the January 2015 Draft ballot, ongoing testing, and the open change proposals (over 800 tasks). The list below is a summary of the major changes to resource content. It shows only a limited number of the overall changes.</p>
       <p><b>Enumerations</b></p>
       <ul>
         <li>All spaces removed</li>
@@ -637,30 +822,30 @@ notes: do not list revision in the version
       <p><b>Draft For Comment, January 2015 Ballot</b></p>
       <p>Breaking Changes (full list):</p>
 			<ul>
-        <li>Replace atom and taglist with a native <a href="bundle.html">Bundle</a> format (<a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&amp;tracker_item_id=3728">3728</a>, <a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&amp;tracker_item_id=3558">3558</a>, <a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&amp;tracker_item_id=2889">2889</a>) (and also <a href="binary.html">Binary</a>)</li>
-        <li>JSON: change how extensions are represented (<a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&amp;tracker_item_id=3471">3471</a>)</li>
-        <li>RESTful API: change how version specific upgrades work (<a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&amp;tracker_item_id=3451">3451</a>)</li>
+        <li>Replace atom and taglist with a native <a href="bundle.html">Bundle</a> format (<a href="https://jira.hl7.org/projects/FHIR/issues/FHIR-3728">3728</a>, <a href="https://jira.hl7.org/projects/FHIR/issues/FHIR-3558">3558</a>, <a href="https://jira.hl7.org/projects/FHIR/issues/FHIR-2889">2889</a>) (and also <a href="binary.html">Binary</a>)</li>
+        <li>JSON: change how extensions are represented (<a href="https://jira.hl7.org/projects/FHIR/issues/FHIR-3471">3471</a>)</li>
+        <li>RESTful API: change how version specific upgrades work (<a href="https://jira.hl7.org/projects/FHIR/issues/FHIR-3451">3451</a>)</li>
         <li>DataTypes:
-          <li>Rename Schedule to <a href="datatypes.html#Timing">Timing</a> (<a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&amp;tracker_item_id=3536">3536</a>, <a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&amp;tracker_item_id=3236">3236</a>) </li>
-          <li>Rename Contact to <a href="datatypes.html#ContactPoint">ContactPoint</a> (<a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&amp;tracker_item_id=3533">3533</a>) and swap order of elements (<a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&amp;tracker_item_id=3108">3108</a>))</li>
-          <li><a href="datatypes.html#Address">Address</a> - change zip to postCode (<a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&amp;tracker_item_id=2888">2888</a>)</li>
-          <li><a href="datatypes.html#Quantity">Quantity</a>: Correct schema spelling for "QuantityCompararator" (<a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&amp;tracker_item_id=3531">3531</a>)</li>
-          <li>Change allowable values for the <a href="datatypes.html#id">id</a> type to include capital letters, and allow up to 64 chars (<a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&amp;tracker_item_id=3750">3750</a>)</li>
+          <li>Rename Schedule to <a href="datatypes.html#Timing">Timing</a> (<a href="https://jira.hl7.org/projects/FHIR/issues/FHIR-3536">3536</a>, <a href="https://jira.hl7.org/projects/FHIR/issues/FHIR-3236">3236</a>) </li>
+          <li>Rename Contact to <a href="datatypes.html#ContactPoint">ContactPoint</a> (<a href="https://jira.hl7.org/projects/FHIR/issues/FHIR-3533">3533</a>) and swap order of elements (<a href="https://jira.hl7.org/projects/FHIR/issues/FHIR-3108">3108</a>))</li>
+          <li><a href="datatypes.html#Address">Address</a> - change zip to postCode (<a href="https://jira.hl7.org/projects/FHIR/issues/FHIR-2888">2888</a>)</li>
+          <li><a href="datatypes.html#Quantity">Quantity</a>: Correct schema spelling for "QuantityCompararator" (<a href="https://jira.hl7.org/projects/FHIR/issues/FHIR-3531">3531</a>)</li>
+          <li>Change allowable values for the <a href="datatypes.html#id">id</a> type to include capital letters, and allow up to 64 chars (<a href="https://jira.hl7.org/projects/FHIR/issues/FHIR-3750">3750</a>)</li>
         </li>
-        <li>Restructure Profile - only one structure, and pull <a href="structuredefinition.html">ExtensionDefinition</a> out of Profile (3647, 3498), and pull <a href="searchparameter.html">SearchParameter</a> out (<a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&amp;tracker_item_id=3626">3626</a>)</li>
-        <li>Profile: allow 0..* discriminator (<a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&amp;tracker_item_id=3131">3131</a>), and change the way discriminators work across resource boundaries (<a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&amp;tracker_item_id=3124">3124</a>) + generate multiple types properly (<a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&amp;tracker_item_id=2856">2856</a>)</li>
-        <li>remove _validate interaction, and replace with $validate operation (<a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&amp;tracker_item_id=3686">3686</a>)</li>
-        <li><a href="patient.html">Patient</a>: separate birth time from birthDate (<a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&amp;tracker_item_id=3731">3731</a>), Change Administrative Gender from a CodableConcept to a Code. Also fixed the values as male|female|other|unknown with mappings to v2 and v3 (<a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&amp;tracker_item_id=3070">3070</a>)</li>
+        <li>Restructure Profile - only one structure, and pull <a href="structuredefinition.html">ExtensionDefinition</a> out of Profile (3647, 3498), and pull <a href="searchparameter.html">SearchParameter</a> out (<a href="https://jira.hl7.org/projects/FHIR/issues/FHIR-3626">3626</a>)</li>
+        <li>Profile: allow 0..* discriminator (<a href="https://jira.hl7.org/projects/FHIR/issues/FHIR-3131">3131</a>), and change the way discriminators work across resource boundaries (<a href="https://jira.hl7.org/projects/FHIR/issues/FHIR-3124">3124</a>) + generate multiple types properly (<a href="https://jira.hl7.org/projects/FHIR/issues/FHIR-2856">2856</a>)</li>
+        <li>remove _validate interaction, and replace with $validate operation (<a href="https://jira.hl7.org/projects/FHIR/issues/FHIR-3686">3686</a>)</li>
+        <li><a href="patient.html">Patient</a>: separate birth time from birthDate (<a href="https://jira.hl7.org/projects/FHIR/issues/FHIR-3731">3731</a>), Change Administrative Gender from a CodableConcept to a Code. Also fixed the values as male|female|other|unknown with mappings to v2 and v3 (<a href="https://jira.hl7.org/projects/FHIR/issues/FHIR-3070">3070</a>)</li>
  <!--
-      <li><a href="supply.html">Supply</a>: Change Name of supply.kind binding (<a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&amp;tracker_item_id=3412">3412</a>)</li>
+      <li><a href="supply.html">Supply</a>: Change Name of supply.kind binding (<a href="https://jira.hl7.org/projects/FHIR/issues/FHIR-3412">3412</a>)</li>
    -->
- <li><a href="documentreference.html">DocumentReference</a>: change encoding of Hash to Base64 (<a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&amp;tracker_item_id=3291">3291</a>)</li>
-        <li><a href="group.html">Group</a>: rename header to title (<a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&amp;tracker_item_id=3126">3126</a>)</li>
-        <li><a href="condition.html">Condition</a>: split relatedItem into two (<a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&amp;tracker_item_id=3111">3111</a>)</li>
-        <li><a href="questionnaire.html">Questionnaire</a>: drop questionnaire.group.question.remarks (<a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&amp;tracker_item_id=3255">3255</a>) and move omitReason from extension to base resource (<a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&amp;tracker_item_id=3260">3260</a>)</li>
-        <li><a href="questionnaireresponse.html">QuestionnaireResponse</a>: allow multiple answers (<a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&amp;tracker_item_id=3146">3146</a>) </li>
-        <li><a href="valueset.html">ValueSet</a>: replace  ValueSet.compose.include.code with ValueSet.compose.include.concept (<a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&amp;tracker_item_id=3258">3258</a>), added new rules about expansion content (<a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&amp;tracker_item_id=3138">3138</a>)</li>
-        <li><a href="media.html">Media</a>: Rename element 'dateTime' to 'created' (<a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&amp;tracker_item_id=3174">3174</a>) and length to duration (<a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&amp;tracker_item_id=2866">2866</a>)</li>
+ <li><a href="documentreference.html">DocumentReference</a>: change encoding of Hash to Base64 (<a href="https://jira.hl7.org/projects/FHIR/issues/FHIR-3291">3291</a>)</li>
+        <li><a href="group.html">Group</a>: rename header to title (<a href="https://jira.hl7.org/projects/FHIR/issues/FHIR-3126">3126</a>)</li>
+        <li><a href="condition.html">Condition</a>: split relatedItem into two (<a href="https://jira.hl7.org/projects/FHIR/issues/FHIR-3111">3111</a>)</li>
+        <li><a href="questionnaire.html">Questionnaire</a>: drop questionnaire.group.question.remarks (<a href="https://jira.hl7.org/projects/FHIR/issues/FHIR-3255">3255</a>) and move omitReason from extension to base resource (<a href="https://jira.hl7.org/projects/FHIR/issues/FHIR-3260">3260</a>)</li>
+        <li><a href="questionnaireresponse.html">QuestionnaireResponse</a>: allow multiple answers (<a href="https://jira.hl7.org/projects/FHIR/issues/FHIR-3146">3146</a>) </li>
+        <li><a href="valueset.html">ValueSet</a>: replace  ValueSet.compose.include.code with ValueSet.compose.include.concept (<a href="https://jira.hl7.org/projects/FHIR/issues/FHIR-3258">3258</a>), added new rules about expansion content (<a href="https://jira.hl7.org/projects/FHIR/issues/FHIR-3138">3138</a>)</li>
+        <li><a href="media.html">Media</a>: Rename element 'dateTime' to 'created' (<a href="https://jira.hl7.org/projects/FHIR/issues/FHIR-3174">3174</a>) and length to duration (<a href="https://jira.hl7.org/projects/FHIR/issues/FHIR-2866">2866</a>)</li>
         <li>Remove DeviceObservationReport and Query</li>
         <li>Collapse AdverseReaction into <a href="allergyintolerance.html">AllergyIntolerance</a></li>
         <li><a href="appointment.html">Appointment</a> changes - individual field renamed to actor, and added mappings to <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a> and <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3</a></li>

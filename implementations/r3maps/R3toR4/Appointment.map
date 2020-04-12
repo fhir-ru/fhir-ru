@@ -1,4 +1,4 @@
-﻿map "http://hl7.org/fhir/StructureMap/Appointment3to4" = "R3 to R4 Conversions for Appointment"
+map "http://hl7.org/fhir/StructureMap/Appointment3to4" = "R3 to R4 Conversions for Appointment"
 
 uses "http://hl7.org/fhir/3.0/StructureDefinition/Appointment" alias AppointmentR3 as source
 uses "http://hl7.org/fhir/StructureDefinition/Appointment" alias Appointment as target
@@ -12,8 +12,8 @@ group Appointment(source src : AppointmentR3, target tgt : Appointment) extends 
   src.serviceType -> tgt.serviceType;
   src.specialty -> tgt.specialty;
   src.appointmentType -> tgt.appointmentType;
-  src.reason -> tgt.reason;
-  src.indication -> tgt.indication;
+  src.reason -> tgt.reasonCode;
+  src.indication -> tgt.reasonReference;
   src.priority -> tgt.priority;
   src.description -> tgt.description;
   src.supportingInformation -> tgt.supportingInformation;
