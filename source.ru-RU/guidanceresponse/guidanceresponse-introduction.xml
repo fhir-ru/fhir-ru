@@ -1,19 +1,25 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<a name="bnc"> </a>
+<a name="bnc"></a>
 <h2>Область применения и использование</h2>
-<p>Ресурс GuidanceResponse используется для представления результата вызова сервиса поддержки принятия решений. Он обеспечивает контейнер для статуса ответа, любых предупреждений или сообщений, возвращаемых сервисом, а также выходные данные модуля и любых предложенных к выполнению действий.
-<!-- The GuidanceResponse resource is used to represent the result of invoking a decision support service. It provides a container for the status of the response, any warnings or messages returned by the service, as well as the output data of the module and any suggested actions to be performed. --></p>
+<p>Ресурс GuidanceResponse используется для представления результата вызова сервиса поддержки принятия решений. Он обеспечивает контейнер для статуса ответа, любых предупреждений или сообщений, возвращаемых сервисом, а также все выходные данные сервиса и любых предложенных к выполнению действий.
+The GuidanceResponse resource is used to represent the result of invoking a decision support service. It provides a container for the status of the response, any warnings or messages returned by the service, as well as any output data from the service and any suggested actions to be performed.</p>
 
-<p>Более подробную информацию о процессе вычисления см. в теме <a href="cqif/cqif-cds-on-fhir.html#guidance-request">Guidance Request</a> в модуле Клиническое обоснование.
-<!-- For a detailed discussion of the evaluation process, refer to the <a href="cqif/cqif-cds-on-fhir.html#guidance-request">Guidance Request</a> topic in the Clinical Reasoning module. --></p>
+<p>Use cases for the GuidanceResponse resource include:</p>
 
-<p><i>Note to implementers: The user-facing external clinical decision support use case supported by the ServiceDefinition/$evaluate operation of the Clinical Reasoning module has significant overlap with the functionality provided by the <a href="http://cds-hooks.org">CDS Hooks</a> specification. As part of FHIR Release 4, it is the intention to unify the CDS Hooks specification with the Clinical Reasoning module, ensuring that implementers have a single consistent mechanism to support this use case that meets the requirements of both the Clinical Quality Framework and CDS Hooks communities. Although the functionality in both specifications is conceptually aligned, this unification will likely result in changes to both specifications. The CQF and CDS Hooks project teams are committed to this unification and will work to ensure that the resulting changes have as little impact as possible on current and ongoing implementation efforts, while meeting the needs of both communities. The project team is planning on a workable implementation tested at the connectathon in May of 2017, with a trial ballot following in September 2017, targeting publication as part of the FHIR Release 4 specification.</i></p>
+<ul>
+	<li>Keeping a record of past service requests, including the ability to reference the context of the request such as the disease state</li>
+	<li>Representing additional data requirements for subsequent service requests</li>
+	<li>Representing Public Health case reporting and recording</li>
+	<li>Sharing the results of decision support guidance and determination of reportability with clinicians and public health agencies</li>
+</ul>
+
+<p>In addition, the GuidanceResponse resource is aligned with the CDS Hooks response structure and so provides a mechanism to record the results of CDS Hooks interactions. For a detailed discussion of how the GuidanceResponse resource can be used for this purpose, refer to the <a href="clinicalreasoning-cds-on-fhir.html#evaluation">Evaluation</a> topic in the Clinical Reasoning module.</p>
 
 </div>
 
-<!-- (recommended): 
+<!-- (recommended):
 <div>
 <h2>Boundaries and Relationships</h2>
 <p>

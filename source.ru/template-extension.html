@@ -7,20 +7,20 @@
 <body>
 <%file newnavbar%>
 
-<div class="col-12">
+<div class="col-12"><!--ReleaseHeader--><p id="publish-box"></p><!--EndReleaseHeader-->
 
 <%extDefnHeader%>
 
-<h1>Расширение<!-- Extension -->: <%ext-name%></h1>
+<h1>Extension: <%ext-name%></h1>
 
 <table class="<%fmm-style%>">
  <tr><td><%wg%></td><td><%fmm%></td><td><%sstatus%><!--!ns!--></td><td><%profile-context%></td></tr>
 </table>
 
-<p>URL этого расширения<!-- URL for this extension -->: </p>
+<p>URL for this extension: </p>
 <pre><b><%extensionurl%></b></pre>
 
-<p>Статус<!-- Status -->: <%status%>. <%pubdetails%></p>
+<p>Status: <%status%>. <%pubdetails%></p>
 
 <p>
 <%definition%>
@@ -34,8 +34,7 @@
 
 <a name="resource"></a>
 <h2>
-Содержимое расширения
-<!-- Extension Content -->
+Extension Content
 </h2>
 <a name="def"></a>
 <a name="<%name%>"></a>
@@ -43,16 +42,16 @@
 
 <div id="tabs">
   <ul>
-    <li><a href="#tabs-struc1">Сводка<!-- Summary --></a></li>
-    <li><a href="#tabs-struc2">Полная структура<!-- Full Structure --></a></li>
+    <li><a href="#tabs-struc1">Summary</a></li>
+    <li><a href="#tabs-struc2">Full Structure</a></li>
     <li><a href="#tabs-xml">XML</a></li>
     <li><a href="#tabs-json">JSON</a></li>
-    <li><a href="#tabs-all">Всё<!-- All --></a></li>
+    <li><a href="#tabs-all">All</a></li>
   </ul>
   <div id="tabs-struc1">
 
 <div id="tbl1">
-<p><b>Сводка<!-- Summary --></b></p>
+<p><b>Summary</b></p>
  <div id="tbl-inner">
   <%extension-table false%>
  </div>
@@ -62,7 +61,7 @@
   <div id="tabs-struc2">
 
 <div id="tbl1">
-<p><b>Полная структура<!-- Fulle Structure --></b></p>
+<p><b>Full Structure</b></p>
  <div id="tbl-inner">
   <%extension-table true%>
  </div>
@@ -72,7 +71,7 @@
   <div id="tabs-xml">
 
 <div id="xml">
-<p><b>XML-шаблон</b></p>
+<p><b>XML Template</b></p>
  <div id="xml-inner">
   <%xml%>
  </div>
@@ -82,7 +81,7 @@
   <div id="tabs-json">
 
 <div id="json">
-<p><b>JSON-шаблон</b></p>
+<p><b>JSON Template</b></p>
  <div id="json-inner">
   <%json%>
  </div>
@@ -93,7 +92,7 @@
 
   <div id="tbl1a">
 <a name="tbl"></a>
-<p><b>Сводка<!-- Summary --></b></p>
+<p><b>Summary</b></p>
  <div id="tbl-inner">
   <%extension-table false%>
  </div>
@@ -101,7 +100,7 @@
 
 <div id="tbl2a">
 <a name="tbl"></a>
-<p><b>Полная структура<!-- Full Structure --></b></p>
+<p><b>Full Structure</b></p>
  <div id="tbl-inner">
   <%extension-table true%>
  </div>
@@ -110,7 +109,7 @@
 
 <div id="xml">
 <a name="xml"></a>
-<p><b>XML-шаблон</b></p>
+<p><b>XML Template</b></p>
  <div id="xml-inner">
   <%xml%>
  </div>
@@ -118,16 +117,16 @@
 
 <div id="json">
 <a name="json"></a>
-<p><b>JSON-шаблон</b></p>
+<p><b>JSON Template</b></p>
  <div id="json-inner">
   <%json%>
  </div>
 </div>
-  
+
  </div>
 </div>
-  
-<p>&nbsp;</p>  
+
+<p>&nbsp;</p>
 
 <a name="tx"></a>
 <%tx%>
@@ -147,7 +146,7 @@
 try {
   var currentTabIndex = sessionStorage.getItem('fhir-resource-tab-index');
 }
-catch(exception){ 
+catch(exception){
 }
 
 if (!currentTabIndex)
@@ -162,11 +161,11 @@ $( '#tabs' ).tabs({
              try {
                sessionStorage.setItem('fhir-resource-tab-index', currentTabIndex);
              }
-             catch(exception){ 
+             catch(exception){
              }
          }
      });
 </script>
-    
+
 </body>
 </html>

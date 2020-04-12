@@ -2,7 +2,7 @@
 
 <div>
 <a name="scope"></a>
-<h2>Область применения и использование</h2>
+<h2>Scope and Usage</h2>
 <p>
 The purpose of this Resource is to be used to express a Consent regarding Healthcare. There are four 
 anticipated uses for the Consent Resource, all of which are written or verbal agreements by a 
@@ -34,10 +34,10 @@ Whatever the criteria are for making an encoded FHIR Consent Directive legally b
 than a legally binding representation of a Consent Directive must be identified as such, i.e., as a 
 derivative of the legally binding Consent Directive, which has specific usage in Consent Directive workflow management.
 </p>
-<p><b>Определения:<!-- Definitions: --></b></p>
+<p><b>Definitions:</b></p>
 <table class="grid">
- <tr><td>Согласие/разрешение (Consent)</td><td>Запись выбора политики потребителем медицинского обеспечения, который разрешает или запрещает определённым получателям или ролям получателей выполнять одно или несколько действий в заданном контексте политики, в конкретных целях и периодах времени<!-- The record of a healthcare consumer’s policy choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time --></td></tr>
- <tr><td>Распоряжение о согласии (Consent Directive)</td><td>Юридическая запись соглашения потребителя медицинского обеспечения со стороной, ответственной за исполнение выбора потребителя, который разрешает или запрещает определённым действующим лицам или ролям выполнение действий, затрагивающих потребителя в заданном контексте в указанных целях и периодах времени<!-- The legal record of a healthcare consumer's agreement with a party responsible for enforcing the consumer’s choices, which permits or denies identified actors or roles to perform actions affecting the consumer within a given context for specific purposes and periods of time --></td></tr>
+ <tr><td>Consent</td><td>The record of a healthcare consumer’s policy choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time</td></tr>
+ <tr><td>Consent Directive</td><td>The legal record of a healthcare consumer's agreement with a party responsible for enforcing the consumer’s choices, which permits or denies identified actors or roles to perform actions affecting the consumer within a given context for specific purposes and periods of time</td></tr>
  <tr><td>Consent Form</td><td>Human readable consent content describing one or more actions impacting the grantor for which the grantee would be authorized or prohibited from performing.  It includes the terms, rules, and conditions pertaining to the authorization or restrictions, such as effective time, applicability or scope, purposes of use, obligations and prohibitions to which the grantee must comply. Once a Consent Form is “executed” by means required by policy, such as verbal agreement, wet signature, or electronic/digital signature, it becomes a legally binding Consent Directive.</td></tr>
  <tr><td>Consent Directive Derivative</td><td>Consent Content that conveys the minimal set of information needed to manage Consent Directive workflow, including providing Consent Directive content sufficient to:
 <ul><li>Represent a Consent Directive</li>
@@ -64,20 +64,16 @@ derivative of the legally binding Consent Directive, which has specific usage in
 <li>Find Consent Directive(s): A query that includes sufficient consent directive content to return a list of Consent Directive metadata for an authorized querier to determine what Consent Directives are available, and to locate and retrieve one or more of those Consent Directives as needed.</li>
 </ul>
 </td></tr>
- <tr><td>Контекст политики (Policy context)</td><td>Любые организационные или подведомственные политики, которые могут ограничивать потребителю выбор политики, и которые включают в себя именованный диапазон разрешённых действий<!-- Any organizational or jurisdictional policies, which may limit the consumer’s policy choices, and which includes the named range of actions allowed --></td></tr>
- <tr><td>Потребитель медицинского обеспечения (Healthcare Consumer)</td><td>Человек, устанавливающий своё личное согласие (т. е. Consenter). В FHIR он называется «пациентом», хотя это слово не используется во всех контекстах ухода<!-- The individual establishing his/her personal consent (i.e. Consenter). In FHIR, this is referred to as the 'Patient' though this word is not used across all contexts of care --></td></tr>
+ <tr><td>Policy context</td><td>Any organizational or jurisdictional policies, which may limit the consumer’s policy choices, and which includes the named range of actions allowed</td></tr>
+ <tr><td>Healthcare Consumer</td><td>The individual establishing his/her personal consent (i.e. Consenter). In FHIR, this is referred to as the 'Patient' though this word is not used across all contexts of care</td></tr>
 </table>
 
 
 <a name="PCD"></a>
-<h3>Privacy Consent Directive (PCD, Распоряжение о согласии на политику конфиденциальности)</h3>
+<h3>Privacy Consent Directive (PCD)</h3>
 
 <p>
-Политики конфиденциальности определяют, каким образом выполняется сбор, доступ, использование и раскрытие индивидуально идентифицируемой медицинской информации (IIHI). Распоряжение о согласии на политику конфиденциальности в качестве юридической записи соглашения между пациентом (например потребителем медицинского обеспечения) и стороной, несущей ответственность за соблюдение выбора пациента, который разрешает или запрещает определенным действующим лицам или ролям выполнение действий, влияющих на пациента в данном контексте в конкретных целях и
-периодах времени. Все распоряжения о согласии находятся в контексте некоторой политики, которой может быть любой набор организационных или межведомственных политик, которые могут ограничивать выбор политики потребителем, и которые включают в себя именованный диапазон разрешенных действий.
-Кроме того, Распоряжения о согласии на политику конфиденциальности предоставляют возможность потребителю здравоохранения делегировать свои полномочия заместителю, принимающему решения, который может действовать от имени этого клиента.
-С другой стороны, потребитель может составить/опубликовать свои предпочтения в области конфиденциальности в форме самопровозглашаемого Распоряжения о согласии на политику конфиденциальности.
-<!-- Privacy policies define how Individually Identifiable Health Information 
+Privacy policies define how Individually Identifiable Health Information 
 (IIHI) is to be collected, accessed, used and disclosed. A Privacy Consent 
 Directive as a legal record of a patient's (e.g. a healthcare consumer) 
 agreement with a party responsible for enforcing the patient's choices, 
@@ -88,60 +84,53 @@ any set of organizational or jurisdictional policies which may limit the
 consumer’s policy choices, and which include a named range of actions allowed.
 In addition, Privacy Consent Directives provide the ability for a healthcare consumer 
 to delegate authority to a Substitute Decision Maker who may act on behalf of that individual.
-Alternatively, a consumer may author/publish their privacy preferences as a self-declared Privacy Consent Directive.  --> 
+Alternatively, a consumer may author/publish their privacy preferences as a self-declared Privacy Consent Directive.  
 </p>
 <p>
-В FHIR ресурс Consent обеспечивает поддержку альтернативных представлений для выражения интероперабельных медицинских распоряжений о согласии на политику конфиденциальности в стандартной форме для обмена политиками конфиденциальности, которые могут принудительно выполняться системами-потребителями (например отсканированные документы, вычислимые структурированные записи, FHIR-структуры с опциональными приложениями или ссылками на неструктурированные представления). Он может использоваться для представления самого Распоряжения о согласии на политику конфиденциальности, Заявления о согласии, являющегося электронным представлением Распоряжения о согласии, либо метаданных заявления о согласии, представляющих собой минимально необходимое содержимое согласия, вытекающее из Распоряжения о согласии, для использования в управлении рабочими процессами.
-<!-- The Consent resource on FHIR provides support for alternative representations for expressing 
+The Consent resource on FHIR provides support for alternative representations for expressing 
 interoperable health information privacy consent directives in a standard form for the 
 exchange and enforcement by sending, intermediating, or receiving systems of privacy policies 
 that can be enforced by consuming systems (e.g., scanned documents, of computable structured 
-entries elements, FHIR structures with optional attached, or referenced unstructured representations.)
+entries elements, FHIR structures with optional attached, or referenced unstructured representations.) 
 It may be used to represent the Privacy Consent Directive itself, a Consent Statement, which 
 electronically represents a Consent Directive, or Consent Metadata, which is the minimum 
-necessary consent content derived from a Consent Directive for use in workflow management. -->
+necessary consent content derived from a Consent Directive for use in workflow management.
 </p>
 </div>
 
 <div>
 <a name="bnr"></a>
-<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
+<h2>Boundaries and Relationships</h2>
 
 <p>
-Управление согласиями/разрешениями - в частности, согласием на политику конфиденциальности - усложняется тем фактом, что часто необходимо защищать само согласие на предоставление информации. Необходимость соблюдать конфиденциальность самого заявления о конфиденциальности соперничает с выполнением заявления о согласии. По этой причине общепринято иметь дело с "заявлениями о согласии", которые представляют собой всего лишь часть полного заявления о согласии, которое предоставил пациент.
-<!-- Consent management - particularly privacy consent - is complicated by the fact that consent to share 
+Consent management - particularly privacy consent - is complicated by the fact that consent to share 
 is often itself necessary to protect. The need to protect the privacy of the privacy statement itself
 competes with the execution of the consent statement. For this reason, it is common to deal with 
 'consent statements' that are only partial representations of the full consent statement that the 
-patient provided.  -->
+patient provided. 
 </p>
 <p>
-По этой причине ресурс Consent содержит два элемента, которые ссылаются на источник: мастер-идентификатор и прямую ссылку на содержимое, из которого было получено данное Заявление о согласии. Эта ссылка может быть одним из нескольких вариантов ниже:
-<!-- For this reason, the consent resource contains two elements that refer back to the source: a master
+For this reason, the consent resource contains two elements that refer back to the source: a master
 identifier, and a direct reference to content from which this Consent Statement was derived. That
-reference can be one of several things: -->
+reference can be one of several things:
 </p>
 <ul>
- <li>Ссылка на другой ресурс Consent, из которого было получено данное лимитированное заявление<!-- A reference to another consent resource from which this limited statement was derived --></li>
- <li>Ссылка на документ первоначального источника (например PDF или CDA - см. 
- <a href="http://gforge.hl7.org/gf/project/cbcc/frs/?action=FrsReleaseView&amp;release_id=732">Руководство по реализации HL7 CDAR2 ConsentDirective</a>, включающее в себя  <a href="http://wiki.ihe.net/index.php?title=Basic_Patient_Privacy_Consents">IHE Basic Patient Privacy Consents (BPPC)</a> ), либо напрямую, либо в качестве ссылки<!-- A reference to a document format for the original source (e.g. PDF or CDA - see the 
- <a href="http://gforge.hl7.org/gf/project/cbcc/frs/?action=FrsReleaseView&amp;release_id=732">HL7 CDAR2 ConsentDirective Implementation Guide</a>, 
- which incorporated the <a href="http://wiki.ihe.net/index.php?title=Basic_Patient_Privacy_Consents">IHE Basic Patient Privacy Consents (BPPC)</a> ), either directly, or in a reference --></li>
- <li>Источник может быть включён в ресурс Consent в качестве вложения<!-- The source can be included in the consent as an attachment --></li>
+ <li>A reference to another consent resource from which this limited statement was derived</li>
+ <li>A reference to a document format for the original source (e.g. PDF or CDA - see the 
+ <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=280">HL7 CDAR2 ConsentDirective Implementation Guide</a>, 
+ which incorporated the <a href="http://wiki.ihe.net/index.php?title=Basic_Patient_Privacy_Consents">IHE Basic Patient Privacy Consents (BPPC)</a> ), either directly, or in a reference</li>
+ <li>The source can be included in the consent as an attachment</li>
 </ul>
 <p>
-Заявление о согласии представляет собой цепочку, которая отсылает к первоначальному распоряжению о соглашении. Приложения могут проследовать по этой цепочке до источника, однако не должны полагать, что они имеют на это разрешение по умолчанию.
-<!-- The consent statements represent a chain that refers back to the original source consent
-directive. Applications may be able to follow the chain back to the source, but should
-not generally assume that they are authorized to do this. -->
+The consent statements represent a chain that refers back to the original source consent
+directive. Applications may be able to follow the chain back to the source but should
+not generally assume that they are authorized to do this.
 </p>
 <p>
-Распоряжения о согласии выполняются путем устного подтверждения или подписываются - либо на бумаге, либо в электронном виде. Подписи согласия/разрешения будут находиться в ресурсе <a href="provenance.html">Provenance</a> (пример <a href="consent-example-signature.html">согласия</a> и 
-<a href="provenance-consent-signature.html">подписи</a>). Вообще, правила касательно того, какие подписи необходимы и каким образом они должны предоставляться и использоваться, будут вводить руководства по реализации.
-<!-- Consent Directives are executed by verbal acknowledge or by being signed - either on paper, or digitally. Consent Signatures will
+Consent Directives are executed by verbal acknowledge or by being signed - either on paper, or digitally. Consent Signatures will
 be found in the <a href="provenance.html">Provenance</a> resource (example <a href="consent-example-signature.html">consent</a> and 
 <a href="provenance-consent-signature.html">signature</a>). Implementation Guides will generally 
-make rules about what signatures are required, and how they are to be shared and used. -->
+make rules about what signatures are required, and how they are to be shared and used.
 </p>
 </div>
 
@@ -149,21 +138,18 @@ make rules about what signatures are required, and how they are to be shared and
 <a name="bnc"></a>
 <h2>Background and Context</h2>
 <p>
-Ресурс Consent состоит из базового правила (представленного элементами Consent.policy/Consent.policyRule) opt-in либо opt-out, за которым следует перечисление исключений из этого правила. Исключения могут быть дополнительными положительными или негативными исключениями из базового правила. Такой набор исключений содержит список объектов данных, список авторов, список получателей, список организаций, список целей использования, и диапазон дат. 
-<!-- The Consent resource is structured with a base policy (represented as Consent.policy/Consent.policyRule) which is either opt-in or opt-out, followed by a listing of exceptions to that policy (represented as Consent.provision(s)). The exceptions can be additional positive 
+Change to
+"The Consent resource is structured with a base policy (represented as Consent.policy/Consent.policyRule) which is either opt-in or opt-out, followed by a listing of exceptions to that policy (represented as Consent.provision(s)). The exceptions can be additional positive 
 or negative exceptions upon the base policy. The set of exceptions include a list of data objects, 
-list of authors, list of recipients, list of Organizations, list of purposeOfUse, and Date Range. -->
+list of authors, list of recipients, list of Organizations, list of purposeOfUse, and Date Range.
 </p>
 <p>
-Принудительное применение Распоряжения о согласии на политику конфиденциальности не входит в область действия этого ресурса, однако ожидается, что принудительное применение будет выполняться с помощью сочетания различных методологий принудительного применения контроля доступа (например OAuth, UMA, XACML).
-Подобное принудительное применение строится на применении элементов Распоряжения о согласии на политику конфиденциальности, когда согласие по принципу opt-in (не давать никаких полномочий по умолчанию) содержит правила с информацией о том, какие организационные роли к каким видам ресурсов имеют доступ (например RBAC, ABAC).
-Описание этих деталей выходит за рамки ресурса Consent.
-<!-- The enforcement of the Privacy Consent Directive is not included, but is expected that 
+The enforcement of the Privacy Consent Directive is not included but is expected that 
 enforcement can be done using a mix of the various Access Control enforcement methodologies (e.g. OAuth, UMA, XACML).
 This enforcement includes the details of the enforcement meaning of the elements of the Privacy Consent Directive, 
 such as the rules in place when there is an opt-in consent would be specific about which 
 organizational roles have access to what kinds of resources (e.g. RBAC, ABAC). 
-The specification of these details are not in scope for the Consent resource. -->
+The specification of these details is not in scope for the Consent resource.
 </p>
 
 </div>

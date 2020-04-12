@@ -1,7 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<a name="scope"> </a>
+<a name="scope"></a>
 <h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p><strong>This resource is an <em>event</em> resource from a FHIR workflow perspective - see <a href="workflow.html">Workflow</a>.   It is the intent of the Orders and Observation Workgroup to align this resource with  the workflow pattern for <a href="workflow.html#event"><em>event</em> resources</a>.</strong></p>
 <p>
@@ -15,7 +15,7 @@ of the outcomes for a particular investigation.  In FHIR, the report can be conv
 </p>
 <p>
 В ресурсе DiagnosticReport содержится информация о самом диагностическом отчёте, о субъекте отчёта и, в случае лабораторных анализов, о пробе для анализа. Также он может ссылаться на сведения о запросе и атомарных данных наблюдений или экземпляров изображений. Заключение отчёта может быть в виде простого текстового объекта, структурированных закодированных данных или приложенным полностью отформатированных отчётом, например PDF.
-<!-- The DiagnosticReport resource has information about the diagnostic report itself, and about the subject and, in the case of lab tests, the specimen of the report.  It can also refer to the request details and atomic observations details or image instances.  Report conclusions can be expressed as a simple text blob, structured coded data or as an attached fully formatted report such as a PDF. --></p>
+<!-- The DiagnosticReport resource has information about the diagnostic report itself, and about the subject and, in the case of laboratory tests, the specimen of the report.  It can also refer to the request details and atomic observations details or image instances.  Report conclusions can be expressed as a simple text blob, structured coded data or as an attached fully formatted report such as a PDF. --></p>
 <p>
 Ресурс DiagnosticReport подходит для следующих видов диагностических отчетов:
 <!-- The DiagnosticReport resource is suitable for the following kinds of diagnostic reports: -->
@@ -39,7 +39,7 @@ The DiagnosticReport resource does not yet provide full support for detailed str
 </div>
 
 <div>
-<a name="bnc"> </a>
+<a name="bnc"></a>
 <h2>Предпосылки и контекст<!-- Background and Context --></h2>
 <!--p>
 Ресурс DiagnosticReport имеет следующие аспекты:
@@ -59,7 +59,7 @@ The DiagnosticReport resource has the following aspects:
  <li>results: a reference to 0 or more <a href="observation.html">Observation resources</a> which provide
     a hierarchical tree of groups of results</li>
  <li>specimen details: a reference to 0 or more <a href="specimen.html">Specimen resources</a> on which the report is based</li>
- <li>conclusion, codedDiagnosis: support for structured reporting</li>
+ <li>conclusion, conclusionCode: support for structured reporting</li>
  <li>images, representation: image and media representations of the report and supporting images</li>
 </ul-->
 
@@ -84,7 +84,7 @@ The results are assembled in "groups" which are nested structures of Observation
 
 </div>
 <div>
-<a name="bnr"> </a>
+<a name="bnr"></a>
 <h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <p>
 Обратите внимание, что многие диагностические процессы являются процедурами, которые создают наблюдения и диагностические отчёты. В большинстве случаев такое наблюдение не требует явного представления процедуры, в рамках которой оно было создано, однако если есть интересующие детали выполнения диагностической процедуры, то для описания этой активности используется ресурс <a href="procedure.html">Procedure</a>.
@@ -98,12 +98,12 @@ The results are assembled in "groups" which are nested structures of Observation
 
 <p>
 Если у вас очень структурированный отчёт, тогда используйте DiagnosticReport - в нём есть поддержка данных и рабочего процесса. Сведения о запросе на диагностическое исследование фиксируются в различных ресурсах-запросах (например ресурс <a href="servicerequest.html">ServiceRequest</a>) и позволяют связывать отчёт с клиническим рабочим процессом. Для более описательных отчётов с меньшим рабочим процессом (гистология/морг и др.) может больше подойти ресурс <a href="composition.html">Composition</a>.
-<!-- If you have a highly structured report, then use DiagnosticReport - it has data and workflow support.  Details about the request for a diagnostic investigation are captured in the various "request" resources (e.g., the <a href="servicerequest.html">ServiceRequest</a>) resource and allow the report to connect to clinical workflows. For more narrative driven reports with less work flow (histology/mortuary, etc.), the <a href="composition.html">Composition</a> resource would be more appropriate. -->
+<!-- If you have a highly structured report, then use DiagnosticReport - it has data and workflow support.  Details about the request for a diagnostic investigation are captured in the various "request" resources (e.g., the <a href="servicerequest.html">ServiceRequest</a>) and allow the report to connect to clinical workflows. For more narrative driven reports with less work flow (histology/mortuary, etc.), the <a href="composition.html">Composition</a> resource would be more appropriate. -->
 </p>
 
 <p>
-В ресурсе DiagnosticReport можно давать ссылки на графическое и медиа-представление отчёта и на вспомогательные изображения. На подробные сведения и сами изображения можно ссылаться напрямую из диагностического отчёта с помощью элемента "imaging" или косвенно через ресурсы <a href="imagingmanifest.html">ImagingManifest</a> или <a href="imagingstudy.html">ImagingStudy</a>, которые представляют содержимое, полученное в радиологическом исследовании пациента в формате DICOM или наборе экземпляров DICOM.
-<!-- Image and media representations of the report and supporting images are referenced in the DiagnosticReport resource.  The details and actual image instances can be referenced directly in Diagnostic report using the "imaging" element or by indirect reference through the <a href="imagingmanifest.html">ImagingManifest</a> or <a href="imagingstudy.html">ImagingStudy</a> resources which represent the content produced in a DICOM imaging study or set of DICOM Instances of a patient. -->
+В ресурсе DiagnosticReport можно давать ссылки на графические и медиа-представления отчёта и на вспомогательные изображения. На подробные сведения и сами изображения можно ссылаться напрямую из ресурса DiagnosticReport с помощью элемента "imaging" или косвенно через ресурсы <a href="imagingstudy.html">ImagingStudy</a> или <a href="imagingstudy.html">ImagingStudy</a>, которые представляют содержимое, полученное в радиологическом исследовании пациента в формате DICOM или наборе экземпляров DICOM.
+<!-- Image and media representations of the report and supporting images are referenced in the DiagnosticReport resource.  The details and actual image instances can be referenced directly in Diagnostic report using the "imaging" element or by indirect reference through the <a href="imagingstudy.html">ImagingStudy</a> resources which represent the content produced in a DICOM imaging study or set of DICOM Instances for a patient. -->
 </p>
 
 </div>

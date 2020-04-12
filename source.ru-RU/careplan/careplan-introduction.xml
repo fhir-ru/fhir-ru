@@ -1,7 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<a name="scope"> </a>
+<a name="scope"></a>
 <h2>Область применения и использование</h2>
 
 <p>CarePlan is one of the <a href="workflow.html#request">request</a> resources in the FHIR <a href="workflow.html">workflow</a> specification.</p>
@@ -43,7 +43,7 @@ plan, etc.) -->
 </li>
 <li>
 Планы, сгенерированные системами поддержки принятия решений, придерживающиеся определённых практических руководств (например план ухода при инсульте, при диабете, план по предотвращению падений и т. д.).
-<!-- Decision support-generated plans following specific practice guidelines (e.g. stroke care plan, 
+<!-- Decision support generated plans following specific practice guidelines (e.g. stroke care plan, 
 diabetes plan, falls prevention, etc.) -->
 </li>
 <li>
@@ -62,11 +62,11 @@ that only appropriate plans are exposed via a given user interface. -->
 </div>
 
 <div>
-<a name="bnr"> </a>
+<a name="bnr"></a>
 <h2>Границы и связи</h2>
 <p>
 В целях упрощения ресурс CarePlan разрешает встроенное определение активностей в рамках плана с помощью элемента <code>activity.detail</code>. Однако активности также можно задавать с помощью ссылок на различные ресурсы-запросы. Эти ссылки могут вести на ресурсы в статусе "planned" или на активные заказы. Запланированные активности (например условленные встречи) могут существовать без необходимости в ресурсе CarePlan вообще. Ресурсы CarePlan используются, когда есть необходимость сгруппировать активности, цели и/или участников вместе для обеспечения некоторой степени контекста.
-<!-- For simplicity sake, CarePlan allows the in-line definition of activities as part of a plan using 
+<!-- For simplicity's sake, CarePlan allows the inline definition of activities as part of a plan using 
 the <code>activity.detail</code> element.  However, activities can also be defined using references
 to the various "request" resources.  These references could be to resources with a status of
 "planned" or to an active order.  It is possible for planned activities to exist (e.g. appointments)
@@ -75,14 +75,14 @@ goals and/or participants together to provide some degree of context. -->
 </p>
 <p>
 Ресурсы CarePlan могут быть привязаны к определённым <a href="condition.html">Conditions</a>, а могут быть независимыми и фокусироваться на определённом типе ухода (например психологический, диетологический план) или уходе, предоставляемом определённым специалистом или группой специалистов.
-<!-- CarePlans can be tied to specific <a href="condition.html">Conditions</a> however they can also be 
+<!-- CarePlans can be tied to specific <a href="condition.html">Conditions</a>, however they can also be 
 condition-independent and instead focused on a particular type of care (e.g. psychological, nutritional)
 or the care delivered by a particular practitioner or group of practitioners. -->
 </p>
 <p>
 Ресурс <a href="immunizationrecommendation.html">ImmunizationRecommendation</a> можно интерпретировать как узкоспециализированный план ухода, направленный только на события, связанные с иммунизацией. Для описания подобной информации всегда предпочтительно использовать специализированный ресурс ImmunizationRecommendation.
 <!-- An <a href="immunizationrecommendation.html">ImmunizationRecommendation</a> can be interpreted as a narrow
-type of Care Plan dealing only with immunization events.  Where such information could appear in either
+type of CarePlan dealing only with immunization events.  Where such information could appear in either
 resource, the immunization-specific resource is preferred. -->
 </p>
 <p>

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
 <!-- template-vs.html -->
-
+      
 [%settitle Набор значений {vsurl}%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -14,11 +14,12 @@
 
 <%txheader0 vs%>
 
-<a name="vs"> </a>
+<a name="vs"></a>
 <h1>Набор значений <%vsurl%></h1>
 <table class="<%fmm-style%>">
- <tr><td><a href="<%wg%>"><%wgt%></a> Work Group</td><td><%fmm%></td><td><%sstatus%></td><td><%profile-context%></td></tr>
+ <tr><td><a href="<%wg%>"><%wgt%></a> Work Group</td><td><%fmm%></td><td><%sstatus%></td><!--!ns!--><td><%profile-context%></td></tr>
 </table>
+[%normative vs %check%]
 
 <p>
 Это набор значений, определенный <%vssource%><%vsxref%>
@@ -27,7 +28,9 @@
 <p><b>Краткая сводка<!-- Summary --></b></p>
 <table class="grid">
  <tr><td>URL определения:<!-- Defining URL: --></td><td><%vsurl%></td></tr>
- <tr><td>Название:</td><td><%vsname%></td></tr>
+ <tr><td>Version:</td><td><%vsver%></td></tr>
+ <tr><td>Name:</td><td><%vsnamed%></td></tr>
+ <tr><td>Название:</td><td><%vstitle%></td></tr>
  <tr><td>Определение:</td><td><%vsdef%></td></tr>
  <tr><td>Комитет<!-- Committee -->:</td><td><%vscommittee%></td></tr>
  <tr><td>OID:</td><td><%vsoid%> (для терминологических систем на базе OID)</td></tr>
@@ -35,11 +38,13 @@
  <tr><td>Исходники ресурса:<!-- Source Resource --></td><td><a href="<%vsref%>.xml.html">XML</a> / <a href="<%vsref%>.json.html">JSON</a></td></tr>
 </table>
 
+<%res-status-special%>
+
 <%vs-warning%>
 
 <%vsusage%>
 
-<a name="definition"> </a>
+<a name="definition"></a>
 <h2>Содержимое набора значений<!-- Content Logical Definition --></h2>
 
 <%vscld%>
@@ -61,8 +66,9 @@
 <!-- Explanation of the columns that may appear on this page: -->
 </p>
 <table class="grid">
- <tr><td>Уровень<!-- Level --></td><td>Некоторые списки кодов могут быть иерархическими, где каждому коду присваивается некоторый уровень. По этой схеме некоторые коды оказываются под другими кодами, и подразумевается, что вложенные коды тоже применяются<!-- A few code lists that FHIR defines are hierarchical - each code is assigned a level. 
- In this scheme, some codes are under other codes, and imply that the code they are under also applies --></td></tr> 
+ <tr><td>Уровень<!-- Lvl --></td><td>Некоторые списки кодов могут быть иерархическими, где каждому коду присваивается некоторый уровень. For value sets, levels are mostly used to organize codes for user convenience, but may follow
+   code system hierarchy - see <a href="<%level%>codesystem.html#hierarchy">Code System</a> for further information<!-- A few code lists that FHIR defines are hierarchical - each code is assigned a level. For value sets, levels are mostly used to organize codes for user convenience, but may follow
+   code system hierarchy - see <a href="<%level%>codesystem.html#hierarchy">Code System</a> for further information --></td></tr> 
  <tr><td>Источник<!-- Source --></td><td>Источник определения кода (если набор значений содержит коды, определённые где-то в другом месте)<!-- The source of the definition of the code (when the value set draws in codes defined elsewhere) --></td></tr>
  <tr><td>Код<!-- Code --></td><td>Код (который используется в экземпляре ресурса). Если код выделен курсивом, значит его нельзя выбирать ('Abstract')<!-- The code (used as the code in the resource instance). If the code is in italics, this indicates that the code is not selectable ('Abstract') --></td></tr>
  <tr><td>Значение для отображения<!-- Display --></td><td>Значение для отображения (используется в элементе <i>display</i> в <a href="<%level%>datatypes.html#Coding">кодинге</a>). Если значение для отображения не указано, реализаторам следует не просто показывать код, а использовать мэппинг для такого концепта в своём приложении<!-- The display (used in the <i>display</i> element of a <a href="<%level%>datatypes.html#Coding">Coding</a>). If there is no display, implementers should not simply display the code, but map the concept into their application --></td></tr>

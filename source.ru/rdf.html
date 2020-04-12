@@ -14,13 +14,13 @@ in order to support consistent definitions for schema and UML derived code.
 <body>
 [%file newnavbar%]
 
-<div class="col-12">
+<div class="col-12"><!--ReleaseHeader--><p id="publish-box"></p><!--EndReleaseHeader-->
 
 <%fmtheader rdf%>
 
 <a name="root"></a>
 <h2>Resource Description Framework (RDF) Representation </h2>
-<table class="colstu"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 2</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Trial Use</a></td></tr></table>
+<table class="colstu"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 2</td><td id="ballot"><a href="versions.html#std-process">Standards Status</a>:<!--!ns!--><a href="versions.html#std-process">Trial Use</a></td></tr></table>
 
 <div style="background-color: #E6FFFF; border:1px solid black; padding: 5px;">
 <table>
@@ -61,8 +61,8 @@ enough form for developers to start trying them and providing feedback.
 Work still needed includes:
 </p>
 <ul>
-<li>Improved documentation with regard to using the RDF format</li>
-<li>Reconcilation with the <a href="http://w3c.github.io/hcls-fhir-rdf/spec/ontology.html">FHIR Ontology draft on W3C github</a></li>
+<li>Improved documentation on using the RDF format</li>
+<li>Reconciliation with the <a href="http://w3c.github.io/hcls-fhir-rdf/spec/ontology.html">FHIR Ontology draft on W3C github</a></li>
 <li>Tutorial materials on using FHIR/RDF with other ontologies and <a href="http://shex.io/extensions/Map/">ShExMap</a> to translate other RDF data (non-FHIR) to/from FHIR/RDF</li>
 </ul>
 
@@ -76,7 +76,7 @@ inference, shared semantics across multiple standards and data formats,
 data integration, semantic data validation, 
 compliance enforcement, SPARQL queries and other uses. Implementers
 using FHIR in this fashion should be aware of the relationship between
-the RDF format the the wider use of ontologies. 
+the RDF format the wider use of ontologies. 
 </p>
 <p>
 The RDF format is based on the same abstract information model
@@ -100,7 +100,7 @@ to support the day-to-day operations of healthcare providers exchanging
 electronic health records (EHRs), and in this context, the orientation has
 historically been different.  
 When using FHIR/RDF with other ontologies,
-impedence differences are likely to show up in two main ways:
+impedance differences are likely to show up in two main ways:
 </p>
 
 <ul>
@@ -194,7 +194,7 @@ more than one node labeled as a 'treeRoot' in a set of Turtle statements, it can
 to parse them as a single resource.
 </p>
 
-<a name="index"></a>
+<a name="index"> </a>
 <h4>Representing Repeating Elements</h4>
 
 <p>
@@ -384,7 +384,7 @@ and definitions is also published, for the following purposes:
  <li>Supporting reasoning across the information/terminology model boundary</li>
 </ul>
 <p>
-The RDF definitions are published as a series of Turtle files: <a href="rim.ttl">RIM</a> and <a href="fhir.ttl">FHIR</a>. 
+The RDF definitions are published as a series of Turtle files: <a href="rim.ttl">HL7 v3 RIM</a> (Reference Information Model) and <a href="fhir.ttl">FHIR</a>. 
 </p>
 
 <a name="api"></a>
@@ -407,7 +407,7 @@ Open source implementations that can perform this conversion include:
 <li><a href="https://hapifhir.io/">HAPI java Reference library</a> (Same code as used in the build)</li>
 <li><a href="http://fhir3.healthintersections.com.au/open">Reference Server</a> (based on <a href="http://github.com/grahamegrieve/fhirserver">Delphi reference implementation</a>)</li>
 <li><a href="https://github.com/mvdzel/fhir-net-api">fhir-net-api</a>, a .NET implementation. (should work on <a href="http://www.mono-project.com/">Mono</a>)</li>
-<li>Check the <a href="http://wiki.hl7.org/index.php?title=Open_Source_FHIR_implementations">HL7 Open Source FHIR Implementations page,</a> in case new implementations have become available</li>
+<li>Check the <a href="https://confluence.hl7.org/display/FHIR/Open+Source+Implementations">HL7 Open Source FHIR Implementations page,</a> in case new implementations have become available</li>
 </ul>
 </li>
 <li><a href="downloads.html">Download</a> the FHIR ontology.

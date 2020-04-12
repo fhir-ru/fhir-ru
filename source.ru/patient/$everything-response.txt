@@ -1,4 +1,4 @@
-// всё, что связано с указанным пациентом (в данном случае создано автоматически инструментом публикации спецификации)
+// everything linked to the nominated patient (in this case, built automatically by the publication tooling)
 
 HTTP/1.1 200 OK
 [other headers]

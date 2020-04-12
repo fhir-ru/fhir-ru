@@ -1,27 +1,24 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <a name="use"></a>
-<h3>Использование логических модулей<!-- Using Compartments --></h3>
+<h3>Using Compartments</h3>
 
 <p>
-В качестве примера использования логического модуля, извлеките список проблем пациента с помощью такого URL:
-<!-- As an example of compartment usage, to retrieve a list of a patient's conditions, use the URL: -->
+As an example of compartment usage, to retrieve a list of a patient's conditions, use the URL:
 </p>
 <pre>
   GET [base]/Patient/[id]/Condition
 </pre>
 <p>
-Можно задавать дополнительные параметры поиска, например такой гипотетический поиск острых клинических состояний:
-<!-- Additional search parameters can be defined, such as this hypothetical search for 
-acute conditions: -->
+Additional search parameters can be defined, such as this hypothetical search for 
+acute conditions:
 </p>
 <pre>
   GET [base]/Patient/[id]/Condition?code:in=http://hspc.org/ValueSet/acute-concerns
 </pre>
 <p>
-Отметьте, что эти два URL ниже являются синтаксическими вариациями двух предыдущих примеров поиска, соответственно:
-<!-- Note that as searches, these are syntactic variations on these two search
-URLs respectively: -->
+Note that as searches, these are syntactic variations on these two search
+URLs respectively:
 </p>
 <pre>
   GET [base]/Condition?patient=[id]
@@ -41,19 +38,17 @@ both these searches return an empty bundle with no matches. Some systems
 will include an operation outcome warning that there is no matching patient.
 </p>
 <p>
-Однако есть ключевое различие в функциональности между поиском на основе логических модулей и прямым поиском с параметрами. Рассмотрим следующий пример поиска:
-<!-- However, there is a key difference in functionality between compartment based searches 
-and direct searches with parameters. Consider this search: -->
+However, there is a key difference in functionality between compartment based searches 
+and direct searches with parameters. Consider this search:
 </p>
 <pre>
   GET [base]/Patient/[id]/Communication
 </pre>
 <p>
-Поскольку определение <a href="compartmentdefinition-patient.html">логического модуля "пациент"</a> для ресурса <a href="communication.html">Communication</a> говорит о том, что ресурс Communication входит в логический модуль "пациент", если объектом, отправителем или получателем является пациент, то поиск по логическому модулю фактически совпадает с объединением следующих трёх поисковых запросов:
-<!-- Because the definition of the <a href="compartmentdefinition-patient.html">patient compartment</a> for 
+Because the definition of the <a href="compartmentdefinition-patient.html">patient compartment</a> for 
 <a href="communication.html">Communication </a> says that a Communication resource is in the 
 patient compartment if the subject, sender, or recipient is the patient, the compartment
-search is actually the same as the union of these 3 searches: -->
+search is actually the same as the union of these 3 searches:
 </p>
 <pre>
   GET [base]/Communication?subject=[id]
@@ -61,19 +56,16 @@ search is actually the same as the union of these 3 searches: -->
   GET [base]/Communication?recipient=[id]
 </pre>
 <p>
-Сделать это в одном запросе невозможно, если только не использовать <a href="search_filter.html">_filter</a>:
-<!-- There is no way to do this as a single search, except by using the <a href="search_filter.html">_filter</a>: -->
+There is no way to do this as a single search, except by using the <a href="search_filter.html">_filter</a>:
 </p>
 <pre>
   GET [base]/Communication?_filter=subject re [id] or sender re [id] or recipient re [id]
 </pre>
 <p>
-Более подробная информация о поиске по логическим модулям описана в разделе <a href="http.html#vsearch">Операция поиска</a>.
-Как связанная с поиском операция, отнесение ресурсов к логическому модулю основывается только на текущей версии всех входящих в него ресурсов. Отметьте, что <a href="references.html#contained">вложенные</a> ресурсы patient не могут образовывать логический модуль "пациент" сами из себя.
-<!-- Further details of searching by compartment are <a href="http.html#vsearch">described under the search operation</a>.
+Further details of searching by compartment are <a href="http.html#vsearch">described under the search operation</a>.
 As a search related operation, the assignment of resources to compartments is only based on 
 the current version of any of the resources involved. Note that <a href="references.html#contained">contained</a>
-patient resources cannot create a patient compartment of their own.  -->
+patient resources cannot create a patient compartment of their own. 
 </p>
 
 <p>
@@ -99,66 +91,58 @@ to such URLs.
 <a name="logical"></a>
 <h3>Logical Meaning of Compartments</h3>
 <p>
-Логические модули могут использоваться явным образом, как это, однако также могут использоваться и неявно. К примеру, если FHIR-сервер предоставляет попациентный просмотр медкарты, авторизованный пользователь, ассоциированный с использованием FHIR RESTful API, может быть ограничен в доступе к картам из экземпляров логического модуля, логически ассоциированных со своими идентификаторами. Независимо от того, используются ли логические модули явно или неявно, серверам могут требоваться дополнительные действия, чтобы сделать некоторые ресурсы без прямой ссылки на пациента доступными клиенту (медикаменты, вещества и др.).
-<!-- Compartments may be used explicitly, like this, but can also be used implicitly. For instance,
+Compartments may be used explicitly, like this, but can also be used implicitly. For instance,
 if a FHIR server is providing a patient view of a record, the authorized user associated
 with use of the FHIR RESTful API may be limited to accessing records from the
 compartment instance(s) logically associated with their identity. Irrespective of whether
 compartments are being used explicitly or implicitly, servers will need to make arrangements
 to make some resources with no direct link to a patient available to the client (medications, 
-substances, etc.). -->
+substances, etc.).
 </p>
 <p>
-Отметьте, что ресурсы могут входить в несколько логических модулей или связывать их. Примером может быть <a href="diagnosticreport.html">Diagnostic Report</a>, когда он определяет один объект (пациента, группу, устройство или местонахождение), а <a href="observation.html">Observation</a>, на который он ссылается, определяет другой объект, или когда ресурс <a href="list.html">List</a> ссылается на элементы, которые идентифицируют другие объекты. Такое кросс-связывание может возникать по вполне законным причинам, включая:
-<!-- Note that resources may cross between compartments, or interlink them. Examples of 
+Note that resources may cross between compartments, or interlink them. Examples of 
 this would be where a <a href="diagnosticreport.html">Diagnostic Report</a> identifies  
 a subject, but an <a href="observation.html">Observation</a> it references identifies
 a different subject, or where a <a href="list.html">List</a> resource references
 items that identify different subjects. Such cross-linking may arise for 
-many valid reasons, including: -->
+many valid reasons, including:
 </p>
 <ul>
- <li>случаи, когда объекты записей взаимосвязаны - трансплантация, перинатология, семейная терапия и т. д.<!-- Cases where subject records are inter-linked - Transplants, Perinatal care, family therapy etc. --></li>
- <li>управление рабочими процессами, когда списки действий связывают несколько пациентов и/или медспециалистов<!-- Workflow management where action lists link multiple patients and/or practitioners --></li>
+ <li>Cases where subject records are inter-linked - Transplants, Perinatal care, family therapy etc.</li>
+ <li>Workflow management where action lists link multiple patients and/or practitioners</li>
 </ul>
 <p>
-Учитывая широкое разнообразие сценариев и контекстов использования FHIR, логические модули на определяют, каким образом обрабатываются перекрёстные связи. Системы могут отклонять ресурсы, удалить их из или помещать их в оба логических модуля, либо действовать ещё каким-то другим образом.
-<!-- Given the wide variety of use cases and contexts in which FHIR is used, compartments 
+Given the wide variety of use cases and contexts in which FHIR is used, compartments 
 do not define how cross-linking is handled. Systems may reject resources, remove them 
-from both compartments, or place them in both, or act in some other fashion. -->
+from both compartments, or place them in both, or act in some other fashion.
 </p>
 <p>
 The <a href="graphdefinition.html">graph definition</a> resource provides a method
 by which rules about cross-linking may be made and enforced.
 </p>
 <p>
-Решение о том, включать ли ресурсы в логический модуль, когда ссылка на ресурс, который образует логический модуль, находится в расширении, принимается на стороне сервера.
-<!-- It is at the discretion of the server whether to include resources in a compartment when
-the reference to the resource that establishes the compartment is in an extension. -->
+It is at the discretion of the server whether to include resources in a compartment when
+the reference to the resource that establishes the compartment is in an extension.
 </p>
 
 <p>
-Некоторые ресурсы не входят ни в какие логические модули, например <a href="medication.html">Medication</a>, 
-<a href="substance.html">Substance</a>, <a href="location.html">Location</a>.
-Эти ресурсы не привязаны непосредственно к пациенту или составителю записи и иногда называются "мастер-файлами". Серверам потребуются дополнительные действия, чтобы сделать такие ресурсы доступными для клиентов, ограниченных конкретными логическими модулями. Например ресурс Medication описывает непосредственно сам медикамент и не привязан к пациенту; однако ресурс MedicationAdministration связывает этот ресурс Medication (детали о том, что было введено) с пациентом (которому этот медикамент был назначен), и поэтому требуется для интерпретации этого назначения.
-<!-- Some resources are not in any compartment, e.g. <a href="medication.html">Medication</a>, 
+Some resources are not in any compartment, e.g. <a href="medication.html">Medication</a>, 
 <a href="substance.html">Substance</a>, <a href="location.html">Location</a>. These resources are not linked directly to a patient 
 or authored record, and are sometimes called 'master files'. Servers will need to make 
 arrangements to make these resources available to the clients that are limited to 
 particular compartments. For example, a Medication resource describes a medication itself 
 and does not link to a patient; however, a resource such as MedicationAdministration 
 connects the Medication (details of what was administered) to the patient (for whom was 
-it administered), and so is required to interpret the administration. -->
+it administered), and so is required to interpret the administration.
 </p>
 
-<h2>Определение новых логических модулей<!-- Defining New Compartments --></h2>
+<h2>Defining New Compartments</h2>
 <p>
-Логические модули задаются и добавляются в список выше, когда сообщества реализаторов определяют их точки общего доступа к данным. Как описано ниже, логические модули имеют и синтаксические, и логические выводы (последствия), и оба этих аспекта их функциональности оцениваются при принятии решения, определять ли [новые] логические модули.
-<!-- Compartments are defined and added to the list above when implementer 
+Compartments are defined and added to the list above when implementer 
 communities identify them as common access points for data. As described 
 below, compartments have both syntactical and logical consequences, and
 both these aspects of their functionality are evaluated when deciding
-whether to define compartments.  -->
+whether to define compartments. 
 </p>
 
 </div>

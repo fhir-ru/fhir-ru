@@ -1,7 +1,7 @@
 ﻿<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<a name="scope"> </a>
+<a name="scope"></a>
 <h2>Область применения и использование<!-- Scope and Usage --></h2>
 
 <p>
@@ -39,7 +39,7 @@ Grouping a self-contained set of resources to act as an exchangeable and persist
 </div>
 
 <div>
-<a name="bnr"> </a>
+<a name="bnr"></a>
 <h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <p>
 Есть два способа создать коллекцию ресурсов для передачи и хранения: <a href="references.html#contained">вложенные ресурсы</a> и комплекты (bundles). Между ними имеется важное различие:
@@ -51,13 +51,13 @@ bundles. There is an important difference between the two:  -->
  Вложенные ресурсы находятся "внутри" ресурса-контейнера - их можно интерпретировать и/или изменять только в контексте контейнера
  <!-- Contained resources are "in" the container resource - they can only ever be interpreted and/or changed in the context of the container --></li>
  <li>
- Комплект (bundle) - это коллекция ресурсов, которые существуют независимо - например к ним также можно обратиться напрямую через <a href="http.html">RESTful API</a>
- <!-- A bundle is a collection of resources that have an independent existence - for example, they can also be accessed directly using the <a href="http.html">RESTful API</a> --></li>
+ Комплект (bundle) - это коллекция ресурсов, которые могут существовать независимо - например к ним также можно обращаться напрямую через <a href="http.html">RESTful API</a>
+ <!-- A bundle is a collection of resources that can have an independent existence - for example, they can also be accessed directly using the <a href="http.html">RESTful API</a> --></li>
 </ul>
 
 <p>
-В дополнение к этим двум техническим механизмам есть еще три административных и инфраструктурных ресурса, с помощью которых также можно группировать контент:
-<!-- In addition to these two technical mechanisms, there are three administrative and infrastructure resources which also support grouping of content: -->
+В дополнение к этим двум техническим механизмам есть еще три административных и инфраструктурных ресурса, с помощью которых также можно группировать контент. Эти ресурсы не содержат ресурсы напрямую, а используют ссылки для указания [Reference] на сгруппированные ресурсы:
+<!-- In addition to these two technical mechanisms, there are three administrative and infrastructure resources which also support grouping of content. These resources do not contain resources directly, but instead use [Reference] to point to the grouped resources: -->
 </p>
 <ul>
 <li>
@@ -78,14 +78,19 @@ etc.  This resource will commonly be used for public health (e.g. describing an 
 defining a test subject pool) and similar purposes. -->
 </li>
 <li>
-Ресурс <a href="composition.html">Composition</a> определяет набор медицинской информации, собранной в единый логический документ, несущий единый согласованный смысл, устанавливающий свой собственный контекст и имеющий клиническую аттестацию в отношении того, кто составил это утверждение. Ресурс Composition составляет основную структуру FHIR-<a href="documents.html">документа</a>. Полное содержание документа формируется с помощью связки (bundle). Композиции часто ссылаются на ресурсы List в качестве составляющих отдельных разделов.
+Ресурс <a href="composition.html">Composition</a> определяет набор медицинской информации, собранной в единый логический документ, несущий единый согласованный смысл, устанавливающий свой собственный контекст и имеющий клиническую аттестацию в отношении того, кто составил это утверждение. Ресурс Composition составляет основную структуру FHIR-<a href="documents.html">документа</a>. Полное содержание документа формируется с помощью связки (Bundle). Композиции часто ссылаются на ресурсы List в качестве составляющих отдельных разделов.
 <!-- The <a href="composition.html">Composition</a> resource – Defines a set of healthcare-related information that is assembled 
 together into a single logical document that provides a single coherent statement of meaning, establishes its own context and 
 that has clinical attestation with regard to who is making the statement. The composition resource provides the basic structure 
-of a FHIR <a href="documents.html">document</a>.  The full content of the document is expressed using a bundle.  Compositions will 
+of a FHIR <a href="documents.html">document</a>.  The full content of the document is expressed using a Bundle.  Compositions will 
 often reference Lists as the focus of particular sections. -->
 </li>
 </ul>
+<p>
+These three resources represent meaningful groupings of the resources they refer to (e.g. a discharge medication List, a Group of 
+participants for a clinical trial, a set of resources that form a signed document), while a Bundle is merely is a container for 
+resources used for transfer and storage. This list is not exhaustive; other resources also provde grouping functionality.
+</p>
 
 </div>
 </div>

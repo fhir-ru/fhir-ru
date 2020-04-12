@@ -1,138 +1,73 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
-<h3>Применение ресурса Provenance<!-- Using the Provenance Resource --></h3>
+<a name="using"></a>
+<h3>Using the Provenance Resource</h3>
 
 <p>
-Ресурс Provenance определяет информацию о другом ресурсе (элемент <i>reference</i>). 
-Ресурс Provenance может использоваться несколькими различными способами:
-<!-- The Provenance resource identifies information about another resource (the <i>reference</i> element). 
-The Provenance resource may be used in several different ways: -->
+The Provenance resource identifies information about another resource (the <i>reference</i> element). 
+The Provenance resource may be used in several different ways:
 </p>
 <ul>
- <li>В рамках <a href="documents.html">комплекта документов (document bundle)</a>, где он идентифицирует происхождение части или всего документа<!-- As part of a <a href="documents.html">document bundle</a> where it identifies the provenance of part or all of the document --></li>
- <li>В <a href="http.html">RESTful system</a>, где он отслеживает информацию о происхождении, относящуюся к ресурсам<!-- On a <a href="http.html">RESTful system</a> where it keeps track of provenance information relating to resources --></li>
+ <li>As part of a <a href="documents.html">document bundle</a> where it identifies the provenance of part or all of the document</li>
+ <li>On a <a href="http.html">RESTful system</a> where it keeps track of provenance information relating to resources</li>
 </ul>
 <p>
-При использовании в комплекте документов <i>references</i> частоне версионируют явным образом, однако всегда подразумевается, что они соответствуют той версии ресурса, которая содержится в документе. В RESTful-системе ссылка на целевой ресурс должна быть на конкретную версию, но при этом следует соблюдать осторожность: для новых ресурсов, которые должны иметь соответствующий ресурс Provenance, ссылку на конкретную версию часто невозможно узнать, пока целевой ресурс не будет обновлен. Это может привести к проблеме целостности системы: что, если ресурс Provenance не может быть создан после того, как целевой ресурс был обновлен? Чтобы избежать таких проблем целостности, целевой ресурс и ресурс Provenance должны отправляться на сервер парой в одной <a href="http.html#transaction">транзакции</a>. 
-<!-- When used in a document bundle, the <i>references</i> are often not explicitly versioned, but they always implicitly pertain to the version of the 
+When used in a document bundle, the <i>references</i> are often not explicitly versioned, but they always implicitly pertain to the version of the 
 resource found in the document. On a RESTful system, the target resource reference should be version specific, but this
 requires special care: For new resources that need to have a corresponding Provenance resource, the version-specific
 reference is often not knowable until after the target resource has been updated. This can create an 
 integrity problem for the system - what if the Provenance resource cannot be created after the target 
 resource has been updated? To avoid any such integrity problems, the target resource and the Provenance resources should be submitted 
-as a pair using a <a href="http.html#transaction">transaction</a>.  -->
+as a pair using a <a href="http.html#transaction">transaction</a>. 
 </p>
 
-<h3>Электронные цифровые подписи<!-- Digital Signatures --></h3>
+<a name="header"></a>
+<h4>HTTP Header</h4>
 
 <p>
-Ресурс Provenance включает элемент <i>signature</i> (электронная цифровая подпись), который может использоваться для верификации целостности на основе стандартов, а также в целях невозможности отказа от авторства. Тип данных <i>Signature</i> предоставляет детали использования элемента <i>signature</i>. Кодированное значение Signature.type в "Source" следует использовать, когда подпись служит просто доказательством того, что содержимое ресурса не изменилось с момента его обновления или создания.
-<!-- 
+The custom header X-Provenance to provide a provenance resource when performing PUT or POST operations
+using the <a href="http.html">RESTful interface</a>:
+</p>
+<pre>
+POST [base]/Observation
+Content-Type: application/fhir+?
+X-Provenance: { "resourceType": "Provenance", "location": { "reference": "Location/1" }," agent" ... }
+
+[body]
+</pre>
+<p>
+The intent is that the server picks up the provenance, fills out the  <code>target</code>,
+and then stores the provenance information as it normally would.
+Notes:
+</p>
+<ul>
+ <li>Irrespective of the Content-Type or Accept headers, the Provenance resource is in the <a href="json.html">JSON format</a></li>
+ <li>The provenance SHALL not have a specified <code>Provenance.target</code>. The server will fill the <code>target</code> in as it processes 
+     the contents of the POST/PUT and determines the ids of the resource(s) to which the interaction applies</li>
+ <li>Servers MAY ignore the header, but SHOULD process it if they support provenance</li>
+ <li>Some server frameworks impose a length limit on individual HTTP headers, or on the the headers as a whole. Servers MAY reject a request if the X-Provenance header is too long</li>
+ <li>The use of the header is not documented for other HTTP methods (GET etc)</li>
+</ul>
+
+
+<a name="signature"></a>
+<h3>Signatures</h3>
+
+<p>
 The Provenance resource includes a <i>signature</i> element (digital signature) which can be used for 
 standards based integrity verification and non-repudiation purposes. The <i>Signature</i> datatype
 provides details on use of the <i>signature</i> element. The Signature.type coded value of "Source" should be used
 when the signature is for simply proving that the resource content is the same as it was when the resource
-was updated or created.  -->
+was updated or created.
 </p>
-<h3>Ссылки на стороны-участники<!-- Party References --></h3>
 
+<a name="removal"></a>
+<h3>Provenance of Removal</h3>
 <p>
-Поскольку ресурс Provenance часто относится к субъектам, не представленным в виде FHIR-ресурсов, ссылки <i>agent</i> и <i>entity</i> могут быть либо ссылками на другие ресурсы, либо они могут ссылаться на другие сущности, которые не являются FHIR-ресурсами.
-<!-- Because the Provenance resource often refers to parties that are not represented 
-as FHIR resources, <i>agent</i> and <i>entity</i> references are allowed to be either references 
-to other resources, or they can refer to other entities that are not FHIR resources. -->
-</p>
-<p>
-В Provenance.agent элемент <i>actor</i> используется для ссылки на существующий ресурс. Для ссылки на сущность, не являющуюся FHIR-ресурсом, используется элемент <i>userId</i>. 
-<!-- For Provenance.agent, the <i>actor</i> element is used to reference an existing resource. To reference an entity that is not a FHIR resource, the <i>userId</i> element is used.  -->
-</p>
-<div class="example">
-<p>
-Версионная ссылка на FHIR-ресурс на том же сервере:
-<!-- A version specific reference to a FHIR resource on the same server: -->
-</p>
-<pre class="xml">
-  &lt;agent&gt;
-    &lt;actor&gt;
-      &lt;reference value="Patient/34/_history/3"/&gt;
-    &lt;/actor&gt;
-  &lt;/agent&gt;
-</pre>
-</div>
-<div class="example">
-<p>
-Ссылка на пользователя (человека), не представленного с помощью FHIR-ресурса:
-<!-- A reference to a user (a person) not represented by a FHIR resource: -->
-</p>
-<pre class="xml">
-  &lt;agent&gt;
-    &lt;userId&gt;
-      &lt;value value="http://acme.com/users/34"/&gt;
-    &lt;/userId&gt;  
-  &lt;/agent&gt;
-</pre>
-</div>
-
-<p>
-В Provenance.entity код в элементе <i>.type</i> используется, чтобы различать два случая: когда код в системе "http://hl7.org/fhir/resource-types", тогда это ссылка на ресурс, и элемент <i>reference</i> работает точно также, как и в случае <a href="references.html#references">ссылки на ресурс</a>. 
-<!-- For Provenance.entity, the code in the <i>.type</i> element is used to differentiate between the two cases: if the 
-code is in the system "http://hl7.org/fhir/resource-types", then the reference is to 
-a resource, and the element <i>reference</i> functions exactly the same as in 
-a <a href="references.html#references">resource reference</a>.  -->
-</p>
-<div class="example">
-<p>
-Ссылка на конкретную версию FHIR-ресурса на том же сервере:
-<!-- A version specific reference to a FHIR resource on the same server: -->
-</p>
-<pre class="xml">
-  &lt;entity&gt;
-    &lt;type&gt;
-      &lt;system value="http://hl7.org/fhir/resource-types"/&gt;
-      &lt;code value="Patient"/&gt;
-    &lt;/type&gt;
-    &lt;reference value="Patient/34/_history/3"/&gt;
-  &lt;/entity&gt;
-</pre>
-</div>
-<p>
-По сути, это тот же шаблон, что и стандартная ссылка на ресурс, только тип становится расширяемым, чтобы можно было ссылаться на другие виды ресурсов.
-<!-- In effect, this is the same pattern as a standard resource reference, 
-but the type becomes extensible to allow referencing other kinds of 
-resources.  -->
-</p>
-<div class="example">
-<p>
-Ссылка на сущность (человека), не представленного в виде FHIR-ресурса:
-<!-- A reference to a entity (a person) not represented by a FHIR resource: -->
-</p>
-<pre class="xml">
-  &lt;entity&gt;
-    &lt;type&gt;
-      &lt;system value="http://hl7.org/fhir/provenance-participant-type"/&gt;  
-      &lt;code value="person"/&gt;
-    &lt;/type&gt;  
-    &lt;reference value="http://acme.com/users/34"/&gt;
-  &lt;/entity&gt;
-</pre>
-</div>
-
-<p>
-Есть один нюанс при использовании ресурса Provenance - как различать, это ссылка на сам ресурс, или это ссылка на сущность из реального мира, которую представляет ресурс, например это человек участвовал в активности, или это запись об этом человеке. В случае агентов следует понимать, что речь идет о сущности реального мира, которую представляет ресурс. 
-<!-- One subtle issue with the use of the Provenance resource is to differentiate
-between whether the reference is to the resource itself, or whether the 
-the reference is to the real world thing that the resource represents,
-e.g. was it the person involved in the activity, or the record of the person. 
-For agents, it should be understood that the reference is to the real 
-world thing that the resource represents.  -->
-</p>
-<h3>Provenance для удаления<!-- Provenance of Removal --></h3>
-<p>
-Ресурс Provenance может создаваться для указания, кто удалил ресурс. Если поддерживается версионирование, то версия, которая была удалена, указывается в элементе Provenance.target; если версионирование не поддерживается, то Provenance.target будет содержать неверсионную ссылку. Provenance.entity не используется, если только это не оговорено в бизнес-требованиях.
-<!-- A Provenance record can be recorded to indicate who Deleted a Resource. If versioning is supported, 
+A Provenance record can be recorded to indicate who deleted a Resource. If versioning is supported, 
 the version that was deleted is referenced in Provenance.target; if versioning is not supported then 
 Provenance.target contains the non-version reference. Provenance.entity is not used unless there is 
-a business requirement to do so. -->
+a business requirement to do so.
 </p>
 <h3>Use of Provenance to record Import and Transform</h3>
 <p>
@@ -141,7 +76,7 @@ that extracts information from a HL7 v2 message and creates FHIR resources, or m
 information from an HL7 CDA document and creates FHIR resources, etc. The Provenance in these cases is 
 recording the activity of the middleware.
 </p><p>
-The middleware in this case would, in addtion to creating the target resources, create a Provenance 
+The middleware in this case would, in addition to creating the target resources, create a Provenance 
 resource that indicates all the target resources (using Provenance.target). The middleware is 
 identified as one of the Provenance.agent elements, with the Provenance.agent.role of assembler.
 </p><p>
@@ -150,7 +85,7 @@ The middleware may record the source as another Provenance.agent element.
 The original content is optionally saved. This might be as a DocumentReference, or Binary. The 
 Provenance.entity would then point at this original content.
 </p><p>
-The original source might include some form of 'provenance' to cover the history of the orignal 
+The original source might include some form of 'provenance' to cover the history of the original 
 content prior to the import transformation. This original source 'provenance' should be converted 
 into FHIR Provenance records as appropriate.
 </p>

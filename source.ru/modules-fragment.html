@@ -1,33 +1,33 @@
 <div id="diagram">
 
- <p class="level-text"><b>Уровень 1</b> Базовая структура, на которой строится спецификация</p>
+ <p class="level-text"><b>Level 1</b> Basic framework on which the specification is built</p>
  <div id="foundation" class="box box_row box_one">
   <p class="head">
    <a style="background-image: url('foundation.png');" href="foundation-module.html">
-   <span>Основы</span>
+   <span>Foundation</span>
    </a>
   </p>
   <p class="content"><span>
-   <a href="documentation.html">Базовая документация</a>, <a href="xml.html">XML</a>, <a href="json.html">JSON</a>, <a href="datatypes.html">Типы данных</a>, <a href="extensibility.html">Расширения</a></span>
+   <a href="documentation.html">Base Documentation</a>, <a href="xml.html">XML</a>, <a href="json.html">JSON</a>, <a href="datatypes.html">Data Types</a>, <a href="extensibility.html">Extensions</a></span>
   </p>
  </div>
 
-  <p class="level-text"><b>Уровень 2</b> Поддержка внедрения стандарта и привязки к внешним спецификациям</p>
+  <p class="level-text"><b>Level 2</b> Supporting implementation and binding to external specifications</p>
  <div class="box_row box_more">
   <div id="implsupport" class="box">
    <p class="head">
     <a style="background-image: url('implsupport.png');" href="implsupport-module.html">
-    <span>Поддержка реализаторов</span>
+    <span>Implementer Support</span>
    </a>
    </p>
    <p class="content">
-    <a href="downloads.html">Страница загрузок</a>,<br/><a href="versioning.html">Управление версиями</a>,<br/><a href="usecases.html">Сценарии использования</a>,<br/><a href="testing.html">Тестирование</a>
+    <a href="downloads.html">Downloads</a>,<br/><a href="versioning.html">Version Mgmt</a>,<br/><a href="usecases.html">Use Cases</a>,<br/><a href="testing.html">Testing</a>
    </p>
   </div>
   <div id="secpriv" class="box">
    <p class="head">
     <a style="background-image: url('secpriv.jpg');" href="secpriv-module.html">
-    <span>Безопасность и конфиденциальность</span>
+    <span>Security &amp;&nbsp;Privacy</span>
    </a>
    </p>
    <p class="content">
@@ -40,7 +40,7 @@
   <div id="conformance" class="box">
    <p class="head">
     <a style="background-image: url('conformance.jpg');" href="conformance-module.html">
-    <span>Обеспечение соответствия</span>
+    <span>Conformance</span>
    </a>
    </p>
    <p class="content">
@@ -50,7 +50,7 @@
   <div id="terminology" class="box">
    <p class="head">
     <a style="background-image: url('terminology.png');" href="terminology-module.html">
-    <span>Справочники</span>
+    <span>Terminology</span>
    </a>
    </p>
    <p class="content">
@@ -73,11 +73,11 @@
   </div>
  </div>
 
-  <p class="level-text"><b>Уровень 3</b> Соответствие концепциям реального мира в системе здравоохранения</p>
+  <p class="level-text"><b>Level 3</b> Linking to real world concepts in the healthcare system</p>
  <div id="administration" class="box box_row box_one">
   <p class="head">
    <a style="background-image: url('administration.jpg');" href="administration-module.html">
-   <span>Администрирование</span>
+   <span>Administration</span>
    </a>
   </p>
   <p class="content"><span>
@@ -85,70 +85,74 @@
   </p>
  </div>
 
- <p class="level-text"><b>Уровень 4</b> Ведение учета и обмен данными в здравоохранении</p>
+ <p class="level-text"><b>Level 4</b> Record-keeping and Data Exchange for the healthcare process</p>
 
  <div class="box_row box_more">
   <div id="clinical" class="box">
    <p class="head">
     <a style="background-image: url('clinical.png');" href="clinicalsummary-module.html">
-    <span>Клинический модуль</span>
+    <span>Clinical</span>
    </a>
    </p>
    <p class="content">
     <a href="allergyintolerance.html">Allergy</a>, <a href="condition.html">Problem</a>,
-    <a href="careplan.html">CarePlan</a>, <a href="detectedissue.html">DetectedIssue</a>,
+    <a href="procedure.html">Procedure</a>,
+    <a href="careplan.html">CarePlan</a>/<a href="goal.html">Goal</a>, <a href="servicerequest.html">ServiceRequest</a>,
+    <a href="familymemberhistory.html">Family History</a>,
     <a href="riskassessment.html">RiskAssessment</a>, etc.
    </p>
   </div>
   <div id="diagnostics" class="box">
    <p class="head">
     <a style="background-image: url('diagnostics.jpg');" href="diagnostics-module.html">
-    <span>Диагностика</span>
+    <span>Diagnostics</span>
    </a>
    </p>
    <p class="content">
-    <a href="observation.html">Observation</a>, <a href="diagnosticreport.html">Report</a>, <a href="specimen.html">Specimen</a>, <a href="imagingstudy.html">ImagingStudy</a>, <a href="genomics.html">Genomics</a> и др.
+    <a href="observation.html">Observation</a>, <a href="diagnosticreport.html">Report</a>, <a href="specimen.html">Specimen</a>, <a href="imagingstudy.html">ImagingStudy</a>, <a href="genomics.html">Genomics</a>, <a href="specimen.html">Specimen</a>, <a href="imagingstudy.html">ImagingStudy</a>, etc.
    </p>
   </div>
   <div id="medication" class="box">
    <p class="head">
     <a style="background-image: url('medication.png');" href="medications-module.html">
-    <span>Лекарственные средства</span>
+    <span>Medications</span>
    </a>
    </p>
    <p class="content">
-    <a href="medication.html">Medication</a>,<br/> <a href="medicationrequest.html">Request</a>,<br/> <a href="medicationdispense.html">Dispense</a>,<br/> <a href="medicationadministration.html">Administration</a>,<br/> <a href="medicationstatement.html">Statement</a>,<br/> <a href="immunization.html">Immunization</a>, etc.
+    <a href="medication.html">Medication</a>,<br/> <a href="medicationrequest.html">Request</a>, <a href="medicationdispense.html">Dispense</a>,<br/> <a href="medicationadministration.html">Administration</a>,<br/> <a href="medicationstatement.html">Statement</a>,<br/> <a href="immunization.html">Immunization</a>, etc.
    </p>
   </div>
   <div id="workflow" class="box">
    <p class="head">
     <a style="background-image: url('workflow.png');" href="workflow-module.html">
-    <span>Рабочий процесс</span>
+    <span>Workflow</span>
    </a>
    </p>
    <p class="content">
-    <a href="task.html">Task</a>, <a href="appointment.html">Appointment</a>, <a href="schedule.html">Schedule</a>, <a href="servicerequest.html">Referral</a>, <a href="plandefinition.html">PlanDefinition</a> и др.
+    <a href="workflow.html">Introduction</a> + <a href="task.html">Task</a>, <a href="appointment.html">Appointment</a>, <a href="schedule.html">Schedule</a>, <a href="servicerequest.html">Referral</a>, <a href="plandefinition.html">PlanDefinition</a>, etc
    </p>
   </div>
   <div id="financial" class="box">
    <p class="head">
     <a style="background-image: url('financial.png');" href="financial-module.html">
-    <span>Финансовый модуль</span>
+    <span>Financial</span>
    </a>
    </p>
    <p class="content">
-    <a href="claim.html">Claim</a>, <a href="account.html">Account</a>, <a href="coverage.html">Coverage</a>, <a href="coverageeligibilityrequest.html">CoverageEligibilityRequest</a>, <a href="explanationofbenefit.html">ExplanationOfBenefit</a>, etc.
+    <a href="claim.html">Claim</a>, <a href="account.html">Account</a>,<br/><a href="invoice.html">Invoice</a>, <a href="chargeitem.html">ChargeItem</a>, <br/>
+    <a href="coverage.html">Coverage</a> + Eligibility <br/><a href="coverageeligibilityrequest.html">Request</a> &amp; 
+    <a href="coverageeligibilityresponse.html">Response</a>, <a href="explanationofbenefit.html">ExplanationOfBenefit</a>, etc.
    </p>
   </div>
  </div>
 
- <p class="level-text"><b>Уровень 5</b> Обеспечение возможности делать выводы о процессе здравоохранения</p>
+ <p class="level-text"><b>Level 5</b> Providing the ability to reason about the healthcare process</p>
  <div id="reasoning" class="box box_row box_one">
   <p class="head">
    <a style="background-image: url('reasoning.png');" href="clinicalreasoning-module.html">
-    <span>Клиническое обоснование</span>
+    <span>Clinical Reasoning</span>
    </a>
   </p>
-  <p class="content"><span><a href="library.html">Library</a>, <a href="plandefinition.html">PlanDefinition</a> &amp; <a href="guidanceresponse.html">GuidanceResponse</a>, <a href="measure.html">Measure</a>/<a href="measurereport.html">MeasureReport</a> и др.</span></p>
+  <p class="content"><span><a href="library.html">Library</a>, <a href="plandefinition.html">PlanDefinition</a> &amp; <a href="guidanceresponse.html">GuidanceResponse</a>, <a href="measure.html">Measure</a>/<a href="measurereport.html">MeasureReport</a>, etc.</span></p>
  </div>
 </div>

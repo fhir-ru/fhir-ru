@@ -10,7 +10,7 @@
 
 <div class="col-12">
 
-<a name="definitional-resources"> </a>
+<a name="definitional-resources"></a>
 <h3>Definitional Resources</h3>
 <table class="cols"><tbody><tr><td id="wg">Work Group <a _target="blank" href="[%wg cds%]">[%wgt cds%]</a></td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 2</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:  <!-- !ns! --><a href="versions.html#std-process">Trial Use</a></td></tr></tbody></table>
 
@@ -43,7 +43,7 @@
 
 <p>For example, the following fragment illustrates a definition to create a referral request:</p>
 
-<a name="referral-request-activity-definition"> </a>
+<a name="referral-request-activity-definition"></a>
 <pre><code>&lt;ActivityDefinition&gt;
   &lt;description value=&quot;refer to primary care mental-health integrated care program for evaluation and treatment
    of mental health conditions now&quot;/&gt;
@@ -72,7 +72,7 @@
 
 <p>For medication activities, the <a href="activitydefinition.html">ActivityDefinition</a> resource has some basic elements such as the <code>product</code> and <code>quantity</code>, and <code>dosageInstruction</code> but there are cases where elements that need to be set on the resulting MedicationRequest are not present on the ActivityDefinition (such as <code>dispenseRequest</code>). In those cases, the <code>dynamicValue</code> expression elements can be used to describe the values for elements that are present on the target resource, but not in the definitional resource. For example:</p>
 
-<a name="medication-activity-definition"> </a>
+<a name="medication-activity-definition"></a>
 <pre><code>&lt;ActivityDefinition&gt;
   &lt;id value=&quot;citalopramPrescription&quot;/&gt;
   &lt;status value=&quot;draft&quot;/&gt;

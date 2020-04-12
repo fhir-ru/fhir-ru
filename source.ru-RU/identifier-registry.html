@@ -14,7 +14,7 @@
 <%txheader idsystems%>
 
 <h2>Известные системы идентификаторов<!-- Known Identifier Systems --></h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="versions.html#maturity">Уровень зрелости</a>: 3</td><td id="ballot"><a href="versions.html#levels">Статус голосования</a>: <a href="versions.html#std-process">Пробное использование</a></td></tr></table>
+<table class="colstu"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 3</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Trial Use</a></td></tr></table>
 
 <p>
 Следующие имена (URI) могут использоваться в качестве значения элемента <i>system</i> типа данных <a href="datatypes.html#Identifier">Identifier</a>.
@@ -38,13 +38,16 @@ here, the correct URI may be determined by working through the following list, i
 <!-- See also the <a href="terminologies-systems.html">list of known coding systems</a> that can be used in the <i>system</i> element of the <a href="datatypes.html#Coding">Coding</a> data type.
 Additional identifier systems may be registered on the HL7 FHIR registry at <a href="http://hl7.org/fhir/registry">http://hl7.org/fhir/registry</a>. -->
 </p>
-<p>
-<b>Важное примечание:</b> данный список URI является неполным и может быть изменен.  
+[%impl-note%]
+Данный список URI является неполным и может быть изменен.  
 Некоторые значения могут быть удалены, другие, вероятно, будут добавлены в ближайшие месяцы, так как HL7 учреждает формальные процессы вокруг URI в словарях.
-<!-- <b>Important Note:</b> This list of URIs is incomplete and subject to change.
+<!--
+This list of URIs is incomplete and subject to change.
 Some values may be dropped and others will likely be added in the coming months as HL7
-institutes formal processes around URIs in vocabulary. -->
-</p>
+institutes formal processes around URIs in vocabulary.
+-->
+[%end-note%]
+
 
 <p>
 В колонке URI указано корректное значение доля использования в элементе <a href="datatypes.html#Identifier">Identifier</a>.<code>system</code>. OID приводится в целях совместимости с системами на основе <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a>/<a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a>.
@@ -68,8 +71,8 @@ Note that any URL in <code>http://example.org</code> is reserved for testing and
  </tr>
 
  <tr style="border-bottom: 0px">
-  <td>URI (<a href="http://www.w3.org">W3C</a>): когда идентификатором является URI</td>
-   <td>urn:ietf:rfc:3986 <a name="rn:ietf:rfc:3986"> </a></td>
+   <td>URIs (<a href="http://www.w3.org">W3C</a>): когда идентификатором является URI</td>
+   <td>urn:ietf:rfc:3986 <a name="rn:ietf:rfc:3986"></a></td>
    <td>2.16.840.1.113883.4.873</td>
    <td></td>
    <td>В соответствии с <a href="http://www.ietf.org/rfc/rfc3986.txt">RFC 3986</a> (с несколькими схемами, определёнными в нескольких RFCs). 

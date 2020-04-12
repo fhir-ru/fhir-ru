@@ -1032,7 +1032,7 @@
     <Cell ss:StyleID="s65"><Data ss:Type="String">This spreadsheet is used to support the definition of resources or data types (structures).  A complete set of instructions on the various tabs, columns and rules associated with populating this spreadsheet can be found here:</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:HRef="http://wiki.hl7.org/?title=FHIR_Spreadsheet_Authoring" ss:StyleID="s67"><Data ss:Type="String">http://wiki.hl7.org?title=FHIR_Spreadsheet_Authoring</Data></Cell>
+    <Cell ss:HRef="https://confluence.hl7.org/display/FHIR/FHIR+Spreadsheet+Authoring" ss:StyleID="s67"><Data ss:Type="String">https://confluence.hl7.org/display/FHIR/FHIR+Spreadsheet+Authoring</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">fmm</Data></Cell>
@@ -1090,7 +1090,7 @@
     <Cell ss:StyleID="s73"><Data ss:Type="String">Aliases</Data><Comment ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Color="#000000" html:Face="Tahoma" html:Size="8" x:Family="Swiss">Other names - semi-colon separated</Font>       </ss:Data></Comment><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">Card.</Data><Comment ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Color="#000000" html:Face="Tahoma" html:Size="8" x:Family="Swiss">Min and max repetitions n..m</Font>       </ss:Data></Comment><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">Inv.</Data><Comment ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Color="#000000" html:Face="Tahoma" html:Size="8" x:Family="Swiss">Comma-delimited list of Ids from Invariant tab that controls appearance of this element</Font>       </ss:Data></Comment><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="String">Type</Data><Comment ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Color="#000000" html:Face="Tahoma" html:Size="8" x:Family="Swiss">Data type, resource reference, profiles, aggregations, class names, type references, etc. - see the wiki</Font>       </ss:Data></Comment><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">Type</Data><Comment ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Color="#000000" html:Face="Tahoma" html:Size="8" x:Family="Swiss">Data type, resource reference, profiles, aggregations, class names, type references, etc. - see Confluence</Font>       </ss:Data></Comment><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">Is Modifier</Data><Comment ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Color="#000000" html:Face="Tahoma" html:Size="8" x:Family="Swiss">If Y, indicates this element modifies the meaning of sibling or descendant elements.  Defaults to N</Font>       </ss:Data></Comment><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">Summary</Data><Comment ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Color="#000000" html:Face="Tahoma" html:Size="8" x:Family="Swiss">If Y, element is included in the summary view (query with _summary=true).  Default is N</Font>       </ss:Data></Comment><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">Binding</Data><Comment ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Color="#000000" html:Face="Tahoma" html:Size="8" x:Family="Swiss">Binding for coded data - either from local Bindings tab or declared elsewhere</Font>       </ss:Data></Comment><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1109,8 +1109,8 @@
     <Cell ss:StyleID="s74"><Data ss:Type="String">CDAnet v4 Mapping</Data><Comment ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Color="#000000" html:Face="Tahoma" html:Size="8" x:Family="Swiss">Change column name to one from mappingSpaces.xml.  Add more if needed</Font>       </ss:Data></Comment><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">CPhA3 (Pharmacy) Mapping</Data><Comment ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Color="#000000" html:Face="Tahoma" html:Size="8" x:Family="Swiss">Change column name to one from mappingSpaces.xml.  Add more if needed</Font>       </ss:Data></Comment><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">w5</Data><Comment ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Color="#000000" html:Face="Tahoma" html:Size="8" x:Family="Swiss">Change column name to one from mappingSpaces.xml.  Add more if needed</Font>       </ss:Data></Comment><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">UML</Data><Comment ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Color="#000000" html:Face="Tahoma" html:Size="8" x:Family="Swiss">Guidance for class location in UML diagram.  Only specify on root. See wiki for guidance</Font>       </ss:Data></Comment><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">Display Hint</Data><Comment ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Color="#000000" html:Face="Tahoma" html:Size="8" x:Family="Swiss">Provides guidance to narrative auto-generator.  Check Wiki documentation</Font>       </ss:Data></Comment><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">UML</Data><Comment ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Color="#000000" html:Face="Tahoma" html:Size="8" x:Family="Swiss">Guidance for class location in UML diagram.  Only specify on root. See Confluence for guidance</Font>       </ss:Data></Comment><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Display Hint</Data><Comment ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Color="#000000" html:Face="Tahoma" html:Size="8" x:Family="Swiss">Provides guidance to narrative auto-generator.  Check Confluence documentation</Font>       </ss:Data></Comment><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s75"><Data ss:Type="String">Committee Notes</Data><Comment ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Color="#000000" html:Face="Tahoma" html:Size="8" x:Family="Swiss">Not published</Font>       </ss:Data></Comment><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
@@ -1127,7 +1127,7 @@
     <Cell ss:StyleID="s77"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s77"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s77"><Data ss:Type="String">Insurance or medical plan or a payment agreement</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Финансовый инструмент, который может быть использован для оплаты или компенсации за продукты и услуги в области здравоохранения.<!-- Financial instrument which may be used to reimburse or pay for health care products and services. --> Includes both insurance and self-payment.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Financial instrument which may be used to reimburse or pay for health care products and services. Includes both insurance and self-payment.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><Data ss:Type="String">Coverage provides a link between covered parties (patients) and the payors of their healthcare costs (both insurance and self-pay).</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">The Coverage resource contains the insurance card level information, which is customary to provide on claims and other communications between providers and insurers.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1213,7 +1213,7 @@
     <Cell ss:StyleID="s84"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><Data ss:Type="String">Coverage category such as medical or accident</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s84"><Data ss:Type="String">The type of coverage: social program, medical plan, accident coverage (workers compensation, auto), group health or payment by an individual or organization. </Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">От типа страхового покрытия зависит порядок применения страховых покрытий.<!-- The order of application of coverages is dependent on the types of coverage. --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The order of application of coverages is dependent on the types of coverage.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s84"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1319,7 +1319,7 @@
     <Cell ss:StyleID="s84"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s84"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s84"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Выгодоприобретатель плана<!-- Plan beneficiary --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Plan beneficiary</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><Data ss:Type="String">The party who benefits from the insurance coverage; the patient when products and/or services are provided.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">This is the party who receives treatment for which the costs are reimbursed under the coverage.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s84"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1347,8 +1347,8 @@
     <Cell ss:StyleID="s84"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s84"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s84"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">Номер материально зависимого лица<!-- Dependent number --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">Уникальный идентификатор материально зависимого лица страхового покрытия.<!-- A unique identifier for a dependent under the coverage. --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="String">Dependent number</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="String">A unique identifier for a dependent under the coverage.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">For some coverages a single identifier is issued to the Subscriber and then a unique dependent number is issued to each beneficiary.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><Data ss:Type="String">Periodically the member number is constructed from the subscriberId and the dependant number.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1404,8 +1404,8 @@
     <Cell ss:StyleID="s84"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s84"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s84"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">Дата начала и окончания действия страхового покрытия<!-- Coverage start and end dates --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">Период действия страхового покрытия. Отсутствие даты начала означает, что дата начала действия не известна, отсутствие даты окончания значит, что страховое покрытие продолжает оставаться в силе.<!-- Time period during which the coverage is in force. A missing start date indicates the start date isn't known, a missing end date means the coverage is continuing to be in force. --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="String">Coverage start and end dates</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="String">Time period during which the coverage is in force. A missing start date indicates the start date isn't known, a missing end date means the coverage is continuing to be in force.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Some insurers require the submission of the coverage term.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s84"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1435,7 +1435,7 @@
     <Cell ss:StyleID="s85"><Data ss:Type="String">Issuer of the policy</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><Data ss:Type="String">The program or plan underwriter or payor including both insurance and non-insurance agreements, such as patient-pay agreements. </Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Need to identify the issuer to target for claim processing and for coordination of benefit processing.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s86"><Data ss:Type="String">May provide multiple identifiers such as insurance company identifier or business identifier (Бизнес-идентификационный номер<!-- BIN number -->).&#10;For selfpay it may provide multiple paying persons and/or organizations.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">May provide multiple identifiers such as insurance company identifier or business identifier (BIN number).&#10;For selfpay it may provide multiple paying persons and/or organizations.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1600,7 +1600,7 @@
     <Cell ss:StyleID="s84"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s84"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s84"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">Сеть страховых компаний<!-- Insurer network --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="String">Insurer network</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">The insurer-specific identifier for the insurer-defined network of providers to which the beneficiary may seek treatment which will be covered at the 'in-network' rate, otherwise 'out of network' terms and conditions apply</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Used in referral for treatment and in claims processing.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s84"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1796,8 +1796,8 @@
     <Cell ss:StyleID="s84"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s84"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s84"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">Детали контракта<!-- Contract details --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">Страховой полис(-ы), который подтверждает это страховое покрытие.<!-- The policy(s) which constitute this insurance coverage. --></Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="String">Contract details</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="String">The policy(s) which constitute this insurance coverage.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">To reference the legally binding contract between the policy holder and the insurer.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s84"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4209,7 +4209,7 @@
     <Cell ss:StyleID="s114"><Data ss:Type="String">Context</Data><Comment ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Color="#000000" html:Face="Tahoma" html:Size="8" x:Family="Swiss">Element path at which check should occur; e.g. ResourceName.element1.element2</Font>       </ss:Data></Comment><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">English</Data><Comment ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Color="#000000" html:Face="Tahoma" html:Size="8" x:Family="Swiss">English description of constraint</Font>       </ss:Data></Comment><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">Expression</Data><Comment ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Color="#000000" html:Face="Tahoma" html:Size="8" x:Family="Swiss">Optional - OCL expression of the rule</Font>       </ss:Data></Comment><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">XPath</Data><Comment ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Color="#000000" html:Face="Tahoma" html:Size="8" x:Family="Swiss">XPath 2 expression.  See wiki or make Lloyd do it :&gt;</Font>       </ss:Data></Comment><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">XPath</Data><Comment ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Color="#000000" html:Face="Tahoma" html:Size="8" x:Family="Swiss">XPath 2 expression.  See Confluence or make Lloyd do it :&gt;</Font>       </ss:Data></Comment><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s116"><Data ss:Type="String">!1</Data><NamedCell ss:Name="_FilterDatabase"/><NamedCell ss:Name="Invariantids"/></Cell>
@@ -4725,49 +4725,49 @@
     <Cell ss:StyleID="s125"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s125"/>
     <Cell ss:StyleID="s126"><Data ss:Type="String">Coverage.issuerIdentifier</Data></Cell>
-    <Cell ss:StyleID="s127"><Data ss:Type="String">Личность страхователя<!-- The identity of the insurer --></Data></Cell>
+    <Cell ss:StyleID="s127"><Data ss:Type="String">The identity of the insurer</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s124"><Data ss:Type="String">!issuer-reference</Data></Cell>
     <Cell ss:StyleID="s125"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s125"/>
     <Cell ss:StyleID="s126"><Data ss:Type="String">Coverage.issuerReference</Data></Cell>
-    <Cell ss:StyleID="s127"><Data ss:Type="String">Личность страхователя<!-- The identity of the insurer --></Data></Cell>
+    <Cell ss:StyleID="s127"><Data ss:Type="String">The identity of the insurer</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s128"><Data ss:Type="String">identifier</Data></Cell>
     <Cell ss:StyleID="s129"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s129"/>
     <Cell ss:StyleID="s130"><Data ss:Type="String">Coverage.identifier</Data></Cell>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">Основной идентификатор застрахованного и страхового покрытия<!-- The primary identifier of the insured and the coverage --></Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">The primary identifier of the insured and the coverage</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s128"><Data ss:Type="String">type</Data></Cell>
     <Cell ss:StyleID="s129"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s129"/>
     <Cell ss:StyleID="s130"><Data ss:Type="String">Coverage.type</Data></Cell>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">Тип страхового покрытия (план медицинского обслуживания, автомобильное страхование, выплата компенсации работникам)<!-- The kind of coverage (health plan, auto, Workers Compensation) --></Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">The kind of coverage (health plan, auto, Workers Compensation)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s128"><Data ss:Type="String">!plan</Data></Cell>
     <Cell ss:StyleID="s129"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s129"/>
     <Cell ss:StyleID="s130"><Data ss:Type="String">Coverage.grouping.plan</Data></Cell>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">Идентификатор плана или полиса<!-- A plan or policy identifier --></Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">A plan or policy identifier</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s128"><Data ss:Type="String">!subplan</Data></Cell>
     <Cell ss:StyleID="s129"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s129"/>
     <Cell ss:StyleID="s130"><Data ss:Type="String">Coverage.grouping.subPlan</Data></Cell>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">Идентификатор субплана<!-- Sub-plan identifier --></Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Sub-plan identifier</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s128"><Data ss:Type="String">!group</Data></Cell>
     <Cell ss:StyleID="s129"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s129"/>
     <Cell ss:StyleID="s130"><Data ss:Type="String">Coverage.grouping.group</Data></Cell>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">Идентификатор группы<!-- Group identifier --></Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Group identifier</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s128"><Data ss:Type="String">!subgroup</Data></Cell>
@@ -4795,35 +4795,35 @@
     <Cell ss:StyleID="s129"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s129"/>
     <Cell ss:StyleID="s130"><Data ss:Type="String">Coverage.dependent</Data></Cell>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">Номер материально зависимого лица<!-- Dependent number --></Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Dependent number</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s128"><Data ss:Type="String">!sequence</Data></Cell>
     <Cell ss:StyleID="s129"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s129"/>
     <Cell ss:StyleID="s130"><Data ss:Type="String">Coverage.sequence</Data></Cell>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">Порядковый номер<!-- Sequence number --></Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Sequence number</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s128"><Data ss:Type="String">!subject</Data></Cell>
     <Cell ss:StyleID="s129"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s129"/>
     <Cell ss:StyleID="s130"><Data ss:Type="String">Coverage.subject</Data></Cell>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">Страхуемая сторона<!-- Covered party --></Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Covered party</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s128"><Data ss:Type="String">subscriber</Data></Cell>
     <Cell ss:StyleID="s129"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s129"/>
     <Cell ss:StyleID="s130"><Data ss:Type="String">Coverage.subscriber</Data></Cell>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">Ссылка на подписчика<!-- Reference to the subscriber --></Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Reference to the subscriber</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:StyleID="s132">
     <Cell ss:StyleID="s128"><Data ss:Type="String">beneficiary</Data></Cell>
     <Cell ss:StyleID="s129"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s129"/>
     <Cell ss:StyleID="s130"><Data ss:Type="String">Coverage.beneficiary</Data></Cell>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">Страхуемая сторона<!-- Covered party --></Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Covered party</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:StyleID="s132">
     <Cell ss:StyleID="s128"><Data ss:Type="String">patient</Data></Cell>
@@ -4837,14 +4837,14 @@
     <Cell ss:StyleID="s129"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s129"/>
     <Cell ss:StyleID="s130"><Data ss:Type="String">Coverage.beneficiaryIdentifier</Data></Cell>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">Страхуемая сторона<!-- Covered party --></Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Covered party</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:StyleID="s132">
     <Cell ss:StyleID="s128"><Data ss:Type="String">!beneficiary-reference</Data></Cell>
     <Cell ss:StyleID="s129"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s129"/>
     <Cell ss:StyleID="s130"><Data ss:Type="String">Coverage.beneficiaryReference</Data></Cell>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">Страхуемая сторона<!-- Covered party --></Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Covered party</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s128"><Data ss:Type="String">policy-holder</Data></Cell>
@@ -4858,14 +4858,14 @@
     <Cell ss:StyleID="s129"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s129"/>
     <Cell ss:StyleID="s130"><Data ss:Type="String">Coverage.planholderIdentifier</Data></Cell>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">Ссылка на держателя плана<!-- Reference to the planholder --></Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Reference to the planholder</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s128"><Data ss:Type="String">!planholder-reference</Data></Cell>
     <Cell ss:StyleID="s129"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s129"/>
     <Cell ss:StyleID="s130"><Data ss:Type="String">Coverage.planholderReference</Data></Cell>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">Ссылка на держателя плана<!-- Reference to the planholder --></Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Reference to the planholder</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s128"><Data ss:Type="String">status</Data></Cell>
@@ -5022,7 +5022,7 @@
    <Column ss:AutoFitWidth="0" ss:StyleID="s123" ss:Width="74.0"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s113"><Data ss:Type="String">Event Code</Data><Comment ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Color="#000000" html:Face="Tahoma" html:Size="8" x:Family="Swiss">Unique code for the event; e.g. patient-link  </Font>       </ss:Data></Comment><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s114"><Data ss:Type="String">Category</Data><Comment ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Color="#000000" html:Face="Tahoma" html:Size="8" x:Family="Swiss">Impact of message and time-sensitiveness for processing (see wiki/spec)</Font>       </ss:Data></Comment><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s114"><Data ss:Type="String">Category</Data><Comment ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Color="#000000" html:Face="Tahoma" html:Size="8" x:Family="Swiss">Impact of message and time-sensitiveness for processing (see Confluence/spec)</Font>       </ss:Data></Comment><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">Description</Data><Comment ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Color="#000000" html:Face="Tahoma" html:Size="8" x:Family="Swiss">What triggers the event and what behavior it drives</Font>       </ss:Data></Comment><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">Notes</Data><Comment ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Color="#000000" html:Face="Tahoma" html:Size="8" x:Family="Swiss">Additional implementer guidance</Font>       </ss:Data></Comment><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">Request Resources</Data><Comment ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Color="#000000" html:Face="Tahoma" html:Size="8" x:Family="Swiss">Comma-separated list of focal resources for request</Font>       </ss:Data></Comment><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6654,7 +6654,7 @@
     <Cell ss:StyleID="s129"/>
     <Cell ss:StyleID="s129"/>
     <Cell ss:StyleID="s129"/>
-    <Cell ss:StyleID="s129"><Data ss:Type="String">Стороны, покрываемые страховкой<!-- Covered parties --></Data></Cell>
+    <Cell ss:StyleID="s129"><Data ss:Type="String">Covered parties</Data></Cell>
     <Cell ss:StyleID="s156"><Data ss:Type="String">Persons for whom this coverage provides health insurance.</Data></Cell>
     <Cell ss:StyleID="s164"/>
     <Cell ss:StyleID="s156"/>
@@ -6686,7 +6686,7 @@
     <Cell ss:StyleID="s170"/>
     <Cell ss:StyleID="s170"><Data ss:Type="String">Plan or agreement issuer identifier</Data></Cell>
     <Cell ss:StyleID="s171"><Data ss:Type="String">The program or plan underwriter or payor including both insurance and non-insurance agreements, such as patient-pay agreements.</Data></Cell>
-    <Cell ss:StyleID="s172"><Data ss:Type="String">Необходимо идентифицировать страховую компанию для адресации обработки и для координирования выплат.<!-- Need to identify the issuer to target for processing and for coordination of benefit processing. --></Data></Cell>
+    <Cell ss:StyleID="s172"><Data ss:Type="String">Need to identify the issuer to target for processing and for coordination of benefit processing.</Data></Cell>
     <Cell ss:StyleID="s171"/>
     <Cell ss:StyleID="s172"/>
     <Cell ss:StyleID="s173"/>
@@ -6713,7 +6713,7 @@
     <Cell ss:StyleID="s170"/>
     <Cell ss:StyleID="s170"><Data ss:Type="String">Plan or agreement issuer</Data></Cell>
     <Cell ss:StyleID="s171"><Data ss:Type="String">The program or plan underwriter or payor including both insurance and non-insurance agreements, such as patient-pay agreements.</Data></Cell>
-    <Cell ss:StyleID="s172"><Data ss:Type="String">Необходимо идентифицировать страховую компанию для адресации обработки и для координирования выплат.<!-- Need to identify the issuer to target for processing and for coordination of benefit processing. --></Data></Cell>
+    <Cell ss:StyleID="s172"><Data ss:Type="String">Need to identify the issuer to target for processing and for coordination of benefit processing.</Data></Cell>
     <Cell ss:StyleID="s171"/>
     <Cell ss:StyleID="s172"/>
     <Cell ss:StyleID="s173"/>
@@ -6739,7 +6739,7 @@
     <Cell ss:StyleID="s170"/>
     <Cell ss:StyleID="s170"/>
     <Cell ss:StyleID="s170"><Data ss:Type="String">Plan holder identifier</Data></Cell>
-    <Cell ss:StyleID="s171"><Data ss:Type="String">Сторона, которая 'владеет' договорными отношениями по страхованию или в пользу которой выплачивается страховка<!-- The party who 'owns' the insurance contractual relationship to the policy or to whom the benefit of the policy is due. --></Data></Cell>
+    <Cell ss:StyleID="s171"><Data ss:Type="String">The party who 'owns' the insurance contractual relationship to the policy or to whom the benefit of the policy is due.</Data></Cell>
     <Cell ss:StyleID="s172"/>
     <Cell ss:StyleID="s171"/>
     <Cell ss:StyleID="s172"><Data ss:Type="String">D01 through D09</Data></Cell>
@@ -6765,8 +6765,8 @@
     <Cell ss:StyleID="s170"/>
     <Cell ss:StyleID="s170"/>
     <Cell ss:StyleID="s170"/>
-    <Cell ss:StyleID="s170"><Data ss:Type="String">Держатель плана<!-- Plan holder --></Data></Cell>
-    <Cell ss:StyleID="s171"><Data ss:Type="String">Сторона, которая 'владеет' договорными отношениями по страхованию или в пользу которой выплачивается страховка<!-- The party who 'owns' the insurance contractual relationship to the policy or to whom the benefit of the policy is due. --></Data></Cell>
+    <Cell ss:StyleID="s170"><Data ss:Type="String">Plan holder</Data></Cell>
+    <Cell ss:StyleID="s171"><Data ss:Type="String">The party who 'owns' the insurance contractual relationship to the policy or to whom the benefit of the policy is due.</Data></Cell>
     <Cell ss:StyleID="s172"/>
     <Cell ss:StyleID="s171"/>
     <Cell ss:StyleID="s172"><Data ss:Type="String">D01 through D09</Data></Cell>
@@ -6792,8 +6792,8 @@
     <Cell ss:StyleID="s129"/>
     <Cell ss:StyleID="s129"/>
     <Cell ss:StyleID="s129"/>
-    <Cell ss:StyleID="s129"><Data ss:Type="String">Идентификатор подписчика<!-- Subscriber ID --></Data></Cell>
-    <Cell ss:StyleID="s156"><Data ss:Type="String">Идентификатор подписчика.<!-- The id issued to the subscriber. --></Data></Cell>
+    <Cell ss:StyleID="s129"><Data ss:Type="String">Subscriber ID</Data></Cell>
+    <Cell ss:StyleID="s156"><Data ss:Type="String">The id issued to the subscriber.</Data></Cell>
     <Cell ss:StyleID="s164"/>
     <Cell ss:StyleID="s156"/>
     <Cell ss:StyleID="s164"/>
@@ -6820,7 +6820,7 @@
     <Cell ss:StyleID="s170"/>
     <Cell ss:StyleID="s170"/>
     <Cell ss:StyleID="s170"><Data ss:Type="String">Plan Beneficiary Identifier</Data></Cell>
-    <Cell ss:StyleID="s171"><Data ss:Type="String">Сторона, которая извлекает выгоду из страхового покрытия.<!-- The party who benefits from the insurance coverage. --></Data></Cell>
+    <Cell ss:StyleID="s171"><Data ss:Type="String">The party who benefits from the insurance coverage.</Data></Cell>
     <Cell ss:StyleID="s172"/>
     <Cell ss:StyleID="s171"/>
     <Cell ss:StyleID="s172"><Data ss:Type="String">D01 through D09</Data></Cell>
@@ -6847,7 +6847,7 @@
     <Cell ss:StyleID="s170"/>
     <Cell ss:StyleID="s170"/>
     <Cell ss:StyleID="s170"><Data ss:Type="String">Plan Beneficiary</Data></Cell>
-    <Cell ss:StyleID="s171"><Data ss:Type="String">Сторона, которая извлекает выгоду из страхового покрытия.<!-- The party who benefits from the insurance coverage. --></Data></Cell>
+    <Cell ss:StyleID="s171"><Data ss:Type="String">The party who benefits from the insurance coverage.</Data></Cell>
     <Cell ss:StyleID="s172"/>
     <Cell ss:StyleID="s171"/>
     <Cell ss:StyleID="s172"><Data ss:Type="String">D01 through D09</Data></Cell>
@@ -6873,9 +6873,9 @@
     <Cell ss:StyleID="s180"/>
     <Cell ss:StyleID="s180"/>
     <Cell ss:StyleID="s180"/>
-    <Cell ss:StyleID="s180"><Data ss:Type="String">Отношение между пациентом и держателем плана<!-- Patient relationship to planholder --></Data></Cell>
-    <Cell ss:StyleID="s181"><Data ss:Type="String">Отношение между пациентом и держателем/подписчиком плана<!-- The relationship of the patient to the planholdersubscriber) --></Data></Cell>
-    <Cell ss:StyleID="s182"><Data ss:Type="String">Для определения взаимосвязи между пациентом и подписчиком<!-- To determine relationship between the patient and the subscriber --></Data></Cell>
+    <Cell ss:StyleID="s180"><Data ss:Type="String">Patient relationship to planholder</Data></Cell>
+    <Cell ss:StyleID="s181"><Data ss:Type="String">The relationship of the patient to the planholdersubscriber)</Data></Cell>
+    <Cell ss:StyleID="s182"><Data ss:Type="String">To determine relationship between the patient and the subscriber</Data></Cell>
     <Cell ss:StyleID="s181"/>
     <Cell ss:StyleID="s182"/>
     <Cell ss:StyleID="s183"/>
@@ -6900,9 +6900,9 @@
     <Cell ss:StyleID="s186"/>
     <Cell ss:StyleID="s186"/>
     <Cell ss:StyleID="s186"/>
-    <Cell ss:StyleID="s186"><Data ss:Type="String">Исключения приемлемости<!-- Eligibility exceptions --></Data></Cell>
-    <Cell ss:StyleID="s187"><Data ss:Type="String">Факторы, которые могут повлиять на применимость покрытия.<!-- Factors which may influence the applicability of coverage. --></Data></Cell>
-    <Cell ss:StyleID="s188"><Data ss:Type="String">Для определения смягчающих обстоятельств для покрытия<!-- To determine extenuating circumstances for coverage  --></Data></Cell>
+    <Cell ss:StyleID="s186"><Data ss:Type="String">Eligibility exceptions</Data></Cell>
+    <Cell ss:StyleID="s187"><Data ss:Type="String">Factors which may influence the applicability of coverage.</Data></Cell>
+    <Cell ss:StyleID="s188"><Data ss:Type="String">To determine extenuating circumstances for coverage </Data></Cell>
     <Cell ss:StyleID="s187"/>
     <Cell ss:StyleID="s188"/>
     <Cell ss:StyleID="s189"/>
@@ -6927,8 +6927,8 @@
     <Cell ss:StyleID="s186"/>
     <Cell ss:StyleID="s186"/>
     <Cell ss:StyleID="s186"/>
-    <Cell ss:StyleID="s186"><Data ss:Type="String">Название школы<!-- Name of School --></Data></Cell>
-    <Cell ss:StyleID="s187"><Data ss:Type="String">Название школы для иждивенцев соответствующего возраста.<!-- Name of school for over-aged dependants. --></Data></Cell>
+    <Cell ss:StyleID="s186"><Data ss:Type="String">Name of School</Data></Cell>
+    <Cell ss:StyleID="s187"><Data ss:Type="String">Name of school for over-aged dependants.</Data></Cell>
     <Cell ss:StyleID="s188"><Data ss:Type="String"> Often required for over-age dependents</Data></Cell>
     <Cell ss:StyleID="s187"/>
     <Cell ss:StyleID="s188"/>
@@ -6989,7 +6989,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s192"><Data ss:Type="String">!CoverageType</Data></Cell>
-    <Cell ss:StyleID="s125"><Data ss:Type="String">Тип страховки: здравоохранение, компенсация работника; личное страхование от несчастных случаев, автострахование, частное страхование здоровья и т. п.)<!-- The type of insurance: public health, worker compensation; private accident, auto, private health, etc.) --></Data></Cell>
+    <Cell ss:StyleID="s125"><Data ss:Type="String">The type of insurance: public health, worker compensation; private accident, auto, private health, etc.).</Data></Cell>
     <Cell ss:StyleID="s126"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s126"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">http://terminology.hl7.org/ValueSet/v3-ActCoverageTypeCode</Data></Cell>
@@ -7019,7 +7019,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s194"><Data ss:Type="String" x:Ticked="1">!Exception</Data></Cell>
-    <Cell ss:StyleID="s129"><Data ss:Type="String">Коды исключений приемлемости.<!-- The eligibility exception codes. --></Data></Cell>
+    <Cell ss:StyleID="s129"><Data ss:Type="String">The eligibility exception codes.</Data></Cell>
     <Cell ss:StyleID="s130"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s130"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s130"><Data ss:Type="String">valueset-coverage-exception</Data></Cell>
@@ -7516,8 +7516,8 @@
     <Cell ss:StyleID="s114"><Data ss:Type="String">Parent</Data><Comment ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Color="#000000" html:Face="Tahoma" html:Size="8" x:Family="Swiss">The code this code is a specialization of (if any).  Content should be "#" + the Id of the parent code</Font>       </ss:Data></Comment><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">Display</Data><Comment ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Color="#000000" html:Face="Tahoma" html:Size="8" x:Family="Swiss">Display value for code.  Omit if the code *is* the display value (as for internal codes)</Font>       </ss:Data></Comment><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">Definition</Data><Comment ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Color="#000000" html:Face="Tahoma" html:Size="8" x:Family="Swiss">Meaning of the code.  Include unless meaning obvious to all users.  Required if display not</Font>       </ss:Data></Comment><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s114"><Data ss:Type="String">v2</Data><Comment ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Color="#000000" html:Face="Tahoma" html:Size="8" x:Family="Swiss">Mappings to v2 codes - See wiki for syntax</Font>       </ss:Data></Comment><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s114"><Data ss:Type="String">v3</Data><Comment ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Color="#000000" html:Face="Tahoma" html:Size="8" x:Family="Swiss">Mappings to v3 codes - See wiki for syntax</Font>       </ss:Data></Comment><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s114"><Data ss:Type="String">v2</Data><Comment ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Color="#000000" html:Face="Tahoma" html:Size="8" x:Family="Swiss">Mappings to v2 codes - See Confluence for syntax</Font>       </ss:Data></Comment><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s114"><Data ss:Type="String">v3</Data><Comment ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Color="#000000" html:Face="Tahoma" html:Size="8" x:Family="Swiss">Mappings to v3 codes - See Confluence for syntax</Font>       </ss:Data></Comment><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">Committee Notes</Data><Comment ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Color="#000000" html:Face="Tahoma" html:Size="8" x:Family="Swiss">Additional notes about the code.  Not published</Font>       </ss:Data></Comment><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -8087,8 +8087,8 @@
     <Cell ss:StyleID="s114"><Data ss:Type="String">Parent</Data><Comment ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Color="#000000" html:Face="Tahoma" html:Size="8" x:Family="Swiss">The code this code is a specialization of (if any).  Content should be "#" + the Id of the parent code</Font>       </ss:Data></Comment><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">Display</Data><Comment ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Color="#000000" html:Face="Tahoma" html:Size="8" x:Family="Swiss">Display value for code.  Omit if the code *is* the display value (as for internal codes)</Font>       </ss:Data></Comment><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">Definition</Data><Comment ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Color="#000000" html:Face="Tahoma" html:Size="8" x:Family="Swiss">Meaning of the code.  Include unless meaning obvious to all users.  Required if display not</Font>       </ss:Data></Comment><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s114"><Data ss:Type="String">v2</Data><Comment ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Color="#000000" html:Face="Tahoma" html:Size="8" x:Family="Swiss">Mappings to v2 codes - See wiki for syntax</Font>       </ss:Data></Comment><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s114"><Data ss:Type="String">v3</Data><Comment ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Color="#000000" html:Face="Tahoma" html:Size="8" x:Family="Swiss">Mappings to v3 codes - See wiki for syntax</Font>       </ss:Data></Comment><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s114"><Data ss:Type="String">v2</Data><Comment ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Color="#000000" html:Face="Tahoma" html:Size="8" x:Family="Swiss">Mappings to v2 codes - See Confluence for syntax</Font>       </ss:Data></Comment><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s114"><Data ss:Type="String">v3</Data><Comment ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Color="#000000" html:Face="Tahoma" html:Size="8" x:Family="Swiss">Mappings to v3 codes - See Confluence for syntax</Font>       </ss:Data></Comment><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">Committee Notes</Data><Comment ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Color="#000000" html:Face="Tahoma" html:Size="8" x:Family="Swiss">Additional notes about the code.  Not published</Font>       </ss:Data></Comment><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">

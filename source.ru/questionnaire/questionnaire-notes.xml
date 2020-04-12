@@ -19,7 +19,7 @@ Observations to model Questionnaires. Such use cases should now use the Question
 <li>In cases where it is necessary or appropriate to capture the reason why a response is missing (that is, why a particular question was not answered), there should be an explicit child item defined for the relevant question(s) in the Questionnaire; e.g. add a child question of "Reason not specified:" with an enableWhen operator "not exists" to the parent question.</li>
 </ul>
 
-<a name="sdc"></a>
+<a name="sdc"> </a>
 <h3>Structured Data Capture</h3>
 <p>
 The base questionnaire resource is aimed at the capabilities of "most" healthcare systems that deal with forms and questionnaires.  While the resource structure
@@ -35,7 +35,7 @@ of the healthcare space.  Many of these more sophisticated requirements are addr
   <li>Support for completing 'adaptive' questionnaires (see below)</li>
 </ul>
 
-<a name="adaptive"></a>
+<a name="adaptive"> </a>
 <h3>Adaptive Questionnaires</h3>
 <p>
 Some questionnaires might not provide a full listing of questions, instead relying on a service to interactively sending partially completed forms to a server which generates the next set of questions.  
@@ -69,7 +69,7 @@ can be used to identify the Questionnaire as the data source for the other resou
 <code>Observation.valueQuantity</code> can be created.
 </p>
 
-<a name="structure"></a>
+<a name="structure"> </a>
 <h3>Structure of the Questionnaire</h3>
 <p>
 A Questionnaire is built out of two components, Questionnaire and item:</p>
@@ -102,7 +102,7 @@ Detailed instructions should be conveyed by a nested "display" item.  It's not n
 display items and questions or groups, with the expectation that users will see the display text before encountering the following questions. 
 </p>
 
-<a name="identifiers"></a>
+<a name="identifiers"> </a>
 <h3>Identifiers within Questionnaire</h3>
 <p>There are three different "identifying" elements within Questionnaire: <code>identifier</code>, <code>id</code> and <code>linkId</code>.  Each serves very distinct
 purposes:</p>
@@ -114,7 +114,7 @@ purposes:</p>
   definition inside a Questionnaire.  This is the <i>only</i> way to link between the groups and questions in a Questionnaire and QuestionnaireResponse.  These are also not displayed to end users</li>
 </ul>
 
-<a name="definition"></a>
+<a name="definition"> </a>
 <h3>Question Definitions</h3>
 <p>
 Questionnaires can be crafted using any questions the author can conceive and can be phrased in whatever manner is appropriate or convenient.  However, standardization of
@@ -148,6 +148,9 @@ of a fragment identifier, the first/root element definition in the target is the
 The definitions may also be used to automatically pre-populate answers, or extract data from a corresponding pre-existing <a href="questionnaireresponse.html">QuestionnaireResponse</a> resource.
 </p>
 <p>
+Note that LOINC codes <a href="loinc.html#dataelements">implicitly</a> define logical models whose elements can be considered question definitions.
+</p>
+<p>
 NOTE: Even if a standard question definition is provided<!--s are referenced using <code>concept</code> or the <code>deReference</code> extension-->, information such as the question text,
 data type and value set SHOULD still be declared for the question.  Systems processing the questionnaire might not have access to or support the ability to look
 up the question definitions from external sources.  If the information is not included in-line within the questionnaire, other systems might not be able to render
@@ -160,7 +163,7 @@ alignment is required; e.g. Does the question text need to match exactly?  Is it
 These rules will need to be established within implementation environments.
 </p>
 
-<a name="question-types"></a>
+<a name="question-types"> </a>
 <h3>Question types</h3>
 <p>
 The codes for the data type for each question are slightly different than the data types allowed in the <a href="questionnaireresponse.html">QuestionnaireResponse</a> resource.
@@ -220,7 +223,7 @@ will not adopt a new version of the referenced value set without revising the Qu
 in control of any changes.
 </p>
 
-<a name="valuesets"></a>
+<a name="valuesets"> </a>
 <h3>Useful Value Sets</h3>
 <p>
 Many questions have a common set of possible codes for their answer. These value sets may be useful to help,
@@ -230,7 +233,7 @@ and when referenced by full URL, do not need to be provided as part of the quest
  <li><a href="valueset-example-yesnodontknow.html">Yes | No | Don't Know</a>: http://hl7.org/fhir/ValueSet/yesnodontknow</li>
 </ul>
 
-<a name="polymorphic"></a>
+<a name="polymorphic"> </a>
 <h3>Questions with multiple answer types</h3>
 <p>
 In some questionnaires, it may be possible to respond to a question with multiple types of answers.  For example, capturing a coded answer plus free text,
@@ -239,12 +242,12 @@ each question can have nested child questions.  These nested child questions can
 guidance is provided by the parent question or group.
 </p>
 
-<a name="math"></a>
+<a name="math"> </a>
 <h3>Questionnaires with Math</h3>
 <p>
 Many questionnaires involve computations on questionnaire answers, e.g. tabulating scores.
 
-To help with associating numeric values to coded answers, the <a href="extension-ordinalvalue.html">ordinalValue</a> 
+To help with associating numeric values to coded answers, the <a href="extension-ordinalValue.html">ordinalValue</a> 
 extension can be used to define the numeric weighting of a code defined in a value set or in the questionnaire itself.
 </p>
 
@@ -252,7 +255,7 @@ extension can be used to define the numeric weighting of a code defined in a val
 <a href="clinicalreasoning-topics-using-expressions.html">Using Expressions</a> and <a href="clinicalreasoning-knowledge-artifact-representation.html#documentation-template">Documentation Template</a> 
 topics in the Clinical Reasoning module.</p>
 
-<a name="advanced"></a>
+<a name="advanced"> </a>
 <h3>More advanced questionnaires</h3>
 <p>
 The capabilities of the Questionnaire resource are fairly simple and try to adhere to what most systems that deal with questionnaires would be capable of.

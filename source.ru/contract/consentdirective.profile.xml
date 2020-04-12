@@ -22,7 +22,7 @@
   </contact>
   <date value="2014-01-31"/>
   <description value="Consent Directive"/>
-  <fhirVersion value="3.6.0"/>
+  <fhirVersion value="4.0.1"/>
   <mapping>
     <identity value="v2"/>
     <uri value="http://hl7.org/v2"/>
@@ -595,7 +595,7 @@
       <definition value="Nested group of Consent Directive Provision."/>
       <min value="0"/>
       <max value="*"/>
-      <contentReference value="#term"/>
+      <contentReference value="#Contract.term"/>
     </element>
     <element>
       <path value="Contract.signer"/>

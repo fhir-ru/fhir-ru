@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
 
-[%settitle Примеры расширений%]
+[%settitle Extension Examples%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -10,37 +10,29 @@
 [%file newnavbar%]
 
 
-<div class="col-12">
+<div class="col-12"><!--ReleaseHeader--><p id="publish-box"></p><!--EndReleaseHeader-->
 
 <%extheader examples%>
 
 <h2>Extensibility Examples</h2>
-<table class="colsi"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Informative</a></td></tr></table>
+<table class="colsi"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="versions.html#std-process">Standards Status</a>:<!--!ns!--><a href="versions.html#std-process">Informative</a></td></tr></table>
 
 <p>
-Чтобы пользоваться расширениями ресурсов (extensions), необходимо выполнить следующие три шага:
-<!-- In order to use an extension, there is a three step process: -->
+In order to use an extension, there is a three-step process:
 </p>
 <ol>
-  <li>Дать определение расширению <!--Define the extension --></li>
-  <li>Зарегистрировать его <!-- Register the extension --></li>
-  <li>Использовать расширение как часть некоторой сущности<!--Use it in the instance --></li>
+  <li>Define the extension</li>
+  <li>Register the extension</li>
+  <li>Use it in the instance</li>
 </ol>
 <p>
-Ниже приводится описание данного процесса.
+This page contains examples of how this process executes.
 </p>
 
 <a name="consent"></a>
-<h3>Согласие пациента на обмен записями о его здоровье<!--Patient Consent for Record Sharing --></h3>
+<h3>Patient Consent for Record Sharing</h3>
 
 <p>
-Базовый ресурс "пациент" не содержит информации, касающейся согласия пациента на передачу его персональной информации 
-и/или действующей политики, по которой пациент соглашается на регистрацию его данных. Общественные веб-провайдеры сервисов
-персональных медицинских записей (PHR) могут быть обязаны следить за изменениями конкретной политики, в соответствии 
-с которой пользователь сервиса встeпил во взаимоотношения с поставщиком PHR-услуг, и информировать пользователя об
-изменении политики с помощью FHIR API. При желании, поставщик PHR-услуг может расширить базовые ресурсы о пациенте
-для представления в них (и передачи) соглашения об участии пациента (participation agreement). Обратите внимание на
-существование и <a href="consent.html">иных решений данной проблемы</a>, более предпочтительных, но для демонстрации процесса расширения достаточно и этого примера.
 The basic patient resource contains no information relating to patient
 consent, and/or the policy under which the patient consents to their registration
 details. A social web provider of personal healthcare record (PHR) services
@@ -52,19 +44,17 @@ agreement. Note that <a href="consent.html">other approaches to this problem</a>
 this example suffices to demonstrate the extension process.
 </p>
 <p>
-В рамках этого примера мы предположим, что пациент согласился с условиями участия в рамках своей регистрации, и что как поставщик должен изменить свою политику, они просят пациентов дать согласие на новые детали участия. Каждое соглашение на участие имеет URI, который его идентифицирует, и ресурс patient будет передавать этот URI для каждого соглашения с политикой, на которое согласился пациент.
-<!-- For the purposes of this example, we assume that the patient agrees to
-a participation policy as part of their sign up, and that as the provider 
+For the purposes of this example, we assume that the patient agrees to
+a participation policy as part of their sign up, and that as the provider
 has to change their policy, they ask patients to agree to new participation
 details. Each participation agreement has a URI by which it is identified,
 and the patient resource will carry this URI for each policy agreement that
-the patient has agreed to.  -->
+the patient has agreed to.
 </p>
-<h4>Определить расширение<!-- Define the Extension --></h4>
+<h4>Define the Extension</h4>
 <p>
-Для каждого расширения первое, что необходимо сделать, это заполнить <a href="extensibility.html#define">дефинициальные свойства расширения</a>:
-<!-- For each extension, the first thing to do is to fill out the <a href="extensibility.html#define">definitional properties of the
-extension</a>: -->
+For each extension, the first thing to do is to fill out the <a href="extensibility.html#define">definitional properties of the
+extension</a>:
 </p>
 <table class="codes">
  <tr><td>Code</td><td>"participation-agreement"</td></tr>
@@ -74,15 +64,14 @@ extension</a>: -->
  <tr><td>Comment</td><td>URI is a literal reference to agreement text (html)</td></tr>
  <tr><td>Cardinality</td><td>1..* (patient cannot participate without at least one agreement)</td></tr>
  <tr><td>Type</td><td>uri</td></tr>
- <tr><td>Invariants</td><td>no Invariants</td></tr>
- <tr><td>is Modifier</td><td>No (The participation agreements do not affect that interpretation of the elements of the patient, though they will likely influence how the system interacts with the patient)</td></tr>
- <tr><td>Binding</td><td>(No binding - not a coded value)</td></tr>
+ <tr><td>Invariants</td><td>No invariants</td></tr>
+ <tr><td>is Modifier</td><td>No (the participation agreements do not affect that interpretation of the elements of the patient, though they will likely influence how the system interacts with the patient)</td></tr>
+ <tr><td>Binding</td><td>(no binding - not a coded value)</td></tr>
 </table>
 
-<h4>Написать определение расширения<!-- Write the Definition of the Extension --></h4>
+<h4>Write the Definition of the Extension</h4>
 <p>
-Из этой таблицы мы можем построить формальное определение расширения. В данном случае оно будет выглядеть так:
-<!-- From this table, we can build a formal extension definition. In this case, it looks like this: -->
+From this table, we can build a formal extension definition. In this case, it looks like this:
 </p>
 
 <pre class="xml" fragment="StructureDefinition">
@@ -92,11 +81,11 @@ extension</a>: -->
   &lt;!-- snip other metadata -->
   &lt;kind value="complex-type"/&gt;
   &lt;context&gt;
-    &lt;type value="fhirpath"/&gt;
+    &lt;type value="element"/&gt;
     &lt;expression value="Patient"/&gt;
   &lt;/context&gt;
   &lt;type value="Extension"/&gt;
-  &lt;baseDefinition value="http://hl7.org.fhir/StructureDefinition/Extension"/&gt;
+  &lt;baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension"/&gt;
   &lt;derivation value="constraint"/&gt;
 
   &lt;differential>
@@ -129,31 +118,24 @@ extension</a>: -->
 &lt;/StructureDefinition>
 </pre>
 <p>
-Следует отметить, что в большинстве случаев реальные профили будут создаваться с помощью каких-то инструментов. Этот пример был составлен вручную для примера.
 Note that usually one would build the actual profile using a tool. This example was built by hand for this example.
 </p>
 
-<h4>Зарегистрировать расширение<!-- Register the Extension --></h4>
+<h4>Register the Extension</h4>
 <p>
-Это значит, что приведенный выше профиль, определяющий расширение, размещен где-то в веб-сети. 
-Предпочтительно, чтобы он был размещен в точке взаимодействия FHIR Profile, а лучшим местоположением для всех расширений будет <a href="http://hl7.org/fhir/registry">реестр профилей HL7</a>.
 This means the profile shown above that defines the extension is placed on the web somewhere.
 By preference, it will be hosted at a FHIR Profile endpoint, and the best location of all
-is the <a href="http://hl7.org/fhir/registry">HL7 Profile registry</a>.
+is the <a href="http://hl7.org/fhir/registry">HL7 FHIR Registry</a>.
 </p>
 <p>
-Для этого примера мы предположим, что он был загружен на собственный веб-сайт PHR-провайдера по адресу http://example.org/phr/documents/fhir/extensions. 
-<!-- For this example, we assume that it has been uploaded to the PHR provider's own website at 
-http://example.org/phr/documents/fhir/extensions. -->
+For this example, we assume that it has been uploaded to the PHR provider's own website at
+http://example.org/phr/documents/fhir/extensions.
 </p>
 
-<h4>Использовать его в экземпляре<!-- Use it in the instance --></h4>
+<h4>Use it in the instance</h4>
 <p>
-Для использования расширения в экземпляре, расширение помещается в корень ресурса. 
-Обратите внимание, что URL расширения ссылается на адрес регистрации с идентификатором расширения в качестве фрагмента идентификации.
-<!-- To use the extension in an instance, the extension is placed in the root of the resource.
-Note that the URL of the extension refers to the registered location, with the id of the extension as a 
-fragment identifier. -->
+To use the extension in an instance, the extension is placed in the root of the resource, because that was the declared context for the extension.
+Note that the URL of the extension refers to the registered location.
 
 </p>
 <pre class="xml" fragment="Patient">
@@ -168,8 +150,7 @@ fragment identifier. -->
 <a name="sliceextensions"></a>
 <h4>Using it in a Patient Profile</h4>
 <p>
-Определение расширения выше просто определяет расширение "participation-agreement" и говорит, что оно используется в ресурсе patient. Однако профиль выше не говорит, что сервер действительно использует его. Чтобы PHR-провайдеру указать, что все ресурсы Patient будут использовать этот ресурс, применяется StructureDefinition ресурса patient:
-The extension definition above simply defines the extension "participation-agreement", and
+The extension definition above simply defines the extension "participation-agreement" and
 says that it is used with patient. But the profile above doesn't say that the server
 actually uses it. For the PHR provider to indicate that all Patient resources
 will use this resource, a StructureDefinition on the patient resource is used:
@@ -212,7 +193,7 @@ will use this resource, a StructureDefinition on the patient resource is used:
     &lt;!-- now, the slice that contains our extension --&gt;
     &lt;element&gt;
       &lt;path value=&quot;Patient.extension&quot;/&gt;
-      &lt;sliceName value=&quot;base-extension&quot;/&gt;
+      &lt;sliceName value=&quot;agreement&quot;/&gt;
       &lt;!-- clone information from the extension definition.
         duplicative, but this duplication makes it simpler overall --&gt;
       &lt;short value=&quot;Agreed agreement/policy&quot;/&gt;
@@ -226,7 +207,7 @@ will use this resource, a StructureDefinition on the patient resource is used:
         &lt;code value=&quot;Extension&quot;/&gt;
         &lt;!-- and here is the link to the extension definition:
           this extension has to conform to the rules laid down in its definition --&gt;
-        &lt;profile value=&quot;http://example.org/phr/documents/fhir/extensions#participation-agreement&quot;/&gt;
+        &lt;profile value=&quot;http://example.org/phr/documents/fhir/StructureDefinition/participation-agreement&quot;/&gt;
       &lt;/type&gt;
       &lt;isModifier value=&quot;false&quot;/&gt;
     &lt;/element&gt;
@@ -239,33 +220,30 @@ will use this resource, a StructureDefinition on the patient resource is used:
 </pre>
 
 <p>
-Примечание - этот шаг является необязательным.
-<!-- Note - this step is optional. -->
+Note - this step is optional.
 </p>
 
 <a name="name-parts"></a>
-<h3>Составные части имени<!-- Patient Name Parts --></h3>
+<h3>Patient Name Parts</h3>
 
 <p>
-ISO 21090 (Healthcare Data Types) определяет концепт "name part qualifier", который содержит дополнительную информацию о том, как конкретная часть имени должна использоваться или интерпретироваться. На практике, это поле используется редко, за исключением определенных культурных контекстов, где использование квалификаторов определенных частей - это вопрос практики. Следуя <a href="extensibility.html">FHIR design policy</a>, подобное поле не включено в общее определение основного типа данных name, вместо этого оно добавлено в качестве расширения.
-<!-- ISO 21090 (Healthcare Data Types) defines a concept called a "name part qualifier" that contains extra
+ISO 21090 (Healthcare Data Types) defines a concept called a "name part qualifier" that contains extra
 information about how a particular name part should be used or interpreted. In practice, this field
-is used rarely, except in particular cultural contexts, where certain part qualifiers are used as a
+is used rarely except in particular cultural contexts, where certain part qualifiers are used as a
 matter of practice. Following the <a href="extensibility.html">FHIR design policy</a>, such a field
 is not included in the overall definition of the core name data type, instead is it added as an
-extension. -->
+extension.
 </p>
 
 <p>
-На практике, для случаев как эти, в ISO 21090 HL7 предоставляет общие расширения, которые определены по адресу [адрес пока не определен].
-<!-- In practice, for cases such as these in ISO 21090, HL7 provides common extensions, and these
-are defined at [location still to be finalized]. -->
+In practice, for cases such as these in ISO 21090, HL7 defines common extensions, and these
+are defined either in <a href="iso-21090.html">this specification</a>, or in the <a href="http://hl7.org/fhir/registry">FHIR registry</a>.
 </p>
-<h4>Определить расширение<!-- Define the Extension --></h4>
+
+<h4>Define the Extension</h4>
 <p>
-Для каждого расширения первое, что необходимо сделать, это заполнить <a href="extensibility.html#define">дефинициальные свойства расширения</a>:
-<!-- For each extension, the first thing to do is to fill out the <a href="extensibility.html#define">definitional properties of the
-extension</a>: -->
+For each extension, the first thing to do is to fill out the <a href="extensibility.html#define">definitional properties of the
+extension</a>:
 </p>
 
 <table class="codes">
@@ -280,16 +258,15 @@ extension</a>: -->
  <tr><td>Is Modifier</td><td>No (Qualifiers do not change the fact that the part is a given or family name)</td></tr>
  <tr><td>RIM Mapping</td><td>ENXP.qualifier</td></tr>
  <tr><td>v2 Mapping</td><td>N/A</td></tr>
- <tr><td>Binding</td><td>Bound to a subset of the codes specified for  <a href="http://www.hl7.org/v3ballot/html/infrastructure/vocabulary/EntityNamePartQualifierR2.html">EntityNamePartQualifierR2 in ISO 21090</a> </td></tr>
+ <tr><td>Binding</td><td>Bound to a subset of the codes specified for  <a href="v3/EntityNamePartQualifierR2/cs.html">EntityNamePartQualifierR2 in ISO 21090</a> </td></tr>
 </table>
 <p>
-Не все коды EntityNamePartQualifierR2 обязательны в этом контексте, поскольку prefix и suffix явно являются частью типов имени. Вместо того, чтобы просто ссылаться на OID для EntityNamePartQualifierR2 (2.16.840.1.113883.5.1122), в данном случае мы перечисляем доступные коды и устанавливаем тип расширения в code. Тип "code" разрешен только если сам профиль задает эти коды, которые могут использоваться. Ниже приводится таблица этих кодов (см. полные определения по ссылке <a href="http://www.hl7.org/v3ballot/html/infrastructure/vocabulary/EntityNamePartQualifierR2.html">EntityNamePartQualifierR2</a> reference for the full definitions):
-<!-- Not all the codes of the EntityNamePartQualifierR2 are required in this context,
+Not all the codes of the EntityNamePartQualifierR2 are required in this context,
 because prefix and suffix are explicitly part of the name types. Rather than
 simply refer to the OID for EntityNamePartQualifierR2 (2.16.840.1.113883.5.1122),
 in this case we enumerate the available codes, and set the type of the extension to
 code. The type of "code" is only allowed if the profile itself defines the codes that
-can be used. Here is a table of the codes (see the <a href="http://www.hl7.org/v3ballot/html/infrastructure/vocabulary/EntityNamePartQualifierR2.html">EntityNamePartQualifierR2</a> reference for the full definitions): -->
+can be used. Here is a table of the codes (see the <a href="v3/EntityNamePartQualifierR2/cs.html">EntityNamePartQualifierR2</a> reference for the full definitions):
 </p>
 <table class="codes">
 <tr><td>LS</td><td>Legal status </td><td>For organizations, a suffix...</td></tr>
@@ -306,7 +283,6 @@ can be used. Here is a table of the codes (see the <a href="http://www.hl7.org/v
 </table>
 
 <p>
-Всё это затем отображается формально в профиле. Таким профилям не обязательно включать утверждения об ограничениях ресурсов; вместо этого они включают только объявления расширений и связанные с ними привязки. В этом случае определение выглядит так:
 This is all then represented formally in a profile. Such profiles do not need to include resource constraint statements; instead, they include just extension declarations
 and their associated bindings. In this case, the definition looks like this:
 </p>
@@ -335,7 +311,7 @@ and their associated bindings. In this case, the definition looks like this:
     &lt;expression value="HumanName.suffix"/&gt;
   &lt;/context&gt;    
   &lt;type value="Extension"/&gt;
-  &lt;baseDefinition value="http://hl7.org.fhir/StructureDefinition/Extension"/&gt;
+  &lt;baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension"/&gt;
   &lt;derivation value="constraint"/&gt;
   &lt;differential>
     &lt;element>
@@ -376,22 +352,17 @@ and their associated bindings. In this case, the definition looks like this:
 
 </pre>
 <p>
-Следует отметить, что в большинстве случаев реальные профили будут создаваться с помощью каких-то инструментов. Этот пример был составлен из определения в виде электронной таблицы с помощью инструмента создания FHIR.
 Note that usually one would build the actual profile using a tool. This example was built from a spreadsheet definition by the FHIR build tooling.
 </p>
-<h4>Зарегистрировать расширение<!-- Register the Extension --></h4>
+<h4>Register the Extension</h4>
 <p>
-В этом примере расширение зарегистрировано по адресу <a href="http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier">http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier</a>. 
-Это URL, который появится в элементе определения, когда это расширение будет использоваться.
-<!-- For this example, it is registered at <a href="http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier">http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier</a>.
-This is the URL that will appear in the definition element when the extension is used. -->
+For this example, it is registered at <a href="http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier">http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier</a>.
+This is the URL that will appear in the definition element when the extension is used.
 </p>
-<h4>Используйте его в экземпляре<!-- Use it in the instance --></h4>
+<h4>Use it in the instance</h4>
 <p>
-Для использования расширения в экземпляре, расширение вложено в атрибут, который расширяется. Обратите внимание, что URL расширения ведет на тот адрес, по которому он был зарегистрирован, с идентификатором расширения в качестве фрагмента идентификации.
-<!-- To use the extension in an instance, the extension is nested within the attribute that is extended.
-Note that the URL of the extension refers to the registered location, with the id of the extension as a 
-fragment identifier. -->
+To use the extension in an instance, the extension is nested within the attribute that is extended.
+Note that the URL of the extension refers to the registered location.
 </p>
 <pre class="xml" fragment="HumanName">
 &lt;name&gt;
@@ -404,9 +375,8 @@ fragment identifier. -->
 &lt;/name&gt;
 </pre>
 <p>
-В данном примере используется скандинавское отчество (mellannamn). Дополнительные примеры можно найти в разделе <a href="datatypes-examples.html">Примеры типов данных</a>.
-<!-- This particular example is a Scandinavian mellannamn. See 
-<a href="datatypes-examples.html">Datatypes examples for additional examples</a>. -->
+This example is a Scandinavian mellannamn. See
+<a href="datatypes-examples.html">Datatypes examples for additional examples</a>.
 </p>
 
 <a name="complex"></a>
@@ -424,12 +394,15 @@ trial. There are 3 data items to collect:
 </table>
 
 <p>
+NOTE: This extension is included for example purposes only.  In most cases, participation in clinical trials would be handled using the <a href="researchstudy.html">ResearchStudy</a> resource, possibly referenced via the <a href="extension-workflow-researchstudy.html">workflow-researchstudy</a> extension.
+</p>
+
+<p>
 Like simple extensions, the first thing to do is to assign a URI to the
-extension. Since this one is part of the FHIR publication, it is assigned
-a URI where it will be published: http://hl7.org/fhir/StructureDefinition/patient-clinicalTrial.
+extension, e.g.: <code>http://example.org/fhir/StructureDefinition/patient-clinicalTrial</code>.
 </p>
 <p>
-Internally, in the extension, the cardinality of the value[x] element is set to 0 since it
+Internally, in the extension, the maximum cardinality of the value[x] element is set to 0 since it
 will not (and cannot) be used. The Extension.extension element is sliced by URL,
 and 3 slices are defined, each with a fixed relative URI which is the code from the table above.
 The relevant parts of the definition of this extension are as follows:
@@ -437,7 +410,7 @@ The relevant parts of the definition of this extension are as follows:
 <pre class="xml">
 &lt;StructureDefinition xmlns=&quot;http://hl7.org/fhir&quot;&gt;
   &lt;!-- metadata - setting up the base definition --&gt;
-  &lt;url value=&quot;http://hl7.org/fhir/StructureDefinition/patient-clinicalTrial&quot;/&gt;
+  &lt;url value=&quot;http://example.org/fhir/StructureDefinition/patient-clinicalTrial&quot;/&gt;
   &lt;name value=&quot;ClinicalTrialParticipation&quot;/&gt;
   &lt;title value=&quot;The patient's participation in clinical trials&quot;/&gt;
   &lt;context&gt;
@@ -445,7 +418,7 @@ The relevant parts of the definition of this extension are as follows:
     &lt;expression value=&quot;Patient&quot;/&gt;
   &lt;/context&gt;
   &lt;type value="Extension"/&gt;
-  &lt;baseDefinition value="http://hl7.org.fhir/StructureDefinition/Extension"/&gt;
+  &lt;baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension"/&gt;
   &lt;derivation value="constraint"/&gt;
   &lt;snapshot&gt;
     &lt;element&gt;
@@ -548,7 +521,7 @@ The relevant parts of the definition of this extension are as follows:
     &lt;!-- last (for order reasons): the fixed URI --&gt;
     &lt;element&gt;
       &lt;path value=&quot;Extension.url&quot;/&gt;
-      &lt;fixedUri value=&quot;http://hl7.org/fhir/StructureDefinition/patient-clinicalTrial&quot;/&gt;
+      &lt;fixedUri value=&quot;http://example.org/fhir/StructureDefinition/patient-clinicalTrial&quot;/&gt;
     &lt;/element&gt;
     &lt;!-- and no value in the root --&gt;
     &lt;element&gt;
@@ -566,7 +539,7 @@ With complex extensions, only the first URL is an absolute URL:
 </p>
 <pre class="xml" fragment="Patient">
 &lt;Patient xmlns="http://hl7.org/fhir"&gt;
-  &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/patient-clinicalTrial&quot; &gt;
+  &lt;extension url=&quot;http://example.org/fhir/StructureDefinition/patient-clinicalTrial&quot; &gt;
     &lt;extension url=&quot;NCT&quot; &gt;
       &lt;valueString value=&quot;NCT00000419&quot;/&gt;
     &lt;/extension&gt;
@@ -578,7 +551,7 @@ With complex extensions, only the first URL is an absolute URL:
     &lt;/extension&gt;
     &lt;extension url=&quot;reason&quot; &gt;
       &lt;valueCodeableConcept&gt;
-        &lt;text value=&quot;NCT00000419&quot;/&gt;
+        &lt;text value=&quot;healthy-volunteer&quot;/&gt;
       &lt;/valueCodeableConcept&gt;
     &lt;/extension&gt;
   &lt;/extension&gt;
@@ -634,7 +607,7 @@ This is the same as for a simple extension:
         &lt;code value=&quot;Extension&quot;/&gt;
         &lt;!-- and here is the link to the extension definition:
           this extension has to conform to the rules laid down in its definition --&gt;
-        &lt;profile value=&quot;http://hl7.org/fhir/StructureDefinition/patient-clinicalTrial&quot;/&gt;
+        &lt;profile value=&quot;http://example.org/fhir/StructureDefinition/patient-clinicalTrial&quot;/&gt;
       &lt;/type&gt;
     &lt;/element&gt;
 

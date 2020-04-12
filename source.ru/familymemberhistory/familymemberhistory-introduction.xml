@@ -2,25 +2,19 @@
 
 <div>
 <a name="scope"></a>
-<h2>Область применения и использование</h2>
+<h2>Scope and Usage</h2>
 <p>FamilyMemberHistory is one of the <a href="workflow.html#event">event</a> resources in the FHIR <a href="workflow.html">workflow</a> specification.</p>
 
 <p> 
-В этот ресурс записывают важную информацию о состоянии здоровья определённого человека, связанного с субъектом лечения. Эта информация может быть различной степени точности. Иногда известен точный диагноз («астма»), иногда неточный («какой-то вид рака»).
-Также сам человек может быть идентифицирован с разной степенью точности ("моя тетя Агата", "дядя").
-<!-- This resource records significant health conditions for a particular individual related to the subject. This information can be known to
+This resource records significant health conditions for a particular individual related to the subject. This information can be known to
 different levels of accuracy. Sometimes the exact condition ('asthma') is known, and sometimes it is less precise ('some sort of cancer').
-Equally, sometimes the person can be identified ('my aunt Agatha') and sometimes all that is known is that the person was an uncle. -->
+Equally, sometimes the person can be identified ('my aunt Agatha') and sometimes all that is known is that the person was an uncle.
 </p>
-<p>
-Этот ресурс представляет собой простую структуру, используемую для фиксирования "элементарного" семейного анамнеза для конкретного члена семьи. Тем не менее, он также может быть основой для
-ввода более строгого анамнеза, полезного для генетического и другого анализа - в качестве примера см. профиль <a href="familymemberhistory-genetic.html">Генетическая родословная</a>.
-<!-- This resource represents a simple structure used to capture an 'elementary' family history for a particular family member.  However, it can also be the basis for
+<p>This resource represents a simple structure used to capture an 'elementary' family history for a particular family member.  However, it can also be the basis for
 capturing a more rigorous history useful for genetic and other analysis - refer to the <a href="familymemberhistory-genetic.html">Genetic Pedigree</a> profile
-for an example. --></p>
+for an example.</p>
 <p>
-Полный семейный анамнез человека может быть представлен объединением ссылок на экземпляры <b>FamilyMemberHistory</b> в экземпляре ресурса <a href="list.html">List</a>.
-<!-- The entire family history for an individual can be represented by combining references to <b>FamilyMemberHistory</b> instances into a <a href="list.html">List</a> resource instance. -->
+The entire family history for an individual can be represented by combining references to <b>FamilyMemberHistory</b> instances into a <a href="list.html">List</a> resource instance.
 </p>
 
 </div>

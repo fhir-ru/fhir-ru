@@ -1,6 +1,6 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
-<a name="notes"> </a>
+<a name="notes"></a>
 <h2>Примечания<!-- Notes --></h2>
 <p>
 <ul>
@@ -11,7 +11,7 @@ is required. --></li>
 <li>В будущих версиях FHIR будет добавлен некоторый вид механизма по начислению сборов (например Account). <!-- In future versions of FHIR, some kind of charge posting vehicle (e.g. Account) will be added. --></li>
 </ul>
 </p>
-<a name="examples"> </a>
+<a name="examples"></a>
 <h2>Пример использования<!-- Example usage --></h2>
 <p>Как уже говорилось, с помощью элемента partOf ресурса Encounter можно формировать иерархию случаев обслуживания. Например:<!-- As stated, Encounter allows a flexible nesting of Encounters using the partOf element. For example: --></p>
 <ul>

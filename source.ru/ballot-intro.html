@@ -8,10 +8,10 @@
 <body>
 [%file newnavbar%]
 
-<div class="col-12">
+<div class="col-12"><!--ReleaseHeader--><p id="publish-box"></p><!--EndReleaseHeader-->
 
 <h2>R4 Ballot Roadmap</h2>
-<table class="colsi"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Informative</a></td></tr></table>
+<table class="colsi"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="versions.html#std-process">Standards Status</a>:<!--!ns!--><a href="versions.html#std-process">Informative</a></td></tr></table>
 
 <p>
 Welcome to the second round of the FHIR Release 4 (R4) ballot, which is working toward our first release planned to include normative content. 
@@ -63,8 +63,8 @@ Three ballot periods are anticipated:
    <td>Aug 2018 - Sep 2018</td>
    <td>A follow up ballot
      <ul>
-       <li>Reballoting of normative content where substantitive changes were required in response to ballot and implementer feedback</li>
-       <li>Additional signficant new (added post the full FHIR ballot) or significantly revised content balloted for "Trial Use"</li>
+       <li>Reballoting of normative content where substantive changes were required in response to ballot and implementer feedback</li>
+       <li>Additional significant new (added post the full FHIR ballot) or significantly revised content balloted for "Trial Use"</li>
      </ul>  
      <b>This is the current ballot</b>
    </td>
@@ -73,9 +73,9 @@ Three ballot periods are anticipated:
 
 <p>
 The key driver of this complexity is the introduction of normative content. HL7's 
-ballot rules for normative content require that if any substantiative changes are
+ballot rules for normative content require that if any substantive changes are
 made as a result of ballot reconciliation, the content must be reballoted.
-(Note that 'substantiative changes' means any change that is likely to change
+(Note that 'substantive changes' means any change that is likely to change
 implementations - a very low bar). 
 </p>
 <p>
@@ -149,17 +149,23 @@ A few notes to consider when balloting:
 
 <h3>Balloting Guidelines</h3>
 <p>
-Правила голосования HL7 требуют, чтобы участники зарегистрировались до открытия голосования. Если вы не зарегистрировались заранее, вы все еще может отправлять комментарии по ссылке <a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemAdd&amp;tracker_id=677">Предложить изменение</a> внизу каждой страницы спецификации. Отзывы от участников голосования будут иметь более высокий приоритет, но рассматриваться будут все предложения, насколько позволит время. (Не забудьте <a href="http://wiki.hl7.org/index.php?title=FHIR_email_list_subscription_instructions">подписаться</a> 
-на почтовую рассылку FHIR и следите за хештегом <a href="https://twitter.com/hashtag/fhir">#FHIR</a>, чтобы не упустить свой шанс проголосовать в следующем цикле голосования.)
+HL7 ballot rules require that participants sign up prior to opening of the ballot.  If you did not sign up in advance, you
+can still submit comments using the <a href="http://hl7.org/fhir-issues">Propose a Change</a>
+link at the bottom of each page of the specification.  Feedback from balloters will be given priority but all suggestions will be
+considered as much as time allows.  (And be sure to <a href="https://confluence.hl7.org/display/FHIR/Mailing+List+Instructions">sign up</a> 
+to the FHIR list-server and/or follow the <a href="https://twitter.com/hashtag/fhir">#FHIR</a> hash-tag so you don't miss the chance to 
+vote in the next ballot cycle.)
 </p>
 <p>
-Если вы зарегистрировались на голосование, вы можете скачать электронную таблицу голосования с <a href="http://www.hl7.org/participate/onlineballoting.cfm">рабочего стола голосования</a>.
-Всю обратную связь по голосованию необходимо предоставить с помощью предложенного шаблона электронной таблицы. (Там есть вкладка Help, где есть пояснения к каждой колонке.)
-Вы можете указать свои комментарии непосредственно в этой электронной таблице либо отправить ваш комментарий с помощью FHIR
-<a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemBrowse">трэкера изменений</a>. При выборе второго варианта, вы <b>должны</b> включить ссылку на каждый тикет трэкера в вашу электронную таблицу голосования наряду с самим голосованием (отрицательное, утвердительное, опечатка и т.д.). Все электронные таблицы необходимо отправить вместе с общим голосованием к концу дня по Eastern time в обозначенный день окончания голосования для рассмотрения комментариев в рамках процедуры голосования.
+If you are signed up to ballot, you can download the balloting spreadsheet from the <a href="http://www.hl7.org/participate/onlineballoting.cfm">Ballot Desktop</a>.
+All ballot feedback must be provided using the spreadsheet template provided.  (There's a help tab that explains the meaning of each of the columns.)
+For FHIR, you have the option of making your comments directly in the spreadsheet or submitting your comment using the FHIR
+<a href="http://hl7.org/fhir-issues">Change Tracker</a> tool.  <b></b>  If you take the latter approach, you <b>must</b> include a reference to each tracker item in your
+ballot spreadsheet along with a vote (negative, affirmative typo, etc.).  The other columns can (and should) be left blank.  All spreadsheets must be submitted along with an overall vote
+by end of day Eastern time on the designated ballot closure date for the comments to be considered as part of ballot disposition.
 </p>
 <p style="background-color:yellow">
-  <b>IMPORTANT:</b> We encourage  balloters to capture their comments using the gForge tool
+  <b>IMPORTANT:</b> We encourage  balloters to capture their comments using the HL7 issue tracker
   and to use the spreadsheet only to list their tracker item numbers and votes.  (If you include additional information beyond tracker item and vote, we 
   need to cross-check to ensure the content is aligned, which eliminates any savings.  So if you keep additional columns for internal review, please wipe them before submission.)
   Tracker-based comment submission dramatically reduces administrative overhead in managing the ballot.
@@ -167,14 +173,20 @@ A few notes to consider when balloting:
 </p>
 
 <p>
-Отправляя ваш отзыв на голосование, если это общий комментарий о чём-то, что вы наблюдали, как происходило неоднократно, пожалуйста, включите хотя бы пару кокнретных мест, где вам встретилась эта пробема. Насколько это возможно, описывайте каждую отдельную проблему на новой строке таблицы или новом <a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemBrowse">тикете на трекере</a>. (Если вы используете трекер для отправки ваших запросов, вам всё равно будет  <b>необходимо</b> отправить электронную таблицу для голсования со ссылками на соответствующие тикеты на трекере). Это сильно облегчит нашу работу по согласованию запросов на изменение. И не забывайте указывать номера секций (числа серого цвета слева от каждого заголовка) и URL-ссылки. Только один URL должен быть в элементе или колонке "url". Если вы хотите указать несколько URL, включите их в текст комментария к голосованию.
+When submitting your ballot feedback, if you have a general comment on something that you see occurring multiple times, please include 
+at least a couple of specific locations where you see the issue.  As much as possible, capture each separate concern as a distinct row 
+in the ballot sheet or separate <a href="http://hl7.org/fhir-issues">tracker item</a>.  (If using tracker items for your submissions, you <b>MUST</b> still
+submit a ballot spreadsheet referencing the relevant tracker items.)  It makes our job of reconciling much easier.  Also, don't forget to 
+fill in the section numbers (gray numbers to the left of each heading) and URLs.  Only one URL should be placed in the "url" element or column.  
+If you want to reference additional URLs, include them in the text of your ballot comment.
 </p>
 <p>
-Если у вас есть вопросы, связанные с возможностью рецензировать спецификацию или отправлять комментарии на голосование, пожалуйста, обратитесь к одному из сопредседателей Управляющей группы FHIR: <a href="mailto:lloyd@lmckenzie.com">Lloyd McKenzie</a> или 
+If you have questions that are interfering with the ability to review the specification or submit ballot comments, please contact one of 
+the co-chairs of the FHIR Management Group: <a href="mailto:lloyd@lmckenzie.com">Lloyd McKenzie</a> or 
 <a href="mailto:david.hay25@gmail.com">David Hay</a>.
 </p>
 <p>
-Спасибо, что нашли время просмотреть спецификацию FHIR. Мы будем признательны за любую обратную связь от вас.
+Thanks for taking the time to review the FHIR specification.  We appreciate any feedback you can provide.
 </p>
 
 <a name="round2"></a>
@@ -197,7 +209,7 @@ For the Trial-Use ballot, the significant new content areas or changes are indic
 <p>
 The specification has been updated to include R3/R4 maps and difference analysis, but 
 these have not been updated. This will be done proper to publication of the final 
-specification In the mean time, balloters are welcome to comment on suggested 
+specification. In the meantime, balloters are welcome to comment on suggested 
 improvements to the mappings and difference statements, but these cannot be the 
 basis for negative votes. Contributions may also be made directly 
 (join the <a href="https://chat.fhir.org/#narrow/stream/133-R3.2FR4-Conversion.20work">conversation at chat.fhir.org</a>).
@@ -243,13 +255,13 @@ Please consult the <a href="#round2">Round 2 ballot guide above</a> before comme
  <tr style="background-color: #eeeeee"><td colspan="3"><b>Base Documentation</b></td></tr>
  <tr><td>Make it explicit about canonical URLs with fragments</td> <td>FHIR-I: [%GF#17357%]</td> <td>[%diff references.html#canonical References%]</td></tr>
  <tr><td>Added reference.type</td><td>FHIR-I: [%GF#13543%]</td> <td>[%diff references.html#type References between Resources%]</td></tr> 
- <tr><td>Clarify definition of is-modifier + impacts on modifier extensions<br/>Note: this lead to <b style="color: maroon">breaking changes</b> on a few extensions (changed from modifierExtension to normal extension)</td><td>FHIR-I: [%GF#16188%]</td> <td>[%diff conformance-rules.html Conformance Rules%], [%diff extensibility.html#modifiers Extensibility%]</td></tr> 
+ <tr><td>Clarify definition of is-modifier + impacts on modifier extensions<br/>Note: this led to <b style="color: maroon">breaking changes</b> on a few extensions (changed from modifierExtension to normal extension)</td><td>FHIR-I: [%GF#16188%]</td> <td>[%diff conformance-rules.html Conformance Rules%], [%diff extensibility.html#modifiers Extensibility%]</td></tr> 
  <tr><td>Multiple language support on narratives</td><td>FHIR-I: [%GF#15759%]</td> <td>[%diff narrative.html#languages Narrative%]</td></tr> 
- <tr><td>Rules around extensible bindings (intended to be clarifications, but may be substantiative for some)</td><td>Vocab: [%GF#17402%]</td> <td>[%diff terminologies.html#extensible Using Codes%]</td></tr> 
+ <tr><td>Rules around extensible bindings (intended to be clarifications, but may be substantive for some)</td><td>Vocab: [%GF#17402%]</td> <td>[%diff terminologies.html#extensible Using Codes%]</td></tr> 
  <tr><td>Enhance/extend rules around changes between versions</td><td>FHIR-I: [%GF#13089%]</td> <td>[%diff versions.html#rules Version Management Policy%]</td></tr> 
  <tr><td>Add note about namespaces in types in FHIRPath consequence to FHIRPath changes</td><td>FHIR-I: [%GF#15876%]</td> <td>[%diff fhirpath.html#types FHIRPath%]</td></tr> 
  <tr><td>Add draft Terminology Service API to FHIRPath</td> <td>FHIR-I: [%GF#15777%]</td> <td>[%diff fhirpath.html FHIRPath%]</td></tr>
- <tr><td>Fix missing code for 1.0.2 <a href="codesystem-FHIR-version.html">FHIR versions Code System</a></td> <td>FHIR-I: [%GF#16318%]</td> <td>[%diff codesystem-FHIR-version.html FHIR versions Code System%]</td></tr>
+ <tr><td>Fix missing code for 1.0.2 <a href="codesystem-fhir-version.html">FHIR versions Code System</a></td> <td>FHIR-I: [%GF#16318%]</td> <td>[%diff codesystem-fhir-version.html FHIR versions Code System%]</td></tr>
 
  <tr style="background-color: #eeeeee"><td colspan="3"><b>RESTful API</b></td></tr>
  <tr><td>Add fhirVersion parameter to application/fhir mime type</td> <td>FHIR-I: [%GF#16165%]</td> <td>[%diff http.html#version-parameter RESTful API%]</td></tr>
@@ -257,7 +269,7 @@ Please consult the <a href="#round2">Round 2 ballot guide above</a> before comme
  <tr><td>Clarify about 406 and 415 status codes <b style="color: maroon">Breaking change!</b></td> <td>FHIR-I: [%GF#16329%]</td> <td>[%diff http.html Restful API%], [%diff formats.html Formats%]</td></tr>
  <tr><td>Rewrite intermediaries section, and refocus on custom headers</td> <td>FHIR-I: [%GF#14162%]</td> <td>[%diff http.html#custom RESTful API%]</td></tr> 
  <tr><td>Clarify version requirements in Location header</td> <td>FHIR-I: [%GF#13915%]</td> <td>[%diff http.html#create RESTful API%]</td></tr> 
- <tr><td>Decribe use of :below on reference for searching canonicals</td> <td>FHIR-I: [%GF#14195%]</td> <td>[%diff http.html#versions RESTful API%]</td></tr> 
+ <tr><td>Describe use of :below on reference for searching canonicals</td> <td>FHIR-I: [%GF#14195%]</td> <td>[%diff http.html#versions RESTful API%]</td></tr> 
  <tr><td>Change rules around optionality of Bundle.entry.request and .response <b style="color: maroon">Breaking change!</b></td><td>FHIR-I: [%GF#14551%]</td> <td>[%diff http.html#transaction RESTful API%]</td></tr> 
  <tr><td>Add _list parameter to history interaction</td><td>FHIR-I: [%GF#16022%]</td> <td>[%diff http.html#history RESTful API%]</td></tr> 
  <tr><td>Add conformance language about errors and operation outcome</td><td>FHIR-I: [%GF#14495%]</td> <td>[%diff http.html RESTful API%]</td></tr> 
@@ -418,7 +430,7 @@ Please consult the <a href="#round2">Round 2 ballot guide above</a> before comme
 <td>[%diff observation.html Observation%]</td>
 </tr>
 <tr>
-<td>The code system for value set observation-interpretation is changed from HL7 Version 2 Table 0078 to v3-ObservationInterpretation as part of the HL7 <a href="http://wiki.hl7.org/index.php?title=Unified_Terminology_Governance_Project">Unified Terminology Governance Project</a>.   Added clarifying text to indicate that all use cases <em>where interpretations are relevant</em> might not be covered by the observation-interpretation value set. <b style="color: maroon">Breaking change!</b></td>
+<td>The code system for value set observation-interpretation is changed from HL7 Version 2 Table 0078 to v3-ObservationInterpretation as part of the HL7 <a href="https://confluence.hl7.org/display/VOC/Unified+Terminology+Governance+Project+%28UTG%29+Page">Unified Terminology Governance Project</a>.   Added clarifying text to indicate that all use cases <em>where interpretations are relevant</em> might not be covered by the observation-interpretation value set. <b style="color: maroon">Breaking change!</b></td>
 <td>OO: [%GF#16186%], UTG Process</td>
 <td>[%diff observation.html Observation%]</td>
 </tr>
@@ -457,7 +469,7 @@ more signficant</b> (not all) changes are listed here:
 </p>
 <ul>
  <li>New Resources: <a href="medicationknowledge.html">MedicationKnowledge</a>, <a href="devicedefinition.html">DeviceDefinition</a>, <a href="chargeitemdefinition.html">ChargeItemDefinition</a></li>
- <li>Renamed Resources: <code>OrgnizationRole</code> to <a href="organizationaffiliation.html">OrganizationAffiliation</a>, <code>EligibilityRequest</code> to <a href="coverageeligibilityrequest.html">CoverageEligibilityRequest</a>, 
+ <li>Renamed Resources: <code>OrganizationRole</code> to <a href="organizationaffiliation.html">OrganizationAffiliation</a>, <code>EligibilityRequest</code> to <a href="coverageeligibilityrequest.html">CoverageEligibilityRequest</a>, 
    <code>EligibilityResponse</code> to <a href="coverageeligibilityresponse.html">CoverageEligibilityResponse</a>, and <code>ProductPlan</code> to <a href="insuranceplan.html">InsurancePlan</a></li>
  <li>Significant rework around devices - in the <a href="device.html">Device</a> resource, remove <code>DeviceComponent</code> + new resource <a href="devicedefinition.html">DeviceDefinition</a></li>
  <li>Update maps/diffs to R3 (see <a href="#maps">note</a> above)</li>

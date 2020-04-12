@@ -1,8 +1,8 @@
 <!DOCTYPE HTML>
 
 <!-- template-cs-ig-book.html -->
-
-[%settitle Набор значений {vsurl}%]
+      
+[%settitle Value Set {vsurl}%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -10,18 +10,18 @@
 <body>
 [%file newnavbar%]
 
-<div class="col-12">
+<div class="col-12"><!--ReleaseHeader--><p id="publish-box"></p><!--EndReleaseHeader-->
 <%txheader vs%>
 
 <a name="vs"></a>
-<h1>Набор значений<!-- Value Set --> <%vsurl%></h1>
+<h1>Value Set <%vsurl%></h1>
 
 <p>
 <%vsdef%>
 </p>
 
 <p>
-Подробные описания<!-- Detailed Descriptions -->: <a href="<%vsref%>.xml.html">XML</a> или <a href="<%vsref%>.json.html">JSON</a>. 
+Detailed Descriptions: <a href="<%vsref%>.xml.html">XML</a> or <a href="<%vsref%>.json.html">JSON</a>. 
 </p>
 
 <%vsusage%>

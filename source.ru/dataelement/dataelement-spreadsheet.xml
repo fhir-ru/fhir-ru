@@ -803,8 +803,8 @@
     <Cell ss:StyleID="s65"><Data ss:Type="String">This spreadsheet is used to support the definition of resources or data types (structures).  A complete set of instructions on the various tabs, columns and rules associated with populating this spreadsheet can be found here:</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s67" ss:HRef="http://wiki.hl7.org/?title=FHIR_Spreadsheet_Authoring"><Data
-      ss:Type="String">http://wiki.hl7.org?title=FHIR_Spreadsheet_Authoring</Data></Cell>
+    <Cell ss:StyleID="s67" ss:HRef="https://confluence.hl7.org/display/FHIR/FHIR+Spreadsheet+Authoring"><Data
+      ss:Type="String">https://confluence.hl7.org/display/FHIR/FHIR+Spreadsheet+Authoring</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">entered-in-error-status</Data></Cell>
@@ -888,7 +888,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s72"><Data ss:Type="String">Type</Data><Comment ss:Author=""><ss:Data
        xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Face="Tahoma"
-        x:Family="Swiss" html:Size="8" html:Color="#000000">Data type, resource reference, profiles, aggregations, class names, type references, etc. - see the wiki</Font>       </ss:Data></Comment><NamedCell
+        x:Family="Swiss" html:Size="8" html:Color="#000000">Data type, resource reference, profiles, aggregations, class names, type references, etc. - see Confluence</Font>       </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s72"><Data ss:Type="String">Is Modifier</Data><Comment
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font
@@ -966,11 +966,11 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s75"><Data ss:Type="String">UML</Data><Comment ss:Author=""><ss:Data
        xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Face="Tahoma"
-        x:Family="Swiss" html:Size="8" html:Color="#000000">Guidance for class location in UML diagram.  Only specify on root. See wiki for guidance</Font>       </ss:Data></Comment><NamedCell
+        x:Family="Swiss" html:Size="8" html:Color="#000000">Guidance for class location in UML diagram.  Only specify on root. See Confluence for guidance</Font>       </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s75"><Data ss:Type="String">Display Hint</Data><Comment
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font
-        html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Provides guidance to narrative auto-generator.  Check Wiki documentation</Font>       </ss:Data></Comment><NamedCell
+        html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Provides guidance to narrative auto-generator.  Check Confluence documentation</Font>       </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s76"><Data ss:Type="String">Committee Notes</Data><Comment
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font
@@ -995,12 +995,12 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Ресурс DataElement (Элемент данных)<!-- Resource data element --></Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Resource data element</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Формальное описание отдельной порции информации, которая может быть собрана и запротоколирована.<!-- The formal description of a single piece of information that can be gathered and reported. --></Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">The formal description of a single piece of information that can be gathered and reported.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Часто называется клиническим шаблоном<!-- Often called a clinical template --></Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Often called a clinical template</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><Data ss:Type="String">Observation[classCode=OBS, moodCode=DEFN]</Data><NamedCell
@@ -1243,7 +1243,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">OM1.16</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Фиксировано: Regenstrief или SOURCE<!-- Fixed to Regenstrief or SOURCE --></Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Fixed to Regenstrief or SOURCE</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">(Administered_Item).stewardship_record.organization.name</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1464,9 +1464,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">comparable | fully-specified | equivalent | convertable | scaleable | flexible</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Насколько точно определение элемента данных<!-- Identifies how precise the data element is in its definition --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies how precise the data element is in its definition</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Позволяет определять степень сравнимости экземпляров элемента данных - менее гранулированные элементы данных приводят к менее сравнимым данным (или требуют больше усилий для сравнения)<!-- Allows determining the degree of comparability of data element instances. Less granular data elements result in data that is less comparable (or at least requires more work to compare) --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Allows determining the degree of comparability of data element instances. Less granular data elements result in data that is less comparable (or at least requires more work to compare)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1499,9 +1499,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Мэппинг с другой спецификацией<!-- External specification mapped to --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">External specification mapped to</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Спецификация (не справочник), с которой элементы, составляющие DataElement, имеют некоторое соответствие<!-- Identifies a specification (other than a terminology) that the elements which make up the DataElement have some correspondence with --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies a specification (other than a terminology) that the elements which make up the DataElement have some correspondence with</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1536,12 +1536,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Внутренний идентификатор, когда этот мэппинг используется<!-- Internal id when this mapping is used --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Internal id when this mapping is used</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Внутренний идентификатор, который используется для идентификации этого мэппинга при выполнении конкретных мэппингов на поэлементной основе<!-- An internal id that is used to identify this mapping set when specific mappings are made on a per-element basis --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">An internal id that is used to identify this mapping set when specific mappings are made on a per-element basis</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Спецификация описывается один раз с общими комментариями к ней, и затем при выполнении конкретных мэппингов они ссылаются на это объявление<!-- The specification is described once, with general comments, and then specific mappings are made that reference this declaration --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The specification is described once, with general comments, and then specific mappings are made that reference this declaration</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">N/A (MIF)</Data><NamedCell
@@ -1572,12 +1572,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">На что ссылается этот мэппинг<!-- Identifies what this mapping refers to --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Identifies what this mapping refers to</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Абсолютный URI спецификации, на которую делается этот мэппинг<!-- An absolute URI that identifies the specification that this mapping is expressed to --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">An absolute URI that identifies the specification that this mapping is expressed to</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Формальный идентификатор спецификации, на которую делается мэппинг, способствует непротиворечивой идентификации карт соответствия<!-- A formal identity for the specification being mapped to helps with identifying maps consistently --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A formal identity for the specification being mapped to helps with identifying maps consistently</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">N/A (MIF)</Data><NamedCell
@@ -1608,9 +1608,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Имена, на которые ссылается этот мэппинг<!-- Names what this mapping refers to --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Names what this mapping refers to</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Имя спецификации, на которую делается мэппинг<!-- A name for the specification that is being mapped to --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A name for the specification that is being mapped to</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1643,9 +1643,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Версии, проблемы, ограничения области применения и т. п <!-- Versions, issues, scope limitations, etc. --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Versions, issues, scope limitations, etc.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Комментарии к этому мэппингу, включающие указание версии, проблем, ограничений области применения и других важных примечаний к использованию<!-- Comments about this mapping, including version notes, issues, scope limitations, and other important notes for usage --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Comments about this mapping, including version notes, issues, scope limitations, and other important notes for usage</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1679,12 +1679,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Определение элемента<!-- Definition of element --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Definition of element</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Задаёт структуру, тип, допустимые значения и другие ограничивающие характеристики этого элемента данных<!-- Defines the structure, type, allowed values and other constraining characteristics of the data element --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Defines the structure, type, allowed values and other constraining characteristics of the data element</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Для простых типов данных будет только одно повторение. Для сложных типов данных будут присутствовать многократные повторения, задающие вложенную структуру с помощью элемента &quot;path&quot;<!-- For simple data types there will only be one repetition.  For complex data types, multiple repetitions will be present defining a nested structure using the &quot;path&quot; element --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">For simple data types there will only be one repetition.  For complex data types, multiple repetitions will be present defining a nested structure using the &quot;path&quot; element</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">N/A (MIF)</Data><NamedCell
@@ -3949,7 +3949,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s111"><Data ss:Type="String">XPath</Data><Comment
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font
-        html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">XPath 2 expression.  See wiki or make Lloyd do it :&gt;</Font>       </ss:Data></Comment><NamedCell
+        html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">XPath 2 expression.  See Confluence or make Lloyd do it :&gt;</Font>       </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -3958,7 +3958,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">No base on element</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">error</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">DataElement.element</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Элемент base не разрешён<!-- No base allowed --></Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">No base allowed</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">base.empty()</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">not(exists(f:base))</Data></Cell>
    </Row>
@@ -3968,7 +3968,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">No slicing in a data element</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">error</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">DataElement.element</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Нарезка не разрешена (элемент slicing не должен присутствовать)<!-- No slicing allowed --></Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">No slicing allowed</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">slicing.empty()</Data></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">not(exists(f:slicing))</Data></Cell>
    </Row>
@@ -4444,21 +4444,21 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s120"><Data ss:Type="String">DataElement.element.definition</Data></Cell>
-    <Cell ss:StyleID="s121"><Data ss:Type="String">Поиск по тексту в описании элемента данных. Соответствует определению первого DataElement.element.<!-- Text search in the description of the data element.  This corresponds to the definition of the first DataElement.element. --></Data></Cell>
+    <Cell ss:StyleID="s121"><Data ss:Type="String">Text search in the description of the data element.  This corresponds to the definition of the first DataElement.element.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s119"><Data ss:Type="String">code</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s120"><Data ss:Type="String">DataElement.element.code</Data></Cell>
-    <Cell ss:StyleID="s121"><Data ss:Type="String">Код для этого элемента данных (сервер может отнести его к определенной категории)<!-- A code for the data element (server may choose to do subsumption) --></Data></Cell>
+    <Cell ss:StyleID="s121"><Data ss:Type="String">A code for the data element (server may choose to do subsumption)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s119"><Data ss:Type="String">stringency</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s120"><Data ss:Type="String">DataElement.stringency</Data></Cell>
-    <Cell ss:StyleID="s121"><Data ss:Type="String">Строгость определения элемента данных<!-- The stringency of the data element definition --></Data></Cell>
+    <Cell ss:StyleID="s121"><Data ss:Type="String">The stringency of the data element definition</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s119"/>
@@ -5283,7 +5283,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s110"><Data ss:Type="String">Category</Data><Comment
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font
-        html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Impact of message and time-sensitiveness for processing (see wiki/spec)</Font>       </ss:Data></Comment><NamedCell
+        html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Impact of message and time-sensitiveness for processing (see Confluence/spec)</Font>       </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s110"><Data ss:Type="String">Description</Data><Comment
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font
@@ -6380,7 +6380,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s151"><Data ss:Type="String">DataElementStringency</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Указывает степень точности определения элемента данных<!-- Indicates the degree of precision of the data element definition --></Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Indicates the degree of precision of the data element definition.</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s120"/>
     <Cell ss:StyleID="s120"><Data ss:Type="String">#dataelement-stringency</Data></Cell>
@@ -6869,11 +6869,11 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s110"><Data ss:Type="String">v2</Data><Comment ss:Author=""><ss:Data
        xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Face="Tahoma"
-        x:Family="Swiss" html:Size="8" html:Color="#000000">Mappings to v2 codes - See wiki for syntax</Font>       </ss:Data></Comment><NamedCell
+        x:Family="Swiss" html:Size="8" html:Color="#000000">Mappings to v2 codes - See Confluence for syntax</Font>       </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s110"><Data ss:Type="String">v3</Data><Comment ss:Author=""><ss:Data
        xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Face="Tahoma"
-        x:Family="Swiss" html:Size="8" html:Color="#000000">Mappings to v3 codes - See wiki for syntax</Font>       </ss:Data></Comment><NamedCell
+        x:Family="Swiss" html:Size="8" html:Color="#000000">Mappings to v3 codes - See Confluence for syntax</Font>       </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s111"><Data ss:Type="String">Committee Notes</Data><Comment
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font

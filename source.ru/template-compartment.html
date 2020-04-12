@@ -2,7 +2,7 @@
 
 <!-- template-compartment.html -->
       
-[%settitle Логический модуль {comp-title}%]
+[%settitle Compartment {comp-title}%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -10,29 +10,28 @@
 <body>
 [%file newnavbar%]
 
-<div class="col-12">
+<div class="col-12"><!--ReleaseHeader--><p id="publish-box"></p><!--EndReleaseHeader-->
 
 <%pageheader%>
-<h1>Логический модуль<!-- Compartment --> <%comp-title%></h1>
-<table class="colstu"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Trial Use</a></td></tr></table>
+<h1>Compartment <%comp-title%></h1>
+<table class="colstu"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="versions.html#std-process">Standards Status</a>:<!--!ns!--><a href="versions.html#std-process">Trial Use</a></td></tr></table>
 
 <table class="grid">
- <tr><td>Формальный URI<!-- Formal URI --></td><td><%comp-uri%></td></tr>
- <tr><td>Описание<!-- Description --></td><td><%comp-desc%></td></tr>
- <tr><td>Сущность<!-- Identity --></td><td><%comp-identity%></td></tr>
- <tr><td>Членство<!-- Membership --></td><td><%comp-membership%></td></tr>
- <tr><td>Формальное определение<!-- Formal Definition --></td><td><a href="compartmentdefinition.html">CompartmentDefinition</a>resource: <a href="compartmentdefinition-<%comp-name%>.xml.html">XML</a> или <a href="compartmentdefinition-<%comp-name%>.json.html">JSON</a></td></tr>
+ <tr><td>Formal URI</td><td><%comp-uri%></td></tr>
+ <tr><td>Description</td><td><%comp-desc%></td></tr>
+ <tr><td>Identity</td><td><%comp-identity%></td></tr>
+ <tr><td>Membership</td><td><%comp-membership%></td></tr>
+ <tr><td>Formal Definition</td><td><a href="compartmentdefinition.html">CompartmentDefinition</a>resource: <a href="compartmentdefinition-<%comp-name%>.xml.html">XML</a> or <a href="compartmentdefinition-<%comp-name%>.json.html">JSON</a></td></tr>
 </table>
 
-<p>Правила членства на основе ресурса:
-<!-- Resource based membership rules: -->
+<p>
+Resource based membership rules:
 </p>
 
 <%comp-resources%>
 
 <p>
-См. <a href="compartmentdefinition.html">информацию о логических модулях</a>.  
-<!-- See <a href="compartmentdefinition.html"> information about compartments</a>.   -->
+See <a href="compartmentdefinition.html"> information about compartments</a>.  
 </p>
 
 

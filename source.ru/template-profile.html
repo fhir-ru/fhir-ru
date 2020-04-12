@@ -9,7 +9,7 @@
 <body>
 <%file newnavbar%>
 
-<div class="col-12">
+<div class="col-12"><!--ReleaseHeader--><p id="publish-box"></p><!--EndReleaseHeader-->
 
 <%profileheader base%>
 <h3><%title%></h3>
@@ -18,8 +18,7 @@
 </table>
 
 <p>
-Официальный URL этого профиля:
-<!-- The official URL for this profile is: -->
+The official URL for this profile is:
 </p>
 <pre>
 <%profileurl%>
@@ -28,8 +27,7 @@
 <%profiledesc%>
 </p>
 <p>
-Этот профиль был опубликован <%date%> со статусом <%status%>, автор: <%author%>.
-<!-- This profile was published on <%date%> <%status%> by <%author%>. -->
+This profile was published on <%date%> <%status%> by <%author%>.
 <%profile.review%>
 </p>
 
@@ -39,27 +37,26 @@
 
 <a name="profile"></a>
 <h4>
-Формальные представления содержимого профиля
-<!-- Formal Views of Profile Content -->
+Formal Views of Profile Content
 </h4>
 
 <p>
-<a href="<%level%>profiling.html#representation">Описание профилей, дифференциалов, снапшотов и того, как работают XML- и JSON-представления<!-- Description of Profiles, Differentials, Snapshots, and how the XML and JSON presentations work --></a>.
+<a href="<%level%>profiling.html#representation">Description of Profiles, Differentials, Snapshots, and how the XML and JSON presentations work</a>.
 </p>
 
 <div id="tabs">
  <ul>
-  <li><a href="#tabs-summ">Текстовая сводка<!-- Text Summary --></a></li>
-  <li><a href="#tabs-diff">Дифференциальная таблица<!-- Differential Table --></a></li>
-  <li><a href="#tabs-snap">Таблица снапшота<!-- Snapshot Table --></a></li>
-  <li><a href="#tabs-xml">XML-шаблон<!-- XML Template --></a></li>
-  <li><a href="#tabs-json">JSON-шаблон<!-- JSON Template --></a></li>
-  <li><a href="#tabs-all">Всё<!-- All --></a></li>
+  <li><a href="#tabs-summ">Text Summary</a></li>
+  <li><a href="#tabs-diff">Differential Table</a></li>
+  <li><a href="#tabs-snap">Snapshot Table</a></li>
+  <li><a href="#tabs-xml">XML Template</a></li>
+  <li><a href="#tabs-json">JSON Template</a></li>
+  <li><a href="#tabs-all">All</a></li>
  </ul>
  
  <div id="tabs-summ">
   <div id="tbl-summ">
-   <p>Эта структура получена из <%base-link%>.</p>
+   <p>This structure is derived from <%base-link%>.</p>
    <div id="tbl-diff-inner">
      <%summary%> 
    </div>
@@ -68,7 +65,7 @@
   
  <div id="tabs-diff">
   <div id="tbl-diff">
-   <p>Эта структура получена из<!-- This structure is derived from --> <%base-link%>.</p>
+   <p>This structure is derived from <%base-link%>.</p>
    <div id="tbl-diff-inner">
      <%profile-structure-table-diff%> 
    </div>
@@ -101,33 +98,33 @@
 
  <div id="tabs-all">
   <div id="tbl-summ">
-   <p>Эта структура получена из<!-- This structure is derived from --> <%base-link%>.</p>
+   <p>This structure is derived from <%base-link%>.</p>
    <div id="tbl-diff-inner">
      <%summary%> 
    </div>
   </div>
 
  <div id="all-tbl-diff">
-   <p><b>Дифференциальный режим представления<!-- Differential View --></b></p>
+   <p><b>Differential View</b></p>
    <p>This structure is derived from <%base-link%>.</p>
    <div id="all-tbl-diff-inner">
      <%profile-structure-table-diff%> 
    </div>
   </div>
   <div id="all-tbl-snap">
-   <p><b>Режим представления "снапшот"<!-- Snapshot View --></b></p>
+   <p><b>Snapshot View</b></p>
    <div id="all-tbl-snap-inner">
     <%profile-structure-table%>
    </div>
   </div>
   <div id="all-xml">
-   <p><b>XML-шаблон<!-- XML Template --></b></p>
+   <p><b>XML Template</b></p>
    <div id="all-xml-inner">
     <%xml%>
    </div>
   </div>
   <div id="all-json">
-   <p><b>JSON-шаблон<!-- JSON Template --></b></p>
+   <p><b>JSON Template</b></p>
    <div id="all-json-inner">
     <%json%>
    </div>
@@ -136,7 +133,8 @@
 </div>
   
 <p>&nbsp;</p>  
-<p>Другие представления этого профиля<!-- Other representations of profile -->: <%schematron%></p>
+<p>Alternate definitions: Master Definition (<a href="<%name%>.profile.xml.html">XML</a>, <a href="<%name%>.profile.json.html">JSON</a>), <%schematron%></p>
+
 
 <a name="tx"></a>
 <%profile.tx%>

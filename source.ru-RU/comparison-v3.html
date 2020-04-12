@@ -14,9 +14,9 @@
 
 [%cmpheader v3%]
 
-<h2>HL7 v3 (и ISO 21090)<!-- HL7 v3 (and ISO 21090) --></h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="versions.html#maturity">Уровень зрелости</a>: N/A</td><td id="ballot"><a href="versions.html#levels">Статус голосования</a>: <a href="versions.html#std-process">Информативный</a></td></tr></table>
-<a name="v3"> </a>
+<h2>HL7 v3 (and ISO 21090)</h2>
+<table class="colsi"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Informative</a></td></tr></table>
+<a name="v3"></a>
 <p>
 <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3</a> должен был стать следующим поколением стандартов обмена сообщениями HL7. В нём была введена Эталонная информационная модель (RIM), модель типов данных и ряд словарей наряду с формальной методология развития стандартов. Кроме того, он ввёл в использование "документы" в качестве альтернативы архитектуре обмена сообщениями для совместного использования медицинской информации (см. <a href="comparison-cda.html">сравнение с CDA</a>). Хотя формально стандарт охватывает и то, и другое, термин "v3" обычно используют для ссылки на именно на обмен сообщениями v3. Типы данных, лежащие в основе v3, были утверждены ИСО в качестве стандарта ISO 21090. HL7 RIM также была утверждена в качестве стандарта ИСО.
 <!-- <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3</a> was intended to be the next generation of HL7's messaging standards. It introduced 
@@ -115,21 +115,21 @@ data needs to be analyzed by computers, whether for query, decision support or o
 HL7 v3 methodology has provided three distinct mechanisms to allow data models to define how "context" should 
 propagate through models, making explicit for computers what humans would normally understand intuitively. 
 FHIR has chosen a different path. In FHIR, no context is conducted - everything is explicit. If a report 
-about a patient contains 100 observations all about that same patient, each observation will include a reference 
+about a patient contains 100 observations about that same patient, each observation will include a reference 
 to the patient. However, this is relatively painless because it's only a reference - an id and possibly a short 
 display value. One of the benefits of this approach is that each resource can be safely consumed and examined 
 without concern for the context in which that resource was communicated. The meaning of each resource instance 
 is fully self-contained. -->
 </p>
 <p>
-<b>Null flavors:</b> В здравоохранении часто бывает, что данные неизвестны, недоступны, имеют исключительное значение или каким-то ещё образом выпадают из границ "нормальных" значений. Для работы с такими случаями v3 ввёл понятие "null flavor" для почти каждого атрибута и свойства типа данных в своих моделях. Эти закодированные null flavors можно пересылать вместо или в дополнение к данным, которые обычно заполняются для атрибута, связи или свойства типа данных. Примерами могут быть такие понятия, как "Неизвестно", "Не спросили", "Положительная бесконечность", "Ничтожное количество", "Замаскировано" (по причине безопасности или конфиденциальности, например), "Другое" и т. п. Если только элемент не был явно помечен как "обязательный", что означает, что для него не разрешены null flavors, эти null flavors могли появиться в любом месте.
+<b>Null flavors:</b> В здравоохранении часто бывает, что данные неизвестны, недоступны, имеют исключительное значение или каким-то ещё образом выпадают из границ "нормальных" значений. Для работы с такими случаями v3 ввёл понятие "null flavor" для почти каждого атрибута и свойства типа данных в своих моделях. Эти закодированные null flavors можно пересылать вместо или в дополнение к данным, которые обычно заполняются для атрибута, связи или свойства типа данных. Примерами могут быть такие понятия, как "Неизвестно", "Не спросили", "Положительная бесконечность", "Ничтожное количество", "Замаскировано" (по причине безопасности или конфиденциальности, например), "Другое" и т. п. Если только элемент не был явно помечен как "обязательный", что означает, что для него не разрешены null flavors - эти null flavors могли появиться в любом месте.
 <!-- <b>Null flavors:</b> In healthcare, it's quite common for data to be unknown, unavailable, have an exceptional
 value or otherwise fall outside the bounds of a "normal" value. To deal with this, v3 introduced the 
 concept of "null flavor" on almost every attribute and data type property in its models. These coded null flavors 
 could be sent in place of or in addition to the data that would typically be sent for the attribute, association or 
 data type property. Examples include the ideas of "Unknown", "Not asked", "Positive infinity", "Trace amount", 
 "Masked", "Other", etc. Unless an element was explicitly marked as "mandatory" - meaning no null flavors were 
-permitted, these null flavors could appear anywhere. -->
+permitted - these null flavors could appear anywhere. -->
 </p>
 <p>
 FHIR подходит к этой проблеме по-другому. Null flavors вводятся только в основной спецификации в обстоятельствах, где предполагается, что они понадобятся большинству систем. Там, где это необходимо, flavors ограничены теми значениями, которые подходят данному элементу.
@@ -139,7 +139,7 @@ to those relevant to that element. -->
 </p>
 
 <h3>Соображения совместимости v3<!-- v3 Interoperability Considerations --></h3>
-<a name="v3-interoperability"> </a>
+<a name="v3-interoperability"></a>
 <p>
 <b>Использование отображения на RIM:</b> Многие элементы ресурсов и свойства типов данных содержат мэппинги с RIM. Эти мэппинги служат для двух целей. Они помогают определить семантику FHIR в терминах эталонных моделей HL7, помогая убедиться, что Рабочие группы, которые определяют элементы данных, имеют хорошее и непротиворечивое понимание смыслового значения каждого элемента. Также они предоставляют руководства для реализаторов спецификаций v3, которые, возможно, ищут способ перейти с или установить соответствия между v3 и FHIR. Однако для последней цели важно понимать некоторые ограничения, наложенные на мэппинги с RIM. RIM - это язык, который позволяет передавать одно "понятие" несколькими различными способами с разной степенью детализации и выразительности. Так вполне возможно, что элемент RIM соответствует основному FHIR-элементу, даже хотя его RIM-представление несколько отличается о описанного в этом мэппинге. Кроме того, не все модели v3 придерживаются наилучших практик моделирования, поэтому некоторые элементы данных, которые могут появляться в мэппинге с FHIR-элементами, могут не соответствовать, если информация не была хорошо представлена. Поэтому мэппинги с RIM следует принимать за руководство, а не абсолют, и устанавливать соответствия следует в контексте спецификации v3, с которой выполняется мэппинг. (Также см. <a href="#v3-abstractModels">Абстрактные модели</a> ниже.)
 <!-- <b>Using RIM mappings:</b> Most resource elements and data type properties include mappings to the RIM. These 
@@ -147,7 +147,7 @@ mappings serve two purposes. They help to define FHIR semantics in terms of HL7'
 ensure that the Work Groups defining the data elements have a good and consistent understanding of the meaning of 
 every element. They also provide guidance for implementers of v3 specifications that may be looking to migrate 
 to or map between v3 and FHIR. However, for the latter use it's important to understand some limitations on 
-the RIM mappings. The RIM is a language which allows the same "idea" to be conveyed in a several ways 
+the RIM mappings. The RIM is a language which allows the same "idea" to be conveyed in several ways 
 with varying granularity and expressiveness. Thus, it's entirely possible for a RIM element to map to a core FHIR 
 element even though its RIM representation is somewhat different than described in the mapping. In addition, not all 
 v3 models adhere to good modeling practices, so some data elements that would appear to map to a FHIR element might
@@ -164,8 +164,8 @@ will map to FHIR extensions, as the v3 design-by-constraint principle suggests t
 "core" in FHIR would already have been part of the base v3 specification. -->
 </p>
 <p>
-<b>Абстрактные модели:</b><a name="v3-abstractModels"> </a>Как было замечено выше, большинство моделей v3, созданных на уровне HL7 International, полностью абстрактные. В результате этого модели можно использовать для выражения самых разнообразных понятий, часто в широком разнообразии различных способов. Это сильно усложняет определение соответствия между теми спецификациями и FHIR (или любой другой спецификацией). Для практической совместимости v3 &lt;-&gt; FHIR мэппинги необходимо создавать на уровне спецификаций обмена сообщениями, руководств по реализации и/или шаблоной, которые являются более конкретными и ближе к уровню реализации. Например отображение всей CDA на FHIR было бы невозможно, учитывая выразительные возможности в правой стороне модели CDA. Однако отображение шаблонов Консолидированной CDA (CCDA) на FHIR вполне возможно.
-<!-- <b>Abstract models:</b><a name="v3-abstractModels"> </a>As previously noted, many of the v3 models created at the 
+<b>Абстрактные модели:</b><a name="v3-abstractModels"></a>Как было замечено выше, большинство моделей v3, созданных на уровне HL7 International, полностью абстрактные. В результате этого модели можно использовать для выражения самых разнообразных понятий, часто в широком разнообразии различных способов. Это сильно усложняет определение соответствия между теми спецификациями и FHIR (или любой другой спецификацией). Для практической совместимости v3 &lt;-&gt; FHIR мэппинги необходимо создавать на уровне спецификаций обмена сообщениями, руководств по реализации и/или шаблоной, которые являются более конкретными и ближе к уровню реализации. Например отображение всей CDA на FHIR было бы невозможно, учитывая выразительные возможности в правой стороне модели CDA. Однако отображение шаблонов Консолидированной CDA (CCDA) на FHIR вполне возможно.
+<!-- <b>Abstract models:</b><a name="v3-abstractModels"></a>As previously noted, many of the v3 models created at the 
 HL7 International level are quite abstract. As a result, the models can be used to say a wide variety of things, 
 often in a wide variety of different ways. This makes defining a mapping between those specifications and FHIR 
 (or any other specification) quite tricky. For practical v3 &lt;-&gt; FHIR interoperability, mappings will need to be 

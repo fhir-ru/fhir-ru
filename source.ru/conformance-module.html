@@ -2,10 +2,10 @@
 
 <!--
 These elements SHALL always appear in this order. These basic elements shared by all resources come first
-in order to support consistent definitions for schema and UML derived code. 
+in order to support consistent definitions for schema and UML derived code.
 -->
-      
-[%settitle Модуль обеспечения соответствия%]
+
+[%settitle Conformance Module%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -13,11 +13,11 @@ in order to support consistent definitions for schema and UML derived code.
 <body>
 [%file newnavbar%]
 
-<div class="col-12">
-<table class="colsi"><tr><td id="wg">Work Group <a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> </td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Informative</a></td></tr></table>
+<div class="col-12"><!--ReleaseHeader--><p id="publish-box"></p><!--EndReleaseHeader-->
+<table class="colsi"><tr><td id="wg">Work Group <a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> </td><td id="ballot"><a href="versions.html#std-process">Standards Status</a>:<!--!ns!--><a href="versions.html#std-process">Informative</a></td></tr></table>
 
 <a name="root"></a>
-<h2>Модуль обеспечения соответствия<!-- Conformance Module --></h2>
+<h2>Conformance Module</h2>
 <p>The Conformance Module represents metadata about the datatypes, resources and API features of the FHIR specification and can be used to create derived specifications.</p>
 
 <a name="index"></a>
@@ -48,7 +48,7 @@ in order to support consistent definitions for schema and UML derived code.
 </table>
 
 <a name="intro"></a>
-<h3>Введение</h3>
+<h3>Introduction</h3>
     <p>The core FHIR specification describes a set of resources, frameworks and APIs that are
         used in many different contexts in healthcare. However, there is wide variability between
         jurisdictions and across the healthcare ecosystem around practices, requirements,
@@ -162,8 +162,8 @@ running the risk of being misconfigured.</li>
     </ul>
 
 <a name="roadmap"></a>
-<h3>Дорожная карта разработки<!-- Developmental Roadmap --></h3>
-<p>A subset of the conformance resources has been tested and used in production tooling and are now normative.
+<h3>Developmental Roadmap</h3>
+    <p>A subset of the conformance resources has been tested and used in production tooling and are now normative.
         These include StructureDefinition and ValueSet.
         
         Others, like CapabilityStatement, have been used widely, but not across all elements. As a consequence, these resource

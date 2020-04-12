@@ -1,7 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <!-- insert xhtml content here -->
-<a name="notes"> </a>
+<a name="notes"></a>
 <h2>Примечания<!-- Notes --></h2>
 <ul>
 <li>В одном и том же местонахождении оказывать услуги могут одновременно несколько организаций или специалистов. Такие ссылки указываются не в ресурсе Location, а в <a href="organization.html">Organization</a> и <a href="practitioner.html">Practitioner</a>.</li>
@@ -15,7 +15,7 @@ using the Location.partOf element.</li>
 see <a href="http://www.opengeospatial.org/standards/kml">Google/OGS's KML</a>.</li> -->
 </ul>
 
-<a name="loc-mode"> </a>
+<a name="loc-mode"></a>
 <h3>Вид местонахождения<!-- Location Mode --></h3>
 <p>В элементе Location.mode указывается тип местонахождения, представляет ли ресурс Location определенное (потенциально идентифицируемое) местонахождение ('экземпляр')
 или класс местонахождения ('вид'). Особенно ресурсы для ввода заказов, для планирования ресурсов, планы и определения могут использовать ресурс Location в режиме 'kind'.
@@ -46,6 +46,7 @@ missing identifier, not a Location of 'kind' ambulance. --></p>
 <li>Location.managingOrganization</li>
 </ul>
 
+<a name="example"></a>
 	<h2>Пример иерархии ресурсов Location<!-- Example Location Hierarchy --></h2>
 	<p>
 	Пример иерархии местонахождений призван помочь дать некоторые рекомендации в качестве примера, как может выглядеть иерархия местонахождений в фиктивной больнице.
@@ -53,7 +54,7 @@ missing identifier, not a Location of 'kind' ambulance. --></p>
 		of how a location hierarchy could look within a fictitious Hospital. --><br/>
 		<i>(Вложенность здесь будет передаваться с помощью структуры "part-of")<!-- (The nesting here would be the "part-of" structure of the location) --></i>
 	</p>
-		<pre>
+	<pre>
 Больница A Строение C (instance)
     Восточное крыло (instance)
         Уровень 1 (instance)
@@ -116,43 +117,50 @@ Mobile Services (kind)
 		<!-- Note: Wards/departments are not part of this structure - these would form part of the Organizational Hierarchy. --></i>
 	</p>
   
-<a name="positional"> </a>
-   <h3>Positional Searching</h3>
+<a name="positional"></a>
+    <h3>Positional Searching</h3>
     <p>
-        Searching for locations often require that a facility is within a specified distance of a particular point.
-        For example, to locate healthcare facilities within 2kms of a clients home, or the current geo-coded
+        Searching for locations often require that a facility is within a specified distance of a specified point.
+        For example, to locate healthcare facilities within 11.2 kms of a client's home, or the current geo-coded
         position of a practitioner travelling between patients (read from a mobile phone or device).
     </p>
 <pre>
- GET [base]/Location?near=-83.694810:42.256500&amp;near-distance=11.20||km...
+ GET [base]/Location?near=-83.694810|42.256500|11.20|km...
 </pre>
     <p>
-        Note: The near search parameters are not able to be used with multiples thus the multiple 
-        seperator <code> , </code> should not be used with near or near-distance.
+        The distance and distance unit parameter components are optional, if the units are missing, kms are to be assumed.
+        If the distance parameter component is missing, then the server may choose its own interpretation
+        of what near enough is to be included in the search results.
+    </p>
+    <p>
+        Note: The STU3 version of this functionality did not support the multiple multiple 
+        separator <code> , </code> or chaining. The update to this format now supports both these use cases.<br/>
+        (And the near-distance was deprecated as a result of this change too)
     </p>
     <p>
         The distance between the location and the provided point is often used as one of the 
         determining factors for selection of the location. So this value is included in the results.<br/>
         However the value cannot be inside the Location resource as it is different depending on the
         point of reference in the search. So the distance between is included in the search section
-        of the bundle entry.
+        of the bundle entry. Where multiple near positions are included, the distance to the closest 
+        point provided may be included.
     </p>
 <pre>
 &lt;entry&gt; 
-        &lt;resource&gt;
-            &lt;Location&gt;
-                &lt;!-- location details --&gt;
-            &lt;/Location&gt;
-        &lt;/resource&gt;
-        &lt;search&gt;
+    &lt;resource&gt;
+        &lt;Location&gt;
+            &lt;!-- location details --&gt;
+        &lt;/Location&gt;
+    &lt;/resource&gt;
+    &lt;search&gt;
         &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/location-distance&quot;&gt;
-                &lt;valueDistance &gt;
+            &lt;valueDistance &gt;
                 &lt;!-- The distance that this location resource is from the provided point in the query --&lt;
-                    &lt;/value value=&quot;10.5&quot;/&gt;
-                    &lt;/unit value=&quot;km&quot;/&gt;
-                &lt;/valueDistance&gt;
-            &lt;/extension&gt;
-        &lt;/search&gt;
+                &lt;/value value=&quot;10.5&quot;/&gt;
+                &lt;/unit value=&quot;km&quot;/&gt;
+            &lt;/valueDistance&gt;
+        &lt;/extension&gt;
+    &lt;/search&gt;
 &lt;/entry&gt; 
 </pre>
 </div>

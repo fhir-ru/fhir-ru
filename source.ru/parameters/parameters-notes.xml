@@ -9,7 +9,7 @@ The other features of Resource (tags, profiles, security labels, language etc.) 
 have use when operations are executed.
 </p>
 
-<a name="ids"></a>
+<a name="ids"> </a>
 <h3>Names and Identifiers</h3>
 <p>
 The following rules apply to name and identifier uniqueness within a Parameters resource:

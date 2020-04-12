@@ -14,7 +14,7 @@
 <h1>Расширение<!-- Extension -->: <%ext-name%></h1>
 
 <table class="<%fmm-style%>">
- <tr><td><%wg%></td><td><%fmm%></td><td><%sstatus%></td><td><%profile-context%></td></tr>
+ <tr><td><%wg%></td><td><%fmm%></td><td><%sstatus%><!--!ns!--></td><td><%profile-context%></td></tr>
 </table>
 
 <p>URL этого расширения<!-- URL for this extension -->: </p>
@@ -22,22 +22,24 @@
 
 <p>Статус<!-- Status -->: <%status%>. <%pubdetails%></p>
 
-<p> 
-<%definition%> 
+<p>
+<%definition%>
 </p>
+<%ext-comments%>
+
 
 <%context-info%>
 
 <%extref%>
 
-<a name="resource"> </a>
+<a name="resource"></a>
 <h2>
 Содержимое расширения
 <!-- Extension Content -->
 </h2>
-<a name="def"> </a>
-<a name="<%name%>"> </a>
-<a name="<%title%>"> </a>
+<a name="def"></a>
+<a name="<%name%>"></a>
+<a name="<%title%>"></a>
 
 <div id="tabs">
   <ul>
@@ -90,7 +92,7 @@
   <div id="tabs-all">
 
   <div id="tbl1a">
-<a name="tbl"> </a>
+<a name="tbl"></a>
 <p><b>Сводка<!-- Summary --></b></p>
  <div id="tbl-inner">
   <%extension-table false%>
@@ -98,7 +100,7 @@
 </div>
 
 <div id="tbl2a">
-<a name="tbl"> </a>
+<a name="tbl"></a>
 <p><b>Полная структура<!-- Full Structure --></b></p>
  <div id="tbl-inner">
   <%extension-table true%>
@@ -107,7 +109,7 @@
 
 
 <div id="xml">
-<a name="xml"> </a>
+<a name="xml"></a>
 <p><b>XML-шаблон</b></p>
  <div id="xml-inner">
   <%xml%>
@@ -115,7 +117,7 @@
 </div>
 
 <div id="json">
-<a name="json"> </a>
+<a name="json"></a>
 <p><b>JSON-шаблон</b></p>
  <div id="json-inner">
   <%json%>
@@ -127,7 +129,7 @@
   
 <p>&nbsp;</p>  
 
-<a name="tx"> </a>
+<a name="tx"></a>
 <%tx%>
 
 <%inv%>

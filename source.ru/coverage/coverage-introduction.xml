@@ -3,16 +3,14 @@
 <div>
 
 <a name="scope"></a>
-<h2>Область применения и использование</h2>
+<h2>Scope and Usage</h2>
 <p>
-Ресурс Coverage предназначен для предоставления идентификаторов высокого уровня и дескрипторов страхового плана, обычно информация со страхового полиса, которая используется для оплаты, частично или полностью, предоставления товаров и услуг здравоохранения. 
-<!-- The Coverage resource is intended to provide the high-level identifiers and descriptors of an insurance plan, typically the information which would 
-appear on an insurance card, which may be used to pay, in part or in whole, for the provision of health care products and services. -->
+The Coverage resource is intended to provide the high-level identifiers and descriptors of an insurance plan, typically the information which would 
+appear on an insurance card, which may be used to pay, in part or in whole, for the provision of health care products and services. 
 </p>
 <p>
-Этот ресурс также можно использовать для фиксирования случая 'SelfPay' - самооплата, где лицо или организация, отличные от страховой компании, берут на себя ответственность за оплату части затрат на здравоохранение.
-<!-- This resource may also be used to register 'SelfPay' where and individual or organization other than an insurer is taking responsibility for payment for a
- portion of the health care costs. --> Selfpay should not be confused with being a guarantor of the patient's account.
+This resource may also be used to register 'SelfPay' where an individual or organization other than an insurer is taking responsibility for payment for a
+ portion of the health care costs. Selfpay should not be confused with being a guarantor of the patient's account.
 </p>
 <p>The Coverage resource is a "event" resource from a FHIR workflow perspective - see <a href="workflow.html#event">Workflow Request.</a></p>
 

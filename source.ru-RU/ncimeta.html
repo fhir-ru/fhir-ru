@@ -13,8 +13,8 @@
 
 <%txheader%>
 
-<h2>Применение NCI Metathesaurus в FHIR<!-- Using the NCI Metathesaurus with FHIR --></h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg vocab%]">[%wgt vocab%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 2</td><td id="ballot"><a href="versions.html#levels">Ballot Status</a>: <a href="versions.html#std-process">Trial Use</a></td></tr></table>
+<h2>Using the NCI Metathesaurus with FHIR</h2>
+<table class="colstu"><tr><td id="wg"><a _target="blank" href="[%wg vocab%]">[%wgt vocab%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 2</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Trial Use</a></td></tr></table>
 
 <h3>Краткие сведения<!-- Summary --></h3>
 
@@ -51,14 +51,15 @@ in value sets that refer to NCI metathesaurus concepts, and there are no licensi
 requirements limiting use of NCI metathesaurus concepts in instances or systems. -->
 </p>
 
-<h3>База данных NCI Metathesaurus MySQL<!-- MCI Metathesaurus MySQL Database --></h3>
+<h3>MCI Metathesaurus MySQL Database</h3>
 <p>
 Как и в <a href="rxnorm.html">RxNorm</a>, RRF-файлы, входящие в исходный дистрибутив NCI Metathesaurus, можно использовать для пополнения базы данных MySQL, которая содержит данные. Здесь приводятся SQL-запросы, описывающие, как правильно реализовать функциональные возможности NCI Metathesaurus в этой базе данных. Они созданы только для удобства реализаторов и не подразумевают, что в реализациях необходимо обязательно использовать какой-то определенный подход. (Примечание: для обеспечения согласованности используются названия таблиц и колонок из RxNorm и CUIs на 1 символ длиннее, поэтому скрипты необходимо обновить).
-<!-- Like <a href="rxnorm.html">RxNorm</a> the RRF files that are the distributed source of the NCI Metathesaurus can be used
+<!-- 
+Like <a href="rxnorm.html">RxNorm</a>, the RRF files that are the distributed source of the NCI Metathesaurus can be used
 to populate a MySQL database that contains the data. This page provides SQL statements that describe how to implement 
-the features of the NCI Metathesaurus correctly against this database. These are provided for implementer convenience, and 
-do not imply that any particular approach be used in implementations. (note: for consistency, the rxnorm table and column names 
-are used; also, the CUIs are 1 character longer, so the scripts must be updated). -->
+the features of the NCI Metathesaurus correctly against this database. They are provided only for implementer convenience, and 
+do not imply that any particular approach must be used in implementations. (Note: for consistency, the RxNorm table and column names 
+are used and the CUIs are 1 character longer, so the scripts must be updated). -->
 </p>
 <p>
 <!-- For example, the correct display name for a CUI is -->
@@ -68,7 +69,7 @@ are used; also, the CUIs are 1 character longer, so the scripts must be updated)
   select STR from rxnconso where RXCUI = :code and SAB = 'RXNORM' and TTY &lt;&gt; 'SY'
 </pre>.
 
-<a name="filters"> </a>
+<a name="filters"></a>
 <h3>Свойства фильтра NCI metathesaurus<!-- NCI metathesaurus Filter Properties --></h3>
 
 <p>
@@ -78,7 +79,7 @@ code system in value set composition statements. -->
 </p>
 <p>
 Базовый SQL-запрос для получения списка CUIs, которые соответствуют этим фильтрам:
-<!-- The base SQL statement for returning a list of CUIS that conform to these filters 
+<!-- The base SQL statement for returning a list of CUIs that conform to these filters 
 is: -->
 </p>
 <pre>
@@ -98,7 +99,7 @@ is: -->
  <tr><td>Property Name</td><td>STY</td></tr>
  <tr><td>Operations Allowed</td><td>= / in</td></tr>
  <tr><td>Values Allowed</td><td>[column:]value</td></tr>
- <tr><td>Comments</td><td>If not column is specified, the default column is TUI</td></tr>
+ <tr><td>Comments</td><td>If a column is not specified, the default is TUI</td></tr>
  <tr><td>SQL</td><td><pre>and RXCUI in (select RXCUI from RXNSTY where [:column] = :value)</pre></td></tr> -->
 </table>
 

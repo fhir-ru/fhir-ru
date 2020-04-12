@@ -16,8 +16,7 @@ any specified content it not useful.
 <a name="rest"></a>
 <h3>Serving Binary Resources using the RESTful API</h3>
 <p>
-Ресурсы Binary ведут себя несколько иначе, чем всех остальные ресурсы в RESTful API:
-<!-- Binary resources behave slightly differently from all other resources on the RESTful API:  -->
+Binary resources behave slightly differently from all other resources on the RESTful API:
 </p>
 <ul>
  <li>When a read request is made with a FHIR type in the Accept header (e.g. "<code>application/fhir+xml</code>" or 
@@ -30,11 +29,10 @@ any specified content it not useful.
 <li>When the read request has some other type in the <code>Accept</code> header, then the content should be returned with the content type stated in the resource in the <code>Content-Type</code> header. 
   E.g. if the content type in the resource is "application/pdf", then the content should be returned as a PDF directly. The _summary parameter does not apply in this case.
 </li>
-<li>из-за способа работы веб-инфраструктуры не возможно ввести оющие правила об отношениях между полем "Accept" в запросе HTTP, и типом возвращаемого значения, вот почему по этому поводу нет никаких жестких правил. Однако замысел состоит в том, что если только на это нет специального запроса, то FHIR XML/JSON представление не возвращается.
-<!-- due to the way the web infrastructure works, it is not possible to make blanket
+<li>due to the way the web infrastructure works, it is not possible to make blanket
 rules about the relationship between the "Accept" field in the HTTP request, and the 
 return type, which is why there is no hard rule about this. However, the intent is that
-unless specifically requested, the FHIR XML/JSON representation is not returned  -->
+unless specifically requested, the FHIR XML/JSON representation is not returned
 </li>
 <li> 
 When binary data is written to the server (<a href="http.html#create">create</a>/<a href="http.html#update">update</a> - POST or PUT),
@@ -51,10 +49,9 @@ and clients SHOULD be prepared to receive either format.
 </ul>
 
 <p>
-Следует отметить, что в "родном" двоичном представлении обычные <a href="resource.html#meta">метаданные</a> ресурса недоступны напрямую, хотя некоторые из них дублируются в заголовках HTTP ответа. В частности, следующие элементы ресурса дублируются в http-заголовках:
-<!-- Note that in the native binary representation, the normal resource <a href="resource.html#meta">metadata</a> 
+Note that in the native binary representation, the normal resource <a href="resource.html#meta">metadata</a> 
 is not available directly, though some of it is replicated in the HTTP response headers. Specifically, the
-following elements of the resource have matching HTTP Headers: -->
+following elements of the resource have matching HTTP Headers:
 </p>
 <ul>
  <li><b>Binary.meta.lastUpdated</b>: <code>Last-Modified</code></li>

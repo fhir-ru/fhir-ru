@@ -2,7 +2,7 @@
 
 <div>
 <a name="scope"></a>
-<h2>Область применения и использование</h2>
+<h2>Scope and Usage</h2>
 <p>
 The Account resource acts as a central record against which charges, payments, and adjustments are applied.  It contains information about which parties are responsible for payment of the account.
 </p>

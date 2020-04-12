@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
 <!-- template-examples.html -->
-<%settitle Ресурс {xtitle} - Примеры%>
+<%settitle Resource {xtitle} - Examples%>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <%file newheader%>
@@ -9,11 +9,11 @@
 <body>
 <%file newnavbar%>
 
-<div class="col-12">
+<div class="col-12"><!--ReleaseHeader--><p id="publish-box"></p><!--EndReleaseHeader-->
 
 <%resheader examples%>
 <h2><%title%></h2>
-<table class="colsi"><tr><td><a href="<%wg%>"><%wgt%></a> Work Group</td><td><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>: Informative</td><!--!ns!--><td><%complinks%></td></tr></table>
+<table class="colsi"><tr><td><a href="<%wg%>"><%wgt%></a> Work Group</td><td><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="versions.html#std-process">Standards Status</a>: Informative</td><td><%sec-cat%></td><!--!ns!--><td><%complinks%></td></tr></table>
 
 <%example-header%>
 
@@ -22,11 +22,9 @@
 <%!examples-book%>
 
 <p>
-Примечание к использованию: мы очень стараемся приводить корректные и полезные примеры, однако нормативно они не являются частью
-спецификации.
-<!-- Usage note: every effort has been made to ensure that the 
+Usage note: every effort has been made to ensure that the 
 examples are correct and useful, but they are not a normative part 
-of the specification.  -->
+of the specification. 
 </p>
 
 

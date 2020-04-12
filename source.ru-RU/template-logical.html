@@ -12,8 +12,11 @@
 <div class="col-12">
 
 <%lmheader%>
-<h1>Логическая модель<!-- Logical Model --> <%title%> - Содержимое<!-- Content --></h1>
+<h1>Ресурс <%title%> - Содержимое</h1>
 
+<table class="colsi">
+ <tr><td><a href="<%wg%>"><%wgt%></a></td><td><%fmm%></td><td><a href="versions.html#std-process">Informative</a><!--!ns!--></td><td></td></tr>
+</table>
 
 <p> 
 <%definition%> 
@@ -23,14 +26,14 @@
 
 <%resref%>
 
-<a name="resource"> </a>
+<a name="resource"></a>
 <h2>
-Содержимое логической модели
-<!-- Logical Model Content -->
+Содержимое шаблона модели
+<!-- Pattern Content -->
 </h2>
-<a name="def"> </a>
-<a name="<%name%>"> </a>
-<a name="<%title%>"> </a>
+<a name="def"></a>
+<a name="<%name%>"></a>
+<a name="<%title%>"></a>
 
 <div id="tabs">
   <ul>
@@ -61,7 +64,7 @@
   <div id="tabs-all">
 
 <div id="tbl">
-<a name="tbl"> </a>
+<a name="tbl"></a>
 <p><b>Структура<!-- Structure --></b></p>
  <div id="tbl-inner">
   <%resource-table%>
@@ -70,7 +73,7 @@
 
  
 <div id="uml">
-<a name="uml"> </a>
+<a name="uml"></a>
 <p><b>UML-диаграмма</b> (<a href="formats.html#uml">Legend</a>)</p>
  <div id="uml-inner">
  <%svg B%>
@@ -82,13 +85,17 @@
   
 <p>&nbsp;</p>  
 
+<p>альтернативные определения: Основное определение <a href="<%name%>.xml.html">XML</a> + <a href="<%name%>.json.html">JSON</a>. </p>
 
-<a name="tx"> </a>
+
+<a name="tx"></a>
 <%tx%>
 
 <%inv%>
 
 <%notes%>
+
+<%logical-mappings%>
 
 </div>
 

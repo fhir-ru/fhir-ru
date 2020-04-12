@@ -13,9 +13,9 @@
 <div class="col-12">
 <%dtheader mappings%>
 <h2>Мэппинг типов данных</h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="versions.html#maturity">Уровень зрелости</a>: N/A</td><td id="ballot"><a href="versions.html#levels">Статус голосования</a>: <a href="versions.html#std-process">Информативный</a></td></tr></table>
+<table class="colsi"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Informative</a></td></tr></table>
 
-<p>На этой странице приведена карта соответствия типов данных. Имеется отображение типов данных в другие системы HL7: <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a>, <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3</a> и (где это уместно) vCard.</p>
+<p>На этой странице приведена карта соответствия типов данных. Имеется отображение типов данных в другие системы HL7: <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a>, <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3</a>, and (where appropriate) vCard (see <a href="mappings.html">Mappings to Other Standards</a> for further information &amp; status).</p>
 
 <p><b>Оглавление<!-- Table of Contents --></b></p>
 <table class="grid">
@@ -26,35 +26,35 @@
 </table>
 
 
-<a name="primitive"> </a>
-<a name="primitives"> </a>
+<a name="primitive"></a>
+<a name="primitives"></a>
 <h3 style="margin-bottom: 1px">Примитивные типы<!-- Primitive Types --></h3>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
 См. также <a href="datatypes.html#primitive">Базовое определение</a>, <a href="datatypes-examples.html#primitive">Примеры</a>, <a href="datatypes-extras.html#primitive">Профили и расширения</a>, <a href="datatypes-definitions.html#primitive">Подробное описание</a> и <a href="datatypes-version-maps.html#primitive">R2 Conversions</a>.
 </p>
-<a name="boolean"> </a>
-<a name="integer"> </a>
-<a name="string"> </a>
-<a name="decimal"> </a>
-<a name="uri"> </a>
-<a name="base64Binary"> </a>
-<a name="base64binary"> </a>
-<a name="instant"> </a>
-<a name="date"> </a>
-<a name="dateTime"> </a>
-<a name="datetime"> </a>
-<a name="time"> </a>
-<a name="patterns"> </a>
-<a name="code"> </a>
-<a name="oid"> </a>
-<a name="uuid"> </a>
-<a name="id"> </a>
+<a name="boolean"></a>
+<a name="integer"></a>
+<a name="string"></a>
+<a name="decimal"></a>
+<a name="uri"></a>
+<a name="base64Binary"></a>
+<a name="base64binary"></a>
+<a name="instant"></a>
+<a name="date"></a>
+<a name="dateTime"></a>
+<a name="datetime"></a>
+<a name="time"></a>
+<a name="patterns"></a>
+<a name="code"></a>
+<a name="oid"></a>
+<a name="uuid"></a>
+<a name="id"></a>
 
 
 <%dtmappings primitives%>
 
-<a name="Attachment"> </a>
-<a name="attachment"> </a>
+<a name="Attachment"></a>
+<a name="attachment"></a>
 <h3 style="margin-bottom: 1px">Attachment</h3>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
 См. также <a href="datatypes.html#Attachment">Базовое определение</a>, <a href="datatypes-examples.html#Attachment">Примеры</a>, <a href="datatypes-extras.html#Attachment">Профили и расширения</a>, <a href="datatypes-definitions.html#Attachment">Подробное описание</a> и <a href="datatypes-version-maps.html#Attachment">R2 Conversions</a>.
@@ -62,8 +62,8 @@
 
 <%dtmappings Attachment%>
 
-<a name="Identifier"> </a>
-<a name="identifier"> </a>
+<a name="Identifier"></a>
+<a name="identifier"></a>
 <h3 style="margin-bottom: 1px">Identifier</h3>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
 См. также <a href="datatypes.html#identifier">Базовое определение</a>, <a href="datatypes-examples.html#identifier">Примеры</a>, <a href="datatypes-extras.html#identifier">Профили и расширения</a>, <a href="datatypes-definitions.html#identifier">Подробное описание</a> и <a href="datatypes-version-maps.html#identifier">R2 Conversions</a>.
@@ -71,7 +71,7 @@
 
 <%dtmappings Identifier%>
 
-<a name="ii"> </a>
+<a name="ii"></a>
 <h4>V3 Mapping Issues for Identifier</h4>
 <p>
 When mapping an HL7 v3 II data type to a FHIR Identifier, there are two possibilities:
@@ -81,10 +81,13 @@ When mapping an HL7 v3 II data type to a FHIR Identifier, there are two possibil
  <li>If the II has both a root and an extension, the II.root will be mapped to a URI - either a human-friendly URL or URN or (less preferred) an OID expressed as a urn, and the II.extension will be sent in Identifier.value</li>
 </ul>
 <p>
+To search on a CDA <code>II.root</code> - which may appear in either <code>Identifier.system</code> or <code>Identifier.value</code>, use the syntax <code>identifier=|[root],[root]</code>.
+</p>
+<p>
 See <a href="datatypes-examples.html#ii">v3 Mapping examples</a>
 </p>
-<a name="Coding"> </a>
-<a name="coding"> </a>
+<a name="Coding"></a>
+<a name="coding"></a>
 <h3 style="margin-bottom: 1px">Coding</h3>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
 См. также <a href="datatypes.html#Coding">Базовое определение</a>, <a href="datatypes-examples.html#Coding">Примеры</a>, <a href="datatypes-extras.html#Coding">Профили и расширения</a>, <a href="datatypes-definitions.html#Coding">Подробное описание</a> и <a href="datatypes-version-maps.html#Coding">R2 Conversions</a>.
@@ -92,8 +95,8 @@ See <a href="datatypes-examples.html#ii">v3 Mapping examples</a>
 
 <%dtmappings Coding%>
 
-<a name="CodeableConcept"> </a>
-<a name="codeableconcept"> </a>
+<a name="CodeableConcept"></a>
+<a name="codeableconcept"></a>
 <h3 style="margin-bottom: 1px">CodeableConcept</h3>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
 См. также <a href="datatypes.html#CodeableConcept">Базовое определение</a>, <a href="datatypes-examples.html#CodeableConcept">Примеры</a>, <a href="datatypes-extras.html#CodeableConcept">Профили и расширения</a>, <a href="datatypes-definitions.html#CodeableConcept">Подробное описание</a> и <a href="datatypes-version-maps.html#CodeableConcept">R2 Conversions</a>.
@@ -101,15 +104,18 @@ See <a href="datatypes-examples.html#ii">v3 Mapping examples</a>
 
 <%dtmappings CodeableConcept%>
 
-<a name="Quantity"> </a>
-<a name="quantity"> </a>
-<a name="SimpleQuantity"> </a>
-<a name="simplequantity"> </a>
-<a name="age"> </a>
-<a name="distance"> </a>
-<a name="duration"> </a>
-<a name="count"> </a>
-<a name="money"> </a>
+<a name="Quantity"></a>
+<a name="quantity"></a>
+<a name="SimpleQuantity"></a>
+<a name="simplequantity"></a>
+<a name="age"></a>
+<a name="distance"></a>
+<a name="duration"></a>
+<a name="count"></a>
+<a name="Age"></a>
+<a name="Distance"></a>
+<a name="Duration"></a>
+<a name="Count"></a>
 <h3 style="margin-bottom: 1px">Quantity</h3>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
 См. также <a href="datatypes.html#Quantity">Базовое определение</a>, <a href="datatypes-examples.html#Quantity">Примеры</a>, <a href="datatypes-extras.html#Quantity">Профили и расширения</a>, <a href="datatypes-definitions.html#Quantity">Подробное описание</a> и <a href="datatypes-version-maps.html#Quantity">R2 Conversions</a>.
@@ -117,8 +123,17 @@ See <a href="datatypes-examples.html#ii">v3 Mapping examples</a>
 
 <%dtmappings Quantity%>
 
-<a name="Range"> </a>
-<a name="range"> </a>
+<a name="Money"></a>
+<a name="Money"></a>
+<h3 style="margin-bottom: 1px">Money</h3>
+<p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
+See also <a href="datatypes.html#Money">Base Definition</a>, <a href="datatypes-examples.html#Money">Examples</a>, <a href="datatypes-extras.html#Money">Profiles &amp; Extensions</a>, <a href="datatypes-definitions.html#Money">Detailed Descriptions</a> and <a href="datatypes-version-maps.html#Money">R2 Conversions</a>.
+</p>
+
+<%dtmappings Money%>
+
+<a name="Range"></a>
+<a name="range"></a>
 <h3 style="margin-bottom: 1px">Range</h3>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
 См. также <a href="datatypes.html#Range">Базовое определение</a>, <a href="datatypes-examples.html#Range">Примеры</a>, <a href="datatypes-extras.html#Range">Профили и расширения</a>, <a href="datatypes-definitions.html#Range">Подробное описание</a> и <a href="datatypes-version-maps.html#Range">R2 Conversions</a>.
@@ -126,8 +141,8 @@ See <a href="datatypes-examples.html#ii">v3 Mapping examples</a>
 
 <%dtmappings Range%>
 
-<a name="Ratio"> </a>
-<a name="ratio"> </a>
+<a name="Ratio"></a>
+<a name="ratio"></a>
 <h3 style="margin-bottom: 1px">Ratio</h3>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
 См. также <a href="datatypes.html#Ratio">Базовое определение</a>, <a href="datatypes-examples.html#Ratio">Примеры</a>, <a href="datatypes-extras.html#Ratio">Профили и расширения</a>, <a href="datatypes-definitions.html#Ratio">Подробное описание</a> и <a href="datatypes-version-maps.html#Ratio">R2 Conversions</a>.
@@ -135,8 +150,8 @@ See <a href="datatypes-examples.html#ii">v3 Mapping examples</a>
 
 <%dtmappings Ratio%>
 
-<a name="Period"> </a>
-<a name="period"> </a>
+<a name="Period"></a>
+<a name="period"></a>
 <h3 style="margin-bottom: 1px">Period</h3>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
 См. также <a href="datatypes.html#Period">Базовое определение</a>, <a href="datatypes-examples.html#Period">Примеры</a>, <a href="datatypes-extras.html#Period">Профили и расширения</a>, <a href="datatypes-definitions.html#Period">Подробное описание</a> и <a href="datatypes-version-maps.html#Period">R2 Conversions</a>.
@@ -144,8 +159,8 @@ See <a href="datatypes-examples.html#ii">v3 Mapping examples</a>
 
 <%dtmappings Period%>
 
-<a name="SampledData"> </a>
-<a name="sampleddata"> </a>
+<a name="SampledData"></a>
+<a name="sampleddata"></a>
 <h3 style="margin-bottom: 1px">SampledData</h3>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
 См. также <a href="datatypes.html#SampledData">Базовое определение</a>, <a href="datatypes-examples.html#SampledData">Примеры</a>, <a href="datatypes-extras.html#SampledData">Профили и расширения</a>, <a href="datatypes-definitions.html#SampledData">Подробное описание</a> и <a href="datatypes-version-maps.html#SampledData">R2 Conversions</a>.
@@ -153,8 +168,8 @@ See <a href="datatypes-examples.html#ii">v3 Mapping examples</a>
 
 <%dtmappings SampledData%>
 
-<a name="HumanName"> </a>
-<a name="humanname"> </a>
+<a name="HumanName"></a>
+<a name="humanname"></a>
 <h3 style="margin-bottom: 1px">HumanName</h3>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
 См. также <a href="datatypes.html#HumanName">Базовое определение</a>, <a href="datatypes-examples.html#HumanName">Примеры</a>, <a href="datatypes-extras.html#HumanName">Профили и расширения</a>, <a href="datatypes-definitions.html#HumanName">Подробное описание</a> и <a href="datatypes-version-maps.html#HumanName">R2 Conversions</a>.
@@ -174,8 +189,8 @@ See <a href="datatypes-examples.html#ii">v3 Mapping examples</a>
 
 
 
-<a name="Address"> </a>
-<a name="address"> </a>
+<a name="Address"></a>
+<a name="address"></a>
 <h3 style="margin-bottom: 1px">Address</h3>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
 См. также <a href="datatypes.html#Address">Базовое определение</a>, <a href="datatypes-examples.html#Address">Примеры</a>, <a href="datatypes-extras.html#Address">Профили и расширения</a>, <a href="datatypes-definitions.html#Address">Подробное описание</a> и <a href="datatypes-version-maps.html#Address">R2 Conversions</a>.
@@ -184,8 +199,8 @@ See <a href="datatypes-examples.html#ii">v3 Mapping examples</a>
 <%dtmappings Address%>
 
 
-<a name="ContactPoint"> </a>
-<a name="contactpoint"> </a>
+<a name="ContactPoint"></a>
+<a name="contactpoint"></a>
 <h3 style="margin-bottom: 1px">ContactPoint</h3>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
 См. также <a href="datatypes.html#ContactPoint">Базовое определение</a>, <a href="datatypes-examples.html#ContactPoint">Примеры</a>, <a href="datatypes-extras.html#ContactPoint">Профили и расширения</a>, <a href="datatypes-definitions.html#ContactPoint">Подробное описание</a> и <a href="datatypes-version-maps.html#ContactPoint">R2 Conversions</a>.
@@ -193,8 +208,8 @@ See <a href="datatypes-examples.html#ii">v3 Mapping examples</a>
 
 <%dtmappings ContactPoint%>
 
-<a name="Timing"> </a>
-<a name="timing"> </a>
+<a name="Timing"></a>
+<a name="timing"></a>
 <h3 style="margin-bottom: 1px">Timing</h3>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
 См. также <a href="datatypes.html#Timing">Базовое определение</a>, <a href="datatypes-examples.html#Timing">Примеры</a>, <a href="datatypes-extras.html#Timing">Профили и расширения</a>, <a href="datatypes-definitions.html#Timing">Подробное описание</a> и <a href="datatypes-version-maps.html#Timing">R2 Conversions</a>.
@@ -202,8 +217,8 @@ See <a href="datatypes-examples.html#ii">v3 Mapping examples</a>
 
 <%dtmappings Timing%>
 
-<a name="Signature"> </a>
-<a name="signature"> </a>
+<a name="Signature"></a>
+<a name="signature"></a>
 <h3 style="margin-bottom: 1px">Signature</h3>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
 См. также <a href="datatypes.html#Signature">Базовое определение</a>, <a href="datatypes-examples.html#Signature">Примеры</a>, <a href="datatypes-extras.html#Signature">Профили и расширения</a>, <a href="datatypes-definitions.html#Signature">Подробное описание</a> и <a href="datatypes-version-maps.html#Signature">R2 Conversions</a>.
@@ -211,8 +226,8 @@ See <a href="datatypes-examples.html#ii">v3 Mapping examples</a>
 
 <%dtmappings Signature%>
 
-<a name="Annotation"> </a>
-<a name="annotation"> </a>
+<a name="Annotation"></a>
+<a name="annotation"></a>
 <h3 style="margin-bottom: 1px">Annotation</h3>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
 См. также <a href="datatypes.html#Annotation">Базовое определение</a>, <a href="datatypes-examples.html#Annotation">Примеры</a>, <a href="datatypes-extras.html#Annotation">Профили и расширения</a>, <a href="datatypes-definitions.html#Annotation">Подробное описание</a> и <a href="datatypes-version-maps.html#Annotation">R2 Conversions</a>.

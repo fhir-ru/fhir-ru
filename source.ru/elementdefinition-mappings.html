@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
 
-[%settitle Мэппинги для Element Definition%]
+[%settitle Element Definition Mappings%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -10,10 +10,10 @@
 [%file newnavbar%]
 
 
-<div class="col-12">
+<div class="col-12"><!--ReleaseHeader--><p id="publish-box"></p><!--EndReleaseHeader-->
 <%edheader mappings%>
-<h2>Мэппинги для Element Definition<!-- Element Definition Mappings --></h2>
-<table class="colsi"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Informative</a></td></tr></table>
+<h2>Element Definition Mappings</h2>
+<table class="colsi"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="versions.html#std-process">Standards Status</a>:<!--!ns!--><a href="versions.html#std-process">Informative</a></td></tr></table>
 
 <p>This page provides mappings for Element Definition (see <a href="mappings.html">Mappings to Other Standards</a> for further information &amp; status).</p>
 
@@ -24,7 +24,7 @@ between ElementDefinition and the other frameworks. One important consideration 
 to other Element definition frameworks is the scope of the definition. Many of these definition
 frameworks use the term "Data Element" to refer to a data item that is collected and stored with
 provenance, such as when it was collected, who recorded it, etc. In this specification, that's
-an <a href="observation.html">Observation</a>, and the definition of those kind of data element
+an <a href="observation.html">Observation</a>, and the definition of this kind of data element
 is an <a href="observationdefinition.html">ObservationDefinition</a>, or a <a href="structuredefinition.html">StructureDefinition</a>
 that contains several different atomic data items. An ElementDefinition 
 in this specification is a narrower notion, solely around the characteristics of a single

@@ -9,10 +9,10 @@
 <body>
 [%file newnavbar%]
 
-<div class="col-12">
+<div class="col-12"><!--ReleaseHeader--><p id="publish-box"></p><!--EndReleaseHeader-->
 
 
-<h1>Определение ресурса: <%title%></h1>
+<h1>Resource Definition: <%title%></h1>
 <!-- <p class="status">Status: <%status%></p> -->
 <p>
 <%definition%>.
@@ -20,7 +20,7 @@
 <%resurl%>
 <%introduction%>
 <h2>
-Содержимое ресурса
+Resource Content
 </h2>
 <a name="uml"></a>
 <%svg A%>
@@ -28,9 +28,9 @@
 <a name="def"></a>
 <%xml%>
 
-<p>Альтернативные определения: 
-Основное определение<!-- Master Definition --> (<a href="<%name%>.profile.xml.html">XML</a>, <a href="<%name%>.profile.json.html">JSON</a>),
-<a href="<%name%>.xsd">Schema</a>/<a href="<%name%>.sch">Schematron</a>, <a href="<%name%>.shex.html">ShEx</a> (для <a href="rdf.html">Turtle</a>)</p>
+<p>Alternate definitions: 
+Master Definition (<a href="<%name%>.profile.xml.html">XML</a>, <a href="<%name%>.profile.json.html">JSON</a>),
+<a href="<%name%>.xsd">Schema</a>/<a href="<%name%>.sch">Schematron</a>, <a href="<%name%>.shex.html">ShEx</a> (for <a href="rdf.html">Turtle</a>)</p>
 
 <%tx%>
 
@@ -40,7 +40,7 @@
 
 <a name="examples"></a>
 
-<h2>Примеры</h2>
+<h2>Examples</h2>
 <table class="list">
   <%examples%>
 </table>
@@ -49,9 +49,9 @@
 
 <a name="desc"></a>
 
-<h2>Подробное описание</h2>
+<h2>Detailed Descriptions</h2>
 
-<p>Подробное описание элементов, приведённых выше</p>
+<p>The Detailed Descriptions for the elements above</p>
 
 <%dictionary%>
 

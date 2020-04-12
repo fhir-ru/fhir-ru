@@ -2,28 +2,22 @@
 
 <div>
 <a name="bnc"></a>
-<h2>Область применения и использование<!-- Scope and Usage --></h2>
+<h2>Scope and Usage</h2>
 <p>
-В CareTeam входят люди, команды и организации, которые будут участвовать в координации и оказании мед. помощи пациенту или группе (например супружеская пара на терапии или группа поддержки). Также CareTeam может существовать и не в контексте пациента, например команда экстренной помощи или команда реагирования на чрезвычайные ситуации. Она не ограничена одними только мед. специалистами и может вклчючать и других лиц, осуществляющих уход, например членов семьи, опекунов, самого пациента и других.
-В зависимости от контекста использования, команда может создаваться для конкретного плана по уходу, для эпизода лечения, для случая обслуживания, либо это может быть общий список участников всех перечисленных типов команд. Персональные CareTeam могут быть динамическими, отражая например частую смену членов реабилитационной команды.
+The CareTeam includes all the people, teams, and organizations who plan to participate in the coordination and delivery of care for a single patient or a group (such as a married couple in therapy or a support group).  CareTeam can also be organizationally assigned without a subject in context, such as a code blue team or emergency response team. This is not limited to practitioners, but may include other caregivers such as family members, guardians, the patient themself, or others. 
 
-<!-- The CareTeam includes all the people, teams, and organizations who plan to participate in the coordination and delivery of care for a single patient or a group (such as a married couple in therapy or a support group).  CareTeam can also be organizationally assigned without a subject in context, such as a code blue team or emergency response team. This is not limited to practitioners, but may include other caregivers such as family members, guardians, the patient themself, or others. 
-
-The Care Team, depending on where used, may include care team members specific to a particular care plan, an episode, an encounter, or may reflect all known team members across these perspectives. An individual's CareTeam can be dynamic over time, such that there can be transience of team members, such as a rehabilitation team.  --> 
+The Care Team, depending on where used, may include care team members specific to a particular care plan, an episode, an encounter, or may reflect all known team members across these perspectives. An individual's CareTeam can be dynamic over time, such that there can be transience of team members, such as a rehabilitation team.
 
 </p>
 </div>
 
 
 <div>
-<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
+<h2>Boundaries and Relationships</h2>
 <p>
-Ресурс CareTeam отличается от ресурса Group. Ресурс Group не привязан к пациенту и представляет собой недифференцированный список представителей, выступающих объектом одной или нескольких клинических активностей (например список участников клинического исследования, группа людей, находящихся под воздействием некоторого события здравоохранения или группа риска, стадо или стая и т.п.). Ресурс CareTeam устанавливает взаимосвязи и роли и относится к конкретному пациенту. Его действующие лица - индивидуальные участники или организованные группы лиц.
+Care Team is distinct from Group. Group is patient-independent and identifies an undifferentiated set of individuals who are intended to be the target of one or more clinical activities (e.g. set of clinical trial participants, set of individuals impacted by or at risk of a public health event, a herd or flock, etc.) The CareTeam resource establishes a set of relationships and roles and is specific to a particular Patient.  The actors are the individual members or organized group of individuals.   
 
-На ресурс CareTeam могут ссылаться ресурсы EpisodeOfCare, Encounter и CarePlan для указания лиц (и их соответствующих ролей), которых планируется вовлечь в предоставление ухода, описываемого этими ресурсами.
-<!-- Care Team is distinct from Group. Group is patient-independent and identifies an undifferentiated set of individuals who are intended to be the target of one or more clinical activities (e.g. set of clinical trial participants, set of individuals impacted by or at risk of a public health event, a herd or flock, etc.) The CareTeam resource establishes a set of relationships and roles and is specific to a particular Patient.  The actors are the individual members or organized group of individuals.   
-
-CareTeam can be referenced by EpisodeOfCare, Encounter, or CarePlan to identify the set of individuals (and their respective roles) who are intended to be involved in providing the care defined by those resources.  -->
+CareTeam can be referenced by EpisodeOfCare, Encounter, or CarePlan to identify the set of individuals (and their respective roles) who are intended to be involved in providing the care defined by those resources. 
 
 </p>
 </div>

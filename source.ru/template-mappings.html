@@ -1,8 +1,8 @@
 <!DOCTYPE HTML>
 
 <!-- template-mappings.html -->
-
-<%settitle Ресурс {xtitle} - Мэппинг%>
+       
+<%settitle Resource {xtitle} - Mappings%>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <%file newheader%>
@@ -10,15 +10,15 @@
 <body>
 <%file newnavbar%>
 
-<div class="col-12">
+<div class="col-12"><!--ReleaseHeader--><p id="publish-box"></p><!--EndReleaseHeader-->
 
 <%resheader mappings%>
 <h2><%title%></h2>
-<table class="colsi"><tr><td><a href="<%wg%>"><%wgt%></a> Work Group</td><td><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>: Informative</td><!--!ns!--><td><%complinks%></td></tr></table>
+<table class="colsi"><tr><td><a href="<%wg%>"><%wgt%></a> Work Group</td><td><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="versions.html#std-process">Standards Status</a>: Informative</td><td><%sec-cat%></td><!--!ns!--><td><%complinks%></td></tr></table>
 
 <%maponthispage%>
 
-<p>Таблицы соответствий для ресурса <%name%> (см. <a href="mappings.html">Mappings to Other Standards</a> for further information &amp; status).</p>
+<p>Mappings for the <%name%> resource (see <a href="mappings.html">Mappings to Other Standards</a> for further information &amp; status).</p>
 
 <%mappings%>
 

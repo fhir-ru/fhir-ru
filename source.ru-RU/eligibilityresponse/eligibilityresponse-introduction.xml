@@ -1,7 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<a name="scope"> </a>
+<a name="scope"></a>
 <h2>Область применения и использование</h2>
 <p>
 Ресурс EligibilityResponse предоставляет сведения о приемлемости и плане после обработки ресурса EligibilityRequest. Он комбинирует ключевую информацию от плательщика, как например действует ли Coverage, и, необязательно, природу сведений о Policy.
@@ -10,6 +10,8 @@ EligibilityRequest resource. It combines key information from a payor as to whet
 in-force, and optionally the nature of the Policy details. -->
 </p>
 <p>
+<b>For Balloters:</b> The optional Authorization subclass has been addded for comment ballot review. The EligibilityResponse would return a boolean indicating whether pre-authorization is required and an optional text element woud convey and 
+special instructions for each of the billable services provided in the EligibilityRequest.
 <!-- Describes some of the situations/use cases intended to be managed with the resource. May include a child div for "Storyboards" and "Related Specifications". The purpose of this section is to help implementers understand why the resource is needed and how it might be used. -->
 </p>
 </div>

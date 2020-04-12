@@ -1,16 +1,15 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<a name="scope"> </a>
+<a name="scope"></a>
 <h2>Область применения и использование</h2>
 <!-- Describes some of the situations/use cases intended to be managed with the resource. May include a child div for "Storyboards" and "Related Specifications". The purpose of this section is to help implementers understand why the resource is needed and how it might be used. -->
- 
+
 <p>CommunicationRequest is one of the <a href="workflow.html#request">request</a> resources in the FHIR <a href="workflow.html">workflow</a> specification.</p>
- 
+
 <p>
-Данный ресурс представляет собой запрос на совершение коммуникации. Коммуникация - это передача информации от одной сущности, отправителя, к другой сущности, получателю.
-Отправителем и получателями могут быть пациенты, специалисты, имеющие отношение люди, организации и устройства. Сценарии использования запроса на коммуникацию включают в себя:
-<!-- This resource is a record of a request for a communication to be performed. A communication is a conveyance of information from one entity, a sender, to another entity, a receiver. The sender and receivers may be patients, practitioners, related persons, organizations, and devices. Uses of communication request include: -->
+Данный ресурс представляет собой запрос на совершение коммуникации. Коммуникация - это передача информации от одной сущности, отправителя, к другой сущности, получателю. Запрашивающий запрашивает отправителя отправить полезную нагрузку получателю. Отправителем и получателями могут быть пациенты, специалисты, имеющие отношение люди, организации и устройства. Сценарии использования запроса на коммуникацию включают в себя:
+<!-- This resource is a record of a request for a communication to be performed. A communication is a conveyance of information from one entity, a sender, to another entity, a receiver. The requester requests the sender to send the payload to the recipient. The sender and receivers may be patients, practitioners, related persons, organizations, and devices. Uses of communication request include: -->
 </p>
 <ul>
 <li>Автоматизированная система поддержки принятия решений, запрашивающая доставку напоминания или уведомления ответственному поставщику</li>
@@ -26,7 +25,7 @@
 
 <!-- (recommended): -->
 <div>
-<a name="bnr"> </a>
+<a name="bnr"></a>
 
 <h2>Границы и связи</h2>
 <p>

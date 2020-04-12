@@ -14,28 +14,36 @@
 <div class="col-12">
 
 [%pub-notice%]
-
-<a name="root"> </a>
+<!--!ns!-->
+<a name="root"></a>
 <h1>Приветствуем на сайте FHIR&reg;</h1>
 
-<p style="padding: 5px; border-radius: 5px; border: 2px solid maroon; background: #ffffe6;">
-<b>Впервые здесь?</b><br/>Для ознакомления с FHIR посмотрите: <a href="summary.html">Исполнительное резюме</a>, <a href="overview-dev.html">Введение для программистов</a>, <a href="overview-clinical.html">Введение для медицинских работников</a> или <a href="overview-arch.html">Введение для архитекторов ПО</a>, <a href="overview.html">Обзор стандарта FHIR и план развития</a>, <a href="versions.html">История версий</a>. 
-См. также: <a href="license.html">Открытая лицензия</a>, <a href="toc.html">Оглавление</a> и <a href="search.cfm">Поиск по спецификации</a>.
+<p>FHIR - это стандарт обмена медицинскими данными, опубликованный HL7&reg;. Примечание: сейчас идёт подготовка непрерывной интеграционной сборки к первому нормативному голосованию. Подробности на странице <a href="ballot-intro.html">Голосование</a>. 
+<!-- FHIR is a standard for health care data exchange, published by HL7&reg;. Note: The continuous build is getting ready for the first normative ballot. See <a href="ballot-intro.html">the ballot introduction</a> for details. -->
 </p>
+
+<p style="padding: 5px; border-radius: 5px; border: 2px solid maroon; background: #ffffe6; max-width: 790px">
+<b>Впервые здесь?</b><br/>Для ознакомления с FHIR посмотрите: <a href="summary.html">Исполнительное резюме</a>, <a href="overview-dev.html">Введение для программистов</a>, <a href="overview-clinical.html">Введение для медицинских работников</a> или <a href="overview-arch.html">Введение для архитекторов ПО</a>, <a href="overview.html">Обзор стандарта FHIR и план развития</a>, <a href="versions.html">История версий</a>.
+<!-- <b>First time here?</b><br/>See the <a href="summary.html">executive summary</a>, the <a href="overview-dev.html">developer's introduction</a>,
+ <a href="overview-clinical.html">clinical introduction</a>, or <a href="overview-arch.html">architect's introduction</a>, and then the FHIR <a href="overview.html">overview / roadmap</a> &amp; <a href="versions.html">Timelines</a>. -->
+См. также <a href="license.html">открытую лицензию</a>, <a href="toc.html">оглавление</a>, <a href="credits.html">благодарности сообществу</a> и <a href="search.cfm">поиск по спецификации</a>.
+<!-- See also the <a href="license.html">open license</a> (and don't miss the full <a href="toc.html">Table of Contents</a> and the <a href="credits.html">Community Credits</a> or you can <a href="search.cfm">search this specification</a>). -->
+</p>
+
 
 [%file modules-fragment%]
 
-<div>
-<a name="links"> </a>
+<div style="max-width: 790px">
+<a name="links"></a>
 <p><b>Внешние ссылки:</b></p>
 
 <table width="100%" class="bare"><tr>
- <td> <!-- Common internal links -->
- <p><b>Руководства по реализации<!-- Implementation Guides --></b></p>
- <p>Спецификации на основе стандарта FHIR<!-- Specifications based on the FHIR standard --></p>
-  <ul>  
-    <li><a href="http://www.fhir.org/guides/registry">опубликованные HL7, филиалами и фондом FHIR<!-- Published by HL7, Affiliates &amp; FHIR Foundation --></a></li>
-    <li><a href="http://wiki.hl7.org/index.php?title=FHIR_Profiles_from_other_Organizations">другие руководства по реализации (FHIR Wiki)<!-- Oher IGs (FHIR Wiki) --></a></li>
+ <td>   <!-- Common internal links -->
+ <p><b>Руководства по реализации</b></p>
+ <p>Спецификации на основе стандарта FHIR</p>
+  <ul>
+    <li><a href="http://www.fhir.org/guides/registry">опубликованные HL7, филиалами и фондом FHIR</a></li>
+    <li><a href="http://wiki.hl7.org/index.php?title=FHIR_Profiles_from_other_Organizations">другие руководства по реализации (FHIR Wiki)</a></li>
  </ul>
  </td><td>
   <p><b><a href="http://fhir.org">Фонд FHIR<!-- FHIR Foundation --></a></b></p>
@@ -45,7 +53,7 @@
     <li><a href="http://wiki.hl7.org/index.php?title=Publicly_Available_FHIR_Servers_for_testing">Публичные тестовые сервера и программное обеспечение<!-- Public Test Servers &amp; Software  --></a></li>
     <li><a href="http://wiki.hl7.org/index.php?title=FHIR_Blogs">Блоги о FHIR<!-- Blogs that cover FHIR  --></a></li>
     <li><a href="http://wiki.hl7.org/index.php?title=FHIR">FHIR Wiki </a></li>
- </ul>
+  </ul>
  </td><td>
   <p><b>Переводы<!-- Translations --></b></p>
   <p>Обратите внимание на то, что переводы не всегда соответствуют последней версии спецификации<!-- Note that translations are not always up to date --></p>
@@ -58,9 +66,9 @@
 
  <p id="srch"> </p>
 
-<p>Примечание: для просмотра спецификации требуется браузер с поддержкой SVG (Microsoft Internet Explorer 10+, Firefox 3.0+, Chrome или Safari), используется локальное хранилище браузера для запоминания открытых вкладок.</p>
+<p>Примечание: для просмотра спецификации требуется браузер с поддержкой SVG (Microsoft Internet Explorer 10+, Firefox 3.0+, Chrome или Safari), используется локальное хранилище браузера для запоминания открытых вкладок.<!-- Note: This specification requires a browser that is SVG compatible (Microsoft Internet Explorer 10+, Firefox 3.0+, Chrome, or Safari), and uses the browser's session storage to remember which tabs are active. --></p>
 </div>
- 
+
 </div>
 
 [%file newfooter%]
@@ -70,6 +78,6 @@
 	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 	  ga('create', 'UA-62156725-1', 'auto');
 	  ga('send', 'pageview');
-	</script>    
+	</script>
 </body>
 </html>

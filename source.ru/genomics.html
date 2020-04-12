@@ -28,10 +28,10 @@ table th {
 <body>
 [%file newnavbar%]
 
-<div class="col-12">
+<div class="col-12"><!--ReleaseHeader--><p id="publish-box"></p><!--EndReleaseHeader-->
 
   <h2>Genomics Implementation Guidance</h2>
-<table class="colstu"><tr><td id="wg"><a _target="blank" href="[%wg cg%]">[%wgt cg%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 1</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Trial Use</a></td></tr></table>
+<table class="colstu"><tr><td id="wg"><a _target="blank" href="[%wg cg%]">[%wgt cg%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 1</td><td id="ballot"><a href="versions.html#std-process">Standards Status</a>:<!--!ns!--><a href="versions.html#std-process">Trial Use</a></td></tr></table>
 
   <p><b>Table of Contents</b></p>
 
@@ -50,11 +50,11 @@ table th {
       <li><a href="#history">Appendix 1: From DSTU2 Genomics to STU3</a></li>
     </ol>
 
-<blockquote class="stu-note">
+[%stu-note%]
   <p>
       The material on this page is currently undergoing work to be refactored in a future release as further analysis is done, for example as part of the <a href="http://hl7.org/fhir/uv/genomics-reporting/index.html">Genomics Reporting Implementation Guide</a>.
   </p>
-</blockquote>
+[%end-note%]
 
 <a name="background"></a>
   <h2>Background</h2>

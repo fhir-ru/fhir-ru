@@ -1,7 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<a name="scope"> </a>
+<a name="scope"></a>
 <h2>Область применения и использование</h2>
 <p>
 <!-- Describes some of the situations/use cases intended to be managed with the resource. May include a child div for "Storyboards" and "Related Specifications". The purpose of this section is to help implementers understand why the resource is needed and how it might be used. -->
@@ -46,7 +46,7 @@ management, patient satisfaction, etc. -->
 </div>
 
 <div>
-<a name="bnr"> </a>
+<a name="bnr"></a>
 <h2>Границы и связи</h2>
 <p>
 Цели обычно устанавливаются в контексте некоторого плана по уходу <a href="careplan.html">CarePlan</a>. При этом на цели могут непосредственно ссылаться с помощью расширений ресурсы-запросы (например <a href="medicationrequest.html">MedicationRequest</a> или <a href="servicerequest.html">ServiceRequest</a>).

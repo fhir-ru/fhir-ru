@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
 
-[%settitle Профилирование FHIR%]
+[%settitle Profiling FHIR%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -13,37 +13,30 @@
 
 <div class="col-12">
 
-<h2>Примеры разделений на слои (Slicing) и дискриминаторов (Discriminator)</h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="versions.html#maturity">Уровень зрелости</a>: N/A</td><td id="ballot"><a href="versions.html#levels">Статус голосования</a>: <a href="versions.html#std-process">Информативный</a></td></tr></table>
+<h2>Slicing and Discriminator Examples</h2>
+<table class="colsi"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Informative</a></td></tr></table>
 
-<a name="contacts"> </a>
-<h3>Нарезка контактной информации пациента<!-- Slicing Patient Contact Details --></h3>
+<a name="contacts"></a>
+<h3>Slicing Patient Telecom element</h3>
 
 <p>
-Одним из распространённых случаев использованием нарезки является описание различных ограничивающих условий для различных видов контактной информации пациента. В данном примере, так как Patient.telecom определен как ContactPoint [0..*], где у ContactPoint есть система, значение и тип использования.
-<!-- One common use of slicing is to describe different
+One common use of slicing is to describe different
 constraints on different kinds of patient contact details. 
-In this example, as Patient.telecom is defined as: ContactPoint [0..*] where
-the ContactPoint has system, value and use.  -->
+In this example, Patient.telecom is defined as: ContactPoint [0..*] where
+the ContactPoint has system, value and use. 
 </p>
 <p>
-Рассмотрим случай, когда в профиле говорится:
-<!-- Consider the case where the profile should say: -->
+Consider the case where the profile should say:
 </p>
 <ul>
- <li>Обязательно должен быть один домашний телефонный номер</li>
- <li>У пациента может быть рабочий телефонный номер</li>
- <li>У пациента может быть адрес электронной почты</li>
- <li>Иные виды контактной информации не разрешены</li>
-<!--  <li>There must be a single home phone number</li>
+ <li>There must be a single home phone number</li>
  <li>The patient may have a work phone number</li>
  <li>The patient may have an email address</li>
- <li>No other types of contact are allowed</li> -->
+ <li>No other types of contact are allowed</li>
 </ul>
 
 <p>
-Пример ресурса Patient, который выполняет эти правила:
-<!-- An example of a patient resource that meets these rules: -->
+An example of a patient resource that meets these rules:
 </p>
 <pre class="xml">
 &lt;Patient&gt;                         
@@ -62,36 +55,36 @@ the ContactPoint has system, value and use.  -->
 </pre>
 
 <p>
-Профиль, реализующий эти правила, должен выполнять следующее:
-<!-- To do this, the profile that implements these rules 
-needs to do the following: -->
+To do this, the profile that implements these rules 
+needs to do the following:
 </p>
 <ul>
- <li>Для базового элемента Patient.telecom: определить, что срезы будут различаться элементами "system" и "use", и что эти срезы являются закрытыми ("Иные виды контактной информации не разрешены"). Порядок оставлен незакреплённым.
- <!-- On the base Patient.telecom element: define that slicing is discriminated by system and use, and that the slices are closed ("No other types of contact are allowed"). Order is left unfixed --></li>
- <li>Затем определить 3 среза:<!-- Then define 3 slices: -->
+ <li>On the base Patient.telecom element: define that slicing is discriminated by system and use, and that the slices are closed ("No other types of contact are allowed"). Order is left unfixed</li>
+ <li>Then define 3 slices:
   <ol>
-   <li>домашний телефон: фиксированные значения для элементов "system" и "use", кардинальное множество 1..1</li>
-   <li>рабочий телефон: фиксированные значения для элементов "system" и "use", кардинальное множество 0..1</li>
-   <li>электронная почта: фиксированное значение для "system", кардинальное множество 0..0 для "use", и общее кардинальное множество 0..1</li>
-<!--    <li>home phone: fixed values for system and use, and cardinality 1..1</li>
-   <li>work phone: fixed values for system and use, and cardinality 0..1</li>
-   <li>email: fixed value for system, cardinality 0..0 for use, and cardinality 0..1</li> -->
+   <li>home phone: fixed values for system and use, and slice cardinality 1..1</li>
+   <li>work phone: fixed values for system and use, and slice cardinality 0..1</li>
+   <li>email: fixed value for system, cardinality 0..0 for use, and slice cardinality 0..1</li>
   </ol>
  </li>
 </ul>
 
 <p>
-В StructureDefinition это будет выглядеть так:
-<!-- In a StructureDefinition, this will look like: -->
+In a StructureDefinition, this will look like:
 </p>
 <pre class="xml">
   &lt;!-- setting up the slicing --&gt;
   &lt;element&gt; 
     &lt;path value=&quot;Patient.telecom&quot;/&gt;
     &lt;slicing&gt;
+      &lt;discriminator&gt;
+        &lt;type value=&quot;value&quot;/&gt;
+        &lt;path value=&quot;system&quot;/&gt;
+      &lt;/discriminator/&gt;
       &lt;discriminator value=&quot;system&quot;/&gt;
-      &lt;discriminator value=&quot;use&quot;/&gt;
+        &lt;type value=&quot;value&quot;/&gt;
+        &lt;path value=&quot;use&quot;/&gt;
+      &lt;/discriminator/&gt;
       &lt;rules value=&quot;closed&quot;/&gt;
     &lt;/slicing&gt;
     &lt;!-- net cardinality rules --&gt;
@@ -102,7 +95,7 @@ needs to do the following: -->
   &lt;!-- first slice: home phone --&gt;
   &lt;element&gt; 
     &lt;path value=&quot;Patient.telecom&quot;/&gt;
-    &lt;name value=&quot;HomePhone&quot;/&gt; &lt;!-- обятазельно - даёт срезу имя --&gt;
+    &lt;name value=&quot;HomePhone&quot;/&gt; &lt;!-- mandatory - gives the slice a name --&gt;
     &lt;min value=&quot;1&quot;/&gt;
     &lt;max value=&quot;1&quot;/&gt;
   &lt;/element&gt;
@@ -124,7 +117,7 @@ needs to do the following: -->
   &lt;!-- second slice: work phone --&gt;
   &lt;element&gt; 
     &lt;path value=&quot;Patient.telecom&quot;/&gt;
-    &lt;name value=&quot;WorkPhone&quot;/&gt; &lt;!-- обятазельно - даёт срезу имя --&gt;
+    &lt;name value=&quot;WorkPhone&quot;/&gt; &lt;!-- mandatory - gives the slice a name --&gt;
     &lt;min value=&quot;0&quot;/&gt;
     &lt;max value=&quot;1&quot;/&gt;
   &lt;/element&gt;
@@ -146,7 +139,7 @@ needs to do the following: -->
   &lt;!-- third slice: email --&gt;
   &lt;element&gt; 
     &lt;path value=&quot;Patient.telecom&quot;/&gt;
-    &lt;name value=&quot;Email&quot;/&gt; &lt;!-- обятазельно - даёт срезу имя --&gt;
+    &lt;name value=&quot;Email&quot;/&gt; &lt;!-- mandatory - gives the slice a name --&gt;
     &lt;min value=&quot;0&quot;/&gt;
     &lt;max value=&quot;1&quot;/&gt;
   &lt;/element&gt;
@@ -161,18 +154,16 @@ needs to do the following: -->
   &lt;/element&gt;
   &lt;element&gt; 
     &lt;path value=&quot;Patient.telecom.use&quot;/&gt;
-    &lt;min value=&quot;0&quot;/&gt;
+    &lt;max value=&quot;0&quot;/&gt;
   &lt;/element&gt;
 </pre>  
 <p>
-Примечание: многие подробности определений были опущены, показаны только релевантные шаблону части. К тому же, указание фиксированных значений делает минимальное кардинальное множество несущественным, но оно приводится здесь для целостности.
-<!-- Note: lots of definition detail has been left out, and only the parts relevant to the pattern are shown.
-Also, providing a fixed value makes the minimum cardinality irrelevant, but it is shown here for completeness. -->
+Note: much of the definition detail has been left out, and only the parts relevant to the pattern are shown.
+Also, providing a fixed value makes the minimum cardinality irrelevant, but it is shown here for completeness.
 </p>
   
 <p>
-Таблица ниже иллюстрирует взяаимосвязь между этим примером и ElementDefinitions:
-<!-- This table illustrates the relationship between the instance and the ElementDefinitions: -->
+This table illustrates the relationship between the instance and the ElementDefinitions:
 </p>
 <table class="grid">
 <tr><td>                                                             </td><td><b>Path</b>             </td><td><b>Name</b> </td><td><b>Min</b> </td><td><b>Max</b> </td><td><b>Fixed</b> </td></tr>
@@ -190,31 +181,164 @@ Also, providing a fixed value makes the minimum cardinality irrelevant, but it i
 <tr><td>&nbsp;&lt;/telecom&gt;                                       </td><td>Patient.telecom.use     </td><td>            </td><td>           </td><td>           </td><td>             </td></tr>
 </table>
 
-<a name="blood-pressure"> </a>
-<h3>Пример для кровяного давления<!-- Blood Pressure Example --></h3>
+
+<a name="fixed-order"></a>
+<h3>Fixed Order Slicing</h3>
 
 <p>
-Другой пример использования нарезки - для измерений кровяного давления, здесь профиль задаёт следующее:
-<!-- Another use of Slicing is for Blood Pressure Measurements, where the profile says: -->
+A variant to this that looks simpler but turns out to be deceptively complicated is to fix the order and make all slices mandatory.
+In this case the profile says:
 </p>
 <ul>
- <li>Должны присутствовать два компонента</li>
- <li>Первый имеет код LOINC 8480-6, и значение типа "quantity" </li>
- <li>Второй имеет код LOINC 8462-4, и значение типа "quantity"</li>
- <li>Другие компоненты разрешены (положение и др., но не описаны в базовом профиле для кровяного давления)</li>
-<!--  <li>There must be two components</li>
+ <li>The cardinality of <code>telecom</code> is 3..3</li>
+ <li>The slicing is closed, and ordered, no discriminator</li>
+ <li>The first slice is home phone number</li>
+ <li>The second slice is work phone number</li>
+ <li>The third slice is email address</li>
+</ul>
+<p>
+An example of a patient resource that meets these rules:
+</p>
+<pre class="json">
+{
+  "resourceType" : "Patient",
+  "telecom" : [
+    {
+      "system" : "phone",
+      "value" : "5551234567",
+      "use" : "home"
+    },
+    {
+      "system" : "phone",
+      "value" : "5551234567",
+      "use" : "work"
+    },
+    {
+      "system" : "email",
+      "value" : "someone@acme.org"
+    }
+  ]
+}
+</pre>
+<p>
+In a StructureDefinition, this will look like:
+</p>
+<pre class="xml">
+  &lt;!-- setting up the slicing --&gt;
+  &lt;element&gt; 
+    &lt;path value=&quot;Patient.telecom&quot;/&gt;
+    &lt;slicing&gt;
+      &lt;!-- invariant: there SHALL be discriminator or description --&gt;
+      &lt;description value=&quot;No discriminator needed since offsets are fixed&quot;/&gt;
+      &lt;rules value=&quot;closed&quot;/&gt;
+      &lt;ordered value=&quot;true&quot;/&gt;
+    &lt;/slicing&gt;
+    &lt;!-- cardinality rules --&gt;
+    &lt;min value=&quot;3&quot;/&gt;
+    &lt;max value=&quot;3&quot;/&gt;
+  &lt;/element&gt;
+  
+  &lt;!-- first slice: home phone --&gt;
+  &lt;element&gt; 
+    &lt;path value=&quot;Patient.telecom&quot;/&gt;
+    &lt;name value=&quot;HomePhone&quot;/&gt; &lt;!-- mandatory - gives the slice a name --&gt;
+    &lt;min value=&quot;1&quot;/&gt;
+    &lt;max value=&quot;1&quot;/&gt;
+  &lt;/element&gt;
+  &lt;element&gt; 
+    &lt;path value=&quot;Patient.telecom.system&quot;/&gt;
+    &lt;min value=&quot;1&quot;/&gt;
+    &lt;fixedCode value=&quot;phone&quot;/&gt;
+  &lt;/element&gt;
+  &lt;element&gt; 
+    &lt;path value=&quot;Patient.telecom.value&quot;/&gt;
+    &lt;min value=&quot;1&quot;/&gt;
+  &lt;/element&gt;
+  &lt;element&gt; 
+    &lt;path value=&quot;Patient.telecom.use&quot;/&gt;
+    &lt;min value=&quot;1&quot;/&gt;
+    &lt;fixedCode value=&quot;home&quot;/&gt;
+  &lt;/element&gt;
+  
+  &lt;!-- second slice: work phone --&gt;
+  &lt;element&gt; 
+    &lt;path value=&quot;Patient.telecom&quot;/&gt;
+    &lt;name value=&quot;WorkPhone&quot;/&gt; &lt;!-- mandatory - gives the slice a name --&gt;
+    &lt;min value=&quot;0&quot;/&gt;
+    &lt;max value=&quot;1&quot;/&gt;
+  &lt;/element&gt;
+  &lt;element&gt; 
+    &lt;path value=&quot;Patient.telecom.system&quot;/&gt;
+    &lt;min value=&quot;1&quot;/&gt;
+    &lt;fixedCode value=&quot;phone&quot;/&gt;
+  &lt;/element&gt;
+  &lt;element&gt; 
+    &lt;path value=&quot;Patient.telecom.value&quot;/&gt;
+    &lt;min value=&quot;1&quot;/&gt;
+  &lt;/element&gt;
+  &lt;element&gt; 
+    &lt;path value=&quot;Patient.telecom.use&quot;/&gt;
+    &lt;min value=&quot;1&quot;/&gt;
+    &lt;fixedCode value=&quot;work&quot;/&gt;
+  &lt;/element&gt;
+  
+  &lt;!-- third slice: email --&gt;
+  &lt;element&gt; 
+    &lt;path value=&quot;Patient.telecom&quot;/&gt;
+    &lt;name value=&quot;Email&quot;/&gt; &lt;!-- mandatory - gives the slice a name --&gt;
+    &lt;min value=&quot;0&quot;/&gt;
+    &lt;max value=&quot;1&quot;/&gt;
+  &lt;/element&gt;
+  &lt;element&gt; 
+    &lt;path value=&quot;Patient.telecom.system&quot;/&gt;
+    &lt;min value=&quot;1&quot;/&gt;
+    &lt;fixedCode value=&quot;email&quot;/&gt;
+  &lt;/element&gt;
+  &lt;element&gt; 
+    &lt;path value=&quot;Patient.telecom.value&quot;/&gt;
+    &lt;min value=&quot;1&quot;/&gt;
+  &lt;/element&gt;
+  &lt;element&gt; 
+    &lt;path value=&quot;Patient.telecom.use&quot;/&gt;
+    &lt;max value=&quot;0&quot;/&gt;
+  &lt;/element&gt;
+</pre>  
+<p>
+A simple content model like this is attractive because it's both easier 
+to specify and to work with. There's no need to think about the values 
+of system and use - implementers can just grab first telecom value etc. 
+</p>
+<p>
+The problem with this approach is that such simple requirements are rarely valid
+in production healthcare systems, and even if they are valid during implementation,
+they rarely stay that way. Implementing multiple applications based on simple offsets
+will make the overall eco-system fragile against change, either internally, or as 
+the scope of the eco-system grows.
+</p>
+<p>
+Since the discriminator could be system+use in this case, it's best for future 
+compatibility to specify it anyway.
+</p>
+
+<a name="blood-pressure"></a>
+<h3>Blood Pressure Example</h3>
+
+<p>
+Another use of Slicing is for Blood Pressure Measurements, where the profile says:
+</p>
+<ul>
+ <li>There must be two components</li>
  <li>The first has LOINC code 8480-6, and a quantity </li>
  <li>The second has LOINC code 8462-4, and a quantity</li>
- <li>Other components are allowed (posture, etc., but not profiled in the base blood pressure profile)</li> -->
+ <li>Other components are allowed (posture, etc., but not profiled in the base blood pressure profile)</li>
 </ul>
 
 <p>
-Пример ресурса Observation, который отвечает этим требованиям:
-<!-- An example of an Observation resource that meets these rules: -->
+An example of an observation resource that conforms such constrained StructureDefinitions looks like this:
 </p>
 <pre class="xml">
 &lt;Observation&gt;                         
-... snip ...
+  ... 
   &lt;component&gt;                       
     &lt;code&gt;                       
       &lt;coding&gt;                       
@@ -223,12 +347,7 @@ Also, providing a fixed value makes the minimum cardinality irrelevant, but it i
         &lt;display value=&quot;Systolic blood pressure&quot; /&gt;  
       &lt;/coding&gt;                       
     &lt;/code&gt;                       
-    &lt;valueQuantity&gt;                       
-      &lt;value value=&quot;120&quot; /&gt;  
-      &lt;unit value=&quot;mmHg&quot; /&gt;  
-      &lt;system value=&quot;http://unitsofmeasure.org&quot; /&gt;  
-      &lt;code value=&quot;mm[Hg]&quot; /&gt;  
-    &lt;/valueQuantity&gt;                       
+    &lt;valueQuantity ... /&gt;                       
   &lt;/component&gt;
   &lt;component&gt;                       
     &lt;code&gt;                       
@@ -238,42 +357,36 @@ Also, providing a fixed value makes the minimum cardinality irrelevant, but it i
         &lt;display value=&quot;Diastolic blood pressure&quot; /&gt;  
       &lt;/coding&gt;                       
     &lt;/code&gt;                       
-    &lt;valueQuantity&gt;                       
-      &lt;value value=&quot;80&quot; /&gt;  
-      &lt;unit value=&quot;mmHg&quot; /&gt;  
-      &lt;system value=&quot;http://unitsofmeasure.org&quot; /&gt;  
-      &lt;code value=&quot;mm[Hg]&quot; /&gt;  
-    &lt;/valueQuantity&gt;                       
+    &lt;valueQuantity .../&gt;                       
   &lt;/component&gt;
 &lt;/Patient&gt;
 </pre>
 
 <p>
-Для выполнения этого, профилю, который реализует эти правила, требуется делать следующее:
-<!-- To do this, the profile that implements these rules needs to do the following: -->
+To do this, the profile that implements these rules needs to do the following:
 </p>
 <ul>
- <li>В базовом элементе Observation.component: определить, что нарезка выполняется по коду. Порядок нефиксированный, список правил открытый.<!-- On the base Observation.component element: define that slicing is discriminated by code. Order is left unfixed, and rules left open. --></li>
- <li>Затем определить 2 среза:<!-- Then define 2 slices: -->
+ <li>On the base Observation.component element: define that slicing is discriminated by code. Order is left unfixed, and rules are left open.</li>
+ <li>Then define 2 slices:
   <ol>
-   <li>систолическое: фиксированное значение для "code", кардинальное множество 1..1, значение типа Quantity</li>
-   <li>диастолическое: фиксированное значение для "code", кардинальное множество 1..1, значение типа Quantity</li>
-<!--    <li>systolic: fixed values for code, cardinality 1..1, value is a Quantity</li>
-   <li>diastolic: fixed values for code, cardinality 1..1, value is a Quantity</li> -->
+   <li>systolic: fixed values for code, cardinality 1..1, value is a Quantity</li>
+   <li>diastolic: fixed values for code, cardinality 1..1, value is a Quantity</li>
   </ol>
  </li>
 </ul>
 
 <p>
-В StructureDefinition это будет выглядеть так:
-<!-- In a StructureDefinition, this will look like: -->
+In a StructureDefinition, this will look like:
 </p>
 <pre class="xml">
   &lt;!-- setting up the slicing --&gt;
   &lt;element&gt; 
     &lt;path value=&quot;Observation.component&quot;/&gt;
     &lt;slicing&gt;
-      &lt;discriminator value=&quot;code&quot;/&gt;
+      &lt;discriminator value=&quot;system&quot;/&gt;
+        &lt;type value=&quot;value&quot;/&gt;
+        &lt;path value=&quot;code&quot;/&gt;
+      &lt;/discriminator/&gt;
     &lt;/slicing&gt;
     &lt;!-- net cardinality rules --&gt;
     &lt;min value=&quot;2&quot;/&gt;
@@ -327,28 +440,22 @@ Also, providing a fixed value makes the minimum cardinality irrelevant, but it i
   &lt;/element&gt;
 </pre>  
 <p>
-Примечание: большая часть подробностей определений была опущена, оставлены только значимые части.
-Например реальный профиль для кровяного давления зафиксировал бы единицы измерения, общий код проводимого исследования и т. п.
-<!-- Note: lots of definition detail has been left out, and only the parts relevant to the pattern are shown.
-E.g. A real blood pressure profile would fix unit, a overall Observation code etc. -->
+Note: much of the definition detail has been left out, and only the parts relevant to the pattern are shown.
+E.g. A real blood pressure profile would fix unit, an overall Observation code etc.
 </p>
 
-<a name="extensions"> </a>  
-<h3>Расширения<!-- Extensions --></h3>
+<a name="extensions"></a>  
+<h3>Extensions</h3>
 
 
 <p>
-В качестве другого примера рассмотрим нарезку расширений. Базовое расширение на каждом элементе определяется как список (0..*) расширений, и каждое расширение имеет URL, который идентифицирует его, и значение.
-Рассмотрим пример, где профиль задает, что у определенного элемента (с именем Patient) будут два расширения с URL-адресами http://acme.com/a и http://acme.com/b. Кроме того, профиль разрешает использовать и другие расширения.
-<!-- For another example, consider slicing extensions. The base extension on every element is defined as a list (0..*) of extensions, and each extension has a url that identifies it, and a value.
-Consider an example where a profile defines that for a particular element (named Patient), there are two extensions, with URLs http://acme.com/a and http://acme.com/b. In addition, the profile 
-allows other extensions to be used. -->
+For another example, consider slicing extensions. The base extension on every element is defined as a list (0..*) of extensions, and each extension has a url that identifies it, and a value.
+Consider an example where a profile defines that for a particular element (named Patient), there are two extensions, with URLs http://acme.com/a and http://acme.com/b. In addition, the profile
+allows other extensions to be used.
 </p>
 <p>
-Технически, профиль достигает этого с помощью "разделения" списка расширений на два среза слоя, и говорит, что разрез "открыт" - что здесь могут быть введены другие разрезы.
-Вот соответствующие части профиля пациента:
-<!-- Technically, the profile achieves this by "slicing" the extension list, into two slices, and saying that the slicing is "open" - that there can be other slices introduced.
-Here are the relevant parts of the Profile on patient: -->
+Technically, the profile achieves this by "slicing" the extension list, into two slices, and saying that the slicing is "open" - that there can be other slices introduced.
+Here are the relevant parts of the Profile on patient:
 </p>
 <div class="xml">
 <pre>
@@ -366,34 +473,38 @@ Here are the relevant parts of the Profile on patient: -->
       &lt;element&gt;
         &lt;path value=&quot;Patient.extension&quot;/&gt;
         &lt;!-- this first element defines the slicing, and carries the base definition forward --&gt;
-        &lt;slicing&gt;  
-          &lt;discriminator value=&quot;url&quot;/&gt; &lt;!-- Extensions are always discriminated by URL --&gt;
+        &lt;slicing&gt;
+          &lt;!-- Extensions are always discriminated by URL --&gt;
+          &lt;discriminator value=&quot;system&quot;/&gt;
+            &lt;type value=&quot;value&quot;/&gt;
+            &lt;path value=&quot;url&quot;/&gt;
+          &lt;/discriminator/&gt;
           &lt;ordered value=&quot;false&quot;/&gt;     &lt;!-- we don't care what order they appear in --&gt;
           &lt;rules value=&quot;open&quot;/&gt;        &lt;!-- other extensions can be used --&gt;
-        &lt;/slicing&gt;        
+        &lt;/slicing&gt;
         &lt;!-- -- snip definition --&gt;
       &lt;/element&gt;
       &lt;!-- first extension --&gt;
       &lt;element&gt;
         &lt;path value=&quot;Patient.extension&quot;/&gt;
-          &lt;!-- snip most of definition --&gt;
-         &lt;type&gt;  
-          &lt;code value=&quot;Extension&quot;/&gt;  
-          &lt;!-- the profile for an extension is a reference to the extension definition itself - 
-            this implies a profile, and happens to fix the @url value to the desired URL --&gt;
-          &lt;profile value=&quot;http://acme.com/a&quot;/&gt; 
-         &lt;/type&gt;
+        &lt;!-- snip most of definition --&gt;
+        &lt;type&gt;
+         &lt;code value=&quot;Extension&quot;/&gt;
+         &lt;!-- the profile for an extension is a reference to the extension definition itself -
+           this implies a profile, and happens to fix the @url value to the desired URL --&gt;
+         &lt;profile value=&quot;http://acme.com/a&quot;/&gt;
+        &lt;/type&gt;
       &lt;/element&gt;
       &lt;!-- second extension --&gt;
       &lt;element&gt;
         &lt;path value=&quot;Patient.extension&quot;/&gt;
-          &lt;!-- snip most of definition --&gt;
-         &lt;type&gt;  
-          &lt;code value=&quot;Extension&quot;/&gt;  
-          &lt;!-- the profile for an extension is a reference to the extension definition itself - 
-            this implies a profile, and happens to fix the @url value to the desired URL --&gt;
-          &lt;profile value=&quot;http://acme.com/b&quot;/&gt; 
-         &lt;/type&gt;
+        &lt;!-- snip most of definition --&gt;
+        &lt;type&gt;
+         &lt;code value=&quot;Extension&quot;/&gt;
+         &lt;!-- the profile for an extension is a reference to the extension definition itself -
+           this implies a profile, and happens to fix the @url value to the desired URL --&gt;
+         &lt;profile value=&quot;http://acme.com/b&quot;/&gt;
+        &lt;/type&gt;
       &lt;/element&gt;
       &lt;!-- snip rest of profile --&gt;
     &lt;/snapshot&gt;
@@ -401,7 +512,7 @@ Here are the relevant parts of the Profile on patient: -->
 </pre>
 </div>
 <p>
-Вот пример пациента, соответствующего этому профилю:<!-- Here's a patient example that conforms to this profile: -->
+Here is a patient example that conforms to this profile:
 </p>
 <div class="xml">
 <pre>
@@ -420,18 +531,16 @@ Here are the relevant parts of the Profile on patient: -->
 </pre>
 </div>
 
-<a name="lipids"> </a>
-<h3>Diagnostic Report и Observation</h3>
+<a name="lipids"></a>
+<h3>Diagnostic Report &amp; Observation</h3>
 <p>
-В этом примере профиль для диагностического отчета говорит, что он должен иметь 4 исследования, каждое с различным LOINC-кодом (например классический набор лабораторных тестов).
-В этом случае (взятом из <a href="lipid-report.html">Exampe Lipid Profile</a>) структура, применяемая к DiagnosticReport, сообщит, что имеются 4 среза на DiagnosticReport.result, каждый соответствует отдельной структуре, которые содержатся в том же профиле. Каждая из этих структур будет ограничивать LOINC-код в исследовании.
-<!-- In this example, a profile on an diagnostic report says that it must have
-4 observations, each with a different LOINC code (e.g. a classic lab panel).
-In this case (taken from the <a href="lipid-report.html">Example 
-Lipid Profile</a>), the structure that applies to DiagnosticReport will say that 
-there are 4 slices on DiagnosticReport.result, each conforming to a different structure,
-which are also contained in the same profile. Each of those structures will constrain 
-the LOINC code in the observation.  -->
+In this example, a profile on a diagnostic report says that it must have
+four observations, each with a different LOINC code (e.g. a classic lab panel).
+In this case (taken from the <a href="lipid-report.html">Example
+Lipid Profile</a>), the structure that applies to DiagnosticReport will say that
+there are four slices on DiagnosticReport.result, each conforming to a different structure,
+which are also contained in the same profile. Each of those structures will constrain
+the LOINC code in the observation.
 </p>
 
 <div class="xml">
@@ -440,73 +549,76 @@ the LOINC code in the observation.  -->
 &lt;StructureDefinition xmlns=&quot;http://hl7.org/fhir&quot;&gt;
   &lt;!-- snip --&gt;
   &lt;url value=&quot;http://acme.org/fhir/StructureDefinition/lipid-report&quot;/&gt;
-    &lt;name value=&quot;LipidProfile&quot;/&gt;
+  &lt;name value=&quot;LipidProfile&quot;/&gt;
   &lt;baseType value=&quot;DiagnosticReport&quot;/&gt;
   &lt;baseDefinition value=&quot;http://hl7.org/fhir/StructureDefinition/DiagnosticReport&quot;/&gt;
   &lt;derivation value="constraint" /&gt;
 
-    &lt;!-- snip --&gt;
-    &lt;snapshot&gt;
-      &lt;!-- snip elements --&gt;
-      &lt;element&gt;
-        &lt;!-- first definition for result --&gt;
-        &lt;path value=&quot;DiagnosticReport.result&quot;/&gt;
-        &lt;slicing&gt;
+  &lt;!-- snip --&gt;
+  &lt;snapshot&gt;
+    &lt;!-- snip elements --&gt;
+    &lt;element&gt;
+      &lt;!-- first definition for result --&gt;
+      &lt;path value=&quot;DiagnosticReport.result&quot;/&gt;
+      &lt;slicing&gt;
         &lt;!-- this is sliced by the code value of the target of the reference --&gt;
-        &lt;discriminator value=&quot;reference.code&quot;/&gt;
-          &lt;!-- have to be in the specified order --&gt;
-          &lt;ordered value=&quot;true&quot;/&gt;     
-          &lt;!-- this profile says, no other observations allowed --&gt;
-          &lt;rules value=&quot;closed&quot;/&gt;
-        &lt;/slicing&gt;
-        &lt;!-- snip definition --&gt;
-      &lt;/element&gt;
-      &lt;!-- first slice: Cholesterol --&gt;
-      &lt;element&gt;
-        &lt;path value=&quot;DiagnosticReport.result&quot;/&gt;
-        &lt;name value=&quot;Cholesterol&quot;/&gt; 
-          &lt;!-- snip definition parts --&gt;
-          &lt;type&gt;
-            &lt;code value=&quot;Reference&quot;/&gt;
-            &lt;!-- this element must conform to the &quot;Cholesterol&quot; structure --&gt;
+        &lt;discriminator value=&quot;system&quot;/&gt;
+          &lt;type value=&quot;value&quot;/&gt;
+          &lt;path value=&quot;reference.code&quot;/&gt;
+        &lt;/discriminator/&gt;
+        &lt;!-- have to be in the specified order --&gt;
+        &lt;ordered value=&quot;true&quot;/&gt;
+        &lt;!-- this profile says, no other observations allowed --&gt;
+        &lt;rules value=&quot;closed&quot;/&gt;
+      &lt;/slicing&gt;
+      &lt;!-- snip definition --&gt;
+    &lt;/element&gt;
+    &lt;!-- first slice: Cholesterol --&gt;
+    &lt;element&gt;
+      &lt;path value=&quot;DiagnosticReport.result&quot;/&gt;
+      &lt;name value=&quot;Cholesterol&quot;/&gt;
+      &lt;!-- snip definition parts --&gt;
+      &lt;type&gt;
+        &lt;code value=&quot;Reference&quot;/&gt;
+        &lt;!-- this element must conform to the &quot;Cholesterol&quot; structure --&gt;
         &lt;profile value=&quot;http://acme.org/fhir/StructureDefinition/Cholesterol&quot;/&gt;
-          &lt;/type&gt;
-      &lt;/element&gt;
-      &lt;!-- next 3 slices all the same, but different names for profile --&gt;
-      &lt;element&gt;
-        &lt;path value=&quot;DiagnosticReport.result&quot;/&gt;
-        &lt;name value=&quot;Triglyceride&quot;/&gt; 
-          &lt;!-- snip definition parts --&gt;
-          &lt;type&gt;
-            &lt;code value=&quot;Reference&quot;/&gt;
+      &lt;/type&gt;
+    &lt;/element&gt;
+    &lt;!-- next 3 slices all the same, but different names for profile --&gt;
+    &lt;element&gt;
+      &lt;path value=&quot;DiagnosticReport.result&quot;/&gt;
+      &lt;name value=&quot;Triglyceride&quot;/&gt;
+      &lt;!-- snip definition parts --&gt;
+      &lt;type&gt;
+        &lt;code value=&quot;Reference&quot;/&gt;
         &lt;!-- this element must conform to the &quot;Triglyceride&quot; structure --&gt;
         &lt;profile value=&quot;http://acme.org/fhir/StructureDefinition/Triglyceride&quot;/&gt;
-          &lt;/type&gt;
-      &lt;/element&gt;
-      &lt;element&gt;
-        &lt;path value=&quot;DiagnosticReport.result&quot;/&gt;
-        &lt;name value=&quot;LDLCholesterol&quot;/&gt; 
-          &lt;!-- snip definition parts --&gt;
-          &lt;type&gt;
-            &lt;code value=&quot;Reference&quot;/&gt;
+      &lt;/type&gt;
+    &lt;/element&gt;
+    &lt;element&gt;
+      &lt;path value=&quot;DiagnosticReport.result&quot;/&gt;
+      &lt;name value=&quot;LDLCholesterol&quot;/&gt;
+      &lt;!-- snip definition parts --&gt;
+      &lt;type&gt;
+        &lt;code value=&quot;Reference&quot;/&gt;
         &lt;!-- this element must conform to the &quot;LDLCholesterol&quot; structure --&gt;
         &lt;profile value=&quot;http://acme.org/fhir/StructureDefinition/LDLCholesterol&quot;/&gt;
-          &lt;/type&gt;
-      &lt;/element&gt;
-      &lt;element&gt;
-        &lt;path value=&quot;DiagnosticReport.result&quot;/&gt;
-        &lt;name value=&quot;HDLCholesterol&quot;/&gt; 
-          &lt;!-- snip definition parts --&gt;
-          &lt;type&gt;
-            &lt;code value=&quot;Reference&quot;/&gt;
+      &lt;/type&gt;
+    &lt;/element&gt;
+    &lt;element&gt;
+      &lt;path value=&quot;DiagnosticReport.result&quot;/&gt;
+      &lt;name value=&quot;HDLCholesterol&quot;/&gt;
+      &lt;!-- snip definition parts --&gt;
+      &lt;type&gt;
+        &lt;code value=&quot;Reference&quot;/&gt;
         &lt;!-- this element must conform to the &quot;HDLCholesterol&quot; structure --&gt;
         &lt;profile value=&quot;http://acme.org/fhir/StructureDefinition/HDLCholesterol&quot;/&gt;
-          &lt;/type&gt;
-      &lt;/element&gt;
-      &lt;!-- snip elements --&gt;
-    &lt;/snapshot&gt;
+      &lt;/type&gt;
+    &lt;/element&gt;
+    &lt;!-- snip elements --&gt;
+  &lt;/snapshot&gt;
 &lt;/StructureDefinition&gt;
-  
+
 &lt;!-- now, the second structure, for the Cholesterol profile --&gt;
 &lt;StructureDefinition&gt;
   &lt;url value=&quot;http://acme.org/fhir/StructureDefinition/Cholesterol&quot;/&gt;
@@ -514,29 +626,29 @@ the LOINC code in the observation.  -->
   &lt;baseType value=&quot;Observation&quot;/&gt;
   &lt;baseDefinition value=&quot;http://hl7.org/fhir/StructureDefinition/Observation&quot;/&gt;
   &lt;derivation value="constraint" /&gt;
-    &lt;snapshot&gt;
-      &lt;!-- snip elements --&gt;
-      &lt;element&gt;
+  &lt;snapshot&gt;
+    &lt;!-- snip elements --&gt;
+    &lt;element&gt;
       &lt;!-- this the element definition for name. Because of the
-          slicing / discriminator rules in the LipidReport profile 
-          that references it, it is required to fix the value of 
-          the name element --&gt;
+        slicing / discriminator rules in the LipidReport profile
+        that references it, it is required to fix the value of
+        the name element --&gt;
       &lt;path value=&quot;Observation.code&quot;/&gt;
-        &lt;definition&gt;
+      &lt;definition&gt;
          &lt;!-- there are actually 3 ways to fix a CodeableConcept
-           to a single fixed value. Here, we used the simplest one --&gt;
-           &lt;valueCodeableConcept&gt;
-             &lt;!-- just fix the value to the right code --&gt;
-             &lt;coding&gt;
-               &lt;system value=&quot;http://loinc.org&quot;/&gt;
-               &lt;code value=&quot;35200-5&quot;/&gt;
-               &lt;display value=&quot;Cholesterol&quot;/&gt;
-             &lt;/coding&gt;
-           &lt;/valueCodeableConcept&gt;
-        &lt;/definition&gt;
-      &lt;/element&gt;
-      &lt;!-- snip elements --&gt;
-    &lt;/snapshot&gt;
+         to a single fixed value. Here, we used the simplest one --&gt;
+         &lt;valueCodeableConcept&gt;
+           &lt;!-- just fix the value to the right code --&gt;
+           &lt;coding&gt;
+             &lt;system value=&quot;http://loinc.org&quot;/&gt;
+             &lt;code value=&quot;35200-5&quot;/&gt;
+             &lt;display value=&quot;Cholesterol&quot;/&gt;
+           &lt;/coding&gt;
+         &lt;/valueCodeableConcept&gt;
+      &lt;/definition&gt;
+    &lt;/element&gt;
+    &lt;!-- snip elements --&gt;
+  &lt;/snapshot&gt;
 &lt;/StructureDefinition&gt;
 
 &lt;!-- Triglyceride profile --&gt;
@@ -546,31 +658,31 @@ the LOINC code in the observation.  -->
   &lt;baseType value=&quot;Observation&quot;/&gt;
   &lt;baseDefinition value=&quot;http://hl7.org/fhir/StructureDefinition/Observation&quot;/&gt;
   &lt;derivation value="constraint" /&gt;
-    &lt;snapshot&gt;
-      &lt;!-- snip elements --&gt;
-      &lt;element&gt;
-        &lt;!-- this the element definition for name. Because of the 
-          slicing / discriminator rules in the LipidReport profile 
-          that references it, it is required to fix the value of 
-          the name element --&gt;
+  &lt;snapshot&gt;
+    &lt;!-- snip elements --&gt;
+    &lt;element&gt;
+      &lt;!-- this the element definition for name. Because of the
+        slicing / discriminator rules in the LipidReport profile
+        that references it, it is required to fix the value of
+        the name element --&gt;
       &lt;path value=&quot;Observation.code&quot;/&gt;
-        &lt;definition&gt;
-           &lt;!-- there's actually 3 ways to fix a CodeableConcept
-           to a single fixed value. Here, we used the simplest one --&gt;
-           &lt;valueCodeableConcept&gt;
-             &lt;!-- just fix the value to the right code --&gt;
-             &lt;coding&gt;
-               &lt;system value=&quot;http://loinc.org&quot;/&gt;
-               &lt;code value=&quot;35217-9&quot;/&gt;
-               &lt;display value=&quot;Triglyceride&quot;/&gt;
-             &lt;/coding&gt;
-           &lt;/valueCodeableConcept&gt;
-        &lt;/definition&gt;
-      &lt;/element&gt;
-      &lt;!-- snip elements --&gt;
-    &lt;/snapshot&gt;
+      &lt;definition&gt;
+         &lt;!-- there's actually 3 ways to fix a CodeableConcept
+         to a single fixed value. Here, we used the simplest one --&gt;
+         &lt;valueCodeableConcept&gt;
+           &lt;!-- just fix the value to the right code --&gt;
+           &lt;coding&gt;
+             &lt;system value=&quot;http://loinc.org&quot;/&gt;
+             &lt;code value=&quot;35217-9&quot;/&gt;
+             &lt;display value=&quot;Triglyceride&quot;/&gt;
+           &lt;/coding&gt;
+         &lt;/valueCodeableConcept&gt;
+      &lt;/definition&gt;
+    &lt;/element&gt;
+    &lt;!-- snip elements --&gt;
+  &lt;/snapshot&gt;
 &lt;/StructureDefinition&gt;
-  
+
 &lt;!-- LDLCholesterol profile --&gt;
 &lt;StructureDefinition&gt;
   &lt;url value=&quot;http://acme.org/fhir/StructureDefinition/LDLCholesterol&quot;/&gt;
@@ -578,31 +690,31 @@ the LOINC code in the observation.  -->
   &lt;baseType value=&quot;Observation&quot;/&gt;
   &lt;baseDefinition value=&quot;http://hl7.org/fhir/StructureDefinition/Observation&quot;/&gt;
   &lt;derivation value="constraint" /&gt;
-    &lt;snapshot&gt;
-      &lt;!-- snip elements --&gt;
-      &lt;element&gt;
-        &lt;!-- this the element definition for name. Because of the 
-          slicing / discriminator rules in the LipidReport profile 
-          that references it, it is required to fix the value of 
-          the name element --&gt;
+  &lt;snapshot&gt;
+    &lt;!-- snip elements --&gt;
+    &lt;element&gt;
+      &lt;!-- this the element definition for name. Because of the
+        slicing / discriminator rules in the LipidReport profile
+        that references it, it is required to fix the value of
+        the name element --&gt;
       &lt;path value=&quot;Observation.code&quot;/&gt;
-        &lt;definition&gt;
-           &lt;!-- because of the way that LDL cholesterol measurements works 
-             (well, in this context- it varies), there's 2 different LOINC
-             codes for either measured or calculated. So here, we bind to
-             a value set --&gt;
-         &lt;binding&gt;  
-          &lt;conformance value=&quot;required&quot;/&gt; &lt;!-- must be required if this is a discriminator --&gt;
-          &lt;!-- snip the actual value set reference, but it refers to a value 
-               set with two LOINC codes, one for each kind of LDL, which in 
-               this case are LOINC codes 18262-6 and 13457-7 --&gt;
-         &lt;/binding&gt;
-       &lt;/definition&gt;
-      &lt;/element&gt;
-      &lt;!-- snip elements --&gt;
-    &lt;/snapshot&gt;
+      &lt;definition&gt;
+         &lt;!-- because of the way that LDL cholesterol measurements works
+           (well, in this context- it varies), there's 2 different LOINC
+           codes for either measured or calculated. So here, we bind to
+           a value set --&gt;
+       &lt;binding&gt;
+        &lt;conformance value=&quot;required&quot;/&gt; &lt;!-- must be required if this is a discriminator --&gt;
+        &lt;!-- snip the actual value set reference, but it refers to a value
+             set with two LOINC codes, one for each kind of LDL, which in
+             this case are LOINC codes 18262-6 and 13457-7 --&gt;
+       &lt;/binding&gt;
+     &lt;/definition&gt;
+    &lt;/element&gt;
+    &lt;!-- snip elements --&gt;
+  &lt;/snapshot&gt;
 &lt;/StructureDefinition&gt;
-  
+
 &lt;!-- HDLCholesterol profile --&gt;
 &lt;StructureDefinition&gt;
   &lt;url value=&quot;http://acme.org/fhir/StructureDefinition/HDLCholesterol&quot;/&gt;
@@ -610,47 +722,49 @@ the LOINC code in the observation.  -->
   &lt;baseType value=&quot;Observation&quot;/&gt;
   &lt;baseDefinition value=&quot;http://hl7.org/fhir/StructureDefinition/Observation&quot;/&gt;
   &lt;derivation value="constraint" /&gt;
-    &lt;snapshot&gt;
-      &lt;!-- snip elements --&gt;
-      &lt;element&gt;
+  &lt;snapshot&gt;
+    &lt;!-- snip elements --&gt;
+    &lt;element&gt;
       &lt;!-- this the element definition for name. Because of the
         slicing / discriminator rules in the LipidReport profile
         that references it, it is required to fix the value of
         the name element --&gt;
       &lt;path value=&quot;Observation.code&quot;/&gt;
-        &lt;definition&gt;
+      &lt;definition&gt;
          &lt;!-- there's actually 3 ways to fix a CodeableConcept
          to a single fixed value. Here, we used the simplest one --&gt;
-           &lt;valueCodeableConcept&gt;
+         &lt;valueCodeableConcept&gt;
            &lt;!-- just fix the value to the right code --&gt;
-             &lt;coding&gt;
-               &lt;system value=&quot;http://loinc.org&quot;/&gt;
-               &lt;code value=&quot;2085-9&quot;/&gt;
-               &lt;display value=&quot;LDL Cholesterol&quot;/&gt;
-             &lt;/coding&gt;
-           &lt;/valueCodeableConcept&gt;
-        &lt;/definition&gt;
-      &lt;/element&gt;
-      &lt;!-- snip elements --&gt;
-    &lt;/snapshot&gt;
+           &lt;coding&gt;
+             &lt;system value=&quot;http://loinc.org&quot;/&gt;
+             &lt;code value=&quot;2085-9&quot;/&gt;
+             &lt;display value=&quot;LDL Cholesterol&quot;/&gt;
+           &lt;/coding&gt;
+         &lt;/valueCodeableConcept&gt;
+      &lt;/definition&gt;
+    &lt;/element&gt;
+    &lt;!-- snip elements --&gt;
+  &lt;/snapshot&gt;
 &lt;/StructureDefinition&gt;
 
 </pre>
 </div>
 
 <p>
-Вот пример, который отвечает правилам для этого профиля:<!-- Here is an instance that meets the rules for this profile: -->
+Here is an instance that meets the rules for this profile:
 </p>
 
 <div class="xml">
 <pre>
-&lt;!-- сначала сам diagnostic report --&gt;
+&lt;!-- first, the diagnostic report --&gt;
 &lt;DiagnosticReport xmlns=&quot;http://hl7.org/fhir&quot;&gt;
   &lt;!-- snip --&gt;
-  &lt;!-- вот набор результатов. Мы не узнаем, срезы это или что-то ещё, пока не пройдем по ссылкам и не посмотрим --&gt;
+  &lt;!-- here's the set of results. We don't know what
+    slices they are or anything until we go off, find
+    the references, and look in them --&gt;
   &lt;result&gt;
     &lt;reference value=&quot;Observation/cholesterol&quot;/&gt;
-  &lt;/result&gt;  
+  &lt;/result&gt;
   &lt;result&gt;
     &lt;reference value=&quot;Observation/triglyceride&quot;/&gt;
   &lt;/result&gt;
@@ -665,7 +779,8 @@ the LOINC code in the observation.  -->
 
 &lt;!-- Observation, id = cholesterol --&gt;
 &lt;Observation xmlns=&quot;http://hl7.org/fhir&quot;&gt;
-  &lt;!-- исследование начинается с этого названия, как указано в профиле для первого среза  --&gt;
+  &lt;!-- the observation starts with the name, as specified
+    by the profile for the first slice  --&gt;
   &lt;code&gt;
     &lt;coding&gt;
       &lt;system value=&quot;http://loinc.org&quot;/&gt;
@@ -677,7 +792,7 @@ the LOINC code in the observation.  -->
 &lt;/Observation&gt;
 
 &lt;!-- Observation, id = triglyceride --&gt;
-&lt;!-- этот код соответствует второму срезу. хорошо --&gt;
+&lt;!-- this code matches the second slice. good --&gt;
 &lt;Observation xmlns=&quot;http://hl7.org/fhir&quot;&gt;
   &lt;code&gt;
     &lt;coding&gt;
@@ -690,7 +805,7 @@ the LOINC code in the observation.  -->
 &lt;/Observation&gt;
 
 &lt;!-- Observation, id = hdlcholesterol --&gt;
-&lt;!-- этот код соответствует четвертому срезу. хорошо --&gt;
+&lt;!-- this code matches the fourth slice. good --&gt;
 &lt;Observation xmlns=&quot;http://hl7.org/fhir&quot;&gt;
   &lt;code&gt;
     &lt;coding&gt;
@@ -703,7 +818,7 @@ the LOINC code in the observation.  -->
 &lt;/Observation&gt;
 
 &lt;!-- Observation, id = ldlcholesterol --&gt;
-&lt;!-- этот код соответствует третьему срезу. хорошо --&gt;
+&lt;!-- this code matches the third slice. good --&gt;
 &lt;Observation id=&quot;ldlcholesterol&quot;&gt;
   &lt;code&gt;
     &lt;coding&gt;
@@ -718,17 +833,19 @@ the LOINC code in the observation.  -->
 </div>
 
 <p>
-Обратите внимание, что эта версия неправильная, потому что срезы идут в неправильном порядке:<!-- Note that this version isn't valid, because the slices are not in the correct order: -->
+Note that this version is not valid, because the slices are not in the correct order:
 </p>
 <div class="xml">
 <pre>
-&lt;!-- сначала diagnostic report --&gt;
+&lt;!-- first, the diagnostic report --&gt;
 &lt;DiagnosticReport xmlns=&quot;http://hl7.org/fhir&quot;&gt;
   &lt;!-- snip --&gt;
-  &lt;!-- вот набор результатов. Мы не узнаем, срезы это или что-то ещё, пока не пройдем по ссылкам и не посмотрим --&gt;
+  &lt;!-- here's the set of results. We don't know what
+    slices they are or anything until we go off, find
+    the references, and look in them --&gt;
   &lt;result&gt;
     &lt;reference value=&quot;Observation/cholesterol&quot;/&gt;
-  &lt;/result&gt;  
+  &lt;/result&gt;
   &lt;result&gt;
     &lt;reference value=&quot;Observation/triglyceride&quot;/&gt;
   &lt;/result&gt;
@@ -744,7 +861,7 @@ the LOINC code in the observation.  -->
 </pre>
 </div>
 
-<a name="composition"> </a>
+<a name="composition"></a>
 <h3>Composition Sections</h3>
 <p>
 Most uses of Composition involve conformance to a profile that specifies 
@@ -856,7 +973,10 @@ In a StructureDefinition, this will look like:
   &lt;element&gt; 
     &lt;path value=&quot;Composition.section&quot;/&gt;
     &lt;slicing&gt;
-      &lt;discriminator value=&quot;code&quot;/&gt;
+      &lt;discriminator value=&quot;system&quot;/&gt;
+        &lt;type value=&quot;value&quot;/&gt;
+        &lt;path value=&quot;code&quot;/&gt;
+      &lt;/discriminator/&gt;
       &lt;ordered value=&quot;true&quot;/&gt;
       &lt;rules value=&quot;closed&quot;/&gt;
     &lt;/slicing&gt;
@@ -907,7 +1027,10 @@ In a StructureDefinition, this will look like:
   &lt;element&gt; 
     &lt;path value=&quot;Composition.section.section&quot;/&gt;
     &lt;slicing&gt;
-      &lt;discriminator value=&quot;code&quot;/&gt;
+      &lt;discriminator value=&quot;system&quot;/&gt;
+        &lt;type value=&quot;value&quot;/&gt;
+        &lt;path value=&quot;code&quot;/&gt;
+      &lt;/discriminator/&gt;
       &lt;ordered value=&quot;true&quot;/&gt;
       &lt;rules value=&quot;closed&quot;/&gt;
     &lt;/slicing&gt;
@@ -973,11 +1096,198 @@ In a StructureDefinition, this will look like:
     &lt;/fixedCodeableConcept&gt;
   &lt;/element&gt;
 </pre>  
+
+<a name="reslicing"></a>
+<h3>Reslicing</h3>
   
+<p>
+For some use cases, it is necessary to further reslice in a derivative profile. This is when 
+Profile A derives from Profile B, Profile A slices an element in Slice A and B, and Profile
+B further slices Slice A into A1 and A2. 
+</p>
+<p>
+As an example, assume that institution implementation guide specifies that a medication 
+list is represented by a List resource, where the items into the list are split up into 
+3 slices, based on resource type: 
+</p>
+<ul>
+  <li>MedicationRequest</li>
+  <li>MedicationAdministration</li>
+  <li>MedicationStatement</li>
+</ul>
+<p>
+These slices must come in order.
+</p>
+<p>
+Now, a particular application creates an additional profile that specifies the following
+rules in addition to the base rules of the institution:
+</p>
+<ol>
+ <li>the  medicationRequests will be sliced into active and non-active, where all the active requests will come first, and then the inactive ones</li>
+ <li>only active MedicationAdministrations will be encountered</li>
+ <li>Medication statements are not supported</li>
+</ol>
+
+<p>
+An example of a List resource that meets these rules:
+</p>
+<pre class="xml">
+&lt;List&gt;                         
+... snip ...
+  &lt;entry&gt;                       
+    &lt;item&gt;  
+      &lt;reference value="MedicationRequest/ex-active-1"/&gt;  
+    &lt;/item&gt;  
+  &lt;/entry&gt;
+  &lt;entry&gt;                       
+    &lt;item&gt;  
+      &lt;reference value="MedicationRequest/ex-active-2"/&gt;  
+    &lt;/item&gt;  
+  &lt;/entry&gt;
+  &lt;entry&gt;                       
+    &lt;item&gt;  
+      &lt;reference value="MedicationRequest/ex-inactive-1"/&gt;  
+    &lt;/item&gt;  
+  &lt;/entry&gt;
+  &lt;entry&gt;                       
+    &lt;item&gt;  
+      &lt;reference value="MedicationAdministration/ex-any-1"/&gt;  
+    &lt;/item&gt;  
+  &lt;/entry&gt;
+
+  ... snip ...
+&lt;/List&gt;
+</pre>
+<p>
+The StructureDefinition differential for the first profile sets up the slicing, and then defines 3 slices:
+</p>
+<pre class="xml">
+  &lt;!-- setting up the slicing --&gt;
+  &lt;element&gt; 
+    &lt;path value=&quot;List.entry&quot;/&gt;
+    &lt;slicing&gt;
+      &lt;discriminator&gt;
+        &lt;type value=&quot;profile&quot;/&gt;
+        &lt;path value=&quot;entry.item.resolve()&quot;/&gt;
+      &lt;/discriminator&gt;
+      &lt;ordered value=&quot;true&quot;/&gt;
+      &lt;rules value=&quot;closed&quot;/&gt;
+    &lt;/slicing&gt;
+  &lt;/element&gt;
+  
+  &lt;!-- first slice: medrequest --&gt;
+  &lt;element&gt; 
+    &lt;path value=&quot;List.entry&quot;/&gt;
+    &lt;name value=&quot;medrequest&quot;/&gt; &lt;!-- mandatory - gives the slice a name --&gt;
+  &lt;/element&gt;
+  &lt;element&gt; 
+    &lt;path value=&quot;List.entry.item&quot;/&gt;
+    &lt;type&gt;
+      &lt;code value=&quot;Reference&quot;/&gt;
+      &lt;targetProfile value=&quot;http://example.org/StructureDefinition/medrequest&quot;/&gt;
+    &lt;/type&gt;
+  &lt;/element&gt;
+  
+  &lt;!-- second slice: medadmin --&gt;
+  &lt;element&gt; 
+    &lt;path value=&quot;List.entry&quot;/&gt;
+    &lt;name value=&quot;medadmin&quot;/&gt; &lt;!-- mandatory - gives the slice a name --&gt;
+  &lt;/element&gt;
+  &lt;element&gt; 
+    &lt;path value=&quot;List.entry.item&quot;/&gt;
+    &lt;type&gt;
+      &lt;code value=&quot;Reference&quot;/&gt;
+      &lt;targetProfile value=&quot;http://example.org/StructureDefinition/medadmin&quot;/&gt;
+    &lt;/type&gt;
+  &lt;/element&gt;
+  
+  &lt;!-- third slice: medstmt --&gt;
+  &lt;element&gt; 
+    &lt;path value=&quot;List.entry&quot;/&gt;
+    &lt;name value=&quot;medstmt&quot;/&gt; &lt;!-- mandatory - gives the slice a name --&gt;
+  &lt;/element&gt;
+  &lt;element&gt; 
+    &lt;path value=&quot;List.entry.item&quot;/&gt;
+    &lt;type&gt;
+      &lt;code value=&quot;Reference&quot;/&gt;
+      &lt;targetProfile value=&quot;http://example.org/StructureDefinition/medstmt&quot;/&gt;
+    &lt;/type&gt;
+  &lt;/element&gt;
+</pre>  
+
+<p>
+The derived StructureDefinition differential reslices
+the first slice into 2 slices, constrains the second slice, and 
+prohibits the 3rd:
+</p>
+<pre class="xml">
+  &lt;!-- setting up the slicing - this profile doesn't change the slicing 
+    (though it could add new discriminators if it needed) --&gt;
+  &lt;element&gt; 
+    &lt;path value=&quot;List.entry&quot;/&gt;
+    &lt;slicing&gt;
+      &lt;discriminator&gt;
+        &lt;type value=&quot;profile&quot;/&gt;
+        &lt;path value=&quot;entry.item.resolve()&quot;/&gt;
+      &lt;/discriminator&gt;
+      &lt;ordered value=&quot;true&quot;/&gt;
+      &lt;rules value=&quot;closed&quot;/&gt;
+    &lt;/slicing&gt;
+  &lt;/element&gt;
+  
+  &lt;!-- first slice: medrequest/active --&gt;
+  &lt;element&gt; 
+    &lt;path value=&quot;List.entry&quot;/&gt;
+    &lt;!-- name/sub-name: splitting an existing slice into new slices  --&gt;
+    &lt;name value=&quot;medrequest/active&quot;/&gt; 
+  &lt;/element&gt;
+  &lt;element&gt; 
+    &lt;path value=&quot;List.entry.item&quot;/&gt;
+    &lt;type&gt;
+      &lt;code value=&quot;Reference&quot;/&gt;
+      &lt;targetProfile value=&quot;http://example.org/StructureDefinition/medrequest-active&quot;/&gt;
+    &lt;/type&gt;
+  &lt;/element&gt;
+  
+  &lt;!-- second slice: medrequest/inactive --&gt;
+  &lt;element&gt; 
+    &lt;path value=&quot;List.entry&quot;/&gt;
+    &lt;name value=&quot;medrequest/inactive&quot;/&gt;
+  &lt;/element&gt;
+  &lt;element&gt; 
+    &lt;path value=&quot;List.entry.item&quot;/&gt;
+    &lt;type&gt;
+      &lt;code value=&quot;Reference&quot;/&gt;
+      &lt;targetProfile value=&quot;http://example.org/StructureDefinition/medrequest-active&quot;/&gt;
+    &lt;/type&gt;
+  &lt;/element&gt;
+  
+  &lt;!-- third slice: medadmin (rule on the second slice in the parent profile) --&gt;
+  &lt;element&gt; 
+    &lt;path value=&quot;List.entry&quot;/&gt;
+    &lt;!-- use the same name - constraining the existing slice --&gt;
+    &lt;name value=&quot;medadmin&quot;/&gt; 
+  &lt;/element&gt;
+  &lt;element&gt; 
+    &lt;path value=&quot;List.entry.item&quot;/&gt;
+    &lt;type&gt;
+      &lt;code value=&quot;Reference&quot;/&gt;
+      &lt;targetProfile value=&quot;http://example.org/StructureDefinition/medadmin-active&quot;/&gt;
+    &lt;/type&gt;
+  &lt;/element&gt;
+  
+  &lt;!-- fourth slice: medstmt --&gt;
+  &lt;element&gt; 
+    &lt;path value=&quot;List.entry&quot;/&gt;
+    &lt;!-- use the same name - constraining the existing slice --&gt;
+    &lt;name value=&quot;medstmt&quot;/&gt; 
+    &lt;max value=&quot;0&quot;/&gt;
+  &lt;/element&gt;
+</pre>  
+
 </div>
 
 
-[%onthispage Patient Contact Details#contacts|Blood Pressure#blood-pressure|Extensions#extensions|Diagnostic Report#lipids|Composition Sections#composition%]
 
 
 [%file newfooter%]

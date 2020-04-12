@@ -3,7 +3,7 @@
 	<!-- insert xhtml content here -->
 	<div>
 
-	<a name="status"> </a>
+	<a name="status"></a>
 		<h2>Управление статусами<!-- Status Management --></h2>
 		<h3>История и период<!-- History and Period --></h3>
 		<p>
@@ -23,7 +23,7 @@
 			Many systems have extensive Leave Management/Tracking solutions which consider the complexities of this space,
 			however this EpisodeOfCare resource is NOT intended to provide this level of tracking. --><br/>
 			Для отслеживания причин приостановки могут использоваться расширения для статусов/истории статусов, что может упростить обработку.
-		  <!-- Extension(s) may be used on the status/status history to track the on hold reason, which can facilitate the processing. -->
+		  <!-- Extension(s) may be used on the status/status history to track the on-hold reason, which can facilitate the processing. -->
 		</p>
 		<p>Более полное решение по учету отпусков (Leave Management) может иметь дело с:
 		<!-- A more complete Leave Management solution may have to deal with: --></p>
@@ -94,8 +94,8 @@
 
 		<h3>Обзор результатов EpisodeOfCare<!-- EpisodeOfCare Outcomes Review --></h3>
 		<p>
-		Организация может проводить аналитику своих эпизодов предоставления ухода, чтобы иметь представление о состоянии своего бизнеса.
-			<!-- An Organization may perform analytics on their Episodes Of Care to have an understanding of how their business is performing. --><br/>
+		Организация может проводить аналитику своих ресурсов EpisodeOfCare, чтобы иметь представление о состоянии своего бизнеса.
+			<!-- An Organization may perform analytics on their EpisodeOfCare resources to have an understanding of how their business is performing. --><br/>
 			Наблюдение о том, что было 60 завершённых и 40 отмененных эпизодов, не очень информативно. Организация предпочла бы узнать причины, почему эти эпизоды завершились, чтобы более эффективно планировать свой бизнес.
 			<!-- Observing that there was a 60/40 split of episodes being finished/cancelled is not very informative. The organization would
 			prefer to know the reason why the episodes are completing so that they can plan their business effectively. --><br/>
@@ -112,7 +112,7 @@
 	</div>
 
 	<div>
-<a name="examples"> </a>
+<a name="examples"></a>
 		<h2>Примеры сценариев<!-- Example Scenarios --></h2>
 		<p>
 		Врач общей практики (терапевт) хочет проверить, насколько хорошо его пациент справляется с диабетом по прошествии длительного времени из информации в его клинике, а также из региональной систем(-ы) организации общественного ухода.

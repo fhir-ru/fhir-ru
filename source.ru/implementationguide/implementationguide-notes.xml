@@ -4,7 +4,7 @@
 <h3>Distributing Implementation Guides</h3>
 <p>
 Implementation Guides are published through the FHIR Package distribution system.
-For further details, see the <a href="http://wiki.hl7.org/index.php?title=FHIR_NPM_Package_Spec">FHIR Wiki</a>.
+For further details, see the <a href="https://confluence.hl7.org/display/FHIR/NPM+Package+Specification">FHIR Confluence site</a>.
 This content may be moved into the specification in a future version.
 </p>
 
@@ -54,32 +54,27 @@ what to make of this.
 </p>
 
 <a name="default"></a>
-<h3>Профили по умолчанию<!-- Default Profiles --></h3>
+<h3>Default Profiles</h3>
 <p>
-Руководство по реализации может задавать профили, используемые по умолчанию с помощью <code>ImplementationGuide.global</code> - это профили, которые применяются к любому ресурсу, у которого нет явно назначенных руководством по реализации профилей. Профили, используемые по умолчанию, всегда ссылаются на профили (ресурсы <a href="structuredefinition.html">StructureDefinition</a>), которые также содержатся в ресурсах. Определяя профили по умолчанию, руководство по реализации может уберечь себя от исчерпывающего определения профилей для каждого типа ресурса и просто профилировать каждую ссылку на определённый тип ресурса.
-<!-- 
 An implementation guide can define default profiles using <code>ImplementationGuide.global</code>- these are profiles that apply to any resource that
 does not otherwise have an explicit profile assigned by the implementation guide. Default profiles 
 are always references to profiles (<a href="structuredefinition.html">StructureDefinition</a> resources)
 that are also contained in the resources. By defining default profiles, an implementation guide
 can save itself from exhaustively defining profiles on every resource type just to profile every
 reference to a particular resource type. 
--->
 </p>
 <p>
-Обратите внимание, что ресурс может соответствовать используемому по умолчанию профилю, если он соответствует любому другому, вытекающему из него профилю.
-<!-- Note that a resource can conform to the default profile by conforming to any profile derived from it.  -->
+Note that a resource can conform to the default profile by conforming to any profile derived from it. 
 </p>
 
 <a name="compatibility"></a>
-<h3>Перечень совместимости<!-- Compatibility list --></h3>
+<h3>Compatibility list</h3>
 <p>
-В этой таблице приведены данные о совместимости различных ресурсов, полученные с помощью инструмента сравнения руководств по реализации:
-<!-- This table declares the compatibility between the various resources as determined
-by the Implementation Guide comparison tool: -->
+This table declares the compatibility between the various resources as determined
+by the Implementation Guide comparison tool:
 </p>
 <p>
-<i>Ещё предстоит сделать<!-- Yet to be done --></i>
+<i>Yet to be done</i>
 </p>
 
 

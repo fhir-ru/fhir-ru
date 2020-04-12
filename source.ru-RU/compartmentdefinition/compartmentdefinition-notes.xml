@@ -1,6 +1,6 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
-<a name="use"> </a>
+<a name="use"></a>
 <h3>Использование логических модулей<!-- Using Compartments --></h3>
 
 <p>
@@ -28,9 +28,8 @@ URLs respectively: -->
   GET [base]/Condition?patient=[id]&amp;code:in=http://hspc.org/ValueSet/acute-concerns
 </pre>
 <p>
-Note that the outcome of a compartment search is the same as the equivalent 
-normal search. As an example, both these searches return the same outcome
-if there is no patient 333:
+The outcome of a compartment search is the same as the equivalent normal search. 
+For example, both these searches return the same outcome if there is no patient 333:
 </p>
 <pre>
   GET [base]/Patient/333/Condition
@@ -76,6 +75,29 @@ As a search related operation, the assignment of resources to compartments is on
 the current version of any of the resources involved. Note that <a href="references.html#contained">contained</a>
 patient resources cannot create a patient compartment of their own.  -->
 </p>
+
+<p>
+Note that while this specification describes how to use the compartment syntax to find resources 
+that are logically associated with the compartment, the compartment is not part of the
+identity of the resource. E.g. the response to the following is not defined by this specification:
+</p>
+<pre>
+  GET [base]/Patient/[patient-id]/Condition/[resource-id]
+</pre>
+<p>
+The response for write operations (PUT/DELETE/PATCH) are also not defined by this
+specification. Nor is the response to a POST defined:
+</p>
+<pre>
+  POST [base]/Patient/[patient-id]/Condition
+</pre>
+<p>
+There is no expectation for servers to support either read or write 
+to such URLs.
+</p>
+
+<a name="logical"></a>
+<h3>Logical Meaning of Compartments</h3>
 <p>
 Логические модули могут использоваться явным образом, как это, однако также могут использоваться и неявно. К примеру, если FHIR-сервер предоставляет попациентный просмотр медкарты, авторизованный пользователь, ассоциированный с использованием FHIR RESTful API, может быть ограничен в доступе к картам из экземпляров логического модуля, логически ассоциированных со своими идентификаторами. Независимо от того, используются ли логические модули явно или неявно, серверам могут требоваться дополнительные действия, чтобы сделать некоторые ресурсы без прямой ссылки на пациента доступными клиенту (медикаменты, вещества и др.).
 <!-- Compartments may be used explicitly, like this, but can also be used implicitly. For instance,
@@ -106,6 +128,10 @@ do not define how cross-linking is handled. Systems may reject resources, remove
 from both compartments, or place them in both, or act in some other fashion. -->
 </p>
 <p>
+The <a href="graphdefinition.html">graph definition</a> resource provides a method
+by which rules about cross-linking may be made and enforced.
+</p>
+<p>
 Решение о том, включать ли ресурсы в логический модуль, когда ссылка на ресурс, который образует логический модуль, находится в расширении, принимается на стороне сервера.
 <!-- It is at the discretion of the server whether to include resources in a compartment when
 the reference to the resource that establishes the compartment is in an extension. -->
@@ -114,9 +140,9 @@ the reference to the resource that establishes the compartment is in an extensio
 <p>
 Некоторые ресурсы не входят ни в какие логические модули, например <a href="medication.html">Medication</a>, 
 <a href="substance.html">Substance</a>, <a href="location.html">Location</a>.
-Эти ресурсы не относятся непосредственно к пациенту или составителю записи и иногда называются "мастер-файлами". Серверам потребуются дополнительные действия, чтобы сделать такие ресурсы доступными для клиентов, ограниченных конкретными логическими модулями. Например ресурс Medication описывает непосредственно сам медикамент и не привязан к пациенту; однако ресурс MedicationAdministration связывает этот ресурс Medication (детали о том, что было введено) с пациентом (которому этот медикамент был назначен), и поэтому требуется для интерпретации этого назначения.
+Эти ресурсы не привязаны непосредственно к пациенту или составителю записи и иногда называются "мастер-файлами". Серверам потребуются дополнительные действия, чтобы сделать такие ресурсы доступными для клиентов, ограниченных конкретными логическими модулями. Например ресурс Medication описывает непосредственно сам медикамент и не привязан к пациенту; однако ресурс MedicationAdministration связывает этот ресурс Medication (детали о том, что было введено) с пациентом (которому этот медикамент был назначен), и поэтому требуется для интерпретации этого назначения.
 <!-- Some resources are not in any compartment, e.g. <a href="medication.html">Medication</a>, 
-<a href="substance.html">Substance</a>, <a href="location.html">Location</a>. These resources are not directly to a patient 
+<a href="substance.html">Substance</a>, <a href="location.html">Location</a>. These resources are not linked directly to a patient 
 or authored record, and are sometimes called 'master files'. Servers will need to make 
 arrangements to make these resources available to the clients that are limited to 
 particular compartments. For example, a Medication resource describes a medication itself 
@@ -128,7 +154,7 @@ it administered), and so is required to interpret the administration. -->
 <h2>Определение новых логических модулей<!-- Defining New Compartments --></h2>
 <p>
 Логические модули задаются и добавляются в список выше, когда сообщества реализаторов определяют их точки общего доступа к данным. Как описано ниже, логические модули имеют и синтаксические, и логические выводы (последствия), и оба этих аспекта их функциональности оцениваются при принятии решения, определять ли [новые] логические модули.
-<!-- Compartments are defined and added the list above when implementer 
+<!-- Compartments are defined and added to the list above when implementer 
 communities identify them as common access points for data. As described 
 below, compartments have both syntactical and logical consequences, and
 both these aspects of their functionality are evaluated when deciding

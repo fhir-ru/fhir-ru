@@ -1,7 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<a name="scope"> </a>
+<a name="scope"></a>
 <h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p> 
 Encounter (визит) пациента дополнительно характеризуется условиями, в которых он проходит. Среди Encounter имеются амбулаторный, неотложный, на дому, стационарный и виртуальный визиты. Encounter охватывает жизненный цикл от предварительного приема, непосредственно самого визита (для амбулаторных), до приема, пребывания и выписки (для стационарных). В течение encounter пациент может перемещаться между разными practitioner и из одного места в другое место.
@@ -38,6 +38,9 @@ this case the <i>status</i> element is set to 'planned'. -->
 
 <p>
 Компонент Hospitalization предназначен для хранения расширенной информации, относящейся к событию госпитализации. Предполагается, что он всегда совпадает с периодом самого encounter. Когда периоды не совпадают, для хранения этой информации следует использовать еще один encounter, который будет связан с первым encounter через элемент partOf данного экземпляра encounter.
+<!-- The Hospitalization component is intended to store the extended information relating to a hospitalization event.
+It is always expected to be the same period as the encounter itself. Where the period is different, another
+encounter instance should be used to capture this information as a partOf this encounter instance. -->
 </p>
 
 <p>
@@ -49,47 +52,57 @@ resolve complications from an earlier procedure.
 
 <h3>Status Management</h3>
 <p>
+<!-- During the life-cycle of an encounter it will pass through many statuses. Typically these are in order or the
+organization's workflow: planned, in-progress, finished/cancelled. -->
 Во время жизненного цикла encounter получает разные статусы. Как правило, они назначаются в порядке или рабочем процессе организации: запланирован, в процессе, закончен/отменен (planned, in-progress, finished/cancelled).
-<!-- During the life-cycle of an encounter it will pass through many statuses. Typically these are in order or the organizations workflow: planned, in-progress, finished/cancelled. -->
 <br/>
 Информация о статусе часто используется для других вещей, и часто необходим анализ истории изменения статуса. Он может выполняться сканированием всех версий encounter и, затем, проверкой периода каждого и выполнения некоторой формы постобработки. Для облегчения этой работы (или если система не поддерживает истории ресурсов) включается компонент status history.
+<!-- This status information is often used for other things, and often an analysis of the status history is required.
+This could be done by scanning through all the versions of the encounter and then checking the period of each,
+and doing some form of post processing. To ease the burden of this (or where a system doesn't support resource
+histories) a status history component is included. -->
 </p>
 <p>
 Нельзя определить только лишь по полю статуса, был ли пациент "принят" в рамках этого случая обслуживания.
-<!-- There is no direct indication purely by the status field as to if an encounter is considered "admitted". --><br/>
-Контекст случая обслуживания и принятые бизнес-практики/правила/процессы/типы могут влиять на это определение (например учреждение экстренной медицинской помощи, центр ухода за престарелыми, клиника для амбулаторных больных, отделение неотложной помощи, муниципальные поликлиники). 
+<!-- There is no direct indication purely by the status field as to whether an encounter is considered "admitted". -->
+<br/>
+ 
 <!-- The context of the encounter and business practices/policies/workflows/types can influence this definition.
-(e.g., acute care facility, aged care center, outpatient clinic, emergency department, community based clinic). --><br/>
+(e.g., acute care facility, aged care center, outpatient clinic, emergency department, community based clinic). -->
+Контекст случая обслуживания и принятые бизнес-практики/правила/процессы/типы могут влиять на это определение (например учреждение экстренной медицинской помощи, центр ухода за престарелыми, клиника для амбулаторных больных, отделение неотложной помощи, муниципальные поликлиники).
+<br/>
 Статусы "arrived", "triaged" и "in progress", а также присутствие субкомпонента "hospitalization" можно рассматривать как начало госпитализации.
+<!-- Statuses of "arrived", "triaged" or "in progress" could be considered the start of the admission, and also have the 
+presence of the hospitalization sub-component entered. -->
 </p>
 <p>
 Статус "on leave" может быть как частью госпитализации, так и нет, например если пациенту разрешили уйти на выходные домой или другое внешнее событие.
-<!-- The "on leave" status may or may not be a part of the admission, for example if the patient 
+<!-- The "on leave" status might or might not be a part of the admission, for example if the patient 
 was permitted to go home for a weekend or some other form of external event. -->
 <br/>
 У элемента "location", возможно, будет стоять статус "present" (присутствует).
 <!-- The location is also likely to be filled in with a location status of "present". -->
 <br/>
 Для других случаев, таких как амбулаторный визит (дневная процедура - колоноскопия), пациента можно считать госпитализированным, поскольку случай обслуживания не имеет фиксированного определения понятия "принят". Как минимум, мы полагаем, что пациент "принят", если указан статус "in-progress".
-<!-- For other examples such as an outpatient visit (Day Procedure - colonoscopy), the patient could also be 
+<!-- For other examples such as an outpatient visit (day procedure - colonoscopy), the patient could also be 
 considered to be admitted, hence the encounter doesn't have a fixed definition of admitted.
 At a minimum, we do believe that a patient IS admitted when the status is in-progress. -->
 </p>
 </div>
 
 <div>
-<a name="bnr"> </a>
-<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
+<a name="bnr"></a>
+<h2>Границы и связи</h2>
 <p> 
 Ресурс Encounter не предназначен для хранения информации об условленной встрече, для этого есть ресурс Appointment. 
 Обратите внимание, что в большинстве систем амбулаторные визиты (находящиеся в области действия Encounter) и Appointment используются параллельно. В FHIR ресурс Appointment используется, чтобы установить дату визита, в то время как Encounter подходит для информации о непосредственно самом Encounter, т. е. появлении пациента.
 <!-- The Encounter resource is not to be used to store appointment information, the Appointment resource is intended to be used for that.
 Note that in many systems outpatient encounters (which are in scope for Encounter) and Appointment are used 
 concurrently. In FHIR, Appointment is used for establishing a date for the encounter, while Encounter is 
-applicable to information about the actual Encounter, i.e. the patient showing up. -->
+applicable to information about the actual Encounter, i.e., the patient showing up. -->
 <br/>
 По существу, случай обслуживания в статусе "planned" - не то же самое, что appointment, который запланировал его, это encounter до своего фактического начала, с ожиданием того, что этот encounter будет обновляться по мере продвижения к завершению. Прибытие пациента на место не обязательно означает начало случая обслуживания (например пациент пришел на час раньше того времени, когда он был непосредственно принят специалистом).
-<!-- As such an encounter in the "planned" status is not identical to the appointment that scheduled it,
+<!-- As such, an encounter in the "planned" status is not identical to the appointment that scheduled it,
 but it is the encounter prior to its actual occurrence, with the expectation that encounter will be
 updated as it progresses to completion. Patient arrival at a location does not necessarily mean the
 start of the encounter (e.g. a patient arrives an hour earlier than he is actually seen by a practitioner). -->
@@ -100,16 +113,17 @@ Appointment обычно используется на стадии планир
 making the appointment. Once this process is completed and the appointment is about to start, then the appointment
 will be marked as fulfilled, and linked to the newly created encounter. -->
 <br/>
-Этот новый encounter может начаться в статусе "прибыл" ("arrived"), когда вводятся с указанием помещения в здании, и затем переходят к статусу "в палате", где может начаться другая часть (part-of) encounter.
-<!-- This new encounter may start in an "arrived" status when they are admitted with a location of the facility, and then will
+<!-- This new encounter may start in an "arrived" status when they are admitted at a location of the facility, and then will
 move to the ward where another part-of encounter may begin. -->
+Этот новый encounter может начаться в статусе "прибыл" ("arrived"), когда вводятся с указанием помещения в здании, и затем переходят к статусу "в палате", где может начаться другая часть (part-of) encounter.
 </p>
 <p>
 Ресурсы Communication используются для прямого одновременного взаимодействия между медицинским специалистом и пациентом, когда прямой контакт отсутствует. Например сообщение по телефону или заочная передача документов.
-<!-- Communication resources are used for a direct simultaneous interaction between a practitioner and a patient where there is no
-direct contact. Such as phone message, or transmission of some correspondence documentation. --><br/>
+<!-- Communication resources are used for a simultaneous interaction between a practitioner and a patient where there is no
+direct contact. Examples include a phone message, or transmission of some correspondence documentation. -->
+<br/>
 В ресурсе Communication не записывается продолжительность взаимодействия, однако он может содержать информацию о времени отправления и получения.
-<!-- There is no duration recorded for a communication resource, but could contain sent and received times. -->
+<!-- There is no duration recorded for a communication resource, but it could contain sent and received times. -->
 </p>
 <p>
 Стандартное расширение: <b>Associated Encounter</b><br/>

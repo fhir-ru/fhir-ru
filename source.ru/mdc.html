@@ -9,12 +9,12 @@
 <body>
 [%file newnavbar%]
 
-<div class="col-12">
+<div class="col-12"><!--ReleaseHeader--><p id="publish-box"></p><!--EndReleaseHeader-->
 
 <%txheader%>
 
 <h2>Using MDC Codes with FHIR</h2>
-<table class="colstu"><tr><td id="wg"><a _target="blank" href="[%wg dev%]">[%wgt dev%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 1</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Trial Use</a></td></tr></table>
+<table class="colstu"><tr><td id="wg"><a _target="blank" href="[%wg dev%]">[%wgt dev%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 1</td><td id="ballot"><a href="versions.html#std-process">Standards Status</a>:<!--!ns!--><a href="versions.html#std-process">Trial Use</a></td></tr></table>
 
 <h3>Summary</h3>
 
@@ -30,7 +30,7 @@
  <tr><td>System</td><td>The URI <code>urn:iso:std:iso:11073:10101</code> identifies the MDC code system.</td></tr>
  <tr><td>Version</td><td>Date (in FHIR <a href="datatypes.html#date">date format</a> YYYY-MM-DD) that this version of the code system was published.</td></tr>
  <tr><td>Code</td><td>MDC codes are 32-bit unsigned decimal integers where the upper 16 bits are the partition (a usage category - see below) and the lower 16 bits are the term codes. The codes are available as CF_CODE10 in the RTMMS database.</td></tr>
- <tr><td>Display</td><td>The standard provides a Reference Identifier (REFID in RTMMS) for each code, which can placed in this element. If defined, Systematic Name, Common Term, and Acronym are added as designations for use as alternative display</td></tr>
+ <tr><td>Display</td><td>The standard provides a Reference Identifier (REFID in RTMMS) for each code, which can placed in this element. If defined, Systematic Name, Common Term, and Acronym are added as designations for use as alternative display values</td></tr>
  <tr><td>Inactive</td><td>Codes with status withdrawn (see properties below) are considered inactive</td></tr>
  <tr><td>Specification</td><td>
 The normative specification is defined in the documents
@@ -65,7 +65,7 @@ The following information is provided free of charge to all NIST RTMMS users via
 (Source: <a href="https://rtmms.nist.gov/rtmms/index.htm#!ieee">https://rtmms.nist.gov/rtmms/index.htm#!ieee</a>).
 </p>
 
-<a name="faq"></a>
+<a name="faq"> </a>
 <h3>Frequently Asked Questions on Use of MDC Nomenclature</h3>
 <p>
 Source: <a href="http://www.11073.org/">11073.org Our Standards > Conditions of Use</a>
@@ -96,7 +96,7 @@ A. Yes
 </p>
 
 
-<a name="refid"></a>
+<a name="refid"> </a>
 <h3>Reference Identifiers</h3>
 <p>
 Text reference identifiers are given in the standards for each numeric code identifying a concept.
@@ -106,7 +106,7 @@ composed of upper case letters such as MDC_ECG_HEART_RATE. The few exceptions ar
  mixed-case identifiers are familiar to end users, such as identifiers for certain ECG leads.
 </p>
 
-<a name="partitions"></a>
+<a name="partitions"> </a>
 <h3>Partition Codes</h3>
 
 <p>
@@ -146,7 +146,7 @@ nothing in either the 11073-10201, 11073-20601, or 11073-10101 standards that
 limit the use of any partition to either PoCDs or PHDs
 </p>
 
-<a name="terms"></a>
+<a name="terms"> </a>
 <h3>Term Codes</h3>
 
 <p>
@@ -179,7 +179,7 @@ find an array of information about the code, for example,
 the term description “Rate of cardiac beats”.
 </p>
 
-<a name="properties"></a>
+<a name="properties"> </a>
 <h3>MDC Properties</h3>
 
 In addition to the standard properties, the following properties are defined for MDC:

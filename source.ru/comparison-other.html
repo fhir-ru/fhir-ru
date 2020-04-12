@@ -1,7 +1,6 @@
 <!DOCTYPE HTML>
 
-
-[%settitle Связь между FHIR и другими стандартами HL7%]
+[%settitle Relationship between FHIR and Misc. HL7 Standards%]
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -10,39 +9,34 @@
 <body>
 [%file newnavbar%]
 
-<div class="col-12">
+<div class="col-12"><!--ReleaseHeader--><p id="publish-box"></p><!--EndReleaseHeader-->
 
 [%cmpheader misc%]
 
 <h2>Other HL7 Standards</h2>
-<table class="colsi"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Informative</a></td></tr></table>
+<table class="colsi"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="versions.html#std-process">Standards Status</a>:<!--!ns!--><a href="versions.html#std-process">Informative</a></td></tr></table>
 <p>
-Организацией HL7 был создан ряд других стандартов, которые не пересекаются с FHIR настолько близко, как перечисленные выше, в основном потому, что они не направлены исключительно на обмен информацией. Тем не менее, они заслуживают краткого упоминания:
-<!-- HL7 has produced a number of other standards that don't overlap with FHIR as closely as those listed above, primarily because they aren't focused solely on information exchange.  However, they deserve a brief mention: -->
+HL7 has produced a number of other standards that don't overlap with FHIR as closely as those listed above, primarily because they aren't focused solely on information exchange.  However, they deserve a brief mention:
 </p>
 
-<h3>Функциональная модель системы ведения электронной истории болезни (EHR-FM)<!-- EHR Functional Model (EHR-FM) --></h3>
+<h3>EHR Functional Model (EHR-FM)</h3>
 <p>
-Эта спецификация описывает функциональное поведение систем ведения электронной истории болезни. FHIR является стандартом обмена медицинской информацией, который может использоваться для удовлетворения части этого функционального поведения. <a href="ehr-fm.html">Подробнее</a> о том, как FHIR вписывается в EHR-FM.
-<!-- This specification defines a number of functional behaviors for Electronic Health Record systems.  FHIR is a healthcare information exchange standard that can be used to satisfy some of these functional behaviors.  Details on how FHIR fits into the EHR-FM can be found <a href="ehr-fm.html">here</a> -->
+This specification defines a number of functional behaviors for Electronic Health Record systems.  FHIR is a healthcare information exchange standard that can be used to satisfy some of these functional behaviors.  Details on how FHIR fits into the EHR-FM can be found <a href="ehr-fm.html">here</a>
 </p>
 
-<h3>Спецификации управления контекстом (CCOW)<!-- Context Management Specifications (CCOW) --></h3>
+<h3>Context Management Specifications (CCOW)</h3>
 <p>
-CCOW - это стандарт, позволяющий независимым системам синхронизировать контекст работы на одной рабочей станции, обеспечивая бесшовный интерфейс для пользователя этой рабочей станции (например обеспечение непротиворечивой аутентификации пользователей, отображение того же самого пациента, отображение того же самого заказа и т. п.). Теоретически, FHIR-ресурсы можно было бы использовать в качестве альтернативной технологии реализации CCOW, однако для этого не очевиден сценарий использования. Профили CCOW включают в себя мэппинги на <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a>. Эти мэппинги можно использовать, чтобы определить эквивалентные элементы данных FHIR при установлении CCOW-связей в системах на основе FHIR.
-<!-- CCOW is a standard for allowing independent systems to synchronize context on a single workstation, providing a seamless interface for the user of that workstation (e.g. ensuring consistent user authentication, display of the same patient, display of the same order, etc.)  In theory, FHIR resources could be used as an alternative CCOW implementation technology, however the business case for doing this is not clear.  CCOW profiles include <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a> mappings.  These mappings can be used to help identify the equivalent FHIR data elements when establishing CCOW linkages in FHIR-based systems. -->
+CCOW is a standard for allowing independent systems to synchronize context on a single workstation, providing a seamless interface for the user of that workstation (e.g. ensuring consistent user authentication, display of the same patient, display of the same order, etc.)  In theory, FHIR resources could be used as an alternative CCOW implementation technology, however the business case for doing this is not clear.  CCOW profiles include <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a> mappings.  These mappings can be used to help identify the equivalent FHIR data elements when establishing CCOW linkages in FHIR-based systems.
 </p>
 
-<h3>Синтаксис Арден<!-- Arden Syntax --></h3>
+<h3>Arden Syntax</h3>
 <p>
-Синтаксис Арден - это язык кодирования правил поддержки принятия решений. Эти правила дают ссылку на элементы данных, которые используются в рамках процесса принятия решений. Однако эта спецификация не описывает, как идентифицировать эти элементы данных. Идентификаторы элементов и расширений FHIR обеспечили бы единый механизм идентификации соответствующих элементов данных.
-<!-- Arden Syntax is a language for defining decision support rules.  These rules reference data elements that are used as part of the decision making process.  However, the specification does not define how these data elements are identified.  FHIR element and extension identifiers would provide one mechanism for identifying the relevant data elements. -->
+Arden Syntax is a language for defining decision support rules.  These rules reference data elements that are used as part of the decision making process.  However, the specification does not define how these data elements are identified.  FHIR element and extension identifiers would provide one mechanism for identifying the relevant data elements.
 </p>
 
-<h3>Виртуальная медицинская карта (VMR)<!-- Virtual Medical Record --></h3>
+<h3>Virtual Medical Record</h3>
 <p>
-Виртуальная медицинская карта - это проект спецификации, разрабатываемый HL7, который тоже обслуживает область поддержки принятия решений. Он описывает логическую медицинскую карту, для которой можно создавать правила поддержки принятия решений. В настоящее время в неё заложена пользовательская модель, созданная специально для VMR. Однако рабочая группа поддержки принятия решений оценивает возможность использовать FHIR в качестве структуры этой спецификации в будущем.
-<!-- The Virtual Medical Record is a draft specification under development by HL7 that also serves the decision support space.  It defines a logical medical record that decision support rules can be constructed against.  At present, this model is a custom model created specifically for VMR.  However, the Decision Support work group is evaluating the possibility of using FHIR as a structure for future versions of the specification. -->
+The Virtual Medical Record is a draft specification under development by HL7 that also serves the decision support space.  It defines a logical medical record that decision support rules can be constructed against.  At present, this model is a custom model created specifically for VMR.  However, the Decision Support work group is evaluating the possibility of using FHIR as a structure for future versions of the specification.
 </p>
 
 </div>

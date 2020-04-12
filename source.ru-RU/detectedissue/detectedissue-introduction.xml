@@ -1,7 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<a name="scope"> </a>
+<a name="scope"></a>
 <h2>Область применения и использование</h2>
 <p><strong>This resource is an <em>event</em> resource from a FHIR workflow perspective</strong> - see <a href="workflow.html">Workflow</a>, specifically <a href="workflow.html#event">Event</a>.</p>
 
@@ -23,31 +23,31 @@ It does not apply to technical issues (e.g. lack of user permissions) but could 
 Данный ресурс представляет собой индивидуальный экземпляр потенциальной проблемы для конкретного пациента. Он <b>не</b> предназначен для хранения общих сведений, не относящихся к конкретному пациенту. Также он <b>не</b> предназначен для определения общих запретов на действия, таких как "Запрет на NSAIDs", "Запрет на твердые оральные формы дозировок" или "Запрет на МРТ - металлосодержащие татуировки". 
 Такие инструкции можно фиксировать с помощью ресурсов <a href="allergyintolerance.html">AllergyIntolerance</a> и/или <a href="flag.html">Flag</a>. 
 Точно также данный ресурс не предназначен к использованию для записи клинических фактов, которые могут подразумевать противопоказания, например беременность, грудное кормление, предпочтения пациента, прошлые процедуры и т. п. Для этого используется <a href="condition.html">Condition</a>, <a href="procedure.html">Procedure</a> или другие ресурсы.
-<!-- This resource represents a specific instance of a potential issue for a particular patient. It is <b>not</b> intended to represent general patient-independent knowledge. This resource is also <b>not</b> intended to be used in defining general prohibitions on actions such as "No NSAIDs", "No solid oral dose forms" or "No MRIs - metalic tatoos".  
+<!-- This resource represents a specific instance of a potential issue for a particular patient. It is <b>not</b> intended to represent general patient-independent knowledge. This resource is also <b>not</b> intended to be used in defining general prohibitions on actions such as "No NSAIDs", "No solid oral dose forms" or "No MRIs - metallic tattoos".  
 These guidelines can be captured using the <a href="allergyintolerance.html">AllergyIntolerance</a>, and/or <a href="flag.html">Flag</a> resources.  
-Similarly this resource is not to be used to capture clinical facts that may imply contraindications such as pregnancy, breast feeding, patient preferences, past procedures, etc.  These would be represented using <a href="condition.html">Condition</a>, <a href="procedure.html">Procedure</a> or other resources. -->
+Similarly, this resource is not to be used to capture clinical facts that may imply contraindications such as pregnancy, breast feeding, patient preferences, past procedures, etc.  These would be represented using <a href="condition.html">Condition</a>, <a href="procedure.html">Procedure</a> or other resources. -->
 </p>
 </div>
 
 
 <div>
-<a name="bnr"> </a>
-<h2>Границы и связи</h2>
+<a name="bnr"></a>
+<h2>Boundaries and Relationships</h2>
 <p>
-Данный ресурс применяется для документирования риска, связанного с определенным запланированным или выполняющимся действием, а не общего предрасполоежния к риску. Последнее может фиксироваться с помощью <a href="allergyintolerance.html">AllergyIntolerance</a> для вопросов, связанных с веществами, или <a href="flag.html">Flag</a> для других типов проблем.
-<!-- This resource only applies to documenting a risk associated with a specific planned or ongoing action, not a general propensity to risk.  The latter would be handled using <a href="allergyintolerance.html">AllergyIntolerance</a> for substance-specific issues or <a href="flag.html">Flag</a> for other types of issues. -->
+Данный ресурс применяется только для документирования риска, связанного с определенным запланированным или происходящим действием, либо с отсутствием действия, которое должно быть запланировано, а не общего предрасполоежния к риску. Последнее может фиксироваться с помощью <a href="allergyintolerance.html">AllergyIntolerance</a> для вопросов, связанных с веществами, или <a href="flag.html">Flag</a> для других типов проблем. Дополнительно, данный ресурс представляет пациенто-специфические и ограниченные по времени объявления рисков, а не общие утверждения знания о рисках, которые могут существовать.
+<!-- This resource only applies to documenting a risk associated with a specific planned or ongoing action, or the lack of an action which should be planned - not a general propensity to risk. The latter would be handled using <a href="allergyintolerance.html">AllergyIntolerance</a> for substance-specific issues or <a href="flag.html">Flag</a> for other types of issues. In addition, the resource represents patient-specific and time-bound risk manifestations, not generic knowledge statements about risks that can exist. -->
 </p>
 <p>
-Этот ресурс ограничивается клиническими вопросами, связанными с предложенным или выполняющимся действием. Он не охватывает технические вопросы, такие как отсутствие прав доступа, идентификаторы-дубликаты и другие нарушения бизнес-правил. Ттехнические проблемы описываются с помощью ресурса <a href="operationoutcome.html">OperationOutcome</a>. 
+Этот ресурс ограничивается клиническими вопросами, связанными с предложенным или выполняющимся действием. Он не охватывает технические вопросы, такие как отсутствие прав доступа, идентификаторы-дубликаты, недостаточность данных и другие нарушения бизнес-правил. Ттехнические проблемы описываются с помощью ресурса <a href="operationoutcome.html">OperationOutcome</a>. 
 Можно одновременно иметь и <a href="operationoutcome.html">OperationOutcome</a>, и <code>DetectedIssue</code>, где OperationOutcome может указывать на то, что запрошенное действие было отклонено из-за клинической проблемы, а DetectedIssue - показывать подробности этой проблемы.
-<!-- This resource is limited to clinical issues associated with a proposed or ongoing action.  It does not cover technical issues such as lack of permission, duplicate identifiers and other business rule violations.  Technical issues are conveyed using the <a href="operationoutcome.html">OperationOutcome</a> resource.  
+<!-- This resource is limited to clinical issues associated with a proposed or ongoing action.  It does not cover technical issues such as lack of permission, duplicate identifiers, insufficient data, and other business rule violations. Technical issues are conveyed using the <a href="operationoutcome.html">OperationOutcome</a> resource.  
 It is possible to have both <a href="operationoutcome.html">OperationOutcome</a> and <code>DetectedIssue</code> together, where the OperationOutcome might 
 indicate that a requested action was rejected due to a clinical issue and the DetectedIssue provides the details of the issue. -->
 </p>
 </div>
 
 <div>
-<a name="bnc"> </a>
+<a name="bnc"></a>
 <h2>Предпосылки и контекст</h2>
 <p>
 Обычно Detected issues идентифицируются системами поддержки принятия решений. Однако они могут также заводиться непосредственно клиницистами. Последнее, как правило, происходит по одной из двух причин:

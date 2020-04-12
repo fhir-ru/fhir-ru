@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 
-[%settitle Примеры типов данных%]
+[%settitle Data Type Examples%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -11,8 +11,8 @@
 <div class="col-12">
 
 <%dtheader examples%>
-<h2>Примеры типов данных</h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="versions.html#maturity">Уровень зрелости</a>: N/A</td><td id="ballot"><a href="versions.html#levels">Статус голосования</a>: <a href="versions.html#std-process">Информативный</a></td></tr></table>
+<h2>Data Type Examples</h2>
+<table class="colsi"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Informative</a></td></tr></table>
 
 <p>На странице приведены примеры типов данных, основанные на распространенных случаях использования и вопросах.</p>
 
@@ -29,25 +29,25 @@
 </table>-->
 
 
-<a name="primitive"> </a>
+<a name="primitive"></a>
 <h3>Примитивные типы</h3>
-<a name="boolean"> </a>
-<a name="integer"> </a>
-<a name="string"> </a>
-<a name="decimal"> </a>
-<a name="uri"> </a>
-<a name="base64Binary"> </a>
-<a name="base64binary"> </a>
-<a name="instant"> </a>
-<a name="date"> </a>
-<a name="dateTime"> </a>
-<a name="datetime"> </a>
-<a name="time"> </a>
-<a name="patterns"> </a>
-<a name="code"> </a>
-<a name="oid"> </a>
-<a name="uuid"> </a>
-<a name="id"> </a>
+<a name="boolean"></a>
+<a name="integer"></a>
+<a name="string"></a>
+<a name="decimal"></a>
+<a name="uri"></a>
+<a name="base64Binary"></a>
+<a name="base64binary"></a>
+<a name="instant"></a>
+<a name="date"></a>
+<a name="dateTime"></a>
+<a name="datetime"></a>
+<a name="time"></a>
+<a name="patterns"></a>
+<a name="code"></a>
+<a name="oid"></a>
+<a name="uuid"></a>
+<a name="id"></a>
 
 
 <div class="example">
@@ -65,7 +65,7 @@
   <p>2:35pm in the afternoon:</p><pre class="xml" fragment="time">&lt;time value="14:35" /&gt;</pre>
 </div>
 
-<a name="strings"> </a>
+<a name="strings"></a>
 <h3>Строковые примеры</h3>
 
 <div class="example">
@@ -77,8 +77,8 @@
 	<p>Буквенно-цифровой ID:</p><pre class="xml" fragment="code">&lt;id value="alpha-gamma-14" /&gt;</pre>
 </div>
 
-<a name="Attachment"> </a>
-<a name="attachment"> </a>
+<a name="Attachment"></a>
+<a name="attachment"></a>
 <h3 style="margin-bottom: 1px">
 Attachment (Вложение)
 </h3>
@@ -116,8 +116,8 @@ Attachment (Вложение)
 </pre>
 </div>
 
-<a name="Identifier"> </a>
-<a name="identifier"> </a>
+<a name="Identifier"></a>
+<a name="identifier"></a>
 <h3 style="margin-bottom: 1px">
 Identifier (Идентификатор)
 </h3>
@@ -174,7 +174,7 @@ Identifier (Идентификатор)
     &lt;use value="usual" /&gt;
     &lt;type&gt;
       &lt;coding&gt;
-        &lt;system value=&quot;http://hl7.org/fhir/v2/0203&quot;/&gt;
+        &lt;system value=&quot;http://terminology.hl7.org/CodeSystem/v2-0203&quot;/&gt;
         &lt;code value=&quot;SSN&quot;/&gt;
       &lt;/coding&gt;
     &lt;/type&gt;
@@ -194,7 +194,7 @@ Identifier (Идентификатор)
     &lt;use value="usual" /&gt;
     &lt;type&gt;
       &lt;coding&gt;
-        &lt;system value=&quot;http://hl7.org/fhir/v2/0203&quot;/&gt;
+        &lt;system value=&quot;http://terminology.hl7.org/CodeSystem/v2-0203&quot;/&gt;
         &lt;code value=&quot;MRN&quot;/&gt;
       &lt;/coding&gt;
     &lt;/type&gt;
@@ -207,7 +207,7 @@ Identifier (Идентификатор)
 </pre>
 </div>
 
-<a name="ii"> </a>
+<a name="ii"></a>
 <h4>V3 Mapping Examples for Identifier</h4>
 
 <div class="example">
@@ -238,8 +238,8 @@ See <a href="datatypes-mappings.html#ii">v3 Mapping Notes</a>
 </p>
 </div>
 
-<a name="Coding"> </a>
-<a name="coding"> </a>
+<a name="Coding"></a>
+<a name="coding"></a>
 <h3 style="margin-bottom: 1px">Coding</h3>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
 См. также <a href="datatypes.html#Coding">Базовое определение</a>, <a href="datatypes-definitions.html#Coding">Подробное описание</a>, <a href="datatypes-mappings.html#Coding">Мэппинг</a>, <a href="datatypes-extras.html#Coding">Профили и расширения</a> и <a href="datatypes-version-maps.html#Coding">R2 Conversions</a>.
@@ -265,8 +265,8 @@ See <a href="datatypes-mappings.html#ii">v3 Mapping Notes</a>
 
 
 
-<a name="CodeableConcept"> </a>
-<a name="codeableconcept"> </a>
+<a name="CodeableConcept"></a>
+<a name="codeableconcept"></a>
 <h3 style="margin-bottom: 1px">
 CodeableConcept
 </h3>
@@ -378,15 +378,18 @@ CodeableConcept
   &lt;/ValueSet&gt;
 </pre>
 </div>
-<a name="Quantity"> </a>
-<a name="quantity"> </a>
-<a name="SimpleQuantity"> </a>
-<a name="simplequantity"> </a>
-<a name="age"> </a>
-<a name="distance"> </a>
-<a name="duration"> </a>
-<a name="count"> </a>
-<a name="money"> </a>
+<a name="Quantity"></a>
+<a name="Quantity"></a>
+<a name="SimpleQuantity"></a>
+<a name="simpleQuantity"></a>
+<a name="Age"></a>
+<a name="Distance"></a>
+<a name="Duration"></a>
+<a name="Count"></a>
+<a name="age"></a>
+<a name="distance"></a>
+<a name="duration"></a>
+<a name="count"></a>
 <h3 style="margin-bottom: 1px">
 Quantity (Количество)
 </h3>
@@ -424,19 +427,47 @@ Quantity (Количество)
     &lt;code value="385049006" /&gt;
   &lt;/dose&gt;
 </pre>
-<p>Цена (закодированная с помощью кодов валют, определенных в ISO 4217):</p>
+</div>
+
+<a name="money"></a>
+<a name="Money"></a>
+<h3 style="margin-bottom: 1px">
+Money
+</h3>
+<p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
+See also <a href="datatypes.html#Money">Base Definition</a>, <a href="datatypes-definitions.html#Money">Detailed Descriptions</a>, <a href="datatypes-mappings.html#Money">Mappings</a>, <a href="datatypes-extras.html#Money">Profiles &amp; Extensions</a> and <a href="datatypes-version-maps.html#Money">R2 Conversions</a>.
+</p>
+
+<div class="example">
+<p><b>Examples</b></p>
+<p>US Dollars:</p>
+<pre class="xml" fragment="Money">
+  &lt;time&gt;
+    &lt;value value="25.00" /&gt;
+    &lt;currency value="USD" /&gt;
+  &lt;/time&gt;
+</pre>
+<p>Vietnamese Dong:</p>
+<pre class="xml" fragment="Money">
+  &lt;result&gt;
+    &lt;value value="410000" /&gt;
+    &lt;currency value="VND" /&gt;
+  &lt;/result&gt;
+</pre>
+<p>A quantity that represents a currency amount - used in Ratio where Money is not used:</p>
 <pre class="xml" fragment="Quantity">
-  &lt;cost&gt;
+  &lt;numerator&gt;
     &lt;value value="25.45" /&gt;
     &lt;unit value="US$" /&gt;
     &lt;system value="urn:iso:std:iso:4217" /&gt;
     &lt;code value="USD" /&gt;
-  &lt;/cost&gt;
+  &lt;/numerator&gt;
 </pre>
+<p>(See full example on <a href="#Ratio">Ratio</a>)</p>
 </div>
 
-<a name="Range"> </a>
-<a name="range"> </a>
+<a name="Range"></a>
+<a name="range"></a>
 <h3 style="margin-bottom: 1px">
 Range (Диапазон)
 </h3>
@@ -459,8 +490,8 @@ Range (Диапазон)
   &lt;/estimate&gt;
 </pre>
 </div>
-<a name="Ratio"> </a>
-<a name="ratio"> </a>
+<a name="Ratio"></a>
+<a name="ratio"></a>
 <h3 style="margin-bottom: 1px">
 Ratio (Соотношение)
 </h3>
@@ -480,7 +511,7 @@ Ratio (Соотношение)
    &lt;/denominator&gt;
   &lt;/result&gt;
 </pre>
-<p>Unit cost (Ratio of Money:Quantity):</p>
+<p>Unit cost (Ratio of Money(as Quantity):Quantity):</p>
 <pre class="xml" fragment="Ratio">
   &lt;charge&gt;
    &lt;numerator&gt;
@@ -498,8 +529,8 @@ Ratio (Соотношение)
   &lt;/charge&gt;
 </pre>
 </div>
-<a name="Period"> </a>
-<a name="period"> </a>
+<a name="Period"></a>
+<a name="period"></a>
 <h3 style="margin-bottom: 1px">
 Period (Период)
 </h3>
@@ -518,8 +549,8 @@ Period (Период)
 </pre>
 </div>
 
-<a name="SampledData"> </a>
-<a name="sampleddata"> </a>
+<a name="SampledData"></a>
+<a name="sampleddata"></a>
 <h3 style="margin-bottom: 1px">
 SampledData (Дискретные данные)
 </h3>
@@ -535,7 +566,7 @@ SampledData (Дискретные данные)
    &lt;value value="0"/&gt;
    &lt;unit value="&mu;V"/&gt;
    &lt;system value="http://unitsofmeasure.org"/&gt;
-   &lt;code value="uV"/&gt;   
+   &lt;code value="uV"/&gt;
   &lt;/origin&gt;
   &lt;period value="2"/&gt;
   &lt;factor value="2.5"/&gt;
@@ -544,8 +575,8 @@ SampledData (Дискретные данные)
  &lt;/sampledData&gt;
 </pre>
 </div>
-<a name="HumanName"> </a>
-<a name="humanname"> </a>
+<a name="HumanName"></a>
+<a name="humanname"></a>
 <h3 style="margin-bottom: 1px">
 HumanName (Имя человека)
 </h3>
@@ -572,6 +603,10 @@ HumanName (Имя человека)
 </pre>
 <p>
 Подобные примеры могут быть весьма неоднозначными: "Mary Jane" - это одно имя или два? Различные системы и те, кто вводит данные, могут трактовать к этому по-разному, и сам человек может не знать. Частям имени разрешено содержать пробелы, но системам необходимо продумать, как они будут обрабатывать такие случаи. Составные имена, разделенные дефисом "-", следует интерпретировать как единую часть имени.
+These cases can be quite ambiguous - is "Mary Jane" one name, or two? Different systems,
+and data enterers may treat this differently, and the person themselves might not know.
+Parts are allowed to contain spaces, but systems should consider how to treat
+these cases. Composite names separated by "-" should be treated as a single name part.
 </p>
    
 <p>Распространенный случай: человека зовут не так, как указано в его официальном имени (встречается в большинстве культур).</p>
@@ -620,18 +655,18 @@ Some people may also have a nickname that needs to be recorded:
 <p>
 Note that there is some ambiguity in real life as to whether a non-official name is the patient's <code>usual</code> name, or whether it's their
 <code>nickname</code>. In principle, nick names are used occasionally and informally, whereas the usual name is used consistently, and in 
-formal contexts. However there is no formal criteria for the differentiating these usages, and even within a culture, people may vary in 
+formal contexts. However, there is no formal criteria for the differentiating these usages, and even within a culture, people may vary in 
 their cases. 
 </p>
 </div>
 
 <div class="example">
 <p>
-Karen van Hentenryck голландского происхождения, и слово "van"является префиксом.
+Karen van Hentenryck is of Dutch origin, and the "van" is a voorvoegsel.
 </p>
 <pre class="xml" fragment="HumanName">
 &lt;name&gt;
-  &lt;use value=&quot;official&quot; /&gt;  
+  &lt;use value=&quot;official&quot; /&gt;
   &lt;family value=&quot;van Hentenryck&quot; &gt;
     &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/humanname-own-prefix&quot; &gt;
 	   &lt;valueString value=&quot;van&quot; /&gt;
@@ -654,7 +689,7 @@ Karen van Hentenryck голландского происхождения, и с�
 </p>
 <pre class="xml" fragment="HumanName">
 &lt;name&gt;
-  &lt;use value=&quot;official&quot; /&gt;  
+  &lt;use value=&quot;official&quot; /&gt;
   &lt;family value=&quot;von Hochheim-Weilenfels&quot;&gt;
     &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/humanname-own-prefix&quot; &gt;
       &lt;valueString value=&quot;von&quot; /&gt;
@@ -674,7 +709,7 @@ Karen van Hentenryck голландского происхождения, и с�
   &lt;suffix value=&quot;NCFSA&quot; /&gt;
 &lt;/name&gt;
 &lt;name&gt;
-  &lt;use value=&quot;maiden&quot; /&gt;  
+  &lt;use value=&quot;maiden&quot; /&gt;
   &lt;family value=&quot;Hochheim&quot; /&gt;
 &lt;/name&gt;
 </pre>
@@ -697,8 +732,8 @@ Karen van Hentenryck голландского происхождения, и с�
   &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/iso21090-EN-representation&quot;&gt;
       &lt;valueCode value=&quot;SYL&quot; /&gt;
   &lt;/extension&gt;
- &lt;family value="きむら" /&gt; 
- &lt;given value="みちお" /&gt; 
+ &lt;family value="きむら" /&gt;
+ &lt;given value="みちお" /&gt;
 &lt;/name&gt;
 &lt;name&gt;
   &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/iso21090-EN-representation&quot;&gt;
@@ -740,7 +775,7 @@ extension.
 </p>
 <pre class="xml" fragment="HumanName">
 &lt;name&gt;
-  &lt;use value=&quot;official&quot; /&gt;  
+  &lt;use value=&quot;official&quot; /&gt;
   &lt;family value=&quot;Erikson&quot; /&gt;
   &lt;given value=&quot;Jan&quot; /&gt;
   &lt;given value=&quot;Erik&quot; /&gt;
@@ -748,7 +783,7 @@ extension.
     &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinitioniso-20190#name-qualifier&quot; &gt;
       &lt;valueCoding&gt;
          &lt;code value=&quot;MID&quot; /&gt;
-         &lt;system value=&quot;http://hl7.org/fhir/v3/EntityNamePartQualifier2&quot; /&gt;
+         &lt;system value=&quot;http://terminology.hl7.org/CodeSystem/v3-EntityNamePartQualifier2&quot; /&gt;
       &lt;/valueCoding&gt;
     &lt;/extension&gt;
   &lt;/given&gt;
@@ -762,7 +797,7 @@ extension.
 </p>
 <pre class="xml" fragment="HumanName">
 &lt;name&gt;
-  &lt;use value="temp" /&gt;  
+  &lt;use value="temp" /&gt;
   &lt;!-- use could be OR+OLD, depends how record keeping is done --&gt;
   &lt;family value="Hansen" /&gt;
   &lt;given value="Margrete Jente" /&gt;
@@ -773,14 +808,14 @@ extension.
 </p>
 <pre class="xml" fragment="HumanName">
 &lt;name&gt;
-  &lt;use value=&quot;official&quot; /&gt;  
+  &lt;use value=&quot;official&quot; /&gt;
   &lt;family value=&quot;Erikson&quot; /&gt;
   &lt;given value=&quot;Karin&quot; /&gt;
   &lt;given value=&quot;Hansen&quot;&gt;
     &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinitioniso-20190#name-qualifier&quot; &gt;
       &lt;valueCoding&gt;
          &lt;code value=&quot;MID&quot; /&gt;
-         &lt;system value=&quot;http://hl7.org/fhir/v3/EntityNamePartQualifier2&quot; /&gt;
+         &lt;system value=&quot;http://terminology.hl7.org/CodeSystem/v3-EntityNamePartQualifier2&quot; /&gt;
       &lt;/valueCoding&gt;
     &lt;/extension&gt;
   &lt;/given&gt;
@@ -791,33 +826,33 @@ extension.
 </p>
 <pre class="xml" fragment="HumanName">
 &lt;name&gt;
-  &lt;use value=&quot;old&quot; /&gt;  
+  &lt;use value=&quot;old&quot; /&gt;
   &lt;family value=&quot;Erikson&quot; /&gt;
   &lt;given value=&quot;Karin&quot; /&gt;
   &lt;given value=&quot;Hansen&quot;&gt;
     &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinitioniso-20190#name-qualifier&quot; &gt;
       &lt;valueCoding&gt;
         &lt;code value=&quot;MID&quot; /&gt;
-        &lt;system value=&quot;http://hl7.org/fhir/v3/EntityNamePartQualifier2&quot; /&gt;
+        &lt;system value=&quot;http://terminology.hl7.org/CodeSystem/v3-EntityNamePartQualifier2&quot; /&gt;
       &lt;/valueCoding&gt;
     &lt;/extension&gt;
   &lt;/given&gt;
 &lt;/name&gt;
 &lt;name&gt;
-  &lt;use value=&quot;official&quot; /&gt;  
+  &lt;use value=&quot;official&quot; /&gt;
   &lt;family value=&quot;Berg&quot; /&gt;
   &lt;given value=&quot;Karin&quot; /&gt;
   &lt;given value=&quot;Erikson&quot;&gt;
     &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinitioniso-20190#name-qualifier&quot; &gt;
       &lt;valueCoding&gt;
         &lt;code value=&quot;MID&quot; /&gt;
-        &lt;system value=&quot;http://hl7.org/fhir/v3/EntityNamePartQualifier2&quot; /&gt;
+        &lt;system value=&quot;http://terminology.hl7.org/CodeSystem/v3-EntityNamePartQualifier2&quot; /&gt;
       &lt;/valueCoding&gt;
     &lt;/extension&gt;
   &lt;/given&gt;
 &lt;/name&gt;
 &lt;name&gt;
-  &lt;use value=&quot;usual&quot; /&gt;  
+  &lt;use value=&quot;usual&quot; /&gt;
   &lt;family value=&quot;Berg&quot; /&gt;
   &lt;given value=&quot;Karin&quot; /&gt;
 &lt;/name&gt;
@@ -840,7 +875,7 @@ A patronymic is "The part of a name that links to the genealogy":
   &lt;family value=&quot;Guðmundsdóttir&quot;/&gt;
   &lt;given value=&quot;Björk&quot;/&gt;
 &lt;/name&gt;
-</pre>  
+</pre>
 
 <p>
 A patronymic with a "son/daughter of" appellation:
@@ -851,7 +886,7 @@ A patronymic with a "son/daughter of" appellation:
   &lt;family value=&quot;bin Osman&quot;/&gt;
   &lt;given value=&quot;Isa&quot;/&gt;
 &lt;/name&gt;
-</pre>  
+</pre>
 
 <p>
 A Chinese name with a generational name:
@@ -867,9 +902,9 @@ A Chinese name with a generational name:
   &lt;family value=&quot;Mao&quot;/&gt;
   &lt;given value=&quot;Ze Dong&quot;/&gt;
 &lt;/name&gt;
-</pre>  
+</pre>
 <p>
-Note that many systems in China do not store family и given names separately, и just use <code>text</code>.
+Note that many systems in China do not store family and given names separately, and just use <code>text</code>.
 </p>
 
 <p>
@@ -904,8 +939,8 @@ Composite Family name:
 &lt;/name&gt;
 </pre>
 <p>
-Note that it is optional whether to break down the family name to mother's и father's parts,
-и not always of value, as in this Brazilian Example:
+Note that it is optional whether to break down the family name to mother's and father's parts,
+and not always of value, as in this Brazilian Example:
 </p>
 <pre class="xml" fragment="HumanName">
 &lt;name&gt;
@@ -1021,16 +1056,16 @@ Other Examples:
 </pre>
 <p>
 <i>Todo: need to discuss this with Indian / Arabic implementers</i>.
-Note that collecting и storing the <i>text</i> element makes the 
-primary purpose of the structured parts for index/searching, и 
+Note that collecting and storing the <i>text</i> element makes the
+primary purpose of the structured parts for index/searching, and
 fidelity of the name parts is not critical.
 </p>
 </div>
 
 
 
-<a name="Address"> </a>
-<a name="address"> </a>
+<a name="Address"></a>
+<a name="address"></a>
 <h3 style="margin-bottom: 1px">
 Address (Адрес)
 </h3>
@@ -1047,12 +1082,12 @@ on the structured data elements of the address.
 </p>
 
 <div class="example">
-<p><b>Пример</b></p>
-<p>Официальный адрес HL7.</p>
+<p><b>Example</b></p>
+<p>HL7 office's address.</p>
 <pre class="xml" fragment="Address">
   &lt;address&gt;
    &lt;use value="work" /&gt;
-   &lt;text value="1050 W Wishard Blvd&#13;&#10;RG 
+   &lt;text value="1050 W Wishard Blvd&#13;&#10;RG
          5th floor&#13;&#10;Indianapolis, IN 46240" /&gt;
    &lt;line value="1050 W Wishard Blvd" /&gt;
    &lt;line value="RG 5th floor" /&gt;
@@ -1089,7 +1124,7 @@ postal union</a> examples.
 </p>
 
 <table class="lines">
-<tr><td>Rue Lougoraïa 12, app. 10</td><td>thoroughfare type, name и number, apartment</td></tr>
+<tr><td>Rue Lougoraïa 12, app. 10</td><td>thoroughfare type, name and number, apartment</td></tr>
 <tr><td>Korolevo</td><td>locality</td></tr>
 <tr><td>223016 NOVY DVOR</td><td>postcode + post office name</td></tr>
 <tr><td>Minsk</td><td>District name of district</td></tr>
@@ -1202,8 +1237,8 @@ postal union</a> examples.
 </div>
 
 
-<a name="ContactPoint"> </a>
-<a name="contactpoint"> </a>
+<a name="ContactPoint"></a>
+<a name="contactpoint"></a>
 <h3 style="margin-bottom: 1px">
 ContactPoint
 </h3>
@@ -1224,9 +1259,9 @@ ContactPoint
 </div>
 
 <p>
-In ISO 21090, <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a> и other <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3</a> specifications, the TEL data type requires that the telephone number be represented as a formal URI in <a href="http://www.ietf.org/rfc/rfc3966.txt">RFC 3166</a> syntax. 
+In ISO 21090, <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a> and other <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3</a> specifications, the TEL data type requires that the telephone number be represented as a formal URI in <a href="http://www.ietf.org/rfc/rfc3966.txt">RFC 3166</a> syntax. 
 Many CDA documents violate this rule, since the telephone numbers are not collected from the user in conformance with the underlying rules (particularly around extensions, notes about use, etc.), so
-the base FHIR type does not require the phone number to be conformant. A ISO 21090 extension can be used to convey this if desired:
+the base FHIR type does not require the phone number to be conformant. An ISO 21090 extension can be used to convey this if desired:
 </p>
 
 <div class="example">
@@ -1244,8 +1279,8 @@ the base FHIR type does not require the phone number to be conformant. A ISO 210
 </pre>
 </div>
 
-<a name="Timing"> </a>
-<a name="timing"> </a>
+<a name="Timing"></a>
+<a name="timing"></a>
 <h3>
 Timing
 </h3>
@@ -1278,7 +1313,7 @@ Timing
   &lt;schedule&gt;
     &lt;repeat&gt;
       &lt;boundsPeriod&gt;
-      &lt;start value="2011-12-23" /&gt;
+        &lt;start value="2011-12-23" /&gt;
         &lt;end value="2012-01-02" /&gt;
       &lt;/boundsPeriod&gt;
       &lt;when value="ACM" /&gt;
@@ -1328,8 +1363,8 @@ Timing
 </pre>
 </div>
 
-<a name="Signature"> </a>
-<a name="signature"> </a>
+<a name="Signature"></a>
+<a name="signature"></a>
 <h3>
 Signature
 </h3>
@@ -1348,8 +1383,8 @@ Signature
 
 </div>
 
-<a name="Annotation"> </a>
-<a name="annotation"> </a>
+<a name="Annotation"></a>
+<a name="annotation"></a>
 <h3>
 Annotation
 </h3>

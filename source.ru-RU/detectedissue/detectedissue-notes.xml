@@ -1,6 +1,6 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
-<a name="linking"> </a>
+<a name="linking"></a>
 <h2>Связывание с ресурсами DetectedIssue<!-- Linking to Detected Issues --></h2>
 <p>
 Ресурс DetectedIssue следует шаблону связывания от ресурса, созданного "вторым". Поскольку DetectedIssue возникает в ответ на одну или несколько других существующих записей, то он указывает на эти записи, а не эти записи указывают на него.
@@ -15,14 +15,14 @@
 <!-- If there is a strong need to point from an implicated resource to DetectedIssue and containment is not appropriate, an extension can be used. -->
 </p>
 
-<a name="workflow"> </a>
+<a name="workflow"></a>
 <h2>Проблемы, связанные с рабочим процессом</h2>
 <p>
 DetectedIssue - это ресурс, который нередко ассоциируют с проблемами рабочего процесса, когда частые оповещения, не относящиеся к медицине, приводят к тому, что врачи их приглушают (или выключают) и в результате пропускают важные сообщения. Необходимо учитывать эту проблему перед интенсивным использованием этого ресурса.
 <!-- DetectedIssue is a resource that is frequently associated with workflow challenges where frequent alerts that are not clinically relevant result in clinicians tuning out (or turning off) the content and thus missing relevant alerts. Give consideration to this issue before making heavy use of this resource. -->
 </p>
 
-<a name="open"> </a>
+<a name="open"></a>
 <h2>Нерешённые вопросы<!-- Open Issues --></h2>
 <ul>
   <li>Входят ли сведения об авторе, справочная информация и/или уменьшение (последствий события) вместе или частично в 80%?<!-- Are author, reference and/or mitigation (and its various parts) all part of the 80%? --></li>

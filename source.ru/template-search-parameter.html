@@ -9,13 +9,12 @@
 <body>
 <%file newnavbar%>
 
-<div class="col-12">
+<div class="col-12"><!--ReleaseHeader--><p id="publish-box"></p><!--EndReleaseHeader-->
 
 <h3><%title%></h3>
 
 <p>
-Параметр поиска <%search-param-name%> (тип: <%search-param-type%>), определённый в рамках <a href="<%search-param-pack%>.html"> профиля <%search-param-pack%></a>.
-<!-- Search Parameter <%search-param-name%> (type: <%search-param-type%>) defined as part of <a href="<%search-param-pack%>.html">the <%search-param-pack%> Profile</a>. -->
+Search Parameter <%search-param-name%> (type: <%search-param-type%>) defined as part of <a href="<%search-param-pack%>.html">the <%search-param-pack%> Profile</a>.
 </p>
 
 <table class="<%fmm-style%>">
@@ -25,11 +24,11 @@
 <p>
 <%search-param-definition%>
 </p>
-<p>Остальная информация<!-- Other Details -->:</p>
+<p>Other Details:</p>
 <ul>
- <li>Полный<!-- Full --> URL : <%search-param-url%></li>
- <li>Пути<!-- Paths --> : <%search-param-paths%></li>
- <li>Целевые объекты<!-- Targets --> : <%search-param-targets%></li>
+ <li>Full URL : <%search-param-url%></li>
+ <li>Paths : <%search-param-paths%></li>
+ <li>Targets : <%search-param-targets%></li>
 </ul>
 
 </div>

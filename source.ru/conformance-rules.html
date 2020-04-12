@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
-     
-[%settitle Правила обеспечения соответствия%]
+
+[%settitle Conformance Rules%]
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -10,12 +10,12 @@
 <body>
 [%file newnavbar%]
 
-<div class="col-12">
+<div class="col-12"><!--ReleaseHeader--><p id="publish-box"></p><!--EndReleaseHeader-->
 
 <a name="conformance"></a>
 <h2>Conformance</h2>
-<table class="colsn"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 5</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Normative</a><!--!ns!--></td></tr></table>
-[%normative page infrastructure%]
+<table class="colsn"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: Normative</td><td id="ballot"><a href="versions.html#std-process">Standards Status</a>:<!--!ns!--><a href="versions.html#std-process">Normative</a><!--!ns!--></td></tr></table>
+[%normative page%]
 
 <p>
 The FHIR specification describes a set of <a href="resource.html">resources</a>
@@ -38,27 +38,21 @@ frameworks:
  <li>"FHIR documents": <a href="documents.html">Document based exchange</a></li>
 </ul>
 <p>
-Для предоставления подробностей об особом применение этих фреймворков и содержимого ресурсов, FHIR предлагает <a href="profiling.html">слой соответствия</a>, который разработчики, национальные/региональные программы и другие профилирующие организации типа IHE, могут использовать для предъявления вычислимого заявления о том, каким образом ресурсы и парадигмы обмена ресурсами используются для решения конкретных задач. Сам слой соответствия реализуется с помощью следующих ресурсов:
-<!-- 
 To provide details about specific usage of the frameworks and resource
 contents, FHIR provides a <a href="profiling.html">conformance layer</a> that implementers,
 national/regional programs, and other profiling organizations such as IHE, can use to provide a computable statement about
 how the resources and their exchange paradigms are used to solve particular use cases.
 The conformance layer itself is implemented using the following key resources:
- -->
 </p>
 <table class="grid">
- <tr> <td><a href="valueset.html">Value Set</a></td> <td>Определяет набор кодированных значений (см. "<a href="terminologies.html">Using Codes</a>" для более подробной информации)</td>  </tr>
- <tr> <td><a href="structuredefinition.html">StructureDefinition</a></td> <td>Вводит правила о способах использования ресурса (или типа) и его элементов данных в определенном контексте, включая определение того, каким образом будут использоваться расширения. Structure definition ссылается на наборы значений, используемые в кодированных элементах ресурса</td>  </tr>
- <tr> <td><a href="capabilitystatement.html">CapabilityStatement</a></td> <td>Перечисление видов ресурсов и операций, предоставляемых и/или используемых приложением. Ресурс Capability Statement ссылается на профили для описания особенностей использования приложением ресурсов</td>  </tr>
+ <tr> <td><a href="valueset.html">Value Set</a></td> <td>Defines a set of coded values (see "<a href="terminologies.html">Using Codes</a>" for more details)</td>  </tr>
+ <tr> <td><a href="structuredefinition.html">StructureDefinition</a></td> <td>Makes rules about how a resource (or type) and its data elements are used in a particular context, including defining how extensions are used. A structure definition references value sets for the coded elements in a resource</td>  </tr>
+ <tr> <td><a href="capabilitystatement.html">CapabilityStatement</a></td> <td>A statement of the kinds of resources and operations provided and/or consumed by an application. The Capability Statement references profiles to describe specific use of resources by the application</td>  </tr>
  <tr> <td><a href="implementationguide.html">Implementation Guide</a></td> <td>A single coherent collection of capability statements, profiles, extensions, value sets, and documentation describing a set of interoperable applications</td>  </tr>
 </table>
 <p>
-Также  спецификация <a href="validation.html">предоставляет ряд инструментов, которые могут помочь с соблюдением технического соответствия</a> данной базовой спецификации:
-<!-- 
-The specification also <a href="validation.html">provides a number of tools that can assist with enforcing technical conformance</a> 
-to this base specification and profiles on it.
--->
+The specification also <a href="validation.html">provides a number of tools that can assist with enforcing technical conformance</a>
+to this base specification.
 </p>
 <p>
 FHIR is a <i>closed</i> specification. The specification defines what is possible and required for those portions 
@@ -69,13 +63,9 @@ names), but those portions of their interfaces that extend beyond what FHIR expl
 considered or described as "FHIR conformant".
 </p>
 <p>
-Соответствие спецификации не дает никакой гарантии безопасности пациента или данных.
-Однако отказ от соответствия данной спецификации несет дополнительный риск двумя способами:
-<!--
 Conformance with this specification does not provide any guarantee of patient or data safety.
-However, choosing to not conform to this specification carries additional risk in 
+However, choosing to not conform to this specification carries additional risk in
 two ways:
--->
 </p>
 <ul>
  <li>FHIR has been subject to a level of review and vetting unlikely to be received by any non-conformant variation; variations may result in introduction of undetected risks</li>
@@ -106,56 +96,48 @@ properties defined below.
 
 <p>
 Data elements defined in resources and data types have 3 properties that are
-directly related to conformance: Cardinality, Is-Modifier, and Must-Support.
+directly related to conformance: Cardinality, Is-Modifier, and MustSupport.
 These interact to place conformance requirements on implementations.
 </p>
 
 <a name="cardinality"></a>
-<h3>Cardinality (Кардинальное число)</h3>
+<h3>Cardinality</h3>
 <p>
-Частью определения каждого атрибута, описанного в FHIR, является кардинальное число - минимальное и максимальное количество необходимых вхождений. Это число определяет количество раз, которое этот атрибут может появиться в любом экземпляре ресурса данного типа. Данная спецификация вводит только следующие кардинальные множества: 0..1, 0..*, 1..1 и 1..*. Профили, описывающие частные случаи использования, могут использовать другие значения кардинального числа в пределах значения, определенного базовым ресурсом.
-<!-- All attributes defined in FHIR have cardinality as part of their definition - a minimum number 
+All attributes defined in FHIR have cardinality as part of their definition - a minimum number
 of required appearances and a maximum number. These numbers specify the number of times
 the attribute may appear in any instance of the resource type. This specification
-only defines the following cardinalities: 0..1, 0..*, 1..1, and 1..*. Profiles 
-that describe specific use cases may use other values for cardinality within the limits 
-of the cardinality defined by the base resource. -->
+only defines the following cardinalities: 0..1, 0..*, 1..1, and 1..*. Profiles
+that describe specific use cases may use other values for cardinality within the limits
+of the cardinality defined by the base resource.
 </p>
 <p>
-Обратите внимание, что когда присутствуют, элементы не могут быть пустыми - они ДОЛЖНЫ иметь атрибут value, элементы-потомки или расширения. Это означает, что назначение элементу минимального кардинального числа 1 не гарантирует присутствия допустимых данных; для гарантии, что требуемые данные будут присутствовать, необходимы определенные FHIRPath-ограничения.
-<!-- Note that when present, elements cannot be empty - they SHALL have a value attribute, 
+Note that when present, elements cannot be empty - they SHALL have a value attribute,
 child elements, or extensions. This means that setting an element to a minimum cardinality
 of 1 does not ensure that valid data will be present; specific FHIRPath constraints are required
-to ensure that the required data will be present. -->
+to ensure that the required data will be present.
 </p>
 <p>
-В данной спецификации минимальное кардинальное число 1 имеет очень мало элементов. Ресурсы используются в большом количестве контекстов, часто довольно удаленно от их первоначального варианта использования, и даже базовая информация иногда бывает очень неполной. 
-По этой причине минимальное количество 1 используется только в тех элементах, которые необходимы для хоть какого-то понимания ресурса или элемента, который их содержит. Кардинальные минимумы не следует принимать за руководство о том, присутствие каких элементов ожидаются в каждом частном случае использования этого ресурса, включая их обычные/основные цели использования. 
-В некоторых случаях данная спецификация публикует дополнительные профили, которые устанавливают, в какой ситуации какие элементы требуются. Подобные профили публикуются  странами, производителями, профилирующими организациями, или проектами.
-<!-- In this specification, very few elements have a minimum cardinality of 1. 
+In this specification, very few elements have a minimum cardinality of 1.
 Resources are used in many contexts, often quite removed from their primary
 use case, and sometimes even basic information is quite incomplete. For this reason,
 the only elements that have a minimum cardinality of 1 are those where they
-are necessary to any understanding of the resource or element that contains them. 
+are necessary to any understanding of the resource or element that contains them.
 The minimum cardinalities should not be taken as a guide to what elements
 are expected to be present in any particular use of the resource, including their normal/primary usage purpose.
-In some cases, this specification publishes additional profiles that define which elements are required in 
-particular situations. Similar profiles are published by jurisdictions, vendors, profiling organizations, or projects. -->
+In some cases, this specification publishes additional profiles that define which elements are required in
+particular situations. Similar profiles are published by jurisdictions, vendors, profiling organizations, or projects.
 </p>
 <p>
-<!-- For elements that have cardinality &gt; 1, the order in which they appear may have meaning.
-Unless the element definition (either in this specification or the extension) defines a meaning 
-to the order explicitly (using <a href="elementdefinition.html">ElementDefinition.orderMeaning</a>, 
-the meaning of the order is not defined, and implementations are allowed to reorder the elements. 
-Note that it is not possible to define a meaning for the order of the elements in 
-a <a href="profiling.html">profile</a> using a <a href="structuredefinition.html">StructureDefinition</a>. 
-When there is no definition of the meaning of the order, implementations that need to choose a 
-single element from a list of elements for some use SHALL do so based on the semantics 
-of the content of the element that repeats. Profiles and Implementation guides may often make 
-rules about this selection process. -->
-Для элементов, имеющих кардинальное число &gt; 1, порядок их появления может иметь значение. Если только в определении элемента (в данной спецификации или в расширении) не определено значение порядка явно (с помощью <a href="elementdefinition.html">ElementDefinition.orderMeaning</a>, значение порядка не определено, и реализаторам разрешается менять порядок элементов. Обратите внимание, что не возможно установить значение порядка элементов в <a href="profiling.html">профиле</a> с помощью <a href="structuredefinition.html">StructureDefinition</a>. Когда описание значения порядка отсутствует, 
-реализации, которым требуется выбрать один элемент из списка элементов для некоторого использования, ДОЛЖНЫ делать это, основываясь на семантике содержимого этого элемента, который повторяется. Профили и руководства по реализации часто вводят правила относительно этого процесса выбора.
-
+For elements that have cardinality &gt; 1, the order in which they appear may have meaning.
+Unless the element definition (either in this specification or the extension) defines a meaning
+to the order explicitly (using <a href="elementdefinition.html">ElementDefinition.orderMeaning</a>),
+the meaning of the order is not defined, and implementations are allowed to reorder the elements.
+Note that it is not possible to define a meaning for the order of the elements in
+a <a href="profiling.html">profile</a> using a <a href="structuredefinition.html">StructureDefinition</a>.
+When there is no definition of the meaning of the order, implementations that need to choose a
+single element from a list of elements for some use SHALL do so based on the semantics
+of the content of the element that repeats. Profiles and Implementation guides may often make
+rules about this selection process.
 </p>
 <p>
 Clients should not depend on servers maintaining ordering of elements, unless the retrieved
@@ -170,9 +152,8 @@ ordering, and strip off unknown profiles (since they might require maintenance o
 <a name="isModifier"></a>
 <h3>Is-modifier</h3>
 <p>
-Is-Modifier - это булево свойство, которое назначается, когда элемент определен либо в рамках базового содержимого ресурса в данной спецификации, либо при <a href="structuredefinition.html">определении расширений</a>.
-<!-- Is-Modifier is a boolean property that is assigned when an element is defined, either as part of 
-the base resource contents in this specification, or when <a href="structuredefinition.html">extensions are defined</a>.  -->
+Is-Modifier is a boolean property that is assigned when an element is defined, either as part of
+the base resource contents in this specification, or when <a href="structuredefinition.html">extensions are defined</a>.
 </p>
 <p>
 An element is a modifier if and only if it cannot be safely ignored because its value, or its <a href="elementdefinition.html#missing">meaning if missing</a>, may 
@@ -185,9 +166,6 @@ that contains them.
 Modifier is not an indication of the degree of importance for a particular piece of information or whether 
 the element ought to be ignored when the resource is used for common use-cases.  It is expected that if you 
 ignore an element you may miss an important piece of computable meaning.
-<!-- Элемент помечается "Is-Modifier = true", если значение, которое он содержит, влияет на интерпретацию элемента, который его содержит (в том числе если элемент является ресурсом в целом). Типичные примеры элементов, маркированных "Is-Modifier" - это "status", "active", "refuted" и "certainty". Значение, является ли элемент модификатором, не может быть изменено, если использование элемента описано в профиле (т.е. ограничивающем <a href="structuredefinition.html">Structure Definition</a>).
-Если элемент помечен как модификатор, то из документации должно быть ясно, почему он является модификатором. -->
-
 </p>
 <p>
 For example, consider Observation:
@@ -252,48 +230,37 @@ If a narrative summary is present, and the status is <code>generated</code>, Is-
 If Narrative is present with some other status Is-modifier elements SHOULD be represented.
 </p>
 <p>
-Если значение элемента-модификатора в экземпляре не ясно или подразумевается из контекста, такой ресурс может быть неверно интерпретирован. Везде, где это возможно, элементы, помеченные как "Is-Modifier = true", имеют кардинальное число 1, для того чтобы внести определенность в их обработку. Тем не менее, иногда это не возможно - большая часть существующих данных недостаточно хорошо описана. Реализации, создающие ресурсы, ДОЛЖНЫ гарантировать обеспечение подходящих значений элементам с флагом isModifier.
-<!-- If the value of a modifier element is not explicit in the instance, or known by the context, 
-the resource might not be able to be safely understood. Wherever possible, elements labeled 
+If the value of a modifier element is not explicit in the instance, or known by the context,
+the resource might not be able to be safely understood. Wherever possible, elements labeled
 "Is-Modifier = true" also have a minimum cardinality of 1, in order to introduce certainty in 
 their handling. However, sometimes this is not possible - much legacy data is not well 
 described. Implementations producing resources SHOULD ensure that appropriate values for 
-isModifier elements are provided at all times. -->
+isModifier elements are provided at all times.
 </p>
 <p>
-
-
-</p>
-<p>
-Реализации, обрабатывающие данные в ресурсах, ДОЛЖНЫ понимать влияние этого элемента при использовании этих данных. От реализаций не требуется "поддерживать" этот элемент сколь-нибудь существенным образом - они могут достигнуть этого понимания отклонением экземпляров, которые содержат значения, которые они не поддерживают (к примеру, приложение может отказаться принимать результаты обследований со значением надежности не "ok"). 
-В качестве альтернативы гарантия того, что реализации такие значения никогда не встретятся, может обеспечиваться средой ее разработки. Однако независимо от этого приложениям СЛЕДУЕТ всегда проверять это значение.
-<!-- Implementations processing the data in resources SHALL understand the impact of the element when using the data. 
-Implementations are not required to "support" the element in any meaningful way - they 
+Implementations processing the data in resources SHALL understand the impact of the element when using the data.
+Implementations are not required to "support" the element in any meaningful way - they
 may achieve this understanding by rejecting instances that contain values outside those they support (for instance,
 an application may refuse to accept observations with a reliability other than "ok"). Alternatively,
-implementations may be able to be sure that, due to their implementation environment, such values 
-will never occur. However applications SHOULD always check the value irrespective of this. -->
+implementations may be able to be sure that, due to their implementation environment, such values
+will never occur. However applications SHOULD always check the value irrespective of this.
 </p>
 <p>
-Обратите внимание, что обработка данных ресурса обычно означает копирование или фильтрование данных ресурса для использования в другом контексте (отображение человеку, поддержка принятия решений, перевод в другой формат, в который не вся информация может быть включена, или сохранение его для этого вида использования). Серверы и фоновые процессы, которые просто перемещают ресурсы целиком без их изменения, не являются "обрабатывающими данные ресурса" и, следовательно, этим приложениям не требуется проверять элементы-модификаторы.
-<!-- Note that processing the data of a resource typically means
-copying or filtering data out of a resource for use in another 
-context (display to a human, decision support, exchange in another 
+Note that processing the data of a resource typically means
+copying or filtering data out of a resource for use in another
+context (display to a human, decision support, exchange in another
 format where not all information is included or storing it for this kind of use).
-Servers and background processes that simply move whole resources around unchanged 
-are not "processing the data of the resource", and therefore these applications 
-are not required to check Is-Modifier elements.  -->
+Servers and background processes that simply move whole resources around unchanged
+are not "processing the data of the resource", and therefore these applications
+are not required to check Is-Modifier elements.
 </p>
 <p>
-Каждый элемент в базовом ресурсе имеет флаг Is-Modifier со значением "истина" или "ложь".
-Значение этого флага не может быть изменено профилями этого ресурса в обоих направлениях.
-Когда в StructureDefinition описывается расширение, оно помечается флагом Is-Modifier, и он не может быть изменен в других профилях. Обратите внимание, что расширения с is-Modifier = true представляются по-другому в экземплярах ресурса ("modifierExtension" вместо "extension"), и имеются <a href="extensibility.html#modifierExtension">дополнительные правила их обработки</a>.
-<!-- Every element in the base resource has a value of "true" or "false" for the Is-Modifier flag. 
-The value of the flag cannot be changed by profiles on the resource, in either direction. 
+Every element in the base resource has a value of "true" or "false" for the Is-Modifier flag.
+The value of the flag cannot be changed by profiles on the resource, in either direction.
 When a StructureDefinition defines an extension, it labels the extension with the Is-Modifier flag,
 and this cannot be changed in other profiles. Note that extensions that have is-Modifier = true
-are represented differently in resource instances ("modifierExtension" instead of "extension"), 
-and there are <a href="extensibility.html#modifierExtension">additional rules about how they are handled</a>. -->
+are represented differently in resource instances ("modifierExtension" instead of "extension"),
+and there are <a href="extensibility.html#modifierExtension">additional rules about how they are handled</a>.
 </p>
 <p>
 Most <code>status</code> elements are marked as modifiers because of the presence of the <code>entered-in-error</code> status.
@@ -305,30 +272,26 @@ Other modifiers are defined:
 </ul>
 
 <a name="mustSupport"></a>
-<h3>Must-Support</h3>
+<h3>MustSupport</h3>
 <p>
-Отметка на элементе "Обязателен к поддержке" означает, что реализации, создающие или использующие ресурсы, ДОЛЖНЫ предоставлять "поддержку" этого элемента некоторым значимым способом. Поскольку базовая спецификация FHIR должна быть независимой от какого бы то ни было контекста конкретной реализации, в рамках базовой спецификации нет элементов с флагом "Обязателен к поддержке". Этот флаг предназначен для использования в профилях, имеющих определённый контекст реализации.
-<!-- Labeling an element Must-Support means that implementations that produce or consume resources SHALL 
+Labeling an element MustSupport means that implementations that produce or consume resources SHALL
 provide "support" for the element in some meaningful way. Because the base FHIR specification is intended
-to be independent of any particular implementation context, no elements are flagged as "must-support" as 
-part of the base specification. This flag is intended for use in profiles that have a defined implementation context. -->
+to be independent of any particular implementation context, no elements are flagged as <code>mustSupport</code>=true as
+part of the base specification. This flag is intended for use in profiles that have a defined implementation context.
 </p>
 <p>
-По этой причине спецификация сама никогда не помечает элементы как must-support. 
-Это делается в <a href="profiling.html#mustsupport">StructureDefinitions</a>, где профиль помечает элемент как mustSupport=true. Когда профиль делает это, он ДОЛЖЕН также точно прояснить, какая именно "поддержка" требуется, так как это может включать ожидания того, что система должна хранить, отображать, обеспечивать ввод данных, включать в логику поддержки принятия решений, передавать другим потребителям данных и т.п.
-<!-- For this reason, the specification itself never labels any elements as must-support. 
-This is done in <a href="profiling.html#mustsupport">StructureDefinitions</a>, where the profile 
+For this reason, the specification itself never labels any elements as MustSupport.
+This is done in <a href="profiling.html#mustsupport">StructureDefinitions</a>, where the profile
 labels an element as mustSupport=true. When a profile does this, it SHALL also make clear
 exactly what kind of "support" is required, as this could involve expectations around what 
 a system must store, display, allow data capture of, include in decision logic, pass on to 
-other data consumers, etc. -->
+other data consumers, etc.
 </p>
 
 <p>
-Обратите внимание, что элемент со свойством IsModifier не обязательно является "ключевым" элементом (например одним из важных элементов в использовании ресурса) и не становится автоматически mustSupport - однако обе эти вещи более вероятны для элементов-модификаторов, чем для других элементов.
-<!-- Note that an element that has the property IsModifier is not necessarily a "key" element (e.g. one of 
-the important elements to make use of the resource), nor is it automatically mustSupport - however both 
-of these things are more likely to be true for IsModifier elements than for other elements. -->
+Note that an element that has the property IsModifier is not necessarily a "key" element (e.g. one of
+the important elements to make use of the resource), nor is it automatically mustSupport - however both
+of these things are more likely to be true for IsModifier elements than for other elements.
 </p>
 
 <a name="constraints"></a>
@@ -355,7 +318,7 @@ SHOULD always ensure that all resources are valid against all applicable constra
 <p>
 Constraints have a severity level:
 </p>
-<a name="best-practice"></a><a name="rule"></a><a name="warning"></a>
+<a name="best-practice"> </a><a name="rule"> </a><a name="warning"> </a>
 <table>
  <tr> <td><b>Error (rule)</b></td>  <td>A rule that all resources must conform to. Validators should report it as an error if the rule is violated, and applications processing the content can reject it as an invalid resource</td> </tr>
  <tr> <td><b>Warning</b></td>  <td>Report this as a warning that there may be a problem with the resource, but it is considered valid and can be processed normally</td> </tr>
@@ -389,18 +352,16 @@ In addition to the conformance metadata, each element has other metadata propert
 
 
 <a name="examples"></a>
-<h3>Примеры и эталонные реализации</h3>
+<h3>Examples and Reference Implementations</h3>
 <p>
-Данная спецификация содержит множество примеров. Несмотря на то, что были приложены все усилия для обеспечения полного соответствия примеров спецификации, если примеры противоречат спецификации, то корректной и нормативной считается спецификация, а не примеры. Это же правило относится и к эталонным реализациям.
-<!-- This specification includes many examples. While every effort has been made to ensure that the examples
-are fully conformant to the specification, if the examples disagree with the specification, the specification 
-is considered correct and normative, not the examples. This same rule applies to the reference implementations. -->
+This specification includes many examples. While every effort has been made to ensure that the examples
+are fully conformant to the specification, if the examples disagree with the specification, the specification
+is considered correct and normative, not the examples. This same rule applies to the reference implementations.
 </p>
 <p>
-Примеры, отраженные в данной спецификации, не представляют собой конкретных людей. Любое сходство с реальными людьми - живыми или мертвыми - совершенно случайно. В некоторых случаях в примерах могут приводиться реальные клинические данные, однако при этом из них удалена вся идентифицирующая информация.
-<!-- The examples reflected in this specification do *not* represent actual people.  Any resemblance to real people - alive 
-or dead - is entirely coincidental.  In some cases, examples may be drawn from real clinical data.  
-However, if this has occurred, the content has been scrubbed to remove any identifying information. -->
+The examples reflected in this specification do *not* represent actual people.  Any resemblance to real people - alive
+or dead - is entirely coincidental.  In some cases, examples may be drawn from real clinical data.
+However, if this has occurred, the content has been scrubbed to remove any identifying information.
 </p>
 
 

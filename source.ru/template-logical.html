@@ -9,10 +9,10 @@
 <body>
 <%file newnavbar%>
 
-<div class="col-12">
+<div class="col-12"><!--ReleaseHeader--><p id="publish-box"></p><!--EndReleaseHeader-->
 
 <%lmheader%>
-<h1>Ресурс <%title%> - Содержимое</h1>
+<h1>Pattern <%title%> - Content</h1>
 
 <table class="colsi">
  <tr><td><a href="<%wg%>"><%wgt%></a></td><td><%fmm%></td><td><a href="versions.html#std-process">Informative</a><!--!ns!--></td><td></td></tr>
@@ -28,8 +28,7 @@
 
 <a name="resource"></a>
 <h2>
-Содержимое шаблона модели
-<!-- Pattern Content -->
+Pattern Content
 </h2>
 <a name="def"></a>
 <a name="<%name%>"></a>
@@ -37,14 +36,14 @@
 
 <div id="tabs">
   <ul>
-    <li><a href="#tabs-struc">Структура<!-- Structure --></a></li>
+    <li><a href="#tabs-struc">Structure</a></li>
     <li><a href="#tabs-uml">UML</a></li>
-    <li><a href="#tabs-all">Всё<!-- Both --></a></li>
+    <li><a href="#tabs-all">Both</a></li>
   </ul>
   <div id="tabs-struc">
 
 <div id="tbl">
-<p><b>Структура<!-- Structure --></b></p>
+<p><b>Structure</b></p>
  <div id="tbl-inner">
   <%resource-table%>
  </div>
@@ -54,7 +53,7 @@
   <div id="tabs-uml">
   
 <div id="uml">
-<p><b>UML-диаграмма</b> (<a href="formats.html#uml">Legend</a>)</p>
+<p><b>UML Diagram</b> (<a href="formats.html#uml">Legend</a>)</p>
  <div id="uml-inner">
  <%svg A%>
  </div>
@@ -65,7 +64,7 @@
 
 <div id="tbl">
 <a name="tbl"></a>
-<p><b>Структура<!-- Structure --></b></p>
+<p><b>Structure</b></p>
  <div id="tbl-inner">
   <%resource-table%>
  </div>
@@ -74,7 +73,7 @@
  
 <div id="uml">
 <a name="uml"></a>
-<p><b>UML-диаграмма</b> (<a href="formats.html#uml">Legend</a>)</p>
+<p><b>UML Diagram</b> (<a href="formats.html#uml">Legend</a>)</p>
  <div id="uml-inner">
  <%svg B%>
  </div>
@@ -85,7 +84,7 @@
   
 <p>&nbsp;</p>  
 
-<p>альтернативные определения: Основное определение <a href="<%name%>.xml.html">XML</a> + <a href="<%name%>.json.html">JSON</a>. </p>
+<p>alternate definitions: Master Definition <a href="<%name%>.xml.html">XML</a> + <a href="<%name%>.json.html">JSON</a>. </p>
 
 
 <a name="tx"></a>

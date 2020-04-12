@@ -15,32 +15,55 @@
 <div class="col-12">
 
 
-<a name="root"> </a>
+<a name="root"></a>
 <h2>Начало работы с FHIR</h2>
+<table class="colsi"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Informative</a></td></tr></table>
 
 <p>
 FHIR - это спецификация платформы, предоставляющей ряд возможностей для использования в процессах, связанных со здравоохранением во всех странах и в разнообразных контекстах. При том, что основы спецификации FHIR относительно просты (см. введение <a href="overview.html">общее</a>,
 <a href="overview-dev.html">для разработчиков</a>, <a href="overview-clinical.html">для мед. работников</a> и <a href="overview-arch.html">для архитекторов</a>), вопрос, с чего начать внедрение решения на основе FHIR, может вызвать затруднение.
+<!-- FHIR is a platform specification that defines a set of capabilities use across the healthcare
+process, in all jurisdictions, and in lots of different context. While the basics of the
+FHIR specification are relatively straight-forward (see the Overviews: <a href="overview.html">General</a>,
+<a href="overview-dev.html">Developers</a>, <a href="overview-clinical.html">Clinical</a>, and <a href="overview-arch.html">Architects</a>), it can still be difficult to know
+where to start when implementing a solution based on FHIR. -->
 </p>
 <p>
 Эта страница поможет начать успешную реализацию. С чего ещё, кроме чтения введения (предыдущий параграф), следует начинать реализацию? Реализаторам нужно ответить на следующие вопросы:
+<!-- This page provides some guidance to help get new implementers started on their path to successful
+implementation. Beyond reading the overviews (previous paragraph), where should an implementer
+start? Generally, an implementer needs to resolve: -->
 </p>
 <ul>
  <li>Каким образом будет осуществляться обмен информацией? (см. <a href="foundation-module.html#uses">Foundation Module</a>)</li>
  <li>Как будут использоваться справочники? (см. <a href="terminology-module.html#uses">Terminology Module</a>)</li>
  <li>Каким образом будет обеспечиваться безопасность информации? (см. модуль <a href="secpriv-module.html#uses">Безопасность и конфиденциальность</a>)</li>
+ <li>When is information exchanged? (See <a href="workflow-module.html">Workflow Module</a>)</li>
  <li>Какую информацию надо будет передавать?</li>
 </ul>
 <p>
 В остальных разделах вы найдете инструкции по узкоспециализированным областям (Основы, Поддержка реализаторов, Безопасность и конфиденциальность, Обеспечение соответствия, Справочники, Связанные данные, Управление, Клинический модуль, Диагностика, Лекарственные средства, Рабочий процесс, Финансовый модуль и Клиническое обоснование).
+<!-- The remaining sections provide guidance on specific areas (Foundation, Implementer Support, Security and Privacy, Conformance,
+Terminology, Linked Data, Administration, Clinical, Diagnostics, Medications, Workflow, Financial and Clinical Reasoning). -->
 </p>
-<a name="modules"> </a>
+<p>
+All implementers should be aware of how versioning works in the FHIR specification. See both:
+</p>
+<ul>
+ <li><a href="versioning.html">Managing Multiple FHIR Versions</a></li>
+ <li><a href="versions.html">Specification Version Management Policy </a></li>
+</ul>
+
+<a name="modules"></a>
 <h3>Модули</h3>
 <p>
 Чтобы ответить на эти вопросы и помочь реализаторам разобраться со спецификацией, она разбита на несколько модулей. Каждый модуль представляет собой отдельную функциональную область спецификации и содержит:
+<!-- In order to help implementers find their way around the specification and answer these questions,
+it is organized into a set of "modules". Each module represents a different functional area of the
+specification, and contains: -->
 </p>
 <ul>
- <li><b>Область действия и указатель</b>: описание модуля и указатель важного содержимого</li>
+ <li><b>Область действия и указатель</b>: описание содержимого модуля и указатель важного содержимого</li>
  <li><b>Сценарии использования</b>: руководства по распространенным сценариям использования модуля и подходам к ним. Это ключевой ресурс для реализаторов, желающих ознакомиться со спецификацией FHIR</li>
  <li><b>Безопасность / конфиденциальность</b>: информации</li>
  <li><b>План развития</b>: на каком уровне развития находится соедржимое модуля (см. также общую информацию в <a href="versions.html">Хронологии FHIR</a></li>
@@ -60,10 +83,16 @@ FHIR - это спецификация платформы, предоставл�
 <p>
 Зависимости между модулями в основном идут от верхних уровней к нижним, также есть несколько горизонтальных зависимостей.
 Реализаторам следует работать с модулями Основного содержания, руководствуясь своими требованиями, и обращаться к модулям Клинического обоснования только при необходимости поддержки принятия клинических решений и/или мер качества (Quality Measures).
+<!-- Dependencies between the modules are mainly downwards, with some horizontal dependencies.
+Implementers should choose the content modules to engage with based on their
+requirements, and should only engage with the reasoning module if they need to do
+clinical decision support, and/or Quality Measures. -->
 </p>
 
 <p>
 Кроме рукодводства на основе сценариев использования в модулях, может пригодиться и дополнительная документация:
+<!-- In addition to the use case based assistance in the modules, these additional documentation pages
+may be useful: -->
 </p>
 <ul>
  <li><a href="usecases.html">Распространенные сценарии использования</a>: личная медицинская карта, Совместное использование документов (XDS - Cross Enterprise Document Sharing) и Поддержка при принятии решения</li>

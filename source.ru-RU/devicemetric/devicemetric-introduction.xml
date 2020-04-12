@@ -1,7 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<a name="scope"> </a>
+<a name="scope"></a>
 <h2>Область применения и использование</h2>
 <p>
 Ресурс DeviceMetric описывает обязательные статичные свойства, которые характеризуют прямое или производное, качественное или количественное измерение биосигналов, установку или вычисления, производимые медицинским изделием.
@@ -20,17 +20,14 @@ The DeviceMetric resource can also be used to describe the non-static but highly
 </div>
 
 <div>
-<a name="bnr"> </a>
+<a name="bnr"></a>
 <h2>Границы и связи</h2>
 <p>
 Имеется два связанных ресурса
 <!-- There are two related resources -->
 </p>
 <ul>
- <li><a href="device.html">Device</a>  - физическое изделие, которому принадлежит данный DeviceMetric.</li>
- <li><a href="devicecomponent.html">DeviceComponent</a>  - DeviceComponent, частью которого является этот DeviceMetric. Это может быть DeviceComponent любого вида, например VirtualMedicalDevice, MedicalDeviceSystem или Channel.</li>
-<!--  <li><a href="device.html">Device</a>  - The physical device that this DeviceMetric belongs to.</li>
- <li><a href="devicecomponent.html">DeviceComponent</a>  - The DeviceComponent that this DeviceMetric is part of. This can be a DeviceComponent of any kind like a VirtualMedicalDevice, a MedicalDeviceSystem, or a Channel.</li> -->
+ <li><a href="device.html">Device</a>  - физическое изделие, которому принадлежит данный DeviceMetric.<!--  <a href="device.html">Device</a>  - The physical device that this DeviceMetric belongs to. --></li>
 </ul>
 
 </div>

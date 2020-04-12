@@ -9,18 +9,16 @@
 <body>
 <%file newnavbar%>
 
-<div class="col-12">
+<div class="col-12"><!--ReleaseHeader--><p id="publish-box"></p><!--EndReleaseHeader-->
 
-<h2>Операции, определённые в рамках<!-- Operations defined by --> <%ig.title%></h2>
+<h2>Operations defined by <%ig.title%></h2>
 
 <p>
-Данное руководство по реализации определяет 
-<!-- This Implementation guide defines --> <%ig.opcount%>:
+This Implementation guide defines <%ig.opcount%>:
 </p>
 <%operations-summary%>
 <p>
-Дополнительную информацию по операциям, включая их вызов, см. в разделе <a href="<%level%>operations.html">Операции</a>.
-<!-- For more information about operations, including how they are invoked, see <a href="<%level%>operations.html">Operations</a>. -->
+For more information about operations, including how they are invoked, see <a href="<%level%>operations.html">Operations</a>.
 </p>
 
 <%operations%>

@@ -1,12 +1,13 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<a name="scope"> </a>
+<a name="scope"></a>
 <h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p> 
-Ресурс DocumentReference используется для описания документа, который сделан доступным для медицинской системы. 
+Ресурс DocumentReference используется, чтобы составить указатель документа, клинической заметки и других бинарных объектов, и сделать их доступным для медицинской системы. 
 Документ - это некоторая последовательность байтов, которые можно идентифицировать, устанавливает свой собственный контекст (например какой субъект, автор и т. п.), может быть отображен пользователю и имеет определенное управление обновлениями. Ресурс DocumentReference может использоваться с любыми форматами документов, имеющими распознаваемый MIME-тип, и которые соответствуют этому определению.
-<!-- A DocumentReference resource is used to describe a document that is made available to a healthcare system. 
+<!-- A DocumentReference resource is used to index a document, clinical note, and other binary objects 
+to make them available to a healthcare system. 
 A document is some sequence of bytes that is identifiable, establishes its own context (e.g., what subject, 
 author, etc. can be displayed to the user), and has defined update management. The DocumentReference resource can be 
 used with any document format that has a recognized mime type and that conforms to this definition. -->
@@ -20,20 +21,19 @@ such as profiled in <a href="http://wiki.ihe.net/index.php/Mobile_access_to_Heal
 DocumentReference is metadata describing a document such as:</p>
 <ul>
  <li><a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a>-документы в системах FHIR</li>
- <li><a href="documents.html">FHIR-документы</a>, хранящиеся в другом месте (т. е. реестре/репозитории, придерживающемся модели  XDS)</li>
- <li><a href="http://en.wikipedia.org/wiki/Portable_Document_Format">PDF-документы</a>, отсканированные документы и электронные копии факсов</li>
+ <li><a href="documents.html">FHIR-документы</a>, хранящиеся в другом месте (т. е. реестре/репозитории, придерживающемся модели  XDS)
+<a href="documents.html">FHIR documents</a> stored elsewhere (i.e. registry/repository following the XDS model)</li>
+ <li><a href="http://en.wikipedia.org/wiki/Portable_Document_Format">PDF-документы</a>, отсканированные документы и электронные копии факсов
+<a href="http://en.wikipedia.org/wiki/Portable_Document_Format">PDF documents</a>, Scanned Paper, and digital records of faxes</li>
+ <li>Clinical Notes in various forms</li>
  <li>Image files (e.g., JPEG, GIF, TIFF)</li>
  <li>Non-Standard formats (e.g., WORD)</li>
- <li>Другие виды документов, например записи о предписании лекарств.</li> 
-<!--  <li><a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a> documents in FHIR systems</li>
- <li><a href="documents.html">FHIR documents</a> stored elsewhere (i.e. registry/repository following the XDS model)</li>
- <li><a href="http://en.wikipedia.org/wiki/Portable_Document_Format">PDF documents</a>, Scanned Paper, and even digital records of faxes where sufficient information is available</li>
- <li>Other kinds of documents, such as records of prescriptions</li>  -->
+ <li>Other kinds of documents, such as records of prescriptions or immunizations</li> 
 </ul>
 </div>
 
 <div>
-<a name="bnr"> </a>
+<a name="bnr"></a>
 <h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <p>
 FHIR определяет и <a href="documents.html">формат документа</a>, и этот ресурс document reference. FHIR-документы предназначены для документов, которые созданы и собраны в FHIR. Этот ресурс предназначен в основном для общих ссылок на скомпонованные документы.

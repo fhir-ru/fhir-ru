@@ -19,13 +19,13 @@ consent. If it is still necessary to track which of the underlying policies an e
 <!-- There are context setting parameters: -->
 </p>
 <ol>
-<li>Кто - <td><b>пациент</b></td></li>
-<li>Что - <td><b>данные</b></td> - перечисление конкретных ресурсов, пустой список означает, что согласие/разрешение покрывает применяется ко всем данным</li>
-<li>Где - <td><b>доменная область</b></td> и <td><b>полномочия</b></td> - что является границами размещения и полномочий для данного согласия/разрешения</li>
-<li>Когда - <td><b>издан</b></td> или зафиксирован (сохранён)</li>
-<li>Когда - Временные рамки <td><b>применения</b></td> данного согласия/разрешения</li>
-<li>Как - охватываемые <td><b>действия</b></td>. (например охватываемые цели использования)</li>
-<li>Кому - <td><b>получатель</b></td> данного согласия/разрешения</li>
+<li>Кто - <b>пациент</b></li>
+<li>Что - <b>данные</b> - перечисление конкретных ресурсов, пустой список означает, что согласие/разрешение покрывает применяется ко всем данным</li>
+<li>Где - <b>доменная область</b> и <b>полномочия</b> - что является границами размещения и полномочий для данного согласия/разрешения</li>
+<li>Когда - <b>издан</b> или зафиксирован (сохранён)</li>
+<li>Когда - Временные рамки <b>применения</b> данного согласия/разрешения</li>
+<li>Как - охватываемые <b>действия</b>. (например охватываемые цели использования)</li>
+<li>Кому - <b>получатель</b> данного согласия/разрешения</li>
 </ol>
 <p>
 Согласие на политику конфиденциальности может переходить между различными состояниями, включая: что согласие не было запрошено, было предложено согласие, согласие было отклонено, и согласие было одобрено.
@@ -41,9 +41,9 @@ consent has been rejected, and consent approved. -->
 	  <li>Согласие на участие с ограничениями: предоставление информации разрешено, но пациент может вносить ограничения (см. примеры, специфичные для Канады).<!-- Opt-in with restrictions: Sharing allowed, but the patient may make exceptions (See the Canadian examples). --></li>
 	  </ol>
       <p>У каждого из этих шаблонов (положительных или негативных) могут быть исключения. 
-      Эти исключения явным образом записываются в элементе <td><b>except</b></td>.
+      Эти исключения явным образом записываются в элементе <b>except</b>.
       <!-- For each of these patterns (positive or negative pattern), there can be exceptions. 
-	  These exceptions are explicitly recorded in the <td><b>except</b></td> element.  -->
+	  These exceptions are explicitly recorded in the <b>except</b> element.  -->
       </p>	
 <h2>Специфичные для стран сценарии<!-- Realm specifics --></h2>
  <h3>Примеры сценариев использования для США<!-- US Realm sample Use-Cases --></h3>
@@ -51,7 +51,7 @@ consent has been rejected, and consent approved. -->
     Пять категорий Распоряжений о согласии на политику конфиденциальности описаны в документе Распоряжения о согласии Национального координатора информации в сфере здравоохранения (ONC), выпущенном 31 марта 2010 года, и включают следующие, специфичные для США, "Основные варианты согласия" для электронного обмена:
 <!-- 		Five categories of Privacy Consent Directives are described in the Office of the National Coordinator for 
 		Health Information (ONC) Consent Directives Document released March 31, 2010, and include the following 
-		US-specific “Core consent options” for electronic exchange: -->
+		US-specific "Core consent options" for electronic exchange: -->
 	  </p>
 	  <ol>
 	  <li>Согласие/разрешение отсутствует: медицинская информация о пациентах автоматически включена - пациенты не могут отказаться от участия;<!-- No consent: Health information of patients is automatically included—patients cannot opt out; --></li>

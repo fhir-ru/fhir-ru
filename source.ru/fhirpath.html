@@ -8,18 +8,14 @@
 <body>
 [%file newnavbar%]
 
-<div class="col-12">
+<div class="col-12"><!--ReleaseHeader--><p id="publish-box"></p><!--EndReleaseHeader-->
 
 <h2>FHIRPath</h2>
-<table class="colsn"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 4</td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Normative</a></td></tr></table>
+<table class="colsn"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: Normative</td><td id="ballot"><a href="versions.html#std-process">Standards Status</a>:<!--!ns!--><a href="versions.html#std-process">Normative</a></td></tr></table>
 
 <p>
-FHIRPath is a separate specification published at <a href="http://hl7.org/fhirpath">http://hl7.org/fhirpath</a> in order to support wider re-use across multiple specifications.
-</p>
-<p>
-FHIRPath is a path-based navigation and extraction language, somewhat like XPath. Operations
-are expressed in terms of the logical content of hierarchical data models, and support traversal, 
-selection and filtering of data.
+The FHIR Specification uses <a href="http://hl7.org/fhirpath/r2">FHIRPath (release 2)</a> for path-based navigation and extraction.
+FHIRPath is a separate specification published at <a href="http://hl7.org/fhirpath/r2">http://hl7.org/fhirpath</a> in order to support wider re-use across multiple specifications.
 </p>
 <p>
 FHIRPath is used in several places in the FHIR and related specifications:
@@ -33,14 +29,18 @@ FHIRPath is used in several places in the FHIR and related specifications:
 <li><a href="testscript-definitions.html#TestScript.setup.action.assert.expression">Invariants in the TestScript resource</a></li>
 </ul>
 <p>
-In addition, FHIRPath is used in <a href="http://cds-hooks.hl7.org/ballots/2018May/specification/1.0/#prefetch-template">pre-fetch templates in Smart on FHIR’s cds-hooks</a>.
+In addition, FHIRPath is used in <a href="http://cds-hooks.hl7.org/ballots/2018May/specification/1.0/#prefetch-template">pre-fetch templates in Smart on FHIR's CDS-Hooks</a>.
 </p>
 
 <a name="rules"></a>
 <h3>Using FHIRPath with Resources</h3>
 
 <p>
-FHIRPath uses a tree model that abstracts away the actual underlying datamodel of the 
+In FHIRPath, like XPath, operations are expressed in terms of the logical content of hierarchical data models, and support traversal, 
+selection and filtering of data.
+</p>
+<p>
+FHIRPath uses a tree model that abstracts away the actual underlying data model of the 
 data being queried. For FHIR, this means that the contents of the resources and data 
 types as described in the Logical views (or the UML diagrams) are used as the model, 
 rather than the JSON and XML formats, so specific xml or json features are not 
@@ -137,6 +137,10 @@ to FHIRPath types when they are used in expressions according to the following m
 <td>FHIR.time</td>
 <td>System.Time</td>
 </tr>
+<tr>
+<td>FHIR.Quantity</td>
+<td>System.Quantity (see below)</td>
+</tr>
 </table>
 
 <p>Since FHIR primitives may contain extensions, so that the following expressions are <em>not</em> mutually exclusive:</p>
@@ -156,7 +160,7 @@ Patient.name.given.is(System.string).not();
 Patient.name.given.getValue().is(System.string);
 </pre>
 <p>
-As shown, all FHIR primitives have the operation .getValue() defined (see below)
+As shown, all FHIR primitives have the operation <code>getValue()</code> defined (see below)
 for the few edge cases where the automatic conversion isn't appropriate. Note 
 that as() does not have such restrictions - both of the following are valid:
 </p>
@@ -165,17 +169,46 @@ Patient.name.given.as(FHIR.string);
 Patient.name.given.as(System.string);
 </pre>
 
+
+<a name="quantity"></a>
+<h4>Use of FHIR Quantity</h4>
+
+<p>
+The Mapping from FHIR Quantity to FHIRPath System.Quantity can only be applied if the FHIR Quantity has a UCUM code 
+- i.e. a system of <code>http://unitsofmeasure.org</code>, and a code is present. 
+</p>
+<p>
+As part of the mapping, time-valued UCUM units are mapped to the <a href="http://hl7.org/fhirpath/R2/index.html#time-valued-quantities">calendar duration units</a> defined in FHIRPath, according to the following map:
+</p>
+<table class="grid">
+<tr><td>a</td><td>year</td></tr>
+<tr><td>mo</td><td>month</td></tr>
+<tr><td>d</td><td>day</td></tr>
+<tr><td>h</td><td>hour</td></tr>
+<tr><td>min</td><td>minute</td></tr>
+<tr><td>s</td><td>second</td></tr>
+</table>
+
+<p>
+e.g. the FHIR Quantity 1 'a' would be implicitly converted to the FHIRPath System.Quantity 1 'year'.
+</p>
+
 <a name="variables"></a>
 <h4>FHIR Specific Variables</h4>
 
-<p>FHIR defines a specific variable that is always in scope when FHIRPath is used
+<p>FHIR defines two specific variables that are always in scope when FHIRPath is used
 in any of the contexts above:
 </p>
 <pre>
 %resource // the resource that contains the original node that is in %context
+%rootResource // the container resource for the resource identified by %resource
 </pre>
 <p>
-The resource is very often the context, such that %resource = %context.
+The resource is very often the context, such that %resource = %context. 
+When a DomainResource contains another resource, and that contained resource 
+is the focus (%resource) then %rootResource refers to the container resource.
+Note that in most cases, the resource is not contained by another resource, and 
+then %rootResource is the same as %resource.
 </p>
 
 <a name="functions"></a>
@@ -189,7 +222,7 @@ The resource is very often the context, such that %resource = %context.
 <p>Returns true if the input collection contains a single value which is a FHIR primitive, and it has a primitive value (e.g. as opposed to not having a value and just having extensions).</p>
 
 <blockquote>
-<p><strong>Note to implementers</strong>: The FHIR conceptual model talks about "primitives" as subclasses of the type Element that also have id and extensions. What this actually means is that a FHIR primitive is not a primitive in an implementation language. The introduction (section 2 above) describes the navigation tree as if the the FHIR model applies - primitives are both primitives and elements with children.</p>
+<p><strong>Note to implementers</strong>: The FHIR conceptual model talks about "primitives" as subclasses of the type Element that also have id and extensions. What this actually means is that a FHIR primitive is not a primitive in an implementation language. The introduction (section 2 above) describes the navigation tree as if the FHIR model applies - primitives are both primitives and elements with children.</p>
 
 <p>In FHIRPath, this means that FHIR primitives have a <code>value</code> child, but, as described above, they are automatically cast to FHIRPath primitives when comparisons are made, and that the primitive value will be included in the set returned by <code>children()</code> or <code>descendants()</code>.</p>
 </blockquote>
@@ -318,7 +351,7 @@ Implementation Guides are allowed to define their own externals, and implementer
 
 <p>Authors of Implementation Guides should be aware that adding specific environment variables restricts the use of the FHIRPath to their particular context.</p>
 
-<p>Note that these tokens are not restricted to simple types, and they may have fixed values that are not known before evaluation at run-time, though there is no way to define these kind of values in implementation guides.</p>
+<p>Note that these tokens are not restricted to simple types, and they may have fixed values that are not known before evaluation at run-time, though there is no way to define these kinds of values in implementation guides.</p>
 
 
 <a name="simple"></a>

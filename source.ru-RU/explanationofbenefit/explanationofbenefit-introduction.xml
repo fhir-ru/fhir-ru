@@ -1,9 +1,11 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<a name="scope"> </a>
+<a name="scope"></a>
 <h2>Область применения и использование</h2>
 <p>Ресурс ExplanationOfBenefit сочетает в себе ключевую информацию из Claim, ClaimResponse и, необязательно, Account для информирования пациента о товарах и услугах, оказанных поставщиком, и погашении, выполненном в соответствии со страховым покрытием пациента относительного этого Claim.
+<!-- The ExplanationOfBenefit resource combines key information from a Claim, a ClaimResponse and optional Account information to inform 
+a patient of the goods and services rendered by a provider and the settlement made under the patient's coverage in respect of that Claim. -->
 </p>
 <p>
 Это логическая комбинация Claim, ClaimResponse и некоторой бухгалтерской информации о Coverage относительно отдельного плательщика, подготовленная для использования подписчиком и/или пациентом. Это не просто серия указателей на упомянутые модели содержимого, это физическое подмножество, ограниченное вынесенным судебным решением по отдельному плательщику, в котором подробно описаны оказанные услуги, суммы для выплаты и кому они предназначены, и, возможно, использованное и/или действующее страховое покрытие.

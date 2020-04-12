@@ -1,12 +1,11 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <a name="notes"></a>
-<h2>Примечания<!-- Notes --></h2>
+<h2>Notes</h2>
 <ul>
- <li>Значения элементов <code>system</code>, <code>version</code> и <code>code</code> те же, что используются в типе данных <a href="datatypes.html#Coding">Coding</a><!-- The value of the <code>system</code>, <code>version</code> and <code>code</code> elements are the same as used by the <a href="datatypes.html#Coding">Coding</a> data type --></li>
- <li>Когда показатель эквивалентности мэппинга характеризуется как "сужение", в комментариях ДОЛЖНО быть предоставлено какое-то объяснение разницы охвата<!-- When a mapping equivalence is characterized as "narrower", some explanation of the scope difference SHALL be provided in the comments --></li>
- <li>Карта соответствия концептов - это заявление о мэппинге в одном направлении. Существование совпадающего мэппинга в обратном направлении не может быть предположено автоматически, а только после проверки человеком.
- <!-- The concept map is a statement of mapping in a single direction. The existence of a matching mapping in the reverse direction cannot be assumed to exist automatically, but only through human review. --></li>
+ <li>The value of the <code>system</code>, <code>version</code> and <code>code</code> elements are the same as used by the <a href="datatypes.html#Coding">Coding</a> data type</li>
+ <li>When a mapping equivalence is characterized as "narrower", some explanation of the scope difference SHALL be provided in the comments</li>
+ <li>The concept map is a statement of mapping in a single direction. The existence of a matching mapping in the reverse direction cannot be assumed to exist automatically, but only through human review.</li>
  <li>For simplicity, it is better if is only one <code>element</code> for each source concept. if there is more than one, then just as one <code>element</code> can have multiple targets, 
      multiple occurrences of <code>element</code> with the same <code>element.code</code> simply aggregate their <code>target</code> elements as if there was only one <code>element</code></li>
 </ul>
@@ -14,19 +13,19 @@
 <a name="groups"></a>
 <h2>Grouping Mappings</h2>
 <p>
-The concept mappings in <code>element</code> are arranged into groups that share common source/target systems. 
+The concept mappings in <code>element</code> are arranged into groups that share common source/target systems.
 These groups have no semantic significance; they exist to make the representation more concise. Concept maps
 may contain more than one group with the same source and target - this would be a less concise representation
-but may be useful in order to maintain a fixed order for the concepts that are mapped. 
+but may be useful in order to maintain a fixed order for the concepts that are mapped.
 </p>
 <p>
-Concepts that are labeled as 'unmatched' are considered to be unmatched in the target value set, 
+Concepts that are labeled as 'unmatched' are considered to be unmatched in the target value set,
 irrespective of whether they are contained in a group with a stated target system or not. Groups
-that contain no target system may only contained 'unmatched' concepts. There is no difference in 
+that contain no target system may only contained 'unmatched' concepts. There is no difference in
 the meaning of an <code>unmatched</code> target whether or not there is a stated target system.
 </p>
 
-<a name="dependencies"></a>
+<a name="dependencies"> </a>
 <h2>Mapping Dependencies</h2>
 
 <p>

@@ -2,7 +2,7 @@
 
 	<div>
 
-<a name="scope"> </a>		
+<a name="scope"></a>		
 	<h2>Область применения и использование</h2>
 <p>
 Ресурс Location (Местонахождение) включает в себя как случайные места (место, которое используется для оказания услуг здравоохранения без предварительного назначения или разрешения), так и выделенные, формально назначаемые места. Местонахождение может быть частным, государственным, мобильным или фиксированным, и варьироваться по масштабу от малых морозильных камер до целых зданий больниц или автостоянок.
@@ -36,11 +36,11 @@ freezers to full hospital buildings or parking garages. -->
   <p>
   Эти местонахождения не предназначены для указания частей тела пациента, на которых с ним что-то произошло (например сломанная нога пациента), но успешно используются для указания места, где пациент сломал ногу (например детская площадка).
 <!--     These locations are not intended to cover locations on a patient where something occurred
-    (i.e. a patient's broken leg), but can hapily cover the location where the patient broke the leg (the playground) -->
+    (i.e. a patient's broken leg), but can happily cover the location where the patient broke the leg (the playground) -->
   </p>
 </div>
 <div>
-<a name="bnr"> </a>
+<a name="bnr"></a>
 	<h2>Границы и связи</h2>
   <p>
   Ресурсы Location и Organization тесно связаны между собой и часто комбинируются/совпадают/вызывают путаницу. <br/>

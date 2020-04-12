@@ -14,17 +14,18 @@ in order to support consistent definitions for schema and UML derived code.
 [%file newnavbar%]
 
 <div class="col-12">
-<table class="cols"><tr><td id="wg">Рабочая группа <a _target="blank" href="[%wg oo%]">[%wgt oo%]</a> &amp; <a _target="blank" href="[%wg cg%]">[%wgt cg%]</a> </td><td id="ballot"><a href="versions.html#levels">Статус голосования</a>: <a href="versions.html#std-process">Информативный</a></td></tr></table>
+<table class="colsi"><tr><td id="wg">Work Group <a _target="blank" href="[%wg oo%]">[%wgt oo%]</a> &amp; <a _target="blank" href="[%wg cg%]">[%wgt cg%]</a> </td><td id="ballot"><a href="ballot-intro.html#process">Ballot Status</a>:<!--!ns!--><a href="versions.html#std-process">Informative</a></td></tr></table>
 
-<a name="root"> </a>
+<a name="root"></a>
 <h2>Diagnostic Medicine Module</h2>
 
-<a name="intro"> </a>
+<a name="intro"></a>
 <h3>Введение</h3>
 <p>
-Модуль диагностики даёт обзор и руководство по содержимому FHIR, которое отвечает за заказывание и сообщение отчетов медицинской диагностики, включая лабораторные и радиологические исследования и геномику.</p>
+Модуль диагностики даёт обзор и руководство по содержимому FHIR, которое отвечает за заказывание и сообщение отчетов медицинской диагностики, включая лабораторные и радиологические исследования и геномику.
+The Diagnostics Module provides an overview and guide to the FHIR content that addresses ordering and reporting of clinical diagnostics including laboratory testing, imaging and genomics.</p>
 
-<a name="index"> </a>
+<a name="index"></a>
 <h3>Указатель</h3>
 <p>В модуль диагностики входят следующие ресурсы:</p>
 
@@ -39,9 +40,9 @@ in order to support consistent definitions for schema and UML derived code.
 </td>
  <td width="33%">
 <ul>
+<li><a href="media.html">Media</a></li>
 <li><a href="imagingstudy.html">ImagingStudy</a></li>
-<li><a href="imagingmanifest.html">ImagingManifest</a></li>
-<li><a href="sequence.html">Sequence</a></li>
+<li><a href="molecularsequence.html">MolecularSequence</a></li>
 </ul>
 </td>
  <td width="33%">
@@ -53,76 +54,83 @@ in order to support consistent definitions for schema and UML derived code.
 </tr>
 </table>
 
-   <p>Ниже показаны диагностические ресурсы и их взаимосвязи. Стрелки показывают направления ссылок между ресурсами (например ресурс DiagnosticReport ссылается на ServiceRequest). Информацию о координации таких активностей, как заказывание и выполнение диагностик, см. в <a href="workflow-module.html">Модуле рабочих процессов</a>.</p>
+   <p>Ниже показаны диагностические ресурсы и их взаимосвязи. Стрелки показывают направления ссылок между ресурсами (например ресурс DiagnosticReport ссылается на ServiceRequest). Информацию о координации таких активностей, как заказывание и выполнение диагностик, см. в <a href="workflow-module.html">Модуле рабочих процессов</a>. The diagnostic resources and their relationships are shown below.  The arrows represent the direction of the references between resources (for example, DiagnosticReport references ServiceRequest). See the <a href="workflow-module.html">Workflow Module</a> for information about the coordination of activities such as ordering and fulfilling of diagnostics.</p>
     <img src="diagnostic-module-resources.png" alt="Image showing the diagnostic resources" width="800px"/>
 
-<p>
-<blockquote>
-    <em>Примечание:</em> Дополнительную информацию об использовании диагностических ресурсов для медицинских геномных отчетов и анализа см. в <a href="genomics.html">Руководстве по реализации для геномики</a>.
-</blockquote>
-</p>
+[%impl-note%]
+See the <a href="genomics.html">Genomics Implementation Guidance</a> for additional information about how to use the Diagnostic resources for Clinical Genomic Reporting and Analysis.
+[%end-note%]
+
     <table class="bare">
-        <tr><td><b>Имя</b></td><td><b>Альтернативные имена</b></td><td><b>Описание</b></td></tr>
+        <tr><td><b>Name</b></td><td><b>Aliases</b></td><td><b>Description</b></td></tr>
         [%res-item Observation%]
         [%res-item DiagnosticReport%]
         [%res-item ServiceRequest%]
+        [%res-item Media%]
         [%res-item ImagingStudy%]
-        [%res-item ImagingManifest%]
-        [%res-item Sequence%]
+        [%res-item MolecularSequence%]
         [%res-item Specimen%]
         [%res-item BodyStructure%]
     </table>
 
-<a name="secpriv"> </a>
+<a name="secpriv"></a>
 <h3>Безопасность и конфиденциальность</h3>
 <p>
-The diagnostic resources often represent patient-specific data, and as such are susceptible to data breaching.  Necessary privacy and security provisions must be in place when searching and fetching this information.  Более общие соображения см. в модуле <a href="secpriv-module.html">Безопасность и конфиденциальность</a>.
+The diagnostic resources often represent patient-specific data, and as such are susceptible to data breaching.  Necessary privacy and security provisions must be in place when searching and fetching this information.  For more general considerations, see <a href="secpriv-module.html">the Security and Privacy module</a>.
 </p>
 
-<a name="uses"> </a>
+<a name="uses"></a>
 <h3>Распространенные случаи использования</h3>
 <p>
-Диагностические ресурсы обычно используются для планирования, рекомедации, заказывания и сообщения результатов медицинской диагностики:
+Diagnostic resources are commonly used to plan, recommend, order and report clinical diagnostics:
 </p>
 <ul>
-<li>Планирование диагностического исследования, как в этом <a href="careplan-example-f203-sepsis.html">примере плана по уходу</a></li>
-<li>Рекомендация диагностики наподобие инструментов поддержки принятия клинических решений. Более подробную информацию см. в модуле <a href="clinicalreasoning-module.html">Клиническое обоснование</a>.</li>
-<li>Заказывание лабораторного исследования, например <a href="servicerequest-example-lipid.html">липидной панели</a></li>
-<li>Сообщение результатов лабораторного исследования, например <a href="diagnosticreport-example-lipids.html">липидной панели</a></li>
-<li>Заказывание радиологического исследования, например <a href="servicerequest-example-di.html">компьютерной томографии</a></li>
-<li>Сообщение результатов радиологического исследования, например <a href="imagingstudy-example.html">компьютерной томографии</a></li>
-<li>Заказывание генетического исследования, например <a href="servicerequest-genetics-example-1.html">анализа на мутации генов</a></li>
-<li>Сообщение результатов генетического исследования, например <a href="diagnosticreport-hla-genetics-results-example.html">HLA-генотипирования</a></li>
+<li>Планирование диагностического исследования, как в этом <a href="careplan-example-f203-sepsis.html">примере плана по уходу</a> Planning a diagnostic test such as in this <a href="careplan-example-f203-sepsis.html">Careplan-example</a></li>
+<li>Рекомендация диагностики наподобие инструментов поддержки принятия клинических решений. Более подробную информацию см. в модуле <a href="clinicalreasoning-module.html">Клиническое обоснование</a>. Recommending diagnostics such as is done by Clinical Decision Support tools. See the <a href="clinicalreasoning-module.html">Clinical Reasoning module</a> for more information.</li>
+<li>Заказывание лабораторного исследования, например <a href="servicerequest-example-lipid.html">липидной панели</a> Ordering a Laboratory Test such as a <a href="servicerequest-example-lipid.html">lipid panel</a></li>
+<li>Сообщение результатов лабораторного исследования, например <a href="diagnosticreport-example-lipids.html">липидной панели</a> Reporting a Laboratory Test such as a <a href="diagnosticreport-example-lipids.html">lipid panel</a></li>
+<li>Заказывание радиологического исследования, например <a href="servicerequest-example-di.html">компьютерной томографии</a> Ordering an imaging study such as a <a href="servicerequest-example-di.html">CT study</a></li>
+<li>Сообщение результатов радиологического исследования, например <a href="imagingstudy-example.html">компьютерной томографии</a> Reporting an imaging study such as a <a href="imagingstudy-example.html">CT study</a></li>
+<li>Заказывание генетического исследования, например <a href="servicerequest-genetics-example-1.html">анализа на мутации генов</a> Ordering a genetic test such as a <a href="servicerequest-genetics-example-1.html">gene mutation analysis </a></li>
+<li>Сообщение результатов генетического исследования, например <a href="diagnosticreport-hla-genetics-results-example.html">HLA-генотипирования</a> Reporting a genetic test such as <a href="diagnosticreport-hla-genetics-results-example.html">HLA genotyping</a></li>
 </ul>
 <p>
 Также есть много способов использования этих ресурсов независимо друг от друга. В частности, ресурс Observation является основным для хранения измерений и отражения многих событий в здравоохранении, и часто используется вне контекста заказывания диагностик и сообщения результатов.
+There are many ways to use these resources independently as well.  The Observation resource in particular is central to capturing many measurements and events in healthcare and is often used outside the context of diagnostic orders and reports.
 </p>
 <ul>
-<li>запись основных показателей состояния организма, например <a href="observation-example-f202-temperature.html">температуры</a></li>
-<li>запись наблюдений из социального анамнеза пациента, например употребление табака </li>
-<li>запись характеристик пациента, например состояния беременности (примечание: также в этих целях можно использовать ресурс Condition)</li>
-<li>запись результатов клинической оценки по различным шкалам, например <a href="observation-example-5minute-apgar-score.html">шкале Апгар</a>.</li>
-<li>идентификация и описание <a href="specimen-example-serum.html">образца для анализа</a> или <a href="bodystructure-example-tumor.html">места на теле</a></li>
+<li>запись основных показателей состояния организма, например <a href="observation-example-f202-temperature.html">температуры</a> recording vital signs such as <a href="observation-example-f202-temperature.html">temperature</a></li>
+<li>запись наблюдений из социального анамнеза пациента, например употребление табака recording other observations of a patient's social history such as tobacco use</li>
+<li>запись характеристик пациента, например состояния беременности (примечание: также в этих целях можно использовать ресурс Condition) recording other characteristics of a patient such as pregnancy status (note: The Condition resource may be used to represent these as well)</li>
+<li>запись результатов клинической оценки по различным шкалам, например <a href="observation-example-5minute-apgar-score.html">шкале Апгар</a>. recording clinical assessment tool scores such as an <a href="observation-example-5minute-apgar-score.html">Apgar score</a>.</li>
+<li>идентификация и описание <a href="specimen-example-serum.html">образца для анализа</a> или <a href="bodystructure-example-tumor.html">места на теле</a> identifying and describing a <a href="specimen-example-serum.html">specimen</a> or <a href="bodystructure-example-tumor.html">body site</a></li>
 </ul>
 
-<a name="related"> </a>
+<a name="related"></a>
 <h3>Связанные ресурсы и модули</h3>
-<p>Ресурсы, описывающие базовую информацию о пациенте и медицинском случае обслуживания, находятся в <a href ="administration-module.html">Административном модуле</a>. Другие ресурсы, описывающие основную клиническую информацию, создаваемую поставщиками услуг здравоохранения в течение случая обслуживания пациента, подробно описаны в модулях <a href="clinicalsummary-module.html">Clinical Summary</a> и <a href="medications-module.html">Medications</a>.</p>
+<p>Ресурсы, описывающие базовую информацию о пациенте и медицинском случае обслуживания, находятся в <a href ="administration-module.html">Административном модуле</a>. Другие ресурсы, описывающие основную клиническую информацию, создаваемую поставщиками услуг здравоохранения в течение случая обслуживания пациента, подробно описаны в модулях <a href="clinicalsummary-module.html">Clinical Summary</a> и <a href="medications-module.html">Medications</a>.
+ The resources that represent the basic information about a patient and a clinical encounter can be found in the <a href ="administration-module.html">Administration Module</a>. Other resources that represent core clinical information generated by healthcare providers during the course of a patient encounter are detailed in the <a href="clinicalsummary-module.html">Clinical Summary Module</a> and the <a href="medications-module.html">Medications Module</a>.</p>
 
-<a name="roadmap"> </a>
+<a name="roadmap"></a>
 <h3>План развития</h3>
 <p>
 
 
 <ul>
-<li>Ресурсы <em>Observation</em> и <em>Diagnostic Report</em> прошли тестирование и использование в реальных системах и достигли <a href="versions.html#maturity">уровня зрелости FMM=4</a>, на котором изменения маловероятны и требуют одобрения сообщества реализаторов. Дальнейшая работа будет направлена на создание основных профилей и разъяснение случаев использования и границ и разработку более узкоспециализированных примеров. Мы ожидаем, что по окончании этого цикла ресурсы <em>Observation</em> и <em>DiagnosticReport</em> получат нормативный статус.</li>
-<li>Ресурс <em>ImagingStudy</em> прошел некоторое тестирование и использование. Необходимо дальнейшее использование этого ресурса в реальных системах для достижения более стабильного уровня зрелости.</li>
-<li><em>ImagingManifest</em>: мы ожидаем увидеть более широкое использование этого ресурса и рост его уровня зрелости.</li>
-<li>Ресурс <em>ServiceRequest</em> был значительно изменен по сравнению со своей версией в DSTU2. В первую очередь это слияние ресурсов <em>DiagnosticOrder</em> и <em>ServiceRequest</em> из DSTU2 в единый ресурс. Также в результате добавления <a href="workflow.html">FHIR workflow</a> в STU3, его структура и содержимое были обновлены в соответствии с общим шаблоном "ресурса-запроса" рабочего процесса FHIR. Поэтому он остается относительно незрелым ресурсом. Серьёзные изменения его структуры в дальнейшем не ожидаются. Однако его облась действия и границы по отношению к другим ресурсам будут предметом будущей работы рабочей группы. Мы ожидаем его широкое использование реализаторами и доработку в предстоящем цикле.</li>
-<li>На ресурс <em>Specimen</em> будут направлены усилия рабочей группы в предстоящем цикле. Планируется ввести новый ресурс <em>SpecimenDefinition</em> для описания типов образцов для анализа в отличие от экземпляров образцов для анализа, и возьмет на себя часть текущей области действия ресурса Specimen. Мы ожидаем более широкого использования этого ресурса и роста его уровня зрелости в будущем.</li>
-<li>Ресурс <em>Sequence</em> остается в статусе черновика, и мы ожидаем более широкого использования этого ресурса и роста его уровня зрелости в будущем.</li>
-<li><em>BodyStructure</em> - это пока ещё незрелый ресурс с уровнем зрелости 1. На сегодняшний день по нему имеется мало отзывов от реализаторов. </li>
-<li>Ресурс <em>Media</em> вошёл в Диагностический модуль последним после существенного изменения его области действия и структуры в целях создания специализированного ресурса наблюдения, предназначенного для цифровых медиаданных, таких как файлы изображений и аудио. Дальнейшая работа по этому ресурсу будет направлена на разработку основных профилей и более узкоспециализированных примеров.</li>
+<li>Ресурсы <em>Observation</em> и <em>Diagnostic Report</em> прошли тестирование и использование в реальных системах и достигли <a href="versions.html#maturity">уровня зрелости FMM=4</a>, на котором изменения маловероятны и требуют одобрения сообщества реализаторов. Дальнейшая работа будет направлена на создание основных профилей и разъяснение случаев использования и границ и разработку более узкоспециализированных примеров. Мы ожидаем, что по окончании этого цикла ресурсы <em>Observation</em> и <em>DiagnosticReport</em> получат нормативный статус.
+The <em>Observation</em> and <em>Diagnostic Report</em> resources have been tested and used in production tooling and as such have reached a <a href="versions.html#maturity">maturity level FMM=4</a> where changes become less likely and require implementer community approval.  Future work will focus on developing core profiles and clarifying use cases and boundaries and providing more domain specific examples.  We anticipate <em>Observation</em> and <em>Diagnostic Report</em> reaching normative status by the end of this cycle.</li>
+<li>Ресурс <em>ImagingStudy</em> прошел некоторое тестирование и использование. Необходимо дальнейшее использование этого ресурса в реальных системах для достижения более стабильного уровня зрелости.
+The <em>ImagingStudy</em> resource has had some limited testing and use.  Further use of this resource in production tooling in order for it to reach a more stable FMM level.</li>
+<li>Ресурс <em>ServiceRequest</em> был значительно изменен по сравнению со своей версией в DSTU2. В первую очередь это слияние ресурсов <em>DiagnosticOrder</em> и <em>ServiceRequest</em> из DSTU2 в единый ресурс. Также в результате добавления <a href="workflow.html">FHIR workflow</a> в STU3, его структура и содержимое были обновлены в соответствии с общим шаблоном "ресурса-запроса" рабочего процесса FHIR. Поэтому он остается относительно незрелым ресурсом. Серьёзные изменения его структуры в дальнейшем не ожидаются. Однако его облась действия и границы по отношению к другим ресурсам будут предметом будущей работы рабочей группы. Мы ожидаем его широкое использование реализаторами и доработку в предстоящем цикле.
+The <em>ServiceRequest</em> resources has undergone substantial changes since DSTU2. Foremost of which is the merging of DSTU2 <em>DiagnosticOrder</em> and <em>ServiceRequest</em>into a single resource. In addition, as a result of the addition of <a href="workflow.html">FHIR workflow</a> for STU3, its structure and content have been updated to align with the general FHIR workflow "request" pattern.  Because of these, it remains a relatively immature resource.  No more sweeping changes to its structure are expected.  However, its scope and boundaries vis a vis other resources will be the topic of future workgroup efforts. We anticipate its broad use by implementers and that it will mature as a resource throught the upcoming cycle.</li>
+<li>На ресурс <em>Specimen</em> будут направлены усилия рабочей группы в предстоящем цикле. Планируется ввести новый ресурс <em>SpecimenDefinition</em> для описания типов образцов для анализа в отличие от экземпляров образцов для анализа, и возьмет на себя часть текущей области действия ресурса Specimen. Мы ожидаем более широкого использования этого ресурса и роста его уровня зрелости в будущем.
+The <em>Specimen</em> resource will be the focus of work group efforts for the upcoming cycle. A new <em>SpecimenDefinition</em> resource is planned for describing specimen types vs specimen instances and will take over some of the Specimen resource's current scope.  We expect to see more widespread use of this resource and future updates to its FMM level</li>
+<li>Ресурс <em>MolecularSequence</em> остается в статусе черновика, и мы ожидаем более широкого использования этого ресурса и роста его уровня зрелости в будущем.
+The <em>MolecularSequence</em> resource remains draft and we expect to see more widespread use of this resource and future updates to its FMM level</li>
+<li><em>BodyStructure</em> - это пока ещё незрелый ресурс с уровнем зрелости 1. На сегодняшний день по нему имеется мало отзывов от реализаторов. 
+The <em>BodyStructure</em> resource is an immature resource with a FMM level of 1.  To date there has been little implementation feedback.</li>
+<li>Ресурс <em>Media</em> вошёл в Диагностический модуль последним после существенного изменения его области действия и структуры в целях создания специализированного ресурса наблюдения, предназначенного для цифровых медиаданных, таких как файлы изображений и аудио. Дальнейшая работа по этому ресурсу будет направлена на разработку основных профилей и более узкоспециализированных примеров.
+The <em>Media</em> resource is the newest member to the Diagnostics module having undergone substantial scope and structural changes to create a specialized observation resource focused on digital media such as images and audio files.  Future work will focus on developing core profiles and providing more domain specific examples.</li>
 </ul>
 
 

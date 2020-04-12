@@ -13,16 +13,17 @@
 
 <%resheader operations%>
 <h2>Ресурс <%title%> - Операции</h2>
-<table class="<%fmm-style%>"><tr><td><a href="<%wg%>"><%wgt%></a> Work Group</td><td><%fmm%></td><td><%sstatus%></td><td><%complinks%></td></tr></table>
+<table class="<%fmm-style%>"><tr><td><a href="<%wg%>"><%wgt%></a> Work Group</td><td><%fmm%></td><td><%sstatus%></td><!--!ns!--><td><%complinks%></td></tr></table>
 
 <p>
-С этим ресурсом взаимодействует следующее количество операций: </p>
+С этим ресурсом взаимодействует следующее количество операций: <%opcount%>
+</p>
 <%operations-summary%>
 <p>
 Более подробную информацию об операциях, а также способы их вызова см. на странице <a href="operations.html">Операции</a>.
 </p>
 
-<%operations%>
+<%!operations%>
 
 </div>
 

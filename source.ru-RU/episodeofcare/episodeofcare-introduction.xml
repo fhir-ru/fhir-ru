@@ -1,7 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
   <div>
-<a name="scope"> </a>
+<a name="scope"></a>
     <h2>Область применения и использование</h2>
     <p>
 	Ресурс EpisodeOfCare содержит информацию о связи между пациентом и поставщиком медицинских услуг на период времени, в течение которого могут проводиться мероприятия или действия, связанные со здравоохранением.
@@ -26,9 +26,9 @@
     <p></p>
     <h3>Участие нескольких организаций и передача ухода за пациентом<!-- Multiple Organizations and Transfer of Care --></h3>
     <p>
-	В EpisodeOfCare может быть вовлечено несколько организаций, при этом каждая организация будет иметь свой собственный EpisodeOfCare, отслеживающий их ответственность перед пациентом.
-      <!-- Many organizations can be involved in an EpisodeOfCare, however each organization will have their own EpisodeOfCare
-      which tracks their responsibility with the patient. -->
+	В эпизод лечения может быть вовлечено несколько организаций, при этом каждая организация будет иметь свой собственный экземпляр ресурса EpisodeOfCare, отслеживающий их ответственность перед пациентом.
+      <!-- Many organizations can be involved in an episode of care, however each organization will have its own EpisodeOfCare resource instance
+      that tracks its responsibility with the patient. -->
     </p>
     <p>
 	Когда организация завершает свое участие в уходе за пациентом и передает заботу о нём другой организации. Часто это оформляется в виде направления пациента в другую организацию (или организации).
@@ -45,7 +45,7 @@
     </p>
   </div>
   <div>
- <a name="bnr"> </a>
+ <a name="bnr"></a>
     <h2>Границы и связи</h2>
     <p>
 	Основное различие между EpisodeOfCare и Encounter в том, что Encounter содержит сведения об активности, относящейся непосредственно к пациенту, а EpisodeOfCare является контейнером, который объединяет несколько ресурсов Encounter по определённым проблемам/вопросам.
@@ -67,7 +67,7 @@
   </div>
 
   <div>
- <a name="bnc"> </a>
+ <a name="bnc"></a>
     <h2>Предпосылки и контекст</h2>
     <p>
 	Системы собирают когерентную группу активностей (таких как случаи обслуживания), относящихся к состоянию или проблеме со здоровьем пациента, часто называемую эпизодом лечения.
@@ -75,7 +75,7 @@
 	Ресурс EpisodeOfCare содержит сведения о цели медицинского ухода и может существовать без каких-либо активностей.
       <!-- Systems collect a coherent group of activities (such as encounters) related to a patient's health condition or problem often referred to as a Care Episode.
       Information about an episode is often shared across systems, and in some cases organizational and disciplinary boundaries.
-      An Episode Of Care contains details about the purpose of the care and can exist without any activities. --><br/>
+      An EpisodeOfCare contains details about the purpose of the care and can exist without any activities. --><br/>
 Минимальной информацией, которая потребуется для эпизода медицинского лечения, будет пациент, организация и причина этого объединения.
 Другими причинами создания EpisodeOfCare может быть отслеживание сведений, требуемых для отчетности в государственные органы или выставления счетов.
       <!-- The minimal information that would be required in an episode of care would be a patient, organization and a reason for the ongoing association.
