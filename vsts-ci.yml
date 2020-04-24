@@ -6,7 +6,7 @@ steps:
    [ -d publish ] && rm -rf publish   
    
    antBuild (){
-     ant -Dargs="./publish.sh -url http://build.fhir.org/ -nocheck"
+     ant -Dargs="./publish.sh -url https://build.fhir.org/ -nocheck"
      checkStatus
    }
    

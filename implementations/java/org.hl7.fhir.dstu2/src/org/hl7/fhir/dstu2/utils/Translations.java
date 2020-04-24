@@ -116,7 +116,7 @@ public class Translations {
       return "Nederlands (Dutch)";
     if (s.equals("de"))
       return "Deutsch (German)";
-    if (s.equals("ru"))
+    if (s.equals("du"))
       return "\u0440\u0443\u0301\u0441\u0441\u043a\u0438\u0439 (Russian)";
     return "\"" + s + "\"";
   }
