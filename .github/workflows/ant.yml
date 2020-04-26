@@ -24,21 +24,17 @@ jobs:
       # run: ant -noinput -buildfile build.xml
 
     - run: |
-       cp -R source.ru/* source
-       set -ev
-       git fetch --depth 20
-       
-       [ -d publish ] && rm -rf publish
-       
-       NAME="Непрерывная интеграционная сборка"
-       SVNREV=$(git rev-parse --short HEAD)
-       
-       antBuild (){
+        cp -R source.ru/* source
+        set -ev
+        git fetch --depth 20
+        [ -d publish ] && rm -rf publish
+        NAME="Непрерывная интеграционная сборка"
+        SVNREV=$(git rev-parse --short HEAD)
+        antBuild (){
          ant -Dargs="./publish.sh -svn $SVNREV -name \'$NAME\' -url http://build.fhir.org/  -post-pr"
            checkStatus
-       }
-       
-       checkStatus (){
+        }
+        checkStatus (){
          nf=`find publish -maxdepth 1 -type f | wc -l`
          if [ "$nf" -lt "100" ] ; then
             echo "< 100 files produced: bailing!"
@@ -52,31 +48,26 @@ jobs:
            cat fhir-error-dump.txt
            exit 1
          fi
-       }
-       
-       antBuild
-      displayName: 'Build via build.sh'
-
+        }
+        antBuild
+        displayName: 'Build via build.sh'
     - run: |
-       echo "Will publish!"
-       
-       PASSPHRASE=$(DEPLOY_KEY_PASSPHRASE)
-       
-       echo $(DEPLOY_KEY_ENCRYPTED) | openssl  enc -aes-256-cbc -d  -pass pass:$PASSPHRASE  -base64 -A > ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa
-       chmod 400 ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa
-       
-       ls -l ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa
-       wc ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa
-       git init
-       git config user.email "azure-devops-build@fhir.org"
-       git config user.name "Azure Dev Ops Builder"
-       git remote add origin git@github.com:fhir-ru/fhir-ru.github.io
-       touch .test
-       ../remove_files_larger_than_100mg_for_gh_pages_compatibility.sh
-       git add -A .
-       git commit -m "Azure DevOps docs build"       
-       ssh -i ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa git@github.com
-       GIT_SSH_COMMAND='ssh -i ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa' git push -f origin master
-       rm ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa
-      workingDirectory: publish
-      displayName: Publish
+        echo "Will publish!"       
+        PASSPHRASE=$(DEPLOY_KEY_PASSPHRASE)       
+        echo $(DEPLOY_KEY_ENCRYPTED) | openssl  enc -aes-256-cbc -d  -pass pass:$PASSPHRASE  -base64 -A > ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa
+        chmod 400 ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa       
+        ls -l ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa
+        wc ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa
+        git init
+        git config user.email "azure-devops-build@fhir.org"
+        git config user.name "Azure Dev Ops Builder"
+        git remote add origin git@github.com:fhir-ru/fhir-ru.github.io
+        touch .test
+        ../remove_files_larger_than_100mg_for_gh_pages_compatibility.sh
+        git add -A .
+        git commit -m "Azure DevOps docs build"       
+        ssh -i ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa git@github.com
+        GIT_SSH_COMMAND='ssh -i ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa' git push -f origin master
+        rm ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa
+        workingDirectory: publish
+        displayName: Publish
