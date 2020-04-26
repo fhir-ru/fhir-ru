@@ -23,7 +23,7 @@ jobs:
     - name: Build with Ant
       # run: ant -noinput -buildfile build.xml
 
-    - bash: |
+    - run: |
        cp -R source.ru/* source
        set -ev
        git fetch --depth 20
@@ -57,7 +57,7 @@ jobs:
        antBuild
       displayName: 'Build via build.sh'
 
-    - bash: |
+    - run: |
        echo "Will publish!"
        
        PASSPHRASE=$(DEPLOY_KEY_PASSPHRASE)
