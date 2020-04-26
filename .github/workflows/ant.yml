@@ -67,22 +67,16 @@ jobs:
        
        ls -l ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa
        wc ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa
-
        git init
-
        git config user.email "azure-devops-build@fhir.org"
        git config user.name "Azure Dev Ops Builder"
        git remote add origin git@github.com:fhir-ru/fhir-ru.github.io
-
        touch .test
        ../remove_files_larger_than_100mg_for_gh_pages_compatibility.sh
        git add -A .
-       git commit -m "Azure DevOps docs build"
-       
+       git commit -m "Azure DevOps docs build"       
        ssh -i ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa git@github.com
        GIT_SSH_COMMAND='ssh -i ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa' git push -f origin master
        rm ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa
       workingDirectory: publish
-
       displayName: Publish
-      
