@@ -51,22 +51,13 @@ jobs:
         displayName: 'Build via build.sh'
     - shell: bash
       run: |
-        echo "Will publish!"       
-        PASSPHRASE=$(DEPLOY_KEY_PASSPHRASE)       
-        echo $(DEPLOY_KEY_ENCRYPTED) | openssl  enc -aes-256-cbc -d  -pass pass:$PASSPHRASE  -base64 -A > ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa
-        chmod 400 ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa       
-        ls -l ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa
-        wc ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa
-        git init
-        git config user.email "azure-devops-build@fhir.org"
-        git config user.name "Azure Dev Ops Builder"
-        git remote add origin git@github.com:fhir-ru/fhir-ru.github.io
+        echo "Will publish!"
         touch .test
         ../remove_files_larger_than_100mg_for_gh_pages_compatibility.sh
-        git add -A .
-        git commit -m "Azure DevOps docs build"       
-        ssh -i ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa git@github.com
-        GIT_SSH_COMMAND='ssh -i ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa' git push -f origin master
-        rm ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa
-        workingDirectory: publish
-        displayName: Publish
+    - name: publish
+        uses: johno/actions-push-subdirectories@master
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          args: publish fhir-ru fhir-ru.github.io
