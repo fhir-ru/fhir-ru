@@ -46,10 +46,12 @@ jobs:
          fi
         }
         antBuild
-    - name: publish
-      uses: johno/actions-push-subdirectories@master
+    - name: Publish generated content to GitHub Pages
+      uses: tsunematsu21/actions-publish-gh-pages@v1.0.1
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        args: publish fhir-ru fhir-ru.github.io
+        dir: publish
+        repo: fhir-ru/fhir-ru.github.io
+        token: ${{ secrets.API_TOKEN_GITHUB }}
