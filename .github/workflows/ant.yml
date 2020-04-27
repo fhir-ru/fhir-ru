@@ -46,11 +46,11 @@ jobs:
          fi
         }
         antBuild
-    - shell: bash
-      run: |
-        echo "Will publish!"
-        touch .test
-        ../remove_files_larger_than_100mg_for_gh_pages_compatibility.sh
+    #- shell: bash
+    #  run: |
+    #    echo "Will publish!"
+    #    touch .test
+    #    ../remove_files_larger_than_100mg_for_gh_pages_compatibility.sh
     - name: publish
       uses: johno/actions-push-subdirectories@master
       env:
