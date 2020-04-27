@@ -2953,7 +2953,7 @@ public class Publisher implements URIResolver, SectionNumberer {
       PackageCacheManager pcm = new PackageCacheManager(true, ToolsVersion.TOOLS_VERSION);
       pcm.addPackageToCache("hl7.fhir.core", "4.0.1", new FileInputStream(Utilities.path(page.getFolders().dstDir, "package.tgz")));
       NpmPackage npm = pcm.loadPackageCache("hl7.fhir.core", "4.0.1");
-      extractToPackageMaster(npm, "C:\\work\\org.hl7.fhir\\packages\\hl7.fhir.rX");     
+      // extractToPackageMaster(npm, "C:\\work\\org.hl7.fhir\\packages\\hl7.fhir.rX");     
 
       page.log(" ...zips", LogMessageType.Process);
       zip = new ZipGenerator(page.getFolders().dstDir + "examples.zip");
