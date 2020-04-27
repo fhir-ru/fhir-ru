@@ -53,9 +53,9 @@ jobs:
         touch .test
         ../remove_files_larger_than_100mg_for_gh_pages_compatibility.sh
     - name: publish
-        uses: johno/actions-push-subdirectories@master
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          args: publish fhir-ru fhir-ru.github.io
+      uses: johno/actions-push-subdirectories@master
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        args: publish fhir-ru fhir-ru.github.io
