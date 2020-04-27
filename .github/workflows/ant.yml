@@ -46,7 +46,6 @@ jobs:
          fi
         }
         antBuild
-        displayName: 'Build via build.sh'
     - shell: bash
       run: |
         echo "Will publish!"
