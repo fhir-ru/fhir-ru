@@ -18,6 +18,35 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
+    - shell: bash
+      name: Build fhir-ru site
+      run: |
+        cp -R source.ru/* source
+        set -ev
+        git fetch --depth 20
+        [ -d publish ] && rm -rf publish
+        NAME="Непрерывная интеграционная сборка"
+        SVNREV=$(git rev-parse --short HEAD)
+        antBuild (){
+         ant -Dargs="./publish.sh -svn $SVNREV -name \'$NAME\' -url http://build.fhir.org/  -post-pr"
+           checkStatus
+        }
+        checkStatus (){
+         nf=`find publish -maxdepth 1 -type f | wc -l`
+         if [ "$nf" -lt "100" ] ; then
+            echo "< 100 files produced: bailing!"
+            exit 1
+         fi
+         if [ $? -eq 0 -a ! -f fhir-error-dump.txt ]
+         then
+           echo "Build status OK"
+         else
+           echo "error dump:"
+           cat fhir-error-dump.txt
+           exit 1
+         fi
+        }
+        antBuild
     - name: Publish generated content to GitHub Pages
       uses: johno/actions-push-subdirectories@master
       env:
