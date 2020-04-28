@@ -19,23 +19,12 @@ jobs:
       with:
         java-version: 1.8
     - name: Publish generated content to GitHub Pages
-      shell: bash
-      run: |
-        echo "Will publish!"       
-        PASSPHRASE=$(DEPLOY_KEY_PASSPHRASE)       
-        echo $(DEPLOY_KEY_ENCRYPTED) | openssl  enc -aes-256-cbc -d  -pass pass:$PASSPHRASE  -base64 -A > ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa
-        chmod 400 ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa       
-        ls -l ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa
-        wc ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa
-        git init
-        git config user.email "gh-actions-build@fhir.org"
-        git config user.name "GH Actions Builder"
-        git remote add origin git@github.com:fhir-ru/fhir-ru.github.io
-        touch .test
-        ../remove_files_larger_than_100mg_for_gh_pages_compatibility.sh
-        git add -A .
-        git commit -m "GH Actions docs build"       
-        ssh -i ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa git@github.com
-        GIT_SSH_COMMAND='ssh -i ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa' git push -f origin master
-        rm ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa
-        workingDirectory: publish
+      uses: tsunematsu21/actions-publish-gh-pages@v1.0.1
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        dir: publish
+        repo: git@github.com:fhir-ru/fhir-ru.github.io
+        branch: master
+        token: ${{ secrets.GITHUB_TOKEN }}
