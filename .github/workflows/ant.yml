@@ -49,7 +49,7 @@ jobs:
     #     antBuild
     - name: Publish generated content to GitHub Pages
       shell: bash
-      working-directory: ./publish
+      working-directory: ./source
       run: |
         git init
         git config user.email "github-builder@fhir.org"
