@@ -19,12 +19,9 @@ jobs:
       with:
         java-version: 1.8
     - name: Publish generated content to GitHub Pages
-      uses: tsunematsu21/actions-publish-gh-pages@v1.0.1
+      uses: johno/actions-push-subdirectories@master
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        dir: publish
-        repo: git@github.com:fhir-ru/fhir-ru.github.io
-        branch: master
-        token: ${{ secrets.GITHUB_TOKEN }}
+        args: publish fhir-ru fhir-ru.github.io
