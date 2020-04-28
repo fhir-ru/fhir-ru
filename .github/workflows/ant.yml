@@ -6,8 +6,6 @@ name: Java CI
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
 jobs:
   build:
@@ -18,9 +16,8 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
-    # - name: Build with Ant
-      # run: ant -noinput -buildfile build.xml
     - shell: bash
+      name: Build fhir-ru site
       run: |
         cp -R source.ru/* source
         set -ev
@@ -48,25 +45,15 @@ jobs:
          fi
         }
         antBuild
-        displayName: 'Build via build.sh'
-    - shell: bash
+    - name: Publish generated content to GitHub Pages
+      shell: bash
+      working-directory: ./publish
       run: |
-        echo "Will publish!"       
-        PASSPHRASE=$(DEPLOY_KEY_PASSPHRASE)       
-        echo $(DEPLOY_KEY_ENCRYPTED) | openssl  enc -aes-256-cbc -d  -pass pass:$PASSPHRASE  -base64 -A > ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa
-        chmod 400 ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa       
-        ls -l ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa
-        wc ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa
         git init
-        git config user.email "azure-devops-build@fhir.org"
-        git config user.name "Azure Dev Ops Builder"
-        git remote add origin git@github.com:fhir-ru/fhir-ru.github.io
-        touch .test
+        git config user.email "github-builder@fhir.org"
+        git config user.name "GitHub Actions Builder"
+        git remote add origin https://semalexa:${{ secrets.API_TOKEN_GITHUB }}@github.com/fhir-ru/fhir-ru.github.io
         ../remove_files_larger_than_100mg_for_gh_pages_compatibility.sh
         git add -A .
-        git commit -m "Azure DevOps docs build"       
-        ssh -i ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa git@github.com
-        GIT_SSH_COMMAND='ssh -i ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa' git push -f origin master
-        rm ${BUILD_REPOSITORY_LOCALPATH}/deploy.rsa
-        workingDirectory: publish
-        displayName: Publish
+        git commit -m "GitHub Actions docs build"
+        git push -f origin master
