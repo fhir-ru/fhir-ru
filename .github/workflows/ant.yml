@@ -47,11 +47,15 @@ jobs:
     #      fi
     #     }
     #     antBuild
-    - name: Deploy 🚀
-      uses: JamesIves/github-pages-deploy-action@releases/v3
-      with:
-        ACCESS_TOKEN: ${{ secrets.API_TOKEN_GITHUB }}
-        BRANCH: master
-        FOLDER: publish
-        REPOSITORY_NAME: fhir-ru/fhir-ru.github.io
-        SINGLE_COMMIT: true
+    - name: Publish generated content to GitHub Pages
+      shell: bash
+      working-directory: ./publish
+      run: |
+        git init
+        git config user.email "github-builder@fhir.org"
+        git config user.name "GitHub Actions Builder"
+        git remote add origin https://semalexa:${{ secrets.API_TOKEN_GITHUB }}@github.com/fhir-ru/fhir-ru.github.io
+        ../remove_files_larger_than_100mg_for_gh_pages_compatibility.sh
+        git add -A .
+        git commit -m "GitHub Actions docs build"
+        git push origin master
