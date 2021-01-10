@@ -1,4 +1,0 @@
-// Returned on successful evaluation
-HTTP/1.1 200 OK
-
-$include collect-data-response.json
