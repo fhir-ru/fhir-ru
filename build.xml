@@ -78,13 +78,13 @@
     <ivy:dependencytree/>
   </target>
 
-  <!-- <target name="clean-ivy" description="clean the ivy installation"> -->
-    <!-- <delete dir="${ivy.jar.dir}"/> -->
-  <!-- </target> -->
+  <target name="clean-ivy" description="--> clean the ivy installation">
+    <delete dir="${ivy.jar.dir}"/>
+  </target>
 
-  <!-- <target name="clean-cache" depends="install-ivy"  -->
-    <!-- description="clean the ivy cache"> -->
-    <!-- <ivy:cleancache /> -->
-  <!-- </target> -->
+  <target name="clean-cache" depends="install-ivy" 
+    description="--> clean the ivy cache">
+    <ivy:cleancache />
+  </target>
 
 </project>

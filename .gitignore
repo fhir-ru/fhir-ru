@@ -14,11 +14,6 @@ holder.txt
 /schema/datatypes
 /implementations/javascript/app
 
-/source_/
-/source.ru-RU/
-/source.ru-RU-old/
-/source.ru_/
-
 # Boring system files that don’t belong in the project repository
 .DS_Store
 source/.DS_Store

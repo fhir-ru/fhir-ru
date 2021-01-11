@@ -74,46 +74,46 @@
         <propertyref name="build.compiler"/>
       </propertyset>
     </ant>
-    <!-- <ant antfile="build.xml" dir="${org.hl7.fhir.implementation3.location}" inheritAll="false" target="build-project"> -->
-      <!-- <propertyset> -->
-        <!-- <propertyref name="build.compiler"/> -->
-      <!-- </propertyset> -->
-    <!-- </ant> -->
+    <ant antfile="build.xml" dir="${org.hl7.fhir.implementation3.location}" inheritAll="false" target="build-project">
+      <propertyset>
+        <propertyref name="build.compiler"/>
+      </propertyset>
+    </ant>
     <ant antfile="build.xml" dir="${org.hl7.fhir.implementation4.location}" inheritAll="false" target="build-project">
       <propertyset>
         <propertyref name="build.compiler"/>
       </propertyset>
     </ant>
-    <!-- <ant antfile="build.xml" dir="${org.hl7.fhir.implementation2.location}" inheritAll="false" target="build-project"> -->
-      <!-- <propertyset> -->
-        <!-- <propertyref name="build.compiler"/> -->
-      <!-- </propertyset> -->
-    <!-- </ant> -->
-    <!-- <ant antfile="build.xml" dir="${org.hl7.fhir.implementation14.location}" inheritAll="false" target="build-project"> -->
-      <!-- <propertyset> -->
-        <!-- <propertyref name="build.compiler"/> -->
-      <!-- </propertyset> -->
-    <!-- </ant> -->
-    <!-- <ant antfile="build.xml" dir="${org.hl7.fhir.convertors.location}" inheritAll="false" target="build-project"> -->
-      <!-- <propertyset> -->
-        <!-- <propertyref name="build.compiler"/> -->
-      <!-- </propertyset> -->
-    <!-- </ant> -->
-    <!-- <ant antfile="build.xml" dir="${org.hl7.fhir.validation.location}" inheritAll="false" target="build-project"> -->
-      <!-- <propertyset> -->
-        <!-- <propertyref name="build.compiler"/> -->
-      <!-- </propertyset> -->
-    <!-- </ant> -->
-    <!-- <ant antfile="build.xml" dir="${org.hl7.fhir.rdf.location}" inheritAll="false" target="build-project"> -->
-      <!-- <propertyset> -->
-        <!-- <propertyref name="build.compiler"/> -->
-      <!-- </propertyset> -->
-    <!-- </ant> -->
-    <!-- <ant antfile="build.xml" dir="${org.hl7.fhir.igtools.location}" inheritAll="false" target="build-project"> -->
-      <!-- <propertyset> -->
-        <!-- <propertyref name="build.compiler"/> -->
-      <!-- </propertyset> -->
-    <!-- </ant> -->
+    <ant antfile="build.xml" dir="${org.hl7.fhir.implementation2.location}" inheritAll="false" target="build-project">
+      <propertyset>
+        <propertyref name="build.compiler"/>
+      </propertyset>
+    </ant>
+    <ant antfile="build.xml" dir="${org.hl7.fhir.implementation14.location}" inheritAll="false" target="build-project">
+      <propertyset>
+        <propertyref name="build.compiler"/>
+      </propertyset>
+    </ant>
+    <ant antfile="build.xml" dir="${org.hl7.fhir.convertors.location}" inheritAll="false" target="build-project">
+      <propertyset>
+        <propertyref name="build.compiler"/>
+      </propertyset>
+    </ant>
+    <ant antfile="build.xml" dir="${org.hl7.fhir.validation.location}" inheritAll="false" target="build-project">
+      <propertyset>
+        <propertyref name="build.compiler"/>
+      </propertyset>
+    </ant>
+    <ant antfile="build.xml" dir="${org.hl7.fhir.rdf.location}" inheritAll="false" target="build-project">
+      <propertyset>
+        <propertyref name="build.compiler"/>
+      </propertyset>
+    </ant>
+    <ant antfile="build.xml" dir="${org.hl7.fhir.igtools.location}" inheritAll="false" target="build-project">
+      <propertyset>
+        <propertyref name="build.compiler"/>
+      </propertyset>
+    </ant>
   </target>
   <target name="copy-instance-classes">
     <delete>
