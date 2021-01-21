@@ -13,80 +13,80 @@
       <a name="CDA"></a>
       <h2>Clinical Document Architecture (CDA) on FHIR</h2>
 <table class="colsi"><tr><td id="wg"><a _target="blank" href="[%wg sd%]">[%wgt sd%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="versions.html#std-process">Standards Status</a>:<!--!ns!--><a href="versions.html#std-process">Informative</a></td></tr></table>
-      <h3>What is CDA on FHIR?</h3>
+      <h3> Что такое CDA на FHIR? </h3>
       <p>
-        CDA on FHIR specifies how to implement CDA R2 with the FHIR <a href="composition.html">Composition</a> resource.<br/>
-        The original HL7 Clinical Document Architecture (CDA) defined the structure and semantics of &quot;clinical documents&quot; for the purpose of exchange.
-        A clinical document is a documentation of clinical observations and services, with the following characteristics:
+        CDA на FHIR определяет, как реализовать CDA R2 с помощью ресурса FHIR <a href="composition.html"> Composition </a>. <br/>
+        Первоначальная архитектура клинических документов (CDA) HL7 определяла структуру и семантику «клинических документов». с целью обмена.
+        Клинический документ - это документация клинических наблюдений и услуг со следующими характеристиками:
         <ul>
-          <li>Persistence - A clinical document continues to exist in an unaltered state, for a time period defined by local and regulatory requirements (NOTE: There is a distinct scope of persistence for a clinical document, independent of the persistence of any XML-encoded CDA document instance).</li>
-          <li>Stewardship - A clinical document is maintained by an organization entrusted with its care.</li>
-          <li>Potential for authentication - A clinical document is an assemblage of information that is intended to be legally authenticated.</li>
-          <li>Context - A clinical document establishes the context for its contents.</li>
-          <li>Wholeness - Authentication of a clinical document applies to the whole and does not apply to portions of the document without the full context of the document.</li>
-          <li>Human readability - A clinical document is human readable.</li>
+          <li> Стойкость - клинический документ продолжает существовать в неизменном состоянии в течение периода времени, определенного местными и нормативными требованиями (ПРИМЕЧАНИЕ. Для клинического документа существует определенная область постоянства, независимо от стойкости любого XML-кодированного документа. Экземпляр документа АКД). </li>
+          <li> Управление - клинический документ поддерживается организацией, которой доверена его забота. </li>
+          <li> Возможность аутентификации - клинический документ - это совокупность информации, которая предназначена для юридической аутентификации. </li>
+          <li> Контекст - клинический документ устанавливает контекст для его содержания. </li>
+          <li> Полнота - аутентификация клинического документа применяется ко всему и не применяется к частям документа без полного контекста документа. </li>
+          <li> Удобочитаемость - клинический документ читается человеком. </li>
         </ul>
-        A CDA document on FHIR is a defined and complete information object that can include text, images, sounds, and other multimedia content.
+        Документ CDA на FHIR - это определенный и полный информационный объект, который может включать текст, изображения, звуки и другой мультимедийный контент.
      </p>
 
-      <h3>Scope of the CDA on FHIR</h3>
+      <h3> Объем CDA на FHIR </h3>
       <p>
-        The scope of CDA on FHIR is the standardization of clinical documents for exchange.<br/><br/>
-        The data format of clinical documents outside of the exchange context (e.g. the data format used to store clinical documents) is not addressed in this specification.<br/><br/>
-        CDA on FHIR does not specify the creation or management of documents, only their exchange markup. While it may be possible to directly use the CDA Schema in a document authoring environment, such use is not the primary purpose of the CDA specification.<br/><br/>
-        Document management is critically interdependent with the CDA specifications, but the specification of document management messages is outside the scope of the CDA.
+        Сфера CDA на FHIR - стандартизация клинических документов для обмена. <br/> <br/>
+        Формат данных клинических документов вне контекста обмена (например, формат данных, используемый для хранения клинических документов) в этой спецификации не рассматривается. <br/> <br/>
+        CDA на FHIR не определяет создание или управление документами, а только разметку их обмена. Хотя схему АКД можно напрямую использовать в среде разработки документов, такое использование не является основной целью спецификации АКД. <br/> <br/>
+        Управление документами критически взаимосвязано со спецификациями АКД, но спецификация сообщений управления документами выходит за рамки АКД.
       </p>
-      <h3>Goals and Design Principles</h3>
-      <p>The goals of CDA on FHIR are:
+      <h3> Цели и принципы дизайна </h3>
+      <p> Цели CDA на FHIR:
         <ul>
-          <li>Give priority to delivery of patient care.</li>
-          <li>Allow cost effective implementation across as wide a spectrum of systems as possible.</li>
-          <li>Support exchange of human-readable documents between users, including those with different levels of technical sophistication.</li>
-          <li>Promote longevity of all information encoded according to this architecture.</li>
-          <li>Enable a wide range of post-exchange processing applications.</li>
-          <li>Be compatible with a wide range of document creation applications.</li>
-          <li>Promote exchange that is independent of the underlying transfer or storage mechanism.</li>
-          <li>Prepare the design reasonably quickly.</li>
-          <li>Enable policy-makers to control their own information requirements without extension to this specification.</li>
+          <li> Отдавайте приоритет оказанию помощи пациентам. </li>
+          <li> Обеспечьте рентабельное внедрение в максимально широком спектре систем. </li>
+          <li> Поддержка обмена удобочитаемыми документами между пользователями, в том числе с разным уровнем технической подготовки. </li>
+          <li> Обеспечение долговечности всей информации, закодированной в соответствии с этой архитектурой. </li>
+          <li> Включите широкий спектр приложений для обработки после обмена. </li>
+          <li> Будьте совместимы с широким спектром приложений для создания документов. </li>
+          <li> Продвигайте обмен, который не зависит от основного механизма передачи или хранения. </li>
+          <li> Достаточно быстро подготовьте дизайн. </li>
+          <li> Разрешить политикам контролировать свои собственные требования к информации без расширения этой спецификации. </li>
         </ul>
-        Several design principles follow from consideration of the above goals:
+        Из рассмотрения вышеуказанных целей вытекают несколько принципов проектирования:
         <ul>
-          <li>This architecture must be compatible with XML and JSON.</li>
-          <li>This architecture must be compatible with representations of clinical information arising from other HL7 committees.</li>
-          <li>Technical barriers to the use of the architecture should be minimized.</li>
-          <li>The architecture specifies the representation of instances required for exchange.</li>
-          <li>The architecture should impose minimal constraints or requirements on document structure and content required for exchange.</li>
-          <li>The architecture must be scalable to accommodate fine-grained markup such as highly structured text and coded data.</li>
-          <li>Document specifications based on this architecture should accommodate such constraints and requirements as supplied by appropriate professional, commercial, and regulatory agencies.</li>
-          <li>Document specifications for document creation and processing, if intended for exchange, should map to this exchange architecture.</li>
-          <li>CDA documents must be human readable using widely-available and commonly-deployed XML-aware browsers and print drivers and a generic CDA style sheet written in a standard style sheet language.</li>
-          <li>Use open standards.</li>
+          <li> Эта архитектура должна быть совместима с XML и JSON. </li>
+          <li> Эта архитектура должна быть совместима с представлениями клинической информации, полученной от других комитетов HL7. </li>
+          <li> Технические барьеры для использования архитектуры должны быть сведены к минимуму. </li>
+          <li> Архитектура определяет представление экземпляров, необходимых для обмена. </li>
+          <li> Архитектура должна налагать минимальные ограничения или требования на структуру и контент документа, необходимые для обмена. </li>
+          <li> Архитектура должна быть масштабируемой для размещения мелкозернистой разметки, такой как структурированный текст и закодированные данные. </li>
+          <li> Спецификации документов, основанные на этой архитектуре, должны учитывать такие ограничения и требования, которые предоставляются соответствующими профессиональными, коммерческими и регулирующими органами. </li>
+          <li> Спецификации документов для создания и обработки документов, если они предназначены для обмена, должны соответствовать этой архитектуре обмена. </li>
+          <li> Документы CDA должны быть удобочитаемыми с использованием широко доступных и широко используемых браузеров с поддержкой XML и драйверов печати, а также общей таблицы стилей CDA, написанной на стандартном языке таблиц стилей. </li>
+          <li> Используйте открытые стандарты. </li>
         </ul>
 
       </p>
       <a name="general"></a>
 
-      <h2>General CDA on FHIR Concepts</h2>
-      <h3>Major Components of a CDA on FHIR Document</h3>
+      <h2> Общий CDA по концепциям FHIR </h2>
+      <h3> Основные компоненты CDA в документе FHIR </h3>
       <p>
-        This section serves as a high-level introduction to the major components of a CDA document, all of which are described again and in greater detail later on. The intent here is to familiarize the reader with the high-level concepts to facilitate an understanding of the sections that follow.
+        Этот раздел служит введением высокого уровня в основные компоненты документа АКД, все из которых будут описаны снова и более подробно позже. Цель здесь - познакомить читателя с концепциями высокого уровня, чтобы облегчить понимание следующих разделов.
 
-        [EDITORS: in CDA r2 there is a bunch of detail about how CDA is wrapped - and an example. Consider whether the discussion is relevant here: "A CDA document is wrapped by the &lt;ClinicalDocument&gt; element, and contains a header..."]
+        [РЕДАКТОРЫ: в CDA r2 есть множество подробностей о том, как упакован CDA - и пример. Подумайте, уместно ли здесь обсуждение: «Документ CDA заключен в элемент &lt; ClinicalDocument &gt; и содержит заголовок ...»]
        </p>
-      <h3>Human Readability and Rendering CDA Documents</h3>
+      <h3> Удобочитаемость и отрисовка документов CDA </h3>
       <p>
-        The CDA requirement for human readability guarantees that a receiver of a CDA document can algorithmically display the clinical content of the note on a standard Web browser.
+        Требование CDA к удобочитаемости человека гарантирует, что получатель документа CDA может алгоритмически отображать клиническое содержание заметки в стандартном веб-браузере.
         <ul>
-          <li>There must be a deterministic way for a recipient of an arbitrary CDA document to render the attested content.</li>
-          <li>Human readability shall not require a sender to transmit a special style sheet along with a CDA document. It must be possible to render all CDA documents with a single style sheet and general-market display tools.</li>
-          <li>Human readability applies to the authenticated content. There may be additional information conveyed in the document that is there primarily for machine processing that is not authenticated and need not be rendered.</li>
-          <li>When structured content is derived from narrative, there must be a mechanism to describe the process (e.g. by author, by human coder, by natural language processing algorithm, by specific software) by which machine-processable portions were derived from a block of narrative.</li>
-          <li>When narrative is derived from structured content, there must be a mechanism to identify the process by which narrative was generated from structured data.</li>
-        </ul>
-        These principles and requirements have led to the current approach, where the material to be rendered is placed into the Section.content.
+          <li> Для получателя произвольного документа АКД должен существовать детерминированный способ визуализации заверенного содержимого. </li>
+          <li> Для удобочитаемости отправитель не должен передавать специальную таблицу стилей вместе с документом АКД. Должна быть предусмотрена возможность визуализации всех документов АКД с помощью единой таблицы стилей и инструментов отображения общего рынка. </li>
+          <li> Удобочитаемость применяется к аутентифицированному контенту. В документе может содержаться дополнительная информация, предназначенная в первую очередь для машинной обработки, которая не аутентифицирована и не требует отображения. </li>
+           <li> Когда структурированный контент выводится из повествования, должен быть механизм для описания процесса (например, автором, человеком-программистом, алгоритмом обработки естественного языка, конкретным программным обеспечением), с помощью которого обрабатываемые машиной части были получены из блока. повествования. </li>
+           <li> Когда повествование создается из структурированного контента, должен быть механизм, позволяющий идентифицировать процесс, с помощью которого повествование было создано из структурированных данных. </li>
+         </ul>
+         Эти принципы и требования привели к нынешнему подходу, при котором отображаемый материал помещается в Section.content.
 
-        [EDITORS: The current design doesn't make it clear where to consistently find narrative.]
-      </p>
+         [РЕДАКТОРЫ: В нынешнем дизайне неясно, где постоянно искать повествование.]
+       </p>
 
 
 
