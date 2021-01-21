@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 
-[%settitle Asynchronous pattern%]
+[%settitle Асинхронный шаблон%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -9,99 +9,100 @@
 [%file newnavbar%]
 
 <div class="col-12"><!--ReleaseHeader--><p id="publish-box"></p><!--EndReleaseHeader-->
-<h2 id="asynchronous-request-pattern">Asynchronous Request Pattern</h2>
-<table class="colsd"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 2</td><td id="ballot"><a href="versions.html#std-process">Standards Status</a>:<!--!ns!--><a href="versions.html#std-process">Draft</a></td></tr></table>
+<h2 id="asynchronous-request-pattern">Шаблон асинхронного запроса</h2>
+<table class="colsd"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="versions.html#maturity">Уровень зрелости</a>: 2</td><td id="ballot"><a href="versions.html#std-process">Статус стандарта</a>:<!--!ns!--><a href="versions.html#std-process">проект</a></td></tr></table>
 
 [%impl-note%]
-the FHIR Asynchronous API and the $export Operation are under active development:</p>
+асинхронный FHIR API и операция $export находятся в активной разработке<!-- the FHIR Asynchronous API and the $export Operation are under active development -->:</p>
 <ul>
-<li>Visit the <a href="https://github.com/smart-on-fhir/fhir-bulk-data-docs">Draft FHIR Bulk Data Repository</a> for the most recent draft documentation and open issues</li>
-<li>Participate in design discussions at <a href="https://chat.fhir.org/#narrow/stream/bulk.20data">chat.fhir.org</a></li>
+<li>Посетите <a href="https://github.com/smart-on-fhir/fhir-bulk-data-docs">Draft FHIR Bulk Data Repository</a> для получения самой последней черновой документации и открытых вопросов</li>
+<li>Участвуйте в обсуждении разработки в чате <a href="https://chat.fhir.org/#narrow/stream/bulk.20data">chat.fhir.org</a></li>
 </ul>
 [%end-note-np%]
 
-<h3 id="use-case">Use Case</h3>
-<p>All of the interactions defined in the <a href="http.html">RESTful API</a> are described as synchronous operations - that is, the client makes a query and waits for the server to respond with the outcome in the HTTP response. This pattern is not suitable once significant server side processing becomes necessary or when substantial amounts of data must be returned.</p>
-<p>A good example of this is the <a href="https://github.com/smart-on-fhir/fhir-bulk-data-docs/blob/master/export.md">$export operation</a>, where simple searches may result in large amounts of data. </p>
-<p>The asynchronous request pattern, based on <a href="https://tools.ietf.org/html/rfc7240#section-4.1">rfc 7240</a>, caters to this use case and is applicable for all the <a href="http.html">Defined Interactions</a> and for <a href="operations.html">Operations</a>, although for many of these uses it brings no benefit. Servers may choose which interactions the pattern should be supported on (if at all), and servers may choose to only support some of the operations using the asynchronous pattern.</p>
+<h3 id="use-case">Вариант использования</h3>
+<p> Все взаимодействия, определенные в <a href="http.html"> RESTful API </a>, описываются как синхронные операции, то есть клиент делает запрос и ждет, пока сервер вернет результат в HTTP-ответе. Этот шаблон не подходит, если требуется значительная обработка на стороне сервера или когда необходимо вернуть значительные объемы данных. </p>
+<p> Хорошим примером этого является <a href="https://github.com/smart-on-fhir/fhir-bulk-data-docs/blob/master/export.md"> операция $export</a>, при которой простой поиск может привести к большим объемам данных. </p>
+<p>Шаблон асинхронного запроса, основанный на <a href="https://tools.ietf.org/html/rfc7240#section-4.1">rfc 7240</a>, подходит для этого варианта использования и применим для всех <a href="http.html">определенных взаимодействий</a> и <a href="operations.html"> операций </a>, хотя для многих из этих применений он не приносит никакой пользы. Серверы могут выбирать, для каких взаимодействий шаблон должен поддерживаться (если вообще), а серверы могут выбрать поддержку только некоторых операций, использующих асинхронный шаблон.
+ </p>
 <hr/>
-<h3 id="kick-off-request">Kick Off Request</h3>
-<p>The request will have whatever URL and other parameters would normally apply, but must include the headers described below.</p>
-<p><code>GET [FHIR API Request]</code></p>
-<h5 id="headers">Headers</h5>
+<h3 id="kick-off-request"> Запрос на запуск </h3>
+<p>Запрос будет иметь URL-адрес и другие параметры, которые обычно применяются, но должен включать заголовки, описанные ниже.</p>
+<p> <code>GET [FHIR API Request]</code> </p>
+<h5 id="headers"> Заголовки </h5>
 <ul>
-<li><p><code>Prefer</code> (required)</p>
-<p>Specifies whether the response is immediate or asynchronous. Setting this to <code>respond-async</code> triggers the async pattern.</p></li>
-<li><p><code>Accept</code> (required)</p>
-<p>Specifies the format of the optional OperationOutcome response to the kick-off request. Any of the <a href="formats.html#wire">Serialization Format Representations</a> are  supported.</p></li>
+<li><p> <code> Prefer </code> (обязательно) </p>
+<p> Определяет, будет ли ответ немедленным или асинхронным. Установка этого параметра на <code> response-async </code> запускает асинхронный шаблон. </p> </li>
+<li><p> <code> Accept </code> (обязательно) </p>
+<p> Определяет формат дополнительного ответа OperationOutcome на запрос о запуске. Поддерживаются любые представления <a href="formats.html#wire">формата сериализации</a>. </p> </li>
 </ul>
-<h5 id="query-string-parameters">Query String Parameters</h5>
+<h5 id="query-string-parameters"> Параметры строки запроса </h5>
 <ul>
-<li><p><code>_outputFormat</code> (string, optional, defaults to <code>application/fhir+ndjson</code>)</p>
-<p>The format for the generated bulk data files. Currently, <a href="http://ndjson.org/">ndjson</a> must be supported, though servers may choose to also support other output formats. Servers should support the full content type of <code>application/fhir+ndjson</code> as well as abbreviated representations including <code>application/ndjson</code> and <code>ndjson</code>.</p></li>
+<li><p> <code> _outputFormat </code> (строка, необязательно, по умолчанию используется <code>application/fhir+ndjson</code>) </p>
+<p>Формат сгенерированных файлов массовых данных. В настоящее время должен поддерживаться <a href="http://ndjson.org/"> ndjson </a>, хотя серверы могут также поддерживать другие форматы вывода. Серверы должны поддерживать полный тип содержимого <code>application/fhir+ndjson</code>, а также сокращенные представления, включая <code>application/ndjson</code> и <code> ndjson </code>. </p> </li>
 </ul>
-<h5 id="response---success">Response - Success</h5>
+<h5 id="response---success"> Ответ - Успех </h5>
 <ul>
-<li>HTTP Status Code of <code>202 Accepted</code> </li>
-<li><code>Content-Location</code> header with a url for subsequent status requests</li>
-<li>Optionally a FHIR OperationOutcome in the body</li>
+<li> Код состояния HTTP <code>202 Accepted</code> </li>
+<li> <code> Content-Location </code> заголовок с URL для последующих запросов статуса </li>
+<li>Необязательно: FHIR JSON OperationOutcome в теле запроса</li>
 </ul>
-<h5 id="response---error-eg-unsupported-search-parameter">Response - Error (e.g. unsupported search parameter)</h5>
+<h5 id="response---error-eg-unsupported-search-parameter"> Ответ - Ошибка (например, неподдерживаемый параметр поиска) </h5>
 <ul>
-<li>HTTP Status Code of <code>4XX</code> or <code>5XX</code></li>
-<li>Optionally a FHIR OperationOutcome in the body</li>
-</ul>
-<hr/>
-<h3 id="bulk-data-delete-request">Bulk Data Delete Request:</h3>
-<p>After a bulk data request has been kicked-off, clients can send a delete request to the url provided in the <code>Content-Location</code> header to cancel the request.</p>
-<h5 id="endpoint">Endpoint</h5>
-<p><code>DELETE [polling content location]</code></p>
-<h5 id="response---success-1">Response - Success</h5>
-<ul>
-<li>HTTP Status Code of <code>202 Accepted</code></li>
-<li>Optionally a FHIR OperationOutcome in the body</li>
-</ul>
-<h5 id="response---error-status">Response - Error Status</h5>
-<ul>
-<li>HTTP status code of <code>4XX</code> or <code>5XX</code></li>
-<li>Optionally a FHIR OperationOutcome in the body</li>
+<li> Код состояния HTTP <code> 4XX </code> или <code>5XX</code> </li>
+<li>Необязательно: FHIR JSON OperationOutcome в теле запроса</li>
 </ul>
 <hr/>
-<h3 id="bulk-data-status-request">Bulk Data Status Request:</h3>
-<p>After a bulk data request has been kicked-off, clients can poll the url provided in the <code>Content-Location</code> header to obtain the status of the request. </p>
-<p>Note: Clients should follow an <a href="https://en.wikipedia.org/wiki/Exponential_backoff">exponential backoff</a> approach when polling for status. Servers may supply a <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Retry-After">Retry-After header</a> with a http date or a delay time in seconds. When provided, clients should use this information to inform the timing of future polling requests.</p>
-<p>Note: The <code>Accept</code> header for this request should be <code>application/json</code>. In the case that errors prevent the export from completing, the response will contain a JSON-encoded FHIR OperationOutcome resource. </p>
-<h5 id="endpoint-1">Endpoint</h5>
-<p><code>GET [polling content location]</code></p>
-<h5 id="response---in-progress-status">Response - In-Progress Status</h5>
+<h3 id="bulk-data-delete-request"> Запрос на массовое удаление данных: </h3>
+<p> После запуска массового запроса данных клиенты могут отправить запрос на удаление по URL-адресу, указанному в заголовке <code> Content-Location </code>, чтобы отменить запрос. </p>
+<h5 id="endpoint"> Точка взаимодействия </h5>
+<p> <code>DELETE [polling content location]</code> </p>
+<h5 id="response---success-1"> Ответ - Успех </h5>
 <ul>
-<li>HTTP Status Code of <code>202 Accepted</code></li>
-<li>Optionally an <code>X-Progress</code> header with a text description of the status of the request that's less than 100 characters. The format of this description is at the server's discretion and may be a percentage complete value or a more general status such as "in progress". Clients can try to parse this value, display it to the user, or log it.</li>
+<li> Код состояния HTTP <code>202 Accepted</code> </li>
+<li>Необязательно: FHIR JSON OperationOutcome в теле запроса</li>
 </ul>
-<h5 id="response---error-status-1">Response - Error Status</h5>
+<h5 id="response---error-status"> Ответ - статус ошибки </h5>
 <ul>
-<li>HTTP status code of <code>5XX</code></li>
-<li>Optionally a JSON FHIR OperationOutcome in the body</li>
-<li>Even if some resources cannot successfully be exported, the overall export operation may still succeed. In this case, the <code>Response.error</code> array of the completion Response must be populated (see below) with one or more files in ndjson format containing <code>OperationOutcome</code> resources to indicate what went wrong.</li>
+<li> Код состояния HTTP <code> 4XX </code> или <code>5XX</code> </li>
+<li> Необязательно: FHIR JSON OperationOutcome в теле запроса</li>
 </ul>
-<h5 id="response---complete-status">Response - Complete Status</h5>
+<hr/>
+<h3 id="bulk-data-status-request"> Запрос состояния массовых данных: </h3>
+<p> После запуска массового запроса данных клиенты могут опросить URL-адрес, указанный в заголовке <code> Content-Location </code>, чтобы получить статус запроса. </p>
+<p> Примечание. Клиенты должны следовать подходу <a href="https://en.wikipedia.org/wiki/Exponential_backoff"> экспоненциальной отсрочки </a> при опросе статуса. Серверы могут предоставлять <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Retry-After"> заголовок Retry-After </a> с датой http или время задержки в секундах. Если эта информация предоставлена, клиенты должны использовать эту информацию для определения времени будущих запросов на опрос. </p>
+<p> Примечание. Заголовок <code> Accept </code> для этого запроса должен быть <code> application / json </code>. В случае, если из-за ошибок экспорт не завершился, ответ будет содержать ресурс FHIR OperationOutcome в кодировке JSON. </p>
+<h5 id="endpoint-1"> Конечная точка </h5>
+<p> <code> GET [местоположение опроса контента] </code> </p>
+<h5 id="response---in-progress-status"> Ответ - статус "Выполняется" </h5>
 <ul>
-<li><p>HTTP status of <code>200 OK</code></p></li>
-<li><p><code>Content-Type header</code> of <code>application/json</code></p></li>
-<li><p>Optionally an <code>Expires</code> header indicating when the files listed will no longer be available.</p></li>
-<li><p>A body containing a json object providing metadata and links to the generated bulk data files.</p>
-<p>Required Fields:</p></li>
-<li><p><code>transactionTime</code> - a FHIR instant type that indicates the server's time when the query is run. No resources that have a modified data after this instant should be in the response.</p></li>
-<li><p><code>request</code> - the full url of the original bulk data kick-off request</p></li>
-<li><p><code>requiresAccessToken</code> - boolean value indicating whether downloading the generated files will require an authentication token. Note: This may be false in the case of signed S3 urls or an internal file server within an organization's firewall.</p></li>
-<li><p><code>output</code> - array of bulk data file items with one entry for each generated file. Note: If no data is returned from the kick-off request, the server should return an empty array. </p></li>
-<li><p><code>error</code> - array of error file items following the same structure as the <code>output</code> array. Note: If no errors occurred, the server should return an empty array.  Note: Only the <code>OperationOutcome</code> resource type is currently supported, so a server will generate ndjson files where each row is an <code>OperationOutcome</code> resource.</p>
-<p>Each file item should contain the following fields:</p></li>
-<li><p><code>type</code> - the FHIR resource type that is contained in the file. Note: Each file may only contain resources of one type, but a server may create more than one file for each resources type returned. The number of resources contained in a file is may vary between servers. If no data is found for a resource, the server should not return an output item for it in the response.</p></li>
-<li><p><code>url</code> - the path to the file. The format of the file should reflect that requested in the <code>_outputFormat</code> parameter of the initial kick-off request.</p>
-<p>Each file item may optionally contain the following field:</p></li>
-<li><p><code>count</code> - the number of resources in the file, represented as a JSON number.</p>
-<p>Example response body:</p>
+<li> Код состояния HTTP <code> 202 принято </code> </li>
+<li> Необязательно заголовок <code> X-Progress </code> с текстовым описанием статуса запроса, длина которого не превышает 100 символов. Формат этого описания определяется по усмотрению сервера и может представлять собой процентное значение завершения или более общий статус, например «в процессе». Клиенты могут попытаться проанализировать это значение, отобразить его пользователю или зарегистрировать его. </li>
+</ul>
+<h5 id="response---error-status-1"> Ответ - статус ошибки </h5>
+<ul>
+<li> Код состояния HTTP <code>5XX</code> </li>
+<li> Необязательно JSON FHIR OperationOutcome в теле </li>
+<li> Даже если некоторые ресурсы не могут быть успешно экспортированы, общая операция экспорта все равно может быть успешной. В этом случае массив <code> Response.error </code> ответа завершения должен быть заполнен (см. Ниже) одним или несколькими файлами в формате ndjson, содержащими ресурсы <code> OperationOutcome </code>, чтобы указать, что пошло не так. . </li>
+</ul>
+<h5 id="response---complete-status"> Ответ - полный статус </h5>
+<ul>
+<li> <p> HTTP-статус <code> 200 OK </code> </p> </li>
+<li><p> <code> Заголовок Content-Type </code> из <code>application/json</code></p> </li>
+<li> <p> Необязательно заголовок <code> Expires </code>, указывающий, когда перечисленные файлы больше не будут доступны. </p> </li>
+<li> <p> Тело, содержащее объект json, содержащий метаданные и ссылки на сгенерированные файлы массовых данных. </p>
+<p> Обязательные поля: </p> </li>
+<li><p> <code> transactionTime </code> - мгновенный тип FHIR, который указывает время сервера, когда выполняется запрос. В ответе не должно быть ресурсов с измененными данными после этого момента. </p> </li>
+<li><p> <code> request </code> - полный URL-адрес исходного запроса на передачу массовых данных </p> </li>
+<li><p> <code> requiresAccessToken </code> - логическое значение, указывающее, потребуется ли для загрузки сгенерированных файлов токен аутентификации. Примечание. Это может быть неверно в случае подписанных URL-адресов S3 или внутреннего файлового сервера в брандмауэре организации. </p> </li>
+<li><p> <code> output </code> - массив элементов файла массовых данных с одной записью для каждого сгенерированного файла. Примечание. Если запрос на запуск не возвращает никаких данных, сервер должен вернуть пустой массив. </p> </li>
+<li><p> <code> error </code> - массив элементов файла ошибок, имеющих ту же структуру, что и массив <code> output </code>. Примечание. Если ошибок не произошло, сервер должен вернуть пустой массив. Примечание. В настоящее время поддерживается только тип ресурса <code> OperationOutcome </code>, поэтому сервер будет генерировать файлы ndjson, каждая строка которых является ресурсом <code> OperationOutcome </code>. </p>
+<p> Каждый элемент файла должен содержать следующие поля: </p> </li>
+<li><p> <code> тип </code> - тип ресурса FHIR, который содержится в файле. Примечание. Каждый файл может содержать ресурсы только одного типа, но сервер может создать более одного файла для каждого возвращаемого типа ресурсов. Количество ресурсов, содержащихся в файле, может различаться на разных серверах. Если данные для ресурса не найдены, сервер не должен возвращать элемент вывода для него в ответе. </p> </li>
+<li><p> <code> url </code> - путь к файлу. Формат файла должен отражать то, что запрошено в параметре <code> _outputFormat </code> начального запроса запуска. </p>
+<p> Каждый элемент файла может дополнительно содержать следующее поле: </p> </li>
+<li><p> <code> count </code> - количество ресурсов в файле, представленное в виде числа JSON. </p>
+<p> Пример текста ответа: </p>
 <pre><code class="json language-json">{
   "transactionTime": "[instant]",
   "request" : "[base]/Patient/$export?_type=Patient,Observation", 
@@ -123,24 +124,24 @@ the FHIR Asynchronous API and the $export Operation are under active development
 }</code></pre></li>
 </ul>
 <hr/>
-<h3 id="file-requests">File Requests:</h3>
-<p>Using the urls supplied in the completed status request body, clients can download the generated bulk data files (one or more per resource type). Note: These files may be served by a file server rather than a FHIR specific server. Also, if the <code>requiresAccessToken</code> field in the status body is set to <code>true</code> the request must include a valid access token in the <code>Authorization</code> header in these requests (i.e., <code>Authorization: Bearer {{token}}</code>).</p>
-<h5 id="endpoint-2">Endpoint</h5>
+<h3 id="file-requests"> Запросы файлов: </h3>
+<p> Используя URL-адреса, указанные в завершенном теле запроса состояния, клиенты могут загружать сгенерированные файлы массовых данных (по одному или несколько для каждого типа ресурса). Примечание. Эти файлы могут обслуживаться файловым сервером, а не конкретным сервером FHIR. Кроме того, если для поля <code> requiresAccessToken </code> в теле статуса установлено значение <code> true </code>, запрос должен включать действительный токен доступа в заголовке <code> Authorization </code> в этих запросах. (Т.е. <code> Authorization: Bearer {{token}} </code>). </p>.
+<h5 id="endpoint-2">Точка взаимодействия</h5>
 <p><code>GET [url from status request output field]</code></p>
-<h5 id="headers-1">Headers</h5>
+<h5 id="headers-1">Заголовки</h5>
 <ul>
-<li><code>Accept</code> (optional, defaults to <code>application/fhir+ndjson</code>)</li>
+<li><code>Accept</code> (необязательно, по умолчанию <code>application/fhir+ndjson</code>)</li>
 </ul>
-<p>Specifies the format of the file being returned. Optional, but currently only application/fhir+ndjson is supported.</p>
-<h5 id="response---success-2">Response - Success</h5>
+<p>Задает формат возвращаемого файла. Необязательно, но в настоящее время поддерживается только application/fhir+ndjson.</p>
+<h5 id="response---success-2">Ответ - Успех</h5>
 <ul>
-<li>HTTP status of <code>200 OK</code></li>
-<li><code>Content-Type</code> header of <code>application/fhir+ndjson</code></li>
-<li>Body of FHIR resources in newline delimited json - <a href="http://ndjson.org/">ndjson</a> format</li>
+<li>HTTP-статус <code>200 OK</code></li>
+<li><code>Content-Type</code> заголовок <code>application/fhir+ndjson</code></li>
+<li>Тело FHIR ресурсов FHIR в формате json с разделителями новой строки <a href="http://ndjson.org/">ndjson</a></li>
 </ul>
-<h5 id="response---error">Response - Error</h5>
+<h5 id="response---error">Ответ - Ошибка</h5>
 <ul>
-<li>HTTP Status Code of <code>4XX</code> or <code>5XX</code></li>
+<li>Код состояния HTTP <code>4XX</code> или <code>5XX</code></li>
 </ul>
 </div>
 
