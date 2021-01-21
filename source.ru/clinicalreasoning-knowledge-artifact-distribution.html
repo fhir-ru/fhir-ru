@@ -13,15 +13,15 @@
 <table class="cols"><tbody><tr><td id="wg">Work Group <a _target="blank" href="[%wg cds%]">[%wgt cds%]</a></td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 2</td><td id="ballot"><a href="versions.html#std-process">Standards Status</a>:  <!-- !ns! --><a href="versions.html#std-process">Trial Use</a></td></tr></tbody></table>
 
 <a name="knowledge-artifact-distribution"> </a>
-<h3>Sharing Knowledge Artifacts</h3>
+<h3> Обмен артефактами знаний </h3>
 
-<p>One of the primary use cases of the Clinical Reasoning Module is to enable the sharing and distribution of computable clinical knowledge artifacts:</p>
+<p> Одним из основных вариантов использования модуля Clinical Reasoning Module является обеспечение обмена и распространения вычислимых артефактов клинических знаний: </p>
 
-<img alt="Knowledge Artifact Sharing" src="clinicalreasoning-knowledge-artifact-distribution.png"/>
+<img alt="Обмен артефактами знаний" src="Clinicalreasoning-knowledge-artifact-distribution.png" />
 
-<p>The distribution use case involves enabling knowledge artifacts to be distributed as resources via a FHIR server. The search and read interactions defined by the FHIR infrastructure can be used for this purpose. The <a href="library.html">Library</a>, <a href="activitydefinition.html">ActivityDefinition</a>, <a href="plandefinition.html">PlanDefinition</a>, <a href="questionnaire.html">Questionnaire</a>, and <a href="measure.html">Measure</a> resources can all be used to represent knowledge artifacts, and so define several search parameters specifically to enable searching based on the various attributes of a knowledge artifact. A FHIR service that supports at least searching and retrieval of these resources is then a basic Knowledge Artifact Repository. More advanced knowledge management capabilities such as change management, semantic indexing, and dependency tracking can all be provided on top of this basic infrastructure.</p>
+<p> Вариант использования распространения включает в себя возможность распространения артефактов знаний в виде ресурсов через сервер FHIR. Для этой цели могут использоваться взаимодействия поиска и чтения, определенные инфраструктурой FHIR. <a href="library.html"> Библиотека </a>, <a href="activitydefinition.html"> ActivityDefinition </a>, <a href="plandefinition.html"> PlanDefinition </a>, <a href="questionnaire.html"> Questionnaire </a> и <a href="measure.html"> Measure </a> могут использоваться для представления артефактов знаний и, таким образом, определять несколько параметров поиска специально для включения поиск на основе различных атрибутов артефакта знаний. Тогда сервис FHIR, который поддерживает хотя бы поиск и извлечение этих ресурсов, является базовым репозиторием артефактов знаний. Более продвинутые возможности управления знаниями, такие как управление изменениями, семантическое индексирование и отслеживание зависимостей, могут быть предоставлены поверх этой базовой инфраструктуры. </p>
 
-<p>In particular, the <code>useContext</code> and <code>topic</code> elements are intended to provide both semantic and topical indexing functionality for use in knowledge repositories. For example, the following fragment illustrates the use of the <code>useContext</code> element to indicate semantic usage context for an example suicide risk order set:</p>
+<p> В частности, элементы <code> useContext </code> и <code> topic </code> предназначены для обеспечения как семантических, так и тематических функций индексации для использования в репозиториях знаний. Например, следующий фрагмент иллюстрирует использование элемента <code> useContext </code> для указания семантического контекста использования для примера набора приказов о самоубийстве: </p>
 
 <pre><code>  &lt;coverage&gt;
     &lt;patientAgeGroup&gt;
@@ -62,47 +62,47 @@
   &lt;/coverage&gt;
 </code></pre>
 
-<p>The <code>useContext</code> element can contain any number of characteristics that define the particular context of use for the artifact. Note that the base resource does not communicate the intended semantics when multiple useContext elements are present. To accomplish this, a core extension is defined, <a href="extension-usagecontext-group.html">usagecontext-group</a>. All use contexts within a group apply, while groups of use contexts indicate that any group applies.</p>
+<p> Элемент <code> useContext </code> может содержать любое количество характеристик, определяющих конкретный контекст использования артефакта. Обратите внимание, что базовый ресурс не передает предполагаемую семантику при наличии нескольких элементов useContext. Для этого определяется базовое расширение, <a href="extension-usagecontext-group.html"> usagecontext-group </a>. Применяются все контексты использования внутри группы, в то время как контексты использования групп указывают, что применима любая группа. </p>
 
-<p>In addition, the <code>useContext</code> element is intended to convey <i>prescriptive</i> semantics about the appropriate context of use for an artifact, while the <code>topic</code> element is intended to convey <i>descriptive</i> semantics suitable for indexing and searching using the <code>topic</code> search parameter.</p>
+<p> Кроме того, элемент <code> useContext </code> предназначен для передачи <i> предписывающей </i> семантики о соответствующем контексте использования артефакта, а элемент <code> topic </code> предназначен для передачи <i> описательной </i> семантики, подходящей для индексации и поиска с использованием параметра поиска <code>topic</code>. </p>
 
-<p>The FHIR search interaction specifies that search results are returned in a Bundle, and the entries in that bundle allow a score to be specified, consistent with the Decision Support Service (DSS) relevance result. Note that the DSS score range is 1 to 100, while the FHIR score range is 0..1.</p>
+<p> Взаимодействие при поиске FHIR указывает, что результаты поиска возвращаются в пакете, а записи в этом пакете позволяют указать оценку в соответствии с результатом релевантности Службы поддержки принятия решений (DSS). Обратите внимание, что диапазон оценок DSS составляет от 1 до 100, а диапазон оценок FHIR - 0..1.</p>
 
-<p>The algorithm for determining relevance is not prescribed by this guidance. When calculating relevance, implementations are encouraged to take advantage of the metadata represented within the artifact to help users understand the relevance of the returned artifacts to their search criteria.</p>
+<p> Алгоритм определения релевантности в данном руководстве не прописан. При вычислении релевантности реализациям рекомендуется использовать метаданные, представленные в артефакте, чтобы помочь пользователям понять релевантность возвращенных артефактов их критериям поиска. </p>
 
-<p>To reduce the size of returned results and ensure efficient searching and retrieval, the Bundle returned SHOULD consist only of resources of the requested type. Dependencies of the resources returned SHOULD NOT be included unless specifically referenced by <a href="search.html#include">including</a>  the resources using the <code>_include</code> and <code>_revinclude</code> parameters.</p>
+<p> Чтобы уменьшить размер возвращаемых результатов и обеспечить эффективный поиск и извлечение, возвращаемый пакет ДОЛЖЕН состоять только из ресурсов запрошенного типа. Зависимости возвращаемых ресурсов НЕ ДОЛЖНЫ включаться, если на это явно не ссылаются <a href="search.html#include"> включая </a> ресурсы, использующие <code> _include </code> и <code> _revinclude </code> параметры. </p>
 
-<p>Support for two different distribution use cases can be provided using the basic GET interaction:</p>
+<p> Поддержка двух различных вариантов использования распространения может быть обеспечена с помощью базового взаимодействия GET: </p>
 
 <ul>
-	<li>Summary - Using the <code>_summary</code> parameter, the resources returned represent only the basic information and metadata about each matching artifact.</li>
-	<li>Full - Using the <code>_include</code> and <code>_revinclude</code> search parameters to include related resources in the result.</li>
+<li> Сводка - с помощью параметра <code> _summary </code> возвращенные ресурсы представляют только основную информацию и метаданные о каждом подходящем артефакте. </li>
+<li> Полный - использование параметров поиска <code> _include </code> и <code> _revinclude </code> для включения связанных ресурсов в результат. </li>
 </ul>
 
-<p>The following table lists the search criteria elements defined by the Decision Support Service (DSS) standard along with their appropriate representation in FHIR:</p>
+<p> В следующей таблице перечислены элементы критериев поиска, определенные стандартом службы поддержки принятия решений (DSS), а также их соответствующее представление в FHIR: </p>
 
 <table class="grid">
-	<thead>
-		<tr><th>DSS Search Criteria</th><th>FHIR Equivalent</th></tr>
-	</thead>
-	<tbody>
-		<tr><td>Maximum Results</td><td>_count global search parameter</td></tr>
-		<tr><td>Minimum Score</td><td>KnowledgeArtifact.minScore search parameter</td></tr>
-		<tr><td>Knowledge Artifact Trait</td><td>Knowledge search parameters (identifier, topic, title, description, version)</td></tr>
-		<tr><td>Knowledge Artifact Status</td><td>KnowledgeArtifact.status search parameter</td></tr>
-		<tr><td>Evaluation Result Semantics</td><td>Not Implemented</td></tr>
-		<tr><td>Data Requirements</td><td>Not Implemented</td></tr>
-		<tr><td>Relationships to specific Knowledge Artifacts</td><td>Not Implemented</td></tr>
-	</tbody>
+<thead>
+<tr> <th> Критерии поиска DSS </th> <th> эквивалент FHIR </th> </tr>
+</thead>
+<tbody>
+<tr> <td> Максимальное количество результатов </td> <td> глобальный параметр поиска _count </td> </tr>
+<tr> <td> Минимальная оценка </td> <td> Параметр поиска KnowledgeArtifact.minScore </td> </tr>
+<tr> <td> Признак артефакта знаний </td> <td> Параметры поиска знаний (идентификатор, тема, заголовок, описание, версия) </td> </tr>
+<tr> <td> Статус артефакта знаний </td> <td> Параметр поиска KnowledgeArtifact.status </td> </tr>
+<tr> <td> Семантика результатов оценки </td> <td> Не реализовано </td> </tr>
+<tr> <td> Требования к данным </td> <td> Не реализованы </td> </tr>
+<tr> <td> Связь с конкретными артефактами знаний </td> <td> Не реализовано </td> </tr>
+</tbody>
 </table>
 
-<p>Support for exclusion criteria as described in the DSS is provided by the :not search parameter modifier of FHIR.</p>
+<p> Поддержка критериев исключения, описанных в DSS, обеспечивается модификатором: not search параметра FHIR. </p>
 
-<p>Implementing at least the FHIR search and get interactions for the clinical reasoning resources (Library, ActivityDefinition, PlanDefinition, and Measure) is then a basic implementation of a Knowledge Artifact Repository. For example, the following GET retrieves all measures that reference a specific value set:</p>
+<p> Реализация, по крайней мере, FHIR-поиска и получения взаимодействий для ресурсов клинического обоснования (Library, ActivityDefinition, PlanDefinition и Measure) является базовой реализацией репозитория артефактов знаний. Например, следующий GET извлекает все меры, которые ссылаются на определенный набор значений: </p>
 
 <pre><code>GET [base]/ValueSet/zika-affected-areas?_revinclude=Library:depends-on&amp;_revinclude:recurse=Measure:depends-on</code></pre>
 
-<p>More sophisticated management functionality including semantic indexing, change management, and dependency tracking can be provided on top of this basic functionality using the same resource structures.</p>
+<p> Более сложные функции управления, включая семантическое индексирование, управление изменениями и отслеживание зависимостей, могут быть предоставлены поверх этой базовой функции с использованием тех же структур ресурсов. </p>
 
 </div>
 [%file newfooter%]

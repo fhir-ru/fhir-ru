@@ -15,45 +15,45 @@
 <a name="clinical-decision-support-services"> </a>
 <h3>Clinical Decision Support Services</h3>
 
-<p>This section of the clinical reasoning module discusses the evaluation use case for clinical decision support and how the various knowledge artifacts can be integrated into clinical workflow. The topic focuses on two main scenarios:</p>
+<p> В этом разделе модуля клинического обоснования обсуждается пример использования оценки для поддержки принятия клинических решений и то, как различные артефакты знаний могут быть интегрированы в клинический рабочий процесс. Тема посвящена двум основным сценариям: </p>
 
 <ol>
-	<li>Using CDS Hooks to evaluate remote clinical decision support</li>
-	<li>Using CDS Hooks to surface clinical decision support behavior</li>
+<li> Использование CDS Hooks для оценки удаленной поддержки принятия клинических решений </li>
+<li> Использование ловушек CDS для выявления поведения поддержки принятия клинических решений </li>
 </ol>
 
-<p>Note that this topic is a very high-level approach to using CDS Hooks to support these two use cases. It is not a normative description of any of the CDS Hooks content. Please refer to the <a href="https://cds-hooks.org">CDS Hooks</a> specification itself for more details. At the time of this publication, the CDS Hooks specification has been balloted but is still in the process of being published. Because the links on this page deep-link the CDS Hooks specification, they are still referencing the original CDS Hooks specification. When it is published, the CDS Hooks specification will be located at <a href="http://cds-hooks.hl7.org">http://cds-hooks.hl7.org</a>.</p>
+<p> Обратите внимание, что эта тема представляет собой очень высокоуровневый подход к использованию ловушек CDS для поддержки этих двух вариантов использования. Это не нормативное описание какого-либо содержимого CDS Hooks. Пожалуйста, обратитесь к самой спецификации <a href="https://cds-hooks.org"> CDS Hooks </a> для получения более подробной информации. На момент публикации спецификация CDS Hooks была проголосована, но все еще находится в процессе публикации. Поскольку ссылки на этой странице ссылаются на спецификацию хуков CDS, они все еще ссылаются на исходную спецификацию хуков CDS. Когда он будет опубликован, спецификация CDS Hooks будет находиться по адресу <a href="http://cds-hooks.hl7.org"> http://cds-hooks.hl7.org </a>. </p>
 
 <a name="consuming-decision-support"> </a>
-<h4>Consuming Decision Support Using CDS Hooks</h4>
+<h4> Поддержка принятия решений с помощью ловушек CDS </h4>
 
-<p>CDS Hooks is an open source specification focused on user-facing remote clinical decision support. CDS Hooks can use FHIR to represent patient information and recommendations, but is architecturally an independent specification. The basic components of CDS Hooks are:</p>
+<p> CDS Hooks - это спецификация с открытым исходным кодом, ориентированная на поддержку удаленных клинических решений с участием пользователей. CDS Hooks может использовать FHIR для представления информации и рекомендаций пациента, но это архитектурно независимая спецификация. Основные компоненты CDS Hooks: </p>
 
 <table>
   <tr>
-    <td><b>Service</b></td><td>A decision support service that accepts requests containing patient information, and provides responses</td>
+    <td><b>Service</b></td> <td> Служба поддержки принятия решений, которая принимает запросы, содержащие информацию о пациентах, и предоставляет ответы </td>
   </tr>
   <tr>
-    <td><b>Hook</b></td><td>A defined point within the client system's workflow with well-known contextual information provided as part of the request</td>
+    <td><b>Hook</b></td> <td> Определенная точка в рабочем процессе клиентской системы с хорошо известной контекстной информацией, предоставляемой как часть запроса </td>
   </tr>
   <tr>
-    <td><b>EHR</b></td><td>An electronic health record, or other clinical information system that consumes decision support in the form of services</td>
+    <td><b>EHR</b></td> <td> Электронная медицинская карта или другая клиническая информационная система, которая использует поддержку принятия решений в виде услуг </td>
   </tr>
   <tr>
-    <td><b>Card</b></td><td>Guidance from decision support services is returned in the form of cards, representing discrete recommendations or suggestions that are presented to the user within the EHR</td>
+    <td><b>Card</b></td> <td> Рекомендации служб поддержки принятия решений возвращаются в виде карточек, представляющих дискретные рекомендации или предложения, которые представляются пользователю в EHR </td>
   </tr>
 </table>
 
 <a name="configuration"> </a>
-<h5>Configuration</h5>
+<h5> Конфигурация </h5>
 
-<p>The first phase in consuming a CDS Service using CDS Hooks is to configure the integration from the EHR. The CDS Service publishes a set of endpoints to advertise available functionality using the <a href="http://cds-hooks.org/specification/1.0/#discovery"><i>discovery</i></a> endpoint. For each endpoint, the service declares the <i>hook</i> during which it expects to be invoked, and optionally, any <i>prefetch</i> information that could be provided to the service.</p>
+<p> Первым этапом использования службы CDS с использованием ловушек CDS является настройка интеграции из EHR. Служба CDS публикует набор конечных точек для рекламы доступных функций с помощью конечной точки <a href="http://cds-hooks.org/specification/1.0/#discovery"> <i> обнаружение </i> </a> . Для каждой конечной точки служба объявляет <i> ловушку </i>, во время которой она ожидает вызова, и, необязательно, любую информацию <i> предварительной выборки </i>, которая может быть предоставлена ​​службе. </p>
 
-<p>Each <a href="http://cds-hooks.org/hooks/"><i>hook</i></a> identifies contextual information that is available within the EHR. For example, the <code>medication-prescribe</code> hook specifies the patient in context, as well as the medications being prescribed. When invoking the service from this hook, the EHR is expected to provide this contextual information as part of the request.</p>
+<p> Каждый <a href="http://cds-hooks.org/hooks/"> <i> hook </i> </a> идентифицирует контекстную информацию, доступную в EHR. Например, хук <code> medication-identify </code> указывает пациента в контексте, а также назначаемые лекарства. Ожидается, что при вызове службы из этого перехвата EHR предоставит эту контекстную информацию как часть запроса. </p>
 
-<p>In addition, the CDS Service may specify additional information using <a href="http://cds-hooks.org/specification/1.0/#prefetch-template"><i>prefetch</i></a> templates. Each prefetch template is a FHIR query URL, parameterized by the data available in context, and describing information needed by the CDS Service to perform its processing. By providing this information as part of the request, the EHR alleviates the need for the CDS Service to request the additional information.</p>
+<p> Кроме того, служба CDS может указывать дополнительную информацию, используя <a href="http://cds-hooks.org/specification/1.0/#prefetch-template"> <i> prefetch </i> </a> шаблоны. Каждый шаблон предварительной выборки представляет собой URL-адрес запроса FHIR, параметризованный данными, доступными в контексте, и описывающий информацию, необходимую службе CDS для выполнения своей обработки. Предоставляя эту информацию как часть запроса, EHR устраняет необходимость для службы CDS запрашивать дополнительную информацию. </p>
 
-<p>The following example illustrates a typical service discovery response:</p>
+<p> В следующем примере показан типичный ответ на обнаружение службы: </p>
 
 <pre><code>{
   "services": [
@@ -78,11 +78,11 @@
 }</code></pre>
 
 <a name="evaluation"> </a>
-<h5>Evaluation</h5>
+<h5> Оценка </h5>
 
-<p>The second phase is the actual request/response call to the CDS Service. Once the integration has been configured using the above information, the EHR can make requests to decision support services at the appropriate times based on the <i>hooks</i> it supports. To make a request, the EHR prepares a <a href="http://cds-hooks.org/specification/1.0/#http-request_1"><i>request</i></a> object containing the contextual information required for the hook, as well as any additional prefetch information.</p>
+<p> Второй этап - это фактический запрос / ответ службы CDS. После того, как интеграция была настроена с использованием вышеуказанной информации, EHR может делать запросы к службам поддержки принятия решений в соответствующее время на основе поддерживаемых им <i> ловушек </i>. Чтобы сделать запрос, EHR подготавливает объект <a href="http://cds-hooks.org/specification/1.0/#http-request_1"> <i> request </i> </a>, содержащий контекстный информация, необходимая для ловушки, а также любая дополнительная информация о предварительной выборке. </p>
 
-<p>For example, the following request illustrates a call to the <code>cdc-opioid-guidance</code> service:</p>
+<p> Например, следующий запрос иллюстрирует вызов службы <code> cdc-opioid -idance </code>: </p>
 
 <pre><code>{
   "hookInstance": "d1577c69-dfbe-44ad-ba6d-3e05e953b2ea",
@@ -119,18 +119,18 @@
   }
 }</code></pre>
 
-<p>This request identifies:</p>
+<p> Этот запрос идентифицирует: </p>
 
 <ul>
-	<li><b>hookInstance</b> - A unique identifier for this instance of the hook invocation.</li>
-	<li><b>fhirServer</b> - The base URL for the FHIR server that the CDS Service can use to request any additional information required</li>
-	<li><b>hook</b> - The hook being invoked, <code>medication-prescribe</code> in this case</li>
-	<li><b>user</b> - The identifier of the current user, a Practitioner in this case</li>
-	<li><b>context</b> - The contextual information as defined by the <i>hook</i>, the <code>MedicationOrder</code> being prescribed in this case</li>
-	<li><b>prefetch</b> - The prefetch information as defined by the <i>service</i>, the active <code>MedicationOrder</code>s for the patient in this case</li>
+<li> <b> hookInstance </b> - уникальный идентификатор для этого экземпляра вызова ловушки. </li>
+<li> <b> fhirServer </b> - базовый URL-адрес для сервера FHIR, который служба CDS может использовать для запроса любой дополнительной необходимой информации. </li>
+<li> <b> ловушка </b> - вызываемая ловушка, в данном случае <code> лекарство-прописать </code>. </li>
+<li> <b> пользователь </b> - идентификатор текущего пользователя, в данном случае Практик. </li>
+<li> <b> context </b> - контекстная информация, определенная с помощью <i> hook </i>, в данном случае предписывается <code> MedicationOrder </code>. </li>
+<li> <b> предварительная выборка </b> - информация предварительной выборки, определенная <i> службой </i>, в данном случае активными <code> MedicationOrder </code> для пациента </li>
 </ul>
 
-<p>The service responds with a set of <a href="http://cds-hooks.org/specification/1.0/#card-attributes"><i>cards</i></a> describing any recommendations or suggestions that should be presented to the user:</p>
+<p> Служба отвечает набором <a href="http://cds-hooks.org/specification/1.0/#card-attributes"> <i> карточек </i> </a> с описанием любых рекомендаций или предложения, которые следует представить пользователю: </p>
 
 <pre><code>{
    "cards":[
@@ -170,135 +170,134 @@
    ]
 }</code></pre>
 
-<p>Each card contains:</p>
+<p> Каждая карточка содержит: </p>
 
 <ul>
-  <li><b>summary</b> - A short description of the result</li>
-  <li><b>detail</b> - A more detailed description of the information for the card</li>
-  <li><b>indicator</b> - The urgency/importance of the card, <code>info</code>, <code>warning</code> or <code>hard-stop</code></li>
-  <li><b>source</b> - The source of the information</li>
-  <li><b>suggestions</b> - An array of suggestions, allowing the service to suggest a set of changes in the context of the current activity</li>
-  <li><b>selectionBehavior</b> - A selection behavior among returned suggestions for the card.</li>
-  <li><b>links</b> - A set of links allowing the service to provide links to further information about the response</li>
+  <li> <b> сводка </b> - краткое описание результата. </li>
+  <li> <b> деталь </b> - более подробное описание информации для карты. </li>
+  <li> <b> индикатор </b> - срочность / важность карты, <code> информация </code>, <code> предупреждение </code> или <code> жесткая остановка </code> </li>
+  <li> <b> источник </b> - источник информации. </li>
+  <li> <b> предложения </b> - массив предложений, позволяющий службе предложить набор изменений в контексте текущего действия </li>
+  <li> <b> selectionBehavior </b> - поведение выбора среди возвращенных предложений для карточки. </li>
+  <li> <b> ссылки </b> - набор ссылок, позволяющий службе предоставлять ссылки на дополнительную информацию об ответе. </li>
 </ul>
 
-<p>At this point, the EHR processes the response and determines the most appropriate mechanism for displaying the results to the end-user. However, it is often the case that the results of the decision support interaction need to be persisted for future reference. The <a href="guidanceresponse.html">GuidanceResponse</a> and <a href="requestgroup.html">RequestGroup</a> resources provide a general mechanism that supports this use case.</p>
+<p> На этом этапе EHR обрабатывает ответ и определяет наиболее подходящий механизм для отображения результатов конечному пользователю. Однако часто бывает так, что результаты взаимодействия по поддержке принятия решений необходимо сохранить для использования в будущем. Ресурсы <a href="guidanceresponse.html"> GuidanceResponse </a> и <a href="requestgroup.html"> RequestGroup </a> предоставляют общий механизм, поддерживающий этот вариант использования. </p>
 
-<p>In general, a CDS Hooks Response can be captured as a single GuidanceResponse that represents the overall response from the CDS Service, and a single RequestGroup containing the cards and suggestions, as illustrated by the following object-level mappings:</p>
-
-<table>
-  <tr><th><b>CDS Hooks Object</b></th><th><b>FHIR Resource Mapping</b></th><th><b>Description</b></th></tr>
-  <tr><td>Response</td><td>GuidanceResponse and RequestGroup</td><td>A CDS Hooks Response is 1 to 1 with a GuidanceResponse and an associated RequestGroup</td></tr>
-  <tr><td>Card</td><td>RequestGroup.action</td><td>Each Card in the response is represented as a top level action in the RequestGroup. The selectionBehavior of the action (i.e. among suggestions on the card) is specified by the selectionBehavior element of the card.</td></tr>
-  <tr><td>Suggestion</td><td>RequestGroup.action.action</td><td>Each suggestion on a card is represented as a nested action within the action for the card. The selectionBehavior of the action (i.e. among the actions described in the suggestion) is <code>all</code>, because CDS Hooks specifies that when a suggestion is accepted, all the actions on the suggestion are performed.</td></tr>
-  <tr><td>Action</td><td>RequestGroup.action.action.action</td><td>Each CDS Hooks Action on a card is represented as a nested action within the RequestGroup action for the suggestion, and the resource in the CDS Hooks Action populates the resource element of the RequestGroup action.</td></tr>
-</table>
-
-<p>And the following table lists the element-level mappings:</p>
+<p> Как правило, ответ на перехватчики CDS может быть записан как один ответ GuidanceResponse, представляющий общий ответ от службы CDS, и отдельная группа RequestGroup, содержащая карточки и предложения, как показано на следующих сопоставлениях на уровне объектов: </p>
 
 <table>
-  <tr><th><b>CDS Hooks Element</b></th><th><b>FHIR Resource Mapping</b></th></tr>
-  <tr><td>Request.hookInstance</td><td>GuidanceResponse.requestId &amp; RequestGroup.identifier</td></tr>
-  <tr><td>Request URL</td><td>GuidanceResponse.moduleUri &amp; RequestGroup.instantiatesUri</td></tr>
-  <tr><td>Response status</td><td>GuidanceResponse.status</td></tr>
-  <tr><td>Request Patient</td><td>GuidanceResponse.subject &amp; RequestGroup.subject</td></tr>
-  <tr><td>Request time</td><td>GuidanceResponse.occurrenceDateTime &amp; RequestGroup.authoredOn</td></tr>
-  <tr><td>Request service</td><td>GuidanceResponse.performer &amp; RequestGroup.author (as a Device)</td></tr>
-  <tr><td>Response.card</td><td>RequestGroup.action</td></tr>
-  <tr><td>Response.card.summary</td><td>RequestGroup.action.title</td></tr>
-  <tr><td>Response.card.detail</td><td>RequestGroup.action.description</td></tr>
-  <tr><td>Response.card.indicator</td><td>RequestGroup.priority | RequestGroup.action.resource.priority, using the mapping specified <a href="conceptmap-cdshooks-indicator.html">here</a></td></tr>
-  <tr><td>Response.card.source</td><td>RequestGroup.action.relatedArtifact.where(type = 'documentation')</td></tr>
-  <tr><td>Response.card.selectionBehavior</td><td>RequestGroup.action.selectionBehavior</td></tr>
-  <tr><td>Response.card.suggestion</td><td>RequestGroup.action.action</td></tr>
-  <tr><td>Response.card.suggestion.label</td><td>RequestGroup.action.action.title</td></tr>
-  <tr><td>Response.card.suggestion.uuid</td><td>RequestGroup.action.action.id</td></tr>
-  <tr><td>Response.card.suggestion.action</td><td>RequestGroup.action.action.action</td></tr>
-  <tr><td>Response.card.suggestion.action.type</td><td>RequestGroup.action.action.action.type</td></tr>
-  <tr><td>Response.card.suggestion.action.description</td><td>RequestGroup.action.action.action.description</td></tr>
-  <tr><td>Response.card.suggestion.action.resource</td><td>RequestGroup.action.action.action.resource</td></tr>
+  <tr><th> <b> Объект перехватчиков CDS </b> </th> <th> <b> Сопоставление ресурсов FHIR </b> </th> <th> <b> Описание </b> </th> </tr>
+  <tr><td>Response</td> <td> GuidanceResponse и RequestGroup </td> <td> Ответ ловушек CDS составляет 1 к 1 с GuidanceResponse и связанной RequestGroup </td> </tr>
+  <tr><td>Card</td><td>RequestGroup.action</td> <td> Каждая карта в ответе представлена ​​как действие верхнего уровня в RequestGroup. SelectionBehavior действия (т.е. среди предложений на карточке) определяется элементом selectionBehavior карточки. </td> </tr>
+  <tr><td>Suggestion</td><td>RequestGroup.action.action</td><td> Каждое предложение на карточке представлено как вложенное действие внутри действия для карточки. SelectionBehavior действия (то есть среди действий, описанных в предложении) - <code> all </code>, поскольку ловушки CDS указывают, что когда предложение принято, выполняются все действия по предложению. </td></tr>
+  <tr><td>Action</td><td>RequestGroup.action.action.action</td> <td> Каждое действие перехватчиков CDS на карточке представлено как вложенное действие внутри действия RequestGroup для предложения, и ресурс в действии перехватчиков CDS заполняет элемент ресурса действия RequestGroup. </td> </tr>
 </table>
 
-<p>Note that these examples all assume a FHIR DSTU2 service is being used.</p>
+<p> В следующей таблице перечислены сопоставления на уровне элементов: </p>
 
-<p>To support these scenarios, this module defines the <a href="guidanceresponse-cdshooks.html">CDS Hooks GuidanceResponse</a> and <a href="requestgroup-cdshooks.html">CDS Hooks RequestGroup</a> profiles.</p>
+<table>
+  <tr><th> <b> Элемент перехватчиков CDS </b> </th> <th> <b> Сопоставление ресурсов FHIR </b> </th> </tr>
+  <tr><td>Request.hookInstance</td> <td> GuidanceResponse.requestId &amp; RequestGroup.identifier </td> </tr>
+  <tr> <td> URL-адрес запроса </td> <td> GuidanceResponse.moduleUri &amp; RequestGroup.instantiatesUri </td> </tr>
+  <tr> <td> Статус ответа </td> <td> GuidanceResponse.status </td> </tr>
+  <tr> <td> Запросить пациента </td> <td> GuidanceResponse.subject &amp; RequestGroup.subject </td> </tr>
+  <tr> <td> Время запроса </td> <td> GuidanceResponse.occurrenceDateTime &amp; RequestGroup.authoredOn </td> </tr>
+  <tr> <td> Запросить услугу </td> <td> GuidanceResponse.performer &amp; RequestGroup.author (как устройство) </td> </tr>
+  <tr><td>Response.card</td><td>RequestGroup.action</td> </tr>
+  <tr><td>Response.card.summary</td><td>RequestGroup.action.title</td> </tr>
+  <tr><td>Response.card.detail</td><td>RequestGroup.action.description</td> </tr>
+  <tr><td>Response.card.indicator</td> <td> RequestGroup.priority | RequestGroup.action.resource.priority, используя сопоставление, указанное <a href="conceptmap-cdshooks-indicator.html"> здесь </a> </td> </tr>
+  <tr><td>Response.card.source</td> <td> RequestGroup.action.relatedArtifact.where (type = 'documentation') </td> </tr>
+  <tr><td>Response.card.selectionBehavior</td><td>RequestGroup.action.selectionBehavior</td> </tr>
+  <tr><td>Response.card.suggestion</td><td>RequestGroup.action.action</td> </tr>
+  <tr><td>Response.card.suggestion.label</td><td>RequestGroup.action.action.title</td> </tr>
+  <tr><td>Response.card.suggestion.uuid</td><td>RequestGroup.action.action.id</td> </tr>
+  <tr><td>Response.card.suggestion.action</td><td>RequestGroup.action.action.action</td> </tr>
+  <tr><td>Response.card.suggestion.action.type</td><td>RequestGroup.action.action.action.type</td> </tr>
+  <tr><td>Response.card.suggestion.action.description</td><td>RequestGroup.action.action.action.description</td> </tr>
+  <tr><td>Response.card.suggestion.action.resource</td><td>RequestGroup.action.action.action.resource</td> </tr>
+</table>
+
+<p> Обратите внимание: все эти примеры предполагают использование службы FHIR DSTU2. </p>
+
+<p> Для поддержки этих сценариев в этом модуле определены <a href="guidanceresponse-cdshooks.html"> ответы на хуки CDS, GuidanceResponse </a> и <a href="requestgroup-cdshooks.html"> Группа запросов хуков CDS </a> профили. </p>
 
 <a name="surfacing-clinical-decision-support"> </a>
-<h4>Surfacing Clinical Decision Support Guidance Using CDS Hooks</h4>
+<h4> Дополнительные рекомендации по поддержке принятия клинических решений с использованием ловушек CDS </h4>
 
-<p>In addition to supporting the user-facing remote decision support use case, CDS Hooks can be used to surface clinical decision support behavior represented by knowledge artifacts in the Clinical Reasoning module. In this use case, a FHIR server functioning as a knowledge provider exposes CDS Hooks Services using the discovery endpoint, and provides guidance using the CDS Service endpoint. To support this, several mappings from Clinical Reasoning functionality to CDS Hooks services are used:</p>
+<p> Помимо поддержки варианта использования удаленной поддержки принятия решений, ориентированного на пользователя, ловушки CDS могут использоваться для выявления поведения поддержки принятия клинических решений, представленного артефактами знаний в модуле Clinical Reasoning. В этом случае сервер FHIR, функционирующий как поставщик знаний, предоставляет сервисы перехватчиков CDS с помощью конечной точки обнаружения и предоставляет руководство с помощью конечной точки службы CDS. Для поддержки этого используется несколько сопоставлений функциональности Clinical Reasoning с сервисами CDS Hooks: </p>
 
 <ol>
-  <li><b>Hooks</b> - Hooks in CDS Hooks are mapped to the TriggerDefinition structure in FHIR</li>
-  <li><b>Services</b> - Services in CDS Hooks are mapped to the PlanDefinition resource in FHIR to provide evaluation behavior</li>
-  <li><b>Prefetch</b> - Prefetch templates in CDS Hooks are mapped to the DataRequirement structure in FHIR</li>
+  <li> <b> Перехватчики </b> - перехватчики в CDS Перехватчики сопоставляются со структурой TriggerDefinition в FHIR. </li>
+  <li> <b> Службы </b>. Службы в перехватчиках CDS сопоставляются с ресурсом PlanDefinition в FHIR для обеспечения поведения оценки. </li>
+  <li> <b> Предварительная выборка </b> - шаблоны предварительной выборки в перехватчиках CDS сопоставляются со структурой DataRequirement в FHIR. </li>
 </ol>
 
 <a name="representing-hooks"> </a>
-<h5>Representing Hooks in FHIR</h5>
+<h5> Представление хуков в FHIR </h5>
 
-<p>A <i>hook</i> in CDS Hooks is a pre-defined point in the workflow of a clinical information system such as an EHR. Each hook defines <i>context</i>, which is the information available as part of the current activity in the system. Each hook represents a point in the workflow that can be augmented by decision support from an external system. Within CDS Hooks, each hook defines the set of available context values, along with whether or not that context value can be used as a prefetch token.</p>
+<p> <i> Hooks </i> в CDS Hooks - это заранее определенная точка в рабочем процессе клинической информационной системы, такой как EHR. Каждая ловушка определяет <i> context </i>, который представляет собой информацию, доступную как часть текущей активности в системе. Каждая ловушка представляет собой точку в рабочем процессе, которая может быть дополнена поддержкой принятия решений от внешней системы. Внутри ловушек CDS каждая ловушка определяет набор доступных значений контекста, а также то, может ли это значение контекста использоваться в качестве токена предварительной выборки. </p>
 
-<p>For example, the <code>patient-view</code> hook defines <code>patientId</code> and <code>encounterId</code> as context values and indicates that they are both available for use as prefetch tokens (meaning that they can be used to parameterize prefetch templates).</p>
+<p> Например, обработчик <code> Patient-view </code> определяет <code> PatientId </code> и <code> expectId </code> как значения контекста и указывает, что они оба доступны для использования в качестве предварительной выборки. токены (то есть их можно использовать для параметризации шаблонов предварительной выборки). </p>
 
-<p>Within FHIR, the concept of a hook can be represented using a combination of TriggerDefinition and ParameterDefinition:</p>
-
-<table>
-  <tr><th><b>CDS Hooks Element</b></th><th><b>FHIR Mapping</b></th></tr>
-  <tr><td>Hook.name</td><td>TriggerDefinition.where(type = 'named-event').name</td></tr>
-  <tr><td>Hook.context.field</td><td>ParameterDefinition.name</td></tr>
-  <tr><td>Hook.context.priority</td><td>ParameterDefinition.min &amp; ParameterDefinition.max</td></tr>
-  <tr><td>Hook.context.description</td><td>ParameterDefinition.documentation &amp; ParameterDefinition.type &amp; ParameterDefinition.profile</td></tr>
-</table>
-
-<p>Note that using TriggerDefinition to represent hook information requires that hook details be duplicated everywhere they are used. Another approach would be to use the EventDefinition resource to capture the hook information once, and then reuse that by reference wherever it is needed.</p>
-
-<a name="representing-services"> </a>
-<h5>Representing Services in FHIR</h5>
-
-<p>A <i>service</i> in CDS Hooks is a clinical decision support service that can be used to provide guidance to users at pre-defined points in a workflow. The PlanDefinition resource can be used to describe the behavior of decision support functionality, which can then be exposed via a CDS Hooks service. In the simplest case, there is a one-to-one correspondence between a PlanDefinition and a CDS Service:</p>
+<p> В FHIR концепция ловушки может быть представлена ​​с помощью комбинации TriggerDefinition и ParameterDefinition: </p>
 
 <table>
-  <tr><th><b>CDS Hooks Element</b></th><th><b>FHIR Mapping</b></th></tr>
-  <tr><td>Service.id</td><td>PlanDefinition.url (without the base)</td></tr>
-  <tr><td>Service.title</td><td>PlanDefinition.title</td></tr>
-  <tr><td>Service.description</td><td>PlanDefinition.description</td></tr>
-  <tr><td>Service.hook</td><td>PlanDefinition.action.trigger</td></tr>
-  <tr><td>Service.prefetch</td><td>PlanDefinition.data-requirement</td></tr>
+  <tr><th> <b> Элемент перехватчиков CDS </b> </th> <th> <b> Отображение FHIR </b> </th> </tr>
+  <tr><td>Hook.name</td> <td> TriggerDefinition.where (type = 'named-event'). name </td> </tr>
+  <tr><td>Hook.context.field</td><td>ParameterDefinition.name</td> </tr>
+  <tr><td>Hook.context.priority</td> <td> ParameterDefinition.min &amp; ParameterDefinition.max </td> </tr>
+  <tr><td>Hook.context.description</td> <td> ParameterDefinition.documentation &amp; ParameterDefinition.type &amp; ParameterDefinition.profile </td> </tr>
 </table>
 
-<p>To support this representation, this module defines a <a href="plandefinition-cdshooks-service.html">CDS Hooks Service PlanDefinition</a> profile, which also supports specifying the CDS Hooks endpoint on which the PlanDefinition should be exposed.</p>
+<p> Обратите внимание, что использование TriggerDefinition для представления информации о ловушке требует, чтобы детали ловушки дублировались везде, где они используются. Другой подход - использовать ресурс EventDefinition для однократного захвата информации о ловушке, а затем повторно использовать ее по ссылке везде, где это необходимо. </p>
 
-<p>The PlanDefinition/$apply operation can then be used to provide the behavior of the CDS Hooks service, as described in the Processing CDS Hooks Requests section below.</p>
+<a name="presenting-services"> </a>
+<h5> Представление услуг в FHIR </h5>
 
-<h5>Representing Prefetch in FHIR</h5>
-
-<p>In addition to the contextual information defined by the <i>hook</i>, services in CDS Hooks can request that additional information be supplied with each request in the form of <i>prefetch</i> templates. These templates are parameterized FHIR query URLs that can be fulfilled by the EHR as part of the request, reducing the number of round-trips between the CDS Service and the EHR's FHIR server.</p>
-
-<p>The concept of prefetch data is represented within Clinical Reasoning as a DataRequirement, which can be transformed to an instance level read or type level search interaction as follows:</p>
+<p> <i> Служба </i> в CDS Hooks - это служба поддержки принятия клинических решений, которую можно использовать для предоставления рекомендаций пользователям в заранее определенных точках рабочего процесса. Ресурс PlanDefinition можно использовать для описания поведения функций поддержки принятия решений, которые затем могут быть представлены через службу CDS Hooks. В простейшем случае существует взаимно однозначное соответствие между PlanDefinition и службой CDS: </p>
 
 <table>
-  <tr><th><b>DataRequirement Element</b></th><th><b>Mapping to FHIR URL</b></th></tr>
-  <tr><td>type</td><td>[type]{[id] | ?[parameters]}</td></tr>
-  <tr><td>subject</td><td>subject={{patientId}}</td></tr>
-  <tr><td>codeFilter</td><td>[path]{=|:in}[code|valueSet]</td></tr>
-  <tr><td>dateFilter</td><td>[path]{eq|lt|gt|ge|le}[valueDateTime|valuePeriod|valueDuration]</td></tr>
-  <tr><td>sort</td><td>_sort=[sort]</td></tr>
-  <tr><td>limit</td><td>_limit=[limit]</td></tr>
+  <tr><th> <b> Элемент перехватчиков CDS </b> </th> <th> <b> Отображение FHIR </b> </th> </tr>
+  <tr><td>Service.id</td> <td> PlanDefinition.url (без базы) </td> </tr>
+  <tr><td>Service.title</td><td>PlanDefinition.title</td> </tr>
+  <tr><td>Service.description</td><td>PlanDefinition.description</td> </tr>
+  <tr><td>Service.hook</td><td>PlanDefinition.action.trigger</td> </tr>
+  <tr><td>Service.prefetch</td><td>PlanDefinition.data-requirement</td> </tr>
 </table>
 
-<p>This prefetch data can be automatically determined from the data requirements of the PlanDefinition and provided as part of the service definition to the CDS Hooks discovery response.</p>
+<p> Для поддержки этого представления этот модуль определяет профиль <a href="plandefinition-cdshooks-service.html"> CDS Hooks Service PlanDefinition </a>, который также поддерживает указание конечной точки CDS Hooks, на которой должно быть установлено определение PlanDefinition. разоблачены. </p>
 
+<p> Операция PlanDefinition / $ apply затем может использоваться для обеспечения поведения службы перехватчиков CDS, как описано в разделе «Обработка запросов перехватчиков CDS» ниже. </p>
+
+<h5> Представление предварительной выборки в FHIR </h5>
+
+<p> В дополнение к контекстной информации, определенной с помощью <i> hook </i>, службы в CDS Hooks могут запрашивать, чтобы дополнительная информация предоставлялась с каждым запросом в форме шаблонов <i> предварительной выборки </i>. Эти шаблоны представляют собой параметризованные URL-адреса запросов FHIR, которые могут быть выполнены EHR как часть запроса, что сокращает количество циклов обмена между службой CDS и сервером FHIR EHR. </p>
+
+<p> Концепция предварительной выборки данных представлена ​​в Clinical Reasoning как DataRequirement, который можно преобразовать во взаимодействие чтения или поиска на уровне экземпляра следующим образом: </p>
+
+<table>
+  <tr><th> <b> Элемент DataRequirement </b> </th> <th> <b> Сопоставление с URL-адресом FHIR </b> </th> </tr>
+  <tr><td>type</td> <td> [тип] {[id] | ? [параметры]} </td> </tr>
+  <tr><td>subject</td><td>subject={{patientId}}</td> </tr>
+  <tr><td>codeFilter</td><td>[path visible{=|:in}[code|valueSet ]</td> </tr>
+  <tr><td>dateFilter</td><td>[path visible{eq|lt|gt|ge|le}[valueDateTime|valuePeriod|valueDuration ]</td> </tr>
+  <tr><td>sort</td><td>_sort=[сортировка ]</td> </tr>
+  <tr><td>limit</td><td>_limit=[limitght</td> </tr>
+</table>
+
+<p> Эти данные предварительной выборки могут быть автоматически определены из требований к данным PlanDefinition и предоставлены как часть определения службы в ответ на обнаружение ловушек CDS. </p>
 <a name="processing-requests"> </a>
-<h5>Processing CDS Hooks Requests</h5>
+<h5> Обработка запросов ловушек CDS </h5>
 
-<p>Once the available PlanDefinition resources are advertised through the discovery endpoint, a CDS Hooks endpoint can be used to perform the actual evaluation, as illustrated in the following diagram:</p>
+<p> После того, как доступные ресурсы PlanDefinition объявлены через конечную точку обнаружения, конечную точку CDS Hooks можно использовать для выполнения фактической оценки, как показано на следующей диаграмме: </p>
 
-<img alt="Surfacing Clinical Reasoning Behavior via CDS Hooks" src="clinicalreasoning-cdshooks-approach.png"/>
+<img alt = "Выявление клинического поведения с помощью ловушек CDS" src = "clinicreasoning-cdshooks-подход.png" />
 
-<p>As depicted in the above diagram, an EHR invokes a CDS Hooks request at the appropriate point in the workflow, providing the requested context and data. The CDS Service responds by performing an $apply operation against the specified PlanDefinition, and transforming the resulting RequestGroup into a CDS Hooks response.</p>
+<p> Как показано на приведенной выше диаграмме, EHR вызывает запрос CDS Hooks в соответствующей точке рабочего процесса, предоставляя запрошенный контекст и данные. Служба CDS отвечает, выполняя операцию $ apply для указанного PlanDefinition и преобразуя полученный RequestGroup в ответ CDS Hooks. </p>
 
-<p>Because PlanDefinitions can be used in a broad range of use cases, this module defines the <a href="library-cql.html">CQL Library</a> and <a href="plandefinition-computable.html">Computable PlanDefinition</a> profiles to describe the special case of a PlanDefinition being used as an event-condition-action rule with conditions and other dynamic behavior specified in a CQL Library. This arrangement provides a common and consistent pattern for describing decision support that can be easily integrated using the CDS Hooks specification.</p>
+<p> Поскольку PlanDefinitions может использоваться в широком диапазоне вариантов использования, этот модуль определяет <a href="library-cql.html"> библиотеку CQL </a> и <a href = "plandefinition-computable.html" > Computable PlanDefinition </a>, чтобы описать особый случай использования PlanDefinition в качестве правила событие-условие-действие с условиями и другим динамическим поведением, указанным в библиотеке CQL. Эта схема обеспечивает общий и последовательный шаблон для описания поддержки принятия решений, который можно легко интегрировать с помощью спецификации CDS Hooks. </p>
 
 </div>
 [%file newfooter%]
