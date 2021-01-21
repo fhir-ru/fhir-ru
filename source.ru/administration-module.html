@@ -4,7 +4,7 @@
 These elements SHALL always appear in this order. These basic elements shared by all resources come first
 in order to support consistent definitions for schema and UML derived code.
 -->
-[%settitle Administration Module%]
+[%settitle Административный модуль%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     [%file newheader%]
@@ -13,24 +13,23 @@ in order to support consistent definitions for schema and UML derived code.
     [%file newnavbar%]
 
     <div class="col-12"><!--ReleaseHeader--><p id="publish-box"></p><!--EndReleaseHeader-->
-        <table class="colsi"><tr><td id="wg">Work Group <a _target="blank" href="[%wg pa%]">[%wgt pa%]</a> </td><td id="ballot"><a href="versions.html#std-process">Standards Status</a>:<!--!ns!--><a href="versions.html#std-process">Informative</a></td></tr></table>
+        <table class="colsi"><tr><td id="wg">Рабочая группа <a _target="blank" href="[%wg pa%]">[%wgt pa%]</a> </td><td id="ballot"><a href="versions.html#std-process">Статус нормативности</a>:<!--!ns!--><a href="versions.html#std-process">Информативный</a></td></tr></table>
 
         <a name="root"></a>
-        <h2>Administration Module</h2>
+        <h2>Административный модуль</h2>
         <a name="intro"></a>
-        <h3>Introduction</h3>
+        <h3>Введение</h3>
         <p>
-            The Administrative module covers the base data that is then linked into
-            the other modules for clinical content, finance/billing, workflow, etc.<br />
-            It is built on the FHIR technology platform modules.
-        </p>
-        <p>
-            Before any clinical data can be recorded, the basic information of the patient
-            must be recorded, and then often the basis of the interaction (such as an encounter).
+            Административный модуль охватывает базовые данные, которые затем связываются с
+             другими модулями клинического содержания, финансов/выставления счетов, рабочего процесса и т. д. <br />
+             Он построен на модулях технологической платформы FHIR.
+         </p>
+         <p>
+             Прежде чем записывать какие-либо клинические данные, необходимо внести базовую информацию о пациенте, а затем описать основу взаимодействия (например, случай обслуживания/визит).
         </p>
 
         <a name="index"></a>
-        <h3>Index</h3>
+        <h3>Указатель ресурсов</h3>
         <table width="100%" style="table-layout: fixed">
             <tr>
                 <td>
@@ -74,60 +73,59 @@ in order to support consistent definitions for schema and UML derived code.
             </tr>
         </table>
         <a name="patient-reg"></a>
-        <h4>Patient Registers</h4>
+        <h4>Реестры пациентов</h4>
         <p>
-            Track people involved in receiving healthcare, the basics nearly everything else references back to
+            Ведение реестров людей, получающих медицинскую помощь - основа, на которую ссылается почти всё остальное.
         </p>
         <table class="bare">
-            <tr><td><b>Name</b></td><td><b>Aliases</b></td><td><b>Description</b></td></tr>
+            <tr><td><b>Имя</b></td><td><b>Альтернативные имена</b></td><td><b>Описание</b></td></tr>
             [%res-item Patient%]
             [%res-item RelatedPerson%]
             [%res-item Person%]
             [%res-item Group%]
         </table>
         <div>
-            <img src="administration-module-person.png" alt="Image showing the relationship between resources representing people" width="584px" />
+            <img src="administration-module-person.png" alt="Изображение, показывающее взаимосвязь между ресурсами, описывающими людей" width="584px" />
         </div>
 [%impl-note%]
-                <a href="patient.html#links">Patient linking</a> should also be considered when evaluating
-                searches with references to other resources. e.g. searching for a patients' conditions for a patient.<br />
-                At present the specification does not define if the links should be also followed to include
-                conditions that reference the linked patients too. We are currently seeking feedback on this.
+                 При оценке результатов поиска со ссылками на другие ресурсы также следует учитывать возможность <a href="patient.html#links">связывания пациентов</a>.
+                 Например поиск диагнозов для пациента.<br />
+                 В настоящее время спецификация не определяет, следует ли также переходить по ссылкам для включения диагнозов, которые ссылаются на связанных пациентов. В настоящее время мы ждём ваши отзывы по этому поводу.
+                 
+                 
 [%end-note%]
 [%impl-note%]
-                The Person resource may be used as a centralized register of people that may
-                eventually be involved in healthcare, and could be used as the central core demographics register.<br />
-                However, the fields/values in Person are duplicated in the other resources, and in many cases the
-                Person resource will be hosted on external systems.
+                 Ресурс Person может использоваться в качестве централизованного реестра людей, которые в конечном итоге могут быть задействованы в сфере здравоохранения, и может использоваться в качестве центрального базового демографического реестра. <br />
+Однако поля/значения в Person дублируются в других ресурсах, и во многих случаях ресурс Person будет размещён во внешних системах.
+
 [%end-note%]
 
         <a name="clinical-reg"></a>
-        <h4>Clinical Categorization Resources</h4>
+        <h4>Классификация клинических ресурсов</h4>
         <p>
-            Most clinical activities occur grouped in some way. Long term care is typically covered by an EpisodeOfCare, whereas short term care is covered by encounters. Account associates the tracking of transactions back to a Patient (or other resource). Flag is just used to highlight a warning or other notification about a patient (or other resource)
+            Большинство клинических мероприятий каким-либо образом сгруппированы. Долгосрочный уход обычно покрывается EpisodeOfCare, тогда как краткосрочный уход покрывается встречами. Учетная запись связывает отслеживание транзакций с пациентом (или другим ресурсом). Флаг используется только для выделения предупреждения или другого уведомления о пациенте (или другом ресурсе).
         </p>
         <table class="bare">
-            <tr><td><b>Name</b></td><td><b>Aliases</b></td><td><b>Description</b></td></tr>
+            <tr><td><b>Имя</b></td><td><b>Альтернативные имена</b></td><td><b>Описание</b></td></tr>
             [%res-item EpisodeOfCare%]
             [%res-item Encounter%]
             [%res-item Account%]
             [%res-item Flag%]
         </table>
         <div>
-            <img src="administration-module-interactions.png" alt="Image showing the administration interactions" width="600px" />
+            <img src="administration-module-interactions.png" alt="Изображение, показывающее административное взаимодействие" width="600px" />
         </div>
 [%impl-note%]
-                Resources shown with a dotted box are described in other sections of the specification:
-                <code>Coverage</code> and <code>Claim</code> are from the <a href="financial-module.html">section on Finance</a>.
+Ресурсы, выделенные пунктирной рамкой, описаны в других разделах спецификации: <code>Coverage</code> и <code>Claim</code> взяты из <a href="financial-module.html"> раздела о финансах </a>.
 [%end-note%]
 
         <a name="dir-reg"></a>
-        <h4>Service Provider Directory Resources</h4>
+        <h4>Ресурсы, связанные с каталогами поставщиков услуг</h4>
         <p>
-            Service Provider Directory resources are usually stored in the administration section of applications, and may even be synchronized from external systems.
+            Ресурсы, связанные с каталогами поставщиков услуг, обычно хранятся в разделе администрирования приложений и могут быть синхронизированы с внешними системами.
         </p>
         <table class="bare">
-            <tr><td><b>Name</b></td><td><b>Aliases</b></td><td><b>Description</b></td></tr>
+            <tr><td><b>Имя</b></td><td><b>Альтернативные имена</b></td><td><b>Описание</b></td></tr>
             [%res-item Organization%]
             [%res-item Location%]
             [%res-item Practitioner%]
@@ -136,34 +134,34 @@ in order to support consistent definitions for schema and UML derived code.
             [%res-item Endpoint%]
         </table>
         <div>
-            <img src="administration-module-prov-dir.png" alt="Image showing the provider directory resources" width="513px" />
+            <img src="administration-module-prov-dir.png" alt="Изображение, показывающее ресурсы каталога поставщиков услуг" width="513px" />
         </div>
         <p></p>
 
         <a name="sched"></a>
-        <h4>Scheduling and Appointments</h4>
+        <h4>Планирование расписаний и назначение встреч</h4>
         <p>
-            The Scheduling/Appointment resources permit the planning of encounters to occur and follow on with other clinical activities.
+            Ресурсы планирования расписаний и назначения встреч позволяют планировать встречи и выполнять другие клинические действия.
         </p>
         <table class="bare">
-            <tr><td><b>Name</b></td><td><b>Aliases</b></td><td><b>Description</b></td></tr>
+            <tr><td><b>Имя</b></td><td><b>Альтернативные имена</b></td><td><b>Описание</b></td></tr>
             [%res-item Schedule%]
             [%res-item Slot%]
             [%res-item Appointment%]
             [%res-item AppointmentResponse%]
         </table>
         <div>
-            <img src="administration-module-scheduling.png" alt="Image showing the scheduling interactions" width="600px" />
+            <img src="administration-module-scheduling.png" alt="Изображение, показывающее планирование взаимодействий" width="600px" />
         </div>
         <p></p>
 
         <a name="dev-sub"></a>
-        <h4>Devices and Substances</h4>
+        <h4>Устройства и вещества</h4>
         <p>
-            Other assets are often registered in the administration system, and maintained as master files.
+            Прочие активы часто регистрируются в системе управления и поддерживаются как мастер-файлы.
         </p>
         <table class="bare">
-            <tr><td><b>Name</b></td><td><b>Aliases</b></td><td><b>Description</b></td></tr>
+            <tr><td><b>Имя</b></td><td><b>Альтернативные имена</b></td><td><b>Описание</b></td></tr>
             [%res-item Device%]
             [%res-item DeviceDefinition%]
             [%res-item DeviceMetric%]
@@ -172,84 +170,80 @@ in order to support consistent definitions for schema and UML derived code.
 
 
         <a name="secpriv"></a>
-        <h3>Security and Privacy</h3>
+        <h3>Безопасность и конфиденциальность</h3>
         <p>
-            Patient privacy is handled with security labels and tags in the Resource <a href="resource.html#Meta">Meta</a> property.
-            This is the standard way in which that the FHIR specification provides this supporting information
-            to a sub-system that implements it (which is not defined by FHIR).
+            Конфиденциальность пациента обрабатывается с помощью меток безопасности и тегов в свойстве <a href="resource.html#Meta"> Meta </a> ресурса. Это стандартный способ, которым спецификация FHIR предоставляет эту вспомогательную информацию подсистеме, которая ее реализует (что не определено FHIR).
         </p>
         <p>
-            One of the more common use cases is for marking a patient as being a <a href="security-labels.html">celebrity</a>.
+            Один из наиболее распространенных вариантов использования - пометить пациента как <a href="security-labels.html"> знаменитость </a>.
         </p>
         <p>
-            Note that privacy considerations apply to Person, Practitioner and RelatedPerson records in addition to Patient's.
+            Обратите внимание, что соображения конфиденциальности применяются к записям о персонах, практикующих и связанных лицах в дополнение к записям пациентов.
         </p>
         <p>
-            While Organization, Location, Device and other non-person-identifying records are generally subject to less stringent
-            security precautions, such data must still be protected to avoid safety issues
-            (e.g. someone maliciously changing the ingredients associated with a drug to cause/fail to cause alerts)
+            Хотя организация, местонахождение, устройство и другие записи, не идентифицирующие личность человека, как правило, подлежат менее строгим мерам безопасности, такие данные все же должны быть защищены, чтобы избежать проблем с безопасностью (например, кто-то злонамеренно меняет ингредиенты, связанные с лекарством, чтобы вызвать / не вызвать предупреждения)
         </p>
         <p>
-            Devices can be linked to Patients.  If this occurs, they must be protected as any other patient-linked element
+            Устройства можно связать с пациентами. В этом случае они должны быть защищены, как и любой другой элемент, связанный с пациентом.
         </p>
         <p>
-            For more general considerations, see <a href="secpriv-module.html">the Security and Privacy module</a>.
+            Для получения более общих сведений см. модуль <a href="secpriv-module.html">Безопасность и конфиденциальность</a>.
         </p>
 
         <a name="uses"></a>
-        <h3>Common Use Cases</h3>
+        <h3>Распространенные случаи использования</h3>
         <p>
-            Administration Resources are cornerstone resources that are used by clinical and other domains of the FHIR Standard.
+            Административные ресурсы - это краеугольные ресурсы, которые используются клиническими и другими областями стандарта FHIR.
         </p>
         <ul>
             <li>
-                <b>Managing a Master Record of a Patient and a Person</b> (e.g. MPI)<br/>
-                A <a href="patient.html">Patient</a> resource is used to describe patient demographic information and any updates to it.
-                It can be used to communicate <a href="patient.html">Patient</a> information to other systems
-                (e.g. other registries, clinical, ancillary and financial systems).
-                Some systems distinguish the Patient Registry (or Client Registry) from the Person Registry.
-                A <a href="person.html">Person</a> resource is a base for the Person Registry system.
-                The Patient/Person Management use case includes creation, update, as well as merge/unmerge and link/unlink scenarios.
+                <b> Управление мастер-записью Patient и Person </b> (например, MPI) <br/>
+                Ресурс <a href="patient.html"> Пациент </a> используется для описания демографической информации пациента и любых обновлений к ней.
+                Его можно использовать для передачи информации <a href="patient.html"> пациента </a> другим системам.
+                (например, другие регистры, клинические, вспомогательные и финансовые системы).
+                Некоторые системы различают Реестр пациентов (или Реестр клиентов) от Реестра лиц.
+                Ресурс <a href="person.html"> Person </a> является основой для системы реестра людей.
+                Вариант использования управления пациентами / людьми включает в себя сценарии создания, обновления, а также слияния / отключения и связывания / отмены связи.
             </li>
             <li>
-                <b>Managing a Master Record of a Provider and Service Catalogue</b> (e.g. Provider Registry, Service Directory)<br />
-                A <a href="practitioner.html">Practitioner</a> resource is a base resource for enabling the registry of individuals, related to providing health care services.
-                Other resources, such as <a href="organization.html">Organization</a>, <a href="location.html">Location</a>, <a href="healthcareservice.html">HealthcareService</a>, are creating a complete picture of where, how and by whom
-                the care services are offered to a patient. The resources can be used for managing the master record or as a reference in
-                clinical resources to inform about participants and places for various clinical resources.
+                <b> Управление основной записью поставщика и каталогом услуг </b> (например, реестр поставщиков, каталог услуг) <br />
+                Ресурс <a href="practitioner.html"> Практик </a> - это базовый ресурс для включения реестра лиц, связанных с предоставлением медицинских услуг.
+                Другие ресурсы, такие как <a href="organization.html"> Организация </a>, <a href="location.html"> Местоположение </a>, <a href="healthcareservice.html"> HealthcareService </a>, создают полную картину того, где, как и кем
+                пациенту предлагаются услуги по уходу. Ресурсы могут использоваться для управления основной записью или в качестве ссылки в
+                клинические ресурсы для информирования об участниках и местах для различных клинических ресурсов.
             </li>
             <li>
-                <b>Managing Other Administrative Records</b><br />
-                The Administration domain of the FHIR standard includes creation and update of <a href="device.html">Device</a> and <a href="substance.html">Substance</a> records.
-                Resources can be used for managing a master record or communicating its information to other systems.
+                <b> Управление другими административными записями </b> <br />
+                Домен администрирования стандарта FHIR включает создание и обновление записей <a href="device.html"> устройства </a> и <a href="substance.html"> вещества </a>.
+                Ресурсы могут использоваться для управления основной записью или передачи ее информации в другие системы.
             </li>
             <li>
-                <b>Enabling Patient Profiles, Clinical Reporting and Connecting Clinical Records</b><br />
-                Administration Resources are referred to by almost all clinical resources.
-                Querying systems, using the references to Administration Resources enables the creation of profiles and reports of various complexities.
+                <b> Включение профилей пациентов, клинических отчетов и подключение клинических записей </b> <br />
+                На административные ресурсы ссылаются почти все клинические ресурсы.
+                Системы запросов с использованием ссылок на ресурсы администрирования позволяют создавать профили и отчеты различной сложности.
             </li>
             <li>
-                <b>Enabling Clinical Grouping and Financial Reporting</b><br />
-                Other use cases are included in the roadmap of resources, developed by the Patient Administration group.
-                The roadmap section lists plans and updates of the current work.
+                <b> Включение клинической группировки и финансовой отчетности </b> <br />
+                Другие варианты использования включены в дорожную карту ресурсов, разработанную группой администрирования пациентов.
+                В разделе дорожной карты перечислены планы и обновления текущей работы.
             </li>
         </ul>
 
         <a name="roadmap"></a>
-        <h3>Developmental Roadmap</h3>
+        <h3>Дорожная карта</h3>
         <p>
-            The Patient Administration is currently working through resources that support:
-        </p>
-        <ul>
-            <li>Encounters and Scheduling <i>(enhance maturity of encounters and further develop in/outpatient scheduling)</i></li>
-            <li>Service Provider Directory <i>(in co-ordination with the Argonaut Provider Directory group)</i></li>
-            <li>Financial Management interactions <i>(account/coverage, then charge item, which links administration to billing)</i></li>
-        </ul>
-        <p>
-            Many of the administrative resources are part of the core resources that most systems
-            use first and have formed the basis for most people's first experiences with FHIR.<br />
-            However this limited exposure has still to be proven in all contexts, such as veterinary, public health and clinical research.
-        </p>
+             Администрация пациентов в настоящее время прорабатывает ресурсы, которые поддерживают:
+         </p>
+         <ul>
+             <li> Встречи и планирование <i> (повышение зрелости встреч и дальнейшее развитие амбулаторного и амбулаторного планирования) </i> </li>
+             <li> Справочник поставщиков услуг <i> (в координации с группой Справочника поставщиков услуг Аргонавт) </i> </li>
+             <li> Взаимодействие с финансовым менеджментом <i> (учетная запись / покрытие, затем элемент начисления, который связывает администрирование с выставлением счетов) </i> </li>
+         </ul>
+         <p>
+             Многие административные ресурсы являются частью основных ресурсов, используемых большинством систем.
+             использовать в первую очередь и легли в основу первого опыта большинства людей с FHIR. <br />
+             Однако это ограниченное воздействие еще предстоит доказать во всех контекстах, таких как ветеринария, общественное здравоохранение и клинические исследования.
+         </p>
     </div>
 
     [%file newfooter%]
