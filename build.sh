@@ -1,10 +1,11 @@
 #!/bin/bash
 set -ev
 
-NAME="Непрерывная интеграционная сборка"
+#NAME="Непрерывная интеграционная сборка"
+NAME="FHIR v4.0.1"
 
 antBuild (){
-  ./publish.sh -name \'$NAME\' -url http://hl7-fhir.github.io/
+  ./publish.sh -name \'$NAME\' 
   checkStatus
 }
 
